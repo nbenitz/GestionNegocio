@@ -1,4 +1,4 @@
-﻿Option Strict On
+﻿
 Public Class FListaMotivos
     Dim Producto As New CProducto
     Dim TablaMotivos As New DataTable

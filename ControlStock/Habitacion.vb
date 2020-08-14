@@ -22,8 +22,8 @@ Public Class Habitacion
         End If
     End Sub
 
-    Private Sub OcupadoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OcupadoToolStripMenuItem.Click
-        Me.Ocupado = True
+    Private Sub MnuOcupado_Click(sender As Object, e As EventArgs) Handles mnuOcupado.Click
+        'Ocupado = True
         RaiseEvent OcuparClick(Me, CampoHabEvents)
     End Sub
 
@@ -78,7 +78,7 @@ Public Class Habitacion
     End Property
 
     Private Sub Ocupar()
-        Me.BackColor = Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        BackColor = Color.FromArgb(192, 0, 0) '(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Timer1.Enabled = True
         lblTiempo.Text = TiempoValor.ToString
     End Sub
@@ -103,7 +103,7 @@ Public Class Habitacion
             Minuto = Min
         End If
 
-        If Hora = 0 And Min = Tolerancia And Segundo = 0 Then
+        If Hora = 0 And Min = ToleranciaValor And Segundo = 0 Then
             RaiseEvent ToleranciaTick(Me, CampoHabEvents)
         End If
 
@@ -112,4 +112,5 @@ Public Class Habitacion
     Private Sub Habitacion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
+
 End Class

@@ -21,7 +21,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <PublishUrl>C:\Users\Electrónica\Desktop\Instalador\</PublishUrl>
+    <PublishUrl>E:\Escritorio\Instalador San Cayetano\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -32,7 +32,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>51</ApplicationRevision>
+    <ApplicationRevision>60</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -46,9 +46,12 @@
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>ControlStock.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <Prefer32Bit>false</Prefer32Bit>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
+    <WarningLevel>0</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -58,11 +61,14 @@
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>ControlStock.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
+    <WarningLevel>0</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <OptionExplicit>On</OptionExplicit>
+    <OptionExplicit>Off</OptionExplicit>
   </PropertyGroup>
   <PropertyGroup>
     <OptionCompare>Binary</OptionCompare>
@@ -71,7 +77,7 @@
     <OptionStrict>Off</OptionStrict>
   </PropertyGroup>
   <PropertyGroup>
-    <OptionInfer>On</OptionInfer>
+    <OptionInfer>Off</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>90E8FF0C1239A2583A012106806F751B4E3D2BF4</ManifestCertificateThumbprint>
@@ -93,6 +99,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LibPrintTicketMatriz, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -144,7 +153,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseDato.vb" />
+    <Compile Include="CBaseDato.vb" />
     <Compile Include="CCaja.vb" />
     <Compile Include="CCliente.vb" />
     <Compile Include="CCompra.vb" />
@@ -159,6 +168,12 @@
     <Compile Include="CResumenCaja.vb" />
     <Compile Include="CTotalesCaja.vb" />
     <Compile Include="CVenta.vb" />
+    <Compile Include="FAcercaDe.Designer.vb">
+      <DependentUpon>FAcercaDe.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FAcercaDe.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FAjustesTiempo.Designer.vb">
       <DependentUpon>FAjustesTiempo.vb</DependentUpon>
     </Compile>
@@ -467,6 +482,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FAcercaDe.resx">
+      <DependentUpon>FAcercaDe.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FAjustesTiempo.resx">
       <DependentUpon>FAjustesTiempo.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -847,7 +865,10 @@
   <ItemGroup>
     <None Include="Resources\Exit-50%281%291.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Datos\" />
+    <Folder Include="Vistas\" />
+  </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>

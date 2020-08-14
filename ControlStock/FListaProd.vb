@@ -1,11 +1,12 @@
 ﻿Option Strict On
+
 Public Class FListaProd
     Dim Producto As New CProducto
     Dim Prov As New CProveedor
     Dim TablaProv As New DataTable
     Dim TablaProd As New DataTable
     Dim Orden As String = " ORDER BY Descripcion"
-    Dim Condicion As String = "WHERE idproducto = 0"
+    Dim Condicion As String = "WHERE idproducto = ''"
 
     Private Sub TcmbFiltrarPor_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles TCmbFiltrarPor.Click
         TCmbFiltrarPor.DroppedDown = True
@@ -37,7 +38,7 @@ Public Class FListaProd
                 TCmbProveedor.Text = ""
                 Dim Filas As Integer = TablaProv.Rows.Count
                 If Filas > 0 Then
-                    For i = 0 To (Filas - 1)
+                    For i As Integer = 0 To (Filas - 1)
                         TCmbProveedor.Items.Add(TablaProv.Rows(i).Item(1))
                     Next
                 End If
@@ -150,27 +151,27 @@ Public Class FListaProd
 
     Private Sub CargarTabla(ByVal Tabla As DataTable) 'se tabla contiene los datos del view viewproducto
         Cursor.Current = Cursors.WaitCursor
-        Dim CostoTotal As Integer = 0
+        Dim CostoTotal As ULong = 0
         Dim SinCosto As Integer = 0
         Dim Filas As Integer = Tabla.Rows.Count
         DataGridView1.Rows.Clear()
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
-                Dim idProd As UInt64 = CULng(Tabla.Rows(i).Item(0))
+            For i As Integer = 0 To (Filas - 1)
+                Dim idProd As String = CStr(Tabla.Rows(i).Item(0))
                 Dim Prov As String = CStr(Tabla.Rows(i).Item(1))
                 Dim Descrip As String = CStr(Tabla.Rows(i).Item(2))
-                Dim PCompra As Integer = CInt(Tabla.Rows(i).Item(3))
+                Dim PCompra As UInteger = CUInt(Tabla.Rows(i).Item(3))
                 Dim PVenta As Integer = CInt(Tabla.Rows(i).Item(4))
                 Dim PVenta2 As Integer
                 Dim Stock As Double = CDbl(Tabla.Rows(i).Item(6))
-                Dim TablaAux As DataTable = Producto.BuscProdCod(CStr(idProd))
+                Dim TablaAux As DataTable = Producto.BuscProdCod(idProd)
                 If CStr(TablaAux.Rows(0).Item(10)) = "Si" Then
                     PVenta2 = CInt(TablaAux.Rows(0).Item(7))
                 Else
                     PVenta2 = CInt(Tabla.Rows(i).Item(5))
                 End If
-                DataGridView1.Rows.Add(idProd, Prov, Descrip, PCompra, PVenta, PVenta2, Stock)
-                CostoTotal = CInt(CostoTotal + PCompra * Stock)
+                DataGridView1.Rows.Add(idProd, Prov, Descrip, PCompra, PVenta, PVenta2, Stock, "Detalles")
+                CostoTotal = CULng(CostoTotal + PCompra * Stock)
                 If PCompra = 0 Then
                     SinCosto += 1
                 End If
@@ -187,22 +188,23 @@ Public Class FListaProd
             If Param <> "" Then
                 Select Case TCmbFiltrarPor.SelectedIndex
                     Case Is = 2 '"Código"
-                        Dim Cod As UInt64
+                        Dim Cod As String
                         Try
-                            Cod = CULng(TtxtBuscar.Text)
+                            Cod = TtxtBuscar.Text
                         Catch ex As Exception
                             TtxtBuscar.Text = ""
                             ToolTip1.Show("El código debe ser numérico", lblAux, 0, -8, 1200)
                             Exit Sub
                         End Try
-                        TablaProd = Producto.BuscProd("idproducto", "=", CStr(Cod), "")
-                        Condicion = "WHERE idproducto = " + CStr(Cod)
+                        TablaProd = Producto.BuscProd("idproducto", "=", Cod, "")
+                        Condicion = "WHERE idproducto = '" + Cod + "'"
                         Dim Filas As Integer = TablaProd.Rows.Count
                         If Filas > 0 Then
                             CargarTabla(TablaProd)
                             TtxtBuscar.Select(0, TtxtBuscar.TextLength)
                             Exit Sub
                         Else
+                            DataGridView1.Rows.Clear()
                             MessageBox.Show("El Código no existe")
                             TtxtBuscar.Select(0, TtxtBuscar.TextLength)
                         End If
@@ -278,40 +280,9 @@ Public Class FListaProd
     End Sub
 
     Private Sub pbxEditar_Click(sender As Object, e As EventArgs) Handles pbxEditar.Click, pnlEditar.Click, lblEditar.Click
-        Try
-            Dim row As Integer = DataGridView1.CurrentRow.Index
-            Dim Cod As UInt64 = CULng(TablaProd.Rows(row).Item(0))
-            Dim idProv As String = CStr(TablaProd.Rows(row).Item(1))
-            Dim Tabla As DataTable = Producto.BuscProdCod(CStr(Cod))
-            Dim Descrip As String = CStr(Tabla.Rows(0).Item(2))
-            Dim Costo As Integer = CInt(Tabla.Rows(0).Item(3))
-            Dim PrecioUnit As Integer = CInt(Tabla.Rows(0).Item(4))
-            Dim PrecioUnit2 As Integer = CInt(Tabla.Rows(0).Item(5))
-            Dim PrecioUnit3 As Integer = CInt(Tabla.Rows(0).Item(6))
-            Dim PrecioPack? As Integer = Nothing
-            Dim Stock As Double = CDbl(Tabla.Rows(0).Item(8))
-            Dim UnidXpack? As Integer = Nothing
-            Dim PorPack As String = CStr(Tabla.Rows(0).Item(10))
-            Dim Foto As Byte()
-            Dim Iva As Decimal = CDec(Tabla.Rows(0).Item(12))
-            If PorPack = "Si" Then
-                PrecioPack = CInt(Tabla.Rows(0).Item(7))
-                UnidXpack = CInt(Tabla.Rows(0).Item(9))
-            End If
-            Try
-                Foto = CType(Tabla.Rows(0).Item(11), Byte())
-            Catch
-                Foto = ImageToByteArray(My.Resources.Foto)
-            End Try
-            Dim frm As New FNuevoProducto
-            frm.Text = "Editar Producto"
-            frm.Editar(Cod, idProv, Descrip, Costo, PrecioUnit, PrecioUnit2, PrecioUnit3, PrecioPack, Stock, UnidXpack, PorPack, Foto, Iva)
-            frm.MdiParent = MdiParent
-            frm.Show()
-        Catch ex As Exception
-            MessageBox.Show("Debe Seleccionar un Producto de la Lista")
-        End Try
-
+        Dim frm As New FNuevoProducto
+        frm.Text = "Editar Producto"
+        EditarProducto(frm)
     End Sub
 
     Private Sub LblEliminar_Click(sender As Object, e As EventArgs) Handles LblEliminar.Click, PbxEliminar.Click, PnlEliminar.Click
@@ -331,4 +302,57 @@ Public Class FListaProd
             MessageBox.Show("Debe Seleccionar un Producto de la Lista")
         End Try
     End Sub
+
+    Private Sub EditarProducto(ByVal Frm As FNuevoProducto)
+        Try
+            Dim row As Integer = DataGridView1.CurrentRow.Index
+            Dim Cod As String = CStr(TablaProd.Rows(row).Item(0))
+            Dim idProv As String = CStr(TablaProd.Rows(row).Item(1))
+            Dim Tabla As DataTable = Producto.BuscProdCod(Cod)
+            Dim Descrip As String = CStr(Tabla.Rows(0).Item(2))
+            Dim Costo As Integer = CInt(Tabla.Rows(0).Item(3))
+            Dim PrecioUnit As Integer = CInt(Tabla.Rows(0).Item(4))
+            Dim PrecioUnit2 As Integer = CInt(Tabla.Rows(0).Item(5))
+            Dim PrecioUnit3 As Integer = CInt(Tabla.Rows(0).Item(6))
+            Dim PrecioPack? As Integer = Nothing
+            Dim Stock As Double = CDbl(Tabla.Rows(0).Item(8))
+            Dim UnidXpack?, Lado1?, Lado2?, MxCaja? As Double
+            Dim Present As String = CStr(Tabla.Rows(0).Item(10))
+            Dim Foto As Byte()
+            Dim Iva As Decimal = CDec(Tabla.Rows(0).Item(12))
+
+            Select Case Present
+                Case "Si", "SiCaja", "SiMetro", "Piso"
+                    PrecioPack = CInt(Tabla.Rows(0).Item(7))
+                    UnidXpack = CDbl(Tabla.Rows(0).Item(9))
+                    If Present = "Piso" Then
+                        Lado1 = CDbl(Tabla.Rows(0).Item(13))
+                        Lado2 = CDbl(Tabla.Rows(0).Item(14))
+                        MxCaja = CDbl(Tabla.Rows(0).Item(15))
+                    End If
+            End Select
+
+            Try
+                Foto = CType(Tabla.Rows(0).Item(11), Byte())
+            Catch
+                Foto = ImageToByteArray(My.Resources.Foto)
+            End Try
+
+            Frm.Editar(Cod, idProv, Descrip, Costo, PrecioUnit, PrecioUnit2, PrecioUnit3, PrecioPack, Stock, UnidXpack, Present, Foto, Iva, Lado1, Lado2, MxCaja)
+            Frm.MdiParent = MdiParent
+            Frm.Show()
+        Catch ex As Exception
+            MessageBox.Show("Debe Seleccionar un Producto de la Lista")
+        End Try
+    End Sub
+
+    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+        If e.ColumnIndex = 7 Then
+            Dim frm As New FNuevoProducto
+            frm.Text = "Detalles del Producto"
+            frm.ModoVerDetalle()
+            EditarProducto(frm)
+        End If
+    End Sub
+
 End Class

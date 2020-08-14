@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FNuevoProveed
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class FNuevoProveed
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.btnCancel = New System.Windows.Forms.PictureBox()
@@ -46,7 +46,7 @@ Partial Class FNuevoProveed
         Me.btnCancel.BackColor = System.Drawing.Color.Transparent
         Me.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnCancel.Image = Global.ControlStock.My.Resources.Resources.file_exclude
-        Me.btnCancel.Location = New System.Drawing.Point(388, 226)
+        Me.btnCancel.Location = New System.Drawing.Point(442, 205)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(41, 38)
         Me.btnCancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -67,7 +67,7 @@ Partial Class FNuevoProveed
         Me.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnGuardar.Image = Global.ControlStock.My.Resources.Resources.file_apply
-        Me.btnGuardar.Location = New System.Drawing.Point(348, 226)
+        Me.btnGuardar.Location = New System.Drawing.Point(402, 205)
         Me.btnGuardar.Name = "btnGuardar"
         Me.btnGuardar.Size = New System.Drawing.Size(41, 38)
         Me.btnGuardar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -80,8 +80,9 @@ Partial Class FNuevoProveed
         Me.txtRUC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtRUC.Location = New System.Drawing.Point(114, 42)
         Me.txtRUC.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtRUC.MaxLength = 15
         Me.txtRUC.Name = "txtRUC"
-        Me.txtRUC.Size = New System.Drawing.Size(290, 22)
+        Me.txtRUC.Size = New System.Drawing.Size(352, 22)
         Me.txtRUC.TabIndex = 0
         '
         'txtNombre
@@ -89,8 +90,9 @@ Partial Class FNuevoProveed
         Me.txtNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNombre.Location = New System.Drawing.Point(114, 77)
         Me.txtNombre.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtNombre.MaxLength = 50
         Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(290, 22)
+        Me.txtNombre.Size = New System.Drawing.Size(352, 22)
         Me.txtNombre.TabIndex = 1
         '
         'txtDireccion
@@ -98,8 +100,9 @@ Partial Class FNuevoProveed
         Me.txtDireccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDireccion.Location = New System.Drawing.Point(114, 147)
         Me.txtDireccion.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtDireccion.MaxLength = 100
         Me.txtDireccion.Name = "txtDireccion"
-        Me.txtDireccion.Size = New System.Drawing.Size(290, 22)
+        Me.txtDireccion.Size = New System.Drawing.Size(352, 22)
         Me.txtDireccion.TabIndex = 4
         '
         'Label5
@@ -120,8 +123,9 @@ Partial Class FNuevoProveed
         Me.txtTelefono.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTelefono.Location = New System.Drawing.Point(114, 112)
         Me.txtTelefono.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtTelefono.MaxLength = 15
         Me.txtTelefono.Name = "txtTelefono"
-        Me.txtTelefono.Size = New System.Drawing.Size(290, 22)
+        Me.txtTelefono.Size = New System.Drawing.Size(352, 22)
         Me.txtTelefono.TabIndex = 3
         '
         'GroupBox1
@@ -139,7 +143,7 @@ Partial Class FNuevoProveed
         Me.GroupBox1.ForeColor = System.Drawing.Color.White
         Me.GroupBox1.Location = New System.Drawing.Point(17, 11)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(426, 209)
+        Me.GroupBox1.Size = New System.Drawing.Size(489, 191)
         Me.GroupBox1.TabIndex = 81
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos del Proveedor"
@@ -185,7 +189,7 @@ Partial Class FNuevoProveed
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(125, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(459, 271)
+        Me.ClientSize = New System.Drawing.Size(525, 249)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnGuardar)
         Me.Controls.Add(Me.GroupBox1)

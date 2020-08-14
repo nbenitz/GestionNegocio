@@ -63,7 +63,7 @@ Public Class FBalance
         Dim Filas As Integer = Tabla.Rows.Count
         Dim SumaTotal As Integer = CInt(txtTotalI.Text)
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
+            For i As Integer = 0 To (Filas - 1)
                 Dim Fecha As String = Format(CDate(Tabla.Rows(i).Item(0)), "dd MMM yyyy")
                 Dim Ingreso As Integer = CInt(Tabla.Rows(i).Item(1))
                 If Concepto = "Devoluciones" Then
@@ -80,7 +80,7 @@ Public Class FBalance
         Dim Filas As Integer = Tabla.Rows.Count
         Dim SumaTotal As Integer = CInt(txtTotalE.Text)
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
+            For i As Integer = 0 To (Filas - 1)
                 Dim Fecha As String = Format(CDate(Tabla.Rows(i).Item(0)), "dd MMM yyyy")
                 Dim Egreso As Integer = CInt(Tabla.Rows(i).Item(1))
                 If Concepto = "Devoluciones" Then
@@ -97,7 +97,7 @@ Public Class FBalance
         Dim Filas As Integer = Tabla.Rows.Count
         Dim SumaTotal As Integer = CInt(txtTotalI.Text)
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
+            For i As Integer = 0 To (Filas - 1)
                 Dim Fecha As String = CStr(Tabla.Rows(i).Item(0))
                 Dim Ingreso As Integer = CInt(Tabla.Rows(i).Item(1))
                 If Concepto = "Devoluciones" Then
@@ -114,7 +114,7 @@ Public Class FBalance
         Dim Filas As Integer = Tabla.Rows.Count
         Dim SumaTotal As Integer = CInt(txtTotalE.Text)
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
+            For i As Integer = 0 To (Filas - 1)
                 Dim Fecha As String = CStr(Tabla.Rows(i).Item(0))
                 Dim Egreso As Integer = CInt(Tabla.Rows(i).Item(1))
                 If Concepto = "Devoluciones" Then
@@ -148,7 +148,7 @@ Public Class FBalance
     End Sub
 
     Private Sub FBalance_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        For i = 0 To 9
+        For i As Integer = 0 To 9
             cmbAnho.Items.Add(Now.Year - i)
         Next
         cmbVerPor.SelectedIndex = 0

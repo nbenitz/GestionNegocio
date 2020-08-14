@@ -26,7 +26,7 @@ Public Class FListaVenta
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Panel1.Visible = False
-        For i = 0 To 9
+        For i As Integer = 0 To 9
             cmbAno.Items.Add(Now.Year - i)
         Next
         TablaEmple = Empleado.ListarEmple()
@@ -34,7 +34,7 @@ Public Class FListaVenta
         cmbVendedor.Items.Add("Todos")
         Dim Filas As Integer = TablaEmple.Rows.Count
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
+            For i As Integer = 0 To (Filas - 1)
                 cmbVendedor.Items.Add(CStr(TablaEmple.Rows(i).Item(1)) + " " + CStr(TablaEmple.Rows(i).Item(2)))
             Next
         End If
@@ -153,7 +153,7 @@ Public Class FListaVenta
         Dim SumaTotal As Integer = 0
         DataGridView1.Rows.Clear()
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
+            For i As Integer = 0 To (Filas - 1)
                 Dim idVenta As Integer = CInt(Tabla.Rows(i).Item(0))
                 Dim Fecha As String = CStr(Tabla.Rows(i).Item(1))
                 Dim Vendedor As String = CStr(Tabla.Rows(i).Item(3))
@@ -241,11 +241,11 @@ Public Class FListaVenta
     End Sub
 
     Private Sub CargarDetalle(ByVal TablaVenta As DataTable, ByVal Row As Integer)
-        Dim Id = CStr(TablaVenta.Rows(Row).Item(0))
-        Dim Total = CStr(TablaVenta.Rows(Row).Item(5))
-        Dim fecha = Format(TablaVenta.Rows(Row).Item(1), "dd/MM/yyyy")
-        Dim Vendedor = CStr(TablaVenta.Rows(Row).Item(3))
-        Dim Cliente = CStr(TablaVenta.Rows(Row).Item(4))
+        Dim Id As String = CStr(TablaVenta.Rows(Row).Item(0))
+        Dim Total As String = CStr(TablaVenta.Rows(Row).Item(5))
+        Dim fecha As String = Format(TablaVenta.Rows(Row).Item(1), "dd/MM/yyyy")
+        Dim Vendedor As String = CStr(TablaVenta.Rows(Row).Item(3))
+        Dim Cliente As String = CStr(TablaVenta.Rows(Row).Item(4))
         Reporte1.Encabezado(Id, fecha, Vendedor, Cliente, Total)
         If FormatoValue = Reporte.Tipo.Venta Then
             Reporte1.CargarDetalleOcup(Venta.BuscViewDetOcup(Id))
@@ -270,7 +270,7 @@ Public Class FListaVenta
         Dim IdNota As Integer = Venta.CargarNroNota
         Dim IdVenta As Integer = CInt(Reporte1.txtNro.Text)
         Dim Fecha As String = Format(Now, "yyyy-MM-dd HH:mm:ss")
-        Dim IdProd As UInt64
+        Dim IdProd As String
         Dim Cant As Double
         Dim Unid As Integer
         Try
@@ -279,7 +279,7 @@ Public Class FListaVenta
                 Exit Try
             End If
             For Each row As DataGridViewRow In Reporte1.Detalle.Rows
-                IdProd = Convert.ToUInt64(row.Cells(1).Value)
+                IdProd = Convert.ToString(row.Cells(1).Value)
                 Cant = Convert.ToDouble(row.Cells(3).Value)
                 Unid = Convert.ToInt32(row.Cells(6).Value)
                 If Venta.InserDetalleNota(IdNota, IdVenta, IdProd, Cant, Unid) = False Then
@@ -309,8 +309,8 @@ Public Class FListaVenta
     End Sub
 
     Private Sub cmbMes_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbMes.SelectedIndexChanged
-        Dim Mes = cmbMes.SelectedIndex + 1
-        Dim Anho = CInt(cmbAno.Text)
+        Dim Mes As Integer = cmbMes.SelectedIndex + 1
+        Dim Anho As Integer = CInt(cmbAno.Text)
         ''Dim UltimoDia = New Date(Anho, Mes, 1).AddMonths(1)
         Dim Fecha1 As String = Format(New Date(Anho, Mes, 1), "yyyy-MM-dd")
         Dim Fecha2 As String = Format(New Date(Anho, Mes, 1).AddMonths(1), "yyyy-MM-dd")
@@ -327,7 +327,7 @@ Public Class FListaVenta
 
     Private Sub Imprimir()
         Dim NroFac As String = Reporte1.txtNro.Text
-        Dim Tabla = Venta.BuscViewVenta("WHERE idVenta = " + NroFac)
+        Dim Tabla As DataTable = Venta.BuscViewVenta("WHERE idVenta = " + NroFac)
         Dim Cancelado As String = CStr(Tabla.Rows(0).Item(6))
         Dim Fecha As DateTime = CDate(Tabla.Rows(0).Item(1))
         Dim Condicion As String
@@ -351,7 +351,7 @@ Public Class FListaVenta
         For i = 0 To Me.Reporte1.Detalle.Rows.Count - 1
             row = ds.Tables("GVData").Rows.Add
             For Each column As DataGridViewColumn In Me.Reporte1.Detalle.Columns
-                row.Item(column.Index) = Me.Reporte1.Detalle.Rows.Item(i).Cells(column.Index).Value
+                row.Item(column.Index) = Reporte1.Detalle.Rows.Item(CInt(i)).Cells(column.Index).Value
             Next
         Next
         Dim frm As New FImprimir(NroFac, Fecha, Reporte1.txtCliente.Text, Condicion, Reporte1.txtProvVend.Text, _

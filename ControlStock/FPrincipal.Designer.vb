@@ -133,7 +133,7 @@ Partial Class FPrincipal
         Me.SalirToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
         Me.SalirToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
-        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(96, 22)
         Me.SalirToolStripMenuItem.Text = "Salir"
         '
         'mnuProd
@@ -190,7 +190,7 @@ Partial Class FPrincipal
         Me.AbrirCajaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
         Me.AbrirCajaToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.AbrirCajaToolStripMenuItem.Name = "AbrirCajaToolStripMenuItem"
-        Me.AbrirCajaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.AbrirCajaToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
         Me.AbrirCajaToolStripMenuItem.Text = "Abrir Caja"
         '
         'CerrarCajaToolStripMenuItem
@@ -198,7 +198,7 @@ Partial Class FPrincipal
         Me.CerrarCajaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
         Me.CerrarCajaToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.CerrarCajaToolStripMenuItem.Name = "CerrarCajaToolStripMenuItem"
-        Me.CerrarCajaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.CerrarCajaToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
         Me.CerrarCajaToolStripMenuItem.Text = "Cerrar Caja"
         '
         'HistorialDeCajaToolStripMenuItem
@@ -206,7 +206,7 @@ Partial Class FPrincipal
         Me.HistorialDeCajaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
         Me.HistorialDeCajaToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.HistorialDeCajaToolStripMenuItem.Name = "HistorialDeCajaToolStripMenuItem"
-        Me.HistorialDeCajaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.HistorialDeCajaToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
         Me.HistorialDeCajaToolStripMenuItem.Text = "Historial de Caja"
         '
         'DetalleDeCajaToolStripMenuItem
@@ -214,7 +214,7 @@ Partial Class FPrincipal
         Me.DetalleDeCajaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
         Me.DetalleDeCajaToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.DetalleDeCajaToolStripMenuItem.Name = "DetalleDeCajaToolStripMenuItem"
-        Me.DetalleDeCajaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.DetalleDeCajaToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
         Me.DetalleDeCajaToolStripMenuItem.Text = "Resumen de Caja"
         '
         'mnuVentas
@@ -222,7 +222,7 @@ Partial Class FPrincipal
         Me.mnuVentas.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NuevaVenta, Me.ConsultarVenta, Me.NotaCredito, Me.RecibosDeDinero})
         Me.mnuVentas.ForeColor = System.Drawing.Color.White
         Me.mnuVentas.Name = "mnuVentas"
-        Me.mnuVentas.Size = New System.Drawing.Size(54, 20)
+        Me.mnuVentas.Size = New System.Drawing.Size(53, 20)
         Me.mnuVentas.Text = "Ventas"
         '
         'NuevaVenta
@@ -347,7 +347,7 @@ Partial Class FPrincipal
         Me.ConsultarClentesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
         Me.ConsultarClentesToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.ConsultarClentesToolStripMenuItem.Name = "ConsultarClentesToolStripMenuItem"
-        Me.ConsultarClentesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ConsultarClentesToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
         Me.ConsultarClentesToolStripMenuItem.Text = "Consultar Clentes"
         '
         'NuevoClienteToolStripMenuItem
@@ -355,7 +355,7 @@ Partial Class FPrincipal
         Me.NuevoClienteToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
         Me.NuevoClienteToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.NuevoClienteToolStripMenuItem.Name = "NuevoClienteToolStripMenuItem"
-        Me.NuevoClienteToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.NuevoClienteToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
         Me.NuevoClienteToolStripMenuItem.Text = "Nuevo Cliente"
         '
         'mnuProveed
@@ -395,7 +395,7 @@ Partial Class FPrincipal
         Me.ListaEmple.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
         Me.ListaEmple.ForeColor = System.Drawing.Color.White
         Me.ListaEmple.Name = "ListaEmple"
-        Me.ListaEmple.Size = New System.Drawing.Size(180, 22)
+        Me.ListaEmple.Size = New System.Drawing.Size(175, 22)
         Me.ListaEmple.Text = "Lista de Empleados"
         '
         'NuevoEmple
@@ -403,7 +403,7 @@ Partial Class FPrincipal
         Me.NuevoEmple.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
         Me.NuevoEmple.ForeColor = System.Drawing.Color.White
         Me.NuevoEmple.Name = "NuevoEmple"
-        Me.NuevoEmple.Size = New System.Drawing.Size(180, 22)
+        Me.NuevoEmple.Size = New System.Drawing.Size(175, 22)
         Me.NuevoEmple.Text = "Nuevo Empleado"
         '
         'Comisiones
@@ -411,7 +411,7 @@ Partial Class FPrincipal
         Me.Comisiones.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
         Me.Comisiones.ForeColor = System.Drawing.Color.White
         Me.Comisiones.Name = "Comisiones"
-        Me.Comisiones.Size = New System.Drawing.Size(180, 22)
+        Me.Comisiones.Size = New System.Drawing.Size(175, 22)
         Me.Comisiones.Text = "Comisiones"
         Me.Comisiones.Visible = False
         '
@@ -461,7 +461,7 @@ Partial Class FPrincipal
         Me.GastosGeneralesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
         Me.GastosGeneralesToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.GastosGeneralesToolStripMenuItem.Name = "GastosGeneralesToolStripMenuItem"
-        Me.GastosGeneralesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.GastosGeneralesToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
         Me.GastosGeneralesToolStripMenuItem.Text = "Gastos Generales"
         '
         'ListaDeGastosToolStripMenuItem
@@ -469,7 +469,7 @@ Partial Class FPrincipal
         Me.ListaDeGastosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
         Me.ListaDeGastosToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.ListaDeGastosToolStripMenuItem.Name = "ListaDeGastosToolStripMenuItem"
-        Me.ListaDeGastosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ListaDeGastosToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
         Me.ListaDeGastosToolStripMenuItem.Text = "Consultar Gastos"
         '
         'BalanceToolStripMenuItem
@@ -477,7 +477,7 @@ Partial Class FPrincipal
         Me.BalanceToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
         Me.BalanceToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.BalanceToolStripMenuItem.Name = "BalanceToolStripMenuItem"
-        Me.BalanceToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.BalanceToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
         Me.BalanceToolStripMenuItem.Text = "Balance"
         '
         'mnuUsuarios
@@ -541,7 +541,7 @@ Partial Class FPrincipal
         Me.AcercaDeToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
         Me.AcercaDeToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.AcercaDeToolStripMenuItem.Name = "AcercaDeToolStripMenuItem"
-        Me.AcercaDeToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.AcercaDeToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.AcercaDeToolStripMenuItem.Text = "Acerca de"
         '
         'StatusStrip1

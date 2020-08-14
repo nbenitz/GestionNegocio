@@ -2,7 +2,7 @@
 
 Imports MySql.Data.MySqlClient
 Public Class CHabitacion
-    Private ObjCon As New BaseDato()
+    Private ObjCon As New CBaseDato()
 
     Public Function ViewAll() As DataTable
         ObjCon.Conectar()

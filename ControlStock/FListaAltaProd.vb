@@ -1,4 +1,4 @@
-﻿Option Strict On
+﻿
 Public Class FListaAltaProd
     Dim Producto As New CProducto
     Dim TablaAlta As New DataTable
@@ -114,7 +114,7 @@ Public Class FListaAltaProd
             For i = 0 To (Filas - 1)
                 Dim idAlta As Integer = CInt(Tabla.Rows(i).Item(0))
                 Dim Fecha As String = CStr(Tabla.Rows(i).Item(1))
-                Dim idProd As UInt64 = CULng(Tabla.Rows(i).Item(2))
+                Dim idProd As String = CStr(Tabla.Rows(i).Item(2))
                 Dim Descrip As String = CStr(Tabla.Rows(i).Item(3))
                 Dim Motivo As String = CStr(Tabla.Rows(i).Item(4))
                 Dim Cant As Double = CDbl(Tabla.Rows(i).Item(5))
@@ -129,7 +129,7 @@ Public Class FListaAltaProd
             If txtCod.Text <> "" Then
                 Try
                     idProd = txtCod.Text
-                    TablaAlta = Producto.BuscViewAlta("WHERE idProductoFK = " + idProd)
+                    TablaAlta = Producto.BuscViewAlta("WHERE idProductoFK = '" + idProd + "'")
                     CargarTabla(TablaAlta)
                 Catch ex As Exception
                     MessageBox.Show("Ingrese un Código de producto válido")

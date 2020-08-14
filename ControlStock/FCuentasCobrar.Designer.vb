@@ -195,7 +195,7 @@ Partial Class FCuentasCobrar
         'cmbFiltrarPor
         '
         Me.cmbFiltrarPor.FormattingEnabled = True
-        Me.cmbFiltrarPor.Items.AddRange(New Object() {"Todos", "Nombre de Cliente"})
+        Me.cmbFiltrarPor.Items.AddRange(New Object() {"Todos", "Nombre de Cliente", "CI"})
         Me.cmbFiltrarPor.Location = New System.Drawing.Point(23, 32)
         Me.cmbFiltrarPor.Name = "cmbFiltrarPor"
         Me.cmbFiltrarPor.Size = New System.Drawing.Size(134, 21)

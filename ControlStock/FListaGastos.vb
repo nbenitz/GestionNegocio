@@ -28,7 +28,7 @@ Public Class FListaGastos
         CmbConcepto.Items.Add("Todos")
         Dim Filas As Integer = TablaConcepto.Rows.Count
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
+            For i As Integer = 0 To (Filas - 1)
                 CmbConcepto.Items.Add(TablaConcepto.Rows(i).Item(1))
             Next
         End If
@@ -93,7 +93,7 @@ Public Class FListaGastos
         Dim SumaTotal As Integer = 0
         DataGridView1.Rows.Clear()
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
+            For i As Integer = 0 To (Filas - 1)
                 Dim IdGasto As Integer = CInt(Tabla.Rows(i).Item(0))
                 Dim Fecha As String = CStr(Tabla.Rows(i).Item(2))
                 Dim Concepto As String = CStr(Tabla.Rows(i).Item(1))

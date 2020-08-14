@@ -23,7 +23,7 @@ Public Class FListaHabitacion
         Dim Filas As Integer = Tabla.Rows.Count
         DataGridView1.Rows.Clear()
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
+            For i As Integer = 0 To (Filas - 1)
                 Dim Id As UInt64 = CULng(Tabla.Rows(i).Item(0))
                 Dim Descrip As String = CStr(Tabla.Rows(i).Item(1))
                 Dim Precio As String = CStr(Tabla.Rows(i).Item(2))

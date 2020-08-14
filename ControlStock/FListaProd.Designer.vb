@@ -23,16 +23,17 @@ Partial Class FListaProd
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FListaProd))
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
@@ -73,6 +74,7 @@ Partial Class FListaProd
         Me.PVentaMin = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PVentaMay = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Stock = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Detalles = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -85,32 +87,33 @@ Partial Class FListaProd
         'DataGridView1
         '
         Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.DataGridView1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
         Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.ButtonShadow
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ButtonShadow
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Cod, Me.Proveedor, Me.Descripcion, Me.Costo, Me.PVentaMin, Me.PVentaMay, Me.Stock})
-        Me.DataGridView1.Location = New System.Drawing.Point(7, 50)
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Cod, Me.Proveedor, Me.Descripcion, Me.Costo, Me.PVentaMin, Me.PVentaMay, Me.Stock, Me.Detalles})
+        Me.DataGridView1.Location = New System.Drawing.Point(4, 47)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle17.Font = New System.Drawing.Font("Arial Narrow", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.ButtonShadow
-        DataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle17
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Arial Narrow", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.ButtonShadow
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
         Me.DataGridView1.RowHeadersVisible = False
-        Me.DataGridView1.Size = New System.Drawing.Size(743, 415)
+        Me.DataGridView1.Size = New System.Drawing.Size(862, 415)
         Me.DataGridView1.TabIndex = 0
         '
         'Timer1
@@ -124,7 +127,7 @@ Partial Class FListaProd
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.ToolStrip1.Size = New System.Drawing.Size(756, 27)
+        Me.ToolStrip1.Size = New System.Drawing.Size(873, 27)
         Me.ToolStrip1.TabIndex = 2
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -210,7 +213,7 @@ Partial Class FListaProd
         '
         Me.lblOrden.ForeColor = System.Drawing.Color.White
         Me.lblOrden.Name = "lblOrden"
-        Me.lblOrden.Size = New System.Drawing.Size(74, 15)
+        Me.lblOrden.Size = New System.Drawing.Size(74, 24)
         Me.lblOrden.Text = "Ordenar Por:"
         '
         'cmbOrden
@@ -258,10 +261,10 @@ Partial Class FListaProd
         '
         'DataGridViewImageColumn1
         '
-        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle18.NullValue = CType(resources.GetObject("DataGridViewCellStyle18.NullValue"), Object)
-        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.White
-        Me.DataGridViewImageColumn1.DefaultCellStyle = DataGridViewCellStyle18
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle10.NullValue = CType(resources.GetObject("DataGridViewCellStyle10.NullValue"), Object)
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.White
+        Me.DataGridViewImageColumn1.DefaultCellStyle = DataGridViewCellStyle10
         Me.DataGridViewImageColumn1.HeaderText = ""
         Me.DataGridViewImageColumn1.Image = Global.ControlStock.My.Resources.Resources.file_edit
         Me.DataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch
@@ -276,7 +279,7 @@ Partial Class FListaProd
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lblResultados, Me.LblCosto, Me.lblSinCosto})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 508)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(756, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(873, 22)
         Me.StatusStrip1.TabIndex = 6
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -307,7 +310,7 @@ Partial Class FListaProd
         Me.pnlEditar.Controls.Add(Me.lblEditar)
         Me.pnlEditar.Controls.Add(Me.pbxEditar)
         Me.pnlEditar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.pnlEditar.Location = New System.Drawing.Point(549, 468)
+        Me.pnlEditar.Location = New System.Drawing.Point(665, 468)
         Me.pnlEditar.Name = "pnlEditar"
         Me.pnlEditar.Size = New System.Drawing.Size(93, 37)
         Me.pnlEditar.TabIndex = 86
@@ -343,7 +346,7 @@ Partial Class FListaProd
         Me.PnlEliminar.Controls.Add(Me.LblEliminar)
         Me.PnlEliminar.Controls.Add(Me.PbxEliminar)
         Me.PnlEliminar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PnlEliminar.Location = New System.Drawing.Point(645, 468)
+        Me.PnlEliminar.Location = New System.Drawing.Point(761, 468)
         Me.PnlEliminar.Name = "PnlEliminar"
         Me.PnlEliminar.Size = New System.Drawing.Size(105, 37)
         Me.PnlEliminar.TabIndex = 87
@@ -375,6 +378,7 @@ Partial Class FListaProd
         '
         'Cod
         '
+        Me.Cod.Frozen = True
         Me.Cod.HeaderText = "Código"
         Me.Cod.Name = "Cod"
         Me.Cod.ReadOnly = True
@@ -383,30 +387,33 @@ Partial Class FListaProd
         '
         'Proveedor
         '
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.Proveedor.DefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.Proveedor.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Proveedor.Frozen = True
         Me.Proveedor.HeaderText = "Proveedor"
         Me.Proveedor.Name = "Proveedor"
         Me.Proveedor.ReadOnly = True
         Me.Proveedor.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.Proveedor.Width = 120
+        Me.Proveedor.Width = 220
         '
         'Descripcion
         '
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.Descripcion.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.Descripcion.DefaultCellStyle = DataGridViewCellStyle3
+        Me.Descripcion.Frozen = True
         Me.Descripcion.HeaderText = "Descripción"
         Me.Descripcion.Name = "Descripcion"
         Me.Descripcion.ReadOnly = True
         Me.Descripcion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.Descripcion.Width = 180
+        Me.Descripcion.Width = 220
         '
         'Costo
         '
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle13.Format = "N0"
-        DataGridViewCellStyle13.NullValue = Nothing
-        Me.Costo.DefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle4.Format = "N0"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.Costo.DefaultCellStyle = DataGridViewCellStyle4
+        Me.Costo.Frozen = True
         Me.Costo.HeaderText = "Costo"
         Me.Costo.Name = "Costo"
         Me.Costo.ReadOnly = True
@@ -415,11 +422,12 @@ Partial Class FListaProd
         '
         'PVentaMin
         '
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle14.Format = "N0"
-        DataGridViewCellStyle14.NullValue = Nothing
-        Me.PVentaMin.DefaultCellStyle = DataGridViewCellStyle14
-        Me.PVentaMin.HeaderText = "P. Minorista"
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle5.Format = "N0"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.PVentaMin.DefaultCellStyle = DataGridViewCellStyle5
+        Me.PVentaMin.Frozen = True
+        Me.PVentaMin.HeaderText = "Precio"
         Me.PVentaMin.Name = "PVentaMin"
         Me.PVentaMin.ReadOnly = True
         Me.PVentaMin.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
@@ -427,33 +435,49 @@ Partial Class FListaProd
         '
         'PVentaMay
         '
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle15.Format = "N0"
-        DataGridViewCellStyle15.NullValue = Nothing
-        Me.PVentaMay.DefaultCellStyle = DataGridViewCellStyle15
-        Me.PVentaMay.HeaderText = "P. Mayorista"
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle6.Format = "N0"
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.PVentaMay.DefaultCellStyle = DataGridViewCellStyle6
+        Me.PVentaMay.HeaderText = "Precio 2"
         Me.PVentaMay.Name = "PVentaMay"
         Me.PVentaMay.ReadOnly = True
         Me.PVentaMay.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.PVentaMay.Visible = False
         Me.PVentaMay.Width = 95
         '
         'Stock
         '
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle16.NullValue = Nothing
-        Me.Stock.DefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle7.NullValue = Nothing
+        Me.Stock.DefaultCellStyle = DataGridViewCellStyle7
+        Me.Stock.Frozen = True
         Me.Stock.HeaderText = "Stock"
         Me.Stock.Name = "Stock"
         Me.Stock.ReadOnly = True
         Me.Stock.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         Me.Stock.Width = 70
         '
+        'Detalles
+        '
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.Blue
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Blue
+        Me.Detalles.DefaultCellStyle = DataGridViewCellStyle8
+        Me.Detalles.Frozen = True
+        Me.Detalles.HeaderText = ""
+        Me.Detalles.Name = "Detalles"
+        Me.Detalles.ReadOnly = True
+        Me.Detalles.Width = 75
+        '
         'FListaProd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(125, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(756, 530)
+        Me.ClientSize = New System.Drawing.Size(873, 530)
         Me.Controls.Add(Me.PnlEliminar)
         Me.Controls.Add(Me.pnlEditar)
         Me.Controls.Add(Me.StatusStrip1)
@@ -463,8 +487,7 @@ Partial Class FListaProd
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.DataGridView1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.MaximumSize = New System.Drawing.Size(772, 569)
-        Me.MinimumSize = New System.Drawing.Size(772, 569)
+        Me.MaximumSize = New System.Drawing.Size(1000, 569)
         Me.Name = "FListaProd"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Productos"
@@ -523,4 +546,5 @@ Partial Class FListaProd
     Friend WithEvents PVentaMin As DataGridViewTextBoxColumn
     Friend WithEvents PVentaMay As DataGridViewTextBoxColumn
     Friend WithEvents Stock As DataGridViewTextBoxColumn
+    Friend WithEvents Detalles As DataGridViewTextBoxColumn
 End Class

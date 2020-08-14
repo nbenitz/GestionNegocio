@@ -33,13 +33,21 @@ Partial Class FCompra
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Del = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.Cod = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cant = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Precio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Importe = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Unidades = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Obs = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.lblInfoDesc = New System.Windows.Forms.Label()
         Me.lblInfoCod = New System.Windows.Forms.Label()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.Label26 = New System.Windows.Forms.Label()
         Me.lblInfoStock = New System.Windows.Forms.Label()
-        Me.lblInfoPrec = New System.Windows.Forms.Label()
+        Me.lblInfoCosto = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.optCredito = New System.Windows.Forms.RadioButton()
@@ -79,7 +87,7 @@ Partial Class FCompra
         Me.txtTotal = New System.Windows.Forms.TextBox()
         Me.pnlProdInfo = New System.Windows.Forms.Panel()
         Me.lblUnidXPackInfo = New System.Windows.Forms.Label()
-        Me.Label19 = New System.Windows.Forms.Label()
+        Me.lblUnidXPackTit = New System.Windows.Forms.Label()
         Me.lblPresent = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
@@ -102,14 +110,11 @@ Partial Class FCompra
         Me.btnAgregar = New System.Windows.Forms.Button()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.ToolTip2 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.Del = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.Cod = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Cant = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Precio = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Importe = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Unidades = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Obs = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.pnlInfoPiso = New System.Windows.Forms.Panel()
+        Me.lblUnidxCaja = New System.Windows.Forms.Label()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.lblMxCaja = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -125,6 +130,7 @@ Partial Class FCompra
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlBuscProd.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlInfoPiso.SuspendLayout()
         Me.SuspendLayout()
         '
         'DataGridView1
@@ -139,6 +145,91 @@ Partial Class FCompra
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.Size = New System.Drawing.Size(548, 329)
         Me.DataGridView1.TabIndex = 0
+        '
+        'Del
+        '
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.NullValue = CType(resources.GetObject("DataGridViewCellStyle1.NullValue"), Object)
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White
+        Me.Del.DefaultCellStyle = DataGridViewCellStyle1
+        Me.Del.Frozen = True
+        Me.Del.HeaderText = ""
+        Me.Del.Name = "Del"
+        Me.Del.ReadOnly = True
+        Me.Del.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Del.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.Del.Width = 22
+        '
+        'Cod
+        '
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        Me.Cod.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Cod.FillWeight = 40.0!
+        Me.Cod.Frozen = True
+        Me.Cod.HeaderText = "Código"
+        Me.Cod.Name = "Cod"
+        Me.Cod.ReadOnly = True
+        Me.Cod.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Cod.Width = 74
+        '
+        'Cant
+        '
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        Me.Cant.DefaultCellStyle = DataGridViewCellStyle3
+        Me.Cant.HeaderText = "Cant"
+        Me.Cant.Name = "Cant"
+        Me.Cant.ReadOnly = True
+        Me.Cant.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Cant.Width = 65
+        '
+        'Descripcion
+        '
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        Me.Descripcion.DefaultCellStyle = DataGridViewCellStyle4
+        Me.Descripcion.HeaderText = "Descripción"
+        Me.Descripcion.Name = "Descripcion"
+        Me.Descripcion.ReadOnly = True
+        Me.Descripcion.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Descripcion.Width = 235
+        '
+        'Precio
+        '
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
+        Me.Precio.DefaultCellStyle = DataGridViewCellStyle5
+        Me.Precio.HeaderText = "Precio"
+        Me.Precio.Name = "Precio"
+        Me.Precio.ReadOnly = True
+        Me.Precio.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Precio.Width = 75
+        '
+        'Importe
+        '
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
+        Me.Importe.DefaultCellStyle = DataGridViewCellStyle6
+        Me.Importe.HeaderText = "Importe"
+        Me.Importe.Name = "Importe"
+        Me.Importe.ReadOnly = True
+        Me.Importe.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Importe.Width = 75
+        '
+        'Unidades
+        '
+        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black
+        Me.Unidades.DefaultCellStyle = DataGridViewCellStyle7
+        Me.Unidades.HeaderText = "Unidades"
+        Me.Unidades.Name = "Unidades"
+        Me.Unidades.ReadOnly = True
+        Me.Unidades.Visible = False
+        Me.Unidades.Width = 50
+        '
+        'Obs
+        '
+        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black
+        Me.Obs.DefaultCellStyle = DataGridViewCellStyle8
+        Me.Obs.HeaderText = "Obs"
+        Me.Obs.Name = "Obs"
+        Me.Obs.ReadOnly = True
+        Me.Obs.Visible = False
         '
         'lblInfoDesc
         '
@@ -189,9 +280,9 @@ Partial Class FCompra
         Me.Label26.ForeColor = System.Drawing.Color.LightSteelBlue
         Me.Label26.Location = New System.Drawing.Point(14, 290)
         Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(43, 13)
+        Me.Label26.Size = New System.Drawing.Size(39, 13)
         Me.Label26.TabIndex = 65
-        Me.Label26.Text = "Precio"
+        Me.Label26.Text = "Costo"
         '
         'lblInfoStock
         '
@@ -203,15 +294,15 @@ Partial Class FCompra
         Me.lblInfoStock.TabIndex = 60
         Me.lblInfoStock.Text = "xxx"
         '
-        'lblInfoPrec
+        'lblInfoCosto
         '
-        Me.lblInfoPrec.AutoSize = True
-        Me.lblInfoPrec.ForeColor = System.Drawing.Color.White
-        Me.lblInfoPrec.Location = New System.Drawing.Point(60, 290)
-        Me.lblInfoPrec.Name = "lblInfoPrec"
-        Me.lblInfoPrec.Size = New System.Drawing.Size(22, 13)
-        Me.lblInfoPrec.TabIndex = 66
-        Me.lblInfoPrec.Text = "xxx"
+        Me.lblInfoCosto.AutoSize = True
+        Me.lblInfoCosto.ForeColor = System.Drawing.Color.White
+        Me.lblInfoCosto.Location = New System.Drawing.Point(60, 290)
+        Me.lblInfoCosto.Name = "lblInfoCosto"
+        Me.lblInfoCosto.Size = New System.Drawing.Size(22, 13)
+        Me.lblInfoCosto.TabIndex = 66
+        Me.lblInfoCosto.Text = "xxx"
         '
         'Label6
         '
@@ -647,8 +738,9 @@ Partial Class FCompra
         '
         'pnlProdInfo
         '
+        Me.pnlProdInfo.Controls.Add(Me.pnlInfoPiso)
         Me.pnlProdInfo.Controls.Add(Me.lblUnidXPackInfo)
-        Me.pnlProdInfo.Controls.Add(Me.Label19)
+        Me.pnlProdInfo.Controls.Add(Me.lblUnidXPackTit)
         Me.pnlProdInfo.Controls.Add(Me.lblPresent)
         Me.pnlProdInfo.Controls.Add(Me.Label11)
         Me.pnlProdInfo.Controls.Add(Me.Label24)
@@ -661,7 +753,7 @@ Partial Class FCompra
         Me.pnlProdInfo.Controls.Add(Me.Label26)
         Me.pnlProdInfo.Controls.Add(Me.Label8)
         Me.pnlProdInfo.Controls.Add(Me.Label10)
-        Me.pnlProdInfo.Controls.Add(Me.lblInfoPrec)
+        Me.pnlProdInfo.Controls.Add(Me.lblInfoCosto)
         Me.pnlProdInfo.Location = New System.Drawing.Point(3, 157)
         Me.pnlProdInfo.Name = "pnlProdInfo"
         Me.pnlProdInfo.Size = New System.Drawing.Size(248, 343)
@@ -677,22 +769,22 @@ Partial Class FCompra
         Me.lblUnidXPackInfo.TabIndex = 72
         Me.lblUnidXPackInfo.Text = "xxx"
         '
-        'Label19
+        'lblUnidXPackTit
         '
-        Me.Label19.AutoSize = True
-        Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label19.ForeColor = System.Drawing.Color.LightSteelBlue
-        Me.Label19.Location = New System.Drawing.Point(14, 313)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(106, 13)
-        Me.Label19.TabIndex = 71
-        Me.Label19.Text = "Unid por Paquete"
+        Me.lblUnidXPackTit.AutoSize = True
+        Me.lblUnidXPackTit.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblUnidXPackTit.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.lblUnidXPackTit.Location = New System.Drawing.Point(14, 313)
+        Me.lblUnidXPackTit.Name = "lblUnidXPackTit"
+        Me.lblUnidXPackTit.Size = New System.Drawing.Size(106, 13)
+        Me.lblUnidXPackTit.TabIndex = 71
+        Me.lblUnidXPackTit.Text = "Unid por Paquete"
         '
         'lblPresent
         '
         Me.lblPresent.AutoSize = True
         Me.lblPresent.ForeColor = System.Drawing.Color.White
-        Me.lblPresent.Location = New System.Drawing.Point(102, 201)
+        Me.lblPresent.Location = New System.Drawing.Point(101, 201)
         Me.lblPresent.Name = "lblPresent"
         Me.lblPresent.Size = New System.Drawing.Size(22, 13)
         Me.lblPresent.TabIndex = 70
@@ -703,7 +795,7 @@ Partial Class FCompra
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.ForeColor = System.Drawing.Color.LightSteelBlue
-        Me.Label11.Location = New System.Drawing.Point(15, 201)
+        Me.Label11.Location = New System.Drawing.Point(14, 201)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(81, 13)
         Me.Label11.TabIndex = 69
@@ -924,90 +1016,59 @@ Partial Class FCompra
         Me.ToolTip1.InitialDelay = 10
         Me.ToolTip1.ReshowDelay = 2
         '
-        'Del
+        'pnlInfoPiso
         '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.NullValue = CType(resources.GetObject("DataGridViewCellStyle1.NullValue"), Object)
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White
-        Me.Del.DefaultCellStyle = DataGridViewCellStyle1
-        Me.Del.Frozen = True
-        Me.Del.HeaderText = ""
-        Me.Del.Name = "Del"
-        Me.Del.ReadOnly = True
-        Me.Del.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Del.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.Del.Width = 22
+        Me.pnlInfoPiso.Controls.Add(Me.lblUnidxCaja)
+        Me.pnlInfoPiso.Controls.Add(Me.Label19)
+        Me.pnlInfoPiso.Controls.Add(Me.lblMxCaja)
+        Me.pnlInfoPiso.Controls.Add(Me.Label14)
+        Me.pnlInfoPiso.Location = New System.Drawing.Point(0, 306)
+        Me.pnlInfoPiso.Name = "pnlInfoPiso"
+        Me.pnlInfoPiso.Size = New System.Drawing.Size(248, 42)
+        Me.pnlInfoPiso.TabIndex = 73
+        Me.pnlInfoPiso.Visible = False
         '
-        'Cod
+        'lblUnidxCaja
         '
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        Me.Cod.DefaultCellStyle = DataGridViewCellStyle2
-        Me.Cod.FillWeight = 40.0!
-        Me.Cod.Frozen = True
-        Me.Cod.HeaderText = "Código"
-        Me.Cod.Name = "Cod"
-        Me.Cod.ReadOnly = True
-        Me.Cod.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Cod.Width = 74
+        Me.lblUnidxCaja.AutoSize = True
+        Me.lblUnidxCaja.ForeColor = System.Drawing.Color.White
+        Me.lblUnidxCaja.Location = New System.Drawing.Point(129, 23)
+        Me.lblUnidxCaja.Name = "lblUnidxCaja"
+        Me.lblUnidxCaja.Size = New System.Drawing.Size(22, 13)
+        Me.lblUnidxCaja.TabIndex = 65
+        Me.lblUnidxCaja.Text = "xxx"
         '
-        'Cant
+        'Label19
         '
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        Me.Cant.DefaultCellStyle = DataGridViewCellStyle3
-        Me.Cant.HeaderText = "Cant"
-        Me.Cant.Name = "Cant"
-        Me.Cant.ReadOnly = True
-        Me.Cant.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Cant.Width = 65
+        Me.Label19.AutoSize = True
+        Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label19.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label19.Location = New System.Drawing.Point(14, 23)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(103, 13)
+        Me.Label19.TabIndex = 64
+        Me.Label19.Text = "Unidades x Caja:"
         '
-        'Descripcion
+        'lblMxCaja
         '
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
-        Me.Descripcion.DefaultCellStyle = DataGridViewCellStyle4
-        Me.Descripcion.HeaderText = "Descripción"
-        Me.Descripcion.Name = "Descripcion"
-        Me.Descripcion.ReadOnly = True
-        Me.Descripcion.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Descripcion.Width = 235
+        Me.lblMxCaja.AutoSize = True
+        Me.lblMxCaja.ForeColor = System.Drawing.Color.White
+        Me.lblMxCaja.Location = New System.Drawing.Point(113, 4)
+        Me.lblMxCaja.Name = "lblMxCaja"
+        Me.lblMxCaja.Size = New System.Drawing.Size(22, 13)
+        Me.lblMxCaja.TabIndex = 63
+        Me.lblMxCaja.Text = "xxx"
         '
-        'Precio
+        'Label14
         '
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
-        Me.Precio.DefaultCellStyle = DataGridViewCellStyle5
-        Me.Precio.HeaderText = "Precio"
-        Me.Precio.Name = "Precio"
-        Me.Precio.ReadOnly = True
-        Me.Precio.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Precio.Width = 75
-        '
-        'Importe
-        '
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
-        Me.Importe.DefaultCellStyle = DataGridViewCellStyle6
-        Me.Importe.HeaderText = "Importe"
-        Me.Importe.Name = "Importe"
-        Me.Importe.ReadOnly = True
-        Me.Importe.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Importe.Width = 75
-        '
-        'Unidades
-        '
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black
-        Me.Unidades.DefaultCellStyle = DataGridViewCellStyle7
-        Me.Unidades.HeaderText = "Unidades"
-        Me.Unidades.Name = "Unidades"
-        Me.Unidades.ReadOnly = True
-        Me.Unidades.Visible = False
-        Me.Unidades.Width = 50
-        '
-        'Obs
-        '
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black
-        Me.Obs.DefaultCellStyle = DataGridViewCellStyle8
-        Me.Obs.HeaderText = "Obs"
-        Me.Obs.Name = "Obs"
-        Me.Obs.ReadOnly = True
-        Me.Obs.Visible = False
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label14.Location = New System.Drawing.Point(14, 4)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(88, 13)
+        Me.Label14.TabIndex = 62
+        Me.Label14.Text = "Metros x Caja:"
         '
         'FCompra
         '
@@ -1042,6 +1103,8 @@ Partial Class FCompra
         Me.pnlBuscProd.ResumeLayout(False)
         Me.pnlBuscProd.PerformLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlInfoPiso.ResumeLayout(False)
+        Me.pnlInfoPiso.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1053,7 +1116,7 @@ Partial Class FCompra
     Friend WithEvents Label26 As System.Windows.Forms.Label
     Friend WithEvents lblInfoStock As System.Windows.Forms.Label
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
-    Friend WithEvents lblInfoPrec As System.Windows.Forms.Label
+    Friend WithEvents lblInfoCosto As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents optCredito As System.Windows.Forms.RadioButton
@@ -1085,7 +1148,7 @@ Partial Class FCompra
     Friend WithEvents lblUnidXpack As System.Windows.Forms.Label
     Friend WithEvents lblX As System.Windows.Forms.Label
     Friend WithEvents lblUnidXPackInfo As System.Windows.Forms.Label
-    Friend WithEvents Label19 As System.Windows.Forms.Label
+    Friend WithEvents lblUnidXPackTit As System.Windows.Forms.Label
     Friend WithEvents lblPresent As System.Windows.Forms.Label
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents pnlCredito As System.Windows.Forms.Panel
@@ -1123,4 +1186,9 @@ Partial Class FCompra
     Friend WithEvents Importe As DataGridViewTextBoxColumn
     Friend WithEvents Unidades As DataGridViewTextBoxColumn
     Friend WithEvents Obs As DataGridViewTextBoxColumn
+    Friend WithEvents pnlInfoPiso As Panel
+    Friend WithEvents lblUnidxCaja As Label
+    Friend WithEvents Label19 As Label
+    Friend WithEvents lblMxCaja As Label
+    Friend WithEvents Label14 As Label
 End Class

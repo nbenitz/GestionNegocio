@@ -1,11 +1,14 @@
-﻿Imports MySql.Data.MySqlClient
-Public Class CProducto
-    Private ObjCon As New BaseDato()
+﻿Option Strict On
 
-    Public Function InserProducto(ByVal idProd As UInt64, ByVal idProv As String, ByVal Descrip As String, ByVal Costo As Integer,
+Imports MySql.Data.MySqlClient
+Public Class CProducto
+    Private ObjCon As New CBaseDato()
+
+    Public Function InserProducto(ByVal idProd As String, ByVal idProv As String, ByVal Descrip As String, ByVal Costo As Integer,
                                   ByVal Precio1 As Integer, ByVal Precio2 As Integer, ByVal Precio3 As Integer, ByVal PrecioPack? As Integer,
-                                  ByVal CantUnit As Double, ByVal UnidXpack? As Integer,
-                                  ByVal PorPack As String, ByVal Foto As Byte(), ByVal Iva As Int16) As Boolean
+                                  ByVal CantUnit As Double, ByVal UnidXpack? As Double, ByVal PorPack As String,
+                                  ByVal Foto As Byte(), ByVal Iva As Int16,
+                                  ByVal Lado1? As Double, ByVal Lado2? As Double, ByVal MxCaja? As Double) As Boolean
         Dim inserto As Boolean = False
         Try
             ObjCon.Conectar()
@@ -24,6 +27,9 @@ Public Class CProducto
             ObjCon.AsignarParametro("@porpack", PorPack)
             ObjCon.AsignarParametro("@foto", Foto)
             ObjCon.AsignarParametro("@iva", Iva)
+            ObjCon.AsignarParametro("@lado1", Lado1)
+            ObjCon.AsignarParametro("@lado2", Lado2)
+            ObjCon.AsignarParametro("@mxcaja", MxCaja)
             If ObjCon.EjecutarConsulta() > 0 Then
                 inserto = True
             Else
@@ -36,13 +42,13 @@ Public Class CProducto
         Return inserto
     End Function
 
-    Public Function InsertBaja(ByVal idBaja As UInt32, ByVal idProd As UInt64, ByVal Fecha As String, ByVal Cant As Double, ByVal idMotivo As UInt16) As Boolean
+    Public Function InsertBaja(ByVal idBaja As UInt32, ByVal idProd As String, ByVal Fecha As String, ByVal Cant As Double, ByVal idMotivo As UInt16) As Boolean
         Dim inserto As Boolean = False
         Try
             ObjCon.Conectar()
             ObjCon.CrearComando("INSERT INTO bajaprod VALUES(?idBaja, ?idProd, ?Fecha, ?Cant, ?idMotivo)")
             ObjCon.AsignarParametro("?idBaja", MySqlDbType.UInt32, idBaja)
-            ObjCon.AsignarParametro("?idProd", MySqlDbType.UInt64, idProd)
+            ObjCon.AsignarParametro("?idProd", MySqlDbType.String, idProd)
             ObjCon.AsignarParametro("?Fecha", MySqlDbType.DateTime, Fecha)
             ObjCon.AsignarParametro("?Cant", MySqlDbType.Double, Cant)
             ObjCon.AsignarParametro("?idMotivo", MySqlDbType.UInt16, idMotivo)
@@ -52,7 +58,7 @@ Public Class CProducto
             End If
             ObjCon.CrearComando("UPDATE producto SET Stock = Stock - ?cant where idproducto = ?idprodfk")
             ObjCon.AsignarParametro("?cant", MySqlDbType.Double, Cant)
-            ObjCon.AsignarParametro("?idprodfk", MySqlDbType.UInt64, idProd)
+            ObjCon.AsignarParametro("?idprodfk", MySqlDbType.String, idProd)
             If ObjCon.EjecutarConsulta() > 0 Then
                 inserto = True
             Else
@@ -65,13 +71,13 @@ Public Class CProducto
         Return inserto
     End Function
 
-    Public Function InsertAlta(ByVal idAlta As UInt32, ByVal idProd As UInt64, ByVal Fecha As String, ByVal Cant As Double, ByVal idMotivo As UInt16) As Boolean
+    Public Function InsertAlta(ByVal idAlta As UInt32, ByVal idProd As String, ByVal Fecha As String, ByVal Cant As Double, ByVal idMotivo As UInt16) As Boolean
         Dim inserto As Boolean = False
         Try
             ObjCon.Conectar()
             ObjCon.CrearComando("INSERT INTO altaprod VALUES(?idAlta, ?idProd, ?Fecha, ?Cant, ?idMotivo)")
             ObjCon.AsignarParametro("?idAlta", MySqlDbType.UInt32, idAlta)
-            ObjCon.AsignarParametro("?idProd", MySqlDbType.UInt64, idProd)
+            ObjCon.AsignarParametro("?idProd", MySqlDbType.String, idProd)
             ObjCon.AsignarParametro("?Fecha", MySqlDbType.DateTime, Fecha)
             ObjCon.AsignarParametro("?cant", MySqlDbType.Double, Cant)
             ObjCon.AsignarParametro("?idMotivo", MySqlDbType.UInt16, idMotivo)
@@ -81,7 +87,7 @@ Public Class CProducto
             End If
             ObjCon.CrearComando("UPDATE producto SET Stock = Stock + ?cant where idproducto = ?idprodfk")
             ObjCon.AsignarParametro("?cant", MySqlDbType.Double, Cant)
-            ObjCon.AsignarParametro("?idprodfk", MySqlDbType.UInt64, idProd)
+            ObjCon.AsignarParametro("?idprodfk", MySqlDbType.String, idProd)
             If ObjCon.EjecutarConsulta() > 0 Then
                 inserto = True
             Else
@@ -206,10 +212,11 @@ Public Class CProducto
         Return inserto
     End Function
 
-    Public Function Update(ByVal idProd As UInt64, ByVal idProv As String, ByVal Descrip As String, ByVal Costo As Integer,
+    Public Function Update(ByVal idProd As String, ByVal idProv As String, ByVal Descrip As String, ByVal Costo As Integer,
                               ByVal Precio1 As Integer, ByVal Precio2 As Integer, ByVal Precio3 As Integer, ByVal PrecioPack? As Integer,
-                              ByVal CantUnit As Double, ByVal UnidXpack? As Integer,
-                              ByVal PorPack As String, ByVal Foto As Byte(), ByVal Iva_ As Int16, ByVal OldidProd As UInt64) As Boolean
+                              ByVal CantUnit As Double, ByVal UnidXpack? As Double, ByVal PorPack As String,
+                           ByVal Foto As Byte(), ByVal Iva_ As Int16, ByVal OldidProd As String,
+                           ByVal Lado1? As Double, ByVal Lado2? As Double, ByVal MxCaja? As Double) As Boolean
         Dim inserto As Boolean = False
         Try
             ObjCon.Conectar()
@@ -229,6 +236,9 @@ Public Class CProducto
             ObjCon.AsignarParametro("@foti", Foto)
             ObjCon.AsignarParametro("@Iva_", Iva_)
             ObjCon.AsignarParametro("@oldidProd", OldidProd)
+            ObjCon.AsignarParametro("@lado1_", Lado1)
+            ObjCon.AsignarParametro("@lado2_", Lado2)
+            ObjCon.AsignarParametro("@mxcaja_", MxCaja)
             If ObjCon.EjecutarConsulta() > 0 Then
                 inserto = True
             Else
@@ -243,7 +253,7 @@ Public Class CProducto
 
     Public Function Eliminar(ByVal idProd As String) As Boolean
         Dim elimino As Boolean = False
-        Dim NewIdProd = 1111111
+        Dim NewIdProd As String = "0"
         Try
             ObjCon.Conectar()
             ActualizarTabla("detalleventa", idProd, NewIdProd)
@@ -254,7 +264,7 @@ Public Class CProducto
             ActualizarTabla("bajaprod", idProd, NewIdProd)
 
             ObjCon.CrearComando("DELETE FROM Producto WHERE idProducto = ?idProd")
-            ObjCon.AsignarParametro("?idProd", MySqlDbType.UInt64, idProd)
+            ObjCon.AsignarParametro("?idProd", MySqlDbType.String, idProd)
             If ObjCon.EjecutarConsulta() > 0 Then
                 elimino = True
             Else
@@ -267,23 +277,23 @@ Public Class CProducto
         Return elimino
     End Function
 
-    Private Sub ActualizarTabla(ByVal Tabla As String, ByVal idProd As String, ByVal NewIdProd As UInt64)
+    Private Sub ActualizarTabla(ByVal Tabla As String, ByVal idProd As String, ByVal NewIdProd As String)
         Try
-            ObjCon.CrearComando("UPDATE " + Tabla + " SET idproductofk = " + NewIdProd.ToString + " WHERE idproductofk = " + idProd)
+            ObjCon.CrearComando("UPDATE " + Tabla + " SET idproductofk = '" + NewIdProd + "' WHERE idproductofk = '" + idProd + "'")
             ObjCon.EjecutarConsulta()
         Catch
-            If NewIdProd < 111130 Then
-                ActualizarTabla(Tabla, idProd, NewIdProd + 1)
+            If CInt(NewIdProd) < 111130 Then
+                ActualizarTabla(Tabla, idProd, CStr(CInt(NewIdProd) + 1))
             End If
         End Try
     End Sub
 
-    Public Function UpdatePrecio(ByVal idProd As UInt64, ByVal Costo As Integer, ByVal idProv As String) As Boolean
+    Public Function UpdatePrecio(ByVal idProd As String, ByVal Costo As Integer, ByVal idProv As String) As Boolean
         Dim inserto As Boolean = False
         Try
             ObjCon.Conectar()
             ObjCon.CrearComando("UPDATE Producto SET Costo = ?Costo, idProveedorFK = ?idprov WHERE idProducto = ?idProd")
-            ObjCon.AsignarParametro("?idprod", MySqlDbType.UInt64, idProd)
+            ObjCon.AsignarParametro("?idprod", MySqlDbType.String, idProd)
             ObjCon.AsignarParametro("?Costo", MySqlDbType.Int32, Costo)
             ObjCon.AsignarParametro("?idprov", MySqlDbType.String, idProv)
             If ObjCon.EjecutarConsulta() > 0 Then
@@ -307,7 +317,7 @@ Public Class CProducto
 
     Public Function BuscProdCod(ByVal Cod As String) As DataTable
         ObjCon.Conectar()
-        ObjCon.CrearComando("SELECT * FROM Producto WHERE idProducto =" + Cod)
+        ObjCon.CrearComando("SELECT * FROM Producto WHERE idProducto = '" + Cod + "'")
         BuscProdCod = ObjCon.EjecutarDataTable()
         ObjCon.Desconectar()
     End Function
@@ -347,17 +357,22 @@ Public Class CProducto
         ObjCon.Desconectar()
     End Function
 
-    Public Function CargarNroProd() As UInt64
-        Dim Menor As UInt64 = 1
-        CargarNroProd = 1
+    Public Function CargarNroProdd() As UInt64
+        Dim Menor As UInt64 = 0
+        CargarNroProd = 0
         ObjCon.Conectar()
         ObjCon.CrearComando("SELECT idProducto FROM Producto ORDER BY idProducto ASC")
         ObjCon.dr = ObjCon.EjecutarReader()
         While ObjCon.dr.Read()
-            CargarNroProd = ObjCon.dr.GetUInt64(0)
-            If CargarNroProd = Menor Then
-                Menor += 1
-            End If
+            Try
+                CargarNroProd = ObjCon.dr.GetUInt64(0)
+                If CargarNroProdd = Menor Then
+                    Menor = CULng(Menor + 1)
+                Else
+                    Exit While
+                End If
+            Catch ex As Exception
+            End Try
         End While
         ObjCon.dr.Close()
         ObjCon.Desconectar()
@@ -371,7 +386,7 @@ Public Class CProducto
         ObjCon.dr = ObjCon.EjecutarReader()
         If ObjCon.dr.Read() Then
             Try
-                CargarNroBaja = ObjCon.dr.GetInt32(0)
+                CargarNroBaja = ObjCon.dr.GetUInt32(0)
             Catch
             End Try
         Else
@@ -379,7 +394,7 @@ Public Class CProducto
         End If
         ObjCon.dr.Close()
         ObjCon.Desconectar()
-        CargarNroBaja += 1
+        CargarNroBaja = CUInt(CargarNroBaja + 1)
     End Function
 
     Public Function CargarNroBajaMotivo() As UInt16
@@ -389,7 +404,7 @@ Public Class CProducto
         ObjCon.dr = ObjCon.EjecutarReader()
         If ObjCon.dr.Read() Then
             Try
-                CargarNroBajaMotivo = ObjCon.dr.GetInt32(0)
+                CargarNroBajaMotivo = ObjCon.dr.GetUInt16(0)
             Catch
             End Try
         Else
@@ -397,7 +412,7 @@ Public Class CProducto
         End If
         ObjCon.dr.Close()
         ObjCon.Desconectar()
-        CargarNroBajaMotivo += 1
+        CargarNroBajaMotivo = CUShort(CargarNroBajaMotivo + 1)
     End Function
 
     Public Function CargarNroAltaMotivo() As UInt16
@@ -407,7 +422,7 @@ Public Class CProducto
         ObjCon.dr = ObjCon.EjecutarReader()
         If ObjCon.dr.Read() Then
             Try
-                CargarNroAltaMotivo = ObjCon.dr.GetInt32(0)
+                CargarNroAltaMotivo = ObjCon.dr.GetUInt16(0)
             Catch
             End Try
         Else
@@ -415,7 +430,7 @@ Public Class CProducto
         End If
         ObjCon.dr.Close()
         ObjCon.Desconectar()
-        CargarNroAltaMotivo += 1
+        CargarNroAltaMotivo = CUShort(CargarNroAltaMotivo + 1)
     End Function
 
     Public Function CargarNroAlta() As UInt32
@@ -425,7 +440,7 @@ Public Class CProducto
         ObjCon.dr = ObjCon.EjecutarReader()
         If ObjCon.dr.Read() Then
             Try
-                CargarNroAlta = ObjCon.dr.GetInt32(0)
+                CargarNroAlta = ObjCon.dr.GetUInt32(0)
             Catch
             End Try
         Else
@@ -433,7 +448,7 @@ Public Class CProducto
         End If
         ObjCon.dr.Close()
         ObjCon.Desconectar()
-        CargarNroAlta += 1
+        CargarNroAlta = CUInt(CargarNroAlta + 1)
     End Function
 
     Public Function ListarMotivoBaja() As DataTable
@@ -448,6 +463,27 @@ Public Class CProducto
         ObjCon.CrearComando("SELECT * FROM AltaProdMotivo")
         ListarMotivoAlta = ObjCon.EjecutarDataTable()
         ObjCon.Desconectar()
+    End Function
+
+    Public Function GenerarCódigo() As String
+        Dim Codigo As ULong = 0
+        For i As ULong = 1 To ULong.MaxValue
+            If VerificarCod(CStr(i)) = True Then
+                Codigo = i
+                Exit For
+            End If
+        Next i
+        Return CStr(Codigo)
+    End Function
+
+    Public Function VerificarCod(ByVal Cod As String) As Boolean   'Devuelve true si el codigo esta disponible
+        Dim Tabla As DataTable = BuscProdCod(Cod)
+        Dim Filas As Integer = Tabla.Rows.Count
+        If Filas > 0 Then
+            Return False
+        Else
+            Return True
+        End If
     End Function
 
 End Class

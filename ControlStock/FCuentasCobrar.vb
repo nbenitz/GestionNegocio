@@ -1,4 +1,4 @@
-﻿Option Strict On
+﻿
 
 Public Class FCuentasCobrar
     Dim Venta As New CVenta
@@ -31,6 +31,9 @@ Public Class FCuentasCobrar
                 TablaVenta = Venta.BuscViewVenta("WHERE Cancelado = 'No' ORDER BY Vto DESC")
                 CargarTabla(TablaVenta)
             Case Is = 1 'Nombre de Cliente
+                txtNroFac.Visible = True
+                lblBuscar.Visible = True
+            Case Is = 2 'CI
                 txtNroFac.Visible = True
                 lblBuscar.Visible = True
         End Select
@@ -70,10 +73,18 @@ Public Class FCuentasCobrar
 
     Private Sub txtNroFac_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtNroFac.KeyDown
         If e.KeyCode = Keys.Enter Then
-            Dim Nombre As String = txtNroFac.Text
-            If Nombre <> "" Then
-                TablaVenta = Venta.BuscViewVenta("WHERE cancelado = 'No' AND clien like '%" + Nombre + "%' ORDER BY Vto DESC")
-                CargarTabla(TablaVenta)
+            If cmbFiltrarPor.SelectedIndex = 1 Then
+                Dim Nombre As String = txtNroFac.Text
+                If Nombre <> "" Then
+                    TablaVenta = Venta.BuscViewVenta("WHERE cancelado = 'No' AND clien like '%" + Nombre + "%' ORDER BY Vto DESC")
+                    CargarTabla(TablaVenta)
+                End If
+            ElseIf cmbFiltrarPor.SelectedIndex = 2 Then
+                Dim Nombre As String = txtNroFac.Text
+                If Nombre <> "" Then
+                    TablaVenta = Venta.BuscViewVenta("WHERE cancelado = 'No' AND CICliente = '" + Nombre + "' ORDER BY Vto DESC")
+                    CargarTabla(TablaVenta)
+                End If
             End If
         End If
     End Sub

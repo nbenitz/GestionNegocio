@@ -1,8 +1,6 @@
 ﻿Option Strict On
 
 Imports System.Drawing.Drawing2D
-Imports System.IO
-Imports System.Drawing.Imaging
 
 Public Class FNuevoProducto
 
@@ -10,7 +8,8 @@ Public Class FNuevoProducto
     Dim Proveedor As New CProveedor
     Dim TablaProv As New DataTable
     Dim EditMode As Boolean = False
-    Dim OldIdProd As UInt64
+    Dim OldIdProd As String
+    Dim ModoVerDetValue As Boolean = False
 
     Private Sub BtnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnCancel1.Click
         If EditMode = True Then
@@ -25,46 +24,69 @@ Public Class FNuevoProducto
             If cmbProveedor.Text <> "" Then
                 If txtDescrip.Text <> "" Then
                     If txtPrecCompra.Text <> "" Then
-                        If cmbPresent.SelectedIndex = 0 Or cmbPresent.SelectedIndex = 2 Then 'Por Unidades o Kg
-                            If txtPrec1.Text <> "" Then
-                                If txtPrec2.Text <> "" Then
-                                    If TxtIva.Text <> "" Then
-                                        If txtStock.Text = "" Then
-                                            txtStock.Text = "0"
-                                        End If
+                        If TxtIva.Text <> "" Then
+                            If txtStock.Text = "" Then
+                                txtStock.Text = "0"
+                            End If
+                            If cmbPresent.SelectedIndex = 0 Or cmbPresent.SelectedIndex = 5 Then 'Por Unidades o Kg
+                                If txtPrec1.Text <> "" Then
+                                    If txtPrec2.Text <> "" Then
                                         GuardarProd()
                                     Else
-                                        MsgBox("Ingrese el IVA")
+                                        MsgBox("Ingrese el Precio de Venta Mayorista")
                                     End If
                                 Else
-                                    MsgBox("Ingrese el Precio de Venta 2")
+                                    MsgBox("Ingrese el Precio de Venta a Minorista")
                                 End If
-                            Else
-                                MsgBox("Ingrese el Precio de Venta 1")
-                            End If
-                        Else 'Por Paquete
-                            If txtUnidXpack.Text <> "" Then
-                                If txtPVPack.Text <> "" Then
-                                    If txtPVUnid.Text <> "" Then
-                                        If TxtIva.Text <> "" Then
-                                            If txtStock.Text = "" Then
-                                                txtStock.Text = "0"
-                                            End If
+                            ElseIf cmbPresent.SelectedIndex = 1 Or cmbPresent.SelectedIndex = 2 Or cmbPresent.SelectedIndex = 3 Then 'Por Paquete
+                                If txtUnidXpack.Text <> "" Then
+                                    If txtPVPack.Text <> "" Then
+                                        If txtPVUnid.Text <> "" Then
                                             GuardarProd()
                                         Else
-                                            MsgBox("Ingrese el IVA")
+                                            MsgBox("Ingrese el Precio de Venta")
                                         End If
                                     Else
-                                        MsgBox("Ingrese el Precio de Venta por Unidad")
+                                        MsgBox("Ingrese el Precio de Venta")
                                     End If
                                 Else
-                                    MsgBox("Ingrese el Precio de Venta por Pack")
+                                    MsgBox("Complete todos los campos")
                                 End If
                             Else
-                                MsgBox("Ingrese las Unidades por Pack")
+                                If txtUnidxPackPiso.Text <> "" Then
+                                    If txtMxCaja.Text <> "" Then
+                                        If txtLado1.Text <> "" Then
+                                            If txtLado2.Text <> "" Then
+                                                If txtPrecioCaja.Text <> "" Then
+                                                    If txtPrecioMetro.Text <> "" Then
+                                                        If TxtPrecioUnid.Text <> "" Then
+                                                            GuardarProd()
+                                                        Else
+                                                            MsgBox("Ingrese Precio x Unidad")
+                                                        End If
+                                                    Else
+                                                        MsgBox("Ingrese el Precio x Metro")
+                                                    End If
+                                                Else
+                                                    MsgBox("Ingrese el Precio x Caja")
+                                                End If
+                                            Else
+                                                MsgBox("Ingrese la dimensión")
+                                            End If
+                                        Else
+                                            MsgBox("Ingrese la dimensión")
+                                        End If
+                                    Else
+                                        MsgBox("Ingrese los Metros x Caja")
+                                    End If
+                                Else
+                                    MsgBox("Ingrese las Unidades por Caja")
+                                End If
                             End If
-                        End If
-                    Else
+                        Else
+                            MsgBox("Ingrese el IVA")
+                    End If
+                Else
                         MsgBox("Ingrese el Costo de Producto")
                     End If
                 Else
@@ -80,49 +102,59 @@ Public Class FNuevoProducto
 
     Private Sub GuardarProd()
         Try
-            Dim Codigo = txtCod.Text
-            Dim idProd As UInt64 = CULng(Codigo)
+            Dim idProd As String = txtCod.Text
             Dim idProv As String = CStr(TablaProv.Rows(cmbProveedor.SelectedIndex).Item(0))
             Dim Descrip As String = txtDescrip.Text
             Dim PrecCompra As Integer = CInt(txtPrecCompra.Text)
-            Dim Precio1, Precio2, PrecPack?, UnidXpack? As Integer
+            Dim Precio1, Precio2, PrecPack? As Integer
+            Dim UnidXpack?, Lado1?, Lado2?, MxCaja As Double
             Dim CantUnit As Double = 0
             Dim PorPack As String = "No"
             Dim Foto As Byte()
             Dim Iva As Int16 = CShort(TxtIva.Text)
             Foto = ImageToByteArray(PictureBox1.Image)
             CantUnit = CDbl(txtStock.Text)
-            If cmbPresent.SelectedIndex = 0 Then
-                PorPack = "No"
-                Precio1 = CInt(txtPrec1.Text)
-                Precio2 = CInt(txtPrec2.Text)
-            ElseIf cmbPresent.SelectedIndex = 1 Then
-                PorPack = "Si"
-                Precio1 = CInt(txtPVUnid.Text)
-                PrecPack = CInt(txtPVPack.Text)
-                UnidXpack = CInt(txtUnidXpack.Text)
-                Precio2 = 0
-                Dim StockPack As Integer
-                Try
-                    StockPack = CInt(txtStockPak.Text)
-                Catch
-                    StockPack = 0
-                End Try
-                CantUnit += StockPack * CInt(UnidXpack)
-            ElseIf cmbPresent.SelectedIndex = 2 Then
-                PorPack = "Kilo"
-                Precio1 = CInt(txtPrec1.Text)
-                Precio2 = CInt(txtPrec2.Text)
-            End If
+            Select Case cmbPresent.SelectedIndex
+                Case 0
+                    PorPack = "No"
+                    Precio1 = CInt(txtPrec1.Text)
+                    Precio2 = CInt(txtPrec2.Text)
+                Case 1, 2, 3
+                    Precio1 = CInt(txtPVUnid.Text)
+                    PrecPack = CInt(txtPVPack.Text)
+                    UnidXpack = CDbl(txtUnidXpack.Text)
+                    Precio2 = 0
+                    Select Case cmbPresent.SelectedIndex
+                        Case 1
+                            PorPack = "Si"
+                        Case 2
+                            PorPack = "SiCaja"
+                        Case 3
+                            PorPack = "SiMetro"
+                    End Select
+                Case 4
+                    PorPack = "Piso"
+                    Precio1 = CInt(txtPrecioMetro.Text)
+                    Precio2 = CInt(TxtPrecioUnid.Text)
+                    PrecPack = CInt(txtPrecioCaja.Text)
+                    UnidXpack = CDbl(txtUnidxPackPiso.Text)
+                    MxCaja = CDbl(txtMxCaja.Text)
+                    Lado1 = CDbl(txtLado1.Text)
+                    Lado2 = CDbl(txtLado2.Text)
+                Case 5
+                    PorPack = "Kilo"
+                    Precio1 = CInt(txtPrec1.Text)
+                    Precio2 = CInt(txtPrec2.Text)
+            End Select
 
             If EditMode = False Then    'Para guardar un nuevo Producto
-                If VerificarCod(Codigo) = True Then
-                    If Producto.InserProducto(idProd, idProv, Descrip, PrecCompra, Precio1, Precio2, 0, PrecPack, CantUnit, UnidXpack, PorPack, Foto, Iva) = False Then
+                If Producto.VerificarCod(idProd) = True Then
+                    If Producto.InserProducto(idProd, idProv, Descrip, PrecCompra, Precio1, Precio2, 0, PrecPack, CantUnit, UnidXpack, PorPack, Foto, Iva, Lado1, Lado2, MxCaja) = False Then
                         MessageBox.Show("Hubo un error al guardar el Producto")
                     Else
                         MessageBox.Show("Producto Guardado")
                         If ChkGenerar.Checked Then
-                            txtCod.Text = CStr(Producto.CargarNroProd())
+                            'txtCod.Text = CStr(Producto.CargarNroProd())
                         End If
                         Limpiar()
                         BtnCancel1.Enabled = False
@@ -133,8 +165,8 @@ Public Class FNuevoProducto
                     txtCod.Focus()
                 End If
             Else    'Para editar un Producto
-                If VerificarCod(txtCod.Text) = True Or CULng(txtCod.Text) = OldIdProd Then
-                    If Producto.Update(idProd, idProv, Descrip, PrecCompra, Precio1, Precio2, 0, PrecPack, CantUnit, UnidXpack, PorPack, Foto, Iva, OldIdProd) = False Then
+                If Producto.VerificarCod(txtCod.Text) = True Or txtCod.Text = OldIdProd Then
+                    If Producto.Update(idProd, idProv, Descrip, PrecCompra, Precio1, Precio2, 0, PrecPack, CantUnit, UnidXpack, PorPack, Foto, Iva, OldIdProd, Lado1, Lado2, MxCaja) = False Then
                         MessageBox.Show("Hubo un error al editar el Producto")
                     Else
                         MessageBox.Show("Producto Editado")
@@ -151,19 +183,9 @@ Public Class FNuevoProducto
         End Try
     End Sub
 
-    Private Function VerificarCod(ByVal Cod As String) As Boolean   'Devuelve true si el codigo esta disponible
-        Dim Tabla = Producto.BuscProdCod(Cod)
-        Dim Filas As Integer = Tabla.Rows.Count
-        If Filas > 0 Then
-            Return False
-        Else
-            Return True
-        End If
-    End Function
-
     Private Sub CheckBox1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChkGenerar.CheckedChanged
         If ChkGenerar.Checked Then
-            txtCod.Text = CStr(Producto.CargarNroProd())
+            'txtCod.Text = CStr(Producto.CargarNroProd())
             txtCod.ReadOnly = True
         Else
             txtCod.Text = ""
@@ -180,6 +202,12 @@ Public Class FNuevoProducto
         txtPVPack.Text = ""
         txtPVUnid.Text = ""
         txtStock.Text = ""
+        txtPrecioCaja.Text = ""
+        txtPrecioMetro.Text = ""
+        TxtPrecioUnid.Text = ""
+        txtUnidxPackPiso.Text = ""
+        txtLado1.Text = ""
+        txtLado2.Text = ""
         PictureBox1.Image = My.Resources.Foto
         SetImage(PictureBox1)
         txtCod.Focus()
@@ -199,8 +227,10 @@ Public Class FNuevoProducto
             PictureBox1.Image = My.Resources.Foto
             SetImage(PictureBox1)
         Else
-            lblBaja.Visible = True
-            lblAddStock.Visible = True
+            If ModoVerDetValue = False Then
+                lblBaja.Visible = True
+                lblAddStock.Visible = True
+            End If
         End If
         ToolTip2.IsBalloon = True
     End Sub
@@ -208,12 +238,9 @@ Public Class FNuevoProducto
     Private Sub CargarProv()
         cmbProveedor.Items.Clear()
         TablaProv = Proveedor.ListarProveed()
-        Dim Filas As Integer = TablaProv.Rows.Count
-        If Filas > 0 Then
-            For i = 0 To (Filas - 1)
-                cmbProveedor.Items.Add(TablaProv.Rows(i).Item(1))
-            Next
-        End If
+        For Each row As DataRow In TablaProv.Rows
+            cmbProveedor.Items.Add(CStr(row.Item(1)))
+        Next
     End Sub
 
     Private Sub cmbPresent_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles cmbPresent.KeyPress, cmbProveedor.KeyPress
@@ -222,7 +249,7 @@ Public Class FNuevoProducto
 
     Private Sub cmbPresent_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbPresent.SelectedIndexChanged
         Select Case cmbPresent.SelectedIndex
-            Case Is = 0, 2
+            Case 0, 5      'Unidad y Kg
                 lblPack.Visible = False
                 txtUnidXpack.Visible = False
                 lblPrec1.Visible = True
@@ -233,22 +260,22 @@ Public Class FNuevoProducto
                 txtPVUnid.Visible = False
                 lblPVPack.Visible = False
                 lblPVUnid.Visible = False
-                lblPaquete.Visible = False
-                txtStockPak.Visible = False
-                lblStock2.Visible = False
-
-                If cmbPresent.SelectedIndex = 0 Then
-                    lblPrec1.Text = "Precio Min.:"
-                    lblPrec2.Text = "Precio May:"
+                pnlPiso.Visible = False
+                lblPrec1.Text = "Precio Minorista:"
+                lblPrec2.Text = "Precio Mayorista:"
+                'lblPaquete.Visible = False
+                'txtStockPak.Visible = False
+                'lblStock2.Visible = False
+                If cmbPresent.SelectedIndex = 0 Then    'Unidad
                     lblUnidMedida.Visible = False
                     lblUnidMedida.Text = "unid."
                 Else
-                    lblPrec1.Text = "Precio por Kg. 1"
-                    lblPrec2.Text = "Precio por Kg. 2"
+                    'Kilogramo---------------------------------
                     lblUnidMedida.Visible = True
                     lblUnidMedida.Text = "Kg."
+                    '------------------------------------------
                 End If
-            Case Is = 1
+            Case 1, 2, 3 'Paquetes
                 lblPack.Visible = True
                 txtUnidXpack.Visible = True
                 lblPrec1.Visible = False
@@ -260,10 +287,31 @@ Public Class FNuevoProducto
                 lblPVPack.Visible = True
                 lblPVUnid.Visible = True
                 lblUnidMedida.Visible = True
+                pnlPiso.Visible = False
+                Select Case cmbPresent.SelectedIndex
+                    Case 1  'Unidad y Paquete
+                        lblPack.Text = "Unidades x Paquete:"
+                        lblPVPack.Text = "Precio x Paquete:"
+                        lblPVUnid.Text = "Precio x Unidad:"
+                        lblUnidMedida.Text = "unidades"
+                    Case 2  'Paquete y Caja
+                        lblPack.Text = "Paquetes x Caja:"
+                        lblPVPack.Text = "Precio x Caja:"
+                        lblPVUnid.Text = "Precio x Paquete:"
+                        lblUnidMedida.Text = "paquetes"
+                    Case 3  'Metro y Entero
+                        lblPack.Text = "Metros x Entero:"
+                        lblPVPack.Text = "Precio x Entero:"
+                        lblPVUnid.Text = "Precio x Metro:"
+                        lblUnidMedida.Text = "metros"
+                End Select
+            Case 4
+                pnlPiso.Visible = True
                 lblUnidMedida.Text = "unidades"
-                lblPaquete.Visible = True
-                txtStockPak.Visible = True
-                lblStock2.Visible = True
+                lblUnidMedida.Visible = True
+                'lblPaquete.Visible = True
+                'txtStockPak.Visible = True
+                'lblStock2.Visible = True
         End Select
     End Sub
 
@@ -367,16 +415,17 @@ Public Class FNuevoProducto
         & "\Image.gif")
     End Sub
 
-    Public Sub Editar(ByVal Cod As UInt64, ByVal Prov As String, ByVal Descrip As String, ByVal Costo As Integer,
+    Public Sub Editar(ByVal Cod As String, ByVal Prov As String, ByVal Descrip As String, ByVal Costo As Integer,
                        ByVal Precio1 As Integer, ByVal Precio2 As Integer, ByVal Precio3 As Integer,
-                       ByVal PrecioPack? As Integer, ByVal CantUnid As Double, ByVal UnidXpack? As Integer,
-                       ByVal PorPack As String, ByVal Foto As Byte(), ByVal Iva As Decimal)
+                       ByVal PrecioPack? As Integer, ByVal CantUnid As Double, ByVal UnidXpack? As Double,
+                       ByVal Present As String, ByVal Foto As Byte(), ByVal Iva As Decimal,
+                      ByVal Lado1? As Double, ByVal Lado2? As Double, ByVal MxCaja? As Double)
         EditMode = True
         txtStock.ReadOnly = True
         OldIdProd = Cod
-        txtCod.Text = CStr(Cod)
+        txtCod.Text = Cod
         CargarProv()
-        cmbProveedor.SelectedItem = CStr(Prov)
+        cmbProveedor.SelectedItem = Prov
         txtDescrip.Text = Descrip
         txtPrecCompra.Text = CStr(Costo)
         txtPrec1.Text = CStr(Precio1)
@@ -390,16 +439,34 @@ Public Class FNuevoProducto
             PictureBox1.Image = My.Resources.Foto
         End Try
         SetImage(PictureBox1)
-        If PorPack = "Si" Then
-            cmbPresent.SelectedIndex = 1
-            txtPVPack.Text = CStr(PrecioPack)
-            txtPVUnid.Text = CStr(Precio1)
-            txtUnidXpack.Text = CStr(UnidXpack)
-        ElseIf PorPack = "No" Then
-            cmbPresent.SelectedIndex = 0
-        Else
-            cmbPresent.SelectedIndex = 2
-        End If
+        Select Case Present
+            Case "Si", "SiCaja", "SiMetro"
+                txtPVPack.Text = CStr(PrecioPack)
+                txtPVUnid.Text = CStr(Precio1)
+                txtUnidXpack.Text = CStr(UnidXpack)
+                Select Case Present
+                    Case "Si"
+                        cmbPresent.SelectedIndex = 1
+                    Case "SiCaja"
+                        cmbPresent.SelectedIndex = 2
+                    Case "SiMetro"
+                        cmbPresent.SelectedIndex = 3
+                End Select
+            Case "Piso"
+                pnlPiso.Visible = True
+                txtPrecioCaja.Text = CStr(PrecioPack)
+                txtPrecioMetro.Text = CStr(Precio1)
+                TxtPrecioUnid.Text = CStr(Precio2)
+                txtLado1.Text = CStr(Lado1)
+                txtLado2.Text = CStr(Lado2)
+                txtUnidxPackPiso.Text = CStr(UnidXpack)
+                txtMxCaja.Text = CStr(MxCaja)
+                cmbPresent.SelectedIndex = 4
+            Case "No"
+                cmbPresent.SelectedIndex = 0
+            Case "Kilo"
+                cmbPresent.SelectedIndex = 5
+        End Select
     End Sub
 
     Private Sub pbxNewProv_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbxNewProv.Click
@@ -413,19 +480,19 @@ Public Class FNuevoProducto
 
     Private Sub lblBaja_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblBaja.Click
         Dim Present As String = "No"
-        If cmbPresent.SelectedIndex = 2 Then
+        If cmbPresent.SelectedIndex = 5 Then
             Present = "Kilo"
         End If
         Dim frm As New FBajaProducto
         frm.Cargar(True, txtCod.Text, txtDescrip.Text, CInt(txtStock.Text), Present)
         'frm.TopMost = True
         frm.ShowDialog()
-        Me.Close()
+        Close()
     End Sub
 
     Private Sub lblAddStock_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblAddStock.Click
         Dim Present As String = "No"
-        If cmbPresent.SelectedIndex = 2 Then
+        If cmbPresent.SelectedIndex = 5 Then
             Present = "Kilo"
         End If
         Dim frm As New FBajaProducto
@@ -441,11 +508,29 @@ Public Class FNuevoProducto
         End If
     End Sub
 
-    Private Sub txtStock_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtStock.KeyPress, txtStockPak.KeyPress
+    Private Sub txtDescrip_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDescrip.TextChanged
+        Dim Resto As Integer = 50 - txtDescrip.TextLength
+        lblRestoDesc.Text = CStr(Resto)
+        If Resto < 0 Then
+            lblRestoDesc.ForeColor = Color.Red
+        Else
+            lblRestoDesc.ForeColor = Color.Lime
+        End If
+    End Sub
+
+    Private Sub F_Deactivate(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Deactivate
+        WindowState = FormWindowState.Minimized
+    End Sub
+
+    Private Sub F_Activated(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Activated
+        WindowState = FormWindowState.Normal
+    End Sub
+
+    Private Sub txtStock_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtStock.KeyPress, txtUnidXpack.KeyPress
         Dim Caja As TextBox = CType(sender, TextBox)
         Dim Present As Integer = cmbPresent.SelectedIndex
         If e.KeyChar = Convert.ToChar(",") Then
-            If Present = 2 Then
+            If Present = 3 Or Present = 5 Then
                 e.Handled = False
             Else
                 e.Handled = True
@@ -454,7 +539,7 @@ Public Class FNuevoProducto
             End If
         ElseIf e.KeyChar = Convert.ToChar(".") Then
             e.Handled = True
-            If Present = 2 Then
+            If Present = 3 Or Present = 5 Then
                 Caja.Text = Caja.Text + ","
                 Caja.Select(Caja.Text.Length, 0)
             Else
@@ -475,29 +560,7 @@ Public Class FNuevoProducto
         End If
     End Sub
 
-    Private Sub txtDescrip_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDescrip.TextChanged
-        Dim Resto As Integer = 30 - txtDescrip.TextLength
-        lblRestoDesc.Text = CStr(Resto)
-        If Resto < 0 Then
-            lblRestoDesc.ForeColor = Color.Red
-        Else
-            lblRestoDesc.ForeColor = Color.Green
-        End If
-    End Sub
-
-    Private Sub F_Deactivate(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Deactivate
-        WindowState = FormWindowState.Minimized
-    End Sub
-
-    Private Sub F_Activated(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Activated
-        WindowState = FormWindowState.Normal
-    End Sub
-
-    Private Sub txtPrecCompra_TextChanged(sender As Object, e As EventArgs) Handles txtPrecCompra.TextChanged
-
-    End Sub
-
-    Private Sub txtPrecCompra_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPrecCompra.KeyPress, txtPrec1.KeyPress, txtPrec2.KeyPress, txtPVPack.KeyPress, txtPVUnid.KeyPress, txtUnidXpack.KeyPress, txtCod.KeyPress, TxtIva.KeyPress
+    Private Sub txtPrecCompra_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPrecCompra.KeyPress, txtPrec1.KeyPress, txtPrec2.KeyPress, txtPVPack.KeyPress, txtPVUnid.KeyPress, TxtIva.KeyPress, TxtPrecioUnid.KeyPress, txtPrecioMetro.KeyPress, txtPrecioCaja.KeyPress
         Dim Caja As TextBox = CType(sender, TextBox)
         If Char.IsDigit(e.KeyChar) Then
             e.Handled = False
@@ -512,4 +575,80 @@ Public Class FNuevoProducto
             e.Handled = True
         End If
     End Sub
+
+    Private Sub txtLado1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtLado1.KeyPress, txtLado2.KeyPress
+        Dim Caja As TextBox = CType(sender, TextBox)
+        If e.KeyChar = Convert.ToChar(",") Then
+            e.Handled = False
+        ElseIf e.KeyChar = Convert.ToChar(".") Then
+            e.Handled = True
+            Caja.Text = Caja.Text + ","
+            Caja.Select(Caja.Text.Length, 0)
+        ElseIf Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        Else
+            e.Handled = True
+            Caja.Focus()
+            ToolTip2.Show("Ingrese un valor númerico", Caja, 0, -40, 2000)
+        End If
+        If e.KeyChar = Convert.ToChar(Keys.Return) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtMxCaja_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtMxCaja.KeyPress
+        Dim Caja As TextBox = CType(sender, TextBox)
+        Dim Present As Integer = cmbPresent.SelectedIndex
+        If e.KeyChar = Convert.ToChar(",") Then
+            e.Handled = False
+        ElseIf e.KeyChar = Convert.ToChar(".") Then
+            e.Handled = True
+            Caja.Text = Caja.Text + ","
+            Caja.Select(Caja.Text.Length, 0)
+        ElseIf Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        Else
+            e.Handled = True
+            Caja.Focus()
+            ToolTip2.Show("Ingrese un valor númerico", Caja, 0, -40, 2000)
+        End If
+        If e.KeyChar = Convert.ToChar(Keys.Return) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Public Sub ModoVerDetalle()
+        cmbPresent.Enabled = False
+        txtCod.ReadOnly = True
+        cmbProveedor.Enabled = False
+        txtDescrip.ReadOnly = True
+        TxtIva.ReadOnly = True
+        txtLado1.ReadOnly = True
+        txtLado2.ReadOnly = True
+        txtMxCaja.ReadOnly = True
+        txtPrec1.ReadOnly = True
+        txtPrec2.ReadOnly = True
+        txtPrecCompra.ReadOnly = True
+        txtPrecioCaja.ReadOnly = True
+        txtPrecioMetro.ReadOnly = True
+        TxtPrecioUnid.ReadOnly = True
+        txtPVPack.ReadOnly = True
+        txtPVUnid.ReadOnly = True
+        txtStock.ReadOnly = True
+        txtUnidXpack.ReadOnly = True
+        txtUnidxPackPiso.ReadOnly = True
+        pbxNewProv.Visible = False
+        lblAddImage.Visible = False
+        lblAddStock.Visible = False
+        lblBaja.Visible = False
+        lblRestoDesc.Visible = False
+        BtnGuardar1.Visible = False
+        BtnCancel1.Visible = False
+        ModoVerDetValue = True
+    End Sub
+
 End Class

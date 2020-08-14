@@ -1,6 +1,6 @@
 ﻿Public Class CDetalleFactura
-    Public Property Id() As Integer
-    Public Property Cantidad() As Decimal
+    Public Property Id() As String
+    Public Property Cantidad() As String
     Public Property Descripcion() As String
     Public Property Precio() As Decimal
     Public Property Importe_0() As Decimal

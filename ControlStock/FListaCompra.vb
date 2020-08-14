@@ -1,4 +1,5 @@
-﻿
+﻿Option Strict On
+
 Public Class FListaCompra
     Dim Compra As New CCompra
     Dim Prov As New CProveedor
@@ -30,8 +31,8 @@ Public Class FListaCompra
         cmbProveedor.Items.Add("Todos")
         Dim Filas As Integer = TablaProv.Rows.Count
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
-                cmbProveedor.Items.Add(TablaProv.Rows(i).Item(1) + " " + TablaProv.Rows(i).Item(2))
+            For i As Integer = 0 To (Filas - 1)
+                cmbProveedor.Items.Add(TablaProv.Rows(i).Item(1).ToString + " " + TablaProv.Rows(i).Item(2).ToString)
             Next
         End If
         cmbProveedor.SelectedIndex = 0
@@ -49,7 +50,7 @@ Public Class FListaCompra
     End Sub
 
     Private Sub cmbFiltrarPor_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbFiltrarPor.SelectedIndexChanged
-        Dim Indice As String = cmbFiltrarPor.SelectedIndex
+        Dim Indice As Integer = CType(cmbFiltrarPor.SelectedIndex, Integer)
         Select Case Indice
             Case Is = 0 'Todos
                 txtNroFac.Visible = False
@@ -66,7 +67,7 @@ Public Class FListaCompra
                     Case Is = 0 'Todos
                         TablaCompra = Compra.BuscViewCompra("ORDER BY idCompra DESC")
                     Case Else 'Algun Proveedor
-                        Dim RUC As String = TablaProv.Rows(IndiceVend - 1).Item(0)
+                        Dim RUC As String = TablaProv.Rows(IndiceVend - 1).Item(0).ToString
                         Dim Proveedor As String = "(select Nombre from proveedor where RUC = " + RUC + ")"
                         TablaCompra = Compra.BuscViewCompra("WHERE Proveed = " + Proveedor + "  ORDER BY idCompra DESC")
                 End Select
@@ -101,7 +102,7 @@ Public Class FListaCompra
     End Sub
 
     Private Sub cmbFiltrarPor_DropDownClosed(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmbFiltrarPor.DropDownClosed
-        Dim Indice As String = cmbFiltrarPor.SelectedIndex
+        Dim Indice As Integer = cmbFiltrarPor.SelectedIndex
         Select Case Indice
             Case Is = 1 'Nro Factura
                 txtNroFac.Focus()
@@ -113,11 +114,11 @@ Public Class FListaCompra
         Dim SumaTotal As Integer = 0
         DataGridView1.Rows.Clear()
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
-                Dim idCompra As Integer = Tabla.Rows(i).Item(0)
-                Dim Fecha As String = Tabla.Rows(i).Item(1)
-                Dim Proveedor As String = Tabla.Rows(i).Item(3)
-                Dim Total As Integer = Tabla.Rows(i).Item(4)
+            For i As Integer = 0 To (Filas - 1)
+                Dim idCompra As Integer = CInt(Tabla.Rows(i).Item(0))
+                Dim Fecha As String = CType(Tabla.Rows(i).Item(1), String)
+                Dim Proveedor As String = CType(Tabla.Rows(i).Item(3), String)
+                Dim Total As Integer = CInt(Tabla.Rows(i).Item(4))
                 DataGridView1.Rows.Add(idCompra, Fecha, Proveedor, Total, Imagen)
                 SumaTotal = SumaTotal + Convert.ToInt32(DataGridView1.Item(3, i).Value.ToString)
             Next
@@ -144,7 +145,7 @@ Public Class FListaCompra
             Case Is = 0 'Todos
                 TablaCompra = Compra.BuscViewCompra("WHERE Fecha > '" + Fecha1 + "' and Fecha < '" + Fecha2 + "' ORDER BY idCompra DESC")
             Case Else 'Algun Proveedor
-                Dim RUC As String = TablaProv.Rows(IndiceVend - 1).Item(0)
+                Dim RUC As String = TablaProv.Rows(IndiceVend - 1).Item(0).ToString
                 Dim Proveedor As String = "(select Nombre from proveedor where RUC = " + RUC + ")"
                 TablaCompra = Compra.BuscViewCompra("WHERE Fecha > '" + Fecha1 + "' and Fecha < '" + Fecha2 + "' AND Proveed = " + Proveedor + "  ORDER BY idCompra DESC")
         End Select
@@ -160,7 +161,7 @@ Public Class FListaCompra
                     Case Is = 0 'Todos
                         TablaCompra = Compra.BuscViewCompra("ORDER BY idCompra DESC")
                     Case Else 'Algun Proveedor
-                        Dim RUC As String = TablaProv.Rows(IndiceVend - 1).Item(0)
+                        Dim RUC As String = TablaProv.Rows(IndiceVend - 1).Item(0).ToString
                         Dim Proveedor As String = "(select Nombre from proveedor where RUC = " + RUC + ")"
                         TablaCompra = Compra.BuscViewCompra("WHERE Proveed = " + Proveedor + "  ORDER BY idCompra DESC")
                 End Select
@@ -171,7 +172,7 @@ Public Class FListaCompra
                     Case Is = 0 'Todos
                         TablaCompra = Compra.BuscViewCompra("WHERE Fecha > '" + Fecha1 + "' and Fecha < '" + Fecha2 + "' ORDER BY idCompra DESC")
                     Case Else 'Algun Proveedor
-                        Dim RUC As String = TablaProv.Rows(IndiceVend - 1).Item(0)
+                        Dim RUC As String = TablaProv.Rows(IndiceVend - 1).Item(0).ToString
                         Dim Proveedor As String = "(select Nombre from proveedor where RUC = " + RUC + ")"
                         TablaCompra = Compra.BuscViewCompra("WHERE Fecha > '" + Fecha1 + "' and Fecha < '" + Fecha2 + "' AND Proveed = " + Proveedor + "  ORDER BY idCompra DESC")
                 End Select
@@ -192,10 +193,10 @@ Public Class FListaCompra
     End Sub
 
     Private Sub CargarDetalle(ByVal TablaAux As DataTable, ByVal Row As Integer)
-        Dim id = CStr(TablaAux.Rows(Row).Item(0))
-        Dim Total = CStr(TablaAux.Rows(Row).Item(4))
-        Dim Fecha = Format(TablaAux.Rows(Row).Item(1), "dd/MM/yyyy")
-        Dim Proveed = CStr(TablaAux.Rows(Row).Item(3))
+        Dim id As String = CStr(TablaAux.Rows(Row).Item(0))
+        Dim Total As String = CStr(TablaAux.Rows(Row).Item(4))
+        Dim Fecha As String = Format(TablaAux.Rows(Row).Item(1), "dd/MM/yyyy")
+        Dim Proveed As String = CStr(TablaAux.Rows(Row).Item(3))
         Reporte1.Encabezado(id, Fecha, Proveed, Total)
         Reporte1.CargarDetalle(Compra.BuscViewDetCompra(id))
     End Sub
@@ -216,7 +217,7 @@ Public Class FListaCompra
         Dim idNota As Integer = Compra.CargarNroNota
         Dim idCompra As Integer = CInt(Reporte1.txtNro.Text)
         Dim fecha As String = Format(Now, "yyyy-MM-dd HH:mm:ss")
-        Dim idProd As UInt64
+        Dim idProd As String
         Dim Cant As Double
         Dim Unid As Integer
         Try
@@ -225,7 +226,7 @@ Public Class FListaCompra
                 Exit Try
             End If
             For Each row As DataGridViewRow In Reporte1.Detalle.Rows
-                idProd = Convert.ToUInt64(row.Cells(1).Value)
+                idProd = Convert.ToString(row.Cells(1).Value)
                 Cant = Convert.ToDouble(row.Cells(3).Value)
                 Unid = Convert.ToInt32(row.Cells(6).Value)
                 If Compra.InserDetalleNota(idNota, idCompra, idProd, Cant, Unid) = False Then

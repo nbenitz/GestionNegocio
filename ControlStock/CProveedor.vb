@@ -1,6 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class CProveedor
-    Private ObjCon As New BaseDato()
+    Private ObjCon As New CBaseDato()
 
     Public Function Insert(ByVal RUC As String, ByVal Nombre As String, ByVal Telefono As String, ByVal Direccion As String) As Boolean
         Dim inserto As Boolean = False

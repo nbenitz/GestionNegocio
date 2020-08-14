@@ -32,7 +32,8 @@
                 Dim Nombre As String = CStr(Tabla.Rows(i).Item(1))
                 Dim Tel As String = CStr(Tabla.Rows(i).Item(2))
                 Dim Dir As String = CStr(Tabla.Rows(i).Item(3))
-                DataGridView1.Rows.Add(RUC, Nombre, Tel, Dir)
+                Dim Propiet As String = CStr(Tabla.Rows(i).Item(4))
+                DataGridView1.Rows.Add(RUC, Nombre, Propiet, Tel, Dir)
             Next
         End If
     End Sub
@@ -108,8 +109,9 @@
             Dim Nombre As String = CStr(Tabla.Rows(0).Item(1))
             Dim Telefono As String = CStr(Tabla.Rows(0).Item(2))
             Dim Direccion As String = CStr(Tabla.Rows(0).Item(3))
+            Dim Propietario As String = CStr(Tabla.Rows(0).Item(4))
             Dim Frm As New FNuevoCliente
-            Frm.Editar(RUC, Nombre, Telefono, Direccion)
+            Frm.Editar(RUC, Nombre, Telefono, Direccion, Propietario)
             Frm.MaximizeBox = False
             Frm.MinimizeBox = False
             Frm.ShowDialog()

@@ -38,6 +38,11 @@ Partial Class FPrincipalMotel
         Me.ListaDeHabitacionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ServiciosDeHabitaciónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AjustesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuCaja = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuAbrirCaja = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuCerrarCaja = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuHistorialDeCaja = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuResumenDeCaja = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuVentas = New System.Windows.Forms.ToolStripMenuItem()
         Me.NuevaVenta = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConsultarVenta = New System.Windows.Forms.ToolStripMenuItem()
@@ -122,7 +127,7 @@ Partial Class FPrincipalMotel
         'MenuStrip1
         '
         Me.MenuStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuArchivo, Me.mnuProd, Me.HabitacionesToolStripMenuItem, Me.mnuVentas, Me.mnuCompras, Me.mnuProveed, Me.mnuEmpleados, Me.mnuCuentas, Me.mnuFinanzas, Me.mnuUsuarios, Me.AyudaToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuArchivo, Me.mnuProd, Me.HabitacionesToolStripMenuItem, Me.mnuCaja, Me.mnuVentas, Me.mnuCompras, Me.mnuProveed, Me.mnuEmpleados, Me.mnuCuentas, Me.mnuFinanzas, Me.mnuUsuarios, Me.AyudaToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(928, 24)
@@ -225,6 +230,46 @@ Partial Class FPrincipalMotel
         Me.AjustesToolStripMenuItem.Name = "AjustesToolStripMenuItem"
         Me.AjustesToolStripMenuItem.Size = New System.Drawing.Size(197, 22)
         Me.AjustesToolStripMenuItem.Text = "Ajustes de Tolerancia"
+        '
+        'mnuCaja
+        '
+        Me.mnuCaja.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuAbrirCaja, Me.mnuCerrarCaja, Me.mnuHistorialDeCaja, Me.mnuResumenDeCaja})
+        Me.mnuCaja.ForeColor = System.Drawing.Color.White
+        Me.mnuCaja.Name = "mnuCaja"
+        Me.mnuCaja.Size = New System.Drawing.Size(42, 20)
+        Me.mnuCaja.Text = "Caja"
+        '
+        'mnuAbrirCaja
+        '
+        Me.mnuAbrirCaja.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
+        Me.mnuAbrirCaja.ForeColor = System.Drawing.Color.White
+        Me.mnuAbrirCaja.Name = "mnuAbrirCaja"
+        Me.mnuAbrirCaja.Size = New System.Drawing.Size(165, 22)
+        Me.mnuAbrirCaja.Text = "Abrir Caja"
+        '
+        'mnuCerrarCaja
+        '
+        Me.mnuCerrarCaja.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
+        Me.mnuCerrarCaja.ForeColor = System.Drawing.Color.White
+        Me.mnuCerrarCaja.Name = "mnuCerrarCaja"
+        Me.mnuCerrarCaja.Size = New System.Drawing.Size(165, 22)
+        Me.mnuCerrarCaja.Text = "Cerrar Caja"
+        '
+        'mnuHistorialDeCaja
+        '
+        Me.mnuHistorialDeCaja.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
+        Me.mnuHistorialDeCaja.ForeColor = System.Drawing.Color.White
+        Me.mnuHistorialDeCaja.Name = "mnuHistorialDeCaja"
+        Me.mnuHistorialDeCaja.Size = New System.Drawing.Size(165, 22)
+        Me.mnuHistorialDeCaja.Text = "Historial de Caja"
+        '
+        'mnuResumenDeCaja
+        '
+        Me.mnuResumenDeCaja.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
+        Me.mnuResumenDeCaja.ForeColor = System.Drawing.Color.White
+        Me.mnuResumenDeCaja.Name = "mnuResumenDeCaja"
+        Me.mnuResumenDeCaja.Size = New System.Drawing.Size(165, 22)
+        Me.mnuResumenDeCaja.Text = "Resumen de Caja"
         '
         'mnuVentas
         '
@@ -959,4 +1004,9 @@ Partial Class FPrincipalMotel
     Friend WithEvents ListaDeGastosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AyudaToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AcercaDeToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents mnuCaja As ToolStripMenuItem
+    Friend WithEvents mnuAbrirCaja As ToolStripMenuItem
+    Friend WithEvents mnuCerrarCaja As ToolStripMenuItem
+    Friend WithEvents mnuHistorialDeCaja As ToolStripMenuItem
+    Friend WithEvents mnuResumenDeCaja As ToolStripMenuItem
 End Class

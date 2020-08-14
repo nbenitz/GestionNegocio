@@ -9,28 +9,32 @@ Public Class FNuevoCliente
         Dim Nombre As String = txtNombre.Text
         Dim Tel As String = txtTelefono.Text
         Dim Dir As String = txtDireccion.Text
+        Dim Propiet As String = txtPropietario.Text
         Try
             RUC = txtRUC.Text
             If Nombre <> "" Then
                 If Tel = "" Then
                     Tel = " "
-                    If Dir = "" Then
-                        Dir = " "
-                        If EditMode = False Then
-                            If Cliente.InserCliente(RUC, Nombre, Tel, Dir) = True Then
-                                MessageBox.Show("Cliente Guardado")
-                                Limpiar()
-                            Else
-                                MessageBox.Show("Hubo un problema al Guardar el Cliente")
-                            End If
-                        Else
-                            If Cliente.Update(RUC, Nombre, Tel, Dir, OldRUC) = True Then
-                                MessageBox.Show("Cliente Guardado")
-                                Me.Close()
-                            Else
-                                MessageBox.Show("Hubo un problema al editar el Cliente")
-                            End If
-                        End If
+                End If
+                If Dir = "" Then
+                    Dir = " "
+                End If
+                If Propiet = "" Then
+                    Propiet = " "
+                End If
+                If EditMode = False Then
+                    If Cliente.InserCliente(RUC, Nombre, Tel, Dir, Propiet) = True Then
+                        MessageBox.Show("Cliente Guardado")
+                        Limpiar()
+                    Else
+                        MessageBox.Show("Hubo un problema al Guardar el Cliente")
+                    End If
+                Else
+                    If Cliente.Update(RUC, Nombre, Tel, Dir, Propiet, OldRUC) = True Then
+                        MessageBox.Show("Cliente Guardado")
+                        Close()
+                    Else
+                        MessageBox.Show("Hubo un problema al editar el Cliente")
                     End If
                 End If
             Else
@@ -77,12 +81,14 @@ Public Class FNuevoCliente
     End Sub
 
     Public Sub Editar(ByVal RUC As String, ByVal Nombre As String, ByVal Tel As String,
-                  ByVal Dir As String)
+                  ByVal Dir As String, ByVal Propiet As String)
         EditMode = True
         OldRUC = RUC
         txtRUC.Text = RUC
         txtNombre.Text = Nombre
         txtTelefono.Text = Tel
         txtDireccion.Text = Dir
+        txtPropietario.Text = Propiet
     End Sub
+
 End Class

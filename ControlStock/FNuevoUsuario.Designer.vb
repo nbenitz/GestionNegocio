@@ -46,22 +46,23 @@ Partial Class FNuevoUsuario
         'txtPass
         '
         Me.txtPass.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPass.Location = New System.Drawing.Point(157, 77)
+        Me.txtPass.Location = New System.Drawing.Point(156, 77)
         Me.txtPass.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtPass.MaxLength = 50
         Me.txtPass.Name = "txtPass"
         Me.txtPass.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtPass.Size = New System.Drawing.Size(164, 22)
+        Me.txtPass.Size = New System.Drawing.Size(251, 22)
         Me.txtPass.TabIndex = 1
         '
         'txtEmpleado
         '
         Me.txtEmpleado.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtEmpleado.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtEmpleado.Location = New System.Drawing.Point(157, 150)
+        Me.txtEmpleado.Location = New System.Drawing.Point(156, 150)
         Me.txtEmpleado.Margin = New System.Windows.Forms.Padding(4)
         Me.txtEmpleado.Name = "txtEmpleado"
         Me.txtEmpleado.ReadOnly = True
-        Me.txtEmpleado.Size = New System.Drawing.Size(164, 22)
+        Me.txtEmpleado.Size = New System.Drawing.Size(251, 22)
         Me.txtEmpleado.TabIndex = 3
         '
         'Label1
@@ -127,7 +128,7 @@ Partial Class FNuevoUsuario
         Me.GroupBox1.ForeColor = System.Drawing.Color.White
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(356, 200)
+        Me.GroupBox1.Size = New System.Drawing.Size(441, 200)
         Me.GroupBox1.TabIndex = 10
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos del Usuario"
@@ -138,9 +139,9 @@ Partial Class FNuevoUsuario
         Me.pbxNewProv.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.pbxNewProv.Cursor = System.Windows.Forms.Cursors.Hand
         Me.pbxNewProv.Image = Global.ControlStock.My.Resources.Resources.Plus_over2
-        Me.pbxNewProv.Location = New System.Drawing.Point(325, 115)
+        Me.pbxNewProv.Location = New System.Drawing.Point(413, 116)
         Me.pbxNewProv.Name = "pbxNewProv"
-        Me.pbxNewProv.Size = New System.Drawing.Size(25, 20)
+        Me.pbxNewProv.Size = New System.Drawing.Size(23, 20)
         Me.pbxNewProv.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.pbxNewProv.TabIndex = 82
         Me.pbxNewProv.TabStop = False
@@ -151,18 +152,19 @@ Partial Class FNuevoUsuario
         Me.cmbPrivilegio.BackColor = System.Drawing.Color.Snow
         Me.cmbPrivilegio.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbPrivilegio.FormattingEnabled = True
-        Me.cmbPrivilegio.Location = New System.Drawing.Point(157, 113)
+        Me.cmbPrivilegio.Location = New System.Drawing.Point(156, 113)
         Me.cmbPrivilegio.Name = "cmbPrivilegio"
-        Me.cmbPrivilegio.Size = New System.Drawing.Size(164, 23)
+        Me.cmbPrivilegio.Size = New System.Drawing.Size(251, 23)
         Me.cmbPrivilegio.TabIndex = 81
         '
         'txtUsuario
         '
         Me.txtUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtUsuario.Location = New System.Drawing.Point(157, 42)
+        Me.txtUsuario.Location = New System.Drawing.Point(156, 42)
         Me.txtUsuario.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtUsuario.MaxLength = 50
         Me.txtUsuario.Name = "txtUsuario"
-        Me.txtUsuario.Size = New System.Drawing.Size(164, 22)
+        Me.txtUsuario.Size = New System.Drawing.Size(251, 22)
         Me.txtUsuario.TabIndex = 0
         '
         'btnGuardar
@@ -171,7 +173,7 @@ Partial Class FNuevoUsuario
         Me.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnGuardar.Image = Global.ControlStock.My.Resources.Resources.file_apply
-        Me.btnGuardar.Location = New System.Drawing.Point(253, 218)
+        Me.btnGuardar.Location = New System.Drawing.Point(338, 218)
         Me.btnGuardar.Name = "btnGuardar"
         Me.btnGuardar.Size = New System.Drawing.Size(41, 38)
         Me.btnGuardar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -184,7 +186,7 @@ Partial Class FNuevoUsuario
         Me.btnCancel.BackColor = System.Drawing.Color.Transparent
         Me.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnCancel.Image = Global.ControlStock.My.Resources.Resources.file_exclude
-        Me.btnCancel.Location = New System.Drawing.Point(300, 218)
+        Me.btnCancel.Location = New System.Drawing.Point(385, 218)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(41, 38)
         Me.btnCancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -204,7 +206,7 @@ Partial Class FNuevoUsuario
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(125, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(387, 263)
+        Me.ClientSize = New System.Drawing.Size(473, 263)
         Me.Controls.Add(Me.btnGuardar)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.GroupBox1)

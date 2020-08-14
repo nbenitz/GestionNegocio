@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FNuevoCliente
     Inherits System.Windows.Forms.Form
 
@@ -36,6 +36,8 @@ Partial Class FNuevoCliente
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtPropietario = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         CType(Me.btnCancel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnGuardar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -53,7 +55,7 @@ Partial Class FNuevoCliente
         Me.btnCancel.BackColor = System.Drawing.Color.Transparent
         Me.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnCancel.Image = Global.ControlStock.My.Resources.Resources.file_exclude
-        Me.btnCancel.Location = New System.Drawing.Point(431, 226)
+        Me.btnCancel.Location = New System.Drawing.Point(532, 241)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(41, 38)
         Me.btnCancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -67,7 +69,7 @@ Partial Class FNuevoCliente
         Me.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnGuardar.Image = Global.ControlStock.My.Resources.Resources.file_apply
-        Me.btnGuardar.Location = New System.Drawing.Point(391, 226)
+        Me.btnGuardar.Location = New System.Drawing.Point(495, 241)
         Me.btnGuardar.Name = "btnGuardar"
         Me.btnGuardar.Size = New System.Drawing.Size(41, 38)
         Me.btnGuardar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -80,8 +82,9 @@ Partial Class FNuevoCliente
         Me.txtRUC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtRUC.Location = New System.Drawing.Point(114, 42)
         Me.txtRUC.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtRUC.MaxLength = 15
         Me.txtRUC.Name = "txtRUC"
-        Me.txtRUC.Size = New System.Drawing.Size(334, 22)
+        Me.txtRUC.Size = New System.Drawing.Size(442, 22)
         Me.txtRUC.TabIndex = 0
         '
         'txtNombre
@@ -89,8 +92,9 @@ Partial Class FNuevoCliente
         Me.txtNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNombre.Location = New System.Drawing.Point(114, 77)
         Me.txtNombre.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtNombre.MaxLength = 50
         Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(334, 22)
+        Me.txtNombre.Size = New System.Drawing.Size(442, 22)
         Me.txtNombre.TabIndex = 1
         '
         'txtDireccion
@@ -98,8 +102,9 @@ Partial Class FNuevoCliente
         Me.txtDireccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDireccion.Location = New System.Drawing.Point(114, 147)
         Me.txtDireccion.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtDireccion.MaxLength = 100
         Me.txtDireccion.Name = "txtDireccion"
-        Me.txtDireccion.Size = New System.Drawing.Size(334, 22)
+        Me.txtDireccion.Size = New System.Drawing.Size(442, 22)
         Me.txtDireccion.TabIndex = 4
         '
         'Label5
@@ -120,12 +125,15 @@ Partial Class FNuevoCliente
         Me.txtTelefono.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTelefono.Location = New System.Drawing.Point(114, 112)
         Me.txtTelefono.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtTelefono.MaxLength = 15
         Me.txtTelefono.Name = "txtTelefono"
-        Me.txtTelefono.Size = New System.Drawing.Size(334, 22)
+        Me.txtTelefono.Size = New System.Drawing.Size(442, 22)
         Me.txtTelefono.TabIndex = 3
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.txtPropietario)
+        Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.txtDireccion)
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.txtRUC)
@@ -139,7 +147,7 @@ Partial Class FNuevoCliente
         Me.GroupBox1.ForeColor = System.Drawing.Color.White
         Me.GroupBox1.Location = New System.Drawing.Point(17, 11)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(477, 209)
+        Me.GroupBox1.Size = New System.Drawing.Size(575, 224)
         Me.GroupBox1.TabIndex = 81
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos Del Cliente"
@@ -180,12 +188,34 @@ Partial Class FNuevoCliente
         Me.Label1.TabIndex = 5
         Me.Label1.Text = "RUC o CI"
         '
+        'txtPropietario
+        '
+        Me.txtPropietario.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPropietario.Location = New System.Drawing.Point(114, 182)
+        Me.txtPropietario.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtPropietario.MaxLength = 50
+        Me.txtPropietario.Name = "txtPropietario"
+        Me.txtPropietario.Size = New System.Drawing.Size(442, 22)
+        Me.txtPropietario.TabIndex = 14
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.White
+        Me.Label3.Location = New System.Drawing.Point(26, 184)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(80, 18)
+        Me.Label3.TabIndex = 15
+        Me.Label3.Text = "Propietario"
+        '
         'FNuevoCliente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(125, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(511, 271)
+        Me.ClientSize = New System.Drawing.Size(609, 285)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnGuardar)
         Me.Controls.Add(Me.GroupBox1)
@@ -214,4 +244,6 @@ Partial Class FNuevoCliente
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents txtPropietario As TextBox
+    Friend WithEvents Label3 As Label
 End Class

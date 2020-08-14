@@ -1,4 +1,4 @@
-﻿Option Strict On
+﻿
 
 Public Class FListaHabitacion2
     Dim Habitacion As New CHabitacion

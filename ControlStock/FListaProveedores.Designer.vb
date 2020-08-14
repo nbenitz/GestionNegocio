@@ -27,20 +27,16 @@ Partial Class FListaProveedores
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FListaProveedores))
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblAux = New System.Windows.Forms.Label()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.txtBuscar = New System.Windows.Forms.ToolStripTextBox()
         Me.DataGridViewImageColumn1 = New System.Windows.Forms.DataGridViewImageColumn()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.RUC = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Tel = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Dir = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewImageColumn2 = New System.Windows.Forms.DataGridViewImageColumn()
         Me.btnActualizar = New System.Windows.Forms.ToolStripButton()
         Me.cmbVerPor = New System.Windows.Forms.ToolStripComboBox()
@@ -54,6 +50,10 @@ Partial Class FListaProveedores
         Me.pnlEditar = New System.Windows.Forms.Panel()
         Me.lblEditar = New System.Windows.Forms.Label()
         Me.pbxEditar = New System.Windows.Forms.PictureBox()
+        Me.RUC = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Tel = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Dir = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
         Me.PnlEliminar.SuspendLayout()
@@ -123,48 +123,8 @@ Partial Class FListaProveedores
         DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.DataGridView1.RowHeadersVisible = False
-        Me.DataGridView1.Size = New System.Drawing.Size(583, 329)
+        Me.DataGridView1.Size = New System.Drawing.Size(697, 329)
         Me.DataGridView1.TabIndex = 5
-        '
-        'RUC
-        '
-        DataGridViewCellStyle3.Format = "N0"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.RUC.DefaultCellStyle = DataGridViewCellStyle3
-        Me.RUC.HeaderText = "RUC"
-        Me.RUC.Name = "RUC"
-        Me.RUC.ReadOnly = True
-        Me.RUC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'Nombre
-        '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.Nombre.DefaultCellStyle = DataGridViewCellStyle4
-        Me.Nombre.HeaderText = "Nombre"
-        Me.Nombre.Name = "Nombre"
-        Me.Nombre.ReadOnly = True
-        Me.Nombre.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'Tel
-        '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.NullValue = Nothing
-        Me.Tel.DefaultCellStyle = DataGridViewCellStyle5
-        Me.Tel.HeaderText = "Teléfono"
-        Me.Tel.Name = "Tel"
-        Me.Tel.ReadOnly = True
-        Me.Tel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'Dir
-        '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.NullValue = Nothing
-        Me.Dir.DefaultCellStyle = DataGridViewCellStyle6
-        Me.Dir.HeaderText = "Dirección"
-        Me.Dir.Name = "Dir"
-        Me.Dir.ReadOnly = True
-        Me.Dir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.Dir.Width = 250
         '
         'DataGridViewImageColumn2
         '
@@ -221,7 +181,7 @@ Partial Class FListaProveedores
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BtnNuevo, Me.btnActualizar, Me.ToolStripSeparator1, Me.ToolStripLabel1, Me.cmbVerPor, Me.txtBuscar})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(597, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(711, 25)
         Me.ToolStrip1.TabIndex = 6
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -231,7 +191,7 @@ Partial Class FListaProveedores
         Me.PnlEliminar.Controls.Add(Me.LblEliminar)
         Me.PnlEliminar.Controls.Add(Me.PbxEliminar)
         Me.PnlEliminar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PnlEliminar.Location = New System.Drawing.Point(485, 372)
+        Me.PnlEliminar.Location = New System.Drawing.Point(599, 372)
         Me.PnlEliminar.Name = "PnlEliminar"
         Me.PnlEliminar.Size = New System.Drawing.Size(105, 37)
         Me.PnlEliminar.TabIndex = 93
@@ -267,7 +227,7 @@ Partial Class FListaProveedores
         Me.pnlEditar.Controls.Add(Me.lblEditar)
         Me.pnlEditar.Controls.Add(Me.pbxEditar)
         Me.pnlEditar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.pnlEditar.Location = New System.Drawing.Point(389, 372)
+        Me.pnlEditar.Location = New System.Drawing.Point(503, 372)
         Me.pnlEditar.Name = "pnlEditar"
         Me.pnlEditar.Size = New System.Drawing.Size(93, 37)
         Me.pnlEditar.TabIndex = 92
@@ -297,12 +257,57 @@ Partial Class FListaProveedores
         Me.pbxEditar.TabIndex = 84
         Me.pbxEditar.TabStop = False
         '
+        'RUC
+        '
+        DataGridViewCellStyle3.Format = "N0"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.RUC.DefaultCellStyle = DataGridViewCellStyle3
+        Me.RUC.Frozen = True
+        Me.RUC.HeaderText = "RUC"
+        Me.RUC.Name = "RUC"
+        Me.RUC.ReadOnly = True
+        Me.RUC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'Nombre
+        '
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.Nombre.DefaultCellStyle = DataGridViewCellStyle4
+        Me.Nombre.Frozen = True
+        Me.Nombre.HeaderText = "Nombre"
+        Me.Nombre.Name = "Nombre"
+        Me.Nombre.ReadOnly = True
+        Me.Nombre.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Nombre.Width = 220
+        '
+        'Tel
+        '
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.Tel.DefaultCellStyle = DataGridViewCellStyle5
+        Me.Tel.Frozen = True
+        Me.Tel.HeaderText = "Teléfono"
+        Me.Tel.Name = "Tel"
+        Me.Tel.ReadOnly = True
+        Me.Tel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'Dir
+        '
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.Dir.DefaultCellStyle = DataGridViewCellStyle6
+        Me.Dir.Frozen = True
+        Me.Dir.HeaderText = "Dirección"
+        Me.Dir.Name = "Dir"
+        Me.Dir.ReadOnly = True
+        Me.Dir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Dir.Width = 250
+        '
         'FListaProveedores
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(125, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(597, 411)
+        Me.ClientSize = New System.Drawing.Size(711, 411)
         Me.Controls.Add(Me.PnlEliminar)
         Me.Controls.Add(Me.pnlEditar)
         Me.Controls.Add(Me.lblAux)
@@ -337,14 +342,14 @@ Partial Class FListaProveedores
     Friend WithEvents ToolStripLabel1 As System.Windows.Forms.ToolStripLabel
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
-    Friend WithEvents RUC As DataGridViewTextBoxColumn
-    Friend WithEvents Nombre As DataGridViewTextBoxColumn
-    Friend WithEvents Tel As DataGridViewTextBoxColumn
-    Friend WithEvents Dir As DataGridViewTextBoxColumn
     Friend WithEvents PnlEliminar As Panel
     Friend WithEvents LblEliminar As Label
     Friend WithEvents PbxEliminar As PictureBox
     Friend WithEvents pnlEditar As Panel
     Friend WithEvents lblEditar As Label
     Friend WithEvents pbxEditar As PictureBox
+    Friend WithEvents RUC As DataGridViewTextBoxColumn
+    Friend WithEvents Nombre As DataGridViewTextBoxColumn
+    Friend WithEvents Tel As DataGridViewTextBoxColumn
+    Friend WithEvents Dir As DataGridViewTextBoxColumn
 End Class

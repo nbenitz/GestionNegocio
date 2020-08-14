@@ -20,7 +20,7 @@ Public Class FBajaProducto
         cmbMotivos.Items.Clear()
         Dim Filas As Integer = TablaMotivo.Rows.Count
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
+            For i As Integer = 0 To (Filas - 1)
                 cmbMotivos.Items.Add(TablaMotivo.Rows(i).Item(1))
             Next
         End If
@@ -44,7 +44,7 @@ Public Class FBajaProducto
     End Sub
 
     Private Sub btnAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAceptar.Click
-        Dim idProd As UInt64 = CULng(txtCod.Text)
+        Dim idProd As String = txtCod.Text
         Dim Fecha As String = Format(Now, "yyyy-MM-dd HH:mm:ss")
         Dim Cant As Double
         Dim idMotivo As UInt16

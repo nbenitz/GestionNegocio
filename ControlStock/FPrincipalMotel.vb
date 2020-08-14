@@ -1,6 +1,9 @@
-﻿Option Strict On
+﻿
 
 Public Class FPrincipalMotel
+    Dim Caja As New CCaja
+    Dim NumCaja As UInt16 = 1
+
     Dim CI As String
     Dim ObjHabitacion As New CHabitacion
     Dim ModoHab As UInt16 = 2
@@ -160,7 +163,7 @@ Public Class FPrincipalMotel
     End Sub
 
     Private Sub CambiarDeUsuario_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CambiarDeUsuarioToolStripMenuItem.Click
-        Me.Hide()
+        Hide()
         FLogin.Show()
     End Sub
 
@@ -183,6 +186,46 @@ Public Class FPrincipalMotel
     Private Sub ReportesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ConsultarVenta.Click
         Dim frm As New FListaVenta(Reporte.Tipo.Venta)
         AbrirVentana(frm)
+    End Sub
+
+    Private Sub MnuAbrirCaja_Click(sender As Object, e As EventArgs) Handles mnuAbrirCaja.Click
+        If Caja.CajaAbierta(NumCaja) = False Then
+            Dim Frm As New FCajaMostrador
+            Frm.CIEmpleado = CI
+            AbrirVentana(Frm)
+        Else
+            MessageBox.Show("La caja ya está abierta")
+        End If
+    End Sub
+
+    Private Sub MnuCerrarCaja_Click(sender As Object, e As EventArgs) Handles mnuCerrarCaja.Click
+        If Caja.CajaAbierta(NumCaja) Then
+            Dim Frm As New FCajaMostrador
+            Frm.CIEmpleado = CI
+            Frm.ModoAbrir = False
+            AbrirVentana(Frm)
+        Else
+            MessageBox.Show("La caja ya está cerrada")
+        End If
+    End Sub
+
+    Private Sub MnuHistorialDeCaja_Click(sender As Object, e As EventArgs) Handles mnuHistorialDeCaja.Click
+        Dim Frm As New FListaCajas
+        Frm.CIEmpleado = CI
+        AbrirVentana(Frm)
+    End Sub
+
+    Private Sub ResumenDeCaja_Click(sender As Object, e As EventArgs) Handles mnuResumenDeCaja.Click
+        If Caja.CajaAbierta(NumCaja) Then
+            Dim Frm As New FResumenCaja
+            Frm.CIEmpleado = CI
+            Frm.Show()
+        Else
+            MessageBox.Show("Seleccione una Caja del Historial para ver su Resumen")
+            Dim Frm As New FListaCajas
+            Frm.CIEmpleado = CI
+            AbrirVentana(Frm)
+        End If
     End Sub
 
     Private Sub ComisionesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Comisiones.Click
@@ -334,6 +377,7 @@ Public Class FPrincipalMotel
         Dim Frm As FVenta = GetForm(HabNro)
         OcultarFrmVenta()
         AbrirVentana(Frm)
+
     End Sub
 
     Private Sub OcultarFrmVenta()
@@ -385,46 +429,52 @@ Public Class FPrincipalMotel
     End Sub
 
     Private Sub Habitacion_OcuparClick(sender As Object, e As HabEvents) Handles Habitacion1.OcuparClick, Habitacion2.OcuparClick, Habitacion3.OcuparClick, Habitacion4.OcuparClick, Habitacion5.OcuparClick, Habitacion6.OcuparClick, Habitacion7.OcuparClick, Habitacion8.OcuparClick, Habitacion9.OcuparClick, Habitacion10.OcuparClick
-        If ObjHabitacion.RegistrarEntrada(e.Habitacion) = False Then
-            MessageBox.Show("Hubo un problema al registrar la hora de entrada")
+        Dim Hab As Habitacion = CType(sender, Habitacion)
+        If Caja.CajaAbierta(NumCaja) Then
+            Hab.Ocupado = True
+            If ObjHabitacion.RegistrarEntrada(e.Habitacion) = False Then
+                MessageBox.Show("Hubo un problema al registrar la hora de entrada")
+            End If
+        Else
+            MessageBox.Show("Debe abrir la Caja antes realizar esta operación")
+            Dim Frm As New FCajaMostrador
+            Frm.CIEmpleado = CI
+            Frm.ShowDialog()
         End If
+
     End Sub
 
-    Private Sub Habitacion1_ToleranciaTick(sender As Object, e As HabEvents) Handles Habitacion1.ToleranciaTick, Habitacion2.ToleranciaTick, Habitacion3.ToleranciaTick, Habitacion4.ToleranciaTick, Habitacion5.ToleranciaTick, Habitacion6.ToleranciaTick, Habitacion7.ToleranciaTick, Habitacion8.ToleranciaTick, Habitacion9.ToleranciaTick, Habitacion10.ToleranciaTick
-        Dim ObjHab As Habitacion = CType(sender, Habitacion)
-        Dim HabNro As Integer = e.Habitacion
-        Dim frm As FVenta = frmVenta1
-        Dim Delete As Image = My.Resources.Resources.button_cancel
-        'Dim Descrip As String = CStr(TablaHab.Rows(HabNro - 1).Item(2))    ' Descripcion de la Habitación
-        'Dim Precio As UInt32 = CUInt(TablaHab.Rows(HabNro - 1).Item(3))    ' Precio de la Habitación
-        OcultarFrmVenta()
-        Select Case HabNro
-            Case Is = 1
-                frm = frmVenta1
-            Case Is = 2
-                frm = frmVenta2
-            Case Is = 3
-                frm = frmVenta3
-            Case Is = 4
-                frm = frmVenta4
-            Case Is = 5
-                frm = frmVenta5
-            Case Is = 6
-                frm = frmVenta6
-            Case Is = 7
-                frm = frmVenta7
-            Case Is = 8
-                frm = frmVenta8
-            Case Is = 9
-                frm = frmVenta9
-            Case Is = 10
-                frm = frmVenta10
-        End Select
-        'Dim Tiempo As String = Strings.Left(ObjHab.Tiempo, Len(ObjHab.Tiempo) - 3)
-        AbrirVentana(frm)
-        'frm.DataGridView1.Rows.Add(Delete, HabNro, Descrip, Tiempo, Precio, 50000, 0, 1, "Habitación")
-        frm.tmrTotal.Enabled = True
-    End Sub
+    'Private Sub Habitacion1_ToleranciaTick(sender As Object, e As HabEvents) Handles Habitacion1.ToleranciaTick, Habitacion2.ToleranciaTick, Habitacion3.ToleranciaTick, Habitacion4.ToleranciaTick, Habitacion5.ToleranciaTick, Habitacion6.ToleranciaTick, Habitacion7.ToleranciaTick, Habitacion8.ToleranciaTick, Habitacion9.ToleranciaTick, Habitacion10.ToleranciaTick
+    'Dim ObjHab As Habitacion = CType(sender, Habitacion)
+    'Dim HabNro As Integer = e.Habitacion
+    'Dim frm As FVenta = frmVenta1
+    'Dim Delete As Image = My.Resources.button_cancel
+    'OcultarFrmVenta()
+    'Select Case HabNro
+    'Case Is = 1
+    '           frm = frmVenta1
+    'Case Is = 2
+    '           frm = frmVenta2
+    'Case Is = 3
+    '           frm = frmVenta3
+    'Case Is = 4
+    '           frm = frmVenta4
+    'Case Is = 5
+    '           frm = frmVenta5
+    'Case Is = 6
+    '           frm = frmVenta6
+    'Case Is = 7
+    '           frm = frmVenta7
+    'Case Is = 8
+    '           frm = frmVenta8
+    'Case Is = 9
+    '           frm = frmVenta9
+    'Case Is = 10
+    '           frm = frmVenta10
+    'End Select
+    '   AbrirVentana(frm)
+    '  frm.tmrTotal.Enabled = True
+    'End Sub
 
     Private Sub Habitacion1_Tick(sender As Object, e As HabEvents) Handles Habitacion1.Tick, Habitacion2.Tick, Habitacion3.Tick, Habitacion4.Tick, Habitacion5.Tick, Habitacion6.Tick, Habitacion7.Tick, Habitacion8.Tick, Habitacion9.Tick, Habitacion10.Tick
         Dim HabNro As Integer = e.Habitacion
@@ -741,5 +791,11 @@ Public Class FPrincipalMotel
 
     End Sub
 
+    Private Sub Habitacion1_Load(sender As Object, e As EventArgs) Handles Habitacion1.Load
 
+    End Sub
+
+    Private Sub Habitacion9_ControlAdded(sender As Object, e As ControlEventArgs) Handles Habitacion9.ControlAdded
+
+    End Sub
 End Class

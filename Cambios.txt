@@ -4,11 +4,11 @@
 
 
 BASE DE DATOS
-	- Cambiar los campos idProd de las tablas altaprod y bajaprod y vistas a idProductoFK
-
-	- En la tabla Productos:
-		- Cambiar PrecioVUnit x Precio1
-		- Cambiar PrecioVUnit2 x Precio2
-		- Cambiar PrecioVUnit3 x Precio3
-		- Cambiar PrecioVPack x PrecioPack
-		- Cambiar PrecioCompra x Costo
+	- En la tabla Cliente:
+		- Agregar campo "Propietario" char 50, default " "
+	- En la tabla detallecompra:
+		- En el campo Obs = '','(Paquete)','(Caja)'
+	- En la Tabla Producto:
+		- Agregar Regiistro. Id = 0, Descrip = "Pruducto Eliminado"
+	- En ViewProducto
+		- Agregar condición en where:  AND p.idProducto <> "0"

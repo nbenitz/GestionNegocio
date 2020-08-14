@@ -19,7 +19,7 @@ Public Class FImprimir
         Condicion = Cond
         Vendedor = Vend
         Total = Totl
-        txtPreview.Text = vbCrLf + "               COMERCIAL SOSA             " + vbCrLf
+        txtPreview.Text = vbCrLf + "          COMERCIAL SAN CAYETANO          " + vbCrLf
         txtPreview.Text = txtPreview.Text + "  ========================================" + vbCrLf
         txtPreview.Text = txtPreview.Text + "  FACTURA : " + Nro + vbCrLf
         txtPreview.Text = txtPreview.Text + "  FECHA   : " + Fecha.ToString + vbCrLf
@@ -33,7 +33,7 @@ Public Class FImprimir
         Dim Cod, Descrip As String
         Dim Cant As Double
         Dim Precio, Importe As Integer
-        For i = 0 To Filas
+        For i As Integer = 0 To Filas
             Cod = CStr(Tabla.Rows(i).Item(1))
             Descrip = CStr(Tabla.Rows(i).Item(2))
             Cant = CDbl(Tabla.Rows(i).Item(3))
@@ -43,9 +43,9 @@ Public Class FImprimir
             MostrarPrecio(CStr(Cant), Format(Precio, "###,##0"), Format(Importe, "###,##0"))
         Next
         txtPreview.Text = txtPreview.Text + "                               -----------" + vbCrLf
-        Dim TotalGs = "         TOTAL Gs :                       "
-        Dim TotlLen = Len(Format(Totl, "###,##0"))
-        TotalGs = Microsoft.VisualBasic.Left(TotalGs, 42 - TotlLen)
+        Dim TotalGs As String = "         TOTAL Gs :                       "
+        Dim TotlLen As String = CStr(Len(Format(Totl, "###,##0")))
+        TotalGs = Microsoft.VisualBasic.Left(TotalGs, 42 - CInt(TotlLen))
         txtPreview.Text = txtPreview.Text + TotalGs + Format(Totl, "###,##0") + vbCrLf
         txtPreview.Text = txtPreview.Text + "  ========================================" + vbCrLf
         txtPreview.Text = txtPreview.Text + "   Devoluciones hasta 24hs despues de la  " + vbCrLf
@@ -118,8 +118,8 @@ Public Class FImprimir
         Dim Cod, Descrip As String
         Dim Cant As Double
         Dim Precio, Importe As Integer
-        Dim Filas = TablaDetalle.Rows.Count - 1
-        For i = 0 To Filas
+        Dim Filas As Integer = TablaDetalle.Rows.Count - 1
+        For i As Integer = 0 To Filas
             Cod = CStr(TablaDetalle.Rows(i).Item(1))
             Descrip = CStr(TablaDetalle.Rows(i).Item(2))
             Cant = CDbl(TablaDetalle.Rows(i).Item(3))

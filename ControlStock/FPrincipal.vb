@@ -351,4 +351,9 @@ Public Class FPrincipal
         End If
     End Sub
 
+    Private Sub AcercaDeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AcercaDeToolStripMenuItem.Click
+        Dim Frm As New FAcercaDe
+        Frm.ShowDialog()
+    End Sub
+
 End Class

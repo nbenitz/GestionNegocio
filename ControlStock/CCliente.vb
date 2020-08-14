@@ -1,16 +1,19 @@
-﻿Imports MySql.Data.MySqlClient
-Public Class CCliente
-    Private ObjCon As New BaseDato()
+﻿Option Strict On
 
-    Public Function InserCliente(ByVal CI As String, ByVal Nombre As String, ByVal Telefono As String, ByVal Direccion As String) As Boolean
+Imports MySql.Data.MySqlClient
+Public Class CCliente
+    Private ObjCon As New CBaseDato()
+
+    Public Function InserCliente(ByVal CI As String, ByVal Nombre As String, ByVal Telefono As String, ByVal Direccion As String, ByVal Propietario As String) As Boolean
         Dim inserto As Boolean = False
         Try
             ObjCon.Conectar()
-            ObjCon.CrearComando("INSERT INTO Cliente VALUES(?ci, ?nombre, ?telefono, ?direccion)")
+            ObjCon.CrearComando("INSERT INTO Cliente VALUES(?ci, ?nombre, ?telefono, ?direccion, ?propietario)")
             ObjCon.AsignarParametro("?ci", MySqlDbType.String, CI)
             ObjCon.AsignarParametro("?nombre", MySqlDbType.String, Nombre)
             ObjCon.AsignarParametro("?telefono", MySqlDbType.String, Telefono)
             ObjCon.AsignarParametro("?direccion", MySqlDbType.String, Direccion)
+            ObjCon.AsignarParametro("?propietario", MySqlDbType.String, Propietario)
             If ObjCon.EjecutarConsulta() > 0 Then
                 inserto = True
             Else
@@ -48,16 +51,17 @@ Public Class CCliente
         Return elimino
     End Function
 
-    Public Function Update(ByVal NewCI As String, ByVal Nombre As String, ByVal Telefono As String, ByVal Direccion As String, ByVal RUC As String) As Boolean
+    Public Function Update(ByVal NewCI As String, ByVal Nombre As String, ByVal Telefono As String, ByVal Direccion As String, ByVal Propietario As String, ByVal RUC As String) As Boolean
         Dim inserto As Boolean = False
         Try
             ObjCon.Conectar()
             ObjCon.CrearComando("UPDATE Cliente SET CI = ?newci, nombre = ?nombre, telefono = ?telefono, " +
-                                " direccion = ?direccion WHERE CI = ?ci")
+                                " direccion = ?direccion, propietario = ?propietario WHERE CI = ?ci")
             ObjCon.AsignarParametro("?newci", MySqlDbType.String, NewCI)
             ObjCon.AsignarParametro("?nombre", MySqlDbType.String, Nombre)
             ObjCon.AsignarParametro("?telefono", MySqlDbType.String, Telefono)
             ObjCon.AsignarParametro("?direccion", MySqlDbType.String, Direccion)
+            ObjCon.AsignarParametro("?propietario", MySqlDbType.String, Propietario)
             ObjCon.AsignarParametro("?ci", MySqlDbType.String, RUC)
             If ObjCon.EjecutarConsulta() > 0 Then
                 inserto = True
@@ -69,6 +73,7 @@ Public Class CCliente
             inserto = False
         End Try
         Return inserto
+
     End Function
 
 End Class

@@ -12,6 +12,12 @@ Public Class FNuevoProveed
         Dim Dir As String = txtDireccion.Text
         If RUC <> "" Then
             If Nombre <> "" Then
+                If Tel = "" Then
+                    Tel = " "
+                End If
+                If Dir = "" Then
+                    Dir = " "
+                End If
                 If EditMode = False Then
                     If Proveed.Insert(RUC, Nombre, Tel, Dir) = True Then
                         MessageBox.Show("Proveedor Guardado")

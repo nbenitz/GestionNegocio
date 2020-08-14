@@ -1,4 +1,4 @@
-﻿Option Strict On
+﻿
 Public Class FGasto
     Dim TablaGasto As New DataTable
     Dim Compra As New CCompra

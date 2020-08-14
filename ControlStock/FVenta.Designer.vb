@@ -23,10 +23,10 @@ Partial Class FVenta
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Del = New System.Windows.Forms.DataGridViewImageColumn()
         Me.Cod = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -48,6 +48,28 @@ Partial Class FVenta
         Me.Label7 = New System.Windows.Forms.Label()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.pbxCrearProd = New System.Windows.Forms.PictureBox()
+        Me.pnlCrearProd = New System.Windows.Forms.Panel()
+        Me.ChkGenerar = New System.Windows.Forms.CheckBox()
+        Me.btnNuevoPOk = New System.Windows.Forms.Button()
+        Me.Label43 = New System.Windows.Forms.Label()
+        Me.Label42 = New System.Windows.Forms.Label()
+        Me.Label41 = New System.Windows.Forms.Label()
+        Me.Label40 = New System.Windows.Forms.Label()
+        Me.txtNuevoPImporte = New System.Windows.Forms.TextBox()
+        Me.txtNuevoPPrecio = New System.Windows.Forms.TextBox()
+        Me.txtNuevoPCant = New System.Windows.Forms.TextBox()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.txtNuevoPDescrip = New System.Windows.Forms.TextBox()
+        Me.btnNuevoPCancel = New System.Windows.Forms.Button()
+        Me.txtNuevoPCod = New System.Windows.Forms.TextBox()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.pnlPiso = New System.Windows.Forms.Panel()
+        Me.btnPorUnidad = New System.Windows.Forms.Button()
+        Me.btnPorMetro = New System.Windows.Forms.Button()
+        Me.btnPorCaja = New System.Windows.Forms.Button()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.lblHab2 = New System.Windows.Forms.Label()
         Me.lblHab = New System.Windows.Forms.Label()
         Me.LblTituloHab = New System.Windows.Forms.Label()
@@ -60,6 +82,9 @@ Partial Class FVenta
         Me.btnPackCancel = New System.Windows.Forms.Button()
         Me.lblTituloXPack = New System.Windows.Forms.Label()
         Me.pnlPrecios = New System.Windows.Forms.Panel()
+        Me.txtEditPrecio = New System.Windows.Forms.TextBox()
+        Me.lblTitPrecio1 = New System.Windows.Forms.Label()
+        Me.lblTitPrecio2 = New System.Windows.Forms.Label()
         Me.optPrecio3 = New System.Windows.Forms.RadioButton()
         Me.optPrecio2 = New System.Windows.Forms.RadioButton()
         Me.optPrecio1 = New System.Windows.Forms.RadioButton()
@@ -95,14 +120,17 @@ Partial Class FVenta
         Me.txtNroFac = New System.Windows.Forms.TextBox()
         Me.pnlProdInfo = New System.Windows.Forms.Panel()
         Me.pnlPrecVenta = New System.Windows.Forms.Panel()
-        Me.lblCantDesc = New System.Windows.Forms.Label()
-        Me.lblPrecCant = New System.Windows.Forms.Label()
+        Me.pnlInfoPiso = New System.Windows.Forms.Panel()
+        Me.lblUnidxCaja = New System.Windows.Forms.Label()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.lblMxCaja = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.lblPrecUnidP = New System.Windows.Forms.Label()
         Me.lblPrecPack = New System.Windows.Forms.Label()
         Me.lblPrecUnit = New System.Windows.Forms.Label()
-        Me.Label90 = New System.Windows.Forms.Label()
-        Me.Label19 = New System.Windows.Forms.Label()
-        Me.Label21 = New System.Windows.Forms.Label()
-        Me.Label20 = New System.Windows.Forms.Label()
+        Me.lblPrecio1 = New System.Windows.Forms.Label()
+        Me.lblPrecio2 = New System.Windows.Forms.Label()
+        Me.lblPrecio3 = New System.Windows.Forms.Label()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.lblInfoCod = New System.Windows.Forms.Label()
@@ -115,17 +143,6 @@ Partial Class FVenta
         Me.lblInfoPrec2 = New System.Windows.Forms.Label()
         Me.pnlCliente = New System.Windows.Forms.Panel()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.btnCliGuardar = New System.Windows.Forms.Button()
-        Me.Label31 = New System.Windows.Forms.Label()
-        Me.txtCliTel = New System.Windows.Forms.TextBox()
-        Me.txtCliCI = New System.Windows.Forms.TextBox()
-        Me.Label30 = New System.Windows.Forms.Label()
-        Me.txtCliDir = New System.Windows.Forms.TextBox()
-        Me.txtCliNom = New System.Windows.Forms.TextBox()
-        Me.Label29 = New System.Windows.Forms.Label()
-        Me.Label28 = New System.Windows.Forms.Label()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.btnBusCliCancel = New System.Windows.Forms.Button()
         Me.btnCliAdd = New System.Windows.Forms.Button()
@@ -145,7 +162,21 @@ Partial Class FVenta
         Me.cmbCliResult = New System.Windows.Forms.ComboBox()
         Me.cmbCliBuscarPor = New System.Windows.Forms.ComboBox()
         Me.txtCliBuscar = New System.Windows.Forms.TextBox()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.txtPropietario = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnCliGuardar = New System.Windows.Forms.Button()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.txtCliTel = New System.Windows.Forms.TextBox()
+        Me.txtCliCI = New System.Windows.Forms.TextBox()
+        Me.Label30 = New System.Windows.Forms.Label()
+        Me.txtCliDir = New System.Windows.Forms.TextBox()
+        Me.txtCliNom = New System.Windows.Forms.TextBox()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.Label28 = New System.Windows.Forms.Label()
         Me.pnlBuscProd = New System.Windows.Forms.Panel()
+        Me.pbxNewProd = New System.Windows.Forms.PictureBox()
         Me.lblUnidXpack = New System.Windows.Forms.Label()
         Me.pnlVenderPor = New System.Windows.Forms.Panel()
         Me.optPaquete = New System.Windows.Forms.RadioButton()
@@ -175,6 +206,9 @@ Partial Class FVenta
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        CType(Me.pbxCrearProd, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlCrearProd.SuspendLayout()
+        Me.pnlPiso.SuspendLayout()
         CType(Me.btnGuardar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnCancel, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlXPack.SuspendLayout()
@@ -184,13 +218,15 @@ Partial Class FVenta
         Me.pnlCredito.SuspendLayout()
         Me.pnlProdInfo.SuspendLayout()
         Me.pnlPrecVenta.SuspendLayout()
+        Me.pnlInfoPiso.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlCliente.SuspendLayout()
         Me.TabControl1.SuspendLayout()
-        Me.TabPage2.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.pnlInfoCli.SuspendLayout()
+        Me.TabPage2.SuspendLayout()
         Me.pnlBuscProd.SuspendLayout()
+        CType(Me.pbxNewProd, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlVenderPor.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -212,10 +248,10 @@ Partial Class FVenta
         '
         'Del
         '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.NullValue = Nothing
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White
-        Me.Del.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.NullValue = Nothing
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White
+        Me.Del.DefaultCellStyle = DataGridViewCellStyle1
         Me.Del.HeaderText = ""
         Me.Del.Name = "Del"
         Me.Del.ReadOnly = True
@@ -252,10 +288,10 @@ Partial Class FVenta
         '
         'Precio
         '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle6.Format = "N0"
-        DataGridViewCellStyle6.NullValue = Nothing
-        Me.Precio.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Format = "N0"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.Precio.DefaultCellStyle = DataGridViewCellStyle2
         Me.Precio.HeaderText = "Precio"
         Me.Precio.Name = "Precio"
         Me.Precio.ReadOnly = True
@@ -265,10 +301,10 @@ Partial Class FVenta
         '
         'Importe
         '
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle7.Format = "N0"
-        DataGridViewCellStyle7.NullValue = Nothing
-        Me.Importe.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "N0"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.Importe.DefaultCellStyle = DataGridViewCellStyle3
         Me.Importe.HeaderText = "Importe"
         Me.Importe.Name = "Importe"
         Me.Importe.ReadOnly = True
@@ -404,6 +440,9 @@ Partial Class FVenta
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.pbxCrearProd)
+        Me.Panel1.Controls.Add(Me.pnlCrearProd)
+        Me.Panel1.Controls.Add(Me.pnlPiso)
         Me.Panel1.Controls.Add(Me.lblHab2)
         Me.Panel1.Controls.Add(Me.lblHab)
         Me.Panel1.Controls.Add(Me.LblTituloHab)
@@ -434,6 +473,245 @@ Partial Class FVenta
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(576, 541)
         Me.Panel1.TabIndex = 55
+        '
+        'pbxCrearProd
+        '
+        Me.pbxCrearProd.BackColor = System.Drawing.Color.Transparent
+        Me.pbxCrearProd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.pbxCrearProd.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pbxCrearProd.Image = Global.ControlStock.My.Resources.Resources.Plus_over2
+        Me.pbxCrearProd.Location = New System.Drawing.Point(9, 118)
+        Me.pbxCrearProd.Name = "pbxCrearProd"
+        Me.pbxCrearProd.Size = New System.Drawing.Size(21, 16)
+        Me.pbxCrearProd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.pbxCrearProd.TabIndex = 85
+        Me.pbxCrearProd.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.pbxCrearProd, "Crear Producto")
+        '
+        'pnlCrearProd
+        '
+        Me.pnlCrearProd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pnlCrearProd.Controls.Add(Me.ChkGenerar)
+        Me.pnlCrearProd.Controls.Add(Me.btnNuevoPOk)
+        Me.pnlCrearProd.Controls.Add(Me.Label43)
+        Me.pnlCrearProd.Controls.Add(Me.Label42)
+        Me.pnlCrearProd.Controls.Add(Me.Label41)
+        Me.pnlCrearProd.Controls.Add(Me.Label40)
+        Me.pnlCrearProd.Controls.Add(Me.txtNuevoPImporte)
+        Me.pnlCrearProd.Controls.Add(Me.txtNuevoPPrecio)
+        Me.pnlCrearProd.Controls.Add(Me.txtNuevoPCant)
+        Me.pnlCrearProd.Controls.Add(Me.Label21)
+        Me.pnlCrearProd.Controls.Add(Me.txtNuevoPDescrip)
+        Me.pnlCrearProd.Controls.Add(Me.btnNuevoPCancel)
+        Me.pnlCrearProd.Controls.Add(Me.txtNuevoPCod)
+        Me.pnlCrearProd.Controls.Add(Me.Label20)
+        Me.pnlCrearProd.Location = New System.Drawing.Point(8, 143)
+        Me.pnlCrearProd.Name = "pnlCrearProd"
+        Me.pnlCrearProd.Size = New System.Drawing.Size(548, 117)
+        Me.pnlCrearProd.TabIndex = 91
+        Me.pnlCrearProd.Visible = False
+        '
+        'ChkGenerar
+        '
+        Me.ChkGenerar.AutoSize = True
+        Me.ChkGenerar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkGenerar.ForeColor = System.Drawing.Color.Black
+        Me.ChkGenerar.Location = New System.Drawing.Point(21, 81)
+        Me.ChkGenerar.Name = "ChkGenerar"
+        Me.ChkGenerar.Size = New System.Drawing.Size(64, 17)
+        Me.ChkGenerar.TabIndex = 82
+        Me.ChkGenerar.Text = "Generar"
+        Me.ChkGenerar.UseVisualStyleBackColor = True
+        '
+        'btnNuevoPOk
+        '
+        Me.btnNuevoPOk.BackColor = System.Drawing.Color.White
+        Me.btnNuevoPOk.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnNuevoPOk.Location = New System.Drawing.Point(479, 83)
+        Me.btnNuevoPOk.Name = "btnNuevoPOk"
+        Me.btnNuevoPOk.Size = New System.Drawing.Size(63, 25)
+        Me.btnNuevoPOk.TabIndex = 81
+        Me.btnNuevoPOk.Text = "Aceptar"
+        Me.btnNuevoPOk.UseVisualStyleBackColor = False
+        '
+        'Label43
+        '
+        Me.Label43.AutoSize = True
+        Me.Label43.Location = New System.Drawing.Point(476, 40)
+        Me.Label43.Name = "Label43"
+        Me.Label43.Size = New System.Drawing.Size(42, 13)
+        Me.Label43.TabIndex = 80
+        Me.Label43.Text = "Importe"
+        Me.Label43.Visible = False
+        '
+        'Label42
+        '
+        Me.Label42.AutoSize = True
+        Me.Label42.Location = New System.Drawing.Point(401, 40)
+        Me.Label42.Name = "Label42"
+        Me.Label42.Size = New System.Drawing.Size(37, 13)
+        Me.Label42.TabIndex = 79
+        Me.Label42.Text = "Precio"
+        '
+        'Label41
+        '
+        Me.Label41.AutoSize = True
+        Me.Label41.Location = New System.Drawing.Point(336, 40)
+        Me.Label41.Name = "Label41"
+        Me.Label41.Size = New System.Drawing.Size(29, 13)
+        Me.Label41.TabIndex = 78
+        Me.Label41.Text = "Cant"
+        Me.Label41.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'Label40
+        '
+        Me.Label40.AutoSize = True
+        Me.Label40.Location = New System.Drawing.Point(100, 40)
+        Me.Label40.Name = "Label40"
+        Me.Label40.Size = New System.Drawing.Size(63, 13)
+        Me.Label40.TabIndex = 77
+        Me.Label40.Text = "Descripción"
+        '
+        'txtNuevoPImporte
+        '
+        Me.txtNuevoPImporte.Location = New System.Drawing.Point(470, 55)
+        Me.txtNuevoPImporte.Name = "txtNuevoPImporte"
+        Me.txtNuevoPImporte.ReadOnly = True
+        Me.txtNuevoPImporte.Size = New System.Drawing.Size(77, 20)
+        Me.txtNuevoPImporte.TabIndex = 76
+        Me.txtNuevoPImporte.Visible = False
+        '
+        'txtNuevoPPrecio
+        '
+        Me.txtNuevoPPrecio.Location = New System.Drawing.Point(394, 55)
+        Me.txtNuevoPPrecio.Name = "txtNuevoPPrecio"
+        Me.txtNuevoPPrecio.Size = New System.Drawing.Size(77, 20)
+        Me.txtNuevoPPrecio.TabIndex = 75
+        '
+        'txtNuevoPCant
+        '
+        Me.txtNuevoPCant.Location = New System.Drawing.Point(332, 55)
+        Me.txtNuevoPCant.Name = "txtNuevoPCant"
+        Me.txtNuevoPCant.Size = New System.Drawing.Size(63, 20)
+        Me.txtNuevoPCant.TabIndex = 74
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Location = New System.Drawing.Point(27, 40)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(40, 13)
+        Me.Label21.TabIndex = 73
+        Me.Label21.Text = "Código"
+        '
+        'txtNuevoPDescrip
+        '
+        Me.txtNuevoPDescrip.Location = New System.Drawing.Point(95, 55)
+        Me.txtNuevoPDescrip.Name = "txtNuevoPDescrip"
+        Me.txtNuevoPDescrip.Size = New System.Drawing.Size(238, 20)
+        Me.txtNuevoPDescrip.TabIndex = 72
+        '
+        'btnNuevoPCancel
+        '
+        Me.btnNuevoPCancel.BackColor = System.Drawing.Color.White
+        Me.btnNuevoPCancel.FlatAppearance.BorderSize = 0
+        Me.btnNuevoPCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnNuevoPCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnNuevoPCancel.Image = Global.ControlStock.My.Resources.Resources.cancel
+        Me.btnNuevoPCancel.Location = New System.Drawing.Point(525, 2)
+        Me.btnNuevoPCancel.Name = "btnNuevoPCancel"
+        Me.btnNuevoPCancel.Size = New System.Drawing.Size(18, 18)
+        Me.btnNuevoPCancel.TabIndex = 71
+        Me.btnNuevoPCancel.UseVisualStyleBackColor = False
+        '
+        'txtNuevoPCod
+        '
+        Me.txtNuevoPCod.Location = New System.Drawing.Point(21, 55)
+        Me.txtNuevoPCod.Name = "txtNuevoPCod"
+        Me.txtNuevoPCod.Size = New System.Drawing.Size(75, 20)
+        Me.txtNuevoPCod.TabIndex = 68
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label20.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.Label20.Location = New System.Drawing.Point(18, 10)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(124, 18)
+        Me.Label20.TabIndex = 65
+        Me.Label20.Text = "Crear Producto"
+        '
+        'pnlPiso
+        '
+        Me.pnlPiso.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pnlPiso.Controls.Add(Me.btnPorUnidad)
+        Me.pnlPiso.Controls.Add(Me.btnPorMetro)
+        Me.pnlPiso.Controls.Add(Me.btnPorCaja)
+        Me.pnlPiso.Controls.Add(Me.Button5)
+        Me.pnlPiso.Controls.Add(Me.Label4)
+        Me.pnlPiso.Location = New System.Drawing.Point(285, 180)
+        Me.pnlPiso.Name = "pnlPiso"
+        Me.pnlPiso.Size = New System.Drawing.Size(150, 139)
+        Me.pnlPiso.TabIndex = 90
+        Me.pnlPiso.Visible = False
+        '
+        'btnPorUnidad
+        '
+        Me.btnPorUnidad.BackColor = System.Drawing.Color.White
+        Me.btnPorUnidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPorUnidad.Location = New System.Drawing.Point(32, 101)
+        Me.btnPorUnidad.Name = "btnPorUnidad"
+        Me.btnPorUnidad.Size = New System.Drawing.Size(82, 25)
+        Me.btnPorUnidad.TabIndex = 74
+        Me.btnPorUnidad.Text = "Por Unidad"
+        Me.btnPorUnidad.UseVisualStyleBackColor = False
+        '
+        'btnPorMetro
+        '
+        Me.btnPorMetro.BackColor = System.Drawing.Color.White
+        Me.btnPorMetro.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPorMetro.Location = New System.Drawing.Point(32, 70)
+        Me.btnPorMetro.Name = "btnPorMetro"
+        Me.btnPorMetro.Size = New System.Drawing.Size(82, 25)
+        Me.btnPorMetro.TabIndex = 73
+        Me.btnPorMetro.Text = "Por Metro"
+        Me.btnPorMetro.UseVisualStyleBackColor = False
+        '
+        'btnPorCaja
+        '
+        Me.btnPorCaja.BackColor = System.Drawing.Color.White
+        Me.btnPorCaja.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPorCaja.Location = New System.Drawing.Point(32, 39)
+        Me.btnPorCaja.Name = "btnPorCaja"
+        Me.btnPorCaja.Size = New System.Drawing.Size(82, 25)
+        Me.btnPorCaja.TabIndex = 72
+        Me.btnPorCaja.Text = "Por Caja"
+        Me.btnPorCaja.UseVisualStyleBackColor = False
+        '
+        'Button5
+        '
+        Me.Button5.BackColor = System.Drawing.Color.White
+        Me.Button5.FlatAppearance.BorderSize = 0
+        Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button5.Image = Global.ControlStock.My.Resources.Resources.cancel
+        Me.Button5.Location = New System.Drawing.Point(128, 3)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(18, 18)
+        Me.Button5.TabIndex = 71
+        Me.Button5.UseVisualStyleBackColor = False
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.Label4.Location = New System.Drawing.Point(29, 9)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(92, 18)
+        Me.Label4.TabIndex = 65
+        Me.Label4.Text = "Vender Por"
         '
         'lblHab2
         '
@@ -516,7 +794,7 @@ Partial Class FVenta
         Me.pnlXPack.Controls.Add(Me.btnPack)
         Me.pnlXPack.Controls.Add(Me.btnPackCancel)
         Me.pnlXPack.Controls.Add(Me.lblTituloXPack)
-        Me.pnlXPack.Location = New System.Drawing.Point(173, 236)
+        Me.pnlXPack.Location = New System.Drawing.Point(241, 236)
         Me.pnlXPack.Name = "pnlXPack"
         Me.pnlXPack.Size = New System.Drawing.Size(209, 91)
         Me.pnlXPack.TabIndex = 82
@@ -571,23 +849,53 @@ Partial Class FVenta
         'pnlPrecios
         '
         Me.pnlPrecios.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pnlPrecios.Controls.Add(Me.txtEditPrecio)
+        Me.pnlPrecios.Controls.Add(Me.lblTitPrecio1)
+        Me.pnlPrecios.Controls.Add(Me.lblTitPrecio2)
         Me.pnlPrecios.Controls.Add(Me.optPrecio3)
         Me.pnlPrecios.Controls.Add(Me.optPrecio2)
         Me.pnlPrecios.Controls.Add(Me.optPrecio1)
         Me.pnlPrecios.Controls.Add(Me.Button2)
         Me.pnlPrecios.Controls.Add(Me.lblTitPrecios)
-        Me.pnlPrecios.Location = New System.Drawing.Point(363, 195)
+        Me.pnlPrecios.Location = New System.Drawing.Point(337, 204)
         Me.pnlPrecios.Name = "pnlPrecios"
-        Me.pnlPrecios.Size = New System.Drawing.Size(181, 102)
+        Me.pnlPrecios.Size = New System.Drawing.Size(217, 119)
         Me.pnlPrecios.TabIndex = 83
         Me.pnlPrecios.Visible = False
+        '
+        'txtEditPrecio
+        '
+        Me.txtEditPrecio.Location = New System.Drawing.Point(30, 85)
+        Me.txtEditPrecio.Name = "txtEditPrecio"
+        Me.txtEditPrecio.Size = New System.Drawing.Size(154, 20)
+        Me.txtEditPrecio.TabIndex = 77
+        '
+        'lblTitPrecio1
+        '
+        Me.lblTitPrecio1.AutoSize = True
+        Me.lblTitPrecio1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitPrecio1.Location = New System.Drawing.Point(130, 38)
+        Me.lblTitPrecio1.Name = "lblTitPrecio1"
+        Me.lblTitPrecio1.Size = New System.Drawing.Size(54, 13)
+        Me.lblTitPrecio1.TabIndex = 76
+        Me.lblTitPrecio1.Text = "Precio 1"
+        '
+        'lblTitPrecio2
+        '
+        Me.lblTitPrecio2.AutoSize = True
+        Me.lblTitPrecio2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitPrecio2.Location = New System.Drawing.Point(130, 61)
+        Me.lblTitPrecio2.Name = "lblTitPrecio2"
+        Me.lblTitPrecio2.Size = New System.Drawing.Size(54, 13)
+        Me.lblTitPrecio2.TabIndex = 75
+        Me.lblTitPrecio2.Text = "Precio 2"
         '
         'optPrecio3
         '
         Me.optPrecio3.AutoSize = True
         Me.optPrecio3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.optPrecio3.ForeColor = System.Drawing.Color.Black
-        Me.optPrecio3.Location = New System.Drawing.Point(41, 82)
+        Me.optPrecio3.Location = New System.Drawing.Point(181, 101)
         Me.optPrecio3.Name = "optPrecio3"
         Me.optPrecio3.Size = New System.Drawing.Size(64, 17)
         Me.optPrecio3.TabIndex = 74
@@ -600,11 +908,11 @@ Partial Class FVenta
         Me.optPrecio2.AutoSize = True
         Me.optPrecio2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.optPrecio2.ForeColor = System.Drawing.Color.Black
-        Me.optPrecio2.Location = New System.Drawing.Point(41, 59)
+        Me.optPrecio2.Location = New System.Drawing.Point(30, 59)
         Me.optPrecio2.Name = "optPrecio2"
-        Me.optPrecio2.Size = New System.Drawing.Size(64, 17)
+        Me.optPrecio2.Size = New System.Drawing.Size(98, 17)
         Me.optPrecio2.TabIndex = 73
-        Me.optPrecio2.Text = "Precio 2"
+        Me.optPrecio2.Text = "Precio Contado"
         Me.optPrecio2.UseVisualStyleBackColor = True
         '
         'optPrecio1
@@ -612,11 +920,11 @@ Partial Class FVenta
         Me.optPrecio1.AutoSize = True
         Me.optPrecio1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.optPrecio1.ForeColor = System.Drawing.Color.Black
-        Me.optPrecio1.Location = New System.Drawing.Point(41, 36)
+        Me.optPrecio1.Location = New System.Drawing.Point(30, 36)
         Me.optPrecio1.Name = "optPrecio1"
-        Me.optPrecio1.Size = New System.Drawing.Size(64, 17)
+        Me.optPrecio1.Size = New System.Drawing.Size(91, 17)
         Me.optPrecio1.TabIndex = 72
-        Me.optPrecio1.Text = "Precio 1"
+        Me.optPrecio1.Text = "Precio Crédito"
         Me.optPrecio1.UseVisualStyleBackColor = True
         '
         'Button2
@@ -626,7 +934,7 @@ Partial Class FVenta
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.Image = Global.ControlStock.My.Resources.Resources.cancel
-        Me.Button2.Location = New System.Drawing.Point(157, 2)
+        Me.Button2.Location = New System.Drawing.Point(194, 4)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(18, 18)
         Me.Button2.TabIndex = 71
@@ -649,7 +957,7 @@ Partial Class FVenta
         Me.pnlEditCant.Controls.Add(Me.btnEditCantCancel)
         Me.pnlEditCant.Controls.Add(Me.txtEditCant)
         Me.pnlEditCant.Controls.Add(Me.lblEditCant)
-        Me.pnlEditCant.Location = New System.Drawing.Point(176, 195)
+        Me.pnlEditCant.Location = New System.Drawing.Point(144, 212)
         Me.pnlEditCant.Name = "pnlEditCant"
         Me.pnlEditCant.Size = New System.Drawing.Size(204, 70)
         Me.pnlEditCant.TabIndex = 81
@@ -695,6 +1003,7 @@ Partial Class FVenta
         Me.chkMayorista.TabIndex = 80
         Me.chkMayorista.Text = "Mayorista"
         Me.chkMayorista.UseVisualStyleBackColor = True
+        Me.chkMayorista.Visible = False
         '
         'pbxBuscCli
         '
@@ -963,48 +1272,90 @@ Partial Class FVenta
         Me.pnlProdInfo.Controls.Add(Me.lblInfoPrec)
         Me.pnlProdInfo.Controls.Add(Me.Label12)
         Me.pnlProdInfo.Controls.Add(Me.lblInfoPrec2)
-        Me.pnlProdInfo.Location = New System.Drawing.Point(3, 202)
+        Me.pnlProdInfo.Location = New System.Drawing.Point(3, 154)
         Me.pnlProdInfo.Name = "pnlProdInfo"
-        Me.pnlProdInfo.Size = New System.Drawing.Size(248, 343)
+        Me.pnlProdInfo.Size = New System.Drawing.Size(248, 391)
         Me.pnlProdInfo.TabIndex = 67
         '
         'pnlPrecVenta
         '
-        Me.pnlPrecVenta.Controls.Add(Me.lblCantDesc)
-        Me.pnlPrecVenta.Controls.Add(Me.lblPrecCant)
+        Me.pnlPrecVenta.Controls.Add(Me.pnlInfoPiso)
+        Me.pnlPrecVenta.Controls.Add(Me.lblPrecUnidP)
         Me.pnlPrecVenta.Controls.Add(Me.lblPrecPack)
         Me.pnlPrecVenta.Controls.Add(Me.lblPrecUnit)
-        Me.pnlPrecVenta.Controls.Add(Me.Label90)
-        Me.pnlPrecVenta.Controls.Add(Me.Label19)
-        Me.pnlPrecVenta.Controls.Add(Me.Label21)
-        Me.pnlPrecVenta.Controls.Add(Me.Label20)
+        Me.pnlPrecVenta.Controls.Add(Me.lblPrecio1)
+        Me.pnlPrecVenta.Controls.Add(Me.lblPrecio2)
+        Me.pnlPrecVenta.Controls.Add(Me.lblPrecio3)
         Me.pnlPrecVenta.Controls.Add(Me.Label9)
-        Me.pnlPrecVenta.Location = New System.Drawing.Point(0, 247)
+        Me.pnlPrecVenta.Location = New System.Drawing.Point(0, 249)
         Me.pnlPrecVenta.Name = "pnlPrecVenta"
-        Me.pnlPrecVenta.Size = New System.Drawing.Size(248, 96)
+        Me.pnlPrecVenta.Size = New System.Drawing.Size(248, 142)
         Me.pnlPrecVenta.TabIndex = 55
         '
-        'lblCantDesc
+        'pnlInfoPiso
         '
-        Me.lblCantDesc.AutoSize = True
-        Me.lblCantDesc.ForeColor = System.Drawing.Color.White
-        Me.lblCantDesc.Location = New System.Drawing.Point(170, 78)
-        Me.lblCantDesc.Name = "lblCantDesc"
-        Me.lblCantDesc.Size = New System.Drawing.Size(73, 13)
-        Me.lblCantDesc.TabIndex = 62
-        Me.lblCantDesc.Text = "xxx Unidades)"
-        Me.lblCantDesc.Visible = False
+        Me.pnlInfoPiso.Controls.Add(Me.lblUnidxCaja)
+        Me.pnlInfoPiso.Controls.Add(Me.Label19)
+        Me.pnlInfoPiso.Controls.Add(Me.lblMxCaja)
+        Me.pnlInfoPiso.Controls.Add(Me.Label14)
+        Me.pnlInfoPiso.Location = New System.Drawing.Point(0, 79)
+        Me.pnlInfoPiso.Name = "pnlInfoPiso"
+        Me.pnlInfoPiso.Size = New System.Drawing.Size(248, 69)
+        Me.pnlInfoPiso.TabIndex = 62
+        Me.pnlInfoPiso.Visible = False
         '
-        'lblPrecCant
+        'lblUnidxCaja
         '
-        Me.lblPrecCant.AutoSize = True
-        Me.lblPrecCant.ForeColor = System.Drawing.Color.White
-        Me.lblPrecCant.Location = New System.Drawing.Point(96, 62)
-        Me.lblPrecCant.Name = "lblPrecCant"
-        Me.lblPrecCant.Size = New System.Drawing.Size(22, 13)
-        Me.lblPrecCant.TabIndex = 61
-        Me.lblPrecCant.Text = "xxx"
-        Me.lblPrecCant.Visible = False
+        Me.lblUnidxCaja.AutoSize = True
+        Me.lblUnidxCaja.ForeColor = System.Drawing.Color.White
+        Me.lblUnidxCaja.Location = New System.Drawing.Point(115, 25)
+        Me.lblUnidxCaja.Name = "lblUnidxCaja"
+        Me.lblUnidxCaja.Size = New System.Drawing.Size(22, 13)
+        Me.lblUnidxCaja.TabIndex = 65
+        Me.lblUnidxCaja.Text = "xxx"
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label19.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label19.Location = New System.Drawing.Point(3, 25)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(111, 13)
+        Me.Label19.TabIndex = 64
+        Me.Label19.Text = "- Unidades x Caja:"
+        '
+        'lblMxCaja
+        '
+        Me.lblMxCaja.AutoSize = True
+        Me.lblMxCaja.ForeColor = System.Drawing.Color.White
+        Me.lblMxCaja.Location = New System.Drawing.Point(99, 5)
+        Me.lblMxCaja.Name = "lblMxCaja"
+        Me.lblMxCaja.Size = New System.Drawing.Size(22, 13)
+        Me.lblMxCaja.TabIndex = 63
+        Me.lblMxCaja.Text = "xxx"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label14.Location = New System.Drawing.Point(3, 5)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(96, 13)
+        Me.Label14.TabIndex = 62
+        Me.Label14.Text = "- Metros x Caja:"
+        '
+        'lblPrecUnidP
+        '
+        Me.lblPrecUnidP.AutoSize = True
+        Me.lblPrecUnidP.ForeColor = System.Drawing.Color.White
+        Me.lblPrecUnidP.Location = New System.Drawing.Point(96, 62)
+        Me.lblPrecUnidP.Name = "lblPrecUnidP"
+        Me.lblPrecUnidP.Size = New System.Drawing.Size(22, 13)
+        Me.lblPrecUnidP.TabIndex = 61
+        Me.lblPrecUnidP.Text = "xxx"
+        Me.lblPrecUnidP.Visible = False
         '
         'lblPrecPack
         '
@@ -1026,50 +1377,39 @@ Partial Class FVenta
         Me.lblPrecUnit.TabIndex = 59
         Me.lblPrecUnit.Text = "xxx"
         '
-        'Label90
+        'lblPrecio1
         '
-        Me.Label90.AutoSize = True
-        Me.Label90.ForeColor = System.Drawing.Color.White
-        Me.Label90.Location = New System.Drawing.Point(113, 78)
-        Me.Label90.Name = "Label90"
-        Me.Label90.Size = New System.Drawing.Size(58, 13)
-        Me.Label90.TabIndex = 58
-        Me.Label90.Text = "(A partir de"
-        Me.Label90.Visible = False
+        Me.lblPrecio1.AutoSize = True
+        Me.lblPrecio1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPrecio1.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.lblPrecio1.Location = New System.Drawing.Point(3, 20)
+        Me.lblPrecio1.Name = "lblPrecio1"
+        Me.lblPrecio1.Size = New System.Drawing.Size(82, 13)
+        Me.lblPrecio1.TabIndex = 56
+        Me.lblPrecio1.Text = "- Por Unidad:"
         '
-        'Label19
+        'lblPrecio2
         '
-        Me.Label19.AutoSize = True
-        Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label19.ForeColor = System.Drawing.Color.LightSteelBlue
-        Me.Label19.Location = New System.Drawing.Point(3, 20)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(82, 13)
-        Me.Label19.TabIndex = 56
-        Me.Label19.Text = "- Por Unidad:"
+        Me.lblPrecio2.AutoSize = True
+        Me.lblPrecio2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPrecio2.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.lblPrecio2.Location = New System.Drawing.Point(3, 41)
+        Me.lblPrecio2.Name = "lblPrecio2"
+        Me.lblPrecio2.Size = New System.Drawing.Size(89, 13)
+        Me.lblPrecio2.TabIndex = 57
+        Me.lblPrecio2.Text = "- Por Paquete:"
         '
-        'Label21
+        'lblPrecio3
         '
-        Me.Label21.AutoSize = True
-        Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label21.ForeColor = System.Drawing.Color.LightSteelBlue
-        Me.Label21.Location = New System.Drawing.Point(3, 41)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(89, 13)
-        Me.Label21.TabIndex = 57
-        Me.Label21.Text = "- Por Paquete:"
-        '
-        'Label20
-        '
-        Me.Label20.AutoSize = True
-        Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label20.ForeColor = System.Drawing.Color.LightSteelBlue
-        Me.Label20.Location = New System.Drawing.Point(3, 62)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(92, 13)
-        Me.Label20.TabIndex = 3
-        Me.Label20.Text = "- Por Cantidad:"
-        Me.Label20.Visible = False
+        Me.lblPrecio3.AutoSize = True
+        Me.lblPrecio3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPrecio3.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.lblPrecio3.Location = New System.Drawing.Point(3, 62)
+        Me.lblPrecio3.Name = "lblPrecio3"
+        Me.lblPrecio3.Size = New System.Drawing.Size(82, 13)
+        Me.lblPrecio3.TabIndex = 3
+        Me.lblPrecio3.Text = "- Por Unidad:"
+        Me.lblPrecio3.Visible = False
         '
         'Label24
         '
@@ -1140,15 +1480,15 @@ Partial Class FVenta
         Me.Label26.ForeColor = System.Drawing.Color.LightSteelBlue
         Me.Label26.Location = New System.Drawing.Point(11, 255)
         Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(43, 13)
+        Me.Label26.Size = New System.Drawing.Size(98, 13)
         Me.Label26.TabIndex = 65
-        Me.Label26.Text = "Precio"
+        Me.Label26.Text = "Precio Minorista"
         '
         'lblInfoPrec
         '
         Me.lblInfoPrec.AutoSize = True
         Me.lblInfoPrec.ForeColor = System.Drawing.Color.White
-        Me.lblInfoPrec.Location = New System.Drawing.Point(57, 255)
+        Me.lblInfoPrec.Location = New System.Drawing.Point(110, 255)
         Me.lblInfoPrec.Name = "lblInfoPrec"
         Me.lblInfoPrec.Size = New System.Drawing.Size(22, 13)
         Me.lblInfoPrec.TabIndex = 66
@@ -1185,131 +1525,13 @@ Partial Class FVenta
         '
         'TabControl1
         '
-        Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Controls.Add(Me.TabPage1)
+        Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Location = New System.Drawing.Point(3, 3)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
         Me.TabControl1.Size = New System.Drawing.Size(242, 353)
         Me.TabControl1.TabIndex = 1
-        '
-        'TabPage2
-        '
-        Me.TabPage2.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(125, Byte), Integer))
-        Me.TabPage2.Controls.Add(Me.Button1)
-        Me.TabPage2.Controls.Add(Me.btnCliGuardar)
-        Me.TabPage2.Controls.Add(Me.Label31)
-        Me.TabPage2.Controls.Add(Me.txtCliTel)
-        Me.TabPage2.Controls.Add(Me.txtCliCI)
-        Me.TabPage2.Controls.Add(Me.Label30)
-        Me.TabPage2.Controls.Add(Me.txtCliDir)
-        Me.TabPage2.Controls.Add(Me.txtCliNom)
-        Me.TabPage2.Controls.Add(Me.Label29)
-        Me.TabPage2.Controls.Add(Me.Label28)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(234, 327)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Nuevo Cliente"
-        '
-        'Button1
-        '
-        Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(135, 225)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 76
-        Me.Button1.Text = "Cancelar"
-        Me.Button1.UseVisualStyleBackColor = False
-        '
-        'btnCliGuardar
-        '
-        Me.btnCliGuardar.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
-        Me.btnCliGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnCliGuardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCliGuardar.ForeColor = System.Drawing.Color.White
-        Me.btnCliGuardar.Location = New System.Drawing.Point(24, 225)
-        Me.btnCliGuardar.Name = "btnCliGuardar"
-        Me.btnCliGuardar.Size = New System.Drawing.Size(75, 23)
-        Me.btnCliGuardar.TabIndex = 8
-        Me.btnCliGuardar.Text = "Guardar"
-        Me.btnCliGuardar.UseVisualStyleBackColor = False
-        '
-        'Label31
-        '
-        Me.Label31.AutoSize = True
-        Me.Label31.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label31.ForeColor = System.Drawing.Color.LightSteelBlue
-        Me.Label31.Location = New System.Drawing.Point(21, 17)
-        Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(47, 13)
-        Me.Label31.TabIndex = 7
-        Me.Label31.Text = "CI Nro."
-        '
-        'txtCliTel
-        '
-        Me.txtCliTel.Location = New System.Drawing.Point(24, 129)
-        Me.txtCliTel.Name = "txtCliTel"
-        Me.txtCliTel.Size = New System.Drawing.Size(186, 20)
-        Me.txtCliTel.TabIndex = 1
-        '
-        'txtCliCI
-        '
-        Me.txtCliCI.Location = New System.Drawing.Point(24, 33)
-        Me.txtCliCI.Name = "txtCliCI"
-        Me.txtCliCI.Size = New System.Drawing.Size(186, 20)
-        Me.txtCliCI.TabIndex = 0
-        '
-        'Label30
-        '
-        Me.Label30.AutoSize = True
-        Me.Label30.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label30.ForeColor = System.Drawing.Color.LightSteelBlue
-        Me.Label30.Location = New System.Drawing.Point(21, 65)
-        Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(109, 13)
-        Me.Label30.TabIndex = 6
-        Me.Label30.Text = "Nombre y Apellido"
-        '
-        'txtCliDir
-        '
-        Me.txtCliDir.Location = New System.Drawing.Point(24, 179)
-        Me.txtCliDir.Name = "txtCliDir"
-        Me.txtCliDir.Size = New System.Drawing.Size(186, 20)
-        Me.txtCliDir.TabIndex = 2
-        '
-        'txtCliNom
-        '
-        Me.txtCliNom.Location = New System.Drawing.Point(24, 81)
-        Me.txtCliNom.Name = "txtCliNom"
-        Me.txtCliNom.Size = New System.Drawing.Size(186, 20)
-        Me.txtCliNom.TabIndex = 3
-        '
-        'Label29
-        '
-        Me.Label29.AutoSize = True
-        Me.Label29.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label29.ForeColor = System.Drawing.Color.LightSteelBlue
-        Me.Label29.Location = New System.Drawing.Point(21, 113)
-        Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(57, 13)
-        Me.Label29.TabIndex = 5
-        Me.Label29.Text = "Teléfono"
-        '
-        'Label28
-        '
-        Me.Label28.AutoSize = True
-        Me.Label28.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label28.ForeColor = System.Drawing.Color.LightSteelBlue
-        Me.Label28.Location = New System.Drawing.Point(21, 163)
-        Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(61, 13)
-        Me.Label28.TabIndex = 4
-        Me.Label28.Text = "Dirección"
         '
         'TabPage1
         '
@@ -1526,8 +1748,147 @@ Partial Class FVenta
         Me.txtCliBuscar.Size = New System.Drawing.Size(187, 20)
         Me.txtCliBuscar.TabIndex = 67
         '
+        'TabPage2
+        '
+        Me.TabPage2.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(125, Byte), Integer))
+        Me.TabPage2.Controls.Add(Me.txtPropietario)
+        Me.TabPage2.Controls.Add(Me.Label13)
+        Me.TabPage2.Controls.Add(Me.Button1)
+        Me.TabPage2.Controls.Add(Me.btnCliGuardar)
+        Me.TabPage2.Controls.Add(Me.Label31)
+        Me.TabPage2.Controls.Add(Me.txtCliTel)
+        Me.TabPage2.Controls.Add(Me.txtCliCI)
+        Me.TabPage2.Controls.Add(Me.Label30)
+        Me.TabPage2.Controls.Add(Me.txtCliDir)
+        Me.TabPage2.Controls.Add(Me.txtCliNom)
+        Me.TabPage2.Controls.Add(Me.Label29)
+        Me.TabPage2.Controls.Add(Me.Label28)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage2.Name = "TabPage2"
+        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage2.Size = New System.Drawing.Size(234, 327)
+        Me.TabPage2.TabIndex = 1
+        Me.TabPage2.Text = "Nuevo Cliente"
+        '
+        'txtPropietario
+        '
+        Me.txtPropietario.Location = New System.Drawing.Point(24, 227)
+        Me.txtPropietario.Name = "txtPropietario"
+        Me.txtPropietario.Size = New System.Drawing.Size(186, 20)
+        Me.txtPropietario.TabIndex = 77
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label13.Location = New System.Drawing.Point(21, 211)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(68, 13)
+        Me.Label13.TabIndex = 78
+        Me.Label13.Text = "Propietario"
+        '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.ForeColor = System.Drawing.Color.White
+        Me.Button1.Location = New System.Drawing.Point(135, 269)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 76
+        Me.Button1.Text = "Cancelar"
+        Me.Button1.UseVisualStyleBackColor = False
+        '
+        'btnCliGuardar
+        '
+        Me.btnCliGuardar.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
+        Me.btnCliGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnCliGuardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCliGuardar.ForeColor = System.Drawing.Color.White
+        Me.btnCliGuardar.Location = New System.Drawing.Point(24, 269)
+        Me.btnCliGuardar.Name = "btnCliGuardar"
+        Me.btnCliGuardar.Size = New System.Drawing.Size(75, 23)
+        Me.btnCliGuardar.TabIndex = 8
+        Me.btnCliGuardar.Text = "Guardar"
+        Me.btnCliGuardar.UseVisualStyleBackColor = False
+        '
+        'Label31
+        '
+        Me.Label31.AutoSize = True
+        Me.Label31.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label31.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label31.Location = New System.Drawing.Point(21, 17)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(47, 13)
+        Me.Label31.TabIndex = 7
+        Me.Label31.Text = "CI Nro."
+        '
+        'txtCliTel
+        '
+        Me.txtCliTel.Location = New System.Drawing.Point(24, 129)
+        Me.txtCliTel.Name = "txtCliTel"
+        Me.txtCliTel.Size = New System.Drawing.Size(186, 20)
+        Me.txtCliTel.TabIndex = 1
+        '
+        'txtCliCI
+        '
+        Me.txtCliCI.Location = New System.Drawing.Point(24, 33)
+        Me.txtCliCI.Name = "txtCliCI"
+        Me.txtCliCI.Size = New System.Drawing.Size(186, 20)
+        Me.txtCliCI.TabIndex = 0
+        '
+        'Label30
+        '
+        Me.Label30.AutoSize = True
+        Me.Label30.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label30.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label30.Location = New System.Drawing.Point(21, 65)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(109, 13)
+        Me.Label30.TabIndex = 6
+        Me.Label30.Text = "Nombre y Apellido"
+        '
+        'txtCliDir
+        '
+        Me.txtCliDir.Location = New System.Drawing.Point(24, 179)
+        Me.txtCliDir.Name = "txtCliDir"
+        Me.txtCliDir.Size = New System.Drawing.Size(186, 20)
+        Me.txtCliDir.TabIndex = 2
+        '
+        'txtCliNom
+        '
+        Me.txtCliNom.Location = New System.Drawing.Point(24, 81)
+        Me.txtCliNom.Name = "txtCliNom"
+        Me.txtCliNom.Size = New System.Drawing.Size(186, 20)
+        Me.txtCliNom.TabIndex = 3
+        '
+        'Label29
+        '
+        Me.Label29.AutoSize = True
+        Me.Label29.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label29.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label29.Location = New System.Drawing.Point(21, 113)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(57, 13)
+        Me.Label29.TabIndex = 5
+        Me.Label29.Text = "Teléfono"
+        '
+        'Label28
+        '
+        Me.Label28.AutoSize = True
+        Me.Label28.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label28.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label28.Location = New System.Drawing.Point(21, 163)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(61, 13)
+        Me.Label28.TabIndex = 4
+        Me.Label28.Text = "Dirección"
+        '
         'pnlBuscProd
         '
+        Me.pnlBuscProd.Controls.Add(Me.pbxNewProd)
         Me.pnlBuscProd.Controls.Add(Me.lblUnidXpack)
         Me.pnlBuscProd.Controls.Add(Me.pnlVenderPor)
         Me.pnlBuscProd.Controls.Add(Me.txtDescuent)
@@ -1546,8 +1907,22 @@ Partial Class FVenta
         Me.pnlBuscProd.Controls.Add(Me.btnAgregar)
         Me.pnlBuscProd.Location = New System.Drawing.Point(596, 12)
         Me.pnlBuscProd.Name = "pnlBuscProd"
-        Me.pnlBuscProd.Size = New System.Drawing.Size(248, 198)
+        Me.pnlBuscProd.Size = New System.Drawing.Size(248, 150)
         Me.pnlBuscProd.TabIndex = 84
+        '
+        'pbxNewProd
+        '
+        Me.pbxNewProd.BackColor = System.Drawing.Color.Transparent
+        Me.pbxNewProd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.pbxNewProd.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pbxNewProd.Image = Global.ControlStock.My.Resources.Resources.Plus_over2
+        Me.pbxNewProd.Location = New System.Drawing.Point(215, 60)
+        Me.pbxNewProd.Name = "pbxNewProd"
+        Me.pbxNewProd.Size = New System.Drawing.Size(21, 16)
+        Me.pbxNewProd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.pbxNewProd.TabIndex = 84
+        Me.pbxNewProd.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.pbxNewProd, "Nuevo Producto")
         '
         'lblUnidXpack
         '
@@ -1569,6 +1944,7 @@ Partial Class FVenta
         Me.pnlVenderPor.Name = "pnlVenderPor"
         Me.pnlVenderPor.Size = New System.Drawing.Size(217, 25)
         Me.pnlVenderPor.TabIndex = 83
+        Me.pnlVenderPor.Visible = False
         '
         'optPaquete
         '
@@ -1661,9 +2037,9 @@ Partial Class FVenta
         'txtBuscar
         '
         Me.txtBuscar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBuscar.Location = New System.Drawing.Point(65, 58)
+        Me.txtBuscar.Location = New System.Drawing.Point(64, 58)
         Me.txtBuscar.Name = "txtBuscar"
-        Me.txtBuscar.Size = New System.Drawing.Size(168, 20)
+        Me.txtBuscar.Size = New System.Drawing.Size(149, 20)
         Me.txtBuscar.TabIndex = 75
         '
         'lblCant
@@ -1778,10 +2154,10 @@ Partial Class FVenta
         '
         'DataGridViewImageColumn1
         '
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle8.NullValue = Nothing
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White
-        Me.DataGridViewImageColumn1.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.NullValue = Nothing
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White
+        Me.DataGridViewImageColumn1.DefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridViewImageColumn1.HeaderText = ""
         Me.DataGridViewImageColumn1.Image = Global.ControlStock.My.Resources.Resources.button_cancel
         Me.DataGridViewImageColumn1.Name = "DataGridViewImageColumn1"
@@ -1813,6 +2189,11 @@ Partial Class FVenta
         Me.SplitContainer1.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.pbxCrearProd, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlCrearProd.ResumeLayout(False)
+        Me.pnlCrearProd.PerformLayout()
+        Me.pnlPiso.ResumeLayout(False)
+        Me.pnlPiso.PerformLayout()
         CType(Me.btnGuardar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnCancel, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlXPack.ResumeLayout(False)
@@ -1828,17 +2209,20 @@ Partial Class FVenta
         Me.pnlProdInfo.PerformLayout()
         Me.pnlPrecVenta.ResumeLayout(False)
         Me.pnlPrecVenta.PerformLayout()
+        Me.pnlInfoPiso.ResumeLayout(False)
+        Me.pnlInfoPiso.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlCliente.ResumeLayout(False)
         Me.TabControl1.ResumeLayout(False)
-        Me.TabPage2.ResumeLayout(False)
-        Me.TabPage2.PerformLayout()
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
         Me.pnlInfoCli.ResumeLayout(False)
         Me.pnlInfoCli.PerformLayout()
+        Me.TabPage2.ResumeLayout(False)
+        Me.TabPage2.PerformLayout()
         Me.pnlBuscProd.ResumeLayout(False)
         Me.pnlBuscProd.PerformLayout()
+        CType(Me.pbxNewProd, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlVenderPor.ResumeLayout(False)
         Me.pnlVenderPor.PerformLayout()
         Me.ResumeLayout(False)
@@ -1858,13 +2242,12 @@ Partial Class FVenta
     Friend WithEvents SplitContainer1 As System.Windows.Forms.SplitContainer
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents pnlPrecVenta As System.Windows.Forms.Panel
-    Friend WithEvents Label19 As System.Windows.Forms.Label
-    Friend WithEvents Label21 As System.Windows.Forms.Label
-    Friend WithEvents Label20 As System.Windows.Forms.Label
-    Friend WithEvents lblPrecCant As System.Windows.Forms.Label
+    Friend WithEvents lblPrecio1 As System.Windows.Forms.Label
+    Friend WithEvents lblPrecio2 As System.Windows.Forms.Label
+    Friend WithEvents lblPrecio3 As System.Windows.Forms.Label
+    Friend WithEvents lblPrecUnidP As System.Windows.Forms.Label
     Friend WithEvents lblPrecPack As System.Windows.Forms.Label
     Friend WithEvents lblPrecUnit As System.Windows.Forms.Label
-    Friend WithEvents Label90 As System.Windows.Forms.Label
     Friend WithEvents lblInfoCod As System.Windows.Forms.Label
     Friend WithEvents lblInfoDesc As System.Windows.Forms.Label
     Friend WithEvents lblInfoStock As System.Windows.Forms.Label
@@ -1873,7 +2256,6 @@ Partial Class FVenta
     Friend WithEvents Label26 As System.Windows.Forms.Label
     Friend WithEvents pnlProdInfo As System.Windows.Forms.Panel
     Friend WithEvents lblInfoPrec As System.Windows.Forms.Label
-    Friend WithEvents lblCantDesc As System.Windows.Forms.Label
     Friend WithEvents pnlCliente As System.Windows.Forms.Panel
     Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
     Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
@@ -1986,4 +2368,37 @@ Partial Class FVenta
     Friend WithEvents Unidades As DataGridViewTextBoxColumn
     Friend WithEvents Obs As DataGridViewTextBoxColumn
     Friend WithEvents Iva As DataGridViewTextBoxColumn
+    Friend WithEvents lblTitPrecio1 As Label
+    Friend WithEvents lblTitPrecio2 As Label
+    Friend WithEvents txtEditPrecio As TextBox
+    Friend WithEvents pnlPiso As Panel
+    Friend WithEvents btnPorUnidad As Button
+    Friend WithEvents btnPorMetro As Button
+    Friend WithEvents btnPorCaja As Button
+    Friend WithEvents Button5 As Button
+    Friend WithEvents Label4 As Label
+    Friend WithEvents pbxNewProd As PictureBox
+    Friend WithEvents pnlInfoPiso As Panel
+    Friend WithEvents lblUnidxCaja As Label
+    Friend WithEvents Label19 As Label
+    Friend WithEvents lblMxCaja As Label
+    Friend WithEvents Label14 As Label
+    Friend WithEvents txtPropietario As TextBox
+    Friend WithEvents Label13 As Label
+    Friend WithEvents pnlCrearProd As Panel
+    Friend WithEvents btnNuevoPOk As Button
+    Friend WithEvents Label43 As Label
+    Friend WithEvents Label42 As Label
+    Friend WithEvents Label41 As Label
+    Friend WithEvents Label40 As Label
+    Friend WithEvents txtNuevoPImporte As TextBox
+    Friend WithEvents txtNuevoPPrecio As TextBox
+    Friend WithEvents txtNuevoPCant As TextBox
+    Friend WithEvents Label21 As Label
+    Friend WithEvents txtNuevoPDescrip As TextBox
+    Friend WithEvents btnNuevoPCancel As Button
+    Friend WithEvents txtNuevoPCod As TextBox
+    Friend WithEvents Label20 As Label
+    Friend WithEvents pbxCrearProd As PictureBox
+    Friend WithEvents ChkGenerar As CheckBox
 End Class

@@ -1,6 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class CEmpleado
-    Private ObjCon As New BaseDato()
+    Private ObjCon As New CBaseDato()
 
     Public Function Insert(ByVal CI As Integer, ByVal Nombre As String, ByVal Apellido As String, ByVal Telefono As String, _
                            ByVal Direccion As String, ByVal Comision As Integer, ByVal Estado As String) As Boolean

@@ -26,7 +26,7 @@ Partial Class Habitacion
         Me.lblHabitacion = New System.Windows.Forms.Label()
         Me.lblTiempo = New System.Windows.Forms.Label()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.OcupadoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuOcupado = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.FacturaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FacturarPorNocheToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -65,15 +65,15 @@ Partial Class Habitacion
         '
         'ContextMenuStrip1
         '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OcupadoToolStripMenuItem})
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuOcupado})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(114, 26)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(153, 48)
         '
-        'OcupadoToolStripMenuItem
+        'mnuOcupado
         '
-        Me.OcupadoToolStripMenuItem.Name = "OcupadoToolStripMenuItem"
-        Me.OcupadoToolStripMenuItem.Size = New System.Drawing.Size(113, 22)
-        Me.OcupadoToolStripMenuItem.Text = "Ocupar"
+        Me.mnuOcupado.Name = "mnuOcupado"
+        Me.mnuOcupado.Size = New System.Drawing.Size(152, 22)
+        Me.mnuOcupado.Text = "Ocupar"
         '
         'ContextMenuStrip2
         '
@@ -116,7 +116,7 @@ Partial Class Habitacion
     Friend WithEvents lblHabitacion As System.Windows.Forms.Label
     Friend WithEvents lblTiempo As System.Windows.Forms.Label
     Friend WithEvents ContextMenuStrip1 As System.Windows.Forms.ContextMenuStrip
-    Friend WithEvents OcupadoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuOcupado As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ContextMenuStrip2 As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents FacturaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents Timer1 As System.Windows.Forms.Timer

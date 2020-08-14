@@ -1,7 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class CCompra
 
-    Private ObjCon As New BaseDato()
+    Private ObjCon As New CBaseDato()
 
     Public Function InserCompra(ByVal idCompra As Integer, ByVal idProveedorFK As String, ByVal Fecha As String, ByVal Cancelado As String, ByVal Entregado? As Integer, ByVal Vto As String) As Boolean
         Dim inserto As Boolean = False
@@ -26,14 +26,14 @@ Public Class CCompra
         Return inserto
     End Function
 
-    Public Function InserDetalleCompra(ByVal idCompraFK As Integer, ByVal idProdFK As UInt64, ByVal Cant As Double, ByVal Unidades As Integer, _
+    Public Function InserDetalleCompra(ByVal idCompraFK As Integer, ByVal idProdFK As String, ByVal Cant As Double, ByVal Unidades As Integer,
                                        ByVal Precio As Integer, ByVal Obs As String) As Boolean
         Dim inserto As Boolean = False
         Try
             ObjCon.Conectar()
             ObjCon.CrearComando("INSERT INTO detallecompra VALUES(?idComprafk, ?idprodfk, ?cant, ?unid, ?precio, ?obs)")
             ObjCon.AsignarParametro("?idComprafk", MySqlDbType.Int32, idCompraFK)
-            ObjCon.AsignarParametro("?idprodfk", MySqlDbType.UInt64, idProdFK)
+            ObjCon.AsignarParametro("?idprodfk", MySqlDbType.String, idProdFK)
             ObjCon.AsignarParametro("?cant", MySqlDbType.Double, Cant)
             ObjCon.AsignarParametro("?unid", MySqlDbType.Int32, Unidades)
             ObjCon.AsignarParametro("?precio", MySqlDbType.Int32, Precio)
@@ -45,7 +45,7 @@ Public Class CCompra
             Cant = Cant * Unidades
             ObjCon.CrearComando("UPDATE producto SET Stock = Stock + ?cant where idproducto = ?idprodfk")
             ObjCon.AsignarParametro("?cant", MySqlDbType.Double, Cant)
-            ObjCon.AsignarParametro("?idprodfk", MySqlDbType.UInt64, idProdFK)
+            ObjCon.AsignarParametro("?idprodfk", MySqlDbType.String, idProdFK)
             If ObjCon.EjecutarConsulta() > 0 Then
                 inserto = True
             Else
@@ -78,14 +78,14 @@ Public Class CCompra
         Return inserto
     End Function
 
-    Public Function InserDetalleNota(ByVal idNotaFK As Integer, ByVal idCompraFK As Integer, ByVal idProdFK As UInt64, ByVal Cant As Double, ByVal Unidades As Integer) As Boolean
+    Public Function InserDetalleNota(ByVal idNotaFK As Integer, ByVal idCompraFK As Integer, ByVal idProdFK As String, ByVal Cant As Double, ByVal Unidades As Integer) As Boolean
         Dim inserto As Boolean = False
         Try
             ObjCon.Conectar()
             ObjCon.CrearComando("INSERT INTO detnotaccompra VALUES(?idNotafk, ?idComprafk, ?idprodfk, ?cant, ?unid)")
             ObjCon.AsignarParametro("?idNotafk", MySqlDbType.Int32, idNotaFK)
             ObjCon.AsignarParametro("?idComprafk", MySqlDbType.Int32, idCompraFK)
-            ObjCon.AsignarParametro("?idprodfk", MySqlDbType.UInt64, idProdFK)
+            ObjCon.AsignarParametro("?idprodfk", MySqlDbType.String, idProdFK)
             ObjCon.AsignarParametro("?cant", MySqlDbType.Double, Cant)
             ObjCon.AsignarParametro("?unid", MySqlDbType.Int32, Unidades)
             If ObjCon.EjecutarConsulta() = 0 Then
@@ -95,7 +95,7 @@ Public Class CCompra
             Cant = Cant * Unidades
             ObjCon.CrearComando("UPDATE producto SET Stock = Stock - ?cant where idproducto = ?idprodfk")
             ObjCon.AsignarParametro("?cant", MySqlDbType.Double, Cant)
-            ObjCon.AsignarParametro("?idprodfk", MySqlDbType.UInt64, idProdFK)
+            ObjCon.AsignarParametro("?idprodfk", MySqlDbType.String, idProdFK)
             If ObjCon.EjecutarConsulta() > 0 Then
                 inserto = True
             Else

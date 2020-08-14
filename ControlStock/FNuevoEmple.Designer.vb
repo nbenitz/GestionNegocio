@@ -53,8 +53,9 @@ Partial Class FNuevoEmple
         Me.txtNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNombre.Location = New System.Drawing.Point(114, 77)
         Me.txtNombre.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtNombre.MaxLength = 50
         Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(164, 22)
+        Me.txtNombre.Size = New System.Drawing.Size(317, 22)
         Me.txtNombre.TabIndex = 1
         '
         'txtApellido
@@ -63,8 +64,9 @@ Partial Class FNuevoEmple
         Me.txtApellido.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApellido.Location = New System.Drawing.Point(114, 112)
         Me.txtApellido.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtApellido.MaxLength = 50
         Me.txtApellido.Name = "txtApellido"
-        Me.txtApellido.Size = New System.Drawing.Size(164, 22)
+        Me.txtApellido.Size = New System.Drawing.Size(317, 22)
         Me.txtApellido.TabIndex = 2
         '
         'txtTelefono
@@ -73,8 +75,9 @@ Partial Class FNuevoEmple
         Me.txtTelefono.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTelefono.Location = New System.Drawing.Point(114, 147)
         Me.txtTelefono.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtTelefono.MaxLength = 15
         Me.txtTelefono.Name = "txtTelefono"
-        Me.txtTelefono.Size = New System.Drawing.Size(164, 22)
+        Me.txtTelefono.Size = New System.Drawing.Size(317, 22)
         Me.txtTelefono.TabIndex = 3
         '
         'txtDireccion
@@ -82,8 +85,9 @@ Partial Class FNuevoEmple
         Me.txtDireccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDireccion.Location = New System.Drawing.Point(114, 182)
         Me.txtDireccion.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtDireccion.MaxLength = 100
         Me.txtDireccion.Name = "txtDireccion"
-        Me.txtDireccion.Size = New System.Drawing.Size(164, 22)
+        Me.txtDireccion.Size = New System.Drawing.Size(317, 22)
         Me.txtDireccion.TabIndex = 4
         '
         'Label1
@@ -165,7 +169,7 @@ Partial Class FNuevoEmple
         Me.GroupBox1.ForeColor = System.Drawing.Color.White
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(320, 270)
+        Me.GroupBox1.Size = New System.Drawing.Size(467, 270)
         Me.GroupBox1.TabIndex = 10
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos Personales"
@@ -174,11 +178,12 @@ Partial Class FNuevoEmple
         '
         Me.Label7.AutoSize = True
         Me.Label7.ForeColor = System.Drawing.Color.White
-        Me.Label7.Location = New System.Drawing.Point(280, 219)
+        Me.Label7.Location = New System.Drawing.Point(437, 219)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(21, 18)
         Me.Label7.TabIndex = 12
         Me.Label7.Text = "%"
+        Me.Label7.Visible = False
         '
         'Label6
         '
@@ -189,22 +194,25 @@ Partial Class FNuevoEmple
         Me.Label6.Size = New System.Drawing.Size(72, 18)
         Me.Label6.TabIndex = 11
         Me.Label6.Text = "Comisión"
+        Me.Label6.Visible = False
         '
         'txtComision
         '
         Me.txtComision.Location = New System.Drawing.Point(114, 216)
         Me.txtComision.Name = "txtComision"
-        Me.txtComision.Size = New System.Drawing.Size(164, 24)
+        Me.txtComision.Size = New System.Drawing.Size(317, 24)
         Me.txtComision.TabIndex = 10
         Me.ToolTip1.SetToolTip(Me.txtComision, "Expresado en porcentaje")
+        Me.txtComision.Visible = False
         '
         'txtCI
         '
         Me.txtCI.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCI.Location = New System.Drawing.Point(114, 42)
         Me.txtCI.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtCI.MaxLength = 10
         Me.txtCI.Name = "txtCI"
-        Me.txtCI.Size = New System.Drawing.Size(164, 22)
+        Me.txtCI.Size = New System.Drawing.Size(317, 22)
         Me.txtCI.TabIndex = 0
         '
         'btnGuardar
@@ -213,7 +221,7 @@ Partial Class FNuevoEmple
         Me.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnGuardar.Image = Global.ControlStock.My.Resources.Resources.file_apply
-        Me.btnGuardar.Location = New System.Drawing.Point(260, 288)
+        Me.btnGuardar.Location = New System.Drawing.Point(369, 288)
         Me.btnGuardar.Name = "btnGuardar"
         Me.btnGuardar.Size = New System.Drawing.Size(41, 38)
         Me.btnGuardar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -226,7 +234,7 @@ Partial Class FNuevoEmple
         Me.btnCancel.BackColor = System.Drawing.Color.Transparent
         Me.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnCancel.Image = Global.ControlStock.My.Resources.Resources.file_exclude
-        Me.btnCancel.Location = New System.Drawing.Point(300, 288)
+        Me.btnCancel.Location = New System.Drawing.Point(409, 288)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(41, 38)
         Me.btnCancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -239,7 +247,7 @@ Partial Class FNuevoEmple
         Me.btnNuevo.BackColor = System.Drawing.Color.Transparent
         Me.btnNuevo.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnNuevo.Image = Global.ControlStock.My.Resources.Resources.file_new
-        Me.btnNuevo.Location = New System.Drawing.Point(220, 288)
+        Me.btnNuevo.Location = New System.Drawing.Point(329, 288)
         Me.btnNuevo.Name = "btnNuevo"
         Me.btnNuevo.Size = New System.Drawing.Size(41, 38)
         Me.btnNuevo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -259,7 +267,7 @@ Partial Class FNuevoEmple
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(125, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(344, 331)
+        Me.ClientSize = New System.Drawing.Size(498, 331)
         Me.Controls.Add(Me.btnGuardar)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnNuevo)

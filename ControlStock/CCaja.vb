@@ -2,7 +2,7 @@
 Imports MySql.Data.MySqlClient
 
 Public Class CCaja
-    Private ObjCon As New BaseDato()
+    Private ObjCon As New CBaseDato()
 
     Public Function CajaAbierta(ByVal NroCaja As Decimal) As Boolean
         CajaAbierta = False

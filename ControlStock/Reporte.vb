@@ -1,4 +1,5 @@
 ﻿Option Strict On
+
 Public Class Reporte
     Public Enum Tipo As Integer
         Compra = 0
@@ -59,9 +60,9 @@ Public Class Reporte
         Dim Delete As Image = My.Resources.Resources.delete
         Dim Filas As Integer = Tabla.Rows.Count
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
-                Dim idServ = CULng(Tabla.Rows(i).Item(2))
-                Dim Descrip = CStr(Tabla.Rows(i).Item(3))
+            For i As Integer = 0 To (Filas - 1)
+                Dim idServ As ULong = CULng(Tabla.Rows(i).Item(2))
+                Dim Descrip As String = CStr(Tabla.Rows(i).Item(3))
                 Dim Tiempo As String
                 If idServ = 3 Then
                     Tiempo = CStr(Tabla.Rows(i).Item(4))
@@ -70,8 +71,8 @@ Public Class Reporte
                     Dim Horas As TimeSpan = TimeSpan.FromMinutes(TotalMinutes)
                     Tiempo = Horas.ToString
                 End If
-                Dim Precio = CInt(Tabla.Rows(i).Item(5))
-                Dim Importe = CInt(Tabla.Rows(i).Item(6))
+                Dim Precio As Integer = CInt(Tabla.Rows(i).Item(5))
+                Dim Importe As Integer = CInt(Tabla.Rows(i).Item(6))
                 Detalle.Rows.Add(Delete, idServ, Descrip, Tiempo, Precio, Importe, "")
             Next
         End If
@@ -83,13 +84,13 @@ Public Class Reporte
         Dim CantAnt As Double = 1
         Dim Filas As Integer = Tabla.Rows.Count
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
-                Dim idProd = CULng(Tabla.Rows(i).Item(1))
-                Dim Descrip = CStr(Tabla.Rows(i).Item(2))
-                Dim Cant = CDbl(Tabla.Rows(i).Item(3))
-                Dim Unidades = CInt(Tabla.Rows(i).Item(4))
-                Dim Precio = CInt(Tabla.Rows(i).Item(5))
-                Dim Importe = CInt(Tabla.Rows(i).Item(6))
+            For i As Integer = 0 To (Filas - 1)
+                Dim idProd As String = CStr(Tabla.Rows(i).Item(1))
+                Dim Descrip As String = CStr(Tabla.Rows(i).Item(2))
+                Dim Cant As Double = CDbl(Tabla.Rows(i).Item(3))
+                Dim Unidades As Integer = CInt(Tabla.Rows(i).Item(4))
+                Dim Precio As Integer = CInt(Tabla.Rows(i).Item(5))
+                Dim Importe As Integer = CInt(Tabla.Rows(i).Item(6))
                 Detalle.Rows.Add(Delete, idProd, Descrip, Cant, Precio, Importe, Unidades)
                 If Cant > CantAnt Then
                     CantAnt = Cant 'Obtener la cantidad mayor de la tabla
@@ -206,7 +207,7 @@ Public Class Reporte
     Private Sub CalcTotal()
         Dim Total As Integer
         Dim Filas As Integer = Detalle.Rows.Count - 1
-        For i = 0 To Filas
+        For i As Integer = 0 To Filas
             Total += Convert.ToInt32(Detalle.Item(5, i).Value.ToString)
         Next
         txtTotal.Text = CStr(Total)
@@ -241,9 +242,9 @@ Public Class Reporte
         Dim Letra As Char = e.KeyChar
 
         If Letra = Convert.ToChar(",") Or Letra = Convert.ToChar(".") Then
-            Dim Cod = Convert.ToUInt64(Detalle.Item(1, GridFila).Value.ToString)
-            Dim Tabla As DataTable = Producto.BuscProdCod(CStr(Cod))
-            Dim Present = CStr(Tabla.Rows(0).Item(10))
+            Dim Cod As String = Convert.ToString(Detalle.Item(1, GridFila).Value.ToString)
+            Dim Tabla As DataTable = Producto.BuscProdCod(Cod)
+            Dim Present As String = CStr(Tabla.Rows(0).Item(10))
             If Present = "Kilo" Then
                 If Letra = Convert.ToChar(",") Then
                     e.Handled = False

@@ -77,7 +77,7 @@ Public Class FLogin
             frm.Show()
             Hide()
         Else
-            MessageBox.Show("Por favor completa los campos")
+            MessageBox.Show("Usuario o contraseña incorrectos")
         End If
     End Sub
 

@@ -1,4 +1,4 @@
-﻿Option Strict On
+﻿
 
 Public Class FListaPrivilegios
     Dim Usuario As New CUsuario

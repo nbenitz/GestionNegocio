@@ -1,4 +1,5 @@
 ﻿Option Strict On
+
 Public Class FCompra
     Dim Compra As New CCompra
     Dim Producto As New CProducto
@@ -34,7 +35,7 @@ Public Class FCompra
         cmbProveedor.Text = ""
         Dim Filas As Integer = TablaProv.Rows.Count
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
+            For i As Integer = 0 To (Filas - 1)
                 cmbProveedor.Items.Add(TablaProv.Rows(i).Item(1))
             Next
         End If
@@ -51,7 +52,7 @@ Public Class FCompra
                     Tabla = Producto.BuscProdDesc(Param)
                     Dim Filas As Integer = Tabla.Rows.Count
                     If Filas > 0 Then
-                        For i = 0 To (Filas - 1)
+                        For i As Integer = 0 To (Filas - 1)
                             cmbDescrip.Items.Add(Tabla.Rows(i).Item(2))
                         Next
                         cmbDescrip.Text = CStr(cmbDescrip.Items(0))
@@ -60,42 +61,19 @@ Public Class FCompra
                     End If
                     '------------------------------------------------------------------------------------------------------
                 Else                                                        'BUSCAR POR CODIGO
-                    Dim Codigo = txtBuscar.Text
-
-                    Dim Veces As Integer
-                    If Codigo.Length < 11 Then
-                        Codigo = "000000000" + Codigo
+                    Dim Cod As String = txtBuscar.Text
+                    Tabla = Producto.BuscProdCod(Cod)
+                    Dim Filas As Integer = Tabla.Rows.Count
+                    If Filas > 0 Then
+                        cmbDescrip.Items.Add(Tabla.Rows(0).Item(2))
+                        cmbDescrip.Text = CStr(cmbDescrip.Items(0))
+                        txtCant.Focus()
+                        Exit Sub
+                    Else
+                        MessageBox.Show("El Código no existe")
+                        txtBuscar.Select(0, txtBuscar.TextLength)
                     End If
-                    Codigo = Mid(Codigo, Codigo.Length - 9)
-                    Select Case Codigo.Length
-                        Case Is = 10
-                            Veces = 5
-                        Case Is = 9
-                            Veces = 4
-                        Case Is = 8
-                            Veces = 3
-                        Case Is = 7
-                            Veces = 2
-                        Case Is < 7
-                            Veces = 1
-                    End Select
-                    For i = 1 To Veces
-                        txtBuscar.Text = Mid(Codigo, i)
-                        Dim Cod As UInt64 = CULng(txtBuscar.Text)
-                        Tabla = Producto.BuscProdCod(CStr(Cod))
-                        Dim Filas As Integer = Tabla.Rows.Count
-                        If Filas > 0 Then
-                            cmbDescrip.Items.Add(Tabla.Rows(0).Item(2))
-                            cmbDescrip.Text = CStr(cmbDescrip.Items(0))
-                            txtCant.Focus()
-                            Exit Sub
-                        Else
-                            If i = 5 Then
-                                MessageBox.Show("El Código no existe")
-                                txtBuscar.Select(0, txtBuscar.TextLength)
-                            End If
-                        End If
-                    Next
+
                 End If
             Else
 
@@ -103,7 +81,7 @@ Public Class FCompra
         End If
     End Sub
 
-    Private Sub txtBuscar_KeyDow(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
+    Private Sub txtBuscar_KeyDow(ByVal sender As Object, ByVal e As KeyEventArgs)
         If e.KeyCode = Keys.Enter Then
             cmbDescrip.Items.Clear()
             cmbDescrip.Text = ""
@@ -112,17 +90,13 @@ Public Class FCompra
                 If optDesc.Checked = True Then
                     Tabla = Producto.BuscProdDesc(Param)
                 Else
-                    Dim Cod As UInt64
-                    Try
-                        Cod = CULng(txtBuscar.Text)
-                    Catch ex As Exception
-                        Me.ToolTip2.Show("El Código debe ser numérico", txtBuscar, 0, -40, 2000)
-                    End Try
-                    Tabla = Producto.BuscProdCod(CStr(Cod))
+                    Dim Cod As String
+                    Cod = txtBuscar.Text
+                    Tabla = Producto.BuscProdCod(Cod)
                 End If
                 Dim Filas As Integer = Tabla.Rows.Count
                 If Filas > 0 Then
-                    For i = 0 To (Filas - 1)
+                    For i As Integer = 0 To (Filas - 1)
                         cmbDescrip.Items.Add(Tabla.Rows(i).Item(2))
                     Next
                     cmbDescrip.Text = CStr(cmbDescrip.Items(0))
@@ -136,15 +110,15 @@ Public Class FCompra
     End Sub
 
     Private Sub txtBuscar_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscar.KeyPress
-        If optCod.Checked Then
-            If Char.IsDigit(e.KeyChar) Then
-                e.Handled = False
-            ElseIf Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            Else
-                e.Handled = True
-            End If
-        End If
+        'If optCod.Checked Then
+        'If Char.IsDigit(e.KeyChar) Then
+        'e.Handled = False
+        'ElseIf Char.IsControl(e.KeyChar) Then
+        'e.Handled = False
+        'Else
+        'e.Handled = True
+        'End If
+        'End If
         If e.KeyChar = Convert.ToChar(Keys.Return) Then
             e.Handled = True
         End If
@@ -173,7 +147,7 @@ Public Class FCompra
         Dim Fila As Integer = cmbDescrip.SelectedIndex
         lblInfoCod.Text = CStr(Tabla.Rows(Fila).Item(0))
         lblInfoDesc.Text = CStr(Tabla.Rows(Fila).Item(2))
-        lblInfoPrec.Text = CStr(Tabla.Rows(Fila).Item(3))
+        lblInfoCosto.Text = CStr(Tabla.Rows(Fila).Item(3))
         lblInfoStock.Text = CStr(Tabla.Rows(Fila).Item(8))
 
 
@@ -187,23 +161,38 @@ Public Class FCompra
         lblInfoCod.Text = CStr(Tabla.Rows(Fila).Item(0))
         lblInfoDesc.Text = CStr(Tabla.Rows(Fila).Item(2))
         lblInfoStock.Text = CStr(Tabla.Rows(Fila).Item(8))
-        lblInfoPrec.Text = CStr(Tabla.Rows(Fila).Item(3))
+        lblInfoCosto.Text = CStr(Tabla.Rows(Fila).Item(3))
 
-        If CStr(Tabla.Rows(Fila).Item(10)) = "Si" Then
-            lblPresent.Text = "Por Paquete"
-            lblX.Visible = True
-            lblUnidXpack.Visible = True
-            lblUnidXpack.Text = CStr(Tabla.Rows(Fila).Item(10))
-            lblUnidXPackInfo.Text = CStr(Tabla.Rows(Fila).Item(10))
-            lblUnidXPackInfo.Visible = True
-            Label19.Visible = True
-        Else
-            lblPresent.Text = "Por Unidad"
-            lblX.Visible = False
-            lblUnidXpack.Visible = False
-            lblUnidXPackInfo.Visible = False
-            Label19.Visible = False
-        End If
+        Select Case CStr(Tabla.Rows(Fila).Item(10))
+            Case "Si", "SiCaja", "SiMetro"
+                lblX.Visible = True
+                lblUnidXpack.Visible = True
+                lblUnidXpack.Text = CStr(Tabla.Rows(Fila).Item(10))
+                lblUnidXPackInfo.Text = CStr(Tabla.Rows(Fila).Item(10))
+                lblUnidXPackInfo.Visible = True
+                lblUnidXPackTit.Visible = True
+                pnlInfoPiso.Visible = False
+                Select Case CStr(Tabla.Rows(Fila).Item(10))
+                    Case "Si"
+                        lblPresent.Text = "Por Paquete"
+                    Case "SiCaja"
+                        lblPresent.Text = "Por Caja"
+                    Case "SiMetro"
+                        lblPresent.Text = "Entero"
+                End Select
+            Case "No"
+                lblPresent.Text = "Por Unidad"
+                lblX.Visible = False
+                lblUnidXpack.Visible = False
+                lblUnidXPackInfo.Visible = False
+                lblUnidXPackTit.Visible = False
+                pnlInfoPiso.Visible = False
+            Case "Piso"
+                lblInfoStock.Text = lblInfoStock.Text + " unidades"
+                lblMxCaja.Text = CStr(Tabla.Rows(Fila).Item(15))
+                lblUnidxCaja.Text = CStr(Tabla.Rows(Fila).Item(9))
+                pnlInfoPiso.Visible = True
+        End Select
     End Sub
 
     Private Sub btnAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAgregar.Click
@@ -211,28 +200,28 @@ Public Class FCompra
         Dim Fila As Integer = cmbDescrip.SelectedIndex
         Param = cmbDescrip.Text
         Dim Cant As Double = CDbl(txtCant.Text)
-        Dim Unidades As Integer = 1
+        Dim Unidades As Double = 1
         Dim Obs As String = ""
-        Dim idProd As UInt64 = CULng(Tabla.Rows(Fila).Item(0))
+        Dim idProd As String = CStr(Tabla.Rows(Fila).Item(0))
         Dim Costo As Integer = CInt(Tabla.Rows(Fila).Item(3))
         Dim flag As Boolean = False 'Para saber si ya se ingreso el producto en el datagrid
         Dim Indice As Integer
-        Dim idProdAux As UInt64
+        Dim idProdAux As String
         Dim CantAux As Double
 
-        Try 'para cantidades por paquete
-            Dim UnidXpack? As Integer = CInt(Tabla.Rows(Fila).Item(10))
-            If CStr(Tabla.Rows(Fila).Item(10)) = "Si" Then  'Vender por Paquete
-                Unidades = CInt(UnidXpack)
+        Select Case CStr(Tabla.Rows(Fila).Item(10))
+            Case "Si", "SiCaja", "SiMetro"
+                Unidades = CDbl(Tabla.Rows(Fila).Item(9))
                 Obs = "(Paquete)"
-            End If
-        Catch
-        End Try
+            Case "Piso"
+                Unidades = CDbl(Tabla.Rows(Fila).Item(9))
+                Obs = "(Caja)"
+        End Select
 
         Dim Row As Integer = DataGridView1.Rows.Count
         If Row > 0 Then
-            For i = 0 To Row - 1            'Buscar en el datagrid si ya se ingreso el producto
-                idProdAux = Convert.ToUInt64(DataGridView1.Item(1, i).Value.ToString)
+            For i As Integer = 0 To Row - 1            'Buscar en el datagrid si ya se ingreso el producto
+                idProdAux = Convert.ToString(DataGridView1.Item(1, i).Value.ToString)
                 CantAux = Convert.ToDouble(DataGridView1.Item(2, i).Value.ToString)
                 If idProdAux = idProd Then  'si se encuentra
                     flag = True             'activar el flag
@@ -293,7 +282,7 @@ Public Class FCompra
         cmbDescrip.Text = ""
         lblInfoDesc.Text = ""
         lblInfoCod.Text = ""
-        lblInfoPrec.Text = ""
+        lblInfoCosto.Text = ""
         lblInfoStock.Text = ""
         cmbDescrip.Items.Clear()
         DataGridView1.Rows.Clear()
@@ -313,7 +302,7 @@ Public Class FCompra
     Private Sub tmrTotal_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrTotal.Tick
         Dim Total As Integer
         Dim Filas As Integer = DataGridView1.Rows.Count - 1
-        For i = 0 To Filas
+        For i As Integer = 0 To Filas
             Total += Convert.ToInt32(DataGridView1.Item(5, i).Value.ToString)
         Next
         txtTotal.Text = Format(Total, "###,##0")
@@ -357,7 +346,7 @@ Public Class FCompra
 
     Private Sub GuardarCompra()
         Dim Filas As Integer = DataGridView1.Rows.Count
-        Dim idProd As UInt64
+        Dim idProd As String
         Dim Cant As Double
         Dim Precio As Integer
         Dim Unidades As Integer
@@ -375,8 +364,8 @@ Public Class FCompra
                 MessageBox.Show("Hubo un error al guardar la factura.")
                 Exit Try
             End If
-            For i = 0 To Filas - 1
-                idProd = Convert.ToUInt64(DataGridView1.Item(1, i).Value.ToString)
+            For i As Integer = 0 To Filas - 1
+                idProd = Convert.ToString(DataGridView1.Item(1, i).Value.ToString)
                 Cant = Convert.ToDouble(DataGridView1.Item(2, i).Value.ToString)
                 Precio = Convert.ToInt32(DataGridView1.Item(4, i).Value.ToString)
                 Unidades = Convert.ToInt32(DataGridView1.Item(6, i).Value.ToString)
@@ -396,12 +385,12 @@ Public Class FCompra
     End Sub
 
     Private Sub UpdatePrecProv()
-        Dim idProd As UInt64
+        Dim idProd As String
         Dim Precio As Integer
         Dim Filas As Integer = DataGridView1.Rows.Count
         Try
-            For i = 0 To Filas - 1
-                idProd = Convert.ToUInt64(DataGridView1.Item(1, i).Value.ToString)
+            For i As Integer = 0 To Filas - 1
+                idProd = Convert.ToString(DataGridView1.Item(1, i).Value.ToString)
                 Precio = Convert.ToInt32(DataGridView1.Item(4, i).Value.ToString)
                 If Producto.UpdatePrecio(idProd, Precio, RUC) = False Then
                     MessageBox.Show("Hubo un error al guardar la factura..")
@@ -430,6 +419,7 @@ Public Class FCompra
         frm.MaximizeBox = False
         frm.MinimizeBox = False
         frm.ShowDialog()
+
     End Sub
 
     Private Sub pbxNewProv_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbxNewProv.Click
@@ -520,7 +510,7 @@ Public Class FCompra
                 Catch ex As Exception
                 End Try
             Else
-                Dim Cod = Convert.ToUInt64(DataGridView1.Item(1, GridFila).Value.ToString)
+                Dim Cod As String = Convert.ToString(DataGridView1.Item(1, GridFila).Value.ToString)
                 Tabla = Producto.BuscProdCod(CStr(Cod))
                 Present = CStr(Tabla.Rows(0).Item(10))
             End If
@@ -601,4 +591,11 @@ Public Class FCompra
         txtBuscar.Select(0, txtBuscar.Text.Length)
     End Sub
 
+    Private Sub txtBuscar_TextChanged(sender As Object, e As EventArgs) Handles txtBuscar.TextChanged
+
+    End Sub
+
+    Private Sub txtEditPrec_TextChanged(sender As Object, e As EventArgs) Handles txtEditPrec.TextChanged
+
+    End Sub
 End Class

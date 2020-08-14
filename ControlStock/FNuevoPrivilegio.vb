@@ -1,4 +1,4 @@
-﻿Option Strict On
+﻿
 
 Public Class FNuevoPrivilegio
     Dim Usuario As New CUsuario

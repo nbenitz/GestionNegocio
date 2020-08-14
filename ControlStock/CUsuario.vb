@@ -3,7 +3,7 @@
 Imports MySql.Data.MySqlClient
 Public Class CUsuario
 
-    Private ObjCon As New BaseDato()
+    Private ObjCon As New CBaseDato()
 
     Public Function Insertar(ByVal Usu As String, ByVal Pass As String, ByVal Priv As Integer, ByVal Emple As Integer) As Boolean
         Dim inserto As Boolean = False

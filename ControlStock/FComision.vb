@@ -1,4 +1,4 @@
-﻿Option Strict On
+﻿
 Public Class FComision
     Dim Empleado As New CEmpleado
     Dim Venta As New CVenta

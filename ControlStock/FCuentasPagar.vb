@@ -1,4 +1,4 @@
-﻿Option Strict On
+﻿
 
 Public Class FCuentasPagar
     Dim Compra As New CCompra

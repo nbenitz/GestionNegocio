@@ -1,4 +1,4 @@
-﻿Option Strict On
+﻿
 Imports LibPrintTicketMatriz.Class1
 
 Public Class FImprimirFactura

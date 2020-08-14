@@ -105,13 +105,13 @@
         Try
             Dim row As Integer = DataGridView1.CurrentRow.Index
             Dim RUC As String = CStr(TablaProv.Rows(row).Item(0))
-            Dim Tabla As DataTable = Proveedor.Buscar("WHERE RUC = " + CStr(RUC))
+            Dim Tabla As DataTable = Proveedor.Buscar("WHERE RUC = '" + RUC + "'")
             Dim Nombre As String = CStr(Tabla.Rows(0).Item(1))
             Dim Telefono As String = CStr(Tabla.Rows(0).Item(2))
             Dim Direccion As String = CStr(Tabla.Rows(0).Item(3))
             Dim Frm As New FNuevoProveed
             Frm.Editar(RUC, Nombre, Telefono, Direccion)
-            frm.MaximizeBox = False
+            Frm.MaximizeBox = False
             frm.MinimizeBox = False
             Frm.ShowDialog()
             Actualizar()
