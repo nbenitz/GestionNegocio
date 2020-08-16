@@ -30,8 +30,8 @@ Partial Class FAcercaDe
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label7 = New System.Windows.Forms.Label()
         Me.btnAceptar = New System.Windows.Forms.Button()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -53,7 +53,7 @@ Partial Class FAcercaDe
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(139, 15)
         Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Copyright © 2018 - 2018"
+        Me.Label2.Text = "Copyright © 2014 - 2020"
         '
         'Label3
         '
@@ -106,15 +106,6 @@ Partial Class FAcercaDe
         Me.Panel1.Size = New System.Drawing.Size(474, 78)
         Me.Panel1.TabIndex = 6
         '
-        'Label7
-        '
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(8, 6)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(355, 67)
-        Me.Label7.TabIndex = 4
-        Me.Label7.Text = resources.GetString("Label7.Text")
-        '
         'btnAceptar
         '
         Me.btnAceptar.Location = New System.Drawing.Point(378, 25)
@@ -123,6 +114,15 @@ Partial Class FAcercaDe
         Me.btnAceptar.TabIndex = 5
         Me.btnAceptar.Text = "Aceptar"
         Me.btnAceptar.UseVisualStyleBackColor = True
+        '
+        'Label7
+        '
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(8, 6)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(355, 67)
+        Me.Label7.TabIndex = 4
+        Me.Label7.Text = resources.GetString("Label7.Text")
         '
         'FAcercaDe
         '

@@ -8,10 +8,10 @@ Imports System.Runtime.InteropServices
 
 ' Revisar los valores de los atributos del ensamblado
 
-<Assembly: AssemblyTitle("ControlStock")> 
+<Assembly: AssemblyTitle("ControlStock")>
 <Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("Solutec")> 
-<Assembly: AssemblyProduct("ControlStock")> 
+<Assembly: AssemblyCompany("Solutec")>
+<Assembly: AssemblyProduct("ControlStock")>
 <Assembly: AssemblyCopyright("Copyright ©  2014")> 
 <Assembly: AssemblyTrademark("SoluTec")> 
 

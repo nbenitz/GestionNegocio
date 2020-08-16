@@ -51,12 +51,15 @@ Public Class FPrincipal
         pnlProd.Visible = ProdConsult
         NuevaVenta.Visible = VentasReg
         pnlVenta.Visible = VentasReg
+        mnuCaja.Visible = VentasReg
         ConsultarVenta.Visible = VentasConsult
         RecibirStock.Visible = ComprasReg
         pnlCompra.Visible = ComprasReg
         ListaCompras.Visible = ComprasConsult
+        mnuCompras.Visible = ComprasConsult And ComprasReg And DevolAutoriProv And CuentasAdmin
         NuevoProv.Visible = ProvReg
         ListaProv.Visible = ProvConsult
+        mnuProveed.Visible = ProdReg And ProvConsult
         mnuEmpleados.Visible = EmpleAdmin
         NuevoUsu.Visible = UsuAdmin
         ConsultarUsu.Visible = UsuAdmin
@@ -70,6 +73,7 @@ Public Class FPrincipal
         ListaBajaDeProductosToolStripMenuItem.Visible = ProdEdit
         RecibosDeDinero.Visible = CuentasAdmin
         PagosRealizadosToolStripMenuItem.Visible = CuentasAdmin
+        mnuCategoria.Visible = ProdEdit
     End Sub
 
     Private Sub FrmPrincipal_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -356,4 +360,7 @@ Public Class FPrincipal
         Frm.ShowDialog()
     End Sub
 
+    Private Sub CategoríasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles mnuCategoria.Click
+        AbrirVentana(FListaCategoriaProd)
+    End Sub
 End Class

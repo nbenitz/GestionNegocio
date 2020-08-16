@@ -4,6 +4,7 @@ Public Class FListaProd
     Dim Producto As New CProducto
     Dim Prov As New CProveedor
     Dim TablaProv As New DataTable
+    Dim TablaCateg As New DataTable
     Dim TablaProd As New DataTable
     Dim Orden As String = " ORDER BY Descripcion"
     Dim Condicion As String = "WHERE idproducto = ''"
@@ -18,7 +19,9 @@ Public Class FListaProd
             Case Is = 0 'Todos
                 TtxtBuscar.Visible = False
                 TCmbProveedor.Visible = False
+                TCmbCategoria.Visible = False
                 TCmbStock.Visible = True
+                TCmbStock.SelectedIndex = 0
                 TlblStock.Visible = True
                 TtxtUnidad.Visible = False
                 lblOrden.Visible = True
@@ -29,6 +32,7 @@ Public Class FListaProd
             Case Is = 1 'Proveedores
                 TtxtBuscar.Visible = False
                 TCmbProveedor.Visible = True
+                TCmbCategoria.Visible = False
                 TCmbStock.Visible = True
                 TlblStock.Visible = True
                 lblOrden.Visible = True
@@ -52,11 +56,31 @@ Public Class FListaProd
                 lblOrden.Visible = True
                 cmbOrden.Visible = True
                 MostrarCaja("Ingrese la Descripión")
+            Case Is = 4 'Categoría
+                TtxtBuscar.Visible = False
+                TCmbProveedor.Visible = False
+                TCmbCategoria.Visible = True
+                TCmbStock.Visible = True
+                TlblStock.Visible = True
+                lblOrden.Visible = True
+                cmbOrden.Visible = True
+                TablaCateg = Producto.ListarCateg()
+                TCmbCategoria.Items.Clear()
+                TCmbCategoria.Text = ""
+                Dim Filas As Integer = TablaCateg.Rows.Count
+                If Filas > 0 Then
+                    For i As Integer = 0 To (Filas - 1)
+                        TCmbCategoria.Items.Add(TablaCateg.Rows(i).Item(1))
+                    Next
+                End If
+                ToolTip1.Show("Lista de Categorías", lblAux, 0, -23, 1000)
+                Me.Timer1.Enabled = True
         End Select
     End Sub
 
     Private Sub frmConsultaProd_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         cmbOrden.SelectedIndex = 1
+        TCmbStock.SelectedIndex = 0
         TCmbFiltrarPor.SelectedItem = "Código"
     End Sub
 
@@ -67,12 +91,11 @@ Public Class FListaProd
     Private Sub TcmbStock_DropDownClosed(ByVal sender As Object, ByVal e As System.EventArgs) Handles TCmbStock.DropDownClosed
         Dim Indice As Integer = TCmbStock.SelectedIndex
         Select Case Indice
-            Case Is = 0 'Todos"                
-            Case Else  'Menor o Igual a, Mayor o Igual a
+            Case Is = 1, 2  'Menor o Igual a, Mayor o Igual a
                 TtxtUnidad.Visible = True
                 TtxtUnidad.Text = ""
                 TtxtUnidad.Focus()
-                If TCmbProveedor.Visible = False Then
+                If TCmbProveedor.Visible = False And TCmbCategoria.Visible = False Then
                     ToolTip1.Show("Cantidad en Unidades", lblAux2, 0, -8, 1500)
                 Else
                     ToolTip1.Show("Cantidad en Unidades", lblAux3, 0, -8, 1500)
@@ -82,25 +105,34 @@ Public Class FListaProd
 
     Private Sub TcmbStock_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TCmbStock.SelectedIndexChanged
         Dim Indice As Integer = TCmbStock.SelectedIndex
-        Select Case Indice
-            Case Is = 0 'Todos"
-                TtxtUnidad.Visible = False
-                TablaProd = Producto.BuscProd("Stock", ">=", "0", Orden)
-                Condicion = "WHERE Stock >= 0"
-                CargarTabla(TablaProd)
-            Case Else  'Menor o Igual a, Mayor o Igual a
-                TtxtUnidad.Visible = True
+        Select Case TCmbFiltrarPor.SelectedIndex
+            Case Is = 0, 1, 4 'Todos, Proveedor, Categoria
+                Select Case Indice
+                    Case Is = 0 'Todos"
+                        TtxtUnidad.Visible = False
+                        TablaProd = Producto.BuscProd("Stock", ">=", "0", Orden)
+                        Condicion = "WHERE Stock >= 0"
+                        CargarTabla(TablaProd)
+                    Case Else  'Menor o Igual a, Mayor o Igual a
+                        TtxtUnidad.Visible = True
+                End Select
         End Select
     End Sub
 
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
-        TCmbProveedor.Focus()
-        TCmbProveedor.DroppedDown = True
+        If TCmbProveedor.Visible Then
+            TCmbProveedor.Focus()
+            TCmbProveedor.DroppedDown = True
+        Else
+            TCmbCategoria.Focus()
+            TCmbCategoria.DroppedDown = True
+        End If
         Timer1.Stop()
     End Sub
 
     Private Sub MostrarCaja(ByVal Titulo As String)
         TCmbProveedor.Visible = False
+        TCmbCategoria.Visible = False
         TtxtBuscar.Visible = True
         TCmbStock.Visible = False
         TlblStock.Visible = False
@@ -113,13 +145,35 @@ Public Class FListaProd
         TCmbProveedor.DroppedDown = True
     End Sub
 
+    Private Sub TcmbCategoria_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles TCmbCategoria.Click
+        TCmbCategoria.DroppedDown = True
+    End Sub
+
     Private Sub TcmbProveedor_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TCmbProveedor.SelectedIndexChanged
         Dim Indice As Integer = TCmbProveedor.SelectedIndex
         If Indice >= 0 Then
-            Dim ProvFK As String = CStr(TablaProv.Rows(Indice).Item(1))
-            TablaProd = Producto.BuscProd("ProveedorFK", "=", ProvFK, Orden)
-            Condicion = "WHERE ProveedorFK = '" + ProvFK + "'"
-            CargarTabla(TablaProd)
+            If TCmbStock.SelectedIndex = 0 Then
+                Dim ProvFK As String = CStr(TablaProv.Rows(Indice).Item(1))
+                TablaProd = Producto.BuscProd("ProveedorFK", "=", ProvFK, Orden)
+                Condicion = "WHERE ProveedorFK = '" + ProvFK + "'"
+                CargarTabla(TablaProd)
+            Else
+                Call TtxtUnidad_KeyDown(Nothing, New KeyEventArgs(Keys.Enter))
+            End If
+        End If
+    End Sub
+
+    Private Sub TcmbCategoria_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TCmbCategoria.SelectedIndexChanged
+        Dim Indice As Integer = TCmbCategoria.SelectedIndex
+        If Indice >= 0 Then
+            If TCmbStock.SelectedIndex = 0 Then
+                Dim Categ As String = CStr(TablaCateg.Rows(Indice).Item(1))
+                TablaProd = Producto.BuscProd("Categoria", "=", Categ, Orden)
+                Condicion = "WHERE Categoria = '" + Categ + "'"
+                CargarTabla(TablaProd)
+            Else
+                Call TtxtUnidad_KeyDown(Nothing, New KeyEventArgs(Keys.Enter))
+            End If
         End If
     End Sub
 
@@ -143,6 +197,11 @@ Public Class FListaProd
                         Dim ProvFK As String = CStr(TablaProv.Rows(Indice).Item(1))
                         TablaProd = Producto.BuscProd("ProveedorFK", ProvFK, "Stock", Operador, Unid + Orden)
                         Condicion = "WHERE ProveedorFK='" + ProvFK + "' AND Stock" + Operador + Unid
+                    Case Is = 4 'Categoría
+                        Dim Indice As Integer = TCmbCategoria.SelectedIndex
+                        Dim Categ As String = CStr(TablaCateg.Rows(Indice).Item(1))
+                        TablaProd = Producto.BuscProd("Categoria", Categ, "Stock", Operador, Unid + Orden)
+                        Condicion = "WHERE Categoria='" + Categ + "' AND Stock" + Operador + Unid
                 End Select
                 CargarTabla(TablaProd)
             End If
@@ -164,9 +223,9 @@ Public Class FListaProd
                 Dim PVenta As Integer = CInt(Tabla.Rows(i).Item(4))
                 Dim PVenta2 As Integer
                 Dim Stock As Double = CDbl(Tabla.Rows(i).Item(6))
-                Dim TablaAux As DataTable = Producto.BuscProdCod(idProd)
-                If CStr(TablaAux.Rows(0).Item(10)) = "Si" Then
-                    PVenta2 = CInt(TablaAux.Rows(0).Item(7))
+                'Dim TablaAux As DataTable = Producto.BuscProdCod(idProd)
+                If CStr(Tabla.Rows(i).Item(7)) = "Si" Then
+                    PVenta2 = CInt(Tabla.Rows(i).Item(8))
                 Else
                     PVenta2 = CInt(Tabla.Rows(i).Item(5))
                 End If
@@ -308,27 +367,28 @@ Public Class FListaProd
             Dim row As Integer = DataGridView1.CurrentRow.Index
             Dim Cod As String = CStr(TablaProd.Rows(row).Item(0))
             Dim idProv As String = CStr(TablaProd.Rows(row).Item(1))
+            Dim idCateg As String = CStr(TablaProd.Rows(row).Item(9))
             Dim Tabla As DataTable = Producto.BuscProdCod(Cod)
-            Dim Descrip As String = CStr(Tabla.Rows(0).Item(2))
-            Dim Costo As Integer = CInt(Tabla.Rows(0).Item(3))
-            Dim PrecioUnit As Integer = CInt(Tabla.Rows(0).Item(4))
-            Dim PrecioUnit2 As Integer = CInt(Tabla.Rows(0).Item(5))
-            Dim PrecioUnit3 As Integer = CInt(Tabla.Rows(0).Item(6))
+            Dim Descrip As String = CStr(Tabla.Rows(0).Item(3))
+            Dim Costo As Integer = CInt(Tabla.Rows(0).Item(4))
+            Dim PrecioUnit As Integer = CInt(Tabla.Rows(0).Item(5))
+            Dim PrecioUnit2 As Integer = CInt(Tabla.Rows(0).Item(6))
+            Dim PrecioUnit3 As Integer = CInt(Tabla.Rows(0).Item(7))
             Dim PrecioPack? As Integer = Nothing
-            Dim Stock As Double = CDbl(Tabla.Rows(0).Item(8))
+            Dim Stock As Double = CDbl(Tabla.Rows(0).Item(9))
             Dim UnidXpack?, Lado1?, Lado2?, MxCaja? As Double
-            Dim Present As String = CStr(Tabla.Rows(0).Item(10))
+            Dim Present As String = CStr(Tabla.Rows(0).Item(11))
             Dim Foto As Byte()
-            Dim Iva As Decimal = CDec(Tabla.Rows(0).Item(12))
+            Dim Iva As Decimal = CDec(Tabla.Rows(0).Item(13))
 
             Select Case Present
                 Case "Si", "SiCaja", "SiMetro", "Piso"
-                    PrecioPack = CInt(Tabla.Rows(0).Item(7))
-                    UnidXpack = CDbl(Tabla.Rows(0).Item(9))
+                    PrecioPack = CInt(Tabla.Rows(0).Item(8))
+                    UnidXpack = CDbl(Tabla.Rows(0).Item(10))
                     If Present = "Piso" Then
-                        Lado1 = CDbl(Tabla.Rows(0).Item(13))
-                        Lado2 = CDbl(Tabla.Rows(0).Item(14))
-                        MxCaja = CDbl(Tabla.Rows(0).Item(15))
+                        Lado1 = CDbl(Tabla.Rows(0).Item(14))
+                        Lado2 = CDbl(Tabla.Rows(0).Item(15))
+                        MxCaja = CDbl(Tabla.Rows(0).Item(16))
                     End If
             End Select
 
@@ -338,7 +398,7 @@ Public Class FListaProd
                 Foto = ImageToByteArray(My.Resources.Foto)
             End Try
 
-            Frm.Editar(Cod, idProv, Descrip, Costo, PrecioUnit, PrecioUnit2, PrecioUnit3, PrecioPack, Stock, UnidXpack, Present, Foto, Iva, Lado1, Lado2, MxCaja)
+            Frm.Editar(Cod, idProv, idCateg, Descrip, Costo, PrecioUnit, PrecioUnit2, PrecioUnit3, PrecioPack, Stock, UnidXpack, Present, Foto, Iva, Lado1, Lado2, MxCaja)
             Frm.MdiParent = MdiParent
             Frm.Show()
         Catch ex As Exception

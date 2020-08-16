@@ -32,7 +32,8 @@ Partial Class FPrincipal
         Me.NuevoProd = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListaBajaDeProductosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListaAltaDeProductosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CajaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuCategoria = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuCaja = New System.Windows.Forms.ToolStripMenuItem()
         Me.AbrirCajaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CerrarCajaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HistorialDeCajaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -113,7 +114,7 @@ Partial Class FPrincipal
         'MenuStrip1
         '
         Me.MenuStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuArchivo, Me.mnuProd, Me.CajaToolStripMenuItem, Me.mnuVentas, Me.mnuCompras, Me.ClientesToolStripMenuItem, Me.mnuProveed, Me.mnuEmpleados, Me.mnuCuentas, Me.mnuFinanzas, Me.mnuUsuarios, Me.AyudaToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuArchivo, Me.mnuProd, Me.mnuCaja, Me.mnuVentas, Me.mnuCompras, Me.ClientesToolStripMenuItem, Me.mnuProveed, Me.mnuEmpleados, Me.mnuCuentas, Me.mnuFinanzas, Me.mnuUsuarios, Me.AyudaToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(928, 24)
@@ -138,7 +139,7 @@ Partial Class FPrincipal
         '
         'mnuProd
         '
-        Me.mnuProd.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConsultaProd, Me.NuevoProd, Me.ListaBajaDeProductosToolStripMenuItem, Me.ListaAltaDeProductosToolStripMenuItem})
+        Me.mnuProd.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConsultaProd, Me.NuevoProd, Me.ListaBajaDeProductosToolStripMenuItem, Me.ListaAltaDeProductosToolStripMenuItem, Me.mnuCategoria})
         Me.mnuProd.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.mnuProd.ImageTransparentColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
         Me.mnuProd.Name = "mnuProd"
@@ -150,7 +151,7 @@ Partial Class FPrincipal
         Me.ConsultaProd.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
         Me.ConsultaProd.ForeColor = System.Drawing.Color.White
         Me.ConsultaProd.Name = "ConsultaProd"
-        Me.ConsultaProd.Size = New System.Drawing.Size(196, 22)
+        Me.ConsultaProd.Size = New System.Drawing.Size(182, 22)
         Me.ConsultaProd.Text = "Consultar Productos"
         '
         'NuevoProd
@@ -158,7 +159,7 @@ Partial Class FPrincipal
         Me.NuevoProd.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
         Me.NuevoProd.ForeColor = System.Drawing.Color.White
         Me.NuevoProd.Name = "NuevoProd"
-        Me.NuevoProd.Size = New System.Drawing.Size(196, 22)
+        Me.NuevoProd.Size = New System.Drawing.Size(182, 22)
         Me.NuevoProd.Text = "Nuevo Producto"
         '
         'ListaBajaDeProductosToolStripMenuItem
@@ -166,31 +167,39 @@ Partial Class FPrincipal
         Me.ListaBajaDeProductosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
         Me.ListaBajaDeProductosToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.ListaBajaDeProductosToolStripMenuItem.Name = "ListaBajaDeProductosToolStripMenuItem"
-        Me.ListaBajaDeProductosToolStripMenuItem.Size = New System.Drawing.Size(196, 22)
-        Me.ListaBajaDeProductosToolStripMenuItem.Text = "Lista Baja de Productos"
+        Me.ListaBajaDeProductosToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
+        Me.ListaBajaDeProductosToolStripMenuItem.Text = "Baja de Productos"
         '
         'ListaAltaDeProductosToolStripMenuItem
         '
         Me.ListaAltaDeProductosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
         Me.ListaAltaDeProductosToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.ListaAltaDeProductosToolStripMenuItem.Name = "ListaAltaDeProductosToolStripMenuItem"
-        Me.ListaAltaDeProductosToolStripMenuItem.Size = New System.Drawing.Size(196, 22)
-        Me.ListaAltaDeProductosToolStripMenuItem.Text = "Lista Alta de Productos"
+        Me.ListaAltaDeProductosToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
+        Me.ListaAltaDeProductosToolStripMenuItem.Text = "Alta de Productos"
         '
-        'CajaToolStripMenuItem
+        'mnuCategoria
         '
-        Me.CajaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AbrirCajaToolStripMenuItem, Me.CerrarCajaToolStripMenuItem, Me.HistorialDeCajaToolStripMenuItem, Me.DetalleDeCajaToolStripMenuItem})
-        Me.CajaToolStripMenuItem.ForeColor = System.Drawing.Color.White
-        Me.CajaToolStripMenuItem.Name = "CajaToolStripMenuItem"
-        Me.CajaToolStripMenuItem.Size = New System.Drawing.Size(42, 20)
-        Me.CajaToolStripMenuItem.Text = "Caja"
+        Me.mnuCategoria.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
+        Me.mnuCategoria.ForeColor = System.Drawing.Color.White
+        Me.mnuCategoria.Name = "mnuCategoria"
+        Me.mnuCategoria.Size = New System.Drawing.Size(182, 22)
+        Me.mnuCategoria.Text = "Categorías"
+        '
+        'mnuCaja
+        '
+        Me.mnuCaja.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AbrirCajaToolStripMenuItem, Me.CerrarCajaToolStripMenuItem, Me.HistorialDeCajaToolStripMenuItem, Me.DetalleDeCajaToolStripMenuItem})
+        Me.mnuCaja.ForeColor = System.Drawing.Color.White
+        Me.mnuCaja.Name = "mnuCaja"
+        Me.mnuCaja.Size = New System.Drawing.Size(42, 20)
+        Me.mnuCaja.Text = "Caja"
         '
         'AbrirCajaToolStripMenuItem
         '
         Me.AbrirCajaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
         Me.AbrirCajaToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.AbrirCajaToolStripMenuItem.Name = "AbrirCajaToolStripMenuItem"
-        Me.AbrirCajaToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
+        Me.AbrirCajaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.AbrirCajaToolStripMenuItem.Text = "Abrir Caja"
         '
         'CerrarCajaToolStripMenuItem
@@ -198,7 +207,7 @@ Partial Class FPrincipal
         Me.CerrarCajaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
         Me.CerrarCajaToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.CerrarCajaToolStripMenuItem.Name = "CerrarCajaToolStripMenuItem"
-        Me.CerrarCajaToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
+        Me.CerrarCajaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.CerrarCajaToolStripMenuItem.Text = "Cerrar Caja"
         '
         'HistorialDeCajaToolStripMenuItem
@@ -206,7 +215,7 @@ Partial Class FPrincipal
         Me.HistorialDeCajaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
         Me.HistorialDeCajaToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.HistorialDeCajaToolStripMenuItem.Name = "HistorialDeCajaToolStripMenuItem"
-        Me.HistorialDeCajaToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
+        Me.HistorialDeCajaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.HistorialDeCajaToolStripMenuItem.Text = "Historial de Caja"
         '
         'DetalleDeCajaToolStripMenuItem
@@ -214,7 +223,7 @@ Partial Class FPrincipal
         Me.DetalleDeCajaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
         Me.DetalleDeCajaToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.DetalleDeCajaToolStripMenuItem.Name = "DetalleDeCajaToolStripMenuItem"
-        Me.DetalleDeCajaToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
+        Me.DetalleDeCajaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.DetalleDeCajaToolStripMenuItem.Text = "Resumen de Caja"
         '
         'mnuVentas
@@ -541,7 +550,7 @@ Partial Class FPrincipal
         Me.AcercaDeToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
         Me.AcercaDeToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.AcercaDeToolStripMenuItem.Name = "AcercaDeToolStripMenuItem"
-        Me.AcercaDeToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AcercaDeToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
         Me.AcercaDeToolStripMenuItem.Text = "Acerca de"
         '
         'StatusStrip1
@@ -818,9 +827,10 @@ Partial Class FPrincipal
     Friend WithEvents ClientesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents NuevoClienteToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ConsultarClentesToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents CajaToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents mnuCaja As ToolStripMenuItem
     Friend WithEvents AbrirCajaToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CerrarCajaToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents HistorialDeCajaToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DetalleDeCajaToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents mnuCategoria As ToolStripMenuItem
 End Class

@@ -540,11 +540,12 @@ Partial Class FNuevoPrivilegio
         '
         Me.GroupBox12.Controls.Add(Me.Label12)
         Me.GroupBox12.Controls.Add(Me.CkbHab)
-        Me.GroupBox12.Location = New System.Drawing.Point(28, 462)
+        Me.GroupBox12.Location = New System.Drawing.Point(28, 463)
         Me.GroupBox12.Name = "GroupBox12"
         Me.GroupBox12.Size = New System.Drawing.Size(253, 57)
         Me.GroupBox12.TabIndex = 36
         Me.GroupBox12.TabStop = False
+        Me.GroupBox12.Visible = False
         '
         'Label12
         '
@@ -596,7 +597,7 @@ Partial Class FNuevoPrivilegio
         Me.Label13.TabIndex = 87
         Me.Label13.Text = "Ajustar los Accesos o Privilegios"
         '
-        'FPrivilegio
+        'FNuevoPrivilegio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -618,7 +619,7 @@ Partial Class FNuevoPrivilegio
         Me.Controls.Add(Me.GroupBox9)
         Me.ForeColor = System.Drawing.Color.White
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.Name = "FPrivilegio"
+        Me.Name = "FNuevoPrivilegio"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Agregar Nuevo Nivel de Privilegios"
         CType(Me.btnCancel, System.ComponentModel.ISupportInitialize).EndInit()

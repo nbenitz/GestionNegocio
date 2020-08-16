@@ -24,23 +24,9 @@ Partial Class FNuevoProducto
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.pnlPiso = New System.Windows.Forms.Panel()
-        Me.txtMxCaja = New System.Windows.Forms.TextBox()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.txtPrecioMetro = New System.Windows.Forms.TextBox()
-        Me.txtPrecioCaja = New System.Windows.Forms.TextBox()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.TxtPrecioUnid = New System.Windows.Forms.TextBox()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.txtUnidxPackPiso = New System.Windows.Forms.TextBox()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.txtLado2 = New System.Windows.Forms.TextBox()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.txtLado1 = New System.Windows.Forms.TextBox()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.pnlUnid = New System.Windows.Forms.Panel()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.cmbCategoria = New System.Windows.Forms.ComboBox()
+        Me.pbxNewCateg = New System.Windows.Forms.PictureBox()
         Me.lblPrec2 = New System.Windows.Forms.Label()
         Me.lblPVUnid = New System.Windows.Forms.Label()
         Me.txtPVUnid = New System.Windows.Forms.TextBox()
@@ -76,27 +62,53 @@ Partial Class FNuevoProducto
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblUnidMedida = New System.Windows.Forms.Label()
+        Me.pnlPiso = New System.Windows.Forms.Panel()
+        Me.txtMxCaja = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.txtPrecioMetro = New System.Windows.Forms.TextBox()
+        Me.txtPrecioCaja = New System.Windows.Forms.TextBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.TxtPrecioUnid = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.txtUnidxPackPiso = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.txtLado2 = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.txtLado1 = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.ToolTip2 = New System.Windows.Forms.ToolTip(Me.components)
         Me.GroupBox1.SuspendLayout()
-        Me.pnlPiso.SuspendLayout()
-        Me.pnlUnid.SuspendLayout()
+        CType(Me.pbxNewCateg, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BtnGuardar1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BtnCancel1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbxNewProv, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlPiso.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(125, Byte), Integer))
-        Me.GroupBox1.Controls.Add(Me.pnlPiso)
-        Me.GroupBox1.Controls.Add(Me.pnlUnid)
+        Me.GroupBox1.Controls.Add(Me.lblPrec2)
+        Me.GroupBox1.Controls.Add(Me.Label11)
+        Me.GroupBox1.Controls.Add(Me.lblPVUnid)
+        Me.GroupBox1.Controls.Add(Me.cmbCategoria)
+        Me.GroupBox1.Controls.Add(Me.txtPVUnid)
+        Me.GroupBox1.Controls.Add(Me.pbxNewCateg)
+        Me.GroupBox1.Controls.Add(Me.txtPVPack)
+        Me.GroupBox1.Controls.Add(Me.lblPrec1)
         Me.GroupBox1.Controls.Add(Me.Label5)
+        Me.GroupBox1.Controls.Add(Me.txtUnidXpack)
         Me.GroupBox1.Controls.Add(Me.Label4)
+        Me.GroupBox1.Controls.Add(Me.txtPrec1)
         Me.GroupBox1.Controls.Add(Me.TxtIva)
+        Me.GroupBox1.Controls.Add(Me.lblPack)
         Me.GroupBox1.Controls.Add(Me.BtnGuardar1)
+        Me.GroupBox1.Controls.Add(Me.txtPrec2)
         Me.GroupBox1.Controls.Add(Me.BtnCancel1)
         Me.GroupBox1.Controls.Add(Me.lblAddImage)
         Me.GroupBox1.Controls.Add(Me.lblRestoDesc)
@@ -118,205 +130,58 @@ Partial Class FNuevoProducto
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.lblUnidMedida)
+        Me.GroupBox1.Controls.Add(Me.lblPVPack)
+        Me.GroupBox1.Controls.Add(Me.pnlPiso)
         Me.GroupBox1.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.ForeColor = System.Drawing.Color.White
         Me.GroupBox1.Location = New System.Drawing.Point(16, 9)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(734, 452)
+        Me.GroupBox1.Size = New System.Drawing.Size(734, 399)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos del Producto"
         '
-        'pnlPiso
+        'Label11
         '
-        Me.pnlPiso.Controls.Add(Me.txtMxCaja)
-        Me.pnlPiso.Controls.Add(Me.Label10)
-        Me.pnlPiso.Controls.Add(Me.Label16)
-        Me.pnlPiso.Controls.Add(Me.txtPrecioMetro)
-        Me.pnlPiso.Controls.Add(Me.txtPrecioCaja)
-        Me.pnlPiso.Controls.Add(Me.Label14)
-        Me.pnlPiso.Controls.Add(Me.Label15)
-        Me.pnlPiso.Controls.Add(Me.TxtPrecioUnid)
-        Me.pnlPiso.Controls.Add(Me.Label12)
-        Me.pnlPiso.Controls.Add(Me.txtUnidxPackPiso)
-        Me.pnlPiso.Controls.Add(Me.Label9)
-        Me.pnlPiso.Controls.Add(Me.txtLado2)
-        Me.pnlPiso.Controls.Add(Me.Label8)
-        Me.pnlPiso.Controls.Add(Me.txtLado1)
-        Me.pnlPiso.Controls.Add(Me.Label13)
-        Me.pnlPiso.Location = New System.Drawing.Point(5, 212)
-        Me.pnlPiso.Name = "pnlPiso"
-        Me.pnlPiso.Size = New System.Drawing.Size(391, 230)
-        Me.pnlPiso.TabIndex = 1
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.ForeColor = System.Drawing.Color.White
+        Me.Label11.Location = New System.Drawing.Point(28, 148)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(70, 18)
+        Me.Label11.TabIndex = 1012
+        Me.Label11.Text = "Categoría:"
         '
-        'txtMxCaja
+        'cmbCategoria
         '
-        Me.txtMxCaja.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMxCaja.Location = New System.Drawing.Point(168, 46)
-        Me.txtMxCaja.Name = "txtMxCaja"
-        Me.txtMxCaja.Size = New System.Drawing.Size(193, 27)
-        Me.txtMxCaja.TabIndex = 10
+        Me.cmbCategoria.BackColor = System.Drawing.Color.Snow
+        Me.cmbCategoria.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCategoria.FormattingEnabled = True
+        Me.cmbCategoria.Location = New System.Drawing.Point(147, 144)
+        Me.cmbCategoria.Name = "cmbCategoria"
+        Me.cmbCategoria.Size = New System.Drawing.Size(244, 27)
+        Me.cmbCategoria.TabIndex = 2
         '
-        'Label10
+        'pbxNewCateg
         '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.ForeColor = System.Drawing.Color.White
-        Me.Label10.Location = New System.Drawing.Point(22, 50)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(95, 18)
-        Me.Label10.TabIndex = 107
-        Me.Label10.Text = "Metros x Caja:"
-        '
-        'Label16
-        '
-        Me.Label16.AutoSize = True
-        Me.Label16.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.ForeColor = System.Drawing.Color.White
-        Me.Label16.Location = New System.Drawing.Point(22, 200)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(104, 18)
-        Me.Label16.TabIndex = 105
-        Me.Label16.Text = "Precio x Unidad"
-        '
-        'txtPrecioMetro
-        '
-        Me.txtPrecioMetro.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPrecioMetro.Location = New System.Drawing.Point(142, 160)
-        Me.txtPrecioMetro.Name = "txtPrecioMetro"
-        Me.txtPrecioMetro.Size = New System.Drawing.Size(244, 27)
-        Me.txtPrecioMetro.TabIndex = 14
-        '
-        'txtPrecioCaja
-        '
-        Me.txtPrecioCaja.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPrecioCaja.Location = New System.Drawing.Point(142, 124)
-        Me.txtPrecioCaja.MaxLength = 50
-        Me.txtPrecioCaja.Name = "txtPrecioCaja"
-        Me.txtPrecioCaja.Size = New System.Drawing.Size(244, 27)
-        Me.txtPrecioCaja.TabIndex = 13
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.ForeColor = System.Drawing.Color.White
-        Me.Label14.Location = New System.Drawing.Point(22, 164)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(98, 18)
-        Me.Label14.TabIndex = 102
-        Me.Label14.Text = "Precio x Metro"
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.ForeColor = System.Drawing.Color.White
-        Me.Label15.Location = New System.Drawing.Point(22, 128)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(90, 18)
-        Me.Label15.TabIndex = 100
-        Me.Label15.Text = "Precio x Caja:"
-        '
-        'TxtPrecioUnid
-        '
-        Me.TxtPrecioUnid.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtPrecioUnid.Location = New System.Drawing.Point(142, 196)
-        Me.TxtPrecioUnid.Name = "TxtPrecioUnid"
-        Me.TxtPrecioUnid.Size = New System.Drawing.Size(244, 27)
-        Me.TxtPrecioUnid.TabIndex = 15
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.ForeColor = System.Drawing.Color.White
-        Me.Label12.Location = New System.Drawing.Point(245, 85)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(39, 18)
-        Me.Label12.TabIndex = 99
-        Me.Label12.Text = "cm  x"
-        '
-        'txtUnidxPackPiso
-        '
-        Me.txtUnidxPackPiso.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtUnidxPackPiso.Location = New System.Drawing.Point(168, 11)
-        Me.txtUnidxPackPiso.Name = "txtUnidxPackPiso"
-        Me.txtUnidxPackPiso.Size = New System.Drawing.Size(193, 27)
-        Me.txtUnidxPackPiso.TabIndex = 9
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.ForeColor = System.Drawing.Color.White
-        Me.Label9.Location = New System.Drawing.Point(22, 15)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(109, 18)
-        Me.Label9.TabIndex = 91
-        Me.Label9.Text = "Unidades x Caja:"
-        '
-        'txtLado2
-        '
-        Me.txtLado2.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtLado2.Location = New System.Drawing.Point(290, 81)
-        Me.txtLado2.Name = "txtLado2"
-        Me.txtLado2.Size = New System.Drawing.Size(71, 27)
-        Me.txtLado2.TabIndex = 12
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.ForeColor = System.Drawing.Color.White
-        Me.Label8.Location = New System.Drawing.Point(22, 85)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(131, 18)
-        Me.Label8.TabIndex = 95
-        Me.Label8.Text = "Dimensión del Piso:"
-        '
-        'txtLado1
-        '
-        Me.txtLado1.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtLado1.Location = New System.Drawing.Point(168, 81)
-        Me.txtLado1.Name = "txtLado1"
-        Me.txtLado1.Size = New System.Drawing.Size(71, 27)
-        Me.txtLado1.TabIndex = 11
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.ForeColor = System.Drawing.Color.White
-        Me.Label13.Location = New System.Drawing.Point(360, 85)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(26, 18)
-        Me.Label13.TabIndex = 97
-        Me.Label13.Text = "cm"
-        '
-        'pnlUnid
-        '
-        Me.pnlUnid.Controls.Add(Me.lblPrec2)
-        Me.pnlUnid.Controls.Add(Me.lblPVUnid)
-        Me.pnlUnid.Controls.Add(Me.txtPVUnid)
-        Me.pnlUnid.Controls.Add(Me.txtPVPack)
-        Me.pnlUnid.Controls.Add(Me.lblPVPack)
-        Me.pnlUnid.Controls.Add(Me.lblPrec1)
-        Me.pnlUnid.Controls.Add(Me.txtUnidXpack)
-        Me.pnlUnid.Controls.Add(Me.txtPrec1)
-        Me.pnlUnid.Controls.Add(Me.lblPack)
-        Me.pnlUnid.Controls.Add(Me.txtPrec2)
-        Me.pnlUnid.Location = New System.Drawing.Point(5, 209)
-        Me.pnlUnid.Name = "pnlUnid"
-        Me.pnlUnid.Size = New System.Drawing.Size(392, 119)
-        Me.pnlUnid.TabIndex = 1009
+        Me.pbxNewCateg.BackColor = System.Drawing.Color.Transparent
+        Me.pbxNewCateg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.pbxNewCateg.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pbxNewCateg.Image = Global.ControlStock.My.Resources.Resources.Plus_over2
+        Me.pbxNewCateg.Location = New System.Drawing.Point(398, 148)
+        Me.pbxNewCateg.Name = "pbxNewCateg"
+        Me.pbxNewCateg.Size = New System.Drawing.Size(25, 20)
+        Me.pbxNewCateg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.pbxNewCateg.TabIndex = 1010
+        Me.pbxNewCateg.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.pbxNewCateg, "Nueva Categoría")
         '
         'lblPrec2
         '
         Me.lblPrec2.AutoSize = True
         Me.lblPrec2.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblPrec2.ForeColor = System.Drawing.Color.White
-        Me.lblPrec2.Location = New System.Drawing.Point(23, 50)
+        Me.lblPrec2.Location = New System.Drawing.Point(28, 291)
         Me.lblPrec2.Name = "lblPrec2"
         Me.lblPrec2.Size = New System.Drawing.Size(106, 18)
         Me.lblPrec2.TabIndex = 1004
@@ -327,7 +192,7 @@ Partial Class FNuevoProducto
         Me.lblPVUnid.AutoSize = True
         Me.lblPVUnid.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblPVUnid.ForeColor = System.Drawing.Color.White
-        Me.lblPVUnid.Location = New System.Drawing.Point(23, 86)
+        Me.lblPVUnid.Location = New System.Drawing.Point(28, 327)
         Me.lblPVUnid.Name = "lblPVUnid"
         Me.lblPVUnid.Size = New System.Drawing.Size(108, 18)
         Me.lblPVUnid.TabIndex = 93
@@ -336,25 +201,25 @@ Partial Class FNuevoProducto
         'txtPVUnid
         '
         Me.txtPVUnid.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPVUnid.Location = New System.Drawing.Point(169, 82)
+        Me.txtPVUnid.Location = New System.Drawing.Point(174, 323)
         Me.txtPVUnid.Name = "txtPVUnid"
         Me.txtPVUnid.Size = New System.Drawing.Size(218, 27)
-        Me.txtPVUnid.TabIndex = 8
+        Me.txtPVUnid.TabIndex = 9
         '
         'txtPVPack
         '
         Me.txtPVPack.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPVPack.Location = New System.Drawing.Point(169, 46)
+        Me.txtPVPack.Location = New System.Drawing.Point(174, 287)
         Me.txtPVPack.Name = "txtPVPack"
         Me.txtPVPack.Size = New System.Drawing.Size(218, 27)
-        Me.txtPVPack.TabIndex = 7
+        Me.txtPVPack.TabIndex = 8
         '
         'lblPVPack
         '
         Me.lblPVPack.AutoSize = True
         Me.lblPVPack.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblPVPack.ForeColor = System.Drawing.Color.White
-        Me.lblPVPack.Location = New System.Drawing.Point(19, 50)
+        Me.lblPVPack.Location = New System.Drawing.Point(28, 291)
         Me.lblPVPack.Name = "lblPVPack"
         Me.lblPVPack.Size = New System.Drawing.Size(116, 18)
         Me.lblPVPack.TabIndex = 88
@@ -365,7 +230,7 @@ Partial Class FNuevoProducto
         Me.lblPrec1.AutoSize = True
         Me.lblPrec1.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblPrec1.ForeColor = System.Drawing.Color.White
-        Me.lblPrec1.Location = New System.Drawing.Point(23, 14)
+        Me.lblPrec1.Location = New System.Drawing.Point(28, 255)
         Me.lblPrec1.Name = "lblPrec1"
         Me.lblPrec1.Size = New System.Drawing.Size(100, 18)
         Me.lblPrec1.TabIndex = 28
@@ -374,25 +239,25 @@ Partial Class FNuevoProducto
         'txtUnidXpack
         '
         Me.txtUnidXpack.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtUnidXpack.Location = New System.Drawing.Point(169, 10)
+        Me.txtUnidXpack.Location = New System.Drawing.Point(174, 251)
         Me.txtUnidXpack.Name = "txtUnidXpack"
         Me.txtUnidXpack.Size = New System.Drawing.Size(218, 27)
-        Me.txtUnidXpack.TabIndex = 6
+        Me.txtUnidXpack.TabIndex = 7
         '
         'txtPrec1
         '
         Me.txtPrec1.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPrec1.Location = New System.Drawing.Point(143, 10)
+        Me.txtPrec1.Location = New System.Drawing.Point(148, 251)
         Me.txtPrec1.Name = "txtPrec1"
         Me.txtPrec1.Size = New System.Drawing.Size(244, 27)
-        Me.txtPrec1.TabIndex = 4
+        Me.txtPrec1.TabIndex = 5
         '
         'lblPack
         '
         Me.lblPack.AutoSize = True
         Me.lblPack.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblPack.ForeColor = System.Drawing.Color.White
-        Me.lblPack.Location = New System.Drawing.Point(19, 14)
+        Me.lblPack.Location = New System.Drawing.Point(24, 255)
         Me.lblPack.Name = "lblPack"
         Me.lblPack.Size = New System.Drawing.Size(135, 18)
         Me.lblPack.TabIndex = 22
@@ -401,10 +266,10 @@ Partial Class FNuevoProducto
         'txtPrec2
         '
         Me.txtPrec2.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPrec2.Location = New System.Drawing.Point(143, 46)
+        Me.txtPrec2.Location = New System.Drawing.Point(148, 287)
         Me.txtPrec2.Name = "txtPrec2"
         Me.txtPrec2.Size = New System.Drawing.Size(244, 27)
-        Me.txtPrec2.TabIndex = 5
+        Me.txtPrec2.TabIndex = 6
         '
         'Label5
         '
@@ -423,7 +288,7 @@ Partial Class FNuevoProducto
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(407, 223)
+        Me.Label4.Location = New System.Drawing.Point(407, 219)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(33, 18)
         Me.Label4.TabIndex = 1007
@@ -435,7 +300,7 @@ Partial Class FNuevoProducto
         Me.TxtIva.Location = New System.Drawing.Point(458, 219)
         Me.TxtIva.Name = "TxtIva"
         Me.TxtIva.Size = New System.Drawing.Size(203, 27)
-        Me.TxtIva.TabIndex = 16
+        Me.TxtIva.TabIndex = 18
         Me.TxtIva.Text = "10"
         '
         'BtnGuardar1
@@ -444,7 +309,7 @@ Partial Class FNuevoProducto
         Me.BtnGuardar1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.BtnGuardar1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BtnGuardar1.Image = Global.ControlStock.My.Resources.Resources.file_apply
-        Me.BtnGuardar1.Location = New System.Drawing.Point(573, 393)
+        Me.BtnGuardar1.Location = New System.Drawing.Point(578, 340)
         Me.BtnGuardar1.Name = "BtnGuardar1"
         Me.BtnGuardar1.Size = New System.Drawing.Size(41, 38)
         Me.BtnGuardar1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -457,7 +322,7 @@ Partial Class FNuevoProducto
         Me.BtnCancel1.BackColor = System.Drawing.Color.Transparent
         Me.BtnCancel1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BtnCancel1.Image = Global.ControlStock.My.Resources.Resources.file_exclude
-        Me.BtnCancel1.Location = New System.Drawing.Point(620, 393)
+        Me.BtnCancel1.Location = New System.Drawing.Point(625, 340)
         Me.BtnCancel1.Name = "BtnCancel1"
         Me.BtnCancel1.Size = New System.Drawing.Size(41, 38)
         Me.BtnCancel1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -484,7 +349,7 @@ Partial Class FNuevoProducto
         Me.lblRestoDesc.AutoSize = True
         Me.lblRestoDesc.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblRestoDesc.ForeColor = System.Drawing.Color.Lime
-        Me.lblRestoDesc.Location = New System.Drawing.Point(399, 150)
+        Me.lblRestoDesc.Location = New System.Drawing.Point(399, 182)
         Me.lblRestoDesc.Name = "lblRestoDesc"
         Me.lblRestoDesc.Size = New System.Drawing.Size(25, 19)
         Me.lblRestoDesc.TabIndex = 85
@@ -554,6 +419,7 @@ Partial Class FNuevoProducto
         Me.Label7.Size = New System.Drawing.Size(93, 18)
         Me.Label7.TabIndex = 21
         Me.Label7.Text = "Presentación:"
+        Me.Label7.Visible = False
         '
         'cmbPresent
         '
@@ -566,6 +432,7 @@ Partial Class FNuevoProducto
         Me.cmbPresent.Name = "cmbPresent"
         Me.cmbPresent.Size = New System.Drawing.Size(244, 27)
         Me.cmbPresent.TabIndex = 12
+        Me.cmbPresent.Visible = False
         '
         'Label6
         '
@@ -594,14 +461,14 @@ Partial Class FNuevoProducto
         Me.txtStock.Location = New System.Drawing.Point(458, 255)
         Me.txtStock.Name = "txtStock"
         Me.txtStock.Size = New System.Drawing.Size(203, 27)
-        Me.txtStock.TabIndex = 17
+        Me.txtStock.TabIndex = 19
         '
         'lblStock
         '
         Me.lblStock.AutoSize = True
         Me.lblStock.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblStock.ForeColor = System.Drawing.Color.White
-        Me.lblStock.Location = New System.Drawing.Point(407, 259)
+        Me.lblStock.Location = New System.Drawing.Point(407, 255)
         Me.lblStock.Name = "lblStock"
         Me.lblStock.Size = New System.Drawing.Size(45, 18)
         Me.lblStock.TabIndex = 4
@@ -623,19 +490,19 @@ Partial Class FNuevoProducto
         'txtPrecCompra
         '
         Me.txtPrecCompra.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPrecCompra.Location = New System.Drawing.Point(148, 183)
+        Me.txtPrecCompra.Location = New System.Drawing.Point(148, 215)
         Me.txtPrecCompra.Name = "txtPrecCompra"
         Me.txtPrecCompra.Size = New System.Drawing.Size(244, 27)
-        Me.txtPrecCompra.TabIndex = 3
+        Me.txtPrecCompra.TabIndex = 4
         '
         'txtDescrip
         '
         Me.txtDescrip.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDescrip.Location = New System.Drawing.Point(148, 147)
+        Me.txtDescrip.Location = New System.Drawing.Point(148, 179)
         Me.txtDescrip.MaxLength = 50
         Me.txtDescrip.Name = "txtDescrip"
         Me.txtDescrip.Size = New System.Drawing.Size(244, 27)
-        Me.txtDescrip.TabIndex = 2
+        Me.txtDescrip.TabIndex = 3
         '
         'txtCod
         '
@@ -650,7 +517,7 @@ Partial Class FNuevoProducto
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(28, 187)
+        Me.Label3.Location = New System.Drawing.Point(28, 219)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(47, 18)
         Me.Label3.TabIndex = 2
@@ -661,7 +528,7 @@ Partial Class FNuevoProducto
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(28, 151)
+        Me.Label2.Location = New System.Drawing.Point(28, 183)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(84, 18)
         Me.Label2.TabIndex = 1
@@ -690,6 +557,173 @@ Partial Class FNuevoProducto
         Me.lblUnidMedida.Text = "Kg."
         Me.lblUnidMedida.Visible = False
         '
+        'pnlPiso
+        '
+        Me.pnlPiso.Controls.Add(Me.txtMxCaja)
+        Me.pnlPiso.Controls.Add(Me.Label10)
+        Me.pnlPiso.Controls.Add(Me.Label16)
+        Me.pnlPiso.Controls.Add(Me.txtPrecioMetro)
+        Me.pnlPiso.Controls.Add(Me.txtPrecioCaja)
+        Me.pnlPiso.Controls.Add(Me.Label14)
+        Me.pnlPiso.Controls.Add(Me.Label15)
+        Me.pnlPiso.Controls.Add(Me.TxtPrecioUnid)
+        Me.pnlPiso.Controls.Add(Me.Label12)
+        Me.pnlPiso.Controls.Add(Me.txtUnidxPackPiso)
+        Me.pnlPiso.Controls.Add(Me.Label9)
+        Me.pnlPiso.Controls.Add(Me.txtLado2)
+        Me.pnlPiso.Controls.Add(Me.Label8)
+        Me.pnlPiso.Controls.Add(Me.txtLado1)
+        Me.pnlPiso.Controls.Add(Me.Label13)
+        Me.pnlPiso.Location = New System.Drawing.Point(5, 240)
+        Me.pnlPiso.Name = "pnlPiso"
+        Me.pnlPiso.Size = New System.Drawing.Size(391, 230)
+        Me.pnlPiso.TabIndex = 1
+        '
+        'txtMxCaja
+        '
+        Me.txtMxCaja.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtMxCaja.Location = New System.Drawing.Point(168, 46)
+        Me.txtMxCaja.Name = "txtMxCaja"
+        Me.txtMxCaja.Size = New System.Drawing.Size(193, 27)
+        Me.txtMxCaja.TabIndex = 11
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.ForeColor = System.Drawing.Color.White
+        Me.Label10.Location = New System.Drawing.Point(22, 50)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(95, 18)
+        Me.Label10.TabIndex = 107
+        Me.Label10.Text = "Metros x Caja:"
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.ForeColor = System.Drawing.Color.White
+        Me.Label16.Location = New System.Drawing.Point(22, 200)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(104, 18)
+        Me.Label16.TabIndex = 105
+        Me.Label16.Text = "Precio x Unidad"
+        '
+        'txtPrecioMetro
+        '
+        Me.txtPrecioMetro.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPrecioMetro.Location = New System.Drawing.Point(142, 160)
+        Me.txtPrecioMetro.Name = "txtPrecioMetro"
+        Me.txtPrecioMetro.Size = New System.Drawing.Size(244, 27)
+        Me.txtPrecioMetro.TabIndex = 16
+        '
+        'txtPrecioCaja
+        '
+        Me.txtPrecioCaja.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPrecioCaja.Location = New System.Drawing.Point(142, 124)
+        Me.txtPrecioCaja.MaxLength = 50
+        Me.txtPrecioCaja.Name = "txtPrecioCaja"
+        Me.txtPrecioCaja.Size = New System.Drawing.Size(244, 27)
+        Me.txtPrecioCaja.TabIndex = 15
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.ForeColor = System.Drawing.Color.White
+        Me.Label14.Location = New System.Drawing.Point(22, 164)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(98, 18)
+        Me.Label14.TabIndex = 102
+        Me.Label14.Text = "Precio x Metro"
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.ForeColor = System.Drawing.Color.White
+        Me.Label15.Location = New System.Drawing.Point(22, 128)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(90, 18)
+        Me.Label15.TabIndex = 100
+        Me.Label15.Text = "Precio x Caja:"
+        '
+        'TxtPrecioUnid
+        '
+        Me.TxtPrecioUnid.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtPrecioUnid.Location = New System.Drawing.Point(142, 196)
+        Me.TxtPrecioUnid.Name = "TxtPrecioUnid"
+        Me.TxtPrecioUnid.Size = New System.Drawing.Size(244, 27)
+        Me.TxtPrecioUnid.TabIndex = 17
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.ForeColor = System.Drawing.Color.White
+        Me.Label12.Location = New System.Drawing.Point(245, 85)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(39, 18)
+        Me.Label12.TabIndex = 99
+        Me.Label12.Text = "cm  x"
+        '
+        'txtUnidxPackPiso
+        '
+        Me.txtUnidxPackPiso.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtUnidxPackPiso.Location = New System.Drawing.Point(168, 11)
+        Me.txtUnidxPackPiso.Name = "txtUnidxPackPiso"
+        Me.txtUnidxPackPiso.Size = New System.Drawing.Size(193, 27)
+        Me.txtUnidxPackPiso.TabIndex = 10
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.ForeColor = System.Drawing.Color.White
+        Me.Label9.Location = New System.Drawing.Point(22, 15)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(109, 18)
+        Me.Label9.TabIndex = 91
+        Me.Label9.Text = "Unidades x Caja:"
+        '
+        'txtLado2
+        '
+        Me.txtLado2.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtLado2.Location = New System.Drawing.Point(290, 81)
+        Me.txtLado2.Name = "txtLado2"
+        Me.txtLado2.Size = New System.Drawing.Size(71, 27)
+        Me.txtLado2.TabIndex = 13
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.ForeColor = System.Drawing.Color.White
+        Me.Label8.Location = New System.Drawing.Point(22, 85)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(131, 18)
+        Me.Label8.TabIndex = 95
+        Me.Label8.Text = "Dimensión del Piso:"
+        '
+        'txtLado1
+        '
+        Me.txtLado1.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtLado1.Location = New System.Drawing.Point(168, 81)
+        Me.txtLado1.Name = "txtLado1"
+        Me.txtLado1.Size = New System.Drawing.Size(71, 27)
+        Me.txtLado1.TabIndex = 12
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.ForeColor = System.Drawing.Color.White
+        Me.Label13.Location = New System.Drawing.Point(360, 85)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(26, 18)
+        Me.Label13.TabIndex = 97
+        Me.Label13.Text = "cm"
+        '
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
@@ -706,7 +740,7 @@ Partial Class FNuevoProducto
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(125, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(765, 476)
+        Me.ClientSize = New System.Drawing.Size(765, 423)
         Me.Controls.Add(Me.GroupBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
@@ -715,14 +749,13 @@ Partial Class FNuevoProducto
         Me.Text = "Nuevo Producto"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        Me.pnlPiso.ResumeLayout(False)
-        Me.pnlPiso.PerformLayout()
-        Me.pnlUnid.ResumeLayout(False)
-        Me.pnlUnid.PerformLayout()
+        CType(Me.pbxNewCateg, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BtnGuardar1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BtnCancel1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pbxNewProv, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlPiso.ResumeLayout(False)
+        Me.pnlPiso.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -781,5 +814,7 @@ Partial Class FNuevoProducto
     Friend WithEvents Label13 As Label
     Friend WithEvents txtMxCaja As TextBox
     Friend WithEvents Label10 As Label
-    Friend WithEvents pnlUnid As Panel
+    Friend WithEvents pbxNewCateg As PictureBox
+    Friend WithEvents cmbCategoria As ComboBox
+    Friend WithEvents Label11 As Label
 End Class

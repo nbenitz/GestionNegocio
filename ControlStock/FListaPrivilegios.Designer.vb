@@ -26,14 +26,14 @@ Partial Class FListaPrivilegios
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Cod = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Rol = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PnlEliminar = New System.Windows.Forms.Panel()
         Me.LblEliminar = New System.Windows.Forms.Label()
         Me.PbxEliminar = New System.Windows.Forms.PictureBox()
         Me.pnlEditar = New System.Windows.Forms.Panel()
         Me.lblEditar = New System.Windows.Forms.Label()
         Me.pbxEditar = New System.Windows.Forms.PictureBox()
-        Me.Cod = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Rol = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PnlEliminar.SuspendLayout()
         CType(Me.PbxEliminar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -63,6 +63,27 @@ Partial Class FListaPrivilegios
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.Size = New System.Drawing.Size(359, 200)
         Me.DataGridView1.TabIndex = 2
+        '
+        'Cod
+        '
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Padding = New System.Windows.Forms.Padding(0, 0, 10, 0)
+        Me.Cod.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Cod.HeaderText = "Cod"
+        Me.Cod.Name = "Cod"
+        Me.Cod.ReadOnly = True
+        Me.Cod.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Cod.Width = 80
+        '
+        'Rol
+        '
+        DataGridViewCellStyle3.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
+        Me.Rol.DefaultCellStyle = DataGridViewCellStyle3
+        Me.Rol.HeaderText = "Rol"
+        Me.Rol.Name = "Rol"
+        Me.Rol.ReadOnly = True
+        Me.Rol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Rol.Width = 250
         '
         'PnlEliminar
         '
@@ -136,27 +157,6 @@ Partial Class FListaPrivilegios
         Me.pbxEditar.TabIndex = 84
         Me.pbxEditar.TabStop = False
         '
-        'Cod
-        '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle2.Padding = New System.Windows.Forms.Padding(0, 0, 10, 0)
-        Me.Cod.DefaultCellStyle = DataGridViewCellStyle2
-        Me.Cod.HeaderText = "Cod"
-        Me.Cod.Name = "Cod"
-        Me.Cod.ReadOnly = True
-        Me.Cod.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.Cod.Width = 80
-        '
-        'Rol
-        '
-        DataGridViewCellStyle3.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
-        Me.Rol.DefaultCellStyle = DataGridViewCellStyle3
-        Me.Rol.HeaderText = "Rol"
-        Me.Rol.Name = "Rol"
-        Me.Rol.ReadOnly = True
-        Me.Rol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.Rol.Width = 250
-        '
         'FListaPrivilegios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -171,7 +171,7 @@ Partial Class FListaPrivilegios
         Me.MinimizeBox = False
         Me.Name = "FListaPrivilegios"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Lista de Motivos"
+        Me.Text = "Nivel de Privilegios"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PnlEliminar.ResumeLayout(False)
         Me.PnlEliminar.PerformLayout()

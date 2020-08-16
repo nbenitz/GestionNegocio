@@ -21,7 +21,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <PublishUrl>E:\Escritorio\Instalador San Cayetano\</PublishUrl>
+    <PublishUrl>G:\Solutec\Sistema\Gestion\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -32,14 +32,14 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>60</ApplicationRevision>
+    <ApplicationRevision>63</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
@@ -123,21 +123,33 @@
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Web.Services" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Import Include="ControlStock" />
@@ -258,6 +270,12 @@
     <Compile Include="FListaCajas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FListaCategoriaProd.Designer.vb">
+      <DependentUpon>FListaCategoriaProd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FListaCategoriaProd.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FListaClientes.Designer.vb">
       <DependentUpon>FListaClientes.vb</DependentUpon>
     </Compile>
@@ -322,6 +340,12 @@
       <DependentUpon>FListaUsuarios.vb</DependentUpon>
     </Compile>
     <Compile Include="FListaUsuarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FNuevoCategoriaProd.Designer.vb">
+      <DependentUpon>FNuevoCategoriaProd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FNuevoCategoriaProd.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FNuevoCliente.Designer.vb">
@@ -526,6 +550,9 @@
     <EmbeddedResource Include="FListaCajas.resx">
       <DependentUpon>FListaCajas.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FListaCategoriaProd.resx">
+      <DependentUpon>FListaCategoriaProd.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FListaClientes.resx">
       <DependentUpon>FListaClientes.vb</DependentUpon>
     </EmbeddedResource>
@@ -558,6 +585,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FListaUsuarios.resx">
       <DependentUpon>FListaUsuarios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FNuevoCategoriaProd.resx">
+      <DependentUpon>FNuevoCategoriaProd.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FNuevoCliente.resx">
       <DependentUpon>FNuevoCliente.vb</DependentUpon>
@@ -866,7 +896,7 @@
     <None Include="Resources\Exit-50%281%291.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Datos\" />
+    <Folder Include="Modelos\" />
     <Folder Include="Vistas\" />
   </ItemGroup>
   <ItemGroup>

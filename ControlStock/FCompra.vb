@@ -53,7 +53,7 @@ Public Class FCompra
                     Dim Filas As Integer = Tabla.Rows.Count
                     If Filas > 0 Then
                         For i As Integer = 0 To (Filas - 1)
-                            cmbDescrip.Items.Add(Tabla.Rows(i).Item(2))
+                            cmbDescrip.Items.Add(Tabla.Rows(i).Item(3))
                         Next
                         cmbDescrip.Text = CStr(cmbDescrip.Items(0))
                         cmbDescrip.Focus()
@@ -65,7 +65,7 @@ Public Class FCompra
                     Tabla = Producto.BuscProdCod(Cod)
                     Dim Filas As Integer = Tabla.Rows.Count
                     If Filas > 0 Then
-                        cmbDescrip.Items.Add(Tabla.Rows(0).Item(2))
+                        cmbDescrip.Items.Add(Tabla.Rows(0).Item(3))
                         cmbDescrip.Text = CStr(cmbDescrip.Items(0))
                         txtCant.Focus()
                         Exit Sub
@@ -97,7 +97,7 @@ Public Class FCompra
                 Dim Filas As Integer = Tabla.Rows.Count
                 If Filas > 0 Then
                     For i As Integer = 0 To (Filas - 1)
-                        cmbDescrip.Items.Add(Tabla.Rows(i).Item(2))
+                        cmbDescrip.Items.Add(Tabla.Rows(i).Item(3))
                     Next
                     cmbDescrip.Text = CStr(cmbDescrip.Items(0))
                     cmbDescrip.Focus()
@@ -146,33 +146,33 @@ Public Class FCompra
     Private Sub cmbDescrip_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmbDescrip.SelectedIndexChanged
         Dim Fila As Integer = cmbDescrip.SelectedIndex
         lblInfoCod.Text = CStr(Tabla.Rows(Fila).Item(0))
-        lblInfoDesc.Text = CStr(Tabla.Rows(Fila).Item(2))
-        lblInfoCosto.Text = CStr(Tabla.Rows(Fila).Item(3))
-        lblInfoStock.Text = CStr(Tabla.Rows(Fila).Item(8))
+        lblInfoDesc.Text = CStr(Tabla.Rows(Fila).Item(3))
+        lblInfoCosto.Text = CStr(Tabla.Rows(Fila).Item(4))
+        lblInfoStock.Text = CStr(Tabla.Rows(Fila).Item(9))
 
 
         pnlProdInfo.Visible = True
         Try
             PictureBox1.Image = Nothing
             PictureBox1.SizeMode = PictureBoxSizeMode.CenterImage
-            PictureBox1.Image = MImagen.ByteArrayToImage(CType(Tabla.Rows(Fila).Item(11), Byte()))
+            PictureBox1.Image = MImagen.ByteArrayToImage(CType(Tabla.Rows(Fila).Item(12), Byte()))
         Catch
         End Try
         lblInfoCod.Text = CStr(Tabla.Rows(Fila).Item(0))
-        lblInfoDesc.Text = CStr(Tabla.Rows(Fila).Item(2))
-        lblInfoStock.Text = CStr(Tabla.Rows(Fila).Item(8))
-        lblInfoCosto.Text = CStr(Tabla.Rows(Fila).Item(3))
+        lblInfoDesc.Text = CStr(Tabla.Rows(Fila).Item(3))
+        lblInfoStock.Text = CStr(Tabla.Rows(Fila).Item(9))
+        lblInfoCosto.Text = CStr(Tabla.Rows(Fila).Item(4))
 
-        Select Case CStr(Tabla.Rows(Fila).Item(10))
+        Select Case CStr(Tabla.Rows(Fila).Item(11))
             Case "Si", "SiCaja", "SiMetro"
                 lblX.Visible = True
                 lblUnidXpack.Visible = True
-                lblUnidXpack.Text = CStr(Tabla.Rows(Fila).Item(10))
-                lblUnidXPackInfo.Text = CStr(Tabla.Rows(Fila).Item(10))
+                lblUnidXpack.Text = CStr(Tabla.Rows(Fila).Item(11))
+                lblUnidXPackInfo.Text = CStr(Tabla.Rows(Fila).Item(11))
                 lblUnidXPackInfo.Visible = True
                 lblUnidXPackTit.Visible = True
                 pnlInfoPiso.Visible = False
-                Select Case CStr(Tabla.Rows(Fila).Item(10))
+                Select Case CStr(Tabla.Rows(Fila).Item(11))
                     Case "Si"
                         lblPresent.Text = "Por Paquete"
                     Case "SiCaja"
@@ -189,8 +189,8 @@ Public Class FCompra
                 pnlInfoPiso.Visible = False
             Case "Piso"
                 lblInfoStock.Text = lblInfoStock.Text + " unidades"
-                lblMxCaja.Text = CStr(Tabla.Rows(Fila).Item(15))
-                lblUnidxCaja.Text = CStr(Tabla.Rows(Fila).Item(9))
+                lblMxCaja.Text = CStr(Tabla.Rows(Fila).Item(16))
+                lblUnidxCaja.Text = CStr(Tabla.Rows(Fila).Item(10))
                 pnlInfoPiso.Visible = True
         End Select
     End Sub
@@ -203,18 +203,18 @@ Public Class FCompra
         Dim Unidades As Double = 1
         Dim Obs As String = ""
         Dim idProd As String = CStr(Tabla.Rows(Fila).Item(0))
-        Dim Costo As Integer = CInt(Tabla.Rows(Fila).Item(3))
+        Dim Costo As Integer = CInt(Tabla.Rows(Fila).Item(4))
         Dim flag As Boolean = False 'Para saber si ya se ingreso el producto en el datagrid
         Dim Indice As Integer
         Dim idProdAux As String
         Dim CantAux As Double
 
-        Select Case CStr(Tabla.Rows(Fila).Item(10))
+        Select Case CStr(Tabla.Rows(Fila).Item(11))
             Case "Si", "SiCaja", "SiMetro"
-                Unidades = CDbl(Tabla.Rows(Fila).Item(9))
+                Unidades = CDbl(Tabla.Rows(Fila).Item(10))
                 Obs = "(Paquete)"
             Case "Piso"
-                Unidades = CDbl(Tabla.Rows(Fila).Item(9))
+                Unidades = CDbl(Tabla.Rows(Fila).Item(10))
                 Obs = "(Caja)"
         End Select
 
@@ -506,13 +506,13 @@ Public Class FCompra
             Dim Present As String = "Kilo"
             If Caja Is txtCant Then
                 Try
-                    Present = CStr(Tabla.Rows(cmbDescrip.SelectedIndex).Item(10))
+                    Present = CStr(Tabla.Rows(cmbDescrip.SelectedIndex).Item(11))
                 Catch ex As Exception
                 End Try
             Else
                 Dim Cod As String = Convert.ToString(DataGridView1.Item(1, GridFila).Value.ToString)
                 Tabla = Producto.BuscProdCod(CStr(Cod))
-                Present = CStr(Tabla.Rows(0).Item(10))
+                Present = CStr(Tabla.Rows(0).Item(11))
             End If
             If Present = "Kilo" Then
                 If Letra = Convert.ToChar(",") Then
@@ -596,6 +596,10 @@ Public Class FCompra
     End Sub
 
     Private Sub txtEditPrec_TextChanged(sender As Object, e As EventArgs) Handles txtEditPrec.TextChanged
+
+    End Sub
+
+    Private Sub txtBuscar_KeyUp(sender As Object, e As KeyEventArgs) Handles txtBuscar.KeyUp
 
     End Sub
 End Class

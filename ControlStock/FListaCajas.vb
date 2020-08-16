@@ -79,7 +79,7 @@ Public Class FListaCajas
             Frm.DesdeHistorial = True
             Frm.Show()
         Catch ex As Exception
-
+            MessageBox.Show("Seleccione una fecha vãlida para visualizar el resumen")
         End Try
     End Sub
 

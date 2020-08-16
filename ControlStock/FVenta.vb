@@ -59,7 +59,7 @@ Public Class FVenta
                     Dim Filas As Integer = Tabla.Rows.Count
                     If Filas > 0 Then
                         For i As Integer = 0 To (Filas - 1)
-                            cmbDescrip.Items.Add(Tabla.Rows(i).Item(2))
+                            cmbDescrip.Items.Add(Tabla.Rows(i).Item(3))
                         Next
                         cmbDescrip.Text = CStr(cmbDescrip.Items(0))
                         cmbDescrip.Focus()
@@ -71,7 +71,7 @@ Public Class FVenta
                     Tabla = Producto.BuscProdCod(Cod)
                     Dim Filas As Integer = Tabla.Rows.Count
                     If Filas > 0 Then
-                        cmbDescrip.Items.Add(Tabla.Rows(0).Item(2))
+                        cmbDescrip.Items.Add(Tabla.Rows(0).Item(3))
                         cmbDescrip.Text = CStr(cmbDescrip.Items(0))
                     Else
                         MostrarMsj("El Código no existe")
@@ -121,7 +121,7 @@ Public Class FVenta
 
     Private Sub cmbDescrip_DropDownClosed(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmbDescrip.DropDownClosed
         Dim Fila As Integer = cmbDescrip.SelectedIndex
-        Select Case CStr(Tabla.Rows(Fila).Item(10))
+        Select Case CStr(Tabla.Rows(Fila).Item(11))
             Case "Si", "SiCaja", "SiMetro"
                 pnlXPack.Visible = True
                 btnPack.Focus()
@@ -145,14 +145,14 @@ Public Class FVenta
             Try
                 PictureBox1.Image = Nothing
                 PictureBox1.SizeMode = PictureBoxSizeMode.CenterImage
-                PictureBox1.Image = ByteArrayToImage(CType(Tabla.Rows(Fila).Item(11), Byte()))
+                PictureBox1.Image = ByteArrayToImage(CType(Tabla.Rows(Fila).Item(12), Byte()))
             Catch
             End Try
             lblInfoCod.Text = CStr(Tabla.Rows(Fila).Item(0))
-            lblInfoDesc.Text = CStr(Tabla.Rows(Fila).Item(2))
-            lblInfoStock.Text = CStr(Tabla.Rows(Fila).Item(8))
+            lblInfoDesc.Text = CStr(Tabla.Rows(Fila).Item(3))
+            lblInfoStock.Text = CStr(Tabla.Rows(Fila).Item(9))
 
-            Select Case CStr(Tabla.Rows(Fila).Item(10))
+            Select Case CStr(Tabla.Rows(Fila).Item(11))
                 Case "Si", "SiCaja", "SiMetro"
                     lblPrecio3.Visible = False
                     lblPrecUnidP.Visible = False
@@ -163,19 +163,19 @@ Public Class FVenta
                         optUnidad.Checked = True
                         optPaquete.Checked = False
                     End If
-                    If CStr(Tabla.Rows(Fila).Item(10)) = "SiMetro" Then
+                    If CStr(Tabla.Rows(Fila).Item(11)) = "SiMetro" Then
                         lblInfoStock.Text = lblInfoStock.Text + " metros"
                     Else
                         lblInfoStock.Text = lblInfoStock.Text + " unidades"
                     End If
-                    lblPrecUnit.Text = String.Format("{0:N0}", CInt(Tabla.Rows(Fila).Item(4)))
-                    lblPrecPack.Text = String.Format("{0:N0}", CInt(Tabla.Rows(Fila).Item(7)))
+                    lblPrecUnit.Text = String.Format("{0:N0}", CInt(Tabla.Rows(Fila).Item(5)))
+                    lblPrecPack.Text = String.Format("{0:N0}", CInt(Tabla.Rows(Fila).Item(8)))
 
                     If optCod.Checked Then
                         pnlXPack.Visible = True
                         btnPack.Focus()
                     End If
-                    Select Case CStr(Tabla.Rows(Fila).Item(10))
+                    Select Case CStr(Tabla.Rows(Fila).Item(11))
                         Case "Si"
                             btnPack.Text = "Paquete"
                             btnUnidad.Text = "Unidad"
@@ -196,10 +196,10 @@ Public Class FVenta
                     pnlPrecVenta.Visible = False
                     pnlInfoPiso.Visible = False
 
-                    lblInfoPrec.Text = String.Format("{0:N0}", CInt(Tabla.Rows(Fila).Item(4)))
-                    lblInfoPrec2.Text = String.Format("{0:N0}", CInt(Tabla.Rows(Fila).Item(5)))
+                    lblInfoPrec.Text = String.Format("{0:N0}", CInt(Tabla.Rows(Fila).Item(5)))
+                    lblInfoPrec2.Text = String.Format("{0:N0}", CInt(Tabla.Rows(Fila).Item(6)))
 
-                    Select Case CStr(Tabla.Rows(Fila).Item(10))
+                    Select Case CStr(Tabla.Rows(Fila).Item(11))
                         Case "No"
                             lblInfoStock.Text = lblInfoStock.Text + "  Unidades"
                         Case "Kilo"
@@ -209,8 +209,8 @@ Public Class FVenta
                         btnAgregar_Click(Me, Nothing)
                     End If
                 Case "Piso"
-                    Dim UnidXCaja As Integer = CInt(Tabla.Rows(Fila).Item(9))
-                    Dim MxCaja As Double = CDbl(Tabla.Rows(Fila).Item(15))
+                    Dim UnidXCaja As Integer = CInt(Tabla.Rows(Fila).Item(10))
+                    Dim MxCaja As Double = CDbl(Tabla.Rows(Fila).Item(16))
                     Dim CantCajas As Double = CInt(lblInfoStock.Text) / UnidXCaja
                     Dim CantMetros As Double = CInt(lblInfoStock.Text) * MxCaja / UnidXCaja
                     CantCajas = Math.Round(CantCajas, 2, MidpointRounding.ToEven)
@@ -218,9 +218,9 @@ Public Class FVenta
                     pnlPrecVenta.Visible = True
                     lblInfoStock.Text = lblInfoStock.Text + " unid / " + CStr(CantCajas) + " Cajas / " + CStr(CantMetros) + " m"
 
-                    lblPrecUnit.Text = String.Format("{0:N0}", CInt(Tabla.Rows(Fila).Item(7)))
-                    lblPrecPack.Text = String.Format("{0:N0}", CInt(Tabla.Rows(Fila).Item(4)))
-                    lblPrecUnidP.Text = String.Format("{0:N0}", CInt(Tabla.Rows(Fila).Item(5)))
+                    lblPrecUnit.Text = String.Format("{0:N0}", CInt(Tabla.Rows(Fila).Item(8)))
+                    lblPrecPack.Text = String.Format("{0:N0}", CInt(Tabla.Rows(Fila).Item(5)))
+                    lblPrecUnidP.Text = String.Format("{0:N0}", CInt(Tabla.Rows(Fila).Item(6)))
 
                     lblPrecio1.Text = "- Por Caja:"
                     lblPrecio2.Text = "- Por Metro:"
@@ -249,8 +249,8 @@ Public Class FVenta
             Param = cmbDescrip.Text                                         ' Contiene la descripcion de producto
             Dim Unidades As Double = 1                                     ' Factor multiplicativo p/ ventas x Pack
             Dim Obs As String = ""
-            Dim CantStock As Double = CDbl(Tabla.Rows(IndiceProd).Item(8))  ' Cantidad disponible en stock
-            Dim Iva As Int16 = CShort(Tabla.Rows(IndiceProd).Item(12))
+            Dim CantStock As Double = CDbl(Tabla.Rows(IndiceProd).Item(9))  ' Cantidad disponible en stock
+            Dim Iva As Int16 = CShort(Tabla.Rows(IndiceProd).Item(13))
             Dim Cant As Double                                             ' Contendra la cantidad a agregar
             Cant = CDbl(txtCant.Text)
             Dim UnidMedida As String = ""
@@ -279,15 +279,15 @@ Public Class FVenta
                 Next
             End If
             '--------------------------------------------------------------------------------------------------------
-            Select Case CStr(Tabla.Rows(IndiceProd).Item(10))    ' Comprobar si el producto se vende por Pack
+            Select Case CStr(Tabla.Rows(IndiceProd).Item(11))    ' Comprobar si el producto se vende por Pack
                 Case "Si", "SiCaja", "SiMetro"
                     If optPaquete.Checked = True Then  'Vender por Paquete si se ha seleccionado la opcion
-                        Unidades = CDbl(Tabla.Rows(IndiceProd).Item(9))
+                        Unidades = CDbl(Tabla.Rows(IndiceProd).Item(10))
                         Obs = "(Paquete)"
-                        PrecioVenta = CInt(Tabla.Rows(IndiceProd).Item(7))
+                        PrecioVenta = CInt(Tabla.Rows(IndiceProd).Item(8))
                         PrecioVenta = Descontar(PrecioVenta)
                     Else
-                        Select Case CStr(Tabla.Rows(IndiceProd).Item(10))
+                        Select Case CStr(Tabla.Rows(IndiceProd).Item(11))
                             Case "Si"
                                 UnidMedida = " unid"
                             Case "SiMetro"
@@ -296,9 +296,9 @@ Public Class FVenta
                     End If
                 Case "Piso"
                     If PorCaja Then
-                        Unidades = CDbl(Tabla.Rows(IndiceProd).Item(9))
+                        Unidades = CDbl(Tabla.Rows(IndiceProd).Item(10))
                         Obs = "(Caja)"
-                        PrecioVenta = CInt(Tabla.Rows(IndiceProd).Item(7))
+                        PrecioVenta = CInt(Tabla.Rows(IndiceProd).Item(8))
                         PrecioVenta = Descontar(PrecioVenta)
                     ElseIf PorMetro Then
                         'Dim Lado1, Lado2, MxUnid, UnidPiso, MxCaja, CantCajas, UniXCaja, PisoSuelto As Double
@@ -309,8 +309,8 @@ Public Class FVenta
                         'Cant = UnidPiso * MxUnid
                         'Unidades = 1 / MxUnid
                         Dim UnidPiso, MxCaja, CantCajas, UniXCaja As Double
-                        UniXCaja = CDbl(Tabla.Rows(IndiceProd).Item(9))
-                        MxCaja = CDbl(Tabla.Rows(IndiceProd).Item(15))
+                        UniXCaja = CDbl(Tabla.Rows(IndiceProd).Item(10))
+                        MxCaja = CDbl(Tabla.Rows(IndiceProd).Item(10))
                         CantCajas = Math.Floor(Cant / MxCaja)
                         UnidPiso = Math.Round((Cant / MxCaja - CantCajas) * 10)
                         UnidPiso += CantCajas * UniXCaja
@@ -322,7 +322,7 @@ Public Class FVenta
                         Obs = "(metros)"
                         UnidMedida = " m"
                     ElseIf PorUnidad Then
-                        PrecioVenta = CInt(Tabla.Rows(IndiceProd).Item(5))
+                        PrecioVenta = CInt(Tabla.Rows(IndiceProd).Item(6))
                         PrecioVenta = Descontar(PrecioVenta)
                         Obs = "(unidades)"
                         UnidMedida = " unid"
@@ -738,7 +738,7 @@ Public Class FVenta
             lblX.Visible = True
             lblUnidXpack.Visible = True
             Dim Fila As Integer = cmbDescrip.SelectedIndex
-            lblUnidXpack.Text = CStr(Tabla.Rows(Fila).Item(9))
+            lblUnidXpack.Text = CStr(Tabla.Rows(Fila).Item(10))
         End If
     End Sub
 
@@ -904,7 +904,7 @@ Public Class FVenta
             GridFila = e.RowIndex
             Dim Cod As String = Convert.ToString(DataGridView1.Item(1, GridFila).Value.ToString)
             Tabla = Producto.BuscProdCod(Cod)
-            Dim Present As String = CStr(Tabla.Rows(0).Item(10))
+            Dim Present As String = CStr(Tabla.Rows(0).Item(11))
             optPrecio1.Checked = False
             optPrecio2.Checked = False
             optPrecio3.Checked = False
@@ -912,8 +912,8 @@ Public Class FVenta
             pnlPrecios.Visible = True
             Select Case Present
                 Case "Si", "SiCaja", "SiMetro"
-                    optPrecio1.Text = CStr(Tabla.Rows(0).Item(4))
-                    optPrecio2.Text = CStr(Tabla.Rows(0).Item(7))
+                    optPrecio1.Text = CStr(Tabla.Rows(0).Item(5))
+                    optPrecio2.Text = CStr(Tabla.Rows(0).Item(8))
                     optPrecio1.Visible = True
                     optPrecio2.Visible = True
                     lblTitPrecio1.Visible = True
@@ -930,9 +930,9 @@ Public Class FVenta
                             lblTitPrecio1.Text = "Metro"
                     End Select
                 Case "No", "Kilo"
-                    optPrecio1.Text = CStr(Tabla.Rows(0).Item(4))
-                    optPrecio2.Text = CStr(Tabla.Rows(0).Item(5))
-                    optPrecio3.Text = CStr(Tabla.Rows(0).Item(6))
+                    optPrecio1.Text = CStr(Tabla.Rows(0).Item(5))
+                    optPrecio2.Text = CStr(Tabla.Rows(0).Item(6))
+                    optPrecio3.Text = CStr(Tabla.Rows(0).Item(7))
                     lblTitPrecio2.Text = "Minorista"
                     lblTitPrecio1.Text = "Mayorista"
                     optPrecio1.Visible = True
@@ -991,14 +991,14 @@ Public Class FVenta
             Dim Present As String = "Kilo"
             If Caja Is txtCant Then
                 Try
-                    Present = CStr(Tabla.Rows(cmbDescrip.SelectedIndex).Item(10))
+                    Present = CStr(Tabla.Rows(cmbDescrip.SelectedIndex).Item(11))
                 Catch ex As Exception
                 End Try
             Else
                 Try
                     Dim Cod As String = DataGridView1.Item(1, GridFila).Value.ToString
                     Tabla = Producto.BuscProdCod(Cod)
-                    Present = CStr(Tabla.Rows(0).Item(10))
+                    Present = CStr(Tabla.Rows(0).Item(11))
                 Catch ex As Exception
                 End Try
             End If
@@ -1062,12 +1062,12 @@ Public Class FVenta
                     'Dim Present As String = CStr(Tabla.Rows(0).Item(10))
 
 
-                    Dim CantStock As Double = CDbl(Tabla.Rows(0).Item(8))
+                    Dim CantStock As Double = CDbl(Tabla.Rows(0).Item(9))
                     Dim CantEdit As Double = CDbl(txtEditCant.Text)
                     Dim CantDescontar As Double = CantEdit   'Stock a descontar
                     Dim UnidMedida As String = ""
 
-                    Dim Present As String = Tabla.Rows(0).Item(10).ToString
+                    Dim Present As String = Tabla.Rows(0).Item(11).ToString
                     Dim Obs As String = DataGridView1.Item(8, GridFila).Value.ToString
 
                     If Obs <> "(Paquete)" Then
@@ -1095,13 +1095,13 @@ Public Class FVenta
                         'CantDescontar = UnidPiso
                         'CantEdit = UnidPiso * MxUnid
                         Dim MxCaja, CantCajas, UniXCaja As Double
-                        UniXCaja = CDbl(Tabla.Rows(0).Item(9))
-                        MxCaja = CDbl(Tabla.Rows(0).Item(15))
+                        UniXCaja = CDbl(Tabla.Rows(0).Item(10))
+                        MxCaja = CDbl(Tabla.Rows(0).Item(16))
                         CantCajas = Math.Floor(CantEdit / MxCaja)
                         CantDescontar = Math.Round((CantEdit / MxCaja - CantCajas) * 10)
                         CantDescontar += CantCajas * UniXCaja
 
-                        Dim Descrip As String = CStr(Tabla.Rows(0).Item(2))
+                        Dim Descrip As String = CStr(Tabla.Rows(0).Item(3))
                         DataGridView1.Item(7, GridFila).Value = CantDescontar / CantEdit
                         DataGridView1.Item(2, GridFila).Value = Descrip + " (" + CStr(CantCajas) + " Cajas + " + CStr(Math.Round((CantEdit / MxCaja - CantCajas) * 10)) + " Unid." + ")"
                         UnidMedida = " m"
@@ -1176,7 +1176,7 @@ Public Class FVenta
     Private Function CargarPrecio(ByVal IndiceProd As Integer) As Integer
         Dim Precio As Integer
         'If chkMayorista.Checked Then 'If optCredito.Checked Then                            ' Seleccionar precio (Crédito o Contado)
-        Precio = CInt(Tabla.Rows(IndiceProd).Item(4))
+        Precio = CInt(Tabla.Rows(IndiceProd).Item(5))
         'Else
         'Precio = CInt(Tabla.Rows(IndiceProd).Item(5))
         'End If
@@ -1223,11 +1223,11 @@ Public Class FVenta
         Dim Opcion As RadioButton = CType(sender, RadioButton)
         Dim Cod As String = Convert.ToString(DataGridView1.Item(1, GridFila).Value.ToString)
         Tabla = Producto.BuscProdCod(Cod)
-        Dim Present As String = CStr(Tabla.Rows(0).Item(10))
+        Dim Present As String = CStr(Tabla.Rows(0).Item(11))
         Select Case Present
             Case "Si", "SiCaja", "SiMetro"
                 If Opcion Is optPrecio2 Then
-                    Dim Unidades As String = CStr(Tabla.Rows(0).Item(9))
+                    Dim Unidades As String = CStr(Tabla.Rows(0).Item(10))
                     DataGridView1.Item(7, GridFila).Value = Unidades
                     Select Case Present
                         Case "Si"
@@ -1331,19 +1331,19 @@ Public Class FVenta
                 Dim Precio As Double = CDbl(txtEditPrecio.Text)
                 Dim Cod As String = Convert.ToString(DataGridView1.Item(1, GridFila).Value.ToString)
                 Tabla = Producto.BuscProdCod(Cod)
-                Dim Costo As Integer = CInt(Tabla.Rows(0).Item(3))
-                Dim Present As String = CStr(Tabla.Rows(0).Item(10))
+                Dim Costo As Integer = CInt(Tabla.Rows(0).Item(4))
+                Dim Present As String = CStr(Tabla.Rows(0).Item(11))
 
                 Select Case Present
                     Case "Si", "SiCaja", "SiMetro"
-                        Dim UnidxPack As Long = CLng(Tabla.Rows(0).Item(9))
+                        Dim UnidxPack As Long = CLng(Tabla.Rows(0).Item(10))
                         Costo = CInt(Costo / UnidxPack)
                     Case "Piso"
-                        Dim UnidxPack As Long = CLng(Tabla.Rows(0).Item(9))
+                        Dim UnidxPack As Long = CLng(Tabla.Rows(0).Item(10))
                         Dim Obs As String = DataGridView1.Item(8, GridFila).Value.ToString
                         If Obs = "(metros)" Then
                             Dim MxCaja As Double
-                            MxCaja = CDbl(Tabla.Rows(0).Item(15))
+                            MxCaja = CDbl(Tabla.Rows(0).Item(16))
                             Costo = CInt(Costo / MxCaja)
                         Else
                             Costo = CInt(Costo / UnidxPack)
@@ -1551,6 +1551,7 @@ Public Class FVenta
         Dim idProv As String = CStr(TablaProv.Rows(0).Item(0))
         Dim Descrip As String = txtNuevoPDescrip.Text
         Dim PrecCompra As Integer = 0
+        Dim Categoria As String = "1"
         Dim PrecPack? As Integer
         Dim Precio1 As Integer = CInt(txtNuevoPPrecio.Text)
         Dim Precio2 As Integer = Precio1
@@ -1560,7 +1561,7 @@ Public Class FVenta
         Dim Foto As Byte()
         Dim Iva As Int16 = 10
         If Producto.VerificarCod(idProd) = True Then
-            If Producto.InserProducto(idProd, idProv, Descrip, PrecCompra, Precio1, Precio2, 0, PrecPack, Stock, UnidXpack, PorPack, Foto, Iva, Lado1, Lado2, MxCaja) = False Then
+            If Producto.InserProducto(idProd, idProv, Categoria, Descrip, PrecCompra, Precio1, Precio2, 0, PrecPack, Stock, UnidXpack, PorPack, Foto, Iva, Lado1, Lado2, MxCaja) = False Then
                 MessageBox.Show("Hubo un error al crear el Producto")
             Else
                 'MessageBox.Show("Producto Guardado")
