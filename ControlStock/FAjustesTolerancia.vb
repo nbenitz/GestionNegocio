@@ -69,4 +69,8 @@ Public Class FAjustesTolerancia
             Me.ToolTip2.Show("Ingrese un valor númerico", Caja, 0, -40, 2000)
         End If
     End Sub
+
+    Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
+        Me.Close()
+    End Sub
 End Class

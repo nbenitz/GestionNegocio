@@ -27,7 +27,12 @@ Partial Class FListaRecivos
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FListaRecivos))
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.NroFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Factura = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Fecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Importe = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.dtpHasta = New System.Windows.Forms.DateTimePicker()
         Me.lblHasta = New System.Windows.Forms.Label()
@@ -36,12 +41,13 @@ Partial Class FListaRecivos
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dtpDesde = New System.Windows.Forms.DateTimePicker()
         Me.txtCod = New System.Windows.Forms.TextBox()
-        Me.NroFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Factura = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Fecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Importe = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.pnlTopBar = New System.Windows.Forms.Panel()
+        Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.BtnCerrarForm = New System.Windows.Forms.PictureBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        Me.pnlTopBar.SuspendLayout()
+        CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DataGridView1
@@ -59,95 +65,12 @@ Partial Class FListaRecivos
         Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NroFactura, Me.Factura, Me.Fecha, Me.Importe})
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 14)
+        Me.DataGridView1.Location = New System.Drawing.Point(12, 47)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.Size = New System.Drawing.Size(637, 319)
         Me.DataGridView1.TabIndex = 16
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.dtpHasta)
-        Me.GroupBox1.Controls.Add(Me.lblHasta)
-        Me.GroupBox1.Controls.Add(Me.lblBuscar)
-        Me.GroupBox1.Controls.Add(Me.cmbFiltrarPor)
-        Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Controls.Add(Me.dtpDesde)
-        Me.GroupBox1.Controls.Add(Me.txtCod)
-        Me.GroupBox1.ForeColor = System.Drawing.Color.White
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 339)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(637, 69)
-        Me.GroupBox1.TabIndex = 17
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Filtros"
-        '
-        'dtpHasta
-        '
-        Me.dtpHasta.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpHasta.Location = New System.Drawing.Point(269, 32)
-        Me.dtpHasta.Name = "dtpHasta"
-        Me.dtpHasta.Size = New System.Drawing.Size(106, 20)
-        Me.dtpHasta.TabIndex = 55
-        '
-        'lblHasta
-        '
-        Me.lblHasta.AutoSize = True
-        Me.lblHasta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblHasta.ForeColor = System.Drawing.Color.White
-        Me.lblHasta.Location = New System.Drawing.Point(266, 16)
-        Me.lblHasta.Name = "lblHasta"
-        Me.lblHasta.Size = New System.Drawing.Size(35, 13)
-        Me.lblHasta.TabIndex = 53
-        Me.lblHasta.Text = "Hasta"
-        '
-        'lblBuscar
-        '
-        Me.lblBuscar.AutoSize = True
-        Me.lblBuscar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblBuscar.ForeColor = System.Drawing.Color.White
-        Me.lblBuscar.Location = New System.Drawing.Point(143, 16)
-        Me.lblBuscar.Name = "lblBuscar"
-        Me.lblBuscar.Size = New System.Drawing.Size(107, 13)
-        Me.lblBuscar.TabIndex = 45
-        Me.lblBuscar.Text = "Ingrese Nro. Factura "
-        '
-        'cmbFiltrarPor
-        '
-        Me.cmbFiltrarPor.FormattingEnabled = True
-        Me.cmbFiltrarPor.Items.AddRange(New Object() {"Todos", "Nro. Factura", "Fecha"})
-        Me.cmbFiltrarPor.Location = New System.Drawing.Point(23, 32)
-        Me.cmbFiltrarPor.Name = "cmbFiltrarPor"
-        Me.cmbFiltrarPor.Size = New System.Drawing.Size(106, 21)
-        Me.cmbFiltrarPor.TabIndex = 1
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(20, 16)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(49, 13)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Ver Por"
-        '
-        'dtpDesde
-        '
-        Me.dtpDesde.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpDesde.Location = New System.Drawing.Point(146, 32)
-        Me.dtpDesde.Name = "dtpDesde"
-        Me.dtpDesde.Size = New System.Drawing.Size(106, 20)
-        Me.dtpDesde.TabIndex = 54
-        '
-        'txtCod
-        '
-        Me.txtCod.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCod.Location = New System.Drawing.Point(146, 32)
-        Me.txtCod.Name = "txtCod"
-        Me.txtCod.Size = New System.Drawing.Size(117, 20)
-        Me.txtCod.TabIndex = 44
         '
         'NroFactura
         '
@@ -198,22 +121,149 @@ Partial Class FListaRecivos
         Me.Importe.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         Me.Importe.Width = 150
         '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.dtpHasta)
+        Me.GroupBox1.Controls.Add(Me.lblHasta)
+        Me.GroupBox1.Controls.Add(Me.lblBuscar)
+        Me.GroupBox1.Controls.Add(Me.cmbFiltrarPor)
+        Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Controls.Add(Me.dtpDesde)
+        Me.GroupBox1.Controls.Add(Me.txtCod)
+        Me.GroupBox1.ForeColor = System.Drawing.Color.White
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 372)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(637, 69)
+        Me.GroupBox1.TabIndex = 17
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Filtros"
+        '
+        'dtpHasta
+        '
+        Me.dtpHasta.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpHasta.Location = New System.Drawing.Point(269, 32)
+        Me.dtpHasta.Name = "dtpHasta"
+        Me.dtpHasta.Size = New System.Drawing.Size(106, 20)
+        Me.dtpHasta.TabIndex = 55
+        '
+        'lblHasta
+        '
+        Me.lblHasta.AutoSize = True
+        Me.lblHasta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblHasta.ForeColor = System.Drawing.Color.White
+        Me.lblHasta.Location = New System.Drawing.Point(266, 16)
+        Me.lblHasta.Name = "lblHasta"
+        Me.lblHasta.Size = New System.Drawing.Size(35, 13)
+        Me.lblHasta.TabIndex = 53
+        Me.lblHasta.Text = "Hasta"
+        '
+        'lblBuscar
+        '
+        Me.lblBuscar.AutoSize = True
+        Me.lblBuscar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblBuscar.ForeColor = System.Drawing.Color.White
+        Me.lblBuscar.Location = New System.Drawing.Point(143, 16)
+        Me.lblBuscar.Name = "lblBuscar"
+        Me.lblBuscar.Size = New System.Drawing.Size(107, 13)
+        Me.lblBuscar.TabIndex = 45
+        Me.lblBuscar.Text = "Ingrese Nro. Factura "
+        '
+        'cmbFiltrarPor
+        '
+        Me.cmbFiltrarPor.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.cmbFiltrarPor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmbFiltrarPor.ForeColor = System.Drawing.Color.White
+        Me.cmbFiltrarPor.FormattingEnabled = True
+        Me.cmbFiltrarPor.Items.AddRange(New Object() {"Todos", "Nro. Factura", "Fecha"})
+        Me.cmbFiltrarPor.Location = New System.Drawing.Point(23, 32)
+        Me.cmbFiltrarPor.Name = "cmbFiltrarPor"
+        Me.cmbFiltrarPor.Size = New System.Drawing.Size(106, 21)
+        Me.cmbFiltrarPor.TabIndex = 1
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.Location = New System.Drawing.Point(20, 16)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(49, 13)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Ver Por"
+        '
+        'dtpDesde
+        '
+        Me.dtpDesde.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpDesde.Location = New System.Drawing.Point(146, 32)
+        Me.dtpDesde.Name = "dtpDesde"
+        Me.dtpDesde.Size = New System.Drawing.Size(106, 20)
+        Me.dtpDesde.TabIndex = 54
+        '
+        'txtCod
+        '
+        Me.txtCod.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.txtCod.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtCod.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCod.ForeColor = System.Drawing.Color.White
+        Me.txtCod.Location = New System.Drawing.Point(146, 32)
+        Me.txtCod.Name = "txtCod"
+        Me.txtCod.Size = New System.Drawing.Size(117, 20)
+        Me.txtCod.TabIndex = 44
+        '
+        'pnlTopBar
+        '
+        Me.pnlTopBar.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.pnlTopBar.Controls.Add(Me.lblTitulo)
+        Me.pnlTopBar.Controls.Add(Me.BtnCerrarForm)
+        Me.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top
+        Me.pnlTopBar.Location = New System.Drawing.Point(0, 0)
+        Me.pnlTopBar.Name = "pnlTopBar"
+        Me.pnlTopBar.Size = New System.Drawing.Size(662, 35)
+        Me.pnlTopBar.TabIndex = 18
+        '
+        'lblTitulo
+        '
+        Me.lblTitulo.AutoSize = True
+        Me.lblTitulo.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitulo.ForeColor = System.Drawing.Color.White
+        Me.lblTitulo.Location = New System.Drawing.Point(12, 9)
+        Me.lblTitulo.Name = "lblTitulo"
+        Me.lblTitulo.Size = New System.Drawing.Size(201, 17)
+        Me.lblTitulo.TabIndex = 118
+        Me.lblTitulo.Text = "Recibos de dinero sobre Ventas"
+        '
+        'BtnCerrarForm
+        '
+        Me.BtnCerrarForm.Dock = System.Windows.Forms.DockStyle.Right
+        Me.BtnCerrarForm.Image = CType(resources.GetObject("BtnCerrarForm.Image"), System.Drawing.Image)
+        Me.BtnCerrarForm.Location = New System.Drawing.Point(627, 0)
+        Me.BtnCerrarForm.Margin = New System.Windows.Forms.Padding(2)
+        Me.BtnCerrarForm.Name = "BtnCerrarForm"
+        Me.BtnCerrarForm.Size = New System.Drawing.Size(35, 35)
+        Me.BtnCerrarForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.BtnCerrarForm.TabIndex = 115
+        Me.BtnCerrarForm.TabStop = False
+        '
         'FListaRecivos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(125, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(662, 424)
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.ClientSize = New System.Drawing.Size(662, 455)
+        Me.Controls.Add(Me.pnlTopBar)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.DataGridView1)
         Me.ForeColor = System.Drawing.Color.White
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "FListaRecivos"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Recibos de Dinero sobre Ventas"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.pnlTopBar.ResumeLayout(False)
+        Me.pnlTopBar.PerformLayout()
+        CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -230,5 +280,8 @@ Partial Class FListaRecivos
     Friend WithEvents Factura As DataGridViewTextBoxColumn
     Friend WithEvents Fecha As DataGridViewTextBoxColumn
     Friend WithEvents Importe As DataGridViewTextBoxColumn
+    Friend WithEvents pnlTopBar As Panel
+    Friend WithEvents BtnCerrarForm As PictureBox
+    Friend WithEvents lblTitulo As Label
 End Class
 

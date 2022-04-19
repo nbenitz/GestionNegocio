@@ -379,7 +379,7 @@ Partial Class FVenta
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label10.ForeColor = System.Drawing.Color.LightGray
         Me.Label10.Location = New System.Drawing.Point(11, 229)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(40, 13)
@@ -390,7 +390,7 @@ Partial Class FVenta
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label9.ForeColor = System.Drawing.Color.LightGray
         Me.Label9.Location = New System.Drawing.Point(67, 2)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(104, 13)
@@ -401,7 +401,7 @@ Partial Class FVenta
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label8.ForeColor = System.Drawing.Color.LightGray
         Me.Label8.Location = New System.Drawing.Point(11, 207)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(54, 13)
@@ -412,7 +412,7 @@ Partial Class FVenta
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label7.ForeColor = System.Drawing.Color.LightGray
         Me.Label7.Location = New System.Drawing.Point(11, 184)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(33, 13)
@@ -440,17 +440,17 @@ Partial Class FVenta
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.pnlXPack)
+        Me.Panel1.Controls.Add(Me.pnlPiso)
+        Me.Panel1.Controls.Add(Me.pnlPrecios)
         Me.Panel1.Controls.Add(Me.pbxCrearProd)
         Me.Panel1.Controls.Add(Me.pnlCrearProd)
-        Me.Panel1.Controls.Add(Me.pnlPiso)
         Me.Panel1.Controls.Add(Me.lblHab2)
         Me.Panel1.Controls.Add(Me.lblHab)
         Me.Panel1.Controls.Add(Me.LblTituloHab)
         Me.Panel1.Controls.Add(Me.cmbVendedor)
         Me.Panel1.Controls.Add(Me.btnGuardar)
         Me.Panel1.Controls.Add(Me.btnCancel)
-        Me.Panel1.Controls.Add(Me.pnlXPack)
-        Me.Panel1.Controls.Add(Me.pnlPrecios)
         Me.Panel1.Controls.Add(Me.pnlEditCant)
         Me.Panel1.Controls.Add(Me.chkMayorista)
         Me.Panel1.Controls.Add(Me.pbxBuscCli)
@@ -526,6 +526,7 @@ Partial Class FVenta
         'btnNuevoPOk
         '
         Me.btnNuevoPOk.BackColor = System.Drawing.Color.White
+        Me.btnNuevoPOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnNuevoPOk.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnNuevoPOk.Location = New System.Drawing.Point(479, 83)
         Me.btnNuevoPOk.Name = "btnNuevoPOk"
@@ -635,7 +636,7 @@ Partial Class FVenta
         '
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label20.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.Label20.ForeColor = System.Drawing.Color.DimGray
         Me.Label20.Location = New System.Drawing.Point(18, 10)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(124, 18)
@@ -659,6 +660,7 @@ Partial Class FVenta
         'btnPorUnidad
         '
         Me.btnPorUnidad.BackColor = System.Drawing.Color.White
+        Me.btnPorUnidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnPorUnidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnPorUnidad.Location = New System.Drawing.Point(32, 101)
         Me.btnPorUnidad.Name = "btnPorUnidad"
@@ -670,6 +672,7 @@ Partial Class FVenta
         'btnPorMetro
         '
         Me.btnPorMetro.BackColor = System.Drawing.Color.White
+        Me.btnPorMetro.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnPorMetro.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnPorMetro.Location = New System.Drawing.Point(32, 70)
         Me.btnPorMetro.Name = "btnPorMetro"
@@ -681,6 +684,7 @@ Partial Class FVenta
         'btnPorCaja
         '
         Me.btnPorCaja.BackColor = System.Drawing.Color.White
+        Me.btnPorCaja.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnPorCaja.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnPorCaja.Location = New System.Drawing.Point(32, 39)
         Me.btnPorCaja.Name = "btnPorCaja"
@@ -706,7 +710,7 @@ Partial Class FVenta
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.Label4.ForeColor = System.Drawing.Color.DimGray
         Me.Label4.Location = New System.Drawing.Point(29, 9)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(92, 18)
@@ -750,6 +754,7 @@ Partial Class FVenta
         'cmbVendedor
         '
         Me.cmbVendedor.Enabled = False
+        Me.cmbVendedor.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.cmbVendedor.FormattingEnabled = True
         Me.cmbVendedor.Location = New System.Drawing.Point(83, 89)
         Me.cmbVendedor.Margin = New System.Windows.Forms.Padding(2)
@@ -803,6 +808,7 @@ Partial Class FVenta
         'btnUnidad
         '
         Me.btnUnidad.BackColor = System.Drawing.Color.White
+        Me.btnUnidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnUnidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnUnidad.Location = New System.Drawing.Point(113, 44)
         Me.btnUnidad.Name = "btnUnidad"
@@ -814,6 +820,7 @@ Partial Class FVenta
         'btnPack
         '
         Me.btnPack.BackColor = System.Drawing.Color.White
+        Me.btnPack.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnPack.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnPack.Location = New System.Drawing.Point(22, 44)
         Me.btnPack.Name = "btnPack"
@@ -839,7 +846,7 @@ Partial Class FVenta
         '
         Me.lblTituloXPack.AutoSize = True
         Me.lblTituloXPack.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTituloXPack.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.lblTituloXPack.ForeColor = System.Drawing.Color.DimGray
         Me.lblTituloXPack.Location = New System.Drawing.Point(56, 10)
         Me.lblTituloXPack.Name = "lblTituloXPack"
         Me.lblTituloXPack.Size = New System.Drawing.Size(92, 18)
@@ -944,7 +951,7 @@ Partial Class FVenta
         '
         Me.lblTitPrecios.AutoSize = True
         Me.lblTitPrecios.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTitPrecios.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.lblTitPrecios.ForeColor = System.Drawing.Color.DimGray
         Me.lblTitPrecios.Location = New System.Drawing.Point(15, 10)
         Me.lblTitPrecios.Name = "lblTitPrecios"
         Me.lblTitPrecios.Size = New System.Drawing.Size(136, 18)
@@ -997,9 +1004,11 @@ Partial Class FVenta
         'chkMayorista
         '
         Me.chkMayorista.AutoSize = True
-        Me.chkMayorista.Location = New System.Drawing.Point(425, 35)
+        Me.chkMayorista.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.chkMayorista.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkMayorista.Location = New System.Drawing.Point(420, 36)
         Me.chkMayorista.Name = "chkMayorista"
-        Me.chkMayorista.Size = New System.Drawing.Size(71, 17)
+        Me.chkMayorista.Size = New System.Drawing.Size(76, 19)
         Me.chkMayorista.TabIndex = 80
         Me.chkMayorista.Text = "Mayorista"
         Me.chkMayorista.UseVisualStyleBackColor = True
@@ -1084,6 +1093,7 @@ Partial Class FVenta
         'btnCredOk
         '
         Me.btnCredOk.BackColor = System.Drawing.Color.White
+        Me.btnCredOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCredOk.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCredOk.Location = New System.Drawing.Point(210, 137)
         Me.btnCredOk.Name = "btnCredOk"
@@ -1102,6 +1112,7 @@ Partial Class FVenta
         'btnCredNo
         '
         Me.btnCredNo.BackColor = System.Drawing.Color.White
+        Me.btnCredNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCredNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCredNo.Location = New System.Drawing.Point(154, 102)
         Me.btnCredNo.Name = "btnCredNo"
@@ -1113,6 +1124,7 @@ Partial Class FVenta
         'btnCredSi
         '
         Me.btnCredSi.BackColor = System.Drawing.Color.White
+        Me.btnCredSi.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCredSi.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCredSi.Location = New System.Drawing.Point(95, 102)
         Me.btnCredSi.Name = "btnCredSi"
@@ -1136,7 +1148,7 @@ Partial Class FVenta
         '
         Me.Label37.AutoSize = True
         Me.Label37.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label37.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.Label37.ForeColor = System.Drawing.Color.DimGray
         Me.Label37.Location = New System.Drawing.Point(67, 14)
         Me.Label37.Name = "Label37"
         Me.Label37.Size = New System.Drawing.Size(154, 24)
@@ -1147,7 +1159,7 @@ Partial Class FVenta
         '
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.Location = New System.Drawing.Point(358, 64)
+        Me.Label17.Location = New System.Drawing.Point(351, 64)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(46, 13)
         Me.Label17.TabIndex = 53
@@ -1157,7 +1169,7 @@ Partial Class FVenta
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.Label1.Location = New System.Drawing.Point(358, 92)
+        Me.Label1.Location = New System.Drawing.Point(351, 92)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(63, 13)
         Me.Label1.TabIndex = 52
@@ -1166,9 +1178,11 @@ Partial Class FVenta
         'optCredito
         '
         Me.optCredito.AutoSize = True
-        Me.optCredito.Location = New System.Drawing.Point(498, 91)
+        Me.optCredito.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optCredito.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.optCredito.Location = New System.Drawing.Point(493, 88)
         Me.optCredito.Name = "optCredito"
-        Me.optCredito.Size = New System.Drawing.Size(58, 17)
+        Me.optCredito.Size = New System.Drawing.Size(63, 19)
         Me.optCredito.TabIndex = 51
         Me.optCredito.Text = "Crédito"
         Me.optCredito.UseVisualStyleBackColor = True
@@ -1177,9 +1191,11 @@ Partial Class FVenta
         '
         Me.optContado.AutoSize = True
         Me.optContado.Checked = True
-        Me.optContado.Location = New System.Drawing.Point(425, 91)
+        Me.optContado.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optContado.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.optContado.Location = New System.Drawing.Point(420, 88)
         Me.optContado.Name = "optContado"
-        Me.optContado.Size = New System.Drawing.Size(65, 17)
+        Me.optContado.Size = New System.Drawing.Size(70, 19)
         Me.optContado.TabIndex = 50
         Me.optContado.TabStop = True
         Me.optContado.Text = "Contado"
@@ -1188,10 +1204,12 @@ Partial Class FVenta
         'txtCliente
         '
         Me.txtCliente.BackColor = System.Drawing.Color.White
-        Me.txtCliente.Location = New System.Drawing.Point(425, 61)
+        Me.txtCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtCliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCliente.Location = New System.Drawing.Point(420, 61)
         Me.txtCliente.Name = "txtCliente"
         Me.txtCliente.ReadOnly = True
-        Me.txtCliente.Size = New System.Drawing.Size(99, 20)
+        Me.txtCliente.Size = New System.Drawing.Size(104, 21)
         Me.txtCliente.TabIndex = 49
         '
         'Label16
@@ -1217,11 +1235,13 @@ Partial Class FVenta
         'txtFecha
         '
         Me.txtFecha.BackColor = System.Drawing.Color.White
+        Me.txtFecha.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFecha.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtFecha.Location = New System.Drawing.Point(83, 61)
         Me.txtFecha.Name = "txtFecha"
         Me.txtFecha.ReadOnly = True
         Me.txtFecha.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtFecha.Size = New System.Drawing.Size(111, 20)
+        Me.txtFecha.Size = New System.Drawing.Size(111, 21)
         Me.txtFecha.TabIndex = 42
         '
         'Label3
@@ -1247,11 +1267,12 @@ Partial Class FVenta
         'txtNroFac
         '
         Me.txtNroFac.BackColor = System.Drawing.Color.White
-        Me.txtNroFac.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNroFac.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtNroFac.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNroFac.Location = New System.Drawing.Point(83, 33)
         Me.txtNroFac.Name = "txtNroFac"
         Me.txtNroFac.ReadOnly = True
-        Me.txtNroFac.Size = New System.Drawing.Size(111, 20)
+        Me.txtNroFac.Size = New System.Drawing.Size(111, 21)
         Me.txtNroFac.TabIndex = 36
         Me.txtNroFac.Text = "0"
         Me.txtNroFac.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -1318,7 +1339,7 @@ Partial Class FVenta
         '
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label19.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label19.ForeColor = System.Drawing.Color.LightGray
         Me.Label19.Location = New System.Drawing.Point(3, 25)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(111, 13)
@@ -1339,7 +1360,7 @@ Partial Class FVenta
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label14.ForeColor = System.Drawing.Color.LightGray
         Me.Label14.Location = New System.Drawing.Point(3, 5)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(96, 13)
@@ -1381,7 +1402,7 @@ Partial Class FVenta
         '
         Me.lblPrecio1.AutoSize = True
         Me.lblPrecio1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPrecio1.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.lblPrecio1.ForeColor = System.Drawing.Color.LightGray
         Me.lblPrecio1.Location = New System.Drawing.Point(3, 20)
         Me.lblPrecio1.Name = "lblPrecio1"
         Me.lblPrecio1.Size = New System.Drawing.Size(82, 13)
@@ -1392,7 +1413,7 @@ Partial Class FVenta
         '
         Me.lblPrecio2.AutoSize = True
         Me.lblPrecio2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPrecio2.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.lblPrecio2.ForeColor = System.Drawing.Color.LightGray
         Me.lblPrecio2.Location = New System.Drawing.Point(3, 41)
         Me.lblPrecio2.Name = "lblPrecio2"
         Me.lblPrecio2.Size = New System.Drawing.Size(89, 13)
@@ -1403,7 +1424,7 @@ Partial Class FVenta
         '
         Me.lblPrecio3.AutoSize = True
         Me.lblPrecio3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPrecio3.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.lblPrecio3.ForeColor = System.Drawing.Color.LightGray
         Me.lblPrecio3.Location = New System.Drawing.Point(3, 62)
         Me.lblPrecio3.Name = "lblPrecio3"
         Me.lblPrecio3.Size = New System.Drawing.Size(82, 13)
@@ -1415,7 +1436,7 @@ Partial Class FVenta
         '
         Me.Label24.AutoSize = True
         Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label24.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label24.ForeColor = System.Drawing.Color.LightGray
         Me.Label24.Location = New System.Drawing.Point(66, 169)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(106, 13)
@@ -1426,7 +1447,7 @@ Partial Class FVenta
         '
         Me.Label23.AutoSize = True
         Me.Label23.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label23.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label23.ForeColor = System.Drawing.Color.LightGray
         Me.Label23.Location = New System.Drawing.Point(98, 4)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(32, 13)
@@ -1928,7 +1949,7 @@ Partial Class FVenta
         '
         Me.lblUnidXpack.AutoSize = True
         Me.lblUnidXpack.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUnidXpack.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.lblUnidXpack.ForeColor = System.Drawing.Color.LightGray
         Me.lblUnidXpack.Location = New System.Drawing.Point(141, 118)
         Me.lblUnidXpack.Name = "lblUnidXpack"
         Me.lblUnidXpack.Size = New System.Drawing.Size(21, 13)
@@ -1986,9 +2007,13 @@ Partial Class FVenta
         '
         'txtDescuent
         '
+        Me.txtDescuent.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.txtDescuent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtDescuent.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDescuent.ForeColor = System.Drawing.Color.White
         Me.txtDescuent.Location = New System.Drawing.Point(71, 142)
         Me.txtDescuent.Name = "txtDescuent"
-        Me.txtDescuent.Size = New System.Drawing.Size(60, 20)
+        Me.txtDescuent.Size = New System.Drawing.Size(60, 22)
         Me.txtDescuent.TabIndex = 45
         Me.txtDescuent.Visible = False
         '
@@ -1996,7 +2021,7 @@ Partial Class FVenta
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label15.ForeColor = System.Drawing.Color.LightGray
         Me.Label15.Location = New System.Drawing.Point(66, 6)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(101, 13)
@@ -2007,7 +2032,7 @@ Partial Class FVenta
         '
         Me.lblX.AutoSize = True
         Me.lblX.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblX.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.lblX.ForeColor = System.Drawing.Color.LightGray
         Me.lblX.Location = New System.Drawing.Point(132, 117)
         Me.lblX.Name = "lblX"
         Me.lblX.Size = New System.Drawing.Size(17, 13)
@@ -2016,11 +2041,14 @@ Partial Class FVenta
         '
         'cmbDescrip
         '
-        Me.cmbDescrip.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbDescrip.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.cmbDescrip.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmbDescrip.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbDescrip.ForeColor = System.Drawing.Color.White
         Me.cmbDescrip.FormattingEnabled = True
         Me.cmbDescrip.Location = New System.Drawing.Point(15, 86)
         Me.cmbDescrip.Name = "cmbDescrip"
-        Me.cmbDescrip.Size = New System.Drawing.Size(218, 21)
+        Me.cmbDescrip.Size = New System.Drawing.Size(218, 23)
         Me.cmbDescrip.TabIndex = 77
         '
         'Label5
@@ -2036,10 +2064,13 @@ Partial Class FVenta
         '
         'txtBuscar
         '
-        Me.txtBuscar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBuscar.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtBuscar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBuscar.ForeColor = System.Drawing.Color.White
         Me.txtBuscar.Location = New System.Drawing.Point(64, 58)
         Me.txtBuscar.Name = "txtBuscar"
-        Me.txtBuscar.Size = New System.Drawing.Size(149, 20)
+        Me.txtBuscar.Size = New System.Drawing.Size(149, 22)
         Me.txtBuscar.TabIndex = 75
         '
         'lblCant
@@ -2067,10 +2098,13 @@ Partial Class FVenta
         '
         'txtCant
         '
-        Me.txtCant.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCant.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.txtCant.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtCant.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCant.ForeColor = System.Drawing.Color.White
         Me.txtCant.Location = New System.Drawing.Point(50, 115)
         Me.txtCant.Name = "txtCant"
-        Me.txtCant.Size = New System.Drawing.Size(81, 20)
+        Me.txtCant.Size = New System.Drawing.Size(81, 22)
         Me.txtCant.TabIndex = 73
         Me.txtCant.Text = "1"
         '
@@ -2091,7 +2125,7 @@ Partial Class FVenta
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label11.ForeColor = System.Drawing.Color.LightGray
         Me.Label11.Location = New System.Drawing.Point(12, 31)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(26, 13)
@@ -2126,7 +2160,7 @@ Partial Class FVenta
         '
         'btnAgregar
         '
-        Me.btnAgregar.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
+        Me.btnAgregar.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnAgregar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAgregar.ForeColor = System.Drawing.SystemColors.ControlLightLight
@@ -2170,7 +2204,7 @@ Partial Class FVenta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(125, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(855, 564)
         Me.Controls.Add(Me.pnlBuscProd)
         Me.Controls.Add(Me.SplitContainer1)

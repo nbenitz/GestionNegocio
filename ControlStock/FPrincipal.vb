@@ -1,6 +1,10 @@
 ﻿Option Strict On
+Option Explicit On
+
+Imports System.Runtime.InteropServices
 
 Public Class FPrincipal
+    Dim FrmEventoAcceso As New FEventoAcceso
     Dim Caja As New CCaja
     Dim NumCaja As UInt16 = 1
     Dim CI As String
@@ -12,10 +16,13 @@ Public Class FPrincipal
     Dim ProdNuevoValue As Boolean
     Dim ProvNuevoValue As Boolean
 
+    Dim ColorOscuro As Color = Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+    Dim ColorNormal As Color = Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+
+    Dim Retraido As Boolean = False
+
     Sub New(ByVal CIValue As String)
-        ' Llamada necesaria para el diseñador.
         InitializeComponent()
-        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
         'LblUsuario.Text = "Bienvenido: " & user
         CI = CIValue
     End Sub
@@ -77,6 +84,8 @@ Public Class FPrincipal
     End Sub
 
     Private Sub FrmPrincipal_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        LoadEventoAcceso()
+
         Dim ctl As Control
         Dim ctlMDI As MdiClient
         ' Loop through all of the form's controls looking
@@ -95,27 +104,38 @@ Public Class FPrincipal
 
     End Sub
 
+    Private Sub LoadEventoAcceso()
+        Cursor.Current = Cursors.WaitCursor
+
+        FrmEventoAcceso.TopLevel = False
+        FrmEventoAcceso.FormBorderStyle = FormBorderStyle.None
+        FrmEventoAcceso.Dock = DockStyle.Fill
+        pnlRight.Width = FrmEventoAcceso.Width
+        'pnlEvento.Width = FrmEventoAcceso.Width
+        pnlEvento.Controls.Add(FrmEventoAcceso)
+        pnlEvento.Tag = FrmEventoAcceso
+        FrmEventoAcceso.Show()
+        'frm.BringToFront()
+        FrmEventoAcceso.init()
+    End Sub
+
     Private Sub BtnBusqueda_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles ConsultaProd.Click, lblProd.Click, pbxProd.Click, pnlProd.Click
         Dim Frm As New FListaProd
         Frm.pnlEditar.Visible = ProdEditValue
         Frm.PnlEliminar.Visible = ProdDeleteValue
         Frm.TbtnNuevo.Visible = ProdNuevoValue
-        AbrirVentana(Frm)
+        AbrirFormEnPanel(Frm)
     End Sub
 
     Private Sub BtnFactura_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles NuevaVenta.Click, pnlVenta.Click, lblVenta.Click, pbxVenta.Click
         If Caja.CajaAbierta(NumCaja) Then
-            Dim Frm As New FVenta
-            Frm.CIEmpleado = CI
-            Frm.lblHab.Visible = False
-            Frm.lblHab2.Visible = False
-            Frm.LblTituloHab.Visible = False
-            Frm.FormBorderStyle = FormBorderStyle.FixedDialog
-            Frm.MaximumSize = New Size(861, 593)
-            Frm.MinimumSize = New Size(861, 593)
-            Frm.Size = New Size(861, 593)
-            Frm.ModoMotel = False
-            AbrirVentana(Frm)
+            Dim FrmVenta As New FVentaGym
+            FrmVenta.CIEmpleado = CI
+            FrmVenta.lblHab.Visible = False
+            FrmVenta.lblHab2.Visible = False
+            FrmVenta.LblTituloHab.Visible = False
+            FrmVenta.ModoMotel = False
+            AbrirFormEnPanel(FrmVenta)
         Else
             MessageBox.Show("Debe abrir la Caja antes de realizar una Venta")
             Dim Frm As New FCajaMostrador
@@ -125,11 +145,18 @@ Public Class FPrincipal
     End Sub
 
     Private Sub BtnInfo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblCompra.Click, pbxCompras.Click, pnlCompra.Click, RecibirStock.Click
-        AbrirVentana(FCompra)
+        Dim Frm As New FCompra
+        AbrirFormEnPanel(Frm)
+    End Sub
+
+    Private Sub Molinete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblCerradura.Click, pbxCerradura.Click, pnlCerradura.Click
+        Dim Frm As New FListaSocio
+        AbrirFormEnPanel(Frm)
     End Sub
 
     Private Sub AgregarProducto_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NuevoProd.Click
-        AbrirVentana(FNuevoProducto)
+        Dim Frm As New FNuevoProducto
+        AbrirFormEnPanel(Frm)
     End Sub
 
     Private Sub CambiarDeUsuario_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CambiarDeUsuarioToolStripMenuItem.Click
@@ -138,67 +165,69 @@ Public Class FPrincipal
     End Sub
 
     Private Sub ListaDeHabitacionesToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        AbrirVentana(FListaHabitacion2)
+        AbrirFormEnPanel(FListaHabitacion2)
     End Sub
 
     Private Sub AjustesToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        AbrirVentana(FAjustesTolerancia)
+        AbrirFormEnPanel(FAjustesTolerancia)
     End Sub
 
     Private Sub ReportesToolStripMenuItem_Click_1(sender As Object, e As EventArgs)
-        AbrirVentana(FReporteHabitacion)
+        AbrirFormEnPanel(FReporteHabitacion)
     End Sub
 
     Private Sub ServiciosDeHabitaciónToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        AbrirVentana(FAjustesTiempo)
+        AbrirFormEnPanel(FAjustesTiempo)
     End Sub
 
-    Private Sub ReportesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ConsultarVenta.Click
-        Dim frm As New FListaVenta(Reporte.Tipo.Venta)
-        AbrirVentana(frm)
+    Private Sub ConsultarVenta_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ConsultarVenta.Click
+        Dim Frm As New FListaVenta(Reporte.Tipo.Venta)
+        'AbrirFormEnPanel(Frm)
     End Sub
 
     Private Sub ComisionesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Comisiones.Click
-        AbrirVentana(FComision)
+        AbrirFormEnPanel(FComision)
     End Sub
 
     Private Sub NuevoEmpleadoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NuevoEmple.Click
-        AbrirVentana(FNuevoEmple)
+        Dim Frm As New FEmpleado
+        AbrirFormEnPanel(Frm)
     End Sub
 
     Private Sub ACobrarToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CuentaCobrar.Click
-        AbrirVentana(FCuentasCobrar)
+        Dim Frm As New FCuentasCobrar
+        AbrirFormEnPanel(Frm)
     End Sub
 
     Private Sub ReportesToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListaCompras.Click
         Dim frm As New FListaCompra(Reporte.Tipo.Compra)
-        AbrirVentana(frm)
+        AbrirFormEnPanel(frm)
     End Sub
 
     Private Sub APagarToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CuentaPagar.Click
-        AbrirVentana(FCuentasPagar)
+        AbrirFormEnPanel(FCuentasPagar)
     End Sub
 
     Private Sub ToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NotaCredito.Click
-        Dim frm As New FListaVenta(Reporte.Tipo.NotaCredVenta)
-        AbrirVentana(frm)
+        'Dim frm As New FListaVenta(Reporte.Tipo.NotaCredVenta)
+        'AbrirFormEnPanel(frm)
     End Sub
 
     Private Sub DevolverStock_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DevolverStock.Click
         Dim frm As New FListaCompra(Reporte.Tipo.NotaCredCompra)
-        AbrirVentana(frm)
+        AbrirFormEnPanel(frm)
     End Sub
 
     Private Sub NuevoProveedorToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NuevoProv.Click
-        AbrirVentana(FNuevoProveed)
+        AbrirFormEnPanel(FNuevoProveed)
     End Sub
 
     Private Sub BalanceDiarioToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        AbrirVentana(FBalance)
+        AbrirFormEnPanel(FBalance)
     End Sub
 
     Private Sub ListaEmple_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListaEmple.Click
-        AbrirVentana(FListaEmple)
+        AbrirFormEnPanel(FListaEmple)
     End Sub
 
     Private Sub ListaProv_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListaProv.Click
@@ -206,22 +235,22 @@ Public Class FPrincipal
         Frm.pnlEditar.Visible = ProvEditValue
         Frm.PnlEliminar.Visible = ProvDeleteValue
         Frm.BtnNuevo.Visible = ProvNuevoValue
-        AbrirVentana(Frm)
+        'AbrirFormEnPanel( Frm)
     End Sub
 
     Private Sub ListaBajaDeProductosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListaBajaDeProductosToolStripMenuItem.Click
-        AbrirVentana(FListaBajaProd)
+        AbrirFormEnPanel(FListaBajaProd)
     End Sub
 
     Private Sub ListaAltaDeProductosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListaAltaDeProductosToolStripMenuItem.Click
-        AbrirVentana(FListaAltaProd)
+        AbrirFormEnPanel(FListaAltaProd)
     End Sub
 
     Private Sub AbrirCajaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AbrirCajaToolStripMenuItem.Click
         If Caja.CajaAbierta(NumCaja) = False Then
             Dim Frm As New FCajaMostrador
             Frm.CIEmpleado = CI
-            AbrirVentana(Frm)
+            'AbrirFormEnPanel( Frm)
         Else
             MessageBox.Show("La caja ya está abierta")
         End If
@@ -232,26 +261,59 @@ Public Class FPrincipal
             Dim Frm As New FCajaMostrador
             Frm.CIEmpleado = CI
             Frm.ModoAbrir = False
-            AbrirVentana(Frm)
+            AbrirFormEnPanel(Frm)
         Else
             MessageBox.Show("La caja ya está cerrada")
         End If
     End Sub
 
     Private Sub HistorialDeCajaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HistorialDeCajaToolStripMenuItem.Click
-        Dim Frm As New FListaCajas 
+        Dim Frm As New FListaCajas
         Frm.CIEmpleado = CI
-        AbrirVentana(Frm)
+        'AbrirFormEnPanel( Frm)
     End Sub
 
-    Private Sub AbrirVentana(ByVal Formulario As Form)
-        Cursor.Current = Cursors.WaitCursor
-        Formulario.MdiParent = Me
-        Formulario.Show()
-        Formulario.WindowState = FormWindowState.Normal
+    Private Sub AbrirFormEnPanel(ByVal FrmNuevo As Form)
+        Dim FrmViejo As Form
+        Dim FormExiste As Boolean = False
+        For Each form As Form In pnlPrincipal.Controls.OfType(Of Form)()
+            If (FrmNuevo.Name.Equals(form.Name)) Then
+                FrmViejo = form
+                FormExiste = True
+            Else
+                form.Hide()
+            End If
+        Next
+
+        If Not FormExiste Then      'Si form no fue econtrado/ no existe
+            FrmNuevo.TopLevel = False
+            FrmNuevo.FormBorderStyle = FormBorderStyle.None
+            If FrmNuevo.Width > (pnlPrincipal.Width - 10) Then
+                OcultarPnlRight()
+            End If
+            FrmNuevo.Location = New Point(CInt((pnlPrincipal.Width - FrmNuevo.Width) / 2),
+                                     CInt((pnlPrincipal.Height - FrmNuevo.Height) / 2))
+            'Formulario.Dock = DockStyle.Fill
+            pnlPrincipal.Controls.Add(FrmNuevo)
+            pnlPrincipal.Tag = FrmNuevo
+            'AddHandler FrmNuevo.FormClosed, AddressOf Me.CerrarFormulario
+            FrmNuevo.Show()
+            FrmNuevo.BringToFront()
+        Else
+            FrmViejo.Show()
+            FrmViejo.BringToFront()
+        End If
+
     End Sub
 
-    Private Sub SalirToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SalirToolStripMenuItem.Click, pbxSalir.Click, lblSalir.Click, pnlSalir.Click
+    Private Sub CerrarFormulario(ByVal sender As Object, ByVal e As FormClosedEventArgs)
+        'CONDICION SI FORMS ESTA ABIERTO
+        'If (Application.OpenForms("Form1") Is Nothing) Then
+        'Button1.BackColor = Color.FromArgb(4, 41, 68)
+        'End If
+    End Sub
+
+    Private Sub SalirToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SalirToolStripMenuItem.Click
         End
     End Sub
 
@@ -259,99 +321,103 @@ Public Class FPrincipal
         WindowState = FormWindowState.Minimized
     End Sub
 
-    Private Sub Panel_MouseLeave(ByVal sender As Object, ByVal e As System.EventArgs) Handles pnlProd.MouseLeave, pnlCompra.MouseLeave, pnlSalir.MouseLeave
+    Private Sub Panel_MouseLeave(ByVal sender As Object, ByVal e As System.EventArgs) Handles pnlProd.MouseLeave, pnlCompra.MouseLeave, pnlCerradura.MouseLeave
         Dim Pnl As Panel = CType(sender, Panel)
-        Pnl.BackColor = Color.FromArgb(70, 90, 125)
+        Pnl.BackColor = ColorOscuro
     End Sub
 
-    Private Sub Panel_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles pnlProd.MouseMove, pnlCompra.MouseMove, pnlVenta.MouseMove
+    Private Sub Panel_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles pnlProd.MouseMove, pnlCompra.MouseMove, pnlVenta.MouseMove, pnlCerradura.MouseMove
         Dim Pnl As Panel = CType(sender, Panel)
-        pnlProd.BackColor = Color.FromArgb(70, 90, 125)
-        pnlCompra.BackColor = Color.FromArgb(70, 90, 125)
-        pnlVenta.BackColor = Color.FromArgb(70, 90, 125)
-        Pnl.BackColor = Color.FromArgb(82, 119, 169)
+        pnlProd.BackColor = ColorOscuro
+        pnlCompra.BackColor = ColorOscuro
+        pnlVenta.BackColor = ColorOscuro
+        pnlCerradura.BackColor = ColorOscuro
+        Pnl.BackColor = ColorNormal
     End Sub
 
     Private Sub LblProd_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles lblProd.MouseMove, pbxProd.MouseMove, lblProd.MouseMove
-        pnlProd.BackColor = Color.FromArgb(82, 119, 169)
+        pnlProd.BackColor = ColorNormal
     End Sub
 
     Private Sub LblCompra_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles lblCompra.MouseMove, pbxCompras.MouseMove, lblCompra.MouseMove
-        pnlCompra.BackColor = Color.FromArgb(82, 119, 169)
-    End Sub
-
-    Private Sub Panel6_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles pnlSalir.MouseMove, lblSalir.MouseMove, pbxSalir.MouseMove
-        pnlSalir.BackColor = Color.FromArgb(82, 119, 169)
+        pnlCompra.BackColor = ColorNormal
     End Sub
 
     Private Sub PnlVenta_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles pnlVenta.MouseMove, lblVenta.MouseMove, pbxVenta.MouseMove
-        pnlVenta.BackColor = Color.FromArgb(82, 119, 169)
+        pnlVenta.BackColor = ColorNormal
     End Sub
 
+    Private Sub PnlCerradura_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles pnlCerradura.MouseMove, lblCerradura.MouseMove, pbxCerradura.MouseMove
+        pnlCerradura.BackColor = ColorNormal
+    End Sub
+
+
+
     Private Sub TmrFecha_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TmrFecha.Tick
-        lblDateTime.Text = Format(Now, "dd/MM/yyyy  -  HH:mm:ss")
+        'lblDateTime.Text = Format(Now, "dd/MM/yyyy  -  HH:mm:ss")
     End Sub
 
     Private Sub RecibosDeDinero_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RecibosDeDinero.Click
         Dim frm As New FListaRecivos
         frm.ModoVenta = True
-        AbrirVentana(frm)
+        AbrirFormEnPanel(frm)
     End Sub
 
     Private Sub PagosRealizadosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PagosRealizadosToolStripMenuItem.Click
         Dim frm As New FListaRecivos
         frm.ModoVenta = False
-        AbrirVentana(frm)
+        AbrirFormEnPanel(frm)
     End Sub
 
-    Private Sub ConsultarClentesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsultarClentesToolStripMenuItem.Click
-        AbrirVentana(FListaClientes)
+    Private Sub ConsultarClentesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles mnuConsultarClentes.Click
+        AbrirFormEnPanel(FListaSocio)
     End Sub
 
-    Private Sub NuevoClienteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NuevoClienteToolStripMenuItem.Click
-        AbrirVentana(FNuevoCliente)
+    Private Sub NuevoClienteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles mnuNuevoCliente.Click
+        Dim Frm As New FNuevoSocio
+        AbrirFormEnPanel(Frm)
     End Sub
 
     Private Sub BalanceToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BalanceToolStripMenuItem.Click
-        AbrirVentana(FBalance)
+        AbrirFormEnPanel(FBalance)
     End Sub
 
     Private Sub NuevoUsuarioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NuevoUsu.Click
         Dim frm As New FListaEmple
         frm.ModoNuevoUsu = True
-        AbrirVentana(frm)
+        'AbrirFormEnPanel( frm)
     End Sub
 
     Private Sub ListaDeUsuariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsultarUsu.Click
-        AbrirVentana(FListaUsuarios)
+        AbrirFormEnPanel(FListaUsuarios)
     End Sub
 
     Private Sub AgregarNuevoNivelDePrivilegiosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AgregarNuevoNivelDePrivilegiosToolStripMenuItem.Click
-        AbrirVentana(FNuevoPrivilegio)
+        AbrirFormEnPanel(FNuevoPrivilegio)
     End Sub
 
     Private Sub ConsultarNivelDePrivilegiosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsultarNivelDePrivilegiosToolStripMenuItem.Click
-        AbrirVentana(FListaPrivilegios)
+        AbrirFormEnPanel(FListaPrivilegios)
     End Sub
 
     Private Sub GastosGeneralesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GastosGeneralesToolStripMenuItem.Click
-        AbrirVentana(FGasto)
+        AbrirFormEnPanel(FGasto)
     End Sub
 
     Private Sub ListaDeGastosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListaDeGastosToolStripMenuItem.Click
-        AbrirVentana(FListaGastos)
+        AbrirFormEnPanel(FListaGastos)
     End Sub
 
     Private Sub DetalleDeCajaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DetalleDeCajaToolStripMenuItem.Click
         If Caja.CajaAbierta(NumCaja) Then
             Dim Frm As New FResumenCaja
             Frm.CIEmpleado = CI
-            Frm.Show()
+            AbrirFormEnPanel(Frm)
         Else
             MessageBox.Show("Seleccione una Caja del Historial para ver su Resumen")
             Dim Frm As New FListaCajas
             Frm.CIEmpleado = CI
-            AbrirVentana(Frm)
+            AbrirFormEnPanel(Frm)
         End If
     End Sub
 
@@ -361,6 +427,53 @@ Public Class FPrincipal
     End Sub
 
     Private Sub CategoríasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles mnuCategoria.Click
-        AbrirVentana(FListaCategoriaProd)
+        AbrirFormEnPanel(FListaCategoriaProd)
+    End Sub
+
+    Private Sub MembresíasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles mnuMembresias.Click
+        AbrirFormEnPanel(FListaMembresia)
+    End Sub
+
+    Private Sub NuevaMembresíaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles mnuNuevoMembresia.Click
+        AbrirFormEnPanel(FNuevoMembresia)
+    End Sub
+
+    Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
+        End
+    End Sub
+
+    Private Sub pbxRetraer_Click(sender As Object, e As EventArgs) Handles pbxRetraer.Click
+        If Retraido Then
+            MostrarPnlRight()
+        Else
+            OcultarPnlRight()
+        End If
+    End Sub
+
+    Private Sub OcultarPnlRight()
+        If Not Retraido Then
+            Retraido = True
+            pnlRight.Width = 35
+            pbxRetraer.Image = My.Resources.left_arrow
+            FrmEventoAcceso.Hide()
+        End If
+    End Sub
+
+    Private Sub MostrarPnlRight()
+        If Retraido Then
+            Retraido = False
+            pnlRight.Width = 404
+            pbxRetraer.Image = My.Resources.right_arrow
+            FrmEventoAcceso.Show()
+        End If
+    End Sub
+
+    Private Sub AsistenciaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AsistenciaToolStripMenuItem.Click
+        Dim Frm As New FAsistencia
+        AbrirFormEnPanel(Frm)
+    End Sub
+
+    Private Sub mnuCuentas_Click(sender As Object, e As EventArgs) Handles mnuCuentas.Click
+
     End Sub
 End Class

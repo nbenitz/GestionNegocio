@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6bb5d129d71e459783727a18e32e1096" Name="Diagram1" ZoomLevel="108">
+        <EntityTypeShape EntityType="minegocioModel.acceso" Width="1.5" PointX="4.875" PointY="17.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.acceso_finger_print" Width="1.5" PointX="4.875" PointY="20.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.altaprod" Width="1.5" PointX="7.375" PointY="2" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.altaprodmotivo" Width="1.5" PointX="7.375" PointY="0.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.bajaprod" Width="1.5" PointX="10.25" PointY="2.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.bajaprodmotivo" Width="1.5" PointX="10.125" PointY="0.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.base_user_extend" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.cajamostrador" Width="1.5" PointX="2.25" PointY="12.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.categoria_prod" Width="1.5" PointX="11.375" PointY="3.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.cliente" Width="2.125" PointX="2.125" PointY="16.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.cliente_acceso" Width="1.5" PointX="3.625" PointY="18.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.cliente_asistencia" Width="1.5" PointX="3.375" PointY="19.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.cliente_membresia" Width="1.5" PointX="2.375" PointY="22.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.cliente_seguim_galeria" Width="1.5" PointX="0.5" PointY="19.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.cliente_seguimiento" Width="1.5" PointX="0.5" PointY="18" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.comisionpagada" Width="1.5" PointX="2.25" PointY="14" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.compra" Width="1.5" PointX="6.75" PointY="5.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.detallecompra" Width="1.5" PointX="7.875" PointY="6.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.detalleocupacion" Width="1.5" PointX="8.25" PointY="17.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.detalleventa" Width="1.5" PointX="9.375" PointY="13.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.detnotaccompra" Width="1.5" PointX="6.625" PointY="7.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.detnotacventa" Width="1.5" PointX="9.75" PointY="16.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.empleado" Width="1.5" PointX="5.375" PointY="12.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.empleado_asistencia" Width="1.5" PointX="2.25" PointY="13" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.finger_print" Width="1.5" PointX="5.875" PointY="20" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.gasto" Width="1.5" PointX="15.5" PointY="1" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.habitacion" Width="1.5" PointX="8.25" PointY="20.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.habitacion2" Width="1.5" PointX="12.625" PointY="16.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.habitacionajustes" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.listagasto" Width="1.5" PointX="13.125" PointY="1" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.marca" Width="1.5" PointX="0.75" PointY="1" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.membresia" Width="1.5" PointX="1.25" PointY="20.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.modelo" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.notaccompra" Width="1.5" PointX="3.75" PointY="5.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.notacventa" Width="1.5" PointX="9" PointY="15" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.ocupacionmanual" Width="1.5" PointX="11.75" PointY="12.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.ocupacionsensor" Width="1.5" PointX="13.375" PointY="14.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.pago_membresia" Width="1.5" PointX="5" PointY="22.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.pedidoc" Width="1.5" PointX="3.75" PointY="3.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.privilegio" Width="1.5" PointX="3.5" PointY="7.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.producto" Width="1.5" PointX="9" PointY="3.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.proveedor" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.recibocobrocuenta" Width="1.5" PointX="7.875" PointY="11" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.recibopagocuenta" Width="1.5" PointX="5.75" PointY="6.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.serviciohabitacion" Width="1.5" PointX="8.25" PointY="19.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.usuario" Width="1.5" PointX="5.25" PointY="11" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.venta" Width="1.5" PointX="8" PointY="12.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.view_asistencia" Width="1.5" PointX="13.875" PointY="10.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.view_cuentas_cobrar" Width="1.5" PointX="13.75" PointY="4.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.view_pago_membresia" Width="1.5" PointX="13.875" PointY="7.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.view_pago_membresia_periodo" Width="1.5" PointX="15.75" PointY="4.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.viewaltaprod" Width="1.5" PointX="15.75" PointY="6" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.viewbajaprod" Width="1.5" PointX="15.75" PointY="7.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.viewcajamostrador" Width="1.5" PointX="15.875" PointY="8.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.viewcompra" Width="1.5" PointX="17.75" PointY="4.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.viewdetalleingreso" Width="1.5" PointX="17.75" PointY="6" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.viewdetcompra" Width="1.5" PointX="17.75" PointY="7.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.viewdetnotaccompra" Width="1.5" PointX="17.875" PointY="8.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.viewdetnotacventa" Width="1.5" PointX="13.75" PointY="8.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.viewdetocupacion" Width="1.5" PointX="15.75" PointY="9.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.viewdetventa" Width="1.5" PointX="17.875" PointY="9.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.viewgasto" Width="1.5" PointX="13.875" PointY="9.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.viewnotaccompra" Width="1.5" PointX="19.75" PointY="4.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.viewnotacventa" Width="1.5" PointX="13.875" PointY="6" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.viewproducto" Width="1.5" PointX="19.75" PointY="7.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.viewsocio" Width="1.5" PointX="19.75" PointY="8.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.viewsocio2" Width="1.5" PointX="17.75" PointY="20.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.viewusuario" Width="1.5" PointX="19.75" PointY="9.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.viewventa" Width="1.5" PointX="19.75" PointY="5.875" IsExpanded="false" />
+        <AssociationConnector Association="minegocioModel.FK_acceso_finger_print_acceso" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_cliente_acceso_acceso" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_acceso_finger_print_finger_print" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_altaprod_altaprodmotivo" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_altaprod_producto" ManuallyRouted="true" >
+          <ConnectorPoint PointX="9.59375" PointY="3.75" />
+          <ConnectorPoint PointX="9.59375" PointY="2.1000000000000005" />
+          <ConnectorPoint PointX="8.875" PointY="2.1000000000000005" />
+        </AssociationConnector>
+        <AssociationConnector Association="minegocioModel.FK_bajaprod_motivobajaprod" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_bajaprod_producto" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_cajamostrador_empleado" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_producto_categoria_prod" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="minegocioModel.FK_cliente_acceso_cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_cliente_asistencia_cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_cliente_ficha_cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_cliente_membresia_cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_venta_cliente" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="minegocioModel.FK_cliente_membresia_membresia" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_pago_membresia_cliente_membresia" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_cliente_seguim_galeria_cliente_seguimiento" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_ComisionPagada_empleado" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_compra_proveedor" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="minegocioModel.FK_detallecompra_compra" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_NotaCredCompra_compra" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_recibopagocuenta_compra" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_detallecompra_producto" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_detnotaccompra_detallecompra" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_detalleocupacion_habitacion" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_detalleocupacion_habitacion_2" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_detalleocupacion_venta" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_detalleventa_producto" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_detalleventa_venta" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_detnotacventa_detalleventa" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_detnotaccompra_notaccompra" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="minegocioModel.FK_detnotacventa_notacventa" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_empleado_asistencia_empleado" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_usuario_empleado" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_venta_empleado" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_gastos_listagastos" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_habitacion_serviciohabitacion" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_ocupacionmanual_habitacion2" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_ocupacionsensor_habitacion2" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.modeloFK_marca" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_notacventa_venta" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_ocupacionmanual_venta" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_pedidoc_proveedor" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_usuario_privilegio" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_producto_proveedor" ManuallyRouted="false" />
+        <AssociationConnector Association="minegocioModel.FK_recibocobrocuenta_venta" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="minegocioModel.view_finger_print" Width="1.5" PointX="15.75" PointY="10.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.empleado_acceso" Width="1.5" PointX="5.875" PointY="18.125" IsExpanded="false" />
+        <AssociationConnector Association="minegocioModel.FK_empleado_acceso_acceso" />
+        <AssociationConnector Association="minegocioModel.FK__empleado" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

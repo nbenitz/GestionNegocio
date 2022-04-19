@@ -89,7 +89,7 @@ Public Class FListaRecivos
         Dim SumaTotal As Integer = 0
         DataGridView1.Rows.Clear()
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
+            For i  As Integer = 0 To (Filas - 1)
                 Dim idRecibo As Integer = CInt(Tabla.Rows(i).Item(0))
                 Dim idFactura As Integer = CInt(Tabla.Rows(i).Item(1))
                 Dim Fecha As String = CStr(Tabla.Rows(i).Item(2))
@@ -103,11 +103,14 @@ Public Class FListaRecivos
         Set(ByVal Valor As Boolean)
             ModoVentaValue = Valor
             If Valor = True Then
-                Me.Text = "Pagos recibidos por Ventas a Crédito"
+                lblTitulo.Text = "Pagos recibidos por Ventas a Crédito"
             Else
-                Me.Text = "Pagos realizados por Compras a Crédito"
+                lblTitulo.Text = "Pagos realizados por Compras a Crédito"
             End If
         End Set
     End Property
 
+    Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
+        Me.Close()
+    End Sub
 End Class

@@ -18,7 +18,7 @@ Public Class FListaAltaProd
     End Sub
 
     Private Sub F_Deactivate(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Deactivate
-        Me.WindowState = FormWindowState.Minimized
+        'Me.WindowState = FormWindowState.Minimized
     End Sub
 
     Private Sub CargarMotivos()
@@ -27,7 +27,7 @@ Public Class FListaAltaProd
         cmbMotivo.Items.Add("Todos")
         Dim Filas As Integer = TablaMotivo.Rows.Count
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
+            For i  As Integer = 0 To (Filas - 1)
                 cmbMotivo.Items.Add(TablaMotivo.Rows(i).Item(1))
             Next
         End If
@@ -111,7 +111,7 @@ Public Class FListaAltaProd
         Dim SumaTotal As Integer = 0
         DataGridView1.Rows.Clear()
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
+            For i  As Integer = 0 To (Filas - 1)
                 Dim idAlta As Integer = CInt(Tabla.Rows(i).Item(0))
                 Dim Fecha As String = CStr(Tabla.Rows(i).Item(1))
                 Dim idProd As String = CStr(Tabla.Rows(i).Item(2))

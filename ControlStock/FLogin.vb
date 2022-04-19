@@ -98,17 +98,17 @@ Public Class FLogin
         arrastre = False
     End Sub
 
-    Private Sub TxtPassword_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs) Handles TxtPassword.KeyDown
+    Private Sub TxtPassword_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs) Handles TxtPassword.KeyDown, TxtUsername.KeyDown
         If e.KeyCode = Keys.Enter Then
             BtnEntrar_Click(Nothing, Nothing)
         End If
     End Sub
 
-    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
+    Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         End
     End Sub
 
-    Private Sub TxtPassword_KeyPress(ByVal sender As Object, ByVal e As KeyPressEventArgs) Handles TxtPassword.KeyPress
+    Private Sub TxtPassword_KeyPress(ByVal sender As Object, ByVal e As KeyPressEventArgs) Handles TxtPassword.KeyPress, TxtUsername.KeyPress
         If e.KeyChar = Convert.ToChar(Keys.Return) Then
             e.Handled = True
         End If

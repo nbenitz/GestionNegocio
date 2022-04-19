@@ -46,7 +46,7 @@ Public Class FListaCompra
     End Sub
 
     Private Sub F_Deactivate(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Deactivate
-        Me.WindowState = FormWindowState.Minimized
+        'Me.WindowState = FormWindowState.Minimized
     End Sub
 
     Private Sub cmbFiltrarPor_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbFiltrarPor.SelectedIndexChanged
@@ -254,5 +254,9 @@ Public Class FListaCompra
 
     Private Sub Reporte1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Reporte1.Load
 
+    End Sub
+
+    Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
+        Me.Close()
     End Sub
 End Class

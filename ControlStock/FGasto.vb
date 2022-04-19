@@ -16,7 +16,7 @@ Public Class FGasto
         cmbGastos.Items.Clear()
         Dim Filas As Integer = TablaGasto.Rows.Count
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
+            For i  As Integer = 0 To (Filas - 1)
                 cmbGastos.Items.Add(TablaGasto.Rows(i).Item(1))
             Next
         End If
@@ -92,7 +92,7 @@ Public Class FGasto
     End Sub
 
     Private Sub F_Deactivate(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Deactivate
-        Me.WindowState = FormWindowState.Minimized
+        'Me.WindowState = FormWindowState.Minimized
     End Sub
 
     Private Sub FGasto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -100,4 +100,7 @@ Public Class FGasto
         CargarMotivos()
     End Sub
 
+    Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
+        Me.Close()
+    End Sub
 End Class

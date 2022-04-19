@@ -19,7 +19,7 @@ Public Class FListaGastos
     End Sub
 
     Private Sub F_Deactivate(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Deactivate
-        Me.WindowState = FormWindowState.Minimized
+        'Me.WindowState = FormWindowState.Minimized
     End Sub
 
     Private Sub CargarConceptos()
@@ -101,5 +101,9 @@ Public Class FListaGastos
                 DataGridView1.Rows.Add(IdGasto, Fecha, Concepto, Importe)
             Next
         End If
+    End Sub
+
+    Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
+        Me.Close()
     End Sub
 End Class

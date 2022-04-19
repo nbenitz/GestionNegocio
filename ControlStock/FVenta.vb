@@ -47,7 +47,7 @@ Public Class FVenta
         Limpiar()
     End Sub
 
-    Private Sub txtBuscar_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtBuscar.KeyDown
+    Private Sub txtBuscar_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs) Handles txtBuscar.KeyDown
         If e.KeyCode = Keys.Enter Then
             cmbDescrip.Items.Clear()
             cmbDescrip.Text = ""
@@ -697,7 +697,8 @@ Public Class FVenta
                 If CliPropiet = "" Then
                     CliPropiet = " "
                 End If
-                If Cliente.InserCliente(CICli, CliNombre, CliTel, CliDir, CliPropiet) = True Then
+                Dim foto As Byte()
+                If Cliente.InserCliente(CICli, CliNombre, "", CliTel, CliDir, CliPropiet, foto, Now.Date) = True Then
                     txtCliente.Text = CliNombre
                     LimpiarNewCli()
                     pnlCliente.Visible = False
@@ -752,7 +753,7 @@ Public Class FVenta
 
     Private Sub GuardarVenta()
         Dim Filas As Integer = DataGridView1.Rows.Count
-        Dim NroFac As UInteger = Venta.CargarNroFac()
+        Dim NroFac As Integer = Venta.CargarNroFac()
         Dim idProd As String
         Dim Cant As Double
         Dim Unidades As Double
@@ -1249,7 +1250,7 @@ Public Class FVenta
     End Sub
 
     Private Sub F_Deactivate(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Deactivate
-        Me.WindowState = FormWindowState.Minimized
+        'Me.WindowState = FormWindowState.Minimized
     End Sub
 
     Private Sub FVenta_Activated(sender As Object, e As EventArgs) Handles Me.Activated

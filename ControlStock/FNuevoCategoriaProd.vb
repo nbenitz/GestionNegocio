@@ -8,7 +8,7 @@
     End Sub
 
     Private Sub BtnGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnGuardar.Click
-        Dim idCateg As UInt16 = Producto.CargarNroCateg()
+        Dim idCateg As UInt32 = Producto.CargarNroCateg()
         Dim Descrip As String = txtDescrip.Text
         If Descrip <> "" Then
             If EditMode = False Then
@@ -37,5 +37,9 @@
         idCategEdit = idGastoValue
         Me.Text = "Editar Categoría"
         txtDescrip.Text = GastoValue
+    End Sub
+
+    Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
+        Me.Close()
     End Sub
 End Class

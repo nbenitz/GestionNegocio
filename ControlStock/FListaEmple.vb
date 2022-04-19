@@ -17,7 +17,7 @@ Public Class FListaEmple
     End Sub
 
     Private Sub F_Deactivate(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Deactivate
-        Me.WindowState = FormWindowState.Minimized
+        'Me.WindowState = FormWindowState.Minimized
     End Sub
 
     Private Sub MostrarCaja(ByVal Titulo As String)
@@ -85,7 +85,7 @@ Public Class FListaEmple
     End Sub
 
     Private Sub btnNuevo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevo.Click
-        Dim frm As New FNuevoEmple
+        Dim frm As New FEmpleado
         frm.MaximizeBox = False
         frm.MinimizeBox = False
         frm.ShowDialog()
@@ -116,14 +116,21 @@ Public Class FListaEmple
         Try
             Dim row As Integer = DataGridView1.CurrentRow.Index
             Dim CI As Integer = CInt(TablaEmple.Rows(row).Item(0))
-            Dim Tabla As DataTable = Empleado.Buscar("WHERE ci = " + CStr(CI))
+            Dim Tabla As DataTable = Empleado.BuscarView("WHERE cedula = " + CStr(CI))
             Dim Nombre As String = CStr(Tabla.Rows(0).Item(1))
             Dim Apellido As String = CStr(Tabla.Rows(0).Item(2))
             Dim Telefono As String = CStr(Tabla.Rows(0).Item(3))
             Dim Direccion As String = CStr(Tabla.Rows(0).Item(4))
             Dim Comision As Integer = CInt(Tabla.Rows(0).Item(5))
-            Dim frm As New FNuevoEmple
-            frm.Editar(CI, Nombre, Apellido, Telefono, Direccion, Comision)
+            Dim AccesoCod As String
+            Try
+                AccesoCod = CStr(Tabla.Rows(0).Item(7))
+            Catch
+                AccesoCod = ""
+            End Try
+
+            Dim frm As New FEmpleado
+            frm.Editar(CI, Nombre, Apellido, Telefono, Direccion, Comision, AccesoCod)
             frm.MaximizeBox = False
             frm.MinimizeBox = False
             frm.ShowDialog()
@@ -177,4 +184,7 @@ Public Class FListaEmple
         End Try
     End Sub
 
+    Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
+        Me.Close()
+    End Sub
 End Class

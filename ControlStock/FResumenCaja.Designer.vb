@@ -23,6 +23,7 @@ Partial Class FResumenCaja
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FResumenCaja))
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.ToolTip2 = New System.Windows.Forms.ToolTip(Me.components)
         Me.txtNroHab = New System.Windows.Forms.TextBox()
@@ -45,7 +46,12 @@ Partial Class FResumenCaja
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
+        Me.pnlTopBar = New System.Windows.Forms.Panel()
+        Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.BtnCerrarForm = New System.Windows.Forms.PictureBox()
         Me.GroupBox1.SuspendLayout()
+        Me.pnlTopBar.SuspendLayout()
+        CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ToolTip1
@@ -336,13 +342,47 @@ Partial Class FResumenCaja
         '
         Me.ReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ReportViewer1.LocalReport.ReportEmbeddedResource = "ControlStock.RResumenCaja.rdlc"
-        Me.ReportViewer1.Location = New System.Drawing.Point(0, 0)
+        Me.ReportViewer1.Location = New System.Drawing.Point(0, 35)
         Me.ReportViewer1.Name = "ReportViewer1"
         Me.ReportViewer1.ServerReport.BearerToken = Nothing
         Me.ReportViewer1.ShowFindControls = False
         Me.ReportViewer1.ShowStopButton = False
-        Me.ReportViewer1.Size = New System.Drawing.Size(758, 483)
+        Me.ReportViewer1.Size = New System.Drawing.Size(758, 448)
         Me.ReportViewer1.TabIndex = 82
+        '
+        'pnlTopBar
+        '
+        Me.pnlTopBar.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.pnlTopBar.Controls.Add(Me.lblTitulo)
+        Me.pnlTopBar.Controls.Add(Me.BtnCerrarForm)
+        Me.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top
+        Me.pnlTopBar.Location = New System.Drawing.Point(0, 0)
+        Me.pnlTopBar.Name = "pnlTopBar"
+        Me.pnlTopBar.Size = New System.Drawing.Size(758, 35)
+        Me.pnlTopBar.TabIndex = 89
+        '
+        'lblTitulo
+        '
+        Me.lblTitulo.AutoSize = True
+        Me.lblTitulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitulo.ForeColor = System.Drawing.Color.White
+        Me.lblTitulo.Location = New System.Drawing.Point(12, 9)
+        Me.lblTitulo.Name = "lblTitulo"
+        Me.lblTitulo.Size = New System.Drawing.Size(131, 16)
+        Me.lblTitulo.TabIndex = 117
+        Me.lblTitulo.Text = "Resumen de Caja"
+        '
+        'BtnCerrarForm
+        '
+        Me.BtnCerrarForm.Dock = System.Windows.Forms.DockStyle.Right
+        Me.BtnCerrarForm.Image = CType(resources.GetObject("BtnCerrarForm.Image"), System.Drawing.Image)
+        Me.BtnCerrarForm.Location = New System.Drawing.Point(723, 0)
+        Me.BtnCerrarForm.Margin = New System.Windows.Forms.Padding(2)
+        Me.BtnCerrarForm.Name = "BtnCerrarForm"
+        Me.BtnCerrarForm.Size = New System.Drawing.Size(35, 35)
+        Me.BtnCerrarForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.BtnCerrarForm.TabIndex = 115
+        Me.BtnCerrarForm.TabStop = False
         '
         'FResumenCaja
         '
@@ -352,14 +392,18 @@ Partial Class FResumenCaja
         Me.ClientSize = New System.Drawing.Size(758, 483)
         Me.Controls.Add(Me.ReportViewer1)
         Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.pnlTopBar)
         Me.ForeColor = System.Drawing.Color.White
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.MinimizeBox = False
         Me.Name = "FResumenCaja"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Resumen de Caja"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.pnlTopBar.ResumeLayout(False)
+        Me.pnlTopBar.PerformLayout()
+        CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -385,4 +429,7 @@ Partial Class FResumenCaja
     Friend WithEvents Button2 As Button
     Friend WithEvents Button1 As Button
     Friend WithEvents ReportViewer1 As ReportViewer
+    Friend WithEvents pnlTopBar As Panel
+    Friend WithEvents lblTitulo As Label
+    Friend WithEvents BtnCerrarForm As PictureBox
 End Class

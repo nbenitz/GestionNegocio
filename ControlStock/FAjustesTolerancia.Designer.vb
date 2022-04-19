@@ -23,9 +23,8 @@ Partial Class FAjustesTolerancia
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FAjustesTolerancia))
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.btnCancel = New System.Windows.Forms.PictureBox()
-        Me.btnGuardar = New System.Windows.Forms.PictureBox()
         Me.ToolTip2 = New System.Windows.Forms.ToolTip(Me.components)
         Me.TxtTol1 = New System.Windows.Forms.TextBox()
         Me.TxtTol3 = New System.Windows.Forms.TextBox()
@@ -34,9 +33,16 @@ Partial Class FAjustesTolerancia
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.LblPrecio2 = New System.Windows.Forms.Label()
         Me.LblPrecio1 = New System.Windows.Forms.Label()
+        Me.btnCancel = New System.Windows.Forms.PictureBox()
+        Me.btnGuardar = New System.Windows.Forms.PictureBox()
+        Me.pnlTopBar = New System.Windows.Forms.Panel()
+        Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.BtnCerrarForm = New System.Windows.Forms.PictureBox()
+        Me.GroupBox1.SuspendLayout()
         CType(Me.btnCancel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnGuardar, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
+        Me.pnlTopBar.SuspendLayout()
+        CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ToolTip1
@@ -46,36 +52,12 @@ Partial Class FAjustesTolerancia
         Me.ToolTip1.InitialDelay = 10
         Me.ToolTip1.ReshowDelay = 2
         '
-        'btnCancel
-        '
-        Me.btnCancel.BackColor = System.Drawing.Color.Transparent
-        Me.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnCancel.Image = Global.ControlStock.My.Resources.Resources.file_exclude
-        Me.btnCancel.Location = New System.Drawing.Point(361, 206)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(41, 38)
-        Me.btnCancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.btnCancel.TabIndex = 83
-        Me.btnCancel.TabStop = False
-        Me.ToolTip1.SetToolTip(Me.btnCancel, "Cancelar")
-        '
-        'btnGuardar
-        '
-        Me.btnGuardar.BackColor = System.Drawing.Color.Transparent
-        Me.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnGuardar.Image = Global.ControlStock.My.Resources.Resources.file_apply
-        Me.btnGuardar.Location = New System.Drawing.Point(317, 206)
-        Me.btnGuardar.Name = "btnGuardar"
-        Me.btnGuardar.Size = New System.Drawing.Size(41, 38)
-        Me.btnGuardar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.btnGuardar.TabIndex = 84
-        Me.btnGuardar.TabStop = False
-        Me.ToolTip1.SetToolTip(Me.btnGuardar, "Guardar")
-        '
         'TxtTol1
         '
+        Me.TxtTol1.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.TxtTol1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TxtTol1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtTol1.ForeColor = System.Drawing.Color.White
         Me.TxtTol1.Location = New System.Drawing.Point(309, 36)
         Me.TxtTol1.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtTol1.Name = "TxtTol1"
@@ -84,7 +66,10 @@ Partial Class FAjustesTolerancia
         '
         'TxtTol3
         '
+        Me.TxtTol3.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.TxtTol3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TxtTol3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtTol3.ForeColor = System.Drawing.Color.White
         Me.TxtTol3.Location = New System.Drawing.Point(309, 136)
         Me.TxtTol3.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtTol3.Name = "TxtTol3"
@@ -104,8 +89,11 @@ Partial Class FAjustesTolerancia
         '
         'TxtTol2
         '
+        Me.TxtTol2.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.TxtTol2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TxtTol2.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.TxtTol2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtTol2.ForeColor = System.Drawing.Color.White
         Me.TxtTol2.Location = New System.Drawing.Point(309, 86)
         Me.TxtTol2.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtTol2.Name = "TxtTol2"
@@ -123,7 +111,7 @@ Partial Class FAjustesTolerancia
         Me.GroupBox1.Cursor = System.Windows.Forms.Cursors.Default
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.ForeColor = System.Drawing.Color.White
-        Me.GroupBox1.Location = New System.Drawing.Point(17, 11)
+        Me.GroupBox1.Location = New System.Drawing.Point(17, 42)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(403, 187)
         Me.GroupBox1.TabIndex = 81
@@ -152,24 +140,89 @@ Partial Class FAjustesTolerancia
         Me.LblPrecio1.TabIndex = 6
         Me.LblPrecio1.Text = "Margen de tolerancia por arriba de la hora de entrada del reporte"
         '
+        'btnCancel
+        '
+        Me.btnCancel.BackColor = System.Drawing.Color.Transparent
+        Me.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnCancel.Image = Global.ControlStock.My.Resources.Resources.file_exclude
+        Me.btnCancel.Location = New System.Drawing.Point(361, 237)
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(41, 38)
+        Me.btnCancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.btnCancel.TabIndex = 83
+        Me.btnCancel.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.btnCancel, "Cancelar")
+        '
+        'btnGuardar
+        '
+        Me.btnGuardar.BackColor = System.Drawing.Color.Transparent
+        Me.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnGuardar.Image = Global.ControlStock.My.Resources.Resources.file_apply
+        Me.btnGuardar.Location = New System.Drawing.Point(317, 237)
+        Me.btnGuardar.Name = "btnGuardar"
+        Me.btnGuardar.Size = New System.Drawing.Size(41, 38)
+        Me.btnGuardar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.btnGuardar.TabIndex = 84
+        Me.btnGuardar.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.btnGuardar, "Guardar")
+        '
+        'pnlTopBar
+        '
+        Me.pnlTopBar.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.pnlTopBar.Controls.Add(Me.lblTitulo)
+        Me.pnlTopBar.Controls.Add(Me.BtnCerrarForm)
+        Me.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top
+        Me.pnlTopBar.Location = New System.Drawing.Point(0, 0)
+        Me.pnlTopBar.Name = "pnlTopBar"
+        Me.pnlTopBar.Size = New System.Drawing.Size(438, 35)
+        Me.pnlTopBar.TabIndex = 85
+        '
+        'lblTitulo
+        '
+        Me.lblTitulo.AutoSize = True
+        Me.lblTitulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitulo.ForeColor = System.Drawing.Color.White
+        Me.lblTitulo.Location = New System.Drawing.Point(12, 9)
+        Me.lblTitulo.Name = "lblTitulo"
+        Me.lblTitulo.Size = New System.Drawing.Size(59, 16)
+        Me.lblTitulo.TabIndex = 116
+        Me.lblTitulo.Text = "Ajustes"
+        '
+        'BtnCerrarForm
+        '
+        Me.BtnCerrarForm.Dock = System.Windows.Forms.DockStyle.Right
+        Me.BtnCerrarForm.Image = CType(resources.GetObject("BtnCerrarForm.Image"), System.Drawing.Image)
+        Me.BtnCerrarForm.Location = New System.Drawing.Point(403, 0)
+        Me.BtnCerrarForm.Margin = New System.Windows.Forms.Padding(2)
+        Me.BtnCerrarForm.Name = "BtnCerrarForm"
+        Me.BtnCerrarForm.Size = New System.Drawing.Size(35, 35)
+        Me.BtnCerrarForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.BtnCerrarForm.TabIndex = 115
+        Me.BtnCerrarForm.TabStop = False
+        '
         'FAjustesTolerancia
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(125, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(438, 256)
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.ClientSize = New System.Drawing.Size(438, 286)
+        Me.Controls.Add(Me.pnlTopBar)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnGuardar)
         Me.Controls.Add(Me.GroupBox1)
         Me.ForeColor = System.Drawing.Color.White
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "FAjustesTolerancia"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Ajustes"
-        CType(Me.btnCancel, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.btnGuardar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.btnCancel, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btnGuardar, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlTopBar.ResumeLayout(False)
+        Me.pnlTopBar.PerformLayout()
+        CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -184,4 +237,7 @@ Partial Class FAjustesTolerancia
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents LblPrecio2 As System.Windows.Forms.Label
     Friend WithEvents LblPrecio1 As System.Windows.Forms.Label
+    Friend WithEvents pnlTopBar As Panel
+    Friend WithEvents lblTitulo As Label
+    Friend WithEvents BtnCerrarForm As PictureBox
 End Class

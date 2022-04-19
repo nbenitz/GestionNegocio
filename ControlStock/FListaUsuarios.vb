@@ -16,7 +16,7 @@ Public Class FListaUsuarios
     End Sub
 
     Private Sub F_Deactivate(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Deactivate
-        Me.WindowState = FormWindowState.Minimized
+        'Me.WindowState = FormWindowState.Minimized
     End Sub
 
     Private Sub MostrarCaja(ByVal Titulo As String)
@@ -29,7 +29,7 @@ Public Class FListaUsuarios
         Dim Filas As Integer = Tabla.Rows.Count
         DataGridView1.Rows.Clear()
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
+            For i  As Integer = 0 To (Filas - 1)
                 Dim IdUsu As Integer = CInt(Tabla.Rows(i).Item(0))
                 Dim Usuario As String = CStr(Tabla.Rows(i).Item(1))
                 Dim Pass As String = "******"
@@ -132,4 +132,7 @@ Public Class FListaUsuarios
         End Try
     End Sub
 
+    Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
+        Close()
+    End Sub
 End Class

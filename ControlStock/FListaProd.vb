@@ -323,7 +323,7 @@ Public Class FListaProd
     End Sub
 
     Private Sub F_Deactivate(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Deactivate
-        WindowState = FormWindowState.Minimized
+        'WindowState = FormWindowState.Minimized
     End Sub
 
     Private Sub Form1_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
@@ -415,4 +415,7 @@ Public Class FListaProd
         End If
     End Sub
 
+    Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
+        Close()
+    End Sub
 End Class

@@ -11,7 +11,7 @@ Public Class FReporteHabitacion
     End Sub
 
     Private Sub F_Deactivate(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Deactivate
-        Me.WindowState = FormWindowState.Minimized
+        'Me.WindowState = FormWindowState.Minimized
     End Sub
 
     Private Sub Form1_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
@@ -25,7 +25,7 @@ Public Class FReporteHabitacion
         Dim Filas As Integer = Tabla.Rows.Count
         DataGrid.Rows.Clear()
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
+            For i As Integer = 0 To (Filas - 1)
                 Dim Id As UInt32 = CUInt(Tabla.Rows(i).Item(0))
                 Dim NroHab As UInt16 = CUShort((Tabla.Rows(i).Item(1)))
                 Dim HraEntrada As String = Format(Tabla.Rows(i).Item(2), "HH:mm")
@@ -56,7 +56,7 @@ Public Class FReporteHabitacion
 
         Dim Filas As Integer = TablaSensor.Rows.Count
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
+            For i As Integer = 0 To (Filas - 1)
                 Dim Id As UInt32 = CUInt((TablaSensor.Rows(i).Item(0)))
                 Dim NroHab As UInt16 = CUShort((TablaSensor.Rows(i).Item(1)))
                 Dim HraESensor As Date = CDate(TablaSensor.Rows(i).Item(2))
@@ -96,7 +96,7 @@ Public Class FReporteHabitacion
 
         Dim Filas As Integer = TablaManual.Rows.Count
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
+            For i As Integer = 0 To (Filas - 1)
                 Dim Id As UInt32 = CUInt((TablaManual.Rows(i).Item(0)))
                 Dim NroHab As UInt16 = CUShort((TablaManual.Rows(i).Item(1)))
                 Dim HraEManual As Date = CDate(TablaManual.Rows(i).Item(2))
@@ -131,4 +131,7 @@ Public Class FReporteHabitacion
         End If
     End Sub
 
+    Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
+        Me.Close()
+    End Sub
 End Class

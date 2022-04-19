@@ -84,6 +84,13 @@ Public Class CEmpleado
         ObjCon.Desconectar()
     End Function
 
+    Public Function BuscarView(ByVal Condicion As String) As DataTable
+        ObjCon.Conectar()
+        ObjCon.CrearComando("SELECT * FROM view_empleado " + Condicion)
+        BuscarView = ObjCon.EjecutarDataTable()
+        ObjCon.Desconectar()
+    End Function
+
     Public Function BuscViewVenta(ByVal Fecha1 As String, ByVal Fecha2 As String, ByVal CI As String) As DataTable
         ObjCon.Conectar()
         ObjCon.CrearComando("select v.CI, v.Vendedor, sum(v.total) as Total, (sum(v.Total) * e.Comision div 100) as Comision " + _

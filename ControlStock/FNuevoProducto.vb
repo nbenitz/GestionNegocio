@@ -32,6 +32,7 @@ Public Class FNuevoProducto
                                 End If
                                 If cmbPresent.SelectedIndex = 0 Or cmbPresent.SelectedIndex = 5 Then 'Por Unidades o Kg
                                     If txtPrec1.Text <> "" Then
+                                        txtPrec2.Text = If(txtPrec2.Text = "", txtPrec1.Text, txtPrec2.Text)
                                         If txtPrec2.Text <> "" Then
                                             GuardarProd()
                                         Else
@@ -191,7 +192,7 @@ Public Class FNuevoProducto
 
     Private Sub CheckBox1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChkGenerar.CheckedChanged
         If ChkGenerar.Checked Then
-            'txtCod.Text = CStr(Producto.CargarNroProd())
+            txtCod.Text = Producto.GenerarCódigo()
             txtCod.ReadOnly = True
         Else
             txtCod.Text = ""
@@ -276,7 +277,7 @@ Public Class FNuevoProducto
                 lblPVPack.Visible = False
                 lblPVUnid.Visible = False
                 pnlPiso.Visible = False
-                lblPrec1.Text = "Precio Minorista:"
+                lblPrec1.Text = "Precio de Venta:"
                 lblPrec2.Text = "Precio Mayorista:"
                 'lblPaquete.Visible = False
                 'txtStockPak.Visible = False
@@ -545,7 +546,7 @@ Public Class FNuevoProducto
     End Sub
 
     Private Sub F_Deactivate(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Deactivate
-        WindowState = FormWindowState.Minimized
+        'WindowState = FormWindowState.Minimized
     End Sub
 
     Private Sub F_Activated(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Activated
@@ -678,4 +679,7 @@ Public Class FNuevoProducto
         ModoVerDetValue = True
     End Sub
 
+    Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
+        Me.Close()
+    End Sub
 End Class

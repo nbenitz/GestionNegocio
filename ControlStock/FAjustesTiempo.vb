@@ -87,4 +87,11 @@ Public Class FAjustesTiempo
         ToolTip2.Show(Mensaje, Caja, 0, -40, 3000)
     End Sub
 
+    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs) Handles GroupBox1.Enter
+
+    End Sub
+
+    Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
+        Me.Close()
+    End Sub
 End Class

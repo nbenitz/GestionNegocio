@@ -23,6 +23,7 @@ Partial Class FNuevoEmple
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FNuevoEmple))
         Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.txtApellido = New System.Windows.Forms.TextBox()
         Me.txtTelefono = New System.Windows.Forms.TextBox()
@@ -37,20 +38,28 @@ Partial Class FNuevoEmple
         Me.Label6 = New System.Windows.Forms.Label()
         Me.txtComision = New System.Windows.Forms.TextBox()
         Me.txtCI = New System.Windows.Forms.TextBox()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.btnGuardar = New System.Windows.Forms.PictureBox()
         Me.btnCancel = New System.Windows.Forms.PictureBox()
         Me.btnNuevo = New System.Windows.Forms.PictureBox()
-        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.ToolTip2 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.pnlTopBar = New System.Windows.Forms.Panel()
+        Me.BtnCerrarForm = New System.Windows.Forms.PictureBox()
+        Me.lblTitulo = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.btnGuardar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnCancel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnNuevo, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlTopBar.SuspendLayout()
+        CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'txtNombre
         '
+        Me.txtNombre.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNombre.ForeColor = System.Drawing.Color.White
         Me.txtNombre.Location = New System.Drawing.Point(114, 77)
         Me.txtNombre.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNombre.MaxLength = 50
@@ -60,8 +69,11 @@ Partial Class FNuevoEmple
         '
         'txtApellido
         '
+        Me.txtApellido.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.txtApellido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtApellido.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtApellido.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtApellido.ForeColor = System.Drawing.Color.White
         Me.txtApellido.Location = New System.Drawing.Point(114, 112)
         Me.txtApellido.Margin = New System.Windows.Forms.Padding(4)
         Me.txtApellido.MaxLength = 50
@@ -71,8 +83,11 @@ Partial Class FNuevoEmple
         '
         'txtTelefono
         '
+        Me.txtTelefono.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtTelefono.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtTelefono.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTelefono.ForeColor = System.Drawing.Color.White
         Me.txtTelefono.Location = New System.Drawing.Point(114, 147)
         Me.txtTelefono.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTelefono.MaxLength = 15
@@ -82,7 +97,10 @@ Partial Class FNuevoEmple
         '
         'txtDireccion
         '
+        Me.txtDireccion.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtDireccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDireccion.ForeColor = System.Drawing.Color.White
         Me.txtDireccion.Location = New System.Drawing.Point(114, 182)
         Me.txtDireccion.Margin = New System.Windows.Forms.Padding(4)
         Me.txtDireccion.MaxLength = 100
@@ -167,7 +185,7 @@ Partial Class FNuevoEmple
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Cursor = System.Windows.Forms.Cursors.Default
         Me.GroupBox1.ForeColor = System.Drawing.Color.White
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 45)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(467, 270)
         Me.GroupBox1.TabIndex = 10
@@ -198,16 +216,23 @@ Partial Class FNuevoEmple
         '
         'txtComision
         '
+        Me.txtComision.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.txtComision.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtComision.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtComision.ForeColor = System.Drawing.Color.White
         Me.txtComision.Location = New System.Drawing.Point(114, 216)
         Me.txtComision.Name = "txtComision"
-        Me.txtComision.Size = New System.Drawing.Size(317, 24)
+        Me.txtComision.Size = New System.Drawing.Size(317, 22)
         Me.txtComision.TabIndex = 10
         Me.ToolTip1.SetToolTip(Me.txtComision, "Expresado en porcentaje")
         Me.txtComision.Visible = False
         '
         'txtCI
         '
+        Me.txtCI.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.txtCI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtCI.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCI.ForeColor = System.Drawing.Color.White
         Me.txtCI.Location = New System.Drawing.Point(114, 42)
         Me.txtCI.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCI.MaxLength = 10
@@ -215,13 +240,20 @@ Partial Class FNuevoEmple
         Me.txtCI.Size = New System.Drawing.Size(317, 22)
         Me.txtCI.TabIndex = 0
         '
+        'ToolTip1
+        '
+        Me.ToolTip1.AutomaticDelay = 10
+        Me.ToolTip1.AutoPopDelay = 1000
+        Me.ToolTip1.InitialDelay = 10
+        Me.ToolTip1.ReshowDelay = 2
+        '
         'btnGuardar
         '
         Me.btnGuardar.BackColor = System.Drawing.Color.Transparent
         Me.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnGuardar.Image = Global.ControlStock.My.Resources.Resources.file_apply
-        Me.btnGuardar.Location = New System.Drawing.Point(369, 288)
+        Me.btnGuardar.Location = New System.Drawing.Point(369, 321)
         Me.btnGuardar.Name = "btnGuardar"
         Me.btnGuardar.Size = New System.Drawing.Size(41, 38)
         Me.btnGuardar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -234,7 +266,7 @@ Partial Class FNuevoEmple
         Me.btnCancel.BackColor = System.Drawing.Color.Transparent
         Me.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnCancel.Image = Global.ControlStock.My.Resources.Resources.file_exclude
-        Me.btnCancel.Location = New System.Drawing.Point(409, 288)
+        Me.btnCancel.Location = New System.Drawing.Point(409, 321)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(41, 38)
         Me.btnCancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -247,7 +279,7 @@ Partial Class FNuevoEmple
         Me.btnNuevo.BackColor = System.Drawing.Color.Transparent
         Me.btnNuevo.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnNuevo.Image = Global.ControlStock.My.Resources.Resources.file_new
-        Me.btnNuevo.Location = New System.Drawing.Point(329, 288)
+        Me.btnNuevo.Location = New System.Drawing.Point(329, 321)
         Me.btnNuevo.Name = "btnNuevo"
         Me.btnNuevo.Size = New System.Drawing.Size(41, 38)
         Me.btnNuevo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -255,25 +287,53 @@ Partial Class FNuevoEmple
         Me.btnNuevo.TabStop = False
         Me.ToolTip1.SetToolTip(Me.btnNuevo, "Nuevo")
         '
-        'ToolTip1
+        'pnlTopBar
         '
-        Me.ToolTip1.AutomaticDelay = 10
-        Me.ToolTip1.AutoPopDelay = 1000
-        Me.ToolTip1.InitialDelay = 10
-        Me.ToolTip1.ReshowDelay = 2
+        Me.pnlTopBar.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.pnlTopBar.Controls.Add(Me.lblTitulo)
+        Me.pnlTopBar.Controls.Add(Me.BtnCerrarForm)
+        Me.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top
+        Me.pnlTopBar.Location = New System.Drawing.Point(0, 0)
+        Me.pnlTopBar.Name = "pnlTopBar"
+        Me.pnlTopBar.Size = New System.Drawing.Size(498, 35)
+        Me.pnlTopBar.TabIndex = 81
+        '
+        'BtnCerrarForm
+        '
+        Me.BtnCerrarForm.Dock = System.Windows.Forms.DockStyle.Right
+        Me.BtnCerrarForm.Image = CType(resources.GetObject("BtnCerrarForm.Image"), System.Drawing.Image)
+        Me.BtnCerrarForm.Location = New System.Drawing.Point(463, 0)
+        Me.BtnCerrarForm.Margin = New System.Windows.Forms.Padding(2)
+        Me.BtnCerrarForm.Name = "BtnCerrarForm"
+        Me.BtnCerrarForm.Size = New System.Drawing.Size(35, 35)
+        Me.BtnCerrarForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.BtnCerrarForm.TabIndex = 115
+        Me.BtnCerrarForm.TabStop = False
+        '
+        'lblTitulo
+        '
+        Me.lblTitulo.AutoSize = True
+        Me.lblTitulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitulo.ForeColor = System.Drawing.Color.White
+        Me.lblTitulo.Location = New System.Drawing.Point(12, 9)
+        Me.lblTitulo.Name = "lblTitulo"
+        Me.lblTitulo.Size = New System.Drawing.Size(128, 16)
+        Me.lblTitulo.TabIndex = 118
+        Me.lblTitulo.Text = "Nuevo Empleado"
         '
         'FNuevoEmple
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(125, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(498, 331)
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.ClientSize = New System.Drawing.Size(498, 368)
+        Me.Controls.Add(Me.pnlTopBar)
         Me.Controls.Add(Me.btnGuardar)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnNuevo)
         Me.Controls.Add(Me.GroupBox1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "FNuevoEmple"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -283,6 +343,9 @@ Partial Class FNuevoEmple
         CType(Me.btnGuardar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnCancel, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnNuevo, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlTopBar.ResumeLayout(False)
+        Me.pnlTopBar.PerformLayout()
+        CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -305,4 +368,7 @@ Partial Class FNuevoEmple
     Friend WithEvents ToolTip2 As System.Windows.Forms.ToolTip
     Friend WithEvents txtCI As System.Windows.Forms.TextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents pnlTopBar As Panel
+    Friend WithEvents BtnCerrarForm As PictureBox
+    Friend WithEvents lblTitulo As Label
 End Class

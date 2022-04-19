@@ -17,16 +17,16 @@ Public Class FPrincipalMotel
     Dim ProdNuevoValue As Boolean
     Dim ProvNuevoValue As Boolean
 
-    WithEvents frmVenta1 As New FVenta
-    WithEvents frmVenta2 As New FVenta
-    WithEvents frmVenta3 As New FVenta
-    WithEvents frmVenta4 As New FVenta
-    WithEvents frmVenta5 As New FVenta
-    WithEvents frmVenta6 As New FVenta
-    WithEvents frmVenta7 As New FVenta
-    WithEvents frmVenta8 As New FVenta
-    WithEvents frmVenta9 As New FVenta
-    WithEvents frmVenta10 As New FVenta
+    WithEvents frmVenta1 As New FVentaGym
+    WithEvents frmVenta2 As New FVentaGym
+    WithEvents frmVenta3 As New FVentaGym
+    WithEvents frmVenta4 As New FVentaGym
+    WithEvents frmVenta5 As New FVentaGym
+    WithEvents frmVenta6 As New FVentaGym
+    WithEvents frmVenta7 As New FVentaGym
+    WithEvents frmVenta8 As New FVentaGym
+    WithEvents frmVenta9 As New FVentaGym
+    WithEvents frmVenta10 As New FVentaGym
 
     Sub New(ByVal CIValue As String)
         ' Llamada necesaria para el diseñador.
@@ -184,8 +184,8 @@ Public Class FPrincipalMotel
     End Sub
 
     Private Sub ReportesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ConsultarVenta.Click
-        Dim frm As New FListaVenta(Reporte.Tipo.Venta)
-        AbrirVentana(frm)
+        'Dim frm As New FListaVenta(Reporte.Tipo.Venta)
+        'AbrirVentana(frm)
     End Sub
 
     Private Sub MnuAbrirCaja_Click(sender As Object, e As EventArgs) Handles mnuAbrirCaja.Click
@@ -250,8 +250,8 @@ Public Class FPrincipalMotel
     End Sub
 
     Private Sub ToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NotaCredito.Click
-        Dim frm As New FListaVenta(Reporte.Tipo.NotaCredVenta)
-        AbrirVentana(frm)
+        'Dim frm As New FListaVenta(Reporte.Tipo.NotaCredVenta)
+        'AbrirVentana(frm)
     End Sub
 
     Private Sub DevolverStock_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DevolverStock.Click
@@ -374,7 +374,7 @@ Public Class FPrincipalMotel
 
     Private Sub Habitacion1_Factura(sender As Object, e As HabEvents) Handles Habitacion1.FacturaClick, Habitacion2.FacturaClick, Habitacion3.FacturaClick, Habitacion4.FacturaClick, Habitacion5.FacturaClick, Habitacion6.FacturaClick, Habitacion7.FacturaClick, Habitacion8.FacturaClick, Habitacion9.FacturaClick, Habitacion10.FacturaClick
         Dim HabNro As Integer = e.Habitacion
-        Dim Frm As FVenta = GetForm(HabNro)
+        Dim Frm As FVentaGym = GetForm(HabNro)
         OcultarFrmVenta()
         AbrirVentana(Frm)
 
@@ -478,7 +478,7 @@ Public Class FPrincipalMotel
 
     Private Sub Habitacion1_Tick(sender As Object, e As HabEvents) Handles Habitacion1.Tick, Habitacion2.Tick, Habitacion3.Tick, Habitacion4.Tick, Habitacion5.Tick, Habitacion6.Tick, Habitacion7.Tick, Habitacion8.Tick, Habitacion9.Tick, Habitacion10.Tick
         Dim HabNro As Integer = e.Habitacion
-        Dim Frm As FVenta = GetForm(HabNro)
+        Dim Frm As FVentaGym = GetForm(HabNro)
         If PorNocheAdded(Frm) = False Then
             Dim CtrHab As Habitacion = CType(sender, Habitacion)
             Dim ServHab As UInt16
@@ -516,12 +516,12 @@ Public Class FPrincipalMotel
     Private Sub Habitacion1_PorNocheClick(sender As Object, e As HabEvents) Handles Habitacion1.PorNocheClick, Habitacion2.PorNocheClick, Habitacion3.PorNocheClick, Habitacion4.PorNocheClick, Habitacion5.PorNocheClick, Habitacion6.PorNocheClick, Habitacion7.PorNocheClick, Habitacion8.PorNocheClick, Habitacion9.PorNocheClick, Habitacion10.PorNocheClick
         Dim CtrHab As Habitacion = CType(sender, Habitacion)
         Dim HabNro As Integer = e.Habitacion
-        Dim Frm As FVenta = GetForm(HabNro)
+        Dim Frm As FVentaGym = GetForm(HabNro)
         Dim ServHab As UInt16 = 3
         Dim TablaServ As DataTable = ObjHabitacion.BuscarServ(ServHab)
         Dim HraEntrada As TimeSpan = CType(TablaServ.Rows(0).Item(3), TimeSpan)
         'Dim HraSalida As String = CStr(TablaServ.Rows(0).Item(4))
-        Dim Precio = GetPrecio(HabNro, ServHab)
+        Dim Precio As Integer = GetPrecio(HabNro, ServHab)
         Dim Tiempo As New TimeSpan(Now.Hour, Now.Minute, Now.Second)
 
         If Tiempo >= HraEntrada Then
@@ -537,7 +537,7 @@ Public Class FPrincipalMotel
     End Sub
 
     Private Sub AddToFactura(ByVal HabNro As Integer, ByVal Descrip As String, ByVal Tiempo As String,
-                               ByVal Precio As Integer, ByVal Importe As Integer, ByVal Frm As FVenta)
+                               ByVal Precio As Integer, ByVal Importe As Integer, ByVal Frm As FVentaGym)
         OcultarFrmVenta()
         AbrirVentana(Frm)
         Frm.DataGridView1.Rows.Add(Nothing, HabNro, Descrip, Tiempo, Precio, Importe, 0, 1, "Habitación")
@@ -546,7 +546,7 @@ Public Class FPrincipalMotel
 
     Private Function GetDescrip(ByVal HabNro As Integer, ByVal ServHab As UInt16) As String
         If ModoHab = 1 Then
-            Dim TablaHab = ObjHabitacion.BuscarHab(HabNro, ServHab)
+            Dim TablaHab As DataTable = ObjHabitacion.BuscarHab(HabNro, ServHab)
             GetDescrip = CStr(TablaHab.Rows(0).Item(2))
         Else
             Dim TipoTarifa As String = ObjHabitacion.GetDescrip(ServHab)
@@ -556,15 +556,15 @@ Public Class FPrincipalMotel
 
     Private Function GetPrecio(ByVal HabNro As Integer, ByVal ServHab As Integer) As Integer
         If ModoHab = 1 Then
-            Dim TablaHab = ObjHabitacion.BuscarHab(HabNro, ServHab)
+            Dim TablaHab As DataTable = ObjHabitacion.BuscarHab(HabNro, ServHab)
             GetPrecio = CInt(TablaHab.Rows(0).Item(3))
         Else
-            Dim TablaHab = ObjHabitacion.BuscarHab(HabNro)
+            Dim TablaHab As DataTable = ObjHabitacion.BuscarHab(HabNro)
             GetPrecio = CInt(TablaHab.Rows(0).Item(ServHab))
         End If
     End Function
 
-    Private Function GetForm(ByVal HabNro As Integer) As FVenta
+    Private Function GetForm(ByVal HabNro As Integer) As FVentaGym
         GetForm = frmVenta1
         Select Case HabNro
             Case Is = 1
@@ -590,13 +590,13 @@ Public Class FPrincipalMotel
         End Select
     End Function
 
-    Private Function Indice(ByVal ServHab As Integer, ByVal Frm As FVenta) As Integer
+    Private Function Indice(ByVal ServHab As Integer, ByVal Frm As FVentaGym) As Integer
         Indice = -1                                                  ' Guarda el indice si se encuentra el producto, si no se encuentra, el indice es -1
         Dim ServHabAux? As UInt64                                    ' Guarda el codigo del producto o sevicio de habitación encontrado en el datagrid
         Dim ObsAux As String                                         ' Guarda la observación, por si sea una habitación
         Dim Row As Integer = Frm.DataGridView1.Rows.Count
         If Row > 0 Then
-            For i = 0 To Row - 1            'Buscar en el datagrid si ya se ingreso la habitación
+            For i As Integer = 0 To Row - 1            'Buscar en el datagrid si ya se ingreso la habitación
                 ServHabAux = Convert.ToUInt64(Frm.DataGridView1.Item(1, i).Value.ToString)     ' Guardar cada codigo
                 ObsAux = Convert.ToString(Frm.DataGridView1.Item(8, i).Value.ToString)       ' Guardar Observacion
 
@@ -612,13 +612,13 @@ Public Class FPrincipalMotel
         End If
     End Function
 
-    Private Function PorNocheAdded(ByVal Frm As FVenta) As Boolean
+    Private Function PorNocheAdded(ByVal Frm As FVentaGym) As Boolean
         PorNocheAdded = False
         Dim ServHabAux? As UInt64                                    ' Guarda el codigo del producto o sevicio de habitación encontrado en el datagrid
         Dim ObsAux As String                                         ' Guarda la observación, por si sea una habitación
         Dim Row As Integer = Frm.DataGridView1.Rows.Count
         If Row > 0 Then
-            For i = 0 To Row - 1            'Buscar en el datagrid si ya se ingreso la habitación
+            For i As Integer = 0 To Row - 1            'Buscar en el datagrid si ya se ingreso la habitación
                 ServHabAux = Convert.ToUInt64(Frm.DataGridView1.Item(1, i).Value.ToString)     ' Guardar cada codigo
                 ObsAux = Convert.ToString(Frm.DataGridView1.Item(8, i).Value.ToString)       ' Guardar Observacion
 
@@ -636,7 +636,7 @@ Public Class FPrincipalMotel
     Private Sub CheckOcupSinSalida()
         Dim TablaOcup(CANT_HABS) As DataTable
         Dim Tiempo(CANT_HABS) As TimeSpan
-        For i = 0 To CANT_HABS - 1
+        For i As Integer = 0 To CANT_HABS - 1
             TablaOcup(i) = ObjHabitacion.ChequearSinSalida(i + 1)
             Try
                 Dim Fecha As Date = CType(TablaOcup(i).Rows(0).Item(1), Date)
@@ -779,7 +779,7 @@ Public Class FPrincipalMotel
     End Sub
 
     Private Sub NuevaVenta_Click(sender As Object, e As EventArgs) Handles NuevaVenta.Click
-        Dim Frm As New FVenta
+        Dim Frm As New FVentaGym
         Frm.CIEmpleado = CI
         Frm.lblHab.Visible = False
         Frm.lblHab2.Visible = False

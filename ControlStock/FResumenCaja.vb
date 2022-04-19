@@ -147,4 +147,8 @@ Public Class FResumenCaja
         End Set
     End Property
 
+    Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
+        Me.Close()
+    End Sub
+
 End Class

@@ -31,6 +31,7 @@ Partial Class FListaCajas
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FListaCajas))
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Empleado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Cajaa = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -45,12 +46,18 @@ Partial Class FListaCajas
         Me.LblAbrirCaja = New System.Windows.Forms.Label()
         Me.LblCerrarCaja = New System.Windows.Forms.Label()
         Me.LblResumenCaja = New System.Windows.Forms.Label()
+        Me.pnlTopBar = New System.Windows.Forms.Panel()
+        Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.BtnCerrarForm = New System.Windows.Forms.PictureBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlTopBar.SuspendLayout()
+        CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DataGridView1
         '
         Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
         Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
@@ -63,7 +70,7 @@ Partial Class FListaCajas
         Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Empleado, Me.Cajaa, Me.FechaIni, Me.HoraIni, Me.MontoIni, Me.FechaFin, Me.HoraFin, Me.MontoFin})
-        Me.DataGridView1.Location = New System.Drawing.Point(15, 61)
+        Me.DataGridView1.Location = New System.Drawing.Point(15, 92)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
@@ -169,10 +176,11 @@ Partial Class FListaCajas
         '
         'LblBuscar
         '
+        Me.LblBuscar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.LblBuscar.AutoSize = True
         Me.LblBuscar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblBuscar.ForeColor = System.Drawing.Color.White
-        Me.LblBuscar.Location = New System.Drawing.Point(12, 10)
+        Me.LblBuscar.Location = New System.Drawing.Point(12, 41)
         Me.LblBuscar.Name = "LblBuscar"
         Me.LblBuscar.Size = New System.Drawing.Size(111, 13)
         Me.LblBuscar.TabIndex = 45
@@ -180,17 +188,19 @@ Partial Class FListaCajas
         '
         'DtpFecha
         '
+        Me.DtpFecha.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.DtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DtpFecha.Location = New System.Drawing.Point(15, 26)
+        Me.DtpFecha.Location = New System.Drawing.Point(15, 57)
         Me.DtpFecha.Name = "DtpFecha"
         Me.DtpFecha.Size = New System.Drawing.Size(108, 20)
         Me.DtpFecha.TabIndex = 54
         '
         'LblAbrirCaja
         '
+        Me.LblAbrirCaja.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.LblAbrirCaja.AutoSize = True
         Me.LblAbrirCaja.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.LblAbrirCaja.Location = New System.Drawing.Point(517, 32)
+        Me.LblAbrirCaja.Location = New System.Drawing.Point(517, 63)
         Me.LblAbrirCaja.Name = "LblAbrirCaja"
         Me.LblAbrirCaja.Size = New System.Drawing.Size(52, 13)
         Me.LblAbrirCaja.TabIndex = 56
@@ -198,9 +208,10 @@ Partial Class FListaCajas
         '
         'LblCerrarCaja
         '
+        Me.LblCerrarCaja.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.LblCerrarCaja.AutoSize = True
         Me.LblCerrarCaja.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.LblCerrarCaja.Location = New System.Drawing.Point(584, 32)
+        Me.LblCerrarCaja.Location = New System.Drawing.Point(584, 63)
         Me.LblCerrarCaja.Name = "LblCerrarCaja"
         Me.LblCerrarCaja.Size = New System.Drawing.Size(59, 13)
         Me.LblCerrarCaja.TabIndex = 57
@@ -208,20 +219,56 @@ Partial Class FListaCajas
         '
         'LblResumenCaja
         '
+        Me.LblResumenCaja.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.LblResumenCaja.AutoSize = True
         Me.LblResumenCaja.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.LblResumenCaja.Location = New System.Drawing.Point(662, 32)
+        Me.LblResumenCaja.Location = New System.Drawing.Point(662, 63)
         Me.LblResumenCaja.Name = "LblResumenCaja"
         Me.LblResumenCaja.Size = New System.Drawing.Size(91, 13)
         Me.LblResumenCaja.TabIndex = 58
         Me.LblResumenCaja.Text = "Resumen de Caja"
         '
+        'pnlTopBar
+        '
+        Me.pnlTopBar.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.pnlTopBar.Controls.Add(Me.lblTitulo)
+        Me.pnlTopBar.Controls.Add(Me.BtnCerrarForm)
+        Me.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top
+        Me.pnlTopBar.Location = New System.Drawing.Point(0, 0)
+        Me.pnlTopBar.Name = "pnlTopBar"
+        Me.pnlTopBar.Size = New System.Drawing.Size(769, 35)
+        Me.pnlTopBar.TabIndex = 59
+        '
+        'lblTitulo
+        '
+        Me.lblTitulo.AutoSize = True
+        Me.lblTitulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitulo.ForeColor = System.Drawing.Color.White
+        Me.lblTitulo.Location = New System.Drawing.Point(12, 9)
+        Me.lblTitulo.Name = "lblTitulo"
+        Me.lblTitulo.Size = New System.Drawing.Size(133, 16)
+        Me.lblTitulo.TabIndex = 116
+        Me.lblTitulo.Text = "Apertura y Cierres"
+        '
+        'BtnCerrarForm
+        '
+        Me.BtnCerrarForm.Dock = System.Windows.Forms.DockStyle.Right
+        Me.BtnCerrarForm.Image = CType(resources.GetObject("BtnCerrarForm.Image"), System.Drawing.Image)
+        Me.BtnCerrarForm.Location = New System.Drawing.Point(734, 0)
+        Me.BtnCerrarForm.Margin = New System.Windows.Forms.Padding(2)
+        Me.BtnCerrarForm.Name = "BtnCerrarForm"
+        Me.BtnCerrarForm.Size = New System.Drawing.Size(35, 35)
+        Me.BtnCerrarForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.BtnCerrarForm.TabIndex = 115
+        Me.BtnCerrarForm.TabStop = False
+        '
         'FListaCajas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(125, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(769, 394)
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.ClientSize = New System.Drawing.Size(769, 425)
+        Me.Controls.Add(Me.pnlTopBar)
         Me.Controls.Add(Me.LblResumenCaja)
         Me.Controls.Add(Me.LblCerrarCaja)
         Me.Controls.Add(Me.LblAbrirCaja)
@@ -229,11 +276,14 @@ Partial Class FListaCajas
         Me.Controls.Add(Me.LblBuscar)
         Me.Controls.Add(Me.DtpFecha)
         Me.ForeColor = System.Drawing.Color.White
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "FListaCajas"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Apertura y Cierres"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlTopBar.ResumeLayout(False)
+        Me.pnlTopBar.PerformLayout()
+        CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -252,4 +302,7 @@ Partial Class FListaCajas
     Friend WithEvents FechaFin As DataGridViewTextBoxColumn
     Friend WithEvents HoraFin As DataGridViewTextBoxColumn
     Friend WithEvents MontoFin As DataGridViewTextBoxColumn
+    Friend WithEvents pnlTopBar As Panel
+    Friend WithEvents lblTitulo As Label
+    Friend WithEvents BtnCerrarForm As PictureBox
 End Class

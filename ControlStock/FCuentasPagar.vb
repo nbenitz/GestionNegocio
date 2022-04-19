@@ -12,7 +12,7 @@ Public Class FCuentasPagar
     End Sub
 
     Private Sub F_Deactivate(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Deactivate
-        Me.WindowState = FormWindowState.Minimized
+        'Me.WindowState = FormWindowState.Minimized
     End Sub
 
     Private Sub Form1_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
@@ -53,7 +53,7 @@ Public Class FCuentasPagar
         Dim SumaTotal As Integer = 0
         DataGridView1.Rows.Clear()
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
+            For i  As Integer = 0 To (Filas - 1)
                 Dim idCompra As Integer = CInt(Tabla.Rows(i).Item(0))
                 Dim Proveedor As String = CStr(Tabla.Rows(i).Item(3))
                 Dim Fecha As String = Format(Tabla.Rows(i).Item(1), "dd/MM/yyyy")
@@ -93,13 +93,13 @@ Public Class FCuentasPagar
     End Sub
 
     Private Sub CargarDetalle(ByVal TablaAux As DataTable, ByVal Row As Integer)
-        Dim id = CStr(TablaAux.Rows(Row).Item(0))
-        Dim Proveed = CStr(TablaAux.Rows(Row).Item(3))
-        Dim Total = CStr(TablaAux.Rows(Row).Item(4))
-        Dim Entregado = CStr(TablaAux.Rows(Row).Item(6))
-        Dim Fecha = Format(TablaAux.Rows(Row).Item(1), "dd/MM/yyyy")
-        Dim Vto = Format(TablaAux.Rows(Row).Item(7), "dd/MM/yyyy")
-        Dim Saldo = CStr(CInt(Total) - CInt(Entregado))
+        Dim id As String = CStr(TablaAux.Rows(Row).Item(0))
+        Dim Proveed As String = CStr(TablaAux.Rows(Row).Item(3))
+        Dim Total As String = CStr(TablaAux.Rows(Row).Item(4))
+        Dim Entregado As String = CStr(TablaAux.Rows(Row).Item(6))
+        Dim Fecha As String = Format(TablaAux.Rows(Row).Item(1), "dd/MM/yyyy")
+        Dim Vto As String = Format(TablaAux.Rows(Row).Item(7), "dd/MM/yyyy")
+        Dim Saldo As String = CStr(CInt(Total) - CInt(Entregado))
         Reporte1.Encabezado(id, Fecha, Proveed, Vto, Total, Entregado, Saldo)
         Reporte1.CargarDetalle(Compra.BuscViewDetCompra(id))
     End Sub
@@ -192,4 +192,7 @@ Public Class FCuentasPagar
         End If
     End Sub
 
+    Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
+        Me.Close()
+    End Sub
 End Class

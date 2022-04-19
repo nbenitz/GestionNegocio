@@ -2,7 +2,7 @@
 Public Class CVenta
     Private ObjCon As New CBaseDato()
 
-    Public Function InserVenta(ByVal idVenta As UInteger, ByVal idEmpleFK As Integer, ByVal idClienteFK As String, ByVal Fecha As String, ByVal Cancelado As String, ByVal Entregado? As Integer, ByVal Vto As String) As Boolean
+    Public Function InserVenta(ByVal idVenta As Integer, ByVal idEmpleFK As Integer, ByVal idClienteFK As String, ByVal Fecha As String, ByVal Cancelado As String, ByVal Entregado? As Integer, ByVal Vto As String) As Boolean
         Dim inserto As Boolean = False
         Try
             ObjCon.Conectar()
@@ -26,7 +26,7 @@ Public Class CVenta
         Return inserto
     End Function
 
-    Public Function InserDetalleVenta(ByVal idVentaFK As UInteger, ByVal idProdFK As String, ByVal Cant As Double, ByVal Unidades As Double,
+    Public Function InserDetalleVenta(ByVal idVentaFK As Integer, ByVal idProdFK As String, ByVal Cant As Double, ByVal Unidades As Double,
                                       ByVal Precio As Integer, ByVal Obs As String, ByVal Desc As Integer) As Boolean
         Dim inserto As Boolean = False
         Try
@@ -109,7 +109,7 @@ Public Class CVenta
         Return inserto
     End Function
 
-    Public Function InserRecibo(ByVal idRecibo As Integer, ByVal idVentaFK As UInteger,
+    Public Function InserRecibo(ByVal idRecibo As Integer, ByVal idVentaFK As Integer,
                             ByVal Fecha As String, ByVal Importe As Integer) As Boolean
         Dim inserto As Boolean = False
         Try
@@ -131,12 +131,12 @@ Public Class CVenta
         Return inserto
     End Function
 
-    Public Function UpdateVenta(ByVal idVenta As UInteger) As Boolean
+    Public Function SetCancelado(ByVal idVenta As Integer) As Boolean
         Dim inserto As Boolean = False
         Try
             ObjCon.Conectar()
             ObjCon.CrearComando("UPDATE Venta SET cancelado = 'Si' WHERE idVenta = ?idVenta")
-            ObjCon.AsignarParametro("?idVenta", MySqlDbType.UInt32, idVenta)
+            ObjCon.AsignarParametro("?idVenta", MySqlDbType.Int32, idVenta)
             If ObjCon.EjecutarConsulta() > 0 Then
                 inserto = True
             Else
@@ -149,7 +149,7 @@ Public Class CVenta
         Return inserto
     End Function
 
-    Public Function UpdateVenta(ByVal Entregado As Integer, ByVal idVenta As UInteger) As Boolean
+    Public Function UpdateVenta(ByVal Entregado As Integer, ByVal idVenta As Integer) As Boolean
         Dim inserto As Boolean = False
         Try
             ObjCon.Conectar()
@@ -172,6 +172,13 @@ Public Class CVenta
         ObjCon.Conectar()
         ObjCon.CrearComando("SELECT * FROM viewVenta " + Condicion)
         BuscViewVenta = ObjCon.EjecutarDataTable()
+        ObjCon.Desconectar()
+    End Function
+
+    Public Function BuscViewCuentas(ByVal Condicion As String) As DataTable
+        ObjCon.Conectar()
+        ObjCon.CrearComando("SELECT * FROM view_cuentas_cobrar " + Condicion)
+        BuscViewCuentas = ObjCon.EjecutarDataTable()
         ObjCon.Desconectar()
     End Function
 
@@ -246,14 +253,14 @@ Public Class CVenta
         ObjCon.Desconectar()
     End Function
 
-    Public Function CargarNroFac() As UInteger
+    Public Function CargarNroFac() As Integer
         CargarNroFac = 0
         ObjCon.Conectar()
         ObjCon.CrearComando("SELECT MAX(idVenta) FROM Venta")
         ObjCon.dr = ObjCon.EjecutarReader()
         If ObjCon.dr.Read() Then
             Try
-                CargarNroFac = ObjCon.dr.GetUInt32(0)
+                CargarNroFac = ObjCon.dr.GetInt32(0)
             Catch
             End Try
         Else

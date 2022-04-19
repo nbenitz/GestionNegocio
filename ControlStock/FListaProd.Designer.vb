@@ -52,6 +52,7 @@ Partial Class FListaProd
         Me.TCmbFiltrarPor = New System.Windows.Forms.ToolStripComboBox()
         Me.TtxtBuscar = New System.Windows.Forms.ToolStripTextBox()
         Me.TCmbProveedor = New System.Windows.Forms.ToolStripComboBox()
+        Me.TCmbCategoria = New System.Windows.Forms.ToolStripComboBox()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.TlblStock = New System.Windows.Forms.ToolStripLabel()
         Me.TCmbStock = New System.Windows.Forms.ToolStripComboBox()
@@ -64,7 +65,6 @@ Partial Class FListaProd
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.lblAux2 = New System.Windows.Forms.Label()
         Me.lblAux3 = New System.Windows.Forms.Label()
-        Me.DataGridViewImageColumn1 = New System.Windows.Forms.DataGridViewImageColumn()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.lblResultados = New System.Windows.Forms.ToolStripStatusLabel()
         Me.LblCosto = New System.Windows.Forms.ToolStripStatusLabel()
@@ -75,7 +75,10 @@ Partial Class FListaProd
         Me.PnlEliminar = New System.Windows.Forms.Panel()
         Me.LblEliminar = New System.Windows.Forms.Label()
         Me.PbxEliminar = New System.Windows.Forms.PictureBox()
-        Me.TCmbCategoria = New System.Windows.Forms.ToolStripComboBox()
+        Me.DataGridViewImageColumn1 = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.pnlTopBar = New System.Windows.Forms.Panel()
+        Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.BtnCerrarForm = New System.Windows.Forms.PictureBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -83,13 +86,14 @@ Partial Class FListaProd
         CType(Me.pbxEditar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PnlEliminar.SuspendLayout()
         CType(Me.PbxEliminar, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlTopBar.SuspendLayout()
+        CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DataGridView1
         '
         Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.DataGridView1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
         Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
@@ -102,7 +106,7 @@ Partial Class FListaProd
         Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Cod, Me.Proveedor, Me.Descripcion, Me.Costo, Me.PVentaMin, Me.PVentaMay, Me.Stock, Me.Detalles})
-        Me.DataGridView1.Location = New System.Drawing.Point(4, 47)
+        Me.DataGridView1.Location = New System.Drawing.Point(4, 78)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
@@ -114,7 +118,7 @@ Partial Class FListaProd
         DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
         Me.DataGridView1.RowHeadersVisible = False
-        Me.DataGridView1.Size = New System.Drawing.Size(862, 415)
+        Me.DataGridView1.Size = New System.Drawing.Size(862, 387)
         Me.DataGridView1.TabIndex = 0
         '
         'Cod
@@ -219,12 +223,13 @@ Partial Class FListaProd
         '
         'ToolStrip1
         '
-        Me.ToolStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
+        Me.ToolStrip1.AutoSize = False
+        Me.ToolStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TbtnNuevo, Me.ToolStripButton1, Me.ToolStripSeparator2, Me.ToolStripLabel1, Me.TCmbFiltrarPor, Me.TtxtBuscar, Me.TCmbProveedor, Me.TCmbCategoria, Me.ToolStripSeparator1, Me.TlblStock, Me.TCmbStock, Me.TtxtUnidad, Me.ToolStripSeparator3, Me.lblOrden, Me.cmbOrden})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 35)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.ToolStrip1.Size = New System.Drawing.Size(873, 27)
+        Me.ToolStrip1.Size = New System.Drawing.Size(873, 35)
         Me.ToolStrip1.TabIndex = 2
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -234,7 +239,7 @@ Partial Class FListaProd
         Me.TbtnNuevo.Image = Global.ControlStock.My.Resources.Resources.add
         Me.TbtnNuevo.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.TbtnNuevo.Name = "TbtnNuevo"
-        Me.TbtnNuevo.Size = New System.Drawing.Size(23, 24)
+        Me.TbtnNuevo.Size = New System.Drawing.Size(23, 32)
         Me.TbtnNuevo.ToolTipText = "Nuevo Producto"
         '
         'ToolStripButton1
@@ -243,31 +248,32 @@ Partial Class FListaProd
         Me.ToolStripButton1.Image = Global.ControlStock.My.Resources.Resources.refresh1
         Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(23, 24)
+        Me.ToolStripButton1.Size = New System.Drawing.Size(23, 32)
         Me.ToolStripButton1.Text = "Actualizar"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 27)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 35)
         '
         'ToolStripLabel1
         '
         Me.ToolStripLabel1.ForeColor = System.Drawing.Color.White
         Me.ToolStripLabel1.Name = "ToolStripLabel1"
-        Me.ToolStripLabel1.Size = New System.Drawing.Size(47, 24)
+        Me.ToolStripLabel1.Size = New System.Drawing.Size(47, 32)
         Me.ToolStripLabel1.Text = "Ver Por:"
         '
         'TCmbFiltrarPor
         '
         Me.TCmbFiltrarPor.Items.AddRange(New Object() {"Todos", "Proveedor", "Código", "Descripción", "Categoría"})
         Me.TCmbFiltrarPor.Name = "TCmbFiltrarPor"
-        Me.TCmbFiltrarPor.Size = New System.Drawing.Size(121, 27)
+        Me.TCmbFiltrarPor.Size = New System.Drawing.Size(121, 35)
         '
         'TtxtBuscar
         '
+        Me.TtxtBuscar.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TtxtBuscar.Name = "TtxtBuscar"
-        Me.TtxtBuscar.Size = New System.Drawing.Size(100, 27)
+        Me.TtxtBuscar.Size = New System.Drawing.Size(100, 35)
         Me.TtxtBuscar.Tag = "Texto de Busqueda"
         Me.TtxtBuscar.ToolTipText = "Buscar"
         '
@@ -276,35 +282,43 @@ Partial Class FListaProd
         Me.TCmbProveedor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
         Me.TCmbProveedor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.TCmbProveedor.Name = "TCmbProveedor"
-        Me.TCmbProveedor.Size = New System.Drawing.Size(121, 27)
+        Me.TCmbProveedor.Size = New System.Drawing.Size(121, 35)
+        '
+        'TCmbCategoria
+        '
+        Me.TCmbCategoria.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.TCmbCategoria.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.TCmbCategoria.Name = "TCmbCategoria"
+        Me.TCmbCategoria.Size = New System.Drawing.Size(121, 35)
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 27)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 35)
         '
         'TlblStock
         '
         Me.TlblStock.ForeColor = System.Drawing.Color.White
         Me.TlblStock.Name = "TlblStock"
-        Me.TlblStock.Size = New System.Drawing.Size(39, 24)
+        Me.TlblStock.Size = New System.Drawing.Size(39, 32)
         Me.TlblStock.Text = "Stock:"
         '
         'TCmbStock
         '
         Me.TCmbStock.Items.AddRange(New Object() {"Todos", "Menor o Igual a", "Mayor o Igual a"})
         Me.TCmbStock.Name = "TCmbStock"
-        Me.TCmbStock.Size = New System.Drawing.Size(121, 27)
+        Me.TCmbStock.Size = New System.Drawing.Size(121, 35)
         '
         'TtxtUnidad
         '
+        Me.TtxtUnidad.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TtxtUnidad.Name = "TtxtUnidad"
-        Me.TtxtUnidad.Size = New System.Drawing.Size(100, 27)
+        Me.TtxtUnidad.Size = New System.Drawing.Size(100, 35)
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 27)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 35)
         '
         'lblOrden
         '
@@ -326,7 +340,9 @@ Partial Class FListaProd
         'lblAux
         '
         Me.lblAux.AutoSize = True
-        Me.lblAux.Location = New System.Drawing.Point(209, 25)
+        Me.lblAux.BackColor = System.Drawing.Color.LightGray
+        Me.lblAux.ForeColor = System.Drawing.Color.Black
+        Me.lblAux.Location = New System.Drawing.Point(209, 65)
         Me.lblAux.Name = "lblAux"
         Me.lblAux.Size = New System.Drawing.Size(43, 13)
         Me.lblAux.TabIndex = 3
@@ -339,7 +355,9 @@ Partial Class FListaProd
         'lblAux2
         '
         Me.lblAux2.AutoSize = True
-        Me.lblAux2.Location = New System.Drawing.Point(380, 25)
+        Me.lblAux2.BackColor = System.Drawing.Color.LightGray
+        Me.lblAux2.ForeColor = System.Drawing.Color.Black
+        Me.lblAux2.Location = New System.Drawing.Point(380, 65)
         Me.lblAux2.Name = "lblAux2"
         Me.lblAux2.Size = New System.Drawing.Size(43, 13)
         Me.lblAux2.TabIndex = 4
@@ -349,30 +367,18 @@ Partial Class FListaProd
         'lblAux3
         '
         Me.lblAux3.AutoSize = True
-        Me.lblAux3.Location = New System.Drawing.Point(503, 25)
+        Me.lblAux3.BackColor = System.Drawing.Color.LightGray
+        Me.lblAux3.ForeColor = System.Drawing.Color.Black
+        Me.lblAux3.Location = New System.Drawing.Point(503, 65)
         Me.lblAux3.Name = "lblAux3"
         Me.lblAux3.Size = New System.Drawing.Size(43, 13)
         Me.lblAux3.TabIndex = 5
         Me.lblAux3.Text = "ToolTip"
         Me.lblAux3.Visible = False
         '
-        'DataGridViewImageColumn1
-        '
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle10.NullValue = CType(resources.GetObject("DataGridViewCellStyle10.NullValue"), Object)
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.White
-        Me.DataGridViewImageColumn1.DefaultCellStyle = DataGridViewCellStyle10
-        Me.DataGridViewImageColumn1.HeaderText = ""
-        Me.DataGridViewImageColumn1.Image = Global.ControlStock.My.Resources.Resources.file_edit
-        Me.DataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch
-        Me.DataGridViewImageColumn1.Name = "DataGridViewImageColumn1"
-        Me.DataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.DataGridViewImageColumn1.Width = 22
-        '
         'StatusStrip1
         '
-        Me.StatusStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
+        Me.StatusStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lblResultados, Me.LblCosto, Me.lblSinCosto})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 508)
         Me.StatusStrip1.Name = "StatusStrip1"
@@ -473,18 +479,59 @@ Partial Class FListaProd
         Me.PbxEliminar.TabIndex = 84
         Me.PbxEliminar.TabStop = False
         '
-        'TCmbCategoria
+        'DataGridViewImageColumn1
         '
-        Me.TCmbCategoria.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.TCmbCategoria.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.TCmbCategoria.Name = "TCmbCategoria"
-        Me.TCmbCategoria.Size = New System.Drawing.Size(121, 27)
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle10.NullValue = CType(resources.GetObject("DataGridViewCellStyle10.NullValue"), Object)
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.White
+        Me.DataGridViewImageColumn1.DefaultCellStyle = DataGridViewCellStyle10
+        Me.DataGridViewImageColumn1.HeaderText = ""
+        Me.DataGridViewImageColumn1.Image = Global.ControlStock.My.Resources.Resources.file_edit
+        Me.DataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch
+        Me.DataGridViewImageColumn1.Name = "DataGridViewImageColumn1"
+        Me.DataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.DataGridViewImageColumn1.Width = 22
+        '
+        'pnlTopBar
+        '
+        Me.pnlTopBar.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.pnlTopBar.Controls.Add(Me.lblTitulo)
+        Me.pnlTopBar.Controls.Add(Me.BtnCerrarForm)
+        Me.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top
+        Me.pnlTopBar.Location = New System.Drawing.Point(0, 0)
+        Me.pnlTopBar.Name = "pnlTopBar"
+        Me.pnlTopBar.Size = New System.Drawing.Size(873, 35)
+        Me.pnlTopBar.TabIndex = 91
+        '
+        'lblTitulo
+        '
+        Me.lblTitulo.AutoSize = True
+        Me.lblTitulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitulo.ForeColor = System.Drawing.Color.White
+        Me.lblTitulo.Location = New System.Drawing.Point(12, 9)
+        Me.lblTitulo.Name = "lblTitulo"
+        Me.lblTitulo.Size = New System.Drawing.Size(137, 16)
+        Me.lblTitulo.TabIndex = 118
+        Me.lblTitulo.Text = "Lista de Productos"
+        '
+        'BtnCerrarForm
+        '
+        Me.BtnCerrarForm.Dock = System.Windows.Forms.DockStyle.Right
+        Me.BtnCerrarForm.Image = CType(resources.GetObject("BtnCerrarForm.Image"), System.Drawing.Image)
+        Me.BtnCerrarForm.Location = New System.Drawing.Point(838, 0)
+        Me.BtnCerrarForm.Margin = New System.Windows.Forms.Padding(2)
+        Me.BtnCerrarForm.Name = "BtnCerrarForm"
+        Me.BtnCerrarForm.Size = New System.Drawing.Size(35, 35)
+        Me.BtnCerrarForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.BtnCerrarForm.TabIndex = 115
+        Me.BtnCerrarForm.TabStop = False
         '
         'FListaProd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(125, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(873, 530)
         Me.Controls.Add(Me.PnlEliminar)
         Me.Controls.Add(Me.pnlEditar)
@@ -494,7 +541,8 @@ Partial Class FListaProd
         Me.Controls.Add(Me.lblAux)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.DataGridView1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Controls.Add(Me.pnlTopBar)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.MaximumSize = New System.Drawing.Size(1000, 569)
         Me.Name = "FListaProd"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -510,6 +558,9 @@ Partial Class FListaProd
         Me.PnlEliminar.ResumeLayout(False)
         Me.PnlEliminar.PerformLayout()
         CType(Me.PbxEliminar, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlTopBar.ResumeLayout(False)
+        Me.pnlTopBar.PerformLayout()
+        CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -556,4 +607,7 @@ Partial Class FListaProd
     Friend WithEvents Stock As DataGridViewTextBoxColumn
     Friend WithEvents Detalles As DataGridViewTextBoxColumn
     Friend WithEvents TCmbCategoria As ToolStripComboBox
+    Friend WithEvents pnlTopBar As Panel
+    Friend WithEvents lblTitulo As Label
+    Friend WithEvents BtnCerrarForm As PictureBox
 End Class

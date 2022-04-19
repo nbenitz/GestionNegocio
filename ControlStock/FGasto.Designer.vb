@@ -23,6 +23,7 @@ Partial Class FGasto
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FGasto))
         Me.Label6 = New System.Windows.Forms.Label()
         Me.cmbGastos = New System.Windows.Forms.ComboBox()
         Me.txtImporte = New System.Windows.Forms.TextBox()
@@ -35,8 +36,13 @@ Partial Class FGasto
         Me.btnAceptar = New System.Windows.Forms.Button()
         Me.btnCancelar = New System.Windows.Forms.Button()
         Me.ToolTip2 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.pnlTopBar = New System.Windows.Forms.Panel()
+        Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.BtnCerrarForm = New System.Windows.Forms.PictureBox()
         CType(Me.pbxEditGasto, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbxNewGasto, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlTopBar.SuspendLayout()
+        CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label6
@@ -44,7 +50,7 @@ Partial Class FGasto
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(21, 55)
+        Me.Label6.Location = New System.Drawing.Point(21, 84)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(73, 18)
         Me.Label6.TabIndex = 84
@@ -52,17 +58,23 @@ Partial Class FGasto
         '
         'cmbGastos
         '
+        Me.cmbGastos.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.cmbGastos.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cmbGastos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbGastos.ForeColor = System.Drawing.Color.White
         Me.cmbGastos.FormattingEnabled = True
-        Me.cmbGastos.Location = New System.Drawing.Point(107, 54)
+        Me.cmbGastos.Location = New System.Drawing.Point(107, 83)
         Me.cmbGastos.Name = "cmbGastos"
         Me.cmbGastos.Size = New System.Drawing.Size(190, 24)
         Me.cmbGastos.TabIndex = 1
         '
         'txtImporte
         '
+        Me.txtImporte.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.txtImporte.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtImporte.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtImporte.Location = New System.Drawing.Point(107, 89)
+        Me.txtImporte.ForeColor = System.Drawing.Color.White
+        Me.txtImporte.Location = New System.Drawing.Point(107, 118)
         Me.txtImporte.Name = "txtImporte"
         Me.txtImporte.Size = New System.Drawing.Size(190, 22)
         Me.txtImporte.TabIndex = 0
@@ -72,7 +84,7 @@ Partial Class FGasto
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(21, 90)
+        Me.Label1.Location = New System.Drawing.Point(21, 119)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(58, 18)
         Me.Label1.TabIndex = 86
@@ -80,8 +92,11 @@ Partial Class FGasto
         '
         'txtCod
         '
+        Me.txtCod.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.txtCod.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtCod.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCod.Location = New System.Drawing.Point(107, 21)
+        Me.txtCod.ForeColor = System.Drawing.Color.White
+        Me.txtCod.Location = New System.Drawing.Point(107, 50)
         Me.txtCod.Name = "txtCod"
         Me.txtCod.ReadOnly = True
         Me.txtCod.Size = New System.Drawing.Size(190, 22)
@@ -92,7 +107,7 @@ Partial Class FGasto
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(21, 22)
+        Me.Label3.Location = New System.Drawing.Point(21, 51)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(56, 18)
         Me.Label3.TabIndex = 88
@@ -111,7 +126,7 @@ Partial Class FGasto
         Me.pbxEditGasto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.pbxEditGasto.Cursor = System.Windows.Forms.Cursors.Hand
         Me.pbxEditGasto.Image = Global.ControlStock.My.Resources.Resources.file_edit
-        Me.pbxEditGasto.Location = New System.Drawing.Point(328, 58)
+        Me.pbxEditGasto.Location = New System.Drawing.Point(328, 87)
         Me.pbxEditGasto.Name = "pbxEditGasto"
         Me.pbxEditGasto.Size = New System.Drawing.Size(25, 20)
         Me.pbxEditGasto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -125,7 +140,7 @@ Partial Class FGasto
         Me.pbxNewGasto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.pbxNewGasto.Cursor = System.Windows.Forms.Cursors.Hand
         Me.pbxNewGasto.Image = Global.ControlStock.My.Resources.Resources.Plus_over2
-        Me.pbxNewGasto.Location = New System.Drawing.Point(304, 58)
+        Me.pbxNewGasto.Location = New System.Drawing.Point(304, 87)
         Me.pbxNewGasto.Name = "pbxNewGasto"
         Me.pbxNewGasto.Size = New System.Drawing.Size(25, 20)
         Me.pbxNewGasto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -135,11 +150,11 @@ Partial Class FGasto
         '
         'btnAceptar
         '
-        Me.btnAceptar.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
+        Me.btnAceptar.BackColor = System.Drawing.Color.Red
         Me.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnAceptar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAceptar.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnAceptar.Location = New System.Drawing.Point(107, 123)
+        Me.btnAceptar.Location = New System.Drawing.Point(107, 152)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(89, 23)
         Me.btnAceptar.TabIndex = 89
@@ -148,11 +163,11 @@ Partial Class FGasto
         '
         'btnCancelar
         '
-        Me.btnCancelar.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
-        Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnCancelar.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancelar.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnCancelar.Location = New System.Drawing.Point(208, 123)
+        Me.btnCancelar.Location = New System.Drawing.Point(208, 152)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(89, 23)
         Me.btnCancelar.TabIndex = 90
@@ -163,12 +178,47 @@ Partial Class FGasto
         '
         Me.ToolTip2.IsBalloon = True
         '
+        'pnlTopBar
+        '
+        Me.pnlTopBar.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.pnlTopBar.Controls.Add(Me.lblTitulo)
+        Me.pnlTopBar.Controls.Add(Me.BtnCerrarForm)
+        Me.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top
+        Me.pnlTopBar.Location = New System.Drawing.Point(0, 0)
+        Me.pnlTopBar.Name = "pnlTopBar"
+        Me.pnlTopBar.Size = New System.Drawing.Size(359, 35)
+        Me.pnlTopBar.TabIndex = 92
+        '
+        'lblTitulo
+        '
+        Me.lblTitulo.AutoSize = True
+        Me.lblTitulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitulo.ForeColor = System.Drawing.Color.White
+        Me.lblTitulo.Location = New System.Drawing.Point(12, 9)
+        Me.lblTitulo.Name = "lblTitulo"
+        Me.lblTitulo.Size = New System.Drawing.Size(117, 16)
+        Me.lblTitulo.TabIndex = 116
+        Me.lblTitulo.Text = "Registrar Gasto"
+        '
+        'BtnCerrarForm
+        '
+        Me.BtnCerrarForm.Dock = System.Windows.Forms.DockStyle.Right
+        Me.BtnCerrarForm.Image = CType(resources.GetObject("BtnCerrarForm.Image"), System.Drawing.Image)
+        Me.BtnCerrarForm.Location = New System.Drawing.Point(324, 0)
+        Me.BtnCerrarForm.Margin = New System.Windows.Forms.Padding(2)
+        Me.BtnCerrarForm.Name = "BtnCerrarForm"
+        Me.BtnCerrarForm.Size = New System.Drawing.Size(35, 35)
+        Me.BtnCerrarForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.BtnCerrarForm.TabIndex = 115
+        Me.BtnCerrarForm.TabStop = False
+        '
         'FGasto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(125, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(359, 167)
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.ClientSize = New System.Drawing.Size(359, 189)
+        Me.Controls.Add(Me.pnlTopBar)
         Me.Controls.Add(Me.pbxEditGasto)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnAceptar)
@@ -179,12 +229,15 @@ Partial Class FGasto
         Me.Controls.Add(Me.pbxNewGasto)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.cmbGastos)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "FGasto"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Registrar Gasto"
         CType(Me.pbxEditGasto, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pbxNewGasto, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlTopBar.ResumeLayout(False)
+        Me.pnlTopBar.PerformLayout()
+        CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -201,4 +254,7 @@ Partial Class FGasto
     Friend WithEvents btnCancelar As System.Windows.Forms.Button
     Friend WithEvents ToolTip2 As System.Windows.Forms.ToolTip
     Friend WithEvents pbxEditGasto As System.Windows.Forms.PictureBox
+    Friend WithEvents pnlTopBar As Panel
+    Friend WithEvents lblTitulo As Label
+    Friend WithEvents BtnCerrarForm As PictureBox
 End Class

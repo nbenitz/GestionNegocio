@@ -13,7 +13,7 @@ Public Class Habitacion
     Private CampoHabEvents As HabEvents = New HabEvents()
 
     Private Sub Habitacion_MouseDown(sender As Object, e As MouseEventArgs) Handles Me.MouseDown, lblTiempo.MouseDown, lblHabitacion.MouseDown
-        If e.Button = Windows.Forms.MouseButtons.Left Then
+        If e.Button = MouseButtons.Left Then
             If OcupadoValor Then
                 ContextMenuStrip2.Show(Me, New Point(e.X, e.Y))
             Else

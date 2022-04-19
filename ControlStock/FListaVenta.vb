@@ -11,9 +11,9 @@ Public Class FListaVenta
 
     Sub New(ByVal Formato As Reporte.Tipo)
         InitializeComponent()
-        Reporte1.Formato(Formato)
         FormatoValue = Formato
-        Select Case Formato
+        Reporte1.Formato(FormatoValue)
+        Select Case FormatoValue
             Case Is = Reporte.Tipo.Venta
                 Imagen = My.Resources.Resources.view_text
                 lblTitulo.Visible = False
@@ -50,7 +50,7 @@ Public Class FListaVenta
     End Sub
 
     Private Sub F_Deactivate(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Deactivate
-        Me.WindowState = FormWindowState.Minimized
+        'Me.WindowState = FormWindowState.Minimized
     End Sub
 
     Private Sub cmbFiltrarPor_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbFiltrarPor.SelectedIndexChanged
@@ -348,7 +348,7 @@ Public Class FListaVenta
 
         Dim row As System.Data.DataRow
         Dim colcount As Integer = Me.Reporte1.Detalle.Columns.Count - 1
-        For i = 0 To Me.Reporte1.Detalle.Rows.Count - 1
+        For i  As Integer = 0 To Me.Reporte1.Detalle.Rows.Count - 1
             row = ds.Tables("GVData").Rows.Add
             For Each column As DataGridViewColumn In Me.Reporte1.Detalle.Columns
                 row.Item(column.Index) = Reporte1.Detalle.Rows.Item(CInt(i)).Cells(column.Index).Value
@@ -364,4 +364,7 @@ Public Class FListaVenta
         Imprimir()
     End Sub
 
+    Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
+        Me.Close()
+    End Sub
 End Class

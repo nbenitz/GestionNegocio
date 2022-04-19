@@ -9,7 +9,7 @@ Public Class FListaPrivilegios
     End Sub
 
     Private Sub F_Deactivate(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Deactivate
-        Me.WindowState = FormWindowState.Minimized
+        'Me.WindowState = FormWindowState.Minimized
     End Sub
 
     Private Sub Form1_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
@@ -26,7 +26,7 @@ Public Class FListaPrivilegios
         Dim Delete As Image = My.Resources.file_del
         DataGridView1.Rows.Clear()
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
+            For i  As Integer = 0 To (Filas - 1)
                 Dim idPriv As Integer = CInt(TablaPriv.Rows(i).Item(0))
                 Dim Privilegio As String = CStr(TablaPriv.Rows(i).Item(1))
                 DataGridView1.Rows.Add(idPriv, Privilegio, Edit, Delete)
@@ -39,25 +39,25 @@ Public Class FListaPrivilegios
             Dim row As Integer = DataGridView1.CurrentRow.Index
             Dim IdPriv As Integer = CInt(TablaPriv.Rows(row).Item(0))
             Dim Rol As String = CStr(TablaPriv.Rows(row).Item(1))
-            Dim ProdConsult = CBool(TablaPriv.Rows(row).Item(2))
-            Dim ProdReg = CBool(TablaPriv.Rows(row).Item(3))
-            Dim ProdActualiz = CBool(TablaPriv.Rows(row).Item(4))
-            Dim ProdEliminar = CBool(TablaPriv.Rows(row).Item(5))
-            Dim VentasConsult = CBool(TablaPriv.Rows(row).Item(6))
-            Dim VentasReg = CBool(TablaPriv.Rows(row).Item(7))
-            Dim ComprasConsult = CBool(TablaPriv.Rows(row).Item(8))
-            Dim ComprasReg = CBool(TablaPriv.Rows(row).Item(9))
-            Dim ProvConsult = CBool(TablaPriv.Rows(row).Item(10))
-            Dim ProvReg = CBool(TablaPriv.Rows(row).Item(11))
-            Dim ProvActualiz = CBool(TablaPriv.Rows(row).Item(12))
-            Dim ProvEliminar = CBool(TablaPriv.Rows(row).Item(13))
-            Dim EmpleAdmin = CBool(TablaPriv.Rows(row).Item(14))
-            Dim UsuAdmin = CBool(TablaPriv.Rows(row).Item(15))
-            Dim FinanzasAdmin = CBool(TablaPriv.Rows(row).Item(16))
-            Dim HabAdmin = CBool(TablaPriv.Rows(row).Item(17))
-            Dim CuentasAdmin = CBool(TablaPriv.Rows(row).Item(18))
-            Dim DevolAutoriCli = CBool(TablaPriv.Rows(row).Item(19))
-            Dim DevolAutoriProv = CBool(TablaPriv.Rows(row).Item(20))
+            Dim ProdConsult As Boolean = CBool(TablaPriv.Rows(row).Item(2))
+            Dim ProdReg As Boolean = CBool(TablaPriv.Rows(row).Item(3))
+            Dim ProdActualiz As Boolean = CBool(TablaPriv.Rows(row).Item(4))
+            Dim ProdEliminar As Boolean = CBool(TablaPriv.Rows(row).Item(5))
+            Dim VentasConsult As Boolean = CBool(TablaPriv.Rows(row).Item(6))
+            Dim VentasReg As Boolean = CBool(TablaPriv.Rows(row).Item(7))
+            Dim ComprasConsult As Boolean = CBool(TablaPriv.Rows(row).Item(8))
+            Dim ComprasReg As Boolean = CBool(TablaPriv.Rows(row).Item(9))
+            Dim ProvConsult As Boolean = CBool(TablaPriv.Rows(row).Item(10))
+            Dim ProvReg As Boolean = CBool(TablaPriv.Rows(row).Item(11))
+            Dim ProvActualiz As Boolean = CBool(TablaPriv.Rows(row).Item(12))
+            Dim ProvEliminar As Boolean = CBool(TablaPriv.Rows(row).Item(13))
+            Dim EmpleAdmin As Boolean = CBool(TablaPriv.Rows(row).Item(14))
+            Dim UsuAdmin As Boolean = CBool(TablaPriv.Rows(row).Item(15))
+            Dim FinanzasAdmin As Boolean = CBool(TablaPriv.Rows(row).Item(16))
+            Dim HabAdmin As Boolean = CBool(TablaPriv.Rows(row).Item(17))
+            Dim CuentasAdmin As Boolean = CBool(TablaPriv.Rows(row).Item(18))
+            Dim DevolAutoriCli As Boolean = CBool(TablaPriv.Rows(row).Item(19))
+            Dim DevolAutoriProv As Boolean = CBool(TablaPriv.Rows(row).Item(20))
             Dim Frm As New FNuevoPrivilegio
             Frm.Editar(Rol,
                        ProdConsult,
@@ -109,5 +109,7 @@ Public Class FListaPrivilegios
         End Try
     End Sub
 
-
+    Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
+        Me.Close()
+    End Sub
 End Class

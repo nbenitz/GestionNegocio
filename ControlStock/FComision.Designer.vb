@@ -105,7 +105,7 @@ Partial Class FComision
         '
         Me.ToolStripLabel3.ForeColor = System.Drawing.Color.White
         Me.ToolStripLabel3.Name = "ToolStripLabel3"
-        Me.ToolStripLabel3.Size = New System.Drawing.Size(61, 22)
+        Me.ToolStripLabel3.Size = New System.Drawing.Size(60, 22)
         Me.ToolStripLabel3.Text = "Vendedor:"
         '
         'cmbVendedor
@@ -203,7 +203,7 @@ Partial Class FComision
         '
         Me.ToolStripStatusLabel1.ForeColor = System.Drawing.Color.White
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(87, 17)
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(84, 17)
         Me.ToolStripStatusLabel1.Text = "    Total Ventas:"
         Me.ToolStripStatusLabel1.Visible = False
         '
@@ -219,7 +219,7 @@ Partial Class FComision
         '
         Me.ToolStripStatusLabel3.ForeColor = System.Drawing.Color.White
         Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
-        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(103, 17)
+        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(101, 17)
         Me.ToolStripStatusLabel3.Text = "    Total Comisión:"
         Me.ToolStripStatusLabel3.Visible = False
         '
@@ -235,7 +235,7 @@ Partial Class FComision
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(125, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(721, 458)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.DataGridView1)

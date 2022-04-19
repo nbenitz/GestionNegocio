@@ -11,25 +11,25 @@ Public Class FNuevoPrivilegio
 
     Private Sub BtnGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardar.Click
         Dim Rol As String = TxtNombre.Text
-        Dim ProdConsult = CkbProdConsult.Checked
-        Dim ProdReg = CkbProdReg.Checked
-        Dim ProdActualiz = CkbProdAct.Checked
-        Dim ProdEliminar = CkbProdElim.Checked
-        Dim VentasConsult = CkbVentConsul.Checked
-        Dim VentasReg = CkbVentReg.Checked
-        Dim ComprasConsult = CkbCompCons.Checked
-        Dim ComprasReg = CkbCompReg.Checked
-        Dim ProvConsult = CkbProvCons.Checked
-        Dim ProvReg = CkbProvReg.Checked
-        Dim ProvActualiz = CkbProvAct.Checked
-        Dim ProvEliminar = CkbProvElim.Checked
-        Dim EmpleAdmin = CkbEmp.Checked
-        Dim UsuAdmin = CkbUsu.Checked
-        Dim FinanzasAdmin = CkbFinanz.Checked
-        Dim HabAdmin = CkbHab.Checked
-        Dim CuentasAdmin = CkbCuent.Checked
-        Dim DevolAutoriCli = CkbDevCli.Checked
-        Dim DevolAutoriProv = CkbDevProv.Checked
+        Dim ProdConsult As Boolean = CkbProdConsult.Checked
+        Dim ProdReg As Boolean = CkbProdReg.Checked
+        Dim ProdActualiz As Boolean = CkbProdAct.Checked
+        Dim ProdEliminar As Boolean = CkbProdElim.Checked
+        Dim VentasConsult As Boolean = CkbVentConsul.Checked
+        Dim VentasReg As Boolean = CkbVentReg.Checked
+        Dim ComprasConsult As Boolean = CkbCompCons.Checked
+        Dim ComprasReg As Boolean = CkbCompReg.Checked
+        Dim ProvConsult As Boolean = CkbProvCons.Checked
+        Dim ProvReg As Boolean = CkbProvReg.Checked
+        Dim ProvActualiz As Boolean = CkbProvAct.Checked
+        Dim ProvEliminar As Boolean = CkbProvElim.Checked
+        Dim EmpleAdmin As Boolean = CkbEmp.Checked
+        Dim UsuAdmin As Boolean = CkbUsu.Checked
+        Dim FinanzasAdmin As Boolean = CkbFinanz.Checked
+        Dim HabAdmin As Boolean = CkbHab.Checked
+        Dim CuentasAdmin As Boolean = CkbCuent.Checked
+        Dim DevolAutoriCli As Boolean = CkbDevCli.Checked
+        Dim DevolAutoriProv As Boolean = CkbDevProv.Checked
         If Rol <> "" Then
             If EditMode = False Then
                 If Usuario.InsertPrivilegio(Rol,
@@ -136,4 +136,7 @@ Public Class FNuevoPrivilegio
         Text = "Editar Nivel de Privilegio"
     End Sub
 
+    Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
+        Me.Close()
+    End Sub
 End Class

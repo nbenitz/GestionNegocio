@@ -285,7 +285,7 @@ Public Class CHabitacion
         Return inserto
     End Function
 
-    Public Function RegistrarSalida(ByVal idHab As Integer, ByVal IdVenta As UInteger) As Boolean
+    Public Function RegistrarSalida(ByVal idHab As Integer, ByVal IdVenta As Integer) As Boolean
         Dim inserto As Boolean = False
         Try
             ObjCon.Conectar()
@@ -324,7 +324,7 @@ Public Class CHabitacion
         Return inserto
     End Function
 
-    Public Function InserDetalleOcup(ByVal idVenta As UInteger, ByVal idHab As Integer, ByVal idServHab As Integer, ByVal Tiemp As Integer, ByVal Prec As UInteger, ByVal SubT As Integer) As Boolean
+    Public Function InserDetalleOcup(ByVal idVenta As Integer, ByVal idHab As Integer, ByVal idServHab As Integer, ByVal Tiemp As Integer, ByVal Prec As UInteger, ByVal SubT As Integer) As Boolean
         Dim inserto As Boolean = False
         Try
             ObjCon.Conectar()

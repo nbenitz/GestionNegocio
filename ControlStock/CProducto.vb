@@ -422,17 +422,17 @@ Public Class CProducto
         ObjCon.Desconectar()
     End Function
 
-    Public Function CargarNroProdd() As UInt64
-        Dim Menor As UInt64 = 0
-        CargarNroProd = 0
+    Public Function CargarNroProdd() As Int64
+        Dim Menor As Int64 = 0
+        CargarNroProdd = 0
         ObjCon.Conectar()
         ObjCon.CrearComando("SELECT idProducto FROM Producto ORDER BY idProducto ASC")
         ObjCon.dr = ObjCon.EjecutarReader()
         While ObjCon.dr.Read()
             Try
-                CargarNroProd = ObjCon.dr.GetUInt64(0)
+                CargarNroProdd = ObjCon.dr.GetInt64(0)
                 If CargarNroProdd = Menor Then
-                    Menor = CULng(Menor + 1)
+                    Menor = CLng(Menor + 1)
                 Else
                     Exit While
                 End If
@@ -441,7 +441,7 @@ Public Class CProducto
         End While
         ObjCon.dr.Close()
         ObjCon.Desconectar()
-        CargarNroProd = Menor
+        CargarNroProdd = Menor
     End Function
 
     Public Function CargarNroCateg() As UInt32

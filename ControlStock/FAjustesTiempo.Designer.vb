@@ -23,14 +23,14 @@ Partial Class FAjustesTiempo
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FAjustesTiempo))
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.btnCancel = New System.Windows.Forms.PictureBox()
-        Me.btnGuardar = New System.Windows.Forms.PictureBox()
         Me.TxtTiempo1 = New System.Windows.Forms.TextBox()
         Me.TxtTiempo2 = New System.Windows.Forms.TextBox()
         Me.ToolTip2 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Lbl3 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.DtpHraS = New System.Windows.Forms.DateTimePicker()
         Me.DtpHraE = New System.Windows.Forms.DateTimePicker()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -44,10 +44,16 @@ Partial Class FAjustesTiempo
         Me.TxtDescrip2 = New System.Windows.Forms.TextBox()
         Me.Lbl2 = New System.Windows.Forms.Label()
         Me.Lbl1 = New System.Windows.Forms.Label()
-        Me.DtpHraS = New System.Windows.Forms.DateTimePicker()
+        Me.btnCancel = New System.Windows.Forms.PictureBox()
+        Me.btnGuardar = New System.Windows.Forms.PictureBox()
+        Me.pnlTopBar = New System.Windows.Forms.Panel()
+        Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.BtnCerrarForm = New System.Windows.Forms.PictureBox()
+        Me.GroupBox1.SuspendLayout()
         CType(Me.btnCancel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnGuardar, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
+        Me.pnlTopBar.SuspendLayout()
+        CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ToolTip1
@@ -57,36 +63,12 @@ Partial Class FAjustesTiempo
         Me.ToolTip1.InitialDelay = 10
         Me.ToolTip1.ReshowDelay = 2
         '
-        'btnCancel
-        '
-        Me.btnCancel.BackColor = System.Drawing.Color.Transparent
-        Me.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnCancel.Image = Global.ControlStock.My.Resources.Resources.file_exclude
-        Me.btnCancel.Location = New System.Drawing.Point(498, 237)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(41, 38)
-        Me.btnCancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.btnCancel.TabIndex = 83
-        Me.btnCancel.TabStop = False
-        Me.ToolTip1.SetToolTip(Me.btnCancel, "Cancelar")
-        '
-        'btnGuardar
-        '
-        Me.btnGuardar.BackColor = System.Drawing.Color.Transparent
-        Me.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnGuardar.Image = Global.ControlStock.My.Resources.Resources.file_apply
-        Me.btnGuardar.Location = New System.Drawing.Point(451, 237)
-        Me.btnGuardar.Name = "btnGuardar"
-        Me.btnGuardar.Size = New System.Drawing.Size(41, 38)
-        Me.btnGuardar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.btnGuardar.TabIndex = 84
-        Me.btnGuardar.TabStop = False
-        Me.ToolTip1.SetToolTip(Me.btnGuardar, "Guardar")
-        '
         'TxtTiempo1
         '
+        Me.TxtTiempo1.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.TxtTiempo1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TxtTiempo1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtTiempo1.ForeColor = System.Drawing.Color.White
         Me.TxtTiempo1.Location = New System.Drawing.Point(292, 59)
         Me.TxtTiempo1.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtTiempo1.Name = "TxtTiempo1"
@@ -96,8 +78,11 @@ Partial Class FAjustesTiempo
         '
         'TxtTiempo2
         '
+        Me.TxtTiempo2.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.TxtTiempo2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TxtTiempo2.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.TxtTiempo2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtTiempo2.ForeColor = System.Drawing.Color.White
         Me.TxtTiempo2.Location = New System.Drawing.Point(292, 106)
         Me.TxtTiempo2.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtTiempo2.Name = "TxtTiempo2"
@@ -119,7 +104,7 @@ Partial Class FAjustesTiempo
         '
         'GroupBox1
         '
-        Me.GroupBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(125, Byte), Integer))
+        Me.GroupBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
         Me.GroupBox1.Controls.Add(Me.DtpHraS)
         Me.GroupBox1.Controls.Add(Me.DtpHraE)
         Me.GroupBox1.Controls.Add(Me.Label7)
@@ -140,12 +125,22 @@ Partial Class FAjustesTiempo
         Me.GroupBox1.Cursor = System.Windows.Forms.Cursors.Default
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.ForeColor = System.Drawing.Color.White
-        Me.GroupBox1.Location = New System.Drawing.Point(17, 19)
+        Me.GroupBox1.Location = New System.Drawing.Point(17, 44)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(519, 212)
         Me.GroupBox1.TabIndex = 81
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Ajustes de Tiempo"
+        '
+        'DtpHraS
+        '
+        Me.DtpHraS.Format = System.Windows.Forms.DateTimePickerFormat.Time
+        Me.DtpHraS.Location = New System.Drawing.Point(393, 153)
+        Me.DtpHraS.Name = "DtpHraS"
+        Me.DtpHraS.ShowUpDown = True
+        Me.DtpHraS.Size = New System.Drawing.Size(93, 24)
+        Me.DtpHraS.TabIndex = 86
+        Me.DtpHraS.Value = New Date(2018, 1, 24, 2, 39, 0, 0)
         '
         'DtpHraE
         '
@@ -243,7 +238,10 @@ Partial Class FAjustesTiempo
         '
         'TxtDescrip3
         '
+        Me.TxtDescrip3.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.TxtDescrip3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TxtDescrip3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtDescrip3.ForeColor = System.Drawing.Color.White
         Me.TxtDescrip3.Location = New System.Drawing.Point(85, 154)
         Me.TxtDescrip3.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtDescrip3.Name = "TxtDescrip3"
@@ -252,7 +250,10 @@ Partial Class FAjustesTiempo
         '
         'TxtDescrip1
         '
+        Me.TxtDescrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.TxtDescrip1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TxtDescrip1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtDescrip1.ForeColor = System.Drawing.Color.White
         Me.TxtDescrip1.Location = New System.Drawing.Point(85, 59)
         Me.TxtDescrip1.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtDescrip1.Name = "TxtDescrip1"
@@ -261,8 +262,11 @@ Partial Class FAjustesTiempo
         '
         'TxtDescrip2
         '
+        Me.TxtDescrip2.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.TxtDescrip2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TxtDescrip2.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.TxtDescrip2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtDescrip2.ForeColor = System.Drawing.Color.White
         Me.TxtDescrip2.Location = New System.Drawing.Point(85, 106)
         Me.TxtDescrip2.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtDescrip2.Name = "TxtDescrip2"
@@ -293,34 +297,89 @@ Partial Class FAjustesTiempo
         Me.Lbl1.TabIndex = 6
         Me.Lbl1.Text = "Tarifa 1"
         '
-        'DtpHraS
+        'btnCancel
         '
-        Me.DtpHraS.Format = System.Windows.Forms.DateTimePickerFormat.Time
-        Me.DtpHraS.Location = New System.Drawing.Point(393, 153)
-        Me.DtpHraS.Name = "DtpHraS"
-        Me.DtpHraS.ShowUpDown = True
-        Me.DtpHraS.Size = New System.Drawing.Size(93, 24)
-        Me.DtpHraS.TabIndex = 86
-        Me.DtpHraS.Value = New Date(2018, 1, 24, 2, 39, 0, 0)
+        Me.btnCancel.BackColor = System.Drawing.Color.Transparent
+        Me.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnCancel.Image = Global.ControlStock.My.Resources.Resources.file_exclude
+        Me.btnCancel.Location = New System.Drawing.Point(498, 262)
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(41, 38)
+        Me.btnCancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.btnCancel.TabIndex = 83
+        Me.btnCancel.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.btnCancel, "Cancelar")
+        '
+        'btnGuardar
+        '
+        Me.btnGuardar.BackColor = System.Drawing.Color.Transparent
+        Me.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnGuardar.Image = Global.ControlStock.My.Resources.Resources.file_apply
+        Me.btnGuardar.Location = New System.Drawing.Point(451, 262)
+        Me.btnGuardar.Name = "btnGuardar"
+        Me.btnGuardar.Size = New System.Drawing.Size(41, 38)
+        Me.btnGuardar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.btnGuardar.TabIndex = 84
+        Me.btnGuardar.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.btnGuardar, "Guardar")
+        '
+        'pnlTopBar
+        '
+        Me.pnlTopBar.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.pnlTopBar.Controls.Add(Me.lblTitulo)
+        Me.pnlTopBar.Controls.Add(Me.BtnCerrarForm)
+        Me.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top
+        Me.pnlTopBar.Location = New System.Drawing.Point(0, 0)
+        Me.pnlTopBar.Name = "pnlTopBar"
+        Me.pnlTopBar.Size = New System.Drawing.Size(554, 35)
+        Me.pnlTopBar.TabIndex = 85
+        '
+        'lblTitulo
+        '
+        Me.lblTitulo.AutoSize = True
+        Me.lblTitulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitulo.ForeColor = System.Drawing.Color.White
+        Me.lblTitulo.Location = New System.Drawing.Point(12, 9)
+        Me.lblTitulo.Name = "lblTitulo"
+        Me.lblTitulo.Size = New System.Drawing.Size(59, 16)
+        Me.lblTitulo.TabIndex = 116
+        Me.lblTitulo.Text = "Ajustes"
+        '
+        'BtnCerrarForm
+        '
+        Me.BtnCerrarForm.Dock = System.Windows.Forms.DockStyle.Right
+        Me.BtnCerrarForm.Image = CType(resources.GetObject("BtnCerrarForm.Image"), System.Drawing.Image)
+        Me.BtnCerrarForm.Location = New System.Drawing.Point(519, 0)
+        Me.BtnCerrarForm.Margin = New System.Windows.Forms.Padding(2)
+        Me.BtnCerrarForm.Name = "BtnCerrarForm"
+        Me.BtnCerrarForm.Size = New System.Drawing.Size(35, 35)
+        Me.BtnCerrarForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.BtnCerrarForm.TabIndex = 115
+        Me.BtnCerrarForm.TabStop = False
         '
         'FAjustesTiempo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(125, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(554, 282)
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.ClientSize = New System.Drawing.Size(554, 308)
+        Me.Controls.Add(Me.pnlTopBar)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnGuardar)
         Me.Controls.Add(Me.GroupBox1)
         Me.ForeColor = System.Drawing.Color.White
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "FAjustesTiempo"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Ajustes"
-        CType(Me.btnCancel, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.btnGuardar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.btnCancel, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btnGuardar, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlTopBar.ResumeLayout(False)
+        Me.pnlTopBar.PerformLayout()
+        CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -346,4 +405,7 @@ Partial Class FAjustesTiempo
     Friend WithEvents Label1 As Label
     Friend WithEvents DtpHraE As DateTimePicker
     Friend WithEvents DtpHraS As DateTimePicker
+    Friend WithEvents pnlTopBar As Panel
+    Friend WithEvents lblTitulo As Label
+    Friend WithEvents BtnCerrarForm As PictureBox
 End Class

@@ -102,6 +102,10 @@ Public Class FImprimir
         txtPreview.Text = txtPreview.Text + "  " + Cant + " x " + Precio + "  " + Importe + vbCrLf
     End Sub
 
+    Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
+        Me.Close()
+    End Sub
+
     Private Sub Imprimir()
         Ticket1.TextoCentro("COMERCIAL SOSA")
         Ticket1.LineasIgual()

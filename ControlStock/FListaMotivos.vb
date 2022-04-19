@@ -9,7 +9,7 @@ Public Class FListaMotivos
     End Sub
 
     Private Sub F_Deactivate(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Deactivate
-        Me.WindowState = FormWindowState.Minimized
+        'Me.WindowState = FormWindowState.Minimized
     End Sub
 
     Private Sub Form1_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
@@ -30,7 +30,7 @@ Public Class FListaMotivos
         Dim Delete As Image = My.Resources.Resources.file_del
         DataGridView1.Rows.Clear()
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
+            For i  As Integer = 0 To (Filas - 1)
                 Dim idMotivo As Integer = CInt(TablaMotivos.Rows(i).Item(0))
                 Dim Motivo As String = CStr(TablaMotivos.Rows(i).Item(1))
                 DataGridView1.Rows.Add(idMotivo, Motivo, Edit, Delete)
@@ -76,5 +76,9 @@ Public Class FListaMotivos
                 End If
             End If
         End If
+    End Sub
+
+    Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
+        Me.Close()
     End Sub
 End Class

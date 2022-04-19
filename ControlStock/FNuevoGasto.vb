@@ -1,6 +1,6 @@
 ﻿Public Class FNuevoGasto
     Dim Compra As New CCompra
-    Dim idGastoEdit As UInt32
+    Dim idGastoEdit As Int32
     Dim EditMode As Boolean
 
     Private Sub BtnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnCancel.Click
@@ -8,7 +8,7 @@
     End Sub
 
     Private Sub BtnGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnGuardar.Click
-        Dim idGasto As UInt16 = Compra.CargarNroListaGasto
+        Dim idGasto As Integer = Compra.CargarNroListaGasto
         Dim Descrip As String = txtGasto.Text
         If Descrip <> "" Then
             If EditMode = False Then
@@ -39,4 +39,7 @@
         txtGasto.Text = GastoValue
     End Sub
 
+    Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
+        Me.Close()
+    End Sub
 End Class

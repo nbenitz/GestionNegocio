@@ -306,7 +306,7 @@ Public Class CCompra
         CargarNroRecib += 1
     End Function
 
-    Public Function CargarNroGasto() As UInt32
+    Public Function CargarNroGasto() As Int32
         CargarNroGasto = 0
         ObjCon.Conectar()
         ObjCon.CrearComando("SELECT MAX(idGasto) FROM gasto")
@@ -324,7 +324,7 @@ Public Class CCompra
         CargarNroGasto += 1
     End Function
 
-    Public Function CargarNroListaGasto() As UInt16
+    Public Function CargarNroListaGasto() As Int32
         CargarNroListaGasto = 0
         ObjCon.Conectar()
         ObjCon.CrearComando("SELECT MAX(idGasto) FROM listagasto")
@@ -367,7 +367,7 @@ Public Class CCompra
         Return inserto
     End Function
 
-    Public Function InsertListaGasto(ByVal idGasto As UInt32, ByVal Descrip As String) As Boolean
+    Public Function InsertListaGasto(ByVal idGasto As Int32, ByVal Descrip As String) As Boolean
         Dim inserto As Boolean = False
         Try
             ObjCon.Conectar()
@@ -386,12 +386,12 @@ Public Class CCompra
         Return inserto
     End Function
 
-    Public Function UpdateListaGasto(ByVal idGasto As UInt16, ByVal Descrip As String) As Boolean
+    Public Function UpdateListaGasto(ByVal idGasto As Int32, ByVal Descrip As String) As Boolean
         Dim inserto As Boolean = False
         Try
             ObjCon.Conectar()
             ObjCon.CrearComando("UPDATE listagasto SET Descripcion = ?Descrip WHERE idGasto = ?idGasto")
-            ObjCon.AsignarParametro("?idGasto", MySqlDbType.UInt16, idGasto)
+            ObjCon.AsignarParametro("?idGasto", MySqlDbType.Int32, idGasto)
             ObjCon.AsignarParametro("?Descrip", MySqlDbType.String, Descrip)
             If ObjCon.EjecutarConsulta() > 0 Then
                 inserto = True
@@ -405,7 +405,7 @@ Public Class CCompra
         Return inserto
     End Function
 
-    Public Function InsertGasto(ByVal idGasto As UInt32, ByVal DescripFK As UInt32, ByVal Fecha As String, ByVal Importe As UInt32) As Boolean
+    Public Function InsertGasto(ByVal idGasto As Int32, ByVal DescripFK As UInt32, ByVal Fecha As String, ByVal Importe As UInt32) As Boolean
         Dim inserto As Boolean = False
         Try
             ObjCon.Conectar()

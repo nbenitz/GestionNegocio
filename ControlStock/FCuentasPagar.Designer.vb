@@ -22,13 +22,14 @@ Partial Class FCuentasPagar
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FCuentasPagar))
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.txtNroFac = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.lblBuscar = New System.Windows.Forms.Label()
@@ -44,7 +45,6 @@ Partial Class FCuentasPagar
         Me.lblCredGs = New System.Windows.Forms.Label()
         Me.btnCredOk = New System.Windows.Forms.Button()
         Me.txtCredEntrega = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.NroCompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Proveedor = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -54,28 +54,37 @@ Partial Class FCuentasPagar
         Me.Entregado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Saldo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Detalle = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.Reporte1 = New ControlStock.Reporte()
+        Me.DataGridViewImageColumn1 = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.pnlTopBar = New System.Windows.Forms.Panel()
+        Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.BtnCerrarForm = New System.Windows.Forms.PictureBox()
         Me.GroupBox1.SuspendLayout()
         Me.pnlCredito.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlTopBar.SuspendLayout()
+        CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'txtNroFac
         '
-        Me.txtNroFac.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNroFac.Location = New System.Drawing.Point(172, 32)
+        Me.txtNroFac.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.txtNroFac.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtNroFac.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNroFac.ForeColor = System.Drawing.Color.White
+        Me.txtNroFac.Location = New System.Drawing.Point(172, 33)
         Me.txtNroFac.Name = "txtNroFac"
-        Me.txtNroFac.Size = New System.Drawing.Size(134, 20)
+        Me.txtNroFac.Size = New System.Drawing.Size(134, 22)
         Me.txtNroFac.TabIndex = 44
         '
         'GroupBox1
         '
+        Me.GroupBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.lblBuscar)
         Me.GroupBox1.Controls.Add(Me.cmbFiltrarPor)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.txtNroFac)
         Me.GroupBox1.ForeColor = System.Drawing.Color.White
-        Me.GroupBox1.Location = New System.Drawing.Point(38, 525)
+        Me.GroupBox1.Location = New System.Drawing.Point(38, 519)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(323, 69)
         Me.GroupBox1.TabIndex = 9
@@ -95,11 +104,15 @@ Partial Class FCuentasPagar
         '
         'cmbFiltrarPor
         '
+        Me.cmbFiltrarPor.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.cmbFiltrarPor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmbFiltrarPor.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbFiltrarPor.ForeColor = System.Drawing.Color.White
         Me.cmbFiltrarPor.FormattingEnabled = True
         Me.cmbFiltrarPor.Items.AddRange(New Object() {"Todos", "Proveedor"})
         Me.cmbFiltrarPor.Location = New System.Drawing.Point(23, 32)
         Me.cmbFiltrarPor.Name = "cmbFiltrarPor"
-        Me.cmbFiltrarPor.Size = New System.Drawing.Size(134, 21)
+        Me.cmbFiltrarPor.Size = New System.Drawing.Size(134, 24)
         Me.cmbFiltrarPor.TabIndex = 1
         '
         'Label1
@@ -115,9 +128,10 @@ Partial Class FCuentasPagar
         '
         'btnSalir
         '
+        Me.btnSalir.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnSalir.BackColor = System.Drawing.Color.White
         Me.btnSalir.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSalir.Location = New System.Drawing.Point(36, 465)
+        Me.btnSalir.Location = New System.Drawing.Point(36, 459)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(52, 25)
         Me.btnSalir.TabIndex = 13
@@ -126,10 +140,11 @@ Partial Class FCuentasPagar
         '
         'lblTotal
         '
+        Me.lblTotal.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblTotal.AutoSize = True
         Me.lblTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTotal.ForeColor = System.Drawing.Color.White
-        Me.lblTotal.Location = New System.Drawing.Point(542, 541)
+        Me.lblTotal.Location = New System.Drawing.Point(542, 535)
         Me.lblTotal.Name = "lblTotal"
         Me.lblTotal.Size = New System.Drawing.Size(71, 13)
         Me.lblTotal.TabIndex = 11
@@ -137,19 +152,24 @@ Partial Class FCuentasPagar
         '
         'txtTotal
         '
-        Me.txtTotal.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.txtTotal.Location = New System.Drawing.Point(545, 557)
+        Me.txtTotal.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.txtTotal.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTotal.ForeColor = System.Drawing.Color.White
+        Me.txtTotal.Location = New System.Drawing.Point(545, 552)
         Me.txtTotal.Name = "txtTotal"
         Me.txtTotal.ReadOnly = True
         Me.txtTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtTotal.Size = New System.Drawing.Size(98, 20)
+        Me.txtTotal.Size = New System.Drawing.Size(98, 22)
         Me.txtTotal.TabIndex = 10
         '
         'btnCancelar
         '
+        Me.btnCancelar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnCancelar.BackColor = System.Drawing.Color.White
         Me.btnCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancelar.Location = New System.Drawing.Point(110, 465)
+        Me.btnCancelar.Location = New System.Drawing.Point(110, 459)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(117, 25)
         Me.btnCancelar.TabIndex = 14
@@ -158,9 +178,10 @@ Partial Class FCuentasPagar
         '
         'btnEntrega
         '
+        Me.btnEntrega.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnEntrega.BackColor = System.Drawing.Color.White
         Me.btnEntrega.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnEntrega.Location = New System.Drawing.Point(247, 465)
+        Me.btnEntrega.Location = New System.Drawing.Point(247, 459)
         Me.btnEntrega.Name = "btnEntrega"
         Me.btnEntrega.Size = New System.Drawing.Size(142, 25)
         Me.btnEntrega.TabIndex = 15
@@ -169,13 +190,14 @@ Partial Class FCuentasPagar
         '
         'pnlCredito
         '
+        Me.pnlCredito.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.pnlCredito.BackColor = System.Drawing.Color.White
         Me.pnlCredito.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.pnlCredito.Controls.Add(Me.btnCredCancel)
         Me.pnlCredito.Controls.Add(Me.lblCredGs)
         Me.pnlCredito.Controls.Add(Me.btnCredOk)
         Me.pnlCredito.Controls.Add(Me.txtCredEntrega)
-        Me.pnlCredito.Location = New System.Drawing.Point(395, 398)
+        Me.pnlCredito.Location = New System.Drawing.Point(395, 392)
         Me.pnlCredito.Name = "pnlCredito"
         Me.pnlCredito.Size = New System.Drawing.Size(204, 92)
         Me.pnlCredito.TabIndex = 57
@@ -220,26 +242,16 @@ Partial Class FCuentasPagar
         Me.txtCredEntrega.Size = New System.Drawing.Size(125, 20)
         Me.txtCredEntrega.TabIndex = 67
         '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(272, 9)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(173, 25)
-        Me.Label2.TabIndex = 58
-        Me.Label2.Text = "Cuentas a Pagar"
-        '
         'DataGridView1
         '
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.AllowUserToResizeRows = False
+        Me.DataGridView1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
         Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NroCompra, Me.Proveedor, Me.Fecha, Me.Vto, Me.Total, Me.Entregado, Me.Saldo, Me.Detalle})
-        Me.DataGridView1.Location = New System.Drawing.Point(13, 52)
+        Me.DataGridView1.Location = New System.Drawing.Point(13, 46)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
@@ -248,9 +260,9 @@ Partial Class FCuentasPagar
         '
         'NroCompra
         '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle1.Padding = New System.Windows.Forms.Padding(0, 0, 10, 0)
-        Me.NroCompra.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle8.Padding = New System.Windows.Forms.Padding(0, 0, 10, 0)
+        Me.NroCompra.DefaultCellStyle = DataGridViewCellStyle8
         Me.NroCompra.HeaderText = "Nro. Compra"
         Me.NroCompra.Name = "NroCompra"
         Me.NroCompra.ReadOnly = True
@@ -266,8 +278,8 @@ Partial Class FCuentasPagar
         '
         'Fecha
         '
-        DataGridViewCellStyle2.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
-        Me.Fecha.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle9.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
+        Me.Fecha.DefaultCellStyle = DataGridViewCellStyle9
         Me.Fecha.HeaderText = "Fecha"
         Me.Fecha.Name = "Fecha"
         Me.Fecha.ReadOnly = True
@@ -284,11 +296,11 @@ Partial Class FCuentasPagar
         '
         'Total
         '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.Format = "N0"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.Total.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle10.Format = "N0"
+        DataGridViewCellStyle10.NullValue = Nothing
+        Me.Total.DefaultCellStyle = DataGridViewCellStyle10
         Me.Total.HeaderText = "Total"
         Me.Total.Name = "Total"
         Me.Total.ReadOnly = True
@@ -296,10 +308,10 @@ Partial Class FCuentasPagar
         '
         'Entregado
         '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle4.Format = "N0"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.Entregado.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle11.Format = "N0"
+        DataGridViewCellStyle11.NullValue = Nothing
+        Me.Entregado.DefaultCellStyle = DataGridViewCellStyle11
         Me.Entregado.HeaderText = "Entregado"
         Me.Entregado.Name = "Entregado"
         Me.Entregado.ReadOnly = True
@@ -307,11 +319,11 @@ Partial Class FCuentasPagar
         '
         'Saldo
         '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle5.Format = "N0"
-        DataGridViewCellStyle5.NullValue = Nothing
-        DataGridViewCellStyle5.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
-        Me.Saldo.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle12.Format = "N0"
+        DataGridViewCellStyle12.NullValue = Nothing
+        DataGridViewCellStyle12.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
+        Me.Saldo.DefaultCellStyle = DataGridViewCellStyle12
         Me.Saldo.HeaderText = "Saldo"
         Me.Saldo.Name = "Saldo"
         Me.Saldo.ReadOnly = True
@@ -319,12 +331,12 @@ Partial Class FCuentasPagar
         '
         'Detalle
         '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.NullValue = CType(resources.GetObject("DataGridViewCellStyle6.NullValue"), Object)
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White
-        Me.Detalle.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle13.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle13.NullValue = CType(resources.GetObject("DataGridViewCellStyle13.NullValue"), Object)
+        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.White
+        Me.Detalle.DefaultCellStyle = DataGridViewCellStyle13
         Me.Detalle.HeaderText = ""
         Me.Detalle.Image = Global.ControlStock.My.Resources.Resources.apply1
         Me.Detalle.Name = "Detalle"
@@ -332,22 +344,62 @@ Partial Class FCuentasPagar
         Me.Detalle.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.Detalle.Width = 22
         '
-        'Reporte1
+        'DataGridViewImageColumn1
         '
-        Me.Reporte1.BackColor = System.Drawing.Color.White
-        Me.Reporte1.Location = New System.Drawing.Point(13, 52)
-        Me.Reporte1.Name = "Reporte1"
-        Me.Reporte1.Size = New System.Drawing.Size(723, 462)
-        Me.Reporte1.TabIndex = 60
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle14.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle14.NullValue = CType(resources.GetObject("DataGridViewCellStyle14.NullValue"), Object)
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.White
+        Me.DataGridViewImageColumn1.DefaultCellStyle = DataGridViewCellStyle14
+        Me.DataGridViewImageColumn1.HeaderText = ""
+        Me.DataGridViewImageColumn1.Image = Global.ControlStock.My.Resources.Resources.apply1
+        Me.DataGridViewImageColumn1.Name = "DataGridViewImageColumn1"
+        Me.DataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewImageColumn1.Width = 22
+        '
+        'pnlTopBar
+        '
+        Me.pnlTopBar.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.pnlTopBar.Controls.Add(Me.lblTitulo)
+        Me.pnlTopBar.Controls.Add(Me.BtnCerrarForm)
+        Me.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top
+        Me.pnlTopBar.Location = New System.Drawing.Point(0, 0)
+        Me.pnlTopBar.Name = "pnlTopBar"
+        Me.pnlTopBar.Size = New System.Drawing.Size(750, 35)
+        Me.pnlTopBar.TabIndex = 60
+        '
+        'lblTitulo
+        '
+        Me.lblTitulo.AutoSize = True
+        Me.lblTitulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitulo.ForeColor = System.Drawing.Color.White
+        Me.lblTitulo.Location = New System.Drawing.Point(12, 9)
+        Me.lblTitulo.Name = "lblTitulo"
+        Me.lblTitulo.Size = New System.Drawing.Size(123, 16)
+        Me.lblTitulo.TabIndex = 116
+        Me.lblTitulo.Text = "Cuentas a Pagar"
+        '
+        'BtnCerrarForm
+        '
+        Me.BtnCerrarForm.Dock = System.Windows.Forms.DockStyle.Right
+        Me.BtnCerrarForm.Image = CType(resources.GetObject("BtnCerrarForm.Image"), System.Drawing.Image)
+        Me.BtnCerrarForm.Location = New System.Drawing.Point(715, 0)
+        Me.BtnCerrarForm.Margin = New System.Windows.Forms.Padding(2)
+        Me.BtnCerrarForm.Name = "BtnCerrarForm"
+        Me.BtnCerrarForm.Size = New System.Drawing.Size(35, 35)
+        Me.BtnCerrarForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.BtnCerrarForm.TabIndex = 115
+        Me.BtnCerrarForm.TabStop = False
         '
         'FCuentasPagar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(125, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(750, 612)
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.ClientSize = New System.Drawing.Size(750, 606)
+        Me.Controls.Add(Me.pnlTopBar)
         Me.Controls.Add(Me.DataGridView1)
-        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.pnlCredito)
         Me.Controls.Add(Me.btnEntrega)
         Me.Controls.Add(Me.btnCancelar)
@@ -355,8 +407,7 @@ Partial Class FCuentasPagar
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.lblTotal)
         Me.Controls.Add(Me.txtTotal)
-        Me.Controls.Add(Me.Reporte1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "FCuentasPagar"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Cuentas a Pagar"
@@ -365,6 +416,9 @@ Partial Class FCuentasPagar
         Me.pnlCredito.ResumeLayout(False)
         Me.pnlCredito.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlTopBar.ResumeLayout(False)
+        Me.pnlTopBar.PerformLayout()
+        CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -384,7 +438,6 @@ Partial Class FCuentasPagar
     Friend WithEvents lblCredGs As System.Windows.Forms.Label
     Friend WithEvents btnCredOk As System.Windows.Forms.Button
     Friend WithEvents txtCredEntrega As System.Windows.Forms.TextBox
-    Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents Reporte1 As ControlStock.Reporte
     Friend WithEvents NroCompra As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -395,4 +448,8 @@ Partial Class FCuentasPagar
     Friend WithEvents Entregado As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Saldo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Detalle As System.Windows.Forms.DataGridViewImageColumn
+    Friend WithEvents DataGridViewImageColumn1 As DataGridViewImageColumn
+    Friend WithEvents pnlTopBar As Panel
+    Friend WithEvents lblTitulo As Label
+    Friend WithEvents BtnCerrarForm As PictureBox
 End Class

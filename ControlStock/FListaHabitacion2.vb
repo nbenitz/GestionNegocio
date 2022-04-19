@@ -11,7 +11,7 @@ Public Class FListaHabitacion2
     End Sub
 
     Private Sub F_Deactivate(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Deactivate
-        Me.WindowState = FormWindowState.Minimized
+        'Me.WindowState = FormWindowState.Minimized
     End Sub
 
     Private Sub Form1_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
@@ -26,7 +26,7 @@ Public Class FListaHabitacion2
         Dim Filas As Integer = Tabla.Rows.Count
         DataGridView1.Rows.Clear()
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
+            For i  As Integer = 0 To (Filas - 1)
                 Dim Id As UInt64 = CULng(Tabla.Rows(i).Item(0))
                 Dim Precio1 As String = CStr(Tabla.Rows(i).Item(1))
                 Dim Precio2 As String = CStr(Tabla.Rows(i).Item(2))
@@ -51,4 +51,7 @@ Public Class FListaHabitacion2
         End If
     End Sub
 
+    Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
+        Me.Close()
+    End Sub
 End Class

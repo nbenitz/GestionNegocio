@@ -4,7 +4,7 @@ Public Class FBalance
     Dim Compra As New CCompra
 
     Private Sub F_Deactivate(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Deactivate
-        Me.WindowState = FormWindowState.Minimized
+        'Me.WindowState = FormWindowState.Minimized
     End Sub
 
     Private Sub CargarIngreso(ByVal Fecha1 As String, ByVal Fecha2 As String)
@@ -200,4 +200,7 @@ Public Class FBalance
         End If
     End Sub
 
+    Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
+        Me.Close()
+    End Sub
 End Class

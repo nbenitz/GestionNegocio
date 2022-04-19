@@ -8,11 +8,11 @@
     Private Sub btnGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardar.Click
         Dim Usu As String = txtUsuario.Text
         Dim Pass As String = txtPass.Text
-        Dim Empleado As String = txtEmpleado.Text
+        Dim Empleado As Integer = CInt(txtEmpleado.Text)
         If Usu <> "" Then
             If Pass <> "" Then
                 If cmbPrivilegio.Text <> "" Then
-                    Dim idPriv As ULong = TablaPriv.Rows(cmbPrivilegio.SelectedIndex).Item(0)
+                    Dim idPriv As Integer = CInt(TablaPriv.Rows(cmbPrivilegio.SelectedIndex).Item(0))
                     If EditMode = False Then
                         If Usuario.Insertar(Usu, Pass, idPriv, Empleado) = True Then
                             MessageBox.Show("Usuario Guardado")
@@ -85,7 +85,7 @@
         txtPass.Text = Pass
         CargarPriv()
         cmbPrivilegio.SelectedItem = Priv
-        txtEmpleado.Text = idEmple
+        txtEmpleado.Text = CStr(idEmple)
         Me.Text = "Editar Usuario"
     End Sub
 
@@ -94,7 +94,7 @@
         TablaPriv = Usuario.ListarPrivilegio()
         Dim Filas As Integer = TablaPriv.Rows.Count
         If Filas > 0 Then
-            For i = 0 To (Filas - 1)
+            For i  As Integer = 0 To (Filas - 1)
                 cmbPrivilegio.Items.Add(TablaPriv.Rows(i).Item(1))
             Next
         End If
@@ -108,4 +108,7 @@
 
     End Sub
 
+    Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
+        Me.Close()
+    End Sub
 End Class

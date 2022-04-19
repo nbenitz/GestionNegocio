@@ -49,13 +49,18 @@ Partial Class FListaCompra
         Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Detalle = New System.Windows.Forms.DataGridViewImageColumn()
         Me.lblTitulo = New System.Windows.Forms.Label()
-        Me.btnActualizar = New System.Windows.Forms.Button()
         Me.btnRegistrar = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Reporte1 = New ControlStock.Reporte()
+        Me.btnActualizar = New System.Windows.Forms.Button()
+        Me.pnlTopBar = New System.Windows.Forms.Panel()
+        Me.BtnCerrarForm = New System.Windows.Forms.PictureBox()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
+        Me.pnlTopBar.SuspendLayout()
+        Me.Reporte1 = New ControlStock.Reporte()
+        CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnSalir
@@ -81,7 +86,7 @@ Partial Class FListaCompra
         Me.GroupBox1.Controls.Add(Me.dtpDesde)
         Me.GroupBox1.Controls.Add(Me.txtNroFac)
         Me.GroupBox1.ForeColor = System.Drawing.Color.White
-        Me.GroupBox1.Location = New System.Drawing.Point(36, 506)
+        Me.GroupBox1.Location = New System.Drawing.Point(36, 534)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(529, 69)
         Me.GroupBox1.TabIndex = 9
@@ -109,7 +114,10 @@ Partial Class FListaCompra
         '
         'cmbProveedor
         '
+        Me.cmbProveedor.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
         Me.cmbProveedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.cmbProveedor.ForeColor = System.Drawing.Color.White
         Me.cmbProveedor.FormattingEnabled = True
         Me.cmbProveedor.Items.AddRange(New Object() {"Todos", "Vendedor"})
         Me.cmbProveedor.Location = New System.Drawing.Point(401, 32)
@@ -141,7 +149,10 @@ Partial Class FListaCompra
         '
         'cmbFiltrarPor
         '
+        Me.cmbFiltrarPor.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
         Me.cmbFiltrarPor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbFiltrarPor.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.cmbFiltrarPor.ForeColor = System.Drawing.Color.White
         Me.cmbFiltrarPor.FormattingEnabled = True
         Me.cmbFiltrarPor.Items.AddRange(New Object() {"Todos", "Nro. Factura", "Fecha"})
         Me.cmbFiltrarPor.Location = New System.Drawing.Point(23, 32)
@@ -170,7 +181,10 @@ Partial Class FListaCompra
         '
         'txtNroFac
         '
+        Me.txtNroFac.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.txtNroFac.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtNroFac.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNroFac.ForeColor = System.Drawing.Color.White
         Me.txtNroFac.Location = New System.Drawing.Point(146, 32)
         Me.txtNroFac.Name = "txtNroFac"
         Me.txtNroFac.Size = New System.Drawing.Size(117, 20)
@@ -181,7 +195,7 @@ Partial Class FListaCompra
         Me.lblTotal.AutoSize = True
         Me.lblTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTotal.ForeColor = System.Drawing.Color.White
-        Me.lblTotal.Location = New System.Drawing.Point(587, 506)
+        Me.lblTotal.Location = New System.Drawing.Point(587, 534)
         Me.lblTotal.Name = "lblTotal"
         Me.lblTotal.Size = New System.Drawing.Size(71, 13)
         Me.lblTotal.TabIndex = 11
@@ -189,9 +203,11 @@ Partial Class FListaCompra
         '
         'txtTotal
         '
-        Me.txtTotal.BackColor = System.Drawing.Color.White
+        Me.txtTotal.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtTotal.Font = New System.Drawing.Font("Arial", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTotal.Location = New System.Drawing.Point(590, 522)
+        Me.txtTotal.ForeColor = System.Drawing.Color.White
+        Me.txtTotal.Location = New System.Drawing.Point(590, 550)
         Me.txtTotal.Name = "txtTotal"
         Me.txtTotal.ReadOnly = True
         Me.txtTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes
@@ -213,7 +229,7 @@ Partial Class FListaCompra
         Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NroFactura, Me.Fecha, Me.Proveed, Me.Total, Me.Detalle})
-        Me.DataGridView1.Location = New System.Drawing.Point(23, 46)
+        Me.DataGridView1.Location = New System.Drawing.Point(23, 74)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
@@ -285,23 +301,11 @@ Partial Class FListaCompra
         Me.lblTitulo.AutoSize = True
         Me.lblTitulo.Font = New System.Drawing.Font("Arial", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTitulo.ForeColor = System.Drawing.Color.White
-        Me.lblTitulo.Location = New System.Drawing.Point(114, 17)
+        Me.lblTitulo.Location = New System.Drawing.Point(114, 45)
         Me.lblTitulo.Name = "lblTitulo"
         Me.lblTitulo.Size = New System.Drawing.Size(495, 16)
         Me.lblTitulo.TabIndex = 16
         Me.lblTitulo.Text = "Seleccione una Compra de la Lista de la cual desea devolver el Stock"
-        '
-        'btnActualizar
-        '
-        Me.btnActualizar.BackColor = System.Drawing.Color.White
-        Me.btnActualizar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnActualizar.Image = Global.ControlStock.My.Resources.Resources.refresh1
-        Me.btnActualizar.Location = New System.Drawing.Point(187, 405)
-        Me.btnActualizar.Name = "btnActualizar"
-        Me.btnActualizar.Size = New System.Drawing.Size(32, 25)
-        Me.btnActualizar.TabIndex = 18
-        Me.btnActualizar.UseVisualStyleBackColor = False
-        Me.btnActualizar.Visible = False
         '
         'btnRegistrar
         '
@@ -321,11 +325,56 @@ Partial Class FListaCompra
         Me.Panel1.Controls.Add(Me.btnSalir)
         Me.Panel1.Controls.Add(Me.btnActualizar)
         Me.Panel1.Controls.Add(Me.btnRegistrar)
-        Me.Panel1.Controls.Add(Me.Reporte1)
-        Me.Panel1.Location = New System.Drawing.Point(23, 46)
+        Me.Panel1.Location = New System.Drawing.Point(23, 74)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(692, 451)
         Me.Panel1.TabIndex = 19
+        '
+        'btnActualizar
+        '
+        Me.btnActualizar.BackColor = System.Drawing.Color.White
+        Me.btnActualizar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnActualizar.Image = Global.ControlStock.My.Resources.Resources.refresh1
+        Me.btnActualizar.Location = New System.Drawing.Point(187, 405)
+        Me.btnActualizar.Name = "btnActualizar"
+        Me.btnActualizar.Size = New System.Drawing.Size(32, 25)
+        Me.btnActualizar.TabIndex = 18
+        Me.btnActualizar.UseVisualStyleBackColor = False
+        Me.btnActualizar.Visible = False
+        '
+        'pnlTopBar
+        '
+        Me.pnlTopBar.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.pnlTopBar.Controls.Add(Me.Label2)
+        Me.pnlTopBar.Controls.Add(Me.BtnCerrarForm)
+        Me.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top
+        Me.pnlTopBar.Location = New System.Drawing.Point(0, 0)
+        Me.pnlTopBar.Name = "pnlTopBar"
+        Me.pnlTopBar.Size = New System.Drawing.Size(737, 35)
+        Me.pnlTopBar.TabIndex = 20
+        '
+        'BtnCerrarForm
+        '
+        Me.BtnCerrarForm.Dock = System.Windows.Forms.DockStyle.Right
+        Me.BtnCerrarForm.Image = CType(resources.GetObject("BtnCerrarForm.Image"), System.Drawing.Image)
+        Me.BtnCerrarForm.Location = New System.Drawing.Point(702, 0)
+        Me.BtnCerrarForm.Margin = New System.Windows.Forms.Padding(2)
+        Me.BtnCerrarForm.Name = "BtnCerrarForm"
+        Me.BtnCerrarForm.Size = New System.Drawing.Size(35, 35)
+        Me.BtnCerrarForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.BtnCerrarForm.TabIndex = 115
+        Me.BtnCerrarForm.TabStop = False
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.White
+        Me.Label2.Location = New System.Drawing.Point(20, 9)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(129, 16)
+        Me.Label2.TabIndex = 118
+        Me.Label2.Text = "Lista de Compras"
         '
         'Reporte1
         '
@@ -339,15 +388,16 @@ Partial Class FListaCompra
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(125, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(737, 598)
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.ClientSize = New System.Drawing.Size(737, 615)
+        Me.Controls.Add(Me.pnlTopBar)
         Me.Controls.Add(Me.lblTitulo)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.lblTotal)
         Me.Controls.Add(Me.txtTotal)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Panel1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "FListaCompra"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Lista de Compras"
@@ -355,6 +405,9 @@ Partial Class FListaCompra
         Me.GroupBox1.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
+        Me.pnlTopBar.ResumeLayout(False)
+        Me.pnlTopBar.PerformLayout()
+        CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -384,4 +437,7 @@ Partial Class FListaCompra
     Friend WithEvents Proveed As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Total As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Detalle As System.Windows.Forms.DataGridViewImageColumn
+    Friend WithEvents pnlTopBar As Panel
+    Friend WithEvents BtnCerrarForm As PictureBox
+    Friend WithEvents Label2 As Label
 End Class

@@ -23,6 +23,7 @@ Partial Class FNuevoPrivilegio
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FNuevoPrivilegio))
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.btnCancel = New System.Windows.Forms.PictureBox()
         Me.btnGuardar = New System.Windows.Forms.PictureBox()
@@ -71,6 +72,9 @@ Partial Class FNuevoPrivilegio
         Me.TxtNombre = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
+        Me.pnlTopBar = New System.Windows.Forms.Panel()
+        Me.BtnCerrarForm = New System.Windows.Forms.PictureBox()
+        Me.lblTitulo = New System.Windows.Forms.Label()
         CType(Me.btnCancel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnGuardar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -84,6 +88,8 @@ Partial Class FNuevoPrivilegio
         Me.GroupBox11.SuspendLayout()
         Me.GroupBox8.SuspendLayout()
         Me.GroupBox12.SuspendLayout()
+        Me.pnlTopBar.SuspendLayout()
+        CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ToolTip1
@@ -98,7 +104,7 @@ Partial Class FNuevoPrivilegio
         Me.btnCancel.BackColor = System.Drawing.Color.Transparent
         Me.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnCancel.Image = Global.ControlStock.My.Resources.Resources.file_exclude
-        Me.btnCancel.Location = New System.Drawing.Point(488, 481)
+        Me.btnCancel.Location = New System.Drawing.Point(488, 504)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(41, 38)
         Me.btnCancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -112,7 +118,7 @@ Partial Class FNuevoPrivilegio
         Me.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnGuardar.Image = Global.ControlStock.My.Resources.Resources.file_apply
-        Me.btnGuardar.Location = New System.Drawing.Point(442, 481)
+        Me.btnGuardar.Location = New System.Drawing.Point(442, 504)
         Me.btnGuardar.Name = "btnGuardar"
         Me.btnGuardar.Size = New System.Drawing.Size(41, 38)
         Me.btnGuardar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -157,7 +163,7 @@ Partial Class FNuevoPrivilegio
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label1.ForeColor = System.Drawing.Color.LightGray
         Me.Label1.Location = New System.Drawing.Point(12, 20)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(91, 18)
@@ -201,7 +207,7 @@ Partial Class FNuevoPrivilegio
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label2.ForeColor = System.Drawing.Color.LightGray
         Me.Label2.Location = New System.Drawing.Point(12, 20)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(64, 18)
@@ -234,7 +240,7 @@ Partial Class FNuevoPrivilegio
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label3.ForeColor = System.Drawing.Color.LightGray
         Me.Label3.Location = New System.Drawing.Point(12, 20)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(82, 18)
@@ -289,7 +295,7 @@ Partial Class FNuevoPrivilegio
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label4.ForeColor = System.Drawing.Color.LightGray
         Me.Label4.Location = New System.Drawing.Point(12, 20)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(109, 18)
@@ -303,7 +309,7 @@ Partial Class FNuevoPrivilegio
         Me.GroupBox2.Controls.Add(Me.CkbProdReg)
         Me.GroupBox2.Controls.Add(Me.CkbProdAct)
         Me.GroupBox2.Controls.Add(Me.CkbProdElim)
-        Me.GroupBox2.Location = New System.Drawing.Point(28, 79)
+        Me.GroupBox2.Location = New System.Drawing.Point(28, 102)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(501, 57)
         Me.GroupBox2.TabIndex = 26
@@ -314,7 +320,7 @@ Partial Class FNuevoPrivilegio
         Me.GroupBox3.Controls.Add(Me.Label2)
         Me.GroupBox3.Controls.Add(Me.CkbVentConsul)
         Me.GroupBox3.Controls.Add(Me.CkbVentReg)
-        Me.GroupBox3.Location = New System.Drawing.Point(28, 127)
+        Me.GroupBox3.Location = New System.Drawing.Point(28, 150)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(501, 57)
         Me.GroupBox3.TabIndex = 27
@@ -325,7 +331,7 @@ Partial Class FNuevoPrivilegio
         Me.GroupBox4.Controls.Add(Me.Label3)
         Me.GroupBox4.Controls.Add(Me.CkbCompCons)
         Me.GroupBox4.Controls.Add(Me.CkbCompReg)
-        Me.GroupBox4.Location = New System.Drawing.Point(28, 175)
+        Me.GroupBox4.Location = New System.Drawing.Point(28, 198)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(501, 57)
         Me.GroupBox4.TabIndex = 28
@@ -338,7 +344,7 @@ Partial Class FNuevoPrivilegio
         Me.GroupBox5.Controls.Add(Me.CkbProvAct)
         Me.GroupBox5.Controls.Add(Me.CkbProvCons)
         Me.GroupBox5.Controls.Add(Me.CkbProvElim)
-        Me.GroupBox5.Location = New System.Drawing.Point(28, 222)
+        Me.GroupBox5.Location = New System.Drawing.Point(28, 245)
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Size = New System.Drawing.Size(501, 57)
         Me.GroupBox5.TabIndex = 29
@@ -349,7 +355,7 @@ Partial Class FNuevoPrivilegio
         Me.GroupBox6.Controls.Add(Me.GroupBox10)
         Me.GroupBox6.Controls.Add(Me.Label5)
         Me.GroupBox6.Controls.Add(Me.CkbEmp)
-        Me.GroupBox6.Location = New System.Drawing.Point(28, 270)
+        Me.GroupBox6.Location = New System.Drawing.Point(28, 293)
         Me.GroupBox6.Name = "GroupBox6"
         Me.GroupBox6.Size = New System.Drawing.Size(501, 57)
         Me.GroupBox6.TabIndex = 30
@@ -390,7 +396,7 @@ Partial Class FNuevoPrivilegio
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label5.ForeColor = System.Drawing.Color.LightGray
         Me.Label5.Location = New System.Drawing.Point(12, 20)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(97, 18)
@@ -412,7 +418,7 @@ Partial Class FNuevoPrivilegio
         '
         Me.GroupBox9.Controls.Add(Me.Label9)
         Me.GroupBox9.Controls.Add(Me.CkbDevCli)
-        Me.GroupBox9.Location = New System.Drawing.Point(28, 366)
+        Me.GroupBox9.Location = New System.Drawing.Point(28, 389)
         Me.GroupBox9.Name = "GroupBox9"
         Me.GroupBox9.Size = New System.Drawing.Size(501, 57)
         Me.GroupBox9.TabIndex = 33
@@ -422,7 +428,7 @@ Partial Class FNuevoPrivilegio
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label9.ForeColor = System.Drawing.Color.LightGray
         Me.Label9.Location = New System.Drawing.Point(12, 20)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(195, 18)
@@ -476,7 +482,7 @@ Partial Class FNuevoPrivilegio
         Me.GroupBox11.Controls.Add(Me.GroupBox7)
         Me.GroupBox11.Controls.Add(Me.Label8)
         Me.GroupBox11.Controls.Add(Me.CkbFinanz)
-        Me.GroupBox11.Location = New System.Drawing.Point(28, 318)
+        Me.GroupBox11.Location = New System.Drawing.Point(28, 341)
         Me.GroupBox11.Name = "GroupBox11"
         Me.GroupBox11.Size = New System.Drawing.Size(501, 57)
         Me.GroupBox11.TabIndex = 34
@@ -486,7 +492,7 @@ Partial Class FNuevoPrivilegio
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label8.ForeColor = System.Drawing.Color.LightGray
         Me.Label8.Location = New System.Drawing.Point(12, 20)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(81, 18)
@@ -508,7 +514,7 @@ Partial Class FNuevoPrivilegio
         '
         Me.GroupBox8.Controls.Add(Me.Label10)
         Me.GroupBox8.Controls.Add(Me.CkbDevProv)
-        Me.GroupBox8.Location = New System.Drawing.Point(28, 414)
+        Me.GroupBox8.Location = New System.Drawing.Point(28, 437)
         Me.GroupBox8.Name = "GroupBox8"
         Me.GroupBox8.Size = New System.Drawing.Size(501, 57)
         Me.GroupBox8.TabIndex = 35
@@ -518,7 +524,7 @@ Partial Class FNuevoPrivilegio
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label10.ForeColor = System.Drawing.Color.LightGray
         Me.Label10.Location = New System.Drawing.Point(12, 20)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(196, 18)
@@ -540,7 +546,7 @@ Partial Class FNuevoPrivilegio
         '
         Me.GroupBox12.Controls.Add(Me.Label12)
         Me.GroupBox12.Controls.Add(Me.CkbHab)
-        Me.GroupBox12.Location = New System.Drawing.Point(28, 463)
+        Me.GroupBox12.Location = New System.Drawing.Point(28, 486)
         Me.GroupBox12.Name = "GroupBox12"
         Me.GroupBox12.Size = New System.Drawing.Size(253, 57)
         Me.GroupBox12.TabIndex = 36
@@ -551,7 +557,7 @@ Partial Class FNuevoPrivilegio
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.ForeColor = System.Drawing.Color.LightSteelBlue
+        Me.Label12.ForeColor = System.Drawing.Color.LightGray
         Me.Label12.Location = New System.Drawing.Point(12, 20)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(111, 18)
@@ -571,8 +577,11 @@ Partial Class FNuevoPrivilegio
         '
         'TxtNombre
         '
+        Me.TxtNombre.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.TxtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TxtNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtNombre.Location = New System.Drawing.Point(28, 35)
+        Me.TxtNombre.ForeColor = System.Drawing.Color.White
+        Me.TxtNombre.Location = New System.Drawing.Point(28, 58)
         Me.TxtNombre.Name = "TxtNombre"
         Me.TxtNombre.Size = New System.Drawing.Size(253, 24)
         Me.TxtNombre.TabIndex = 85
@@ -580,8 +589,8 @@ Partial Class FNuevoPrivilegio
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.ForeColor = System.Drawing.Color.LightSteelBlue
-        Me.Label11.Location = New System.Drawing.Point(25, 19)
+        Me.Label11.ForeColor = System.Drawing.Color.LightGray
+        Me.Label11.Location = New System.Drawing.Point(25, 42)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(166, 13)
         Me.Label11.TabIndex = 86
@@ -590,19 +599,54 @@ Partial Class FNuevoPrivilegio
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.ForeColor = System.Drawing.Color.LightSteelBlue
-        Me.Label13.Location = New System.Drawing.Point(25, 68)
+        Me.Label13.ForeColor = System.Drawing.Color.LightGray
+        Me.Label13.Location = New System.Drawing.Point(25, 91)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(158, 13)
         Me.Label13.TabIndex = 87
         Me.Label13.Text = "Ajustar los Accesos o Privilegios"
         '
+        'pnlTopBar
+        '
+        Me.pnlTopBar.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.pnlTopBar.Controls.Add(Me.lblTitulo)
+        Me.pnlTopBar.Controls.Add(Me.BtnCerrarForm)
+        Me.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top
+        Me.pnlTopBar.Location = New System.Drawing.Point(0, 0)
+        Me.pnlTopBar.Name = "pnlTopBar"
+        Me.pnlTopBar.Size = New System.Drawing.Size(559, 35)
+        Me.pnlTopBar.TabIndex = 88
+        '
+        'BtnCerrarForm
+        '
+        Me.BtnCerrarForm.Dock = System.Windows.Forms.DockStyle.Right
+        Me.BtnCerrarForm.Image = CType(resources.GetObject("BtnCerrarForm.Image"), System.Drawing.Image)
+        Me.BtnCerrarForm.Location = New System.Drawing.Point(524, 0)
+        Me.BtnCerrarForm.Margin = New System.Windows.Forms.Padding(2)
+        Me.BtnCerrarForm.Name = "BtnCerrarForm"
+        Me.BtnCerrarForm.Size = New System.Drawing.Size(35, 35)
+        Me.BtnCerrarForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.BtnCerrarForm.TabIndex = 115
+        Me.BtnCerrarForm.TabStop = False
+        '
+        'lblTitulo
+        '
+        Me.lblTitulo.AutoSize = True
+        Me.lblTitulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitulo.ForeColor = System.Drawing.Color.White
+        Me.lblTitulo.Location = New System.Drawing.Point(25, 9)
+        Me.lblTitulo.Name = "lblTitulo"
+        Me.lblTitulo.Size = New System.Drawing.Size(245, 16)
+        Me.lblTitulo.TabIndex = 117
+        Me.lblTitulo.Text = "Agregar Nuevo Nivel de Privilegio"
+        '
         'FNuevoPrivilegio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(125, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(559, 537)
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.ClientSize = New System.Drawing.Size(559, 569)
+        Me.Controls.Add(Me.pnlTopBar)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.TxtNombre)
@@ -618,7 +662,7 @@ Partial Class FNuevoPrivilegio
         Me.Controls.Add(Me.GroupBox8)
         Me.Controls.Add(Me.GroupBox9)
         Me.ForeColor = System.Drawing.Color.White
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "FNuevoPrivilegio"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Agregar Nuevo Nivel de Privilegios"
@@ -646,6 +690,9 @@ Partial Class FNuevoPrivilegio
         Me.GroupBox8.PerformLayout()
         Me.GroupBox12.ResumeLayout(False)
         Me.GroupBox12.PerformLayout()
+        Me.pnlTopBar.ResumeLayout(False)
+        Me.pnlTopBar.PerformLayout()
+        CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -698,4 +745,7 @@ Partial Class FNuevoPrivilegio
     Friend WithEvents TxtNombre As TextBox
     Friend WithEvents Label11 As Label
     Friend WithEvents Label13 As Label
+    Friend WithEvents pnlTopBar As Panel
+    Friend WithEvents BtnCerrarForm As PictureBox
+    Friend WithEvents lblTitulo As Label
 End Class
