@@ -29,9 +29,10 @@ Partial Class FAsistencia
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.pnlTopBar = New System.Windows.Forms.Panel()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.BtnCerrarForm = New System.Windows.Forms.PictureBox()
@@ -54,11 +55,9 @@ Partial Class FAsistencia
         Me.pbxBuscCli = New System.Windows.Forms.PictureBox()
         Me.pbxDelCli = New System.Windows.Forms.PictureBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.dgvAusencia = New System.Windows.Forms.DataGridView()
-        Me.lblAusente = New System.Windows.Forms.Label()
-        Me.lblTitAusente = New System.Windows.Forms.Label()
         Me.lblCantSocio = New System.Windows.Forms.Label()
         Me.lblTitCantSocios = New System.Windows.Forms.Label()
+        Me.dgvAusencia = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Ausen = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -207,7 +206,7 @@ Partial Class FAsistencia
         Me.cmbMes.ForeColor = System.Drawing.Color.White
         Me.cmbMes.FormattingEnabled = True
         Me.cmbMes.Items.AddRange(New Object() {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre"})
-        Me.cmbMes.Location = New System.Drawing.Point(253, 24)
+        Me.cmbMes.Location = New System.Drawing.Point(290, 24)
         Me.cmbMes.Name = "cmbMes"
         Me.cmbMes.Size = New System.Drawing.Size(106, 23)
         Me.cmbMes.TabIndex = 87
@@ -217,7 +216,7 @@ Partial Class FAsistencia
         Me.dtpHasta.CalendarFont = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpHasta.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpHasta.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpHasta.Location = New System.Drawing.Point(253, 25)
+        Me.dtpHasta.Location = New System.Drawing.Point(290, 25)
         Me.dtpHasta.Name = "dtpHasta"
         Me.dtpHasta.Size = New System.Drawing.Size(106, 21)
         Me.dtpHasta.TabIndex = 95
@@ -227,7 +226,7 @@ Partial Class FAsistencia
         Me.lblHasta.AutoSize = True
         Me.lblHasta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblHasta.ForeColor = System.Drawing.Color.White
-        Me.lblHasta.Location = New System.Drawing.Point(250, 8)
+        Me.lblHasta.Location = New System.Drawing.Point(287, 8)
         Me.lblHasta.Name = "lblHasta"
         Me.lblHasta.Size = New System.Drawing.Size(35, 13)
         Me.lblHasta.TabIndex = 93
@@ -238,7 +237,7 @@ Partial Class FAsistencia
         Me.lblSocio.AutoSize = True
         Me.lblSocio.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSocio.ForeColor = System.Drawing.Color.White
-        Me.lblSocio.Location = New System.Drawing.Point(382, 8)
+        Me.lblSocio.Location = New System.Drawing.Point(419, 8)
         Me.lblSocio.Name = "lblSocio"
         Me.lblSocio.Size = New System.Drawing.Size(39, 13)
         Me.lblSocio.TabIndex = 91
@@ -249,7 +248,7 @@ Partial Class FAsistencia
         Me.lblBuscar.AutoSize = True
         Me.lblBuscar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblBuscar.ForeColor = System.Drawing.Color.White
-        Me.lblBuscar.Location = New System.Drawing.Point(125, 10)
+        Me.lblBuscar.Location = New System.Drawing.Point(162, 10)
         Me.lblBuscar.Name = "lblBuscar"
         Me.lblBuscar.Size = New System.Drawing.Size(38, 13)
         Me.lblBuscar.TabIndex = 90
@@ -262,10 +261,10 @@ Partial Class FAsistencia
         Me.cmbFiltrarPor.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbFiltrarPor.ForeColor = System.Drawing.Color.White
         Me.cmbFiltrarPor.FormattingEnabled = True
-        Me.cmbFiltrarPor.Items.AddRange(New Object() {"Dia", "Mes", "Fecha", "Ausencias"})
+        Me.cmbFiltrarPor.Items.AddRange(New Object() {"Dia", "Mes", "Fecha", "Ausencias", "Socios sin Ausencias"})
         Me.cmbFiltrarPor.Location = New System.Drawing.Point(7, 24)
         Me.cmbFiltrarPor.Name = "cmbFiltrarPor"
-        Me.cmbFiltrarPor.Size = New System.Drawing.Size(106, 23)
+        Me.cmbFiltrarPor.Size = New System.Drawing.Size(139, 23)
         Me.cmbFiltrarPor.TabIndex = 86
         '
         'Label1
@@ -284,7 +283,7 @@ Partial Class FAsistencia
         Me.dtpDesde.CalendarFont = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpDesde.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpDesde.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpDesde.Location = New System.Drawing.Point(128, 25)
+        Me.dtpDesde.Location = New System.Drawing.Point(165, 25)
         Me.dtpDesde.Name = "dtpDesde"
         Me.dtpDesde.Size = New System.Drawing.Size(106, 21)
         Me.dtpDesde.TabIndex = 94
@@ -295,7 +294,7 @@ Partial Class FAsistencia
         Me.txtCI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtCI.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCI.ForeColor = System.Drawing.Color.White
-        Me.txtCI.Location = New System.Drawing.Point(385, 26)
+        Me.txtCI.Location = New System.Drawing.Point(422, 26)
         Me.txtCI.Name = "txtCI"
         Me.txtCI.ReadOnly = True
         Me.txtCI.Size = New System.Drawing.Size(158, 21)
@@ -308,7 +307,7 @@ Partial Class FAsistencia
         Me.cmbAno.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbAno.ForeColor = System.Drawing.Color.White
         Me.cmbAno.FormattingEnabled = True
-        Me.cmbAno.Location = New System.Drawing.Point(128, 24)
+        Me.cmbAno.Location = New System.Drawing.Point(165, 24)
         Me.cmbAno.Name = "cmbAno"
         Me.cmbAno.Size = New System.Drawing.Size(106, 23)
         Me.cmbAno.TabIndex = 96
@@ -319,7 +318,7 @@ Partial Class FAsistencia
         Me.pbxBuscCli.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.pbxBuscCli.Cursor = System.Windows.Forms.Cursors.Hand
         Me.pbxBuscCli.Image = Global.ControlStock.My.Resources.Resources.find
-        Me.pbxBuscCli.Location = New System.Drawing.Point(549, 25)
+        Me.pbxBuscCli.Location = New System.Drawing.Point(586, 25)
         Me.pbxBuscCli.Name = "pbxBuscCli"
         Me.pbxBuscCli.Size = New System.Drawing.Size(25, 22)
         Me.pbxBuscCli.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -332,7 +331,7 @@ Partial Class FAsistencia
         Me.pbxDelCli.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.pbxDelCli.Cursor = System.Windows.Forms.Cursors.Hand
         Me.pbxDelCli.Image = Global.ControlStock.My.Resources.Resources.delete
-        Me.pbxDelCli.Location = New System.Drawing.Point(580, 26)
+        Me.pbxDelCli.Location = New System.Drawing.Point(617, 26)
         Me.pbxDelCli.Name = "pbxDelCli"
         Me.pbxDelCli.Size = New System.Drawing.Size(25, 22)
         Me.pbxDelCli.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -342,8 +341,6 @@ Partial Class FAsistencia
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
-        Me.Panel1.Controls.Add(Me.lblAusente)
-        Me.Panel1.Controls.Add(Me.lblTitAusente)
         Me.Panel1.Controls.Add(Me.lblCantSocio)
         Me.Panel1.Controls.Add(Me.lblTitCantSocios)
         Me.Panel1.Controls.Add(Me.pbxDelCli)
@@ -364,71 +361,6 @@ Partial Class FAsistencia
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(750, 410)
         Me.Panel1.TabIndex = 99
-        '
-        'dgvAusencia
-        '
-        Me.dgvAusencia.AllowUserToAddRows = False
-        Me.dgvAusencia.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
-        Me.dgvAusencia.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dgvAusencia.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Gray
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvAusencia.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
-        Me.dgvAusencia.ColumnHeadersHeight = 25
-        Me.dgvAusencia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgvAusencia.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.Ausen, Me.VerDias, Me.VerFicha})
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvAusencia.DefaultCellStyle = DataGridViewCellStyle8
-        Me.dgvAusencia.Location = New System.Drawing.Point(7, 63)
-        Me.dgvAusencia.Name = "dgvAusencia"
-        Me.dgvAusencia.ReadOnly = True
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Gray
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvAusencia.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
-        Me.dgvAusencia.RowHeadersVisible = False
-        Me.dgvAusencia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
-        Me.dgvAusencia.Size = New System.Drawing.Size(734, 313)
-        Me.dgvAusencia.TabIndex = 103
-        '
-        'lblAusente
-        '
-        Me.lblAusente.AutoSize = True
-        Me.lblAusente.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAusente.ForeColor = System.Drawing.Color.White
-        Me.lblAusente.Location = New System.Drawing.Point(308, 383)
-        Me.lblAusente.Name = "lblAusente"
-        Me.lblAusente.Size = New System.Drawing.Size(43, 17)
-        Me.lblAusente.TabIndex = 102
-        Me.lblAusente.Text = "5 días"
-        Me.lblAusente.Visible = False
-        '
-        'lblTitAusente
-        '
-        Me.lblTitAusente.AutoSize = True
-        Me.lblTitAusente.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTitAusente.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.lblTitAusente.Location = New System.Drawing.Point(217, 383)
-        Me.lblTitAusente.Name = "lblTitAusente"
-        Me.lblTitAusente.Size = New System.Drawing.Size(85, 17)
-        Me.lblTitAusente.TabIndex = 101
-        Me.lblTitAusente.Text = "Días ausente:"
-        Me.lblTitAusente.Visible = False
         '
         'lblCantSocio
         '
@@ -452,8 +384,53 @@ Partial Class FAsistencia
         Me.lblTitCantSocios.TabIndex = 99
         Me.lblTitCantSocios.Text = "Cantidad de Socios:"
         '
+        'dgvAusencia
+        '
+        Me.dgvAusencia.AllowUserToAddRows = False
+        Me.dgvAusencia.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.dgvAusencia.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgvAusencia.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Gray
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvAusencia.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+        Me.dgvAusencia.ColumnHeadersHeight = 25
+        Me.dgvAusencia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.dgvAusencia.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.Ausen, Me.VerDias, Me.VerFicha})
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvAusencia.DefaultCellStyle = DataGridViewCellStyle9
+        Me.dgvAusencia.Location = New System.Drawing.Point(7, 63)
+        Me.dgvAusencia.Name = "dgvAusencia"
+        Me.dgvAusencia.ReadOnly = True
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Gray
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvAusencia.RowHeadersDefaultCellStyle = DataGridViewCellStyle10
+        Me.dgvAusencia.RowHeadersVisible = False
+        Me.dgvAusencia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
+        Me.dgvAusencia.Size = New System.Drawing.Size(734, 313)
+        Me.dgvAusencia.TabIndex = 103
+        '
         'DataGridViewTextBoxColumn3
         '
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle7.Format = "N0"
+        DataGridViewCellStyle7.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle7
         Me.DataGridViewTextBoxColumn3.Frozen = True
         Me.DataGridViewTextBoxColumn3.HeaderText = "CI"
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
@@ -462,12 +439,12 @@ Partial Class FAsistencia
         '
         'DataGridViewTextBoxColumn4
         '
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Gray
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White
-        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Gray
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White
+        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle8
         Me.DataGridViewTextBoxColumn4.Frozen = True
         Me.DataGridViewTextBoxColumn4.HeaderText = "Nombre"
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
@@ -551,8 +528,6 @@ Partial Class FAsistencia
     Friend WithEvents Panel1 As Panel
     Friend WithEvents lblCantSocio As Label
     Friend WithEvents lblTitCantSocios As Label
-    Friend WithEvents lblAusente As Label
-    Friend WithEvents lblTitAusente As Label
     Friend WithEvents dgvAusencia As DataGridView
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn

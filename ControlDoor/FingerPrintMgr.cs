@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Text;
 using System.Globalization;
+using System.Configuration;
 
 namespace ControlDoor
 {
@@ -24,6 +25,8 @@ namespace ControlDoor
         FLoading loading;
         Request req = new Request();
         byte[] FingerData;
+        string host = ConfigurationManager.AppSettings["device"].ToString();
+        string port = ConfigurationManager.AppSettings["devicePort"].ToString();
 
         public FingerPrintMgr()
         {
@@ -147,7 +150,7 @@ namespace ControlDoor
         #region _Gets_
         public List<string> GetFinger(string emmployeNo)
         {
-            var url = "http://192.168.0.3/ISAPI/AccessControl/FingerPrintUpload?format=json";
+            var url = "http://" + host + ":" + port + "/ISAPI/AccessControl/FingerPrintUpload?format=json";
             List<string> FingerDataList = new List<string>();
 
             JSON_FingerPrintCond FingerCond = new JSON_FingerPrintCond();
@@ -267,7 +270,7 @@ namespace ControlDoor
         {
             string status = "";
 
-            var url = "http://192.168.0.3/ISAPI/AccessControl/FingerPrint/SetUp?format=json";
+            var url = "http://" + host + ":" + port + "/ISAPI/AccessControl/FingerPrint/SetUp?format=json";
             for (int i = 0; i < FPDataList.Count; i++)
             {
                 string FPData = ByteToBase64(FPDataList[i]);
@@ -305,7 +308,7 @@ namespace ControlDoor
         {
             string status = "";
 
-            var url = "http://192.168.0.3/ISAPI/AccessControl/FingerPrint/Delete?format=json";
+            var url = "http://" + host + ":" + port + "/ISAPI/AccessControl/FingerPrint/Delete?format=json";
 
             JSON_FingerPrintDelete FingerDel = new JSON_FingerPrintDelete
             {
@@ -401,7 +404,7 @@ namespace ControlDoor
             PersonMgr personMgr = new PersonMgr();
 
             ShowLoading();
-            Task oTask = new Task(() => personMgr.GetAllUsers());
+            Task oTask = new Task(() => personMgr.GetUserCount());
             oTask.Start();
             await oTask;
             CloseLoading();
@@ -580,6 +583,11 @@ namespace ControlDoor
             {
                 using (var db = new minegocioEntities())
                 {
+                    /*db.ChangeDatabase
+                        (
+                            server: ConfigurationManager.AppSettings["server"].ToString()
+                        );*/
+
                     db.cliente.Add(_cliente);
 
                     cliente_membresia cliente_Membresia = new cliente_membresia

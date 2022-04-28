@@ -76,6 +76,8 @@ Partial Class FNuevoSocio
         Me.btnAsignarAcceso = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.pnlCobrar = New System.Windows.Forms.Panel()
+        Me.lblEmpleado = New System.Windows.Forms.Label()
+        Me.lblCobrador = New System.Windows.Forms.Label()
         Me.pnlVuelto = New System.Windows.Forms.Panel()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.lblVuelto = New System.Windows.Forms.Label()
@@ -749,6 +751,8 @@ Partial Class FNuevoSocio
         'pnlCobrar
         '
         Me.pnlCobrar.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.pnlCobrar.Controls.Add(Me.lblEmpleado)
+        Me.pnlCobrar.Controls.Add(Me.lblCobrador)
         Me.pnlCobrar.Controls.Add(Me.pnlVuelto)
         Me.pnlCobrar.Controls.Add(Me.pnlPrecioDescontado)
         Me.pnlCobrar.Controls.Add(Me.pnlPendiente)
@@ -766,6 +770,26 @@ Partial Class FNuevoSocio
         Me.pnlCobrar.Size = New System.Drawing.Size(800, 600)
         Me.pnlCobrar.TabIndex = 106
         Me.pnlCobrar.Visible = False
+        '
+        'lblEmpleado
+        '
+        Me.lblEmpleado.AutoSize = True
+        Me.lblEmpleado.Location = New System.Drawing.Point(133, 381)
+        Me.lblEmpleado.Name = "lblEmpleado"
+        Me.lblEmpleado.Size = New System.Drawing.Size(94, 13)
+        Me.lblEmpleado.TabIndex = 123
+        Me.lblEmpleado.Text = "Nombre Empleado"
+        Me.lblEmpleado.Visible = False
+        '
+        'lblCobrador
+        '
+        Me.lblCobrador.AutoSize = True
+        Me.lblCobrador.Location = New System.Drawing.Point(79, 381)
+        Me.lblCobrador.Name = "lblCobrador"
+        Me.lblCobrador.Size = New System.Drawing.Size(53, 13)
+        Me.lblCobrador.TabIndex = 122
+        Me.lblCobrador.Text = "Cobrador:"
+        Me.lblCobrador.Visible = False
         '
         'pnlVuelto
         '
@@ -1072,10 +1096,10 @@ Partial Class FNuevoSocio
         Me.Controls.Add(Me.btnMembresia)
         Me.Controls.Add(Me.lblTitulo)
         Me.Controls.Add(Me.btnSocio)
-        Me.Controls.Add(Me.pnlCobrar)
         Me.Controls.Add(Me.pnlAcceso)
         Me.Controls.Add(Me.pnlSocio)
         Me.Controls.Add(Me.pnlMembresia)
+        Me.Controls.Add(Me.pnlCobrar)
         Me.ForeColor = System.Drawing.Color.White
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "FNuevoSocio"
@@ -1191,4 +1215,6 @@ Partial Class FNuevoSocio
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents DtpFechaNac As DateTimePicker
     Friend WithEvents Label21 As Label
+    Friend WithEvents lblEmpleado As Label
+    Friend WithEvents lblCobrador As Label
 End Class

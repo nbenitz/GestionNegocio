@@ -83,6 +83,14 @@ Public Class CMembresia
     End Function
 
 
+    Public Function BuscViewMembresia(ByVal Condicion As String) As DataTable
+        ObjCon.Conectar()
+        ObjCon.CrearComando("SELECT * FROM view_cliente_membresia " + Condicion)
+        BuscViewMembresia = ObjCon.EjecutarDataTable()
+        ObjCon.Desconectar()
+    End Function
+
+
     Public Function Listar() As DataTable
         ObjCon.Conectar()
         ObjCon.CrearComando("SELECT * FROM Membresia")
@@ -213,6 +221,7 @@ Public Class CMembresia
         IdClienteMembresia += 1
     End Function
 
+
     Public Function IdPagoMembresia() As Int32
         IdPagoMembresia = 0
         ObjCon.Conectar()
@@ -277,10 +286,10 @@ Public Class CMembresia
         Return inserto
     End Function
 
+
     Public Function BuscarPagoPeriodo(ByVal CI As String) As DataTable
         ObjCon.Conectar()
-        ObjCon.CrearComando("SELECT *, DATEDIFF(NOW(), periodo_fin) AS dias_retraso " +
-                            "FROM view_pago_membresia_periodo " +
+        ObjCon.CrearComando("SELECT * FROM view_cliente_membresia " +
                             "WHERE CI = '" + CI + "' ")
         BuscarPagoPeriodo = ObjCon.EjecutarDataTable()
         ObjCon.Desconectar()

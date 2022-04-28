@@ -37,7 +37,7 @@ Partial Class FEventoAcceso
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblConectado = New System.Windows.Forms.Label()
         Me.pnlSocioInfo = New System.Windows.Forms.Panel()
-        Me.pbxFoto = New System.Windows.Forms.PictureBox()
+        Me.pnlInfoCliente = New System.Windows.Forms.Panel()
         Me.lblSaldo = New System.Windows.Forms.Label()
         Me.lblTituloPendiente = New System.Windows.Forms.Label()
         Me.lblAtraso = New System.Windows.Forms.Label()
@@ -47,6 +47,7 @@ Partial Class FEventoAcceso
         Me.Label6 = New System.Windows.Forms.Label()
         Me.lblMembresia = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.pbxFoto = New System.Windows.Forms.PictureBox()
         Me.lblNombre = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.tmrHide = New System.Windows.Forms.Timer(Me.components)
@@ -54,9 +55,12 @@ Partial Class FEventoAcceso
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.lblUltimaClave = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblSegundaPantalla = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
         CType(Me.dgvAccesos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlListaIngreso.SuspendLayout()
         Me.pnlSocioInfo.SuspendLayout()
+        Me.pnlInfoCliente.SuspendLayout()
         CType(Me.pbxFoto, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -183,17 +187,9 @@ Partial Class FEventoAcceso
         '
         'pnlSocioInfo
         '
+        Me.pnlSocioInfo.Controls.Add(Me.pnlInfoCliente)
         Me.pnlSocioInfo.Controls.Add(Me.btnOpenDoor)
         Me.pnlSocioInfo.Controls.Add(Me.pbxFoto)
-        Me.pnlSocioInfo.Controls.Add(Me.lblSaldo)
-        Me.pnlSocioInfo.Controls.Add(Me.lblTituloPendiente)
-        Me.pnlSocioInfo.Controls.Add(Me.lblAtraso)
-        Me.pnlSocioInfo.Controls.Add(Me.lblTituloAtraso)
-        Me.pnlSocioInfo.Controls.Add(Me.btnCuota)
-        Me.pnlSocioInfo.Controls.Add(Me.lblVencimiento)
-        Me.pnlSocioInfo.Controls.Add(Me.Label6)
-        Me.pnlSocioInfo.Controls.Add(Me.lblMembresia)
-        Me.pnlSocioInfo.Controls.Add(Me.Label4)
         Me.pnlSocioInfo.Controls.Add(Me.lblNombre)
         Me.pnlSocioInfo.Controls.Add(Me.Label2)
         Me.pnlSocioInfo.Dock = System.Windows.Forms.DockStyle.Top
@@ -203,22 +199,28 @@ Partial Class FEventoAcceso
         Me.pnlSocioInfo.TabIndex = 9
         Me.pnlSocioInfo.Visible = False
         '
-        'pbxFoto
+        'pnlInfoCliente
         '
-        Me.pbxFoto.Image = Global.ControlStock.My.Resources.Resources.userblack
-        Me.pbxFoto.Location = New System.Drawing.Point(12, 10)
-        Me.pbxFoto.Name = "pbxFoto"
-        Me.pbxFoto.Size = New System.Drawing.Size(136, 142)
-        Me.pbxFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.pbxFoto.TabIndex = 10
-        Me.pbxFoto.TabStop = False
+        Me.pnlInfoCliente.Controls.Add(Me.lblSaldo)
+        Me.pnlInfoCliente.Controls.Add(Me.lblTituloPendiente)
+        Me.pnlInfoCliente.Controls.Add(Me.lblAtraso)
+        Me.pnlInfoCliente.Controls.Add(Me.lblTituloAtraso)
+        Me.pnlInfoCliente.Controls.Add(Me.btnCuota)
+        Me.pnlInfoCliente.Controls.Add(Me.lblVencimiento)
+        Me.pnlInfoCliente.Controls.Add(Me.Label6)
+        Me.pnlInfoCliente.Controls.Add(Me.lblMembresia)
+        Me.pnlInfoCliente.Controls.Add(Me.Label4)
+        Me.pnlInfoCliente.Location = New System.Drawing.Point(152, 43)
+        Me.pnlInfoCliente.Name = "pnlInfoCliente"
+        Me.pnlInfoCliente.Size = New System.Drawing.Size(229, 124)
+        Me.pnlInfoCliente.TabIndex = 22
         '
         'lblSaldo
         '
         Me.lblSaldo.AutoSize = True
         Me.lblSaldo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSaldo.ForeColor = System.Drawing.Color.Yellow
-        Me.lblSaldo.Location = New System.Drawing.Point(309, 102)
+        Me.lblSaldo.Location = New System.Drawing.Point(157, 59)
         Me.lblSaldo.Name = "lblSaldo"
         Me.lblSaldo.Size = New System.Drawing.Size(42, 13)
         Me.lblSaldo.TabIndex = 21
@@ -228,7 +230,7 @@ Partial Class FEventoAcceso
         '
         Me.lblTituloPendiente.AutoSize = True
         Me.lblTituloPendiente.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.lblTituloPendiente.Location = New System.Drawing.Point(309, 84)
+        Me.lblTituloPendiente.Location = New System.Drawing.Point(157, 41)
         Me.lblTituloPendiente.Name = "lblTituloPendiente"
         Me.lblTituloPendiente.Size = New System.Drawing.Size(65, 13)
         Me.lblTituloPendiente.TabIndex = 20
@@ -239,7 +241,7 @@ Partial Class FEventoAcceso
         Me.lblAtraso.AutoSize = True
         Me.lblAtraso.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAtraso.ForeColor = System.Drawing.Color.Yellow
-        Me.lblAtraso.Location = New System.Drawing.Point(309, 66)
+        Me.lblAtraso.Location = New System.Drawing.Point(157, 23)
         Me.lblAtraso.Name = "lblAtraso"
         Me.lblAtraso.Size = New System.Drawing.Size(14, 13)
         Me.lblAtraso.TabIndex = 19
@@ -249,7 +251,7 @@ Partial Class FEventoAcceso
         '
         Me.lblTituloAtraso.AutoSize = True
         Me.lblTituloAtraso.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.lblTituloAtraso.Location = New System.Drawing.Point(309, 48)
+        Me.lblTituloAtraso.Location = New System.Drawing.Point(157, 5)
         Me.lblTituloAtraso.Name = "lblTituloAtraso"
         Me.lblTituloAtraso.Size = New System.Drawing.Size(63, 13)
         Me.lblTituloAtraso.TabIndex = 18
@@ -261,7 +263,7 @@ Partial Class FEventoAcceso
         Me.btnCuota.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnCuota.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCuota.ForeColor = System.Drawing.Color.White
-        Me.btnCuota.Location = New System.Drawing.Point(154, 123)
+        Me.btnCuota.Location = New System.Drawing.Point(2, 80)
         Me.btnCuota.Name = "btnCuota"
         Me.btnCuota.Size = New System.Drawing.Size(217, 29)
         Me.btnCuota.TabIndex = 17
@@ -273,7 +275,7 @@ Partial Class FEventoAcceso
         Me.lblVencimiento.AutoSize = True
         Me.lblVencimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblVencimiento.ForeColor = System.Drawing.Color.White
-        Me.lblVencimiento.Location = New System.Drawing.Point(154, 102)
+        Me.lblVencimiento.Location = New System.Drawing.Point(2, 59)
         Me.lblVencimiento.Name = "lblVencimiento"
         Me.lblVencimiento.Size = New System.Drawing.Size(76, 13)
         Me.lblVencimiento.TabIndex = 16
@@ -283,7 +285,7 @@ Partial Class FEventoAcceso
         '
         Me.Label6.AutoSize = True
         Me.Label6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label6.Location = New System.Drawing.Point(154, 84)
+        Me.Label6.Location = New System.Drawing.Point(2, 41)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(65, 13)
         Me.Label6.TabIndex = 15
@@ -294,7 +296,7 @@ Partial Class FEventoAcceso
         Me.lblMembresia.AutoSize = True
         Me.lblMembresia.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMembresia.ForeColor = System.Drawing.Color.White
-        Me.lblMembresia.Location = New System.Drawing.Point(154, 66)
+        Me.lblMembresia.Location = New System.Drawing.Point(2, 23)
         Me.lblMembresia.Name = "lblMembresia"
         Me.lblMembresia.Size = New System.Drawing.Size(114, 13)
         Me.lblMembresia.TabIndex = 14
@@ -304,11 +306,21 @@ Partial Class FEventoAcceso
         '
         Me.Label4.AutoSize = True
         Me.Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label4.Location = New System.Drawing.Point(154, 48)
+        Me.Label4.Location = New System.Drawing.Point(2, 5)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(58, 13)
         Me.Label4.TabIndex = 13
         Me.Label4.Text = "Membresia"
+        '
+        'pbxFoto
+        '
+        Me.pbxFoto.Image = Global.ControlStock.My.Resources.Resources.userblack
+        Me.pbxFoto.Location = New System.Drawing.Point(12, 10)
+        Me.pbxFoto.Name = "pbxFoto"
+        Me.pbxFoto.Size = New System.Drawing.Size(136, 142)
+        Me.pbxFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.pbxFoto.TabIndex = 10
+        Me.pbxFoto.TabStop = False
         '
         'lblNombre
         '
@@ -337,6 +349,8 @@ Partial Class FEventoAcceso
         '
         'Button1
         '
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.ForeColor = System.Drawing.Color.White
         Me.Button1.Location = New System.Drawing.Point(298, 447)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
@@ -347,11 +361,13 @@ Partial Class FEventoAcceso
         '
         'TextBox1
         '
+        Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TextBox1.ForeColor = System.Drawing.Color.Black
         Me.TextBox1.Location = New System.Drawing.Point(192, 449)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(100, 20)
         Me.TextBox1.TabIndex = 11
-        Me.TextBox1.Text = "373"
+        Me.TextBox1.Text = "374"
         Me.TextBox1.Visible = False
         '
         'lblUltimaClave
@@ -359,7 +375,7 @@ Partial Class FEventoAcceso
         Me.lblUltimaClave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblUltimaClave.AutoSize = True
         Me.lblUltimaClave.ForeColor = System.Drawing.Color.White
-        Me.lblUltimaClave.Location = New System.Drawing.Point(252, 526)
+        Me.lblUltimaClave.Location = New System.Drawing.Point(216, 526)
         Me.lblUltimaClave.Name = "lblUltimaClave"
         Me.lblUltimaClave.Size = New System.Drawing.Size(16, 13)
         Me.lblUltimaClave.TabIndex = 12
@@ -370,11 +386,36 @@ Partial Class FEventoAcceso
         Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label3.AutoSize = True
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(146, 526)
+        Me.Label3.Location = New System.Drawing.Point(111, 526)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(100, 13)
         Me.Label3.TabIndex = 13
         Me.Label3.Text = "Última Clave Leída:"
+        '
+        'lblSegundaPantalla
+        '
+        Me.lblSegundaPantalla.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.lblSegundaPantalla.AutoSize = True
+        Me.lblSegundaPantalla.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.lblSegundaPantalla.ForeColor = System.Drawing.Color.White
+        Me.lblSegundaPantalla.Location = New System.Drawing.Point(249, 526)
+        Me.lblSegundaPantalla.Name = "lblSegundaPantalla"
+        Me.lblSegundaPantalla.Size = New System.Drawing.Size(129, 13)
+        Me.lblSegundaPantalla.TabIndex = 14
+        Me.lblSegundaPantalla.Text = "Mostrar Segunda Pantalla"
+        '
+        'Button2
+        '
+        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button2.BackColor = System.Drawing.Color.Green
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Button2.ForeColor = System.Drawing.Color.White
+        Me.Button2.Location = New System.Drawing.Point(238, 485)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(136, 29)
+        Me.Button2.TabIndex = 15
+        Me.Button2.Text = "Permitir Paso"
+        Me.Button2.UseVisualStyleBackColor = False
         '
         'FEventoAcceso
         '
@@ -382,6 +423,8 @@ Partial Class FEventoAcceso
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(382, 548)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.lblSegundaPantalla)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.lblUltimaClave)
         Me.Controls.Add(Me.TextBox1)
@@ -397,6 +440,8 @@ Partial Class FEventoAcceso
         Me.pnlListaIngreso.PerformLayout()
         Me.pnlSocioInfo.ResumeLayout(False)
         Me.pnlSocioInfo.PerformLayout()
+        Me.pnlInfoCliente.ResumeLayout(False)
+        Me.pnlInfoCliente.PerformLayout()
         CType(Me.pbxFoto, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -428,4 +473,7 @@ Partial Class FEventoAcceso
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents lblUltimaClave As Label
     Friend WithEvents Label3 As Label
+    Friend WithEvents pnlInfoCliente As Panel
+    Friend WithEvents lblSegundaPantalla As Label
+    Friend WithEvents Button2 As Button
 End Class

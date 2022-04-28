@@ -8,6 +8,7 @@ Public Class FNuevoProducto
     Dim Proveedor As New CProveedor
     Dim TablaProv As New DataTable
     Dim TablaCateg As New DataTable
+    Dim FrmAjustesPrecio As New FAjustesPrecio
     Dim EditMode As Boolean = False
     Dim OldIdProd As String
     Dim ModoVerDetValue As Boolean = False
@@ -119,7 +120,9 @@ Public Class FNuevoProducto
             Dim PorPack As String = "No"
             Dim Foto As Byte()
             Dim Iva As Int16 = CShort(TxtIva.Text)
-            Foto = ImageToByteArray(PictureBox1.Image)
+            If pbxFoto.Image IsNot Nothing Then
+                Foto = ImageToByteArray(pbxFoto.Image)
+            End If
             CantUnit = CDbl(txtStock.Text)
             Select Case cmbPresent.SelectedIndex
                 Case 0
@@ -153,10 +156,28 @@ Public Class FNuevoProducto
                     Precio1 = CInt(txtPrec1.Text)
                     Precio2 = CInt(txtPrec2.Text)
             End Select
+            Dim Favorito As Integer = If(ChkFavorito.Checked = True, 1, 0)
 
             If EditMode = False Then    'Para guardar un nuevo Producto
                 If Producto.VerificarCod(idProd) = True Then
-                    If Producto.InserProducto(idProd, idProv, idCateg, Descrip, PrecCompra, Precio1, Precio2, 0, PrecPack, CantUnit, UnidXpack, PorPack, Foto, Iva, Lado1, Lado2, MxCaja) = False Then
+                    If Not Producto.InserProducto(idProd,
+                                                  idProv,
+                                                  idCateg,
+                                                  Descrip,
+                                                  PrecCompra,
+                                                  Precio1,
+                                                  Precio2,
+                                                  0,
+                                                  PrecPack,
+                                                  CantUnit,
+                                                  UnidXpack,
+                                                  PorPack,
+                                                  Foto,
+                                                  Iva,
+                                                  Lado1,
+                                                  Lado2,
+                                                  MxCaja,
+                                                  Favorito) Then
                         MessageBox.Show("Hubo un error al guardar el Producto")
                     Else
                         MessageBox.Show("Producto Guardado")
@@ -173,7 +194,25 @@ Public Class FNuevoProducto
                 End If
             Else    'Para editar un Producto
                 If Producto.VerificarCod(txtCod.Text) = True Or txtCod.Text = OldIdProd Then
-                    If Producto.Update(idProd, idProv, idCateg, Descrip, PrecCompra, Precio1, Precio2, 0, PrecPack, CantUnit, UnidXpack, PorPack, Foto, Iva, OldIdProd, Lado1, Lado2, MxCaja) = False Then
+                    If Producto.Update(idProd,
+                                       idProv,
+                                       idCateg,
+                                       Descrip,
+                                       PrecCompra,
+                                       Precio1,
+                                       Precio2,
+                                       0,
+                                       PrecPack,
+                                       CantUnit,
+                                       UnidXpack,
+                                       PorPack,
+                                       Foto,
+                                       Iva,
+                                       OldIdProd,
+                                       Lado1,
+                                       Lado2,
+                                       MxCaja,
+                                       Favorito) = False Then
                         MessageBox.Show("Hubo un error al editar el Producto")
                     Else
                         MessageBox.Show("Producto Editado")
@@ -215,8 +254,6 @@ Public Class FNuevoProducto
         txtUnidxPackPiso.Text = ""
         txtLado1.Text = ""
         txtLado2.Text = ""
-        PictureBox1.Image = My.Resources.Foto
-        SetImage(PictureBox1)
         txtCod.Focus()
     End Sub
 
@@ -232,8 +269,6 @@ Public Class FNuevoProducto
             CargarProv()
             CargarCateg()
             cmbPresent.SelectedIndex = 0
-            PictureBox1.Image = My.Resources.Foto
-            SetImage(PictureBox1)
         Else
             If ModoVerDetValue = False Then
                 lblBaja.Visible = True
@@ -245,6 +280,7 @@ Public Class FNuevoProducto
 
     Private Sub CargarProv()
         cmbProveedor.Items.Clear()
+        cmbProveedor.Text = ""
         TablaProv = Proveedor.ListarProveed()
         For Each row As DataRow In TablaProv.Rows
             cmbProveedor.Items.Add(CStr(row.Item(1)))
@@ -253,6 +289,7 @@ Public Class FNuevoProducto
 
     Private Sub CargarCateg()
         cmbCategoria.Items.Clear()
+        cmbCategoria.Text = ""
         TablaCateg = Producto.ListarCateg()
         For Each row As DataRow In TablaCateg.Rows
             cmbCategoria.Items.Add(CStr(row.Item(1)))
@@ -331,26 +368,6 @@ Public Class FNuevoProducto
         End Select
     End Sub
 
-    Private Sub lblCambImg_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblAddImage.Click
-        Dim OpenFileDialog1 As New OpenFileDialog
-
-        With OpenFileDialog1
-            .CheckFileExists = True
-            .ShowReadOnly = False
-            .Filter = "All Files|*.*|Bitmap Files (*)|*.bmp;*.gif;*.jpg"
-            .FilterIndex = 2
-            If .ShowDialog = DialogResult.OK Then
-                ' Load the specified file into a PictureBox control.
-                If Not (PictureBox1.Image Is Nothing) Then
-                    PictureBox1.Image.Dispose()
-                    PictureBox1.Image = Nothing
-                End If
-                PictureBox1.Image = Image.FromFile(.FileName)
-                SetImage(PictureBox1)
-            End If
-        End With
-    End Sub
-
     'Generate new image dimensions
     Public Function GenerateImageDimensions(ByVal currW As Integer, ByVal currH As Integer, ByVal destW As Integer, ByVal destH As Integer) As Size
         'double to hold the final multiplier to use when scaling the image
@@ -398,7 +415,7 @@ Public Class FNuevoProducto
             Dim img As Image = pb.Image
 
             'calculate the size of the image
-            Dim imgSize As Size = GenerateImageDimensions(img.Width, img.Height, Me.PictureBox1.Width, Me.PictureBox1.Height)
+            Dim imgSize As Size = GenerateImageDimensions(img.Width, img.Height, pbxFoto.Width, pbxFoto.Height)
 
             'create a new Bitmap with the proper dimensions
             Dim finalImg As New Bitmap(img, imgSize.Width, imgSize.Height)
@@ -425,7 +442,7 @@ Public Class FNuevoProducto
     Private Sub LoadNewPict()
         ' You should replace the bold image 
         ' in the sample below with an icon of your own choosing.
-        PictureBox1.Image = Image.FromFile _
+        pbxFoto.Image = Image.FromFile _
         (System.Environment.GetFolderPath _
         (System.Environment.SpecialFolder.Personal) _
         & "\Image.gif")
@@ -435,7 +452,7 @@ Public Class FNuevoProducto
                       ByVal Costo As Integer, ByVal Precio1 As Integer, ByVal Precio2 As Integer, ByVal Precio3 As Integer,
                       ByVal PrecioPack? As Integer, ByVal CantUnid As Double, ByVal UnidXpack? As Double,
                       ByVal Present As String, ByVal Foto As Byte(), ByVal Iva As Decimal,
-                      ByVal Lado1? As Double, ByVal Lado2? As Double, ByVal MxCaja? As Double)
+                      ByVal Lado1? As Double, ByVal Lado2? As Double, ByVal MxCaja? As Double, ByVal Favorito As Integer)
         EditMode = True
         txtStock.ReadOnly = True
         OldIdProd = Cod
@@ -451,12 +468,9 @@ Public Class FNuevoProducto
         'txtPrec3.Text = CStr(Precio3)
         txtStock.Text = CStr(CantUnid)
         TxtIva.Text = CStr(Iva)
-        Try
-            PictureBox1.Image = ByteArrayToImage(Foto)
-        Catch ex As Exception
-            PictureBox1.Image = My.Resources.Foto
-        End Try
-        SetImage(PictureBox1)
+        If Foto IsNot Nothing Then
+            pbxFoto.Image = ByteArrayToImage(Foto)
+        End If
         Select Case Present
             Case "Si", "SiCaja", "SiMetro"
                 txtPVPack.Text = CStr(PrecioPack)
@@ -485,6 +499,7 @@ Public Class FNuevoProducto
             Case "Kilo"
                 cmbPresent.SelectedIndex = 5
         End Select
+        ChkFavorito.Checked = If(Favorito = 1, True, False)
     End Sub
 
     Private Sub pbxNewProv_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbxNewProv.Click
@@ -670,16 +685,70 @@ Public Class FNuevoProducto
         txtUnidXpack.ReadOnly = True
         txtUnidxPackPiso.ReadOnly = True
         pbxNewProv.Visible = False
-        lblAddImage.Visible = False
         lblAddStock.Visible = False
         lblBaja.Visible = False
         lblRestoDesc.Visible = False
         BtnGuardar1.Visible = False
         BtnCancel1.Visible = False
+        ChkFavorito.Enabled = False
         ModoVerDetValue = True
     End Sub
 
     Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
         Me.Close()
     End Sub
+
+    Private Sub pbxFoto_Click(sender As Object, e As EventArgs) Handles pbxFoto.Click
+        Dim OpenFileDialog1 As New OpenFileDialog
+
+        With OpenFileDialog1
+            .CheckFileExists = True
+            .ShowReadOnly = False
+            .Filter = "All Files|*.*|Bitmap Files (*)|*.bmp;*.gif;*.jpg"
+            .FilterIndex = 2
+            If .ShowDialog = DialogResult.OK Then
+                ' Load the specified file into a PictureBox control.
+                If pbxFoto.Image IsNot Nothing Then
+                    pbxFoto.Image.Dispose()
+                    pbxFoto.Image = Nothing
+                End If
+                pbxFoto.Image = Image.FromFile(.FileName)
+                SetImage(pbxFoto)
+            End If
+        End With
+    End Sub
+
+    Private Sub txtPrec1_KeyUp(sender As Object, e As KeyEventArgs) Handles txtPrec1.KeyUp, txtPrec2.KeyUp, txtPrecCompra.KeyUp, txtStock.KeyUp
+        'Agregar separador de miles
+        Dim Txt As TextBox = DirectCast(sender, TextBox)
+        If (Txt.Text <> String.Empty) Then
+            Dim importe As Decimal
+            Decimal.TryParse(Txt.Text, importe)
+            Txt.Text = String.Format("{0:N0}", importe)
+            Txt.SelectionStart = Txt.TextLength
+        End If
+    End Sub
+
+
+
+    Private Sub btnPrecioSetting_Click(sender As Object, e As EventArgs) Handles btnPrecioSetting.Click
+        'FrmAjustesPrecio = New FAjustesPrecio()
+        FrmAjustesPrecio.Show()
+    End Sub
+
+    Private Sub txtPrecCompra_TextChanged(sender As Object, e As EventArgs) Handles txtPrecCompra.TextChanged
+        If FrmAjustesPrecio.chkActivo.Checked Then
+            Try
+                Dim Precio As Double
+                Dim Costo As Integer = CInt(txtPrecCompra.Text)
+                Dim Porcentaje As Integer = CInt(FrmAjustesPrecio.TxtPorcentaje.Text)
+                Dim Multiplo As Integer = CInt(FrmAjustesPrecio.TxtMultiplo.Text)
+                Precio = Costo + Costo * Porcentaje / 100
+                Precio = Math.Ceiling(Precio / Multiplo) * Multiplo
+                txtPrec1.Text = String.Format("{0:N0}", Precio)
+            Catch ex As Exception
+            End Try
+        End If
+    End Sub
+
 End Class

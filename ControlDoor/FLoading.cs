@@ -21,5 +21,10 @@ namespace ControlDoor
         {
             pbxLoading.Location = new Point(this.Width / 2 - pbxLoading.Width / 2, this.Height / 2 - pbxLoading.Height);
         }
+
+        private void BtnCerrarForm_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

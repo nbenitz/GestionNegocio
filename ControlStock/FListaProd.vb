@@ -393,12 +393,12 @@ Public Class FListaProd
             End Select
 
             Try
-                Foto = CType(Tabla.Rows(0).Item(11), Byte())
+                Foto = CType(Tabla.Rows(0).Item(12), Byte())
             Catch
-                Foto = ImageToByteArray(My.Resources.Foto)
             End Try
+            Dim Favorito As Integer = CInt(Tabla.Rows(0).Item(17))
 
-            Frm.Editar(Cod, idProv, idCateg, Descrip, Costo, PrecioUnit, PrecioUnit2, PrecioUnit3, PrecioPack, Stock, UnidXpack, Present, Foto, Iva, Lado1, Lado2, MxCaja)
+            Frm.Editar(Cod, idProv, idCateg, Descrip, Costo, PrecioUnit, PrecioUnit2, PrecioUnit3, PrecioPack, Stock, UnidXpack, Present, Foto, Iva, Lado1, Lado2, MxCaja, Favorito)
             Frm.MdiParent = MdiParent
             Frm.Show()
         Catch ex As Exception

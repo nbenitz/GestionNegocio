@@ -168,7 +168,7 @@
             this.textBoxDeviceAddress.Name = "textBoxDeviceAddress";
             this.textBoxDeviceAddress.Size = new System.Drawing.Size(250, 22);
             this.textBoxDeviceAddress.TabIndex = 54;
-            this.textBoxDeviceAddress.Text = "192.168.0.3";
+            this.textBoxDeviceAddress.Text = "192.168.100.3";
             // 
             // AddDevice
             // 

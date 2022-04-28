@@ -88,7 +88,7 @@ Public Class FResumenCaja
             EncabezadoAux.Totales.Add(TotalesAux)
         Next
 
-        Empresa = "Comercial San Cayetano"
+        Empresa = "Fitness Glirls Club"
         Encabezado.Add(EncabezadoAux)
         Detalle = EncabezadoAux.Detalle
         Resumen = EncabezadoAux.Resumen

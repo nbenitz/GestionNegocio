@@ -40,9 +40,10 @@ Public Class FSocioFicha
     Private Sub FSocioFicha_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim CI As String = lblCI.Text
         Dim TablaMembresia As DataTable = Membresia.BuscarPagoPeriodo(CI)
-        If TablaMembresia.Rows.Count > 0 Then
-            Dim Vto As Date = CDate(TablaMembresia.Rows(0).Item(5))
-            Dim Atraso As Integer = CInt(TablaMembresia.Rows(0).Item(9))
+        Dim Count As Integer = TablaMembresia.Rows.Count
+        If Count > 0 Then
+            Dim Vto As Date = CDate(TablaMembresia.Rows(Count - 1).Item(5))
+            Dim Atraso As Integer = CInt(TablaMembresia.Rows(Count - 1).Item(10))
             GetClientStatus(CI)
         End If
     End Sub
@@ -50,10 +51,11 @@ Public Class FSocioFicha
 
     Private Sub GetClientStatus(ByVal CI As String)
         Dim TablaMembresia As DataTable = Membresia.BuscarPagoPeriodo(CI)
-        If TablaMembresia.Rows.Count > 0 Then
-            Dim NombreMembresia As String = CStr(TablaMembresia.Rows(0).Item(3))
-            Dim Vto As Date = CDate(TablaMembresia.Rows(0).Item(5))
-            Dim Atraso As Integer = CInt(TablaMembresia.Rows(0).Item(9))
+        Dim Count As Integer = TablaMembresia.Rows.Count
+        If Count > 0 Then
+            Dim NombreMembresia As String = CStr(TablaMembresia.Rows(Count - 1).Item(3))
+            Dim Vto As Date = CDate(TablaMembresia.Rows(Count - 1).Item(5))
+            Dim Atraso As Integer = CInt(TablaMembresia.Rows(Count - 1).Item(10))
             ShowClientStatus(Vto, Atraso, GetSaldoPendiente(CI))
         End If
     End Sub

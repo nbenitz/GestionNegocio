@@ -23,11 +23,11 @@ Partial Class FVentaGym
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FVentaGym))
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Del = New System.Windows.Forms.DataGridViewImageColumn()
         Me.Cod = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -47,7 +47,13 @@ Partial Class FVentaGym
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.pnlVenta = New System.Windows.Forms.Panel()
+        Me.BtnCerrarForm = New System.Windows.Forms.PictureBox()
+        Me.pnlXPack = New System.Windows.Forms.Panel()
+        Me.btnUnidad = New System.Windows.Forms.Button()
+        Me.btnPack = New System.Windows.Forms.Button()
+        Me.btnPackCancel = New System.Windows.Forms.Button()
+        Me.lblTituloXPack = New System.Windows.Forms.Label()
         Me.pnlPrecios = New System.Windows.Forms.Panel()
         Me.txtEditPrecio = New System.Windows.Forms.TextBox()
         Me.lblTitPrecio1 = New System.Windows.Forms.Label()
@@ -61,11 +67,6 @@ Partial Class FVentaGym
         Me.btnEditCantCancel = New System.Windows.Forms.Button()
         Me.txtEditCant = New System.Windows.Forms.TextBox()
         Me.lblEditCant = New System.Windows.Forms.Label()
-        Me.pnlXPack = New System.Windows.Forms.Panel()
-        Me.btnUnidad = New System.Windows.Forms.Button()
-        Me.btnPack = New System.Windows.Forms.Button()
-        Me.btnPackCancel = New System.Windows.Forms.Button()
-        Me.lblTituloXPack = New System.Windows.Forms.Label()
         Me.pnlPiso = New System.Windows.Forms.Panel()
         Me.btnPorUnidad = New System.Windows.Forms.Button()
         Me.btnPorMetro = New System.Windows.Forms.Button()
@@ -158,23 +159,22 @@ Partial Class FVentaGym
         Me.lblDesc = New System.Windows.Forms.Label()
         Me.txtCant = New System.Windows.Forms.TextBox()
         Me.chkDesc = New System.Windows.Forms.CheckBox()
-        Me.Label11 = New System.Windows.Forms.Label()
         Me.optCod = New System.Windows.Forms.RadioButton()
         Me.optDesc = New System.Windows.Forms.RadioButton()
         Me.btnAgregar = New System.Windows.Forms.Button()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.ToolTip2 = New System.Windows.Forms.ToolTip(Me.components)
         Me.DataGridViewImageColumn1 = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.BtnCerrarForm = New System.Windows.Forms.PictureBox()
         Me.pnlRight = New System.Windows.Forms.Panel()
         Me.pnlAddRapido = New System.Windows.Forms.Panel()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.Label22 = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel1.SuspendLayout()
+        Me.pnlVenta.SuspendLayout()
+        CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlXPack.SuspendLayout()
         Me.pnlPrecios.SuspendLayout()
         Me.pnlEditCant.SuspendLayout()
-        Me.pnlXPack.SuspendLayout()
         Me.pnlPiso.SuspendLayout()
         CType(Me.pbxCrearProd, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlCrearProd.SuspendLayout()
@@ -189,10 +189,8 @@ Partial Class FVentaGym
         Me.pnlBuscProd.SuspendLayout()
         CType(Me.pbxNewProd, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlVenderPor.SuspendLayout()
-        CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlRight.SuspendLayout()
         Me.pnlAddRapido.SuspendLayout()
-        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'DataGridView1
@@ -213,10 +211,10 @@ Partial Class FVentaGym
         '
         'Del
         '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.NullValue = Nothing
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White
-        Me.Del.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.NullValue = Nothing
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White
+        Me.Del.DefaultCellStyle = DataGridViewCellStyle1
         Me.Del.HeaderText = ""
         Me.Del.Name = "Del"
         Me.Del.ReadOnly = True
@@ -253,10 +251,10 @@ Partial Class FVentaGym
         '
         'Precio
         '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle6.Format = "N0"
-        DataGridViewCellStyle6.NullValue = Nothing
-        Me.Precio.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Format = "N0"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.Precio.DefaultCellStyle = DataGridViewCellStyle2
         Me.Precio.HeaderText = "Precio"
         Me.Precio.Name = "Precio"
         Me.Precio.ReadOnly = True
@@ -266,10 +264,10 @@ Partial Class FVentaGym
         '
         'Importe
         '
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle7.Format = "N0"
-        DataGridViewCellStyle7.NullValue = Nothing
-        Me.Importe.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "N0"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.Importe.DefaultCellStyle = DataGridViewCellStyle3
         Me.Importe.HeaderText = "Importe"
         Me.Importe.Name = "Importe"
         Me.Importe.ReadOnly = True
@@ -333,10 +331,10 @@ Partial Class FVentaGym
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(324, 502)
+        Me.Label6.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(298, 498)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(103, 16)
+        Me.Label6.Size = New System.Drawing.Size(127, 25)
         Me.Label6.TabIndex = 48
         Me.Label6.Text = "Total a Pagar"
         '
@@ -346,7 +344,7 @@ Partial Class FVentaGym
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.LightGray
-        Me.Label10.Location = New System.Drawing.Point(11, 229)
+        Me.Label10.Location = New System.Drawing.Point(245, 229)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(40, 13)
         Me.Label10.TabIndex = 3
@@ -370,7 +368,7 @@ Partial Class FVentaGym
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.LightGray
-        Me.Label8.Location = New System.Drawing.Point(11, 207)
+        Me.Label8.Location = New System.Drawing.Point(245, 207)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(54, 13)
         Me.Label8.TabIndex = 1
@@ -382,48 +380,123 @@ Partial Class FVentaGym
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.LightGray
-        Me.Label7.Location = New System.Drawing.Point(11, 184)
+        Me.Label7.Location = New System.Drawing.Point(245, 184)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(33, 13)
         Me.Label7.TabIndex = 0
         Me.Label7.Text = "Cód."
         '
-        'Panel1
+        'pnlVenta
         '
-        Me.Panel1.BackColor = System.Drawing.Color.White
-        Me.Panel1.Controls.Add(Me.pnlXPack)
-        Me.Panel1.Controls.Add(Me.pnlPrecios)
-        Me.Panel1.Controls.Add(Me.pnlEditCant)
-        Me.Panel1.Controls.Add(Me.pnlPiso)
-        Me.Panel1.Controls.Add(Me.pbxCrearProd)
-        Me.Panel1.Controls.Add(Me.pnlCrearProd)
-        Me.Panel1.Controls.Add(Me.lblHab2)
-        Me.Panel1.Controls.Add(Me.lblHab)
-        Me.Panel1.Controls.Add(Me.LblTituloHab)
-        Me.Panel1.Controls.Add(Me.cmbVendedor)
-        Me.Panel1.Controls.Add(Me.btnGuardar)
-        Me.Panel1.Controls.Add(Me.btnCancel)
-        Me.Panel1.Controls.Add(Me.chkMayorista)
-        Me.Panel1.Controls.Add(Me.pbxBuscCli)
-        Me.Panel1.Controls.Add(Me.pnlCredito)
-        Me.Panel1.Controls.Add(Me.Label6)
-        Me.Panel1.Controls.Add(Me.txtTotal)
-        Me.Panel1.Controls.Add(Me.Label17)
-        Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Controls.Add(Me.optCredito)
-        Me.Panel1.Controls.Add(Me.DataGridView1)
-        Me.Panel1.Controls.Add(Me.optContado)
-        Me.Panel1.Controls.Add(Me.txtCliente)
-        Me.Panel1.Controls.Add(Me.Label16)
-        Me.Panel1.Controls.Add(Me.Label18)
-        Me.Panel1.Controls.Add(Me.txtFecha)
-        Me.Panel1.Controls.Add(Me.Label3)
-        Me.Panel1.Controls.Add(Me.Label2)
-        Me.Panel1.Controls.Add(Me.txtNroFac)
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(576, 541)
-        Me.Panel1.TabIndex = 55
+        Me.pnlVenta.BackColor = System.Drawing.Color.White
+        Me.pnlVenta.Controls.Add(Me.BtnCerrarForm)
+        Me.pnlVenta.Controls.Add(Me.pnlXPack)
+        Me.pnlVenta.Controls.Add(Me.pnlPrecios)
+        Me.pnlVenta.Controls.Add(Me.pnlEditCant)
+        Me.pnlVenta.Controls.Add(Me.pnlPiso)
+        Me.pnlVenta.Controls.Add(Me.pbxCrearProd)
+        Me.pnlVenta.Controls.Add(Me.pnlCrearProd)
+        Me.pnlVenta.Controls.Add(Me.lblHab2)
+        Me.pnlVenta.Controls.Add(Me.lblHab)
+        Me.pnlVenta.Controls.Add(Me.LblTituloHab)
+        Me.pnlVenta.Controls.Add(Me.cmbVendedor)
+        Me.pnlVenta.Controls.Add(Me.btnGuardar)
+        Me.pnlVenta.Controls.Add(Me.btnCancel)
+        Me.pnlVenta.Controls.Add(Me.chkMayorista)
+        Me.pnlVenta.Controls.Add(Me.pbxBuscCli)
+        Me.pnlVenta.Controls.Add(Me.pnlCredito)
+        Me.pnlVenta.Controls.Add(Me.Label6)
+        Me.pnlVenta.Controls.Add(Me.txtTotal)
+        Me.pnlVenta.Controls.Add(Me.Label17)
+        Me.pnlVenta.Controls.Add(Me.Label1)
+        Me.pnlVenta.Controls.Add(Me.optCredito)
+        Me.pnlVenta.Controls.Add(Me.DataGridView1)
+        Me.pnlVenta.Controls.Add(Me.optContado)
+        Me.pnlVenta.Controls.Add(Me.txtCliente)
+        Me.pnlVenta.Controls.Add(Me.Label16)
+        Me.pnlVenta.Controls.Add(Me.Label18)
+        Me.pnlVenta.Controls.Add(Me.txtFecha)
+        Me.pnlVenta.Controls.Add(Me.Label3)
+        Me.pnlVenta.Controls.Add(Me.Label2)
+        Me.pnlVenta.Controls.Add(Me.txtNroFac)
+        Me.pnlVenta.Dock = System.Windows.Forms.DockStyle.Right
+        Me.pnlVenta.Location = New System.Drawing.Point(482, 0)
+        Me.pnlVenta.Name = "pnlVenta"
+        Me.pnlVenta.Size = New System.Drawing.Size(576, 543)
+        Me.pnlVenta.TabIndex = 55
+        '
+        'BtnCerrarForm
+        '
+        Me.BtnCerrarForm.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BtnCerrarForm.Image = CType(resources.GetObject("BtnCerrarForm.Image"), System.Drawing.Image)
+        Me.BtnCerrarForm.Location = New System.Drawing.Point(541, 0)
+        Me.BtnCerrarForm.Margin = New System.Windows.Forms.Padding(2)
+        Me.BtnCerrarForm.Name = "BtnCerrarForm"
+        Me.BtnCerrarForm.Size = New System.Drawing.Size(35, 35)
+        Me.BtnCerrarForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.BtnCerrarForm.TabIndex = 117
+        Me.BtnCerrarForm.TabStop = False
+        '
+        'pnlXPack
+        '
+        Me.pnlXPack.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pnlXPack.Controls.Add(Me.btnUnidad)
+        Me.pnlXPack.Controls.Add(Me.btnPack)
+        Me.pnlXPack.Controls.Add(Me.btnPackCancel)
+        Me.pnlXPack.Controls.Add(Me.lblTituloXPack)
+        Me.pnlXPack.Location = New System.Drawing.Point(241, 236)
+        Me.pnlXPack.Name = "pnlXPack"
+        Me.pnlXPack.Size = New System.Drawing.Size(209, 91)
+        Me.pnlXPack.TabIndex = 82
+        Me.pnlXPack.Visible = False
+        '
+        'btnUnidad
+        '
+        Me.btnUnidad.BackColor = System.Drawing.Color.White
+        Me.btnUnidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnUnidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnUnidad.Location = New System.Drawing.Point(113, 44)
+        Me.btnUnidad.Name = "btnUnidad"
+        Me.btnUnidad.Size = New System.Drawing.Size(70, 25)
+        Me.btnUnidad.TabIndex = 73
+        Me.btnUnidad.Text = "Unidad"
+        Me.btnUnidad.UseVisualStyleBackColor = False
+        '
+        'btnPack
+        '
+        Me.btnPack.BackColor = System.Drawing.Color.White
+        Me.btnPack.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnPack.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPack.Location = New System.Drawing.Point(22, 44)
+        Me.btnPack.Name = "btnPack"
+        Me.btnPack.Size = New System.Drawing.Size(70, 25)
+        Me.btnPack.TabIndex = 72
+        Me.btnPack.Text = "Paquete"
+        Me.btnPack.UseVisualStyleBackColor = False
+        '
+        'btnPackCancel
+        '
+        Me.btnPackCancel.BackColor = System.Drawing.Color.White
+        Me.btnPackCancel.FlatAppearance.BorderSize = 0
+        Me.btnPackCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnPackCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPackCancel.Image = Global.ControlStock.My.Resources.Resources.cancel
+        Me.btnPackCancel.Location = New System.Drawing.Point(186, 3)
+        Me.btnPackCancel.Name = "btnPackCancel"
+        Me.btnPackCancel.Size = New System.Drawing.Size(18, 18)
+        Me.btnPackCancel.TabIndex = 71
+        Me.btnPackCancel.UseVisualStyleBackColor = False
+        '
+        'lblTituloXPack
+        '
+        Me.lblTituloXPack.AutoSize = True
+        Me.lblTituloXPack.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTituloXPack.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.lblTituloXPack.Location = New System.Drawing.Point(56, 10)
+        Me.lblTituloXPack.Name = "lblTituloXPack"
+        Me.lblTituloXPack.Size = New System.Drawing.Size(92, 18)
+        Me.lblTituloXPack.TabIndex = 65
+        Me.lblTituloXPack.Text = "Vender Por"
         '
         'pnlPrecios
         '
@@ -576,67 +649,6 @@ Partial Class FVentaGym
         Me.lblEditCant.Size = New System.Drawing.Size(123, 18)
         Me.lblEditCant.TabIndex = 65
         Me.lblEditCant.Text = "Editar Cantidad"
-        '
-        'pnlXPack
-        '
-        Me.pnlXPack.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pnlXPack.Controls.Add(Me.btnUnidad)
-        Me.pnlXPack.Controls.Add(Me.btnPack)
-        Me.pnlXPack.Controls.Add(Me.btnPackCancel)
-        Me.pnlXPack.Controls.Add(Me.lblTituloXPack)
-        Me.pnlXPack.Location = New System.Drawing.Point(241, 236)
-        Me.pnlXPack.Name = "pnlXPack"
-        Me.pnlXPack.Size = New System.Drawing.Size(209, 91)
-        Me.pnlXPack.TabIndex = 82
-        Me.pnlXPack.Visible = False
-        '
-        'btnUnidad
-        '
-        Me.btnUnidad.BackColor = System.Drawing.Color.White
-        Me.btnUnidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnUnidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnUnidad.Location = New System.Drawing.Point(113, 44)
-        Me.btnUnidad.Name = "btnUnidad"
-        Me.btnUnidad.Size = New System.Drawing.Size(70, 25)
-        Me.btnUnidad.TabIndex = 73
-        Me.btnUnidad.Text = "Unidad"
-        Me.btnUnidad.UseVisualStyleBackColor = False
-        '
-        'btnPack
-        '
-        Me.btnPack.BackColor = System.Drawing.Color.White
-        Me.btnPack.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnPack.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPack.Location = New System.Drawing.Point(22, 44)
-        Me.btnPack.Name = "btnPack"
-        Me.btnPack.Size = New System.Drawing.Size(70, 25)
-        Me.btnPack.TabIndex = 72
-        Me.btnPack.Text = "Paquete"
-        Me.btnPack.UseVisualStyleBackColor = False
-        '
-        'btnPackCancel
-        '
-        Me.btnPackCancel.BackColor = System.Drawing.Color.White
-        Me.btnPackCancel.FlatAppearance.BorderSize = 0
-        Me.btnPackCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnPackCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPackCancel.Image = Global.ControlStock.My.Resources.Resources.cancel
-        Me.btnPackCancel.Location = New System.Drawing.Point(186, 3)
-        Me.btnPackCancel.Name = "btnPackCancel"
-        Me.btnPackCancel.Size = New System.Drawing.Size(18, 18)
-        Me.btnPackCancel.TabIndex = 71
-        Me.btnPackCancel.UseVisualStyleBackColor = False
-        '
-        'lblTituloXPack
-        '
-        Me.lblTituloXPack.AutoSize = True
-        Me.lblTituloXPack.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTituloXPack.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblTituloXPack.Location = New System.Drawing.Point(56, 10)
-        Me.lblTituloXPack.Name = "lblTituloXPack"
-        Me.lblTituloXPack.Size = New System.Drawing.Size(92, 18)
-        Me.lblTituloXPack.TabIndex = 65
-        Me.lblTituloXPack.Text = "Vender Por"
         '
         'pnlPiso
         '
@@ -905,10 +917,10 @@ Partial Class FVentaGym
         'LblTituloHab
         '
         Me.LblTituloHab.AutoSize = True
-        Me.LblTituloHab.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTituloHab.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblTituloHab.Location = New System.Drawing.Point(229, 33)
         Me.LblTituloHab.Name = "LblTituloHab"
-        Me.LblTituloHab.Size = New System.Drawing.Size(100, 20)
+        Me.LblTituloHab.Size = New System.Drawing.Size(98, 21)
         Me.LblTituloHab.TabIndex = 87
         Me.LblTituloHab.Text = "Habitación "
         '
@@ -931,7 +943,7 @@ Partial Class FVentaGym
         Me.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnGuardar.Image = Global.ControlStock.My.Resources.Resources.file_apply
-        Me.btnGuardar.Location = New System.Drawing.Point(60, 479)
+        Me.btnGuardar.Location = New System.Drawing.Point(60, 480)
         Me.btnGuardar.Name = "btnGuardar"
         Me.btnGuardar.Size = New System.Drawing.Size(57, 57)
         Me.btnGuardar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -945,7 +957,7 @@ Partial Class FVentaGym
         Me.btnCancel.BackColor = System.Drawing.Color.Transparent
         Me.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnCancel.Image = Global.ControlStock.My.Resources.Resources.file_exclude
-        Me.btnCancel.Location = New System.Drawing.Point(4, 479)
+        Me.btnCancel.Location = New System.Drawing.Point(4, 480)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(57, 57)
         Me.btnCancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -1110,20 +1122,20 @@ Partial Class FVentaGym
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.Location = New System.Drawing.Point(358, 64)
+        Me.Label17.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.Location = New System.Drawing.Point(356, 63)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(46, 13)
+        Me.Label17.Size = New System.Drawing.Size(46, 15)
         Me.Label17.TabIndex = 53
         Me.Label17.Text = "Cliente"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.Label1.Location = New System.Drawing.Point(358, 92)
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(356, 91)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(63, 13)
+        Me.Label1.Size = New System.Drawing.Size(61, 15)
         Me.Label1.TabIndex = 52
         Me.Label1.Text = "Condición"
         '
@@ -1163,20 +1175,20 @@ Partial Class FVentaGym
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.Location = New System.Drawing.Point(5, 92)
+        Me.Label16.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Location = New System.Drawing.Point(3, 91)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(60, 13)
+        Me.Label16.Size = New System.Drawing.Size(58, 15)
         Me.Label16.TabIndex = 45
         Me.Label16.Text = "Cajero/ra"
         '
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label18.Location = New System.Drawing.Point(229, 12)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(71, 20)
+        Me.Label18.Size = New System.Drawing.Size(66, 21)
         Me.Label18.TabIndex = 40
         Me.Label18.Text = "Factura"
         '
@@ -1195,20 +1207,20 @@ Partial Class FVentaGym
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(5, 36)
+        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(3, 35)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(78, 13)
+        Me.Label3.Size = New System.Drawing.Size(75, 15)
         Me.Label3.TabIndex = 37
         Me.Label3.Text = "Nro. Factura"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(5, 64)
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(3, 63)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(42, 13)
+        Me.Label2.Size = New System.Drawing.Size(39, 15)
         Me.Label2.TabIndex = 35
         Me.Label2.Text = "Fecha"
         '
@@ -1242,9 +1254,9 @@ Partial Class FVentaGym
         Me.pnlProdInfo.Controls.Add(Me.Label12)
         Me.pnlProdInfo.Controls.Add(Me.lblInfoPrec2)
         Me.pnlProdInfo.Dock = System.Windows.Forms.DockStyle.Top
-        Me.pnlProdInfo.Location = New System.Drawing.Point(0, 541)
+        Me.pnlProdInfo.Location = New System.Drawing.Point(0, 538)
         Me.pnlProdInfo.Name = "pnlProdInfo"
-        Me.pnlProdInfo.Size = New System.Drawing.Size(248, 388)
+        Me.pnlProdInfo.Size = New System.Drawing.Size(482, 388)
         Me.pnlProdInfo.TabIndex = 67
         '
         'pnlPrecVenta
@@ -1258,7 +1270,7 @@ Partial Class FVentaGym
         Me.pnlPrecVenta.Controls.Add(Me.lblPrecio2)
         Me.pnlPrecVenta.Controls.Add(Me.lblPrecio3)
         Me.pnlPrecVenta.Controls.Add(Me.Label9)
-        Me.pnlPrecVenta.Location = New System.Drawing.Point(0, 251)
+        Me.pnlPrecVenta.Location = New System.Drawing.Point(234, 251)
         Me.pnlPrecVenta.Name = "pnlPrecVenta"
         Me.pnlPrecVenta.Size = New System.Drawing.Size(248, 132)
         Me.pnlPrecVenta.TabIndex = 55
@@ -1399,7 +1411,7 @@ Partial Class FVentaGym
         Me.Label24.AutoSize = True
         Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label24.ForeColor = System.Drawing.Color.LightGray
-        Me.Label24.Location = New System.Drawing.Point(66, 169)
+        Me.Label24.Location = New System.Drawing.Point(300, 169)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(106, 13)
         Me.Label24.TabIndex = 64
@@ -1411,7 +1423,7 @@ Partial Class FVentaGym
         Me.Label23.AutoSize = True
         Me.Label23.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label23.ForeColor = System.Drawing.Color.LightGray
-        Me.Label23.Location = New System.Drawing.Point(98, 4)
+        Me.Label23.Location = New System.Drawing.Point(332, 4)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(32, 13)
         Me.Label23.TabIndex = 63
@@ -1422,7 +1434,7 @@ Partial Class FVentaGym
         Me.lblInfoCod.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblInfoCod.AutoSize = True
         Me.lblInfoCod.ForeColor = System.Drawing.Color.White
-        Me.lblInfoCod.Location = New System.Drawing.Point(44, 184)
+        Me.lblInfoCod.Location = New System.Drawing.Point(278, 184)
         Me.lblInfoCod.Name = "lblInfoCod"
         Me.lblInfoCod.Size = New System.Drawing.Size(22, 13)
         Me.lblInfoCod.TabIndex = 62
@@ -1433,7 +1445,7 @@ Partial Class FVentaGym
         Me.lblInfoDesc.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblInfoDesc.AutoSize = True
         Me.lblInfoDesc.ForeColor = System.Drawing.Color.White
-        Me.lblInfoDesc.Location = New System.Drawing.Point(66, 207)
+        Me.lblInfoDesc.Location = New System.Drawing.Point(300, 207)
         Me.lblInfoDesc.Name = "lblInfoDesc"
         Me.lblInfoDesc.Size = New System.Drawing.Size(22, 13)
         Me.lblInfoDesc.TabIndex = 61
@@ -1444,7 +1456,7 @@ Partial Class FVentaGym
         Me.lblInfoStock.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblInfoStock.AutoSize = True
         Me.lblInfoStock.ForeColor = System.Drawing.Color.White
-        Me.lblInfoStock.Location = New System.Drawing.Point(54, 229)
+        Me.lblInfoStock.Location = New System.Drawing.Point(288, 229)
         Me.lblInfoStock.Name = "lblInfoStock"
         Me.lblInfoStock.Size = New System.Drawing.Size(22, 13)
         Me.lblInfoStock.TabIndex = 60
@@ -1455,7 +1467,7 @@ Partial Class FVentaGym
         Me.PictureBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PictureBox1.InitialImage = Nothing
-        Me.PictureBox1.Location = New System.Drawing.Point(18, 20)
+        Me.PictureBox1.Location = New System.Drawing.Point(252, 20)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(203, 144)
         Me.PictureBox1.TabIndex = 54
@@ -1467,7 +1479,7 @@ Partial Class FVentaGym
         Me.Label26.AutoSize = True
         Me.Label26.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label26.ForeColor = System.Drawing.Color.LightGray
-        Me.Label26.Location = New System.Drawing.Point(11, 255)
+        Me.Label26.Location = New System.Drawing.Point(245, 255)
         Me.Label26.Name = "Label26"
         Me.Label26.Size = New System.Drawing.Size(98, 13)
         Me.Label26.TabIndex = 65
@@ -1478,7 +1490,7 @@ Partial Class FVentaGym
         Me.lblInfoPrec.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblInfoPrec.AutoSize = True
         Me.lblInfoPrec.ForeColor = System.Drawing.Color.White
-        Me.lblInfoPrec.Location = New System.Drawing.Point(110, 255)
+        Me.lblInfoPrec.Location = New System.Drawing.Point(344, 255)
         Me.lblInfoPrec.Name = "lblInfoPrec"
         Me.lblInfoPrec.Size = New System.Drawing.Size(22, 13)
         Me.lblInfoPrec.TabIndex = 66
@@ -1490,7 +1502,7 @@ Partial Class FVentaGym
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.ForeColor = System.Drawing.Color.LightGray
-        Me.Label12.Location = New System.Drawing.Point(11, 276)
+        Me.Label12.Location = New System.Drawing.Point(245, 276)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(101, 13)
         Me.Label12.TabIndex = 67
@@ -1501,7 +1513,7 @@ Partial Class FVentaGym
         Me.lblInfoPrec2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblInfoPrec2.AutoSize = True
         Me.lblInfoPrec2.ForeColor = System.Drawing.Color.White
-        Me.lblInfoPrec2.Location = New System.Drawing.Point(116, 276)
+        Me.lblInfoPrec2.Location = New System.Drawing.Point(350, 276)
         Me.lblInfoPrec2.Name = "lblInfoPrec2"
         Me.lblInfoPrec2.Size = New System.Drawing.Size(22, 13)
         Me.lblInfoPrec2.TabIndex = 68
@@ -1522,26 +1534,24 @@ Partial Class FVentaGym
         Me.pnlBuscProd.Controls.Add(Me.lblDesc)
         Me.pnlBuscProd.Controls.Add(Me.txtCant)
         Me.pnlBuscProd.Controls.Add(Me.chkDesc)
-        Me.pnlBuscProd.Controls.Add(Me.Label11)
         Me.pnlBuscProd.Controls.Add(Me.optCod)
         Me.pnlBuscProd.Controls.Add(Me.optDesc)
         Me.pnlBuscProd.Controls.Add(Me.btnAgregar)
         Me.pnlBuscProd.Dock = System.Windows.Forms.DockStyle.Top
-        Me.pnlBuscProd.Location = New System.Drawing.Point(0, 35)
+        Me.pnlBuscProd.Location = New System.Drawing.Point(0, 0)
         Me.pnlBuscProd.Name = "pnlBuscProd"
-        Me.pnlBuscProd.Size = New System.Drawing.Size(248, 137)
+        Me.pnlBuscProd.Size = New System.Drawing.Size(482, 134)
         Me.pnlBuscProd.TabIndex = 84
         '
         'pbxNewProd
         '
-        Me.pbxNewProd.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pbxNewProd.BackColor = System.Drawing.Color.Transparent
         Me.pbxNewProd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.pbxNewProd.Cursor = System.Windows.Forms.Cursors.Hand
         Me.pbxNewProd.Image = Global.ControlStock.My.Resources.Resources.Plus_over2
-        Me.pbxNewProd.Location = New System.Drawing.Point(215, 60)
+        Me.pbxNewProd.Location = New System.Drawing.Point(236, 56)
         Me.pbxNewProd.Name = "pbxNewProd"
-        Me.pbxNewProd.Size = New System.Drawing.Size(21, 16)
+        Me.pbxNewProd.Size = New System.Drawing.Size(20, 20)
         Me.pbxNewProd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.pbxNewProd.TabIndex = 84
         Me.pbxNewProd.TabStop = False
@@ -1549,11 +1559,10 @@ Partial Class FVentaGym
         '
         'lblUnidXpack
         '
-        Me.lblUnidXpack.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblUnidXpack.AutoSize = True
         Me.lblUnidXpack.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblUnidXpack.ForeColor = System.Drawing.Color.LightGray
-        Me.lblUnidXpack.Location = New System.Drawing.Point(141, 118)
+        Me.lblUnidXpack.Location = New System.Drawing.Point(451, 63)
         Me.lblUnidXpack.Name = "lblUnidXpack"
         Me.lblUnidXpack.Size = New System.Drawing.Size(21, 13)
         Me.lblUnidXpack.TabIndex = 79
@@ -1565,7 +1574,7 @@ Partial Class FVentaGym
         Me.pnlVenderPor.Controls.Add(Me.optPaquete)
         Me.pnlVenderPor.Controls.Add(Me.optUnidad)
         Me.pnlVenderPor.Controls.Add(Me.lblVenderPor)
-        Me.pnlVenderPor.Location = New System.Drawing.Point(7, 167)
+        Me.pnlVenderPor.Location = New System.Drawing.Point(14, 139)
         Me.pnlVenderPor.Name = "pnlVenderPor"
         Me.pnlVenderPor.Size = New System.Drawing.Size(217, 25)
         Me.pnlVenderPor.TabIndex = 83
@@ -1612,7 +1621,7 @@ Partial Class FVentaGym
         'txtDescuent
         '
         Me.txtDescuent.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtDescuent.Location = New System.Drawing.Point(71, 142)
+        Me.txtDescuent.Location = New System.Drawing.Point(336, 141)
         Me.txtDescuent.Name = "txtDescuent"
         Me.txtDescuent.Size = New System.Drawing.Size(60, 20)
         Me.txtDescuent.TabIndex = 45
@@ -1620,23 +1629,21 @@ Partial Class FVentaGym
         '
         'Label15
         '
-        Me.Label15.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label15.AutoSize = True
-        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label15.ForeColor = System.Drawing.Color.LightGray
-        Me.Label15.Location = New System.Drawing.Point(66, 6)
+        Me.Label15.Location = New System.Drawing.Point(12, 15)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(101, 13)
+        Me.Label15.Size = New System.Drawing.Size(157, 20)
         Me.Label15.TabIndex = 80
-        Me.Label15.Text = "Buscar Producto"
+        Me.Label15.Text = "Buscar Producto por:"
         '
         'lblX
         '
-        Me.lblX.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblX.AutoSize = True
         Me.lblX.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblX.ForeColor = System.Drawing.Color.LightGray
-        Me.lblX.Location = New System.Drawing.Point(132, 117)
+        Me.lblX.Location = New System.Drawing.Point(442, 62)
         Me.lblX.Name = "lblX"
         Me.lblX.Size = New System.Drawing.Size(17, 13)
         Me.lblX.TabIndex = 78
@@ -1644,50 +1651,46 @@ Partial Class FVentaGym
         '
         'cmbDescrip
         '
-        Me.cmbDescrip.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmbDescrip.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
         Me.cmbDescrip.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmbDescrip.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbDescrip.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbDescrip.ForeColor = System.Drawing.Color.White
         Me.cmbDescrip.FormattingEnabled = True
-        Me.cmbDescrip.Location = New System.Drawing.Point(15, 86)
+        Me.cmbDescrip.Location = New System.Drawing.Point(14, 93)
         Me.cmbDescrip.Name = "cmbDescrip"
-        Me.cmbDescrip.Size = New System.Drawing.Size(218, 21)
+        Me.cmbDescrip.Size = New System.Drawing.Size(243, 26)
         Me.cmbDescrip.TabIndex = 77
         '
         'Label5
         '
-        Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(12, 61)
+        Me.Label5.Location = New System.Drawing.Point(11, 59)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(46, 13)
+        Me.Label5.Size = New System.Drawing.Size(48, 17)
         Me.Label5.TabIndex = 76
         Me.Label5.Text = "Buscar"
         '
         'txtBuscar
         '
-        Me.txtBuscar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtBuscar.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
         Me.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtBuscar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBuscar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtBuscar.ForeColor = System.Drawing.Color.White
-        Me.txtBuscar.Location = New System.Drawing.Point(64, 58)
+        Me.txtBuscar.Location = New System.Drawing.Point(63, 56)
         Me.txtBuscar.Name = "txtBuscar"
-        Me.txtBuscar.Size = New System.Drawing.Size(149, 21)
+        Me.txtBuscar.Size = New System.Drawing.Size(168, 24)
         Me.txtBuscar.TabIndex = 75
         '
         'lblCant
         '
-        Me.lblCant.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblCant.AutoSize = True
-        Me.lblCant.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCant.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCant.ForeColor = System.Drawing.Color.White
-        Me.lblCant.Location = New System.Drawing.Point(12, 118)
+        Me.lblCant.Location = New System.Drawing.Point(277, 60)
         Me.lblCant.Name = "lblCant"
-        Me.lblCant.Size = New System.Drawing.Size(37, 13)
+        Me.lblCant.Size = New System.Drawing.Size(40, 17)
         Me.lblCant.TabIndex = 74
         Me.lblCant.Text = "Cant."
         '
@@ -1697,7 +1700,7 @@ Partial Class FVentaGym
         Me.lblDesc.AutoSize = True
         Me.lblDesc.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDesc.ForeColor = System.Drawing.Color.White
-        Me.lblDesc.Location = New System.Drawing.Point(131, 145)
+        Me.lblDesc.Location = New System.Drawing.Point(396, 144)
         Me.lblDesc.Name = "lblDesc"
         Me.lblDesc.Size = New System.Drawing.Size(16, 13)
         Me.lblDesc.TabIndex = 47
@@ -1706,14 +1709,13 @@ Partial Class FVentaGym
         '
         'txtCant
         '
-        Me.txtCant.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtCant.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
         Me.txtCant.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtCant.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCant.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCant.ForeColor = System.Drawing.Color.White
-        Me.txtCant.Location = New System.Drawing.Point(50, 115)
+        Me.txtCant.Location = New System.Drawing.Point(323, 55)
         Me.txtCant.Name = "txtCant"
-        Me.txtCant.Size = New System.Drawing.Size(81, 21)
+        Me.txtCant.Size = New System.Drawing.Size(113, 27)
         Me.txtCant.TabIndex = 73
         Me.txtCant.Text = "1"
         '
@@ -1723,7 +1725,7 @@ Partial Class FVentaGym
         Me.chkDesc.AutoSize = True
         Me.chkDesc.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkDesc.ForeColor = System.Drawing.Color.White
-        Me.chkDesc.Location = New System.Drawing.Point(15, 144)
+        Me.chkDesc.Location = New System.Drawing.Point(280, 143)
         Me.chkDesc.Name = "chkDesc"
         Me.chkDesc.Size = New System.Drawing.Size(63, 17)
         Me.chkDesc.TabIndex = 46
@@ -1731,28 +1733,15 @@ Partial Class FVentaGym
         Me.chkDesc.UseVisualStyleBackColor = True
         Me.chkDesc.Visible = False
         '
-        'Label11
-        '
-        Me.Label11.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.ForeColor = System.Drawing.Color.LightGray
-        Me.Label11.Location = New System.Drawing.Point(12, 31)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(26, 13)
-        Me.Label11.TabIndex = 72
-        Me.Label11.Text = "Por"
-        '
         'optCod
         '
-        Me.optCod.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.optCod.AutoSize = True
         Me.optCod.Checked = True
-        Me.optCod.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.optCod.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.optCod.ForeColor = System.Drawing.Color.White
-        Me.optCod.Location = New System.Drawing.Point(138, 29)
+        Me.optCod.Location = New System.Drawing.Point(181, 13)
         Me.optCod.Name = "optCod"
-        Me.optCod.Size = New System.Drawing.Size(58, 17)
+        Me.optCod.Size = New System.Drawing.Size(76, 24)
         Me.optCod.TabIndex = 71
         Me.optCod.TabStop = True
         Me.optCod.Text = "Código"
@@ -1760,27 +1749,25 @@ Partial Class FVentaGym
         '
         'optDesc
         '
-        Me.optDesc.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.optDesc.AutoSize = True
-        Me.optDesc.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.optDesc.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.optDesc.ForeColor = System.Drawing.Color.White
-        Me.optDesc.Location = New System.Drawing.Point(44, 29)
+        Me.optDesc.Location = New System.Drawing.Point(280, 13)
         Me.optDesc.Name = "optDesc"
-        Me.optDesc.Size = New System.Drawing.Size(81, 17)
+        Me.optDesc.Size = New System.Drawing.Size(105, 24)
         Me.optDesc.TabIndex = 70
         Me.optDesc.Text = "Descripción"
         Me.optDesc.UseVisualStyleBackColor = True
         '
         'btnAgregar
         '
-        Me.btnAgregar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnAgregar.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnAgregar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAgregar.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAgregar.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnAgregar.Location = New System.Drawing.Point(168, 113)
+        Me.btnAgregar.Location = New System.Drawing.Point(280, 91)
         Me.btnAgregar.Name = "btnAgregar"
-        Me.btnAgregar.Size = New System.Drawing.Size(65, 23)
+        Me.btnAgregar.Size = New System.Drawing.Size(156, 31)
         Me.btnAgregar.TabIndex = 69
         Me.btnAgregar.Text = "Agregar"
         Me.btnAgregar.UseVisualStyleBackColor = False
@@ -1798,10 +1785,10 @@ Partial Class FVentaGym
         '
         'DataGridViewImageColumn1
         '
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle8.NullValue = Nothing
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White
-        Me.DataGridViewImageColumn1.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.NullValue = Nothing
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White
+        Me.DataGridViewImageColumn1.DefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridViewImageColumn1.HeaderText = ""
         Me.DataGridViewImageColumn1.Image = Global.ControlStock.My.Resources.Resources.button_cancel
         Me.DataGridViewImageColumn1.Name = "DataGridViewImageColumn1"
@@ -1810,83 +1797,71 @@ Partial Class FVentaGym
         Me.DataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.DataGridViewImageColumn1.Width = 22
         '
-        'BtnCerrarForm
-        '
-        Me.BtnCerrarForm.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BtnCerrarForm.Image = CType(resources.GetObject("BtnCerrarForm.Image"), System.Drawing.Image)
-        Me.BtnCerrarForm.Location = New System.Drawing.Point(213, 0)
-        Me.BtnCerrarForm.Margin = New System.Windows.Forms.Padding(2)
-        Me.BtnCerrarForm.Name = "BtnCerrarForm"
-        Me.BtnCerrarForm.Size = New System.Drawing.Size(35, 35)
-        Me.BtnCerrarForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
-        Me.BtnCerrarForm.TabIndex = 117
-        Me.BtnCerrarForm.TabStop = False
-        '
         'pnlRight
         '
         Me.pnlRight.Controls.Add(Me.pnlProdInfo)
         Me.pnlRight.Controls.Add(Me.pnlAddRapido)
         Me.pnlRight.Controls.Add(Me.pnlBuscProd)
-        Me.pnlRight.Controls.Add(Me.Panel2)
-        Me.pnlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.pnlRight.Location = New System.Drawing.Point(576, 0)
+        Me.pnlRight.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.pnlRight.Location = New System.Drawing.Point(0, 0)
         Me.pnlRight.Name = "pnlRight"
-        Me.pnlRight.Size = New System.Drawing.Size(248, 543)
+        Me.pnlRight.Size = New System.Drawing.Size(482, 543)
         Me.pnlRight.TabIndex = 118
         '
         'pnlAddRapido
         '
-        Me.pnlAddRapido.Controls.Add(Me.Label13)
+        Me.pnlAddRapido.Controls.Add(Me.FlowLayoutPanel1)
+        Me.pnlAddRapido.Controls.Add(Me.Label22)
         Me.pnlAddRapido.Dock = System.Windows.Forms.DockStyle.Top
-        Me.pnlAddRapido.Location = New System.Drawing.Point(0, 172)
+        Me.pnlAddRapido.Location = New System.Drawing.Point(0, 134)
         Me.pnlAddRapido.Name = "pnlAddRapido"
-        Me.pnlAddRapido.Size = New System.Drawing.Size(248, 369)
+        Me.pnlAddRapido.Size = New System.Drawing.Size(482, 404)
         Me.pnlAddRapido.TabIndex = 85
         '
-        'Label13
+        'FlowLayoutPanel1
         '
-        Me.Label13.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.ForeColor = System.Drawing.Color.LightGray
-        Me.Label13.Location = New System.Drawing.Point(66, 5)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(107, 13)
-        Me.Label13.TabIndex = 81
-        Me.Label13.Text = "Selección Rápida"
-        Me.Label13.Visible = False
+        Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 21)
+        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
+        Me.FlowLayoutPanel1.Padding = New System.Windows.Forms.Padding(3)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(482, 383)
+        Me.FlowLayoutPanel1.TabIndex = 82
         '
-        'Panel2
+        'Label22
         '
-        Me.Panel2.Controls.Add(Me.BtnCerrarForm)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(248, 35)
-        Me.Panel2.TabIndex = 0
+        Me.Label22.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Label22.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label22.ForeColor = System.Drawing.Color.LightGray
+        Me.Label22.Location = New System.Drawing.Point(0, 0)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(482, 21)
+        Me.Label22.TabIndex = 84
+        Me.Label22.Text = "Selección Rápida"
+        Me.Label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'FVentaGym
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(824, 543)
+        Me.ClientSize = New System.Drawing.Size(1058, 543)
         Me.Controls.Add(Me.pnlRight)
-        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.pnlVenta)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.KeyPreview = True
         Me.Name = "FVentaGym"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Factura"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
+        Me.pnlVenta.ResumeLayout(False)
+        Me.pnlVenta.PerformLayout()
+        CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlXPack.ResumeLayout(False)
+        Me.pnlXPack.PerformLayout()
         Me.pnlPrecios.ResumeLayout(False)
         Me.pnlPrecios.PerformLayout()
         Me.pnlEditCant.ResumeLayout(False)
         Me.pnlEditCant.PerformLayout()
-        Me.pnlXPack.ResumeLayout(False)
-        Me.pnlXPack.PerformLayout()
         Me.pnlPiso.ResumeLayout(False)
         Me.pnlPiso.PerformLayout()
         CType(Me.pbxCrearProd, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1909,11 +1884,8 @@ Partial Class FVentaGym
         CType(Me.pbxNewProd, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlVenderPor.ResumeLayout(False)
         Me.pnlVenderPor.PerformLayout()
-        CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlRight.ResumeLayout(False)
         Me.pnlAddRapido.ResumeLayout(False)
-        Me.pnlAddRapido.PerformLayout()
-        Me.Panel2.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -1986,7 +1958,6 @@ Partial Class FVentaGym
     Friend WithEvents lblDesc As System.Windows.Forms.Label
     Friend WithEvents txtCant As System.Windows.Forms.TextBox
     Friend WithEvents chkDesc As System.Windows.Forms.CheckBox
-    Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents optCod As System.Windows.Forms.RadioButton
     Friend WithEvents optDesc As System.Windows.Forms.RadioButton
     Friend WithEvents btnAgregar As System.Windows.Forms.Button
@@ -2053,10 +2024,10 @@ Partial Class FVentaGym
     Friend WithEvents Label20 As Label
     Friend WithEvents pbxCrearProd As PictureBox
     Friend WithEvents ChkGenerar As CheckBox
-    Friend WithEvents Panel1 As Panel
+    Friend WithEvents pnlVenta As Panel
     Friend WithEvents BtnCerrarForm As PictureBox
     Friend WithEvents pnlRight As Panel
-    Friend WithEvents Panel2 As Panel
     Friend WithEvents pnlAddRapido As Panel
-    Friend WithEvents Label13 As Label
+    Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
+    Friend WithEvents Label22 As Label
 End Class

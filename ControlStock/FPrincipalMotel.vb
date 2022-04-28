@@ -241,7 +241,7 @@ Public Class FPrincipalMotel
     End Sub
 
     Private Sub ReportesToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListaCompras.Click
-        Dim frm As New FListaCompra(Reporte.Tipo.Compra)
+        Dim frm As New FListaCompra()
         AbrirVentana(frm)
     End Sub
 
@@ -255,7 +255,8 @@ Public Class FPrincipalMotel
     End Sub
 
     Private Sub DevolverStock_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DevolverStock.Click
-        Dim frm As New FListaCompra(Reporte.Tipo.NotaCredCompra)
+        Dim frm As New FListaCompra()
+        frm.ModoNotaCredito()
         AbrirVentana(frm)
     End Sub
 

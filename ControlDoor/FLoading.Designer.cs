@@ -31,7 +31,9 @@ namespace ControlDoor
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FLoading));
             this.pbxLoading = new System.Windows.Forms.PictureBox();
+            this.BtnCerrarForm = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLoading)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtnCerrarForm)).BeginInit();
             this.SuspendLayout();
             // 
             // pbxLoading
@@ -45,12 +47,26 @@ namespace ControlDoor
             this.pbxLoading.TabIndex = 84;
             this.pbxLoading.TabStop = false;
             // 
+            // BtnCerrarForm
+            // 
+            this.BtnCerrarForm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnCerrarForm.Image = ((System.Drawing.Image)(resources.GetObject("BtnCerrarForm.Image")));
+            this.BtnCerrarForm.Location = new System.Drawing.Point(672, 1);
+            this.BtnCerrarForm.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnCerrarForm.Name = "BtnCerrarForm";
+            this.BtnCerrarForm.Size = new System.Drawing.Size(35, 35);
+            this.BtnCerrarForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.BtnCerrarForm.TabIndex = 115;
+            this.BtnCerrarForm.TabStop = false;
+            this.BtnCerrarForm.Click += new System.EventHandler(this.BtnCerrarForm_Click);
+            // 
             // FLoading
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(707, 384);
+            this.Controls.Add(this.BtnCerrarForm);
             this.Controls.Add(this.pbxLoading);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FLoading";
@@ -59,6 +75,7 @@ namespace ControlDoor
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FLoading_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxLoading)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtnCerrarForm)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -66,5 +83,6 @@ namespace ControlDoor
         #endregion
 
         private System.Windows.Forms.PictureBox pbxLoading;
+        internal System.Windows.Forms.PictureBox BtnCerrarForm;
     }
 }

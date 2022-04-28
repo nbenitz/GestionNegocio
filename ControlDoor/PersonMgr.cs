@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -13,9 +14,11 @@ namespace ControlDoor
         ACEntities entities = new ACEntities();
         FingerPrintMgr fingerMgr = new FingerPrintMgr();
         Request req = new Request();
+        string host = ConfigurationManager.AppSettings["device"].ToString();
+        string port = ConfigurationManager.AppSettings["devicePort"].ToString();
 
         #region _Gets_
-        public string GetNextEmployeeNo()
+        public string GetNextEmployeeNo2()
         {
             string employeeNo = "";
             CUserInfoSearch UserData = GetAllUsers();
@@ -36,7 +39,7 @@ namespace ControlDoor
         public string GetOneEmployeeNo()
         {
             string employeeNo = "0";
-            var url = "http://192.168.0.3/ISAPI/AccessControl/UserInfo/Search?format=json";
+            var url = "http://" + host + ":" + port + "/ISAPI/AccessControl/UserInfo/Search?format=json";
             List<CEmployeeNoList> employeeNoLists = new List<CEmployeeNoList>();
             //Obj de respuesta
             CUserInfoSearchResult objUserData;
@@ -61,7 +64,7 @@ namespace ControlDoor
 
         public CUserInfoSearch GetAllUsers()
         {
-            var url = "http://192.168.0.3/ISAPI/AccessControl/UserInfo/Search?format=json";
+            var url = "http://" + host + ":" + port + "/ISAPI/AccessControl/UserInfo/Search?format=json";
             List<CEmployeeNoList> employeeNoLists = new List<CEmployeeNoList>();
 
             //Obj de respuesta
@@ -81,6 +84,7 @@ namespace ControlDoor
                     if (objUserData.UserInfoSearch.searchID == null)
                     {
                         objUserData = JsonConvert.DeserializeObject<CUserInfoSearchResult>(JsonUserSearchResult);
+                        if ((objUserData.UserInfoSearch.responseStatusStrg == "OK") || (objUserData.UserInfoSearch.responseStatusStrg == "NO MATCH")) flag = false;
                     }
                     else
                     {
@@ -94,7 +98,7 @@ namespace ControlDoor
                         {
                             ;
                         }
-                        if (objUserDataNew.UserInfoSearch.responseStatusStrg == "OK") flag = false;
+                        if ((objUserDataNew.UserInfoSearch.responseStatusStrg == "OK") || (objUserDataNew.UserInfoSearch.responseStatusStrg == "NO MATCH")) flag = false;
 
                     }
                     startPosition = objUserData.UserInfoSearch.UserInfo.Count;
@@ -112,7 +116,7 @@ namespace ControlDoor
         public int GetUserCount()
         {
             int count = -1;
-            var url = "http://192.168.0.3/ISAPI/AccessControl/UserInfo/Count?format=json";
+            var url = "http://" + host + ":" + port + "/ISAPI/AccessControl/UserInfo/Count?format=json";
             try
             {
                 string JsonUserCountResult = req.GetRequest(url);
@@ -133,7 +137,7 @@ namespace ControlDoor
         public string SetUserInfo(string name, string employeeNo)
         {
             string status = "";
-            var url = "http://192.168.0.3/ISAPI/AccessControl/UserInfo/Record?format=json";
+            var url = "http://" + host + ":" + port + "/ISAPI/AccessControl/UserInfo/Record?format=json";
 
             string beginTime = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
             string endTime = DateTime.Now.AddYears(10).ToString("yyyy-MM-ddTHH:mm:ss");

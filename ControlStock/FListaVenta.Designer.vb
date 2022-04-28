@@ -22,14 +22,24 @@ Partial Class FListaVenta
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle36 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle37 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle38 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle39 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle40 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle41 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FListaVenta))
-        Dim DataGridViewCellStyle42 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.NroFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Fecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -38,7 +48,6 @@ Partial Class FListaVenta
         Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Mas = New System.Windows.Forms.DataGridViewImageColumn()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.cmbMes = New System.Windows.Forms.ComboBox()
         Me.dtpHasta = New System.Windows.Forms.DateTimePicker()
         Me.lblHasta = New System.Windows.Forms.Label()
         Me.cmbVendedor = New System.Windows.Forms.ComboBox()
@@ -49,41 +58,83 @@ Partial Class FListaVenta
         Me.dtpDesde = New System.Windows.Forms.DateTimePicker()
         Me.txtNroFac = New System.Windows.Forms.TextBox()
         Me.cmbAno = New System.Windows.Forms.ComboBox()
+        Me.cmbMes = New System.Windows.Forms.ComboBox()
         Me.txtTotal = New System.Windows.Forms.TextBox()
         Me.lblTotal = New System.Windows.Forms.Label()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.btnRegistrar = New System.Windows.Forms.Button()
         Me.lblTitulo = New System.Windows.Forms.Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.pbxImprimir = New System.Windows.Forms.PictureBox()
         Me.btnActualizar = New System.Windows.Forms.Button()
         Me.DataGridViewImageColumn1 = New System.Windows.Forms.DataGridViewImageColumn()
         Me.pnlTopBar = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.BtnCerrarForm = New System.Windows.Forms.PictureBox()
+        Me.pnlReporte = New System.Windows.Forms.Panel()
+        Me.pnlEditCant = New System.Windows.Forms.Panel()
+        Me.btnEditCantCancel = New System.Windows.Forms.Button()
+        Me.txtEditCant = New System.Windows.Forms.TextBox()
+        Me.lblEditCant = New System.Windows.Forms.Label()
+        Me.lblNotaInfo2 = New System.Windows.Forms.TextBox()
+        Me.lblNotaInfo1 = New System.Windows.Forms.TextBox()
+        Me.txtCliente = New System.Windows.Forms.Label()
+        Me.txtVend = New System.Windows.Forms.Label()
+        Me.txtNro = New System.Windows.Forms.Label()
+        Me.txtFecha = New System.Windows.Forms.Label()
+        Me.TagVend = New System.Windows.Forms.Label()
+        Me.Titulo = New System.Windows.Forms.Label()
+        Me.TagId = New System.Windows.Forms.Label()
+        Me.tagFecha = New System.Windows.Forms.Label()
+        Me.tagTotal = New System.Windows.Forms.Label()
+        Me.txtTotal2 = New System.Windows.Forms.TextBox()
+        Me.tagCliente = New System.Windows.Forms.Label()
+        Me.Detalle = New System.Windows.Forms.DataGridView()
+        Me.Del = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.Cod = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Descrip = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cant = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Precio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Importe = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Unid = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Desc = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ToolTip2 = New System.Windows.Forms.ToolTip(Me.components)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
-        Me.Panel1.SuspendLayout()
         CType(Me.pbxImprimir, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlTopBar.SuspendLayout()
         CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlReporte.SuspendLayout()
+        Me.pnlEditCant.SuspendLayout()
+        CType(Me.Detalle, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DataGridView1
         '
         Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
-        DataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle36.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.ButtonShadow
-        DataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle36
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer))
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.DataGridView1.ColumnHeadersHeight = 25
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NroFactura, Me.Fecha, Me.Vendedor, Me.Cliente, Me.Total, Me.Mas})
-        Me.DataGridView1.Location = New System.Drawing.Point(21, 86)
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer))
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer))
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle7
+        Me.DataGridView1.GridColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.DataGridView1.Location = New System.Drawing.Point(21, 91)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
@@ -92,9 +143,9 @@ Partial Class FListaVenta
         '
         'NroFactura
         '
-        DataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle37.Padding = New System.Windows.Forms.Padding(0, 0, 10, 0)
-        Me.NroFactura.DefaultCellStyle = DataGridViewCellStyle37
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Padding = New System.Windows.Forms.Padding(0, 0, 10, 0)
+        Me.NroFactura.DefaultCellStyle = DataGridViewCellStyle2
         Me.NroFactura.HeaderText = "Nro. Factura"
         Me.NroFactura.Name = "NroFactura"
         Me.NroFactura.ReadOnly = True
@@ -103,8 +154,8 @@ Partial Class FListaVenta
         '
         'Fecha
         '
-        DataGridViewCellStyle38.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
-        Me.Fecha.DefaultCellStyle = DataGridViewCellStyle38
+        DataGridViewCellStyle3.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
+        Me.Fecha.DefaultCellStyle = DataGridViewCellStyle3
         Me.Fecha.HeaderText = "Fecha"
         Me.Fecha.Name = "Fecha"
         Me.Fecha.ReadOnly = True
@@ -113,8 +164,8 @@ Partial Class FListaVenta
         '
         'Vendedor
         '
-        DataGridViewCellStyle39.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
-        Me.Vendedor.DefaultCellStyle = DataGridViewCellStyle39
+        DataGridViewCellStyle4.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
+        Me.Vendedor.DefaultCellStyle = DataGridViewCellStyle4
         Me.Vendedor.HeaderText = "Vendedor"
         Me.Vendedor.Name = "Vendedor"
         Me.Vendedor.ReadOnly = True
@@ -131,12 +182,15 @@ Partial Class FListaVenta
         '
         'Total
         '
-        DataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle40.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle40.Format = "N0"
-        DataGridViewCellStyle40.NullValue = Nothing
-        DataGridViewCellStyle40.Padding = New System.Windows.Forms.Padding(0, 0, 10, 0)
-        Me.Total.DefaultCellStyle = DataGridViewCellStyle40
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.Format = "N0"
+        DataGridViewCellStyle5.NullValue = Nothing
+        DataGridViewCellStyle5.Padding = New System.Windows.Forms.Padding(0, 0, 10, 0)
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer))
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White
+        Me.Total.DefaultCellStyle = DataGridViewCellStyle5
         Me.Total.HeaderText = "Total"
         Me.Total.Name = "Total"
         Me.Total.ReadOnly = True
@@ -145,10 +199,13 @@ Partial Class FListaVenta
         '
         'Mas
         '
-        DataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle41.NullValue = CType(resources.GetObject("DataGridViewCellStyle41.NullValue"), Object)
-        DataGridViewCellStyle41.SelectionBackColor = System.Drawing.Color.White
-        Me.Mas.DefaultCellStyle = DataGridViewCellStyle41
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle6.NullValue = CType(resources.GetObject("DataGridViewCellStyle6.NullValue"), Object)
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer))
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White
+        Me.Mas.DefaultCellStyle = DataGridViewCellStyle6
         Me.Mas.HeaderText = ""
         Me.Mas.Name = "Mas"
         Me.Mas.ReadOnly = True
@@ -175,19 +232,6 @@ Partial Class FListaVenta
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Filtros"
-        '
-        'cmbMes
-        '
-        Me.cmbMes.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
-        Me.cmbMes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmbMes.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbMes.ForeColor = System.Drawing.Color.White
-        Me.cmbMes.FormattingEnabled = True
-        Me.cmbMes.Items.AddRange(New Object() {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre"})
-        Me.cmbMes.Location = New System.Drawing.Point(269, 33)
-        Me.cmbMes.Name = "cmbMes"
-        Me.cmbMes.Size = New System.Drawing.Size(106, 23)
-        Me.cmbMes.TabIndex = 13
         '
         'dtpHasta
         '
@@ -300,6 +344,19 @@ Partial Class FListaVenta
         Me.cmbAno.Size = New System.Drawing.Size(117, 23)
         Me.cmbAno.TabIndex = 13
         '
+        'cmbMes
+        '
+        Me.cmbMes.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.cmbMes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmbMes.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbMes.ForeColor = System.Drawing.Color.White
+        Me.cmbMes.FormattingEnabled = True
+        Me.cmbMes.Items.AddRange(New Object() {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre"})
+        Me.cmbMes.Location = New System.Drawing.Point(269, 33)
+        Me.cmbMes.Name = "cmbMes"
+        Me.cmbMes.Size = New System.Drawing.Size(106, 23)
+        Me.cmbMes.TabIndex = 13
+        '
         'txtTotal
         '
         Me.txtTotal.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
@@ -328,7 +385,7 @@ Partial Class FListaVenta
         '
         Me.btnSalir.BackColor = System.Drawing.Color.White
         Me.btnSalir.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSalir.Location = New System.Drawing.Point(53, 410)
+        Me.btnSalir.Location = New System.Drawing.Point(14, 410)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(52, 25)
         Me.btnSalir.TabIndex = 7
@@ -339,7 +396,7 @@ Partial Class FListaVenta
         '
         Me.btnRegistrar.BackColor = System.Drawing.Color.White
         Me.btnRegistrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnRegistrar.Location = New System.Drawing.Point(179, 410)
+        Me.btnRegistrar.Location = New System.Drawing.Point(140, 410)
         Me.btnRegistrar.Name = "btnRegistrar"
         Me.btnRegistrar.Size = New System.Drawing.Size(74, 25)
         Me.btnRegistrar.TabIndex = 10
@@ -358,25 +415,16 @@ Partial Class FListaVenta
         Me.lblTitulo.TabIndex = 11
         Me.lblTitulo.Text = "Seleccione una Venta de la Lista al cual desea aplicar la Nota de Crédito"
         Me.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Panel1
-        '
-        Me.Panel1.BackColor = System.Drawing.Color.White
-        Me.Panel1.Controls.Add(Me.pbxImprimir)
-        Me.Panel1.Controls.Add(Me.btnActualizar)
-        Me.Panel1.Controls.Add(Me.btnSalir)
-        Me.Panel1.Controls.Add(Me.btnRegistrar)
-        Me.Panel1.Location = New System.Drawing.Point(21, 86)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(738, 456)
-        Me.Panel1.TabIndex = 12
+        Me.lblTitulo.Visible = False
         '
         'pbxImprimir
         '
+        Me.pbxImprimir.Cursor = System.Windows.Forms.Cursors.Hand
         Me.pbxImprimir.Image = Global.ControlStock.My.Resources.Resources.print
-        Me.pbxImprimir.Location = New System.Drawing.Point(126, 405)
+        Me.pbxImprimir.Location = New System.Drawing.Point(87, 405)
         Me.pbxImprimir.Name = "pbxImprimir"
-        Me.pbxImprimir.Size = New System.Drawing.Size(37, 37)
+        Me.pbxImprimir.Size = New System.Drawing.Size(35, 35)
+        Me.pbxImprimir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.pbxImprimir.TabIndex = 12
         Me.pbxImprimir.TabStop = False
         '
@@ -385,7 +433,7 @@ Partial Class FListaVenta
         Me.btnActualizar.BackColor = System.Drawing.Color.White
         Me.btnActualizar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnActualizar.Image = Global.ControlStock.My.Resources.Resources.refresh1
-        Me.btnActualizar.Location = New System.Drawing.Point(273, 410)
+        Me.btnActualizar.Location = New System.Drawing.Point(234, 410)
         Me.btnActualizar.Name = "btnActualizar"
         Me.btnActualizar.Size = New System.Drawing.Size(32, 25)
         Me.btnActualizar.TabIndex = 11
@@ -394,12 +442,12 @@ Partial Class FListaVenta
         '
         'DataGridViewImageColumn1
         '
-        DataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle42.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle42.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle42.NullValue = CType(resources.GetObject("DataGridViewCellStyle42.NullValue"), Object)
-        DataGridViewCellStyle42.SelectionBackColor = System.Drawing.Color.Silver
-        Me.DataGridViewImageColumn1.DefaultCellStyle = DataGridViewCellStyle42
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.NullValue = CType(resources.GetObject("DataGridViewCellStyle8.NullValue"), Object)
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Silver
+        Me.DataGridViewImageColumn1.DefaultCellStyle = DataGridViewCellStyle8
         Me.DataGridViewImageColumn1.HeaderText = ""
         Me.DataGridViewImageColumn1.Image = Global.ControlStock.My.Resources.Resources.go
         Me.DataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch
@@ -443,19 +491,327 @@ Partial Class FListaVenta
         Me.BtnCerrarForm.TabIndex = 115
         Me.BtnCerrarForm.TabStop = False
         '
+        'pnlReporte
+        '
+        Me.pnlReporte.BackColor = System.Drawing.Color.White
+        Me.pnlReporte.Controls.Add(Me.pbxImprimir)
+        Me.pnlReporte.Controls.Add(Me.pnlEditCant)
+        Me.pnlReporte.Controls.Add(Me.lblNotaInfo2)
+        Me.pnlReporte.Controls.Add(Me.btnActualizar)
+        Me.pnlReporte.Controls.Add(Me.lblNotaInfo1)
+        Me.pnlReporte.Controls.Add(Me.btnSalir)
+        Me.pnlReporte.Controls.Add(Me.btnRegistrar)
+        Me.pnlReporte.Controls.Add(Me.txtCliente)
+        Me.pnlReporte.Controls.Add(Me.txtVend)
+        Me.pnlReporte.Controls.Add(Me.txtNro)
+        Me.pnlReporte.Controls.Add(Me.txtFecha)
+        Me.pnlReporte.Controls.Add(Me.TagVend)
+        Me.pnlReporte.Controls.Add(Me.Titulo)
+        Me.pnlReporte.Controls.Add(Me.TagId)
+        Me.pnlReporte.Controls.Add(Me.tagFecha)
+        Me.pnlReporte.Controls.Add(Me.tagTotal)
+        Me.pnlReporte.Controls.Add(Me.txtTotal2)
+        Me.pnlReporte.Controls.Add(Me.tagCliente)
+        Me.pnlReporte.Controls.Add(Me.Detalle)
+        Me.pnlReporte.Location = New System.Drawing.Point(24, 92)
+        Me.pnlReporte.Name = "pnlReporte"
+        Me.pnlReporte.Size = New System.Drawing.Size(665, 450)
+        Me.pnlReporte.TabIndex = 107
+        '
+        'pnlEditCant
+        '
+        Me.pnlEditCant.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pnlEditCant.Controls.Add(Me.btnEditCantCancel)
+        Me.pnlEditCant.Controls.Add(Me.txtEditCant)
+        Me.pnlEditCant.Controls.Add(Me.lblEditCant)
+        Me.pnlEditCant.Location = New System.Drawing.Point(350, 188)
+        Me.pnlEditCant.Name = "pnlEditCant"
+        Me.pnlEditCant.Size = New System.Drawing.Size(204, 70)
+        Me.pnlEditCant.TabIndex = 105
+        Me.pnlEditCant.Visible = False
+        '
+        'btnEditCantCancel
+        '
+        Me.btnEditCantCancel.BackColor = System.Drawing.Color.White
+        Me.btnEditCantCancel.FlatAppearance.BorderSize = 0
+        Me.btnEditCantCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnEditCantCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEditCantCancel.Image = Global.ControlStock.My.Resources.Resources.cancel
+        Me.btnEditCantCancel.Location = New System.Drawing.Point(181, 3)
+        Me.btnEditCantCancel.Name = "btnEditCantCancel"
+        Me.btnEditCantCancel.Size = New System.Drawing.Size(18, 18)
+        Me.btnEditCantCancel.TabIndex = 71
+        Me.btnEditCantCancel.UseVisualStyleBackColor = False
+        '
+        'txtEditCant
+        '
+        Me.txtEditCant.Location = New System.Drawing.Point(18, 34)
+        Me.txtEditCant.Name = "txtEditCant"
+        Me.txtEditCant.Size = New System.Drawing.Size(168, 20)
+        Me.txtEditCant.TabIndex = 68
+        '
+        'lblEditCant
+        '
+        Me.lblEditCant.AutoSize = True
+        Me.lblEditCant.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEditCant.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.lblEditCant.Location = New System.Drawing.Point(15, 10)
+        Me.lblEditCant.Name = "lblEditCant"
+        Me.lblEditCant.Size = New System.Drawing.Size(123, 18)
+        Me.lblEditCant.TabIndex = 65
+        Me.lblEditCant.Text = "Editar Cantidad"
+        '
+        'lblNotaInfo2
+        '
+        Me.lblNotaInfo2.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.lblNotaInfo2.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNotaInfo2.Location = New System.Drawing.Point(274, 397)
+        Me.lblNotaInfo2.Multiline = True
+        Me.lblNotaInfo2.Name = "lblNotaInfo2"
+        Me.lblNotaInfo2.Size = New System.Drawing.Size(182, 36)
+        Me.lblNotaInfo2.TabIndex = 104
+        Me.lblNotaInfo2.Text = "Cambie la cantidad de Productos si es necesario."
+        Me.lblNotaInfo2.Visible = False
+        '
+        'lblNotaInfo1
+        '
+        Me.lblNotaInfo1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.lblNotaInfo1.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNotaInfo1.Location = New System.Drawing.Point(274, 364)
+        Me.lblNotaInfo1.Multiline = True
+        Me.lblNotaInfo1.Name = "lblNotaInfo1"
+        Me.lblNotaInfo1.Size = New System.Drawing.Size(182, 32)
+        Me.lblNotaInfo1.TabIndex = 103
+        Me.lblNotaInfo1.Text = "Elimine los Productos de la Nota de Crédito que no desea devolver."
+        Me.lblNotaInfo1.Visible = False
+        '
+        'txtCliente
+        '
+        Me.txtCliente.AutoSize = True
+        Me.txtCliente.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCliente.Location = New System.Drawing.Point(538, 38)
+        Me.txtCliente.Name = "txtCliente"
+        Me.txtCliente.Size = New System.Drawing.Size(49, 15)
+        Me.txtCliente.TabIndex = 101
+        Me.txtCliente.Text = "Cliente:"
+        '
+        'txtVend
+        '
+        Me.txtVend.AutoSize = True
+        Me.txtVend.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtVend.Location = New System.Drawing.Point(85, 59)
+        Me.txtVend.Name = "txtVend"
+        Me.txtVend.Size = New System.Drawing.Size(59, 15)
+        Me.txtVend.TabIndex = 100
+        Me.txtVend.Text = "Vendedor"
+        '
+        'txtNro
+        '
+        Me.txtNro.AutoSize = True
+        Me.txtNro.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNro.Location = New System.Drawing.Point(85, 17)
+        Me.txtNro.Name = "txtNro"
+        Me.txtNro.Size = New System.Drawing.Size(81, 15)
+        Me.txtNro.TabIndex = 99
+        Me.txtNro.Text = "Nro. Compra:"
+        '
+        'txtFecha
+        '
+        Me.txtFecha.AutoSize = True
+        Me.txtFecha.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFecha.Location = New System.Drawing.Point(85, 38)
+        Me.txtFecha.Name = "txtFecha"
+        Me.txtFecha.Size = New System.Drawing.Size(44, 15)
+        Me.txtFecha.TabIndex = 98
+        Me.txtFecha.Text = "Fecha:"
+        '
+        'TagVend
+        '
+        Me.TagVend.AutoSize = True
+        Me.TagVend.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TagVend.Location = New System.Drawing.Point(2, 59)
+        Me.TagVend.Name = "TagVend"
+        Me.TagVend.Size = New System.Drawing.Size(64, 15)
+        Me.TagVend.TabIndex = 89
+        Me.TagVend.Text = "Vendedor:"
+        '
+        'Titulo
+        '
+        Me.Titulo.AutoSize = True
+        Me.Titulo.Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Titulo.Location = New System.Drawing.Point(249, 17)
+        Me.Titulo.Name = "Titulo"
+        Me.Titulo.Size = New System.Drawing.Size(137, 22)
+        Me.Titulo.TabIndex = 88
+        Me.Titulo.Text = "Nota de Venta"
+        '
+        'TagId
+        '
+        Me.TagId.AutoSize = True
+        Me.TagId.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TagId.Location = New System.Drawing.Point(2, 17)
+        Me.TagId.Name = "TagId"
+        Me.TagId.Size = New System.Drawing.Size(81, 15)
+        Me.TagId.TabIndex = 87
+        Me.TagId.Text = "Nro. Compra:"
+        '
+        'tagFecha
+        '
+        Me.tagFecha.AutoSize = True
+        Me.tagFecha.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tagFecha.Location = New System.Drawing.Point(2, 38)
+        Me.tagFecha.Name = "tagFecha"
+        Me.tagFecha.Size = New System.Drawing.Size(44, 15)
+        Me.tagFecha.TabIndex = 86
+        Me.tagFecha.Text = "Fecha:"
+        '
+        'tagTotal
+        '
+        Me.tagTotal.AutoSize = True
+        Me.tagTotal.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tagTotal.Location = New System.Drawing.Point(484, 413)
+        Me.tagTotal.Name = "tagTotal"
+        Me.tagTotal.Size = New System.Drawing.Size(48, 20)
+        Me.tagTotal.TabIndex = 93
+        Me.tagTotal.Text = "Total:"
+        '
+        'txtTotal2
+        '
+        Me.txtTotal2.BackColor = System.Drawing.Color.White
+        Me.txtTotal2.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtTotal2.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTotal2.ForeColor = System.Drawing.Color.Black
+        Me.txtTotal2.Location = New System.Drawing.Point(538, 413)
+        Me.txtTotal2.Name = "txtTotal2"
+        Me.txtTotal2.ReadOnly = True
+        Me.txtTotal2.Size = New System.Drawing.Size(110, 20)
+        Me.txtTotal2.TabIndex = 92
+        Me.txtTotal2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'tagCliente
+        '
+        Me.tagCliente.AutoSize = True
+        Me.tagCliente.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tagCliente.Location = New System.Drawing.Point(485, 38)
+        Me.tagCliente.Name = "tagCliente"
+        Me.tagCliente.Size = New System.Drawing.Size(49, 15)
+        Me.tagCliente.TabIndex = 90
+        Me.tagCliente.Text = "Cliente:"
+        '
+        'Detalle
+        '
+        Me.Detalle.AllowUserToAddRows = False
+        Me.Detalle.AllowUserToDeleteRows = False
+        Me.Detalle.AllowUserToResizeRows = False
+        Me.Detalle.BackgroundColor = System.Drawing.Color.White
+        Me.Detalle.BorderStyle = System.Windows.Forms.BorderStyle.None
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Detalle.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
+        Me.Detalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.Detalle.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Del, Me.Cod, Me.Descrip, Me.Cant, Me.Precio, Me.Importe, Me.Unid, Me.Desc})
+        Me.Detalle.Location = New System.Drawing.Point(5, 84)
+        Me.Detalle.Name = "Detalle"
+        Me.Detalle.RowHeadersVisible = False
+        Me.Detalle.Size = New System.Drawing.Size(659, 276)
+        Me.Detalle.TabIndex = 85
+        '
+        'Del
+        '
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle10.NullValue = Nothing
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.White
+        Me.Del.DefaultCellStyle = DataGridViewCellStyle10
+        Me.Del.HeaderText = ""
+        Me.Del.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch
+        Me.Del.Name = "Del"
+        Me.Del.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Del.Visible = False
+        Me.Del.Width = 22
+        '
+        'Cod
+        '
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.Cod.DefaultCellStyle = DataGridViewCellStyle11
+        Me.Cod.FillWeight = 40.0!
+        Me.Cod.HeaderText = "Código"
+        Me.Cod.Name = "Cod"
+        Me.Cod.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Descrip
+        '
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Descrip.DefaultCellStyle = DataGridViewCellStyle12
+        Me.Descrip.HeaderText = "Descripción"
+        Me.Descrip.Name = "Descrip"
+        Me.Descrip.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Descrip.Width = 245
+        '
+        'Cant
+        '
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Cant.DefaultCellStyle = DataGridViewCellStyle13
+        Me.Cant.HeaderText = "Cant"
+        Me.Cant.Name = "Cant"
+        Me.Cant.ReadOnly = True
+        Me.Cant.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Precio
+        '
+        DataGridViewCellStyle14.Format = "N0"
+        DataGridViewCellStyle14.NullValue = Nothing
+        Me.Precio.DefaultCellStyle = DataGridViewCellStyle14
+        Me.Precio.HeaderText = "Precio"
+        Me.Precio.Name = "Precio"
+        Me.Precio.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Importe
+        '
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle15.Format = "N0"
+        DataGridViewCellStyle15.NullValue = Nothing
+        Me.Importe.DefaultCellStyle = DataGridViewCellStyle15
+        Me.Importe.HeaderText = "Importe"
+        Me.Importe.Name = "Importe"
+        Me.Importe.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Unid
+        '
+        Me.Unid.HeaderText = "Unidades"
+        Me.Unid.Name = "Unid"
+        Me.Unid.Visible = False
+        '
+        'Desc
+        '
+        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        DataGridViewCellStyle16.Format = "N0"
+        DataGridViewCellStyle16.NullValue = Nothing
+        Me.Desc.DefaultCellStyle = DataGridViewCellStyle16
+        Me.Desc.HeaderText = "Desc"
+        Me.Desc.Name = "Desc"
+        Me.Desc.Visible = False
+        Me.Desc.Width = 50
+        '
         'FListaVenta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(779, 651)
+        Me.ClientSize = New System.Drawing.Size(779, 645)
+        Me.Controls.Add(Me.pnlReporte)
         Me.Controls.Add(Me.pnlTopBar)
         Me.Controls.Add(Me.lblTitulo)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.lblTotal)
         Me.Controls.Add(Me.txtTotal)
         Me.Controls.Add(Me.DataGridView1)
-        Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "FListaVenta"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -463,11 +819,15 @@ Partial Class FListaVenta
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        Me.Panel1.ResumeLayout(False)
         CType(Me.pbxImprimir, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlTopBar.ResumeLayout(False)
         Me.pnlTopBar.PerformLayout()
         CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlReporte.ResumeLayout(False)
+        Me.pnlReporte.PerformLayout()
+        Me.pnlEditCant.ResumeLayout(False)
+        Me.pnlEditCant.PerformLayout()
+        CType(Me.Detalle, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -486,22 +846,48 @@ Partial Class FListaVenta
     Friend WithEvents txtTotal As System.Windows.Forms.TextBox
     Friend WithEvents lblTotal As System.Windows.Forms.Label
     Friend WithEvents btnSalir As System.Windows.Forms.Button
-    Friend WithEvents Reporte1 As ControlStock.Reporte
     Friend WithEvents btnRegistrar As System.Windows.Forms.Button
     Friend WithEvents lblTitulo As System.Windows.Forms.Label
     Friend WithEvents DataGridViewImageColumn1 As System.Windows.Forms.DataGridViewImageColumn
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents btnActualizar As System.Windows.Forms.Button
-    Friend WithEvents NroFactura As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Fecha As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Vendedor As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Cliente As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Total As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Mas As System.Windows.Forms.DataGridViewImageColumn
     Friend WithEvents cmbMes As System.Windows.Forms.ComboBox
     Friend WithEvents cmbAno As System.Windows.Forms.ComboBox
     Friend WithEvents pbxImprimir As System.Windows.Forms.PictureBox
     Friend WithEvents pnlTopBar As Panel
     Friend WithEvents BtnCerrarForm As PictureBox
     Friend WithEvents Label2 As Label
+    Friend WithEvents pnlReporte As Panel
+    Friend WithEvents pnlEditCant As Panel
+    Friend WithEvents btnEditCantCancel As Button
+    Friend WithEvents txtEditCant As TextBox
+    Friend WithEvents lblEditCant As Label
+    Friend WithEvents lblNotaInfo2 As TextBox
+    Friend WithEvents lblNotaInfo1 As TextBox
+    Friend WithEvents txtCliente As Label
+    Friend WithEvents txtVend As Label
+    Friend WithEvents txtNro As Label
+    Friend WithEvents txtFecha As Label
+    Friend WithEvents TagVend As Label
+    Friend WithEvents Titulo As Label
+    Friend WithEvents TagId As Label
+    Friend WithEvents tagFecha As Label
+    Friend WithEvents tagTotal As Label
+    Friend WithEvents txtTotal2 As TextBox
+    Friend WithEvents tagCliente As Label
+    Friend WithEvents Detalle As DataGridView
+    Friend WithEvents NroFactura As DataGridViewTextBoxColumn
+    Friend WithEvents Fecha As DataGridViewTextBoxColumn
+    Friend WithEvents Vendedor As DataGridViewTextBoxColumn
+    Friend WithEvents Cliente As DataGridViewTextBoxColumn
+    Friend WithEvents Total As DataGridViewTextBoxColumn
+    Friend WithEvents Mas As DataGridViewImageColumn
+    Friend WithEvents Del As DataGridViewImageColumn
+    Friend WithEvents Cod As DataGridViewTextBoxColumn
+    Friend WithEvents Descrip As DataGridViewTextBoxColumn
+    Friend WithEvents Cant As DataGridViewTextBoxColumn
+    Friend WithEvents Precio As DataGridViewTextBoxColumn
+    Friend WithEvents Importe As DataGridViewTextBoxColumn
+    Friend WithEvents Unid As DataGridViewTextBoxColumn
+    Friend WithEvents Desc As DataGridViewTextBoxColumn
+    Friend WithEvents ToolTip2 As ToolTip
 End Class

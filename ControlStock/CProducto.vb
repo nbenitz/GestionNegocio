@@ -8,7 +8,7 @@ Public Class CProducto
                                   ByVal Precio1 As Integer, ByVal Precio2 As Integer, ByVal Precio3 As Integer, ByVal PrecioPack? As Integer,
                                   ByVal CantUnit As Double, ByVal UnidXpack? As Double, ByVal PorPack As String,
                                   ByVal Foto As Byte(), ByVal Iva As Int16,
-                                  ByVal Lado1? As Double, ByVal Lado2? As Double, ByVal MxCaja? As Double) As Boolean
+                                  ByVal Lado1? As Double, ByVal Lado2? As Double, ByVal MxCaja? As Double, ByVal Favorito As Integer) As Boolean
         Dim inserto As Boolean = False
         Try
             ObjCon.Conectar()
@@ -31,6 +31,7 @@ Public Class CProducto
             ObjCon.AsignarParametro("@lado1", Lado1)
             ObjCon.AsignarParametro("@lado2", Lado2)
             ObjCon.AsignarParametro("@mxcaja", MxCaja)
+            ObjCon.AsignarParametro("@favorito", Favorito)
             If ObjCon.EjecutarConsulta() > 0 Then
                 inserto = True
             Else
@@ -273,7 +274,7 @@ Public Class CProducto
                               ByVal Precio1 As Integer, ByVal Precio2 As Integer, ByVal Precio3 As Integer, ByVal PrecioPack? As Integer,
                               ByVal CantUnit As Double, ByVal UnidXpack? As Double, ByVal PorPack As String,
                            ByVal Foto As Byte(), ByVal Iva_ As Int16, ByVal OldidProd As String,
-                           ByVal Lado1? As Double, ByVal Lado2? As Double, ByVal MxCaja? As Double) As Boolean
+                           ByVal Lado1? As Double, ByVal Lado2? As Double, ByVal MxCaja? As Double, ByVal Favorito As Integer) As Boolean
         Dim inserto As Boolean = False
         Try
             ObjCon.Conectar()
@@ -297,6 +298,7 @@ Public Class CProducto
             ObjCon.AsignarParametro("@lado1_", Lado1)
             ObjCon.AsignarParametro("@lado2_", Lado2)
             ObjCon.AsignarParametro("@mxcaja_", MxCaja)
+            ObjCon.AsignarParametro("@favorito_", Favorito)
             If ObjCon.EjecutarConsulta() > 0 Then
                 inserto = True
             Else
@@ -394,11 +396,20 @@ Public Class CProducto
         ObjCon.Desconectar()
     End Function
 
-    Public Function BuscProd(ByVal Campo1 As String, ByVal Parametro1 As String, ByVal Campo2 As String, ByVal Operador As String, ByVal Parametro2 As String) As DataTable
+    Public Function BuscProd(Campo1 As String, Parametro1 As String, ByVal Campo2 As String, ByVal Operador As String, ByVal Parametro2 As String) As DataTable
         ObjCon.Conectar()
         ObjCon.CrearComando("SELECT * FROM viewProducto WHERE " + Campo1 + "='" + Parametro1 + "' And " + Campo2 + Operador + Parametro2)
         BuscProd = ObjCon.EjecutarDataTable()
         ObjCon.Desconectar()
+    End Function
+
+    Public Function GetFavoritos() As DataTable
+        Dim tabla As DataTable
+        ObjCon.Conectar()
+        ObjCon.CrearComando("SELECT * FROM producto WHERE favorito = 1")
+        tabla = ObjCon.EjecutarDataTable()
+        ObjCon.Desconectar()
+        Return tabla
     End Function
 
     Public Function BuscViewBaja(ByVal Condicion As String) As DataTable
@@ -571,6 +582,35 @@ Public Class CProducto
         Else
             Return True
         End If
+    End Function
+
+    Public Function Ajustes(ByVal Porcentaje As Integer, ByVal Multiplo As Integer, ByVal Activo As Integer) As Boolean
+        Dim inserto As Boolean = False
+        Try
+            ObjCon.Conectar()
+            ObjCon.CrearComando("zproducto_precio_ajustes")
+            ObjCon.CrearProcedimiento()
+            ObjCon.AsignarParametro("@porcentaje_", Porcentaje)
+            ObjCon.AsignarParametro("@multiplo_", Multiplo)
+            ObjCon.AsignarParametro("@activo_", Activo)
+            If ObjCon.EjecutarConsulta() > 0 Then
+                inserto = True
+            Else
+                inserto = False
+            End If
+            ObjCon.Desconectar()
+        Catch mierror As MySqlException
+            inserto = False
+        End Try
+        Return inserto
+    End Function
+
+    Public Function VerAjustes() As DataTable
+        ObjCon.Conectar()
+        ObjCon.CrearComando("zproducto_precio_ajustes_view")
+        ObjCon.CrearProcedimiento()
+        VerAjustes = ObjCon.EjecutarDataTable()
+        ObjCon.Desconectar()
     End Function
 
 End Class

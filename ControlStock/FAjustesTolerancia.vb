@@ -1,7 +1,7 @@
 ﻿Option Strict On
 
 Public Class FAjustesTolerancia
-    Dim Habitacion As New CHabitacion
+    Dim oHabitacion As New CHabitacion
 
     Private Sub btnGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardar.Click
         Dim Tol1 As Integer
@@ -14,7 +14,7 @@ Public Class FAjustesTolerancia
                     Tol1 = CInt(TxtTol1.Text)
                     Tol2 = CInt(TxtTol2.Text)
                     Tol3 = CInt(TxtTol3.Text)
-                    If Habitacion.Ajustes(Tol1, Tol2, Tol3) = True Then
+                    If oHabitacion.Ajustes(Tol1, Tol2, Tol3) = True Then
                         MessageBox.Show("Los ajustes se guardaron correctamente")
                         Me.Close()
                     Else
@@ -43,7 +43,7 @@ Public Class FAjustesTolerancia
 
     Private Sub FEditarHabitacion_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ToolTip2.IsBalloon = True
-        Dim Tabla As DataTable = Habitacion.VerAjustes
+        Dim Tabla As DataTable = oHabitacion.VerAjustes
         TxtTol1.Text = CStr(Tabla.Rows(0).Item(1))
         TxtTol2.Text = CStr(Tabla.Rows(0).Item(2))
         TxtTol3.Text = CStr(Tabla.Rows(0).Item(3))

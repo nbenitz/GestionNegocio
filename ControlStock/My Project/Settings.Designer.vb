@@ -58,9 +58,9 @@ Namespace My
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
          Global.System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;password=1223;database=minegocio")>  _
-        Public ReadOnly Property MySqlConnString() As String
+        Public ReadOnly Property MySqlConnString_() As String
             Get
-                Return CType(Me("MySqlConnString"),String)
+                Return CType(Me("MySqlConnString_"),String)
             End Get
         End Property
     End Class

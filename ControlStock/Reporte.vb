@@ -276,4 +276,7 @@ Public Class Reporte
         pnlEditCant.Visible = False
     End Sub
 
+    Private Sub Detalle_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles Detalle.CellContentClick
+
+    End Sub
 End Class

@@ -253,4 +253,7 @@ Public Class FListaSocio
         End Try
     End Sub
 
+    Private Sub dgvCliente_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCliente.CellContentClick
+
+    End Sub
 End Class

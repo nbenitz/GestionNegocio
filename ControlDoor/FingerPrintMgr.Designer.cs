@@ -41,11 +41,11 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.LblMensaje = new System.Windows.Forms.Label();
             this.tmrHideMsg = new System.Windows.Forms.Timer(this.components);
+            this.LblReconectar = new System.Windows.Forms.Label();
+            this.tmrReconectar = new System.Windows.Forms.Timer(this.components);
             this.pbxConectado = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pbxFingerPrint = new System.Windows.Forms.PictureBox();
-            this.LblReconectar = new System.Windows.Forms.Label();
-            this.tmrReconectar = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbxConectado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxFingerPrint)).BeginInit();
@@ -175,39 +175,6 @@
             this.tmrHideMsg.Interval = 5000;
             this.tmrHideMsg.Tick += new System.EventHandler(this.tmrHideMsg_Tick);
             // 
-            // pbxConectado
-            // 
-            this.pbxConectado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pbxConectado.Image = global::ControlDoor.Properties.Resources.desconectado;
-            this.pbxConectado.Location = new System.Drawing.Point(12, 417);
-            this.pbxConectado.Name = "pbxConectado";
-            this.pbxConectado.Size = new System.Drawing.Size(12, 12);
-            this.pbxConectado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbxConectado.TabIndex = 87;
-            this.pbxConectado.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = global::ControlDoor.Properties.Resources.close;
-            this.pictureBox1.Location = new System.Drawing.Point(538, 5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 84;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.Close_Click);
-            // 
-            // pbxFingerPrint
-            // 
-            this.pbxFingerPrint.Image = global::ControlDoor.Properties.Resources.fingerprint;
-            this.pbxFingerPrint.Location = new System.Drawing.Point(219, 129);
-            this.pbxFingerPrint.Name = "pbxFingerPrint";
-            this.pbxFingerPrint.Size = new System.Drawing.Size(120, 120);
-            this.pbxFingerPrint.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbxFingerPrint.TabIndex = 82;
-            this.pbxFingerPrint.TabStop = false;
-            // 
             // LblReconectar
             // 
             this.LblReconectar.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -227,12 +194,45 @@
             this.tmrReconectar.Interval = 1000;
             this.tmrReconectar.Tick += new System.EventHandler(this.tmrReconectar_Tick);
             // 
+            // pbxConectado
+            // 
+            this.pbxConectado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pbxConectado.Image = global::ControlDoor.Properties.Resources.desconectado;
+            this.pbxConectado.Location = new System.Drawing.Point(12, 417);
+            this.pbxConectado.Name = "pbxConectado";
+            this.pbxConectado.Size = new System.Drawing.Size(12, 12);
+            this.pbxConectado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxConectado.TabIndex = 87;
+            this.pbxConectado.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = global::ControlDoor.Properties.Resources.close;
+            this.pictureBox1.Location = new System.Drawing.Point(679, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 84;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.Close_Click);
+            // 
+            // pbxFingerPrint
+            // 
+            this.pbxFingerPrint.Image = global::ControlDoor.Properties.Resources.fingerprint;
+            this.pbxFingerPrint.Location = new System.Drawing.Point(219, 129);
+            this.pbxFingerPrint.Name = "pbxFingerPrint";
+            this.pbxFingerPrint.Size = new System.Drawing.Size(120, 120);
+            this.pbxFingerPrint.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxFingerPrint.TabIndex = 82;
+            this.pbxFingerPrint.TabStop = false;
+            // 
             // FingerPrintMgr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(564, 444);
+            this.ClientSize = new System.Drawing.Size(705, 444);
             this.Controls.Add(this.LblReconectar);
             this.Controls.Add(this.LblMensaje);
             this.Controls.Add(this.pbxConectado);

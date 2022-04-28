@@ -1562,7 +1562,7 @@ Public Class FVenta
         Dim Foto As Byte()
         Dim Iva As Int16 = 10
         If Producto.VerificarCod(idProd) = True Then
-            If Producto.InserProducto(idProd, idProv, Categoria, Descrip, PrecCompra, Precio1, Precio2, 0, PrecPack, Stock, UnidXpack, PorPack, Foto, Iva, Lado1, Lado2, MxCaja) = False Then
+            If Producto.InserProducto(idProd, idProv, Categoria, Descrip, PrecCompra, Precio1, Precio2, 0, PrecPack, Stock, UnidXpack, PorPack, Foto, Iva, Lado1, Lado2, MxCaja, 0) = False Then
                 MessageBox.Show("Hubo un error al crear el Producto")
             Else
                 'MessageBox.Show("Producto Guardado")

@@ -11,9 +11,10 @@ Public Class CBaseDato
     Public cb As MySqlCommandBuilder
     Public odatarow As DataRow
     Public iposfilaactual As Integer
+    Dim appCfg As New CAppConfig
 
     Public Sub Conectar()
-        con = New MySqlConnection(My.Settings.MySqlConnString)
+        con = New MySqlConnection(appCfg.GetValue("server", Type.GetType("System.String")))
         con.Open()
     End Sub
 

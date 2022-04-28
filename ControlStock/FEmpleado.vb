@@ -169,11 +169,17 @@ Public Class FEmpleado
         Dim estado As String = ""
         ShowLoading()
         Dim t1 As Task
-        t1 = Task.Run(Sub() estado = FrmFingerPMgr.SaveAccesoEmple(CIValue,
+        Try
+            t1 = Task.Run(Sub() estado = FrmFingerPMgr.SaveAccesoEmple(CIValue,
                                                                    txtNombre.Text,
                                                                    EmployeeNoValue,
                                                                    FPDataValue))
-        Await t1
+            Await t1
+        Catch ex As Exception
+            CloseLoading()
+            MessageBox.Show("Error")
+            Exit Sub
+        End Try
         CloseLoading()
         If estado = "OK" Then
             MessageBox.Show("Datos registrados")
@@ -207,6 +213,7 @@ Public Class FEmpleado
                             txtCI.Select(0, txtCI.Text.Length)
                             ToolTip2.Show("Ya existe un empleado con el CI especificado", txtCI, 0, -40, 3000)
                         Else
+                            CIValue = CInt(txtCI.Text)
                             btnAcceso_Click(sender, e)
                             btnSocio.Enabled = False
                             btnAcceso.Enabled = True
@@ -233,42 +240,56 @@ Public Class FEmpleado
     Private Async Sub btnAsignarAcceso_Click(sender As Object, e As EventArgs) Handles btnAsignarAcceso.Click
         If ModoForm = Modo.Nuevo Then
             Dim estado As String
-            Dim EmployeeNo As String = ""
+            Dim EmployeeNo As String = CIValue.ToString()
             If FPDataValue.Count > 0 Then
                 ShowLoading()
-                Dim t1 As Task
-                t1 = Task.Run(Sub() EmployeeNo = GuardarDatosAccesoDispositivo())
-                Await t1
+                Try
+                    Dim t1 As Task
+                    t1 = Task.Run(Sub() EmployeeNo = GuardarDatosAccesoDispositivo(EmployeeNo))
+                    Await t1
+                Catch ex As Exception
+                    'CloseLoading()
+                    'MessageBox.Show("Error")
+                    'Exit Sub
+                End Try
                 CloseLoading()
-                If EmployeeNo.Length = 0 Then
-                    Exit Sub
-                End If
             End If
 
             ShowLoading()
-            Dim t2 As Task
-            t2 = Task.Run(Sub() estado = FrmFingerPMgr.SaveNewEmple(GetSocio(),
-                                                                    EmployeeNo,
-                                                                    FPDataValue
-                                                                    ))
-            Await t2
+            Try
+                Dim t2 As Task
+                t2 = Task.Run(Sub() estado = FrmFingerPMgr.SaveNewEmple(GetSocio(),
+                                                                        EmployeeNo,
+                                                                        FPDataValue
+                                                                        ))
+                Await t2
+            Catch ex As Exception
+                CloseLoading()
+                MessageBox.Show("Error")
+                'Exit Sub
+            End Try
             CloseLoading()
 
             If estado = "OK" Then
                 MessageBox.Show("Datos registrados")
+                Close()
             Else
                 MessageBox.Show("Error: " + estado)
             End If
-
-            Close()
-
         Else
             If FPDataValue.Count > 0 Then
                 If EmployeeNoValue.Length = 0 Then
+                    Dim EmployeeNo As String = CIValue.ToString()
                     ShowLoading()
-                    Dim t1 As Task
-                    t1 = Task.Run(Sub() EmployeeNoValue = GuardarDatosAccesoDispositivo())
-                    Await t1
+                    Try
+                        Dim t1 As Task
+                        t1 = Task.Run(Sub() EmployeeNoValue = GuardarDatosAccesoDispositivo(EmployeeNo))
+                        Await t1
+                    Catch ex As Exception
+                        CloseLoading()
+                        MessageBox.Show("Error")
+                        'Exit Sub
+                    End Try
                     CloseLoading()
                     If EmployeeNoValue.Length = 0 Then
                         Exit Sub
@@ -276,9 +297,15 @@ Public Class FEmpleado
                 Else
                     ShowLoading()
                     Dim estado As String
-                    Dim t2 As Task
-                    t2 = Task.Run(Sub() estado = EditarHuellaDispositivo())
-                    Await t2
+                    Try
+                        Dim t2 As Task
+                        t2 = Task.Run(Sub() estado = EditarHuellaDispositivo())
+                        Await t2
+                    Catch ex As Exception
+                        CloseLoading()
+                        MessageBox.Show("Error")
+                        'Exit Sub
+                    End Try
                     CloseLoading()
                     If estado <> "OK" Then
                         Exit Sub
@@ -300,6 +327,7 @@ Public Class FEmpleado
         Dim Tel As String = txtTelefono.Text
         Dim Dir As String = txtDireccion.Text
         Dim Apellido As String = txtApellido.Text
+        Dim Comision As String = txtComision.Text
         Dim Foto As Byte()
         If Tel = "" Then
             Tel = " "
@@ -307,25 +335,21 @@ Public Class FEmpleado
         If Dir = "" Then
             Dir = " "
         End If
+        If Comision = "" Then
+            Comision = "0"
+        End If
         Empleado.CI = CInt(txtCI.Text)
         Empleado.Nombre = txtNombre.Text
         Empleado.Apellido = Apellido
         Empleado.Telefono = Tel
         Empleado.Direccion = Dir
-        Empleado.Comision = CByte(txtComision.Text)
+        Empleado.Comision = CByte(Comision)
         Empleado.Estado = "Activo"
         Return Empleado
     End Function
 
-    Private Function GuardarDatosAccesoDispositivo() As String
+    Private Function GuardarDatosAccesoDispositivo(EmployeeNo As String) As String
         Dim estado As String
-        Dim EmployeeNo As String = ""
-
-        EmployeeNo = Person.GetNextEmployeeNo()
-        If EmployeeNo.Length = 0 Then
-            MessageBox.Show("Error al generar un nuevo código de acceso")
-            Return ""
-        End If
 
         estado = Person.SetUserInfo(txtNombre.Text, EmployeeNo)
         If estado <> "OK" Then
@@ -352,21 +376,11 @@ Public Class FEmpleado
         Return estado
     End Function
 
-
-
-
-
     Private Sub btnAccesoAtras_Click(sender As Object, e As EventArgs) Handles btnAccesoAtras.Click
         btnSocio_Click(sender, e)
         btnAcceso.Enabled = False
         btnSocio.Enabled = True
     End Sub
-
-
-
-
-
-
 
     Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
         Close()

@@ -308,7 +308,7 @@ Public Class CAcceso
             ObjCon.Conectar()
             ObjCon.CrearComando("INSERT INTO empleado_asistencia VALUES(?id, ?empleado_ci, ?fecha)")
             ObjCon.AsignarParametro("?id", MySqlDbType.Int32, Id)
-            ObjCon.AsignarParametro("?cliente_ci", MySqlDbType.String, EmpleadoCI)
+            ObjCon.AsignarParametro("?empleado_ci", MySqlDbType.String, EmpleadoCI)
             ObjCon.AsignarParametro("?fecha", MySqlDbType.DateTime, Fecha)
             If ObjCon.EjecutarConsulta() > 0 Then
                 inserto = True
@@ -408,4 +408,30 @@ Public Class CAcceso
         IdEmpleadoAsistencia += 1
     End Function
 
+    Public Function VerAjustes() As DataTable
+        ObjCon.Conectar()
+        ObjCon.CrearComando("zacceso_ajustes_view")
+        ObjCon.CrearProcedimiento()
+        VerAjustes = ObjCon.EjecutarDataTable()
+        ObjCon.Desconectar()
+    End Function
+
+    Public Function Ajustes(ByVal Tolerancia As Integer) As Boolean
+        Dim inserto As Boolean = False
+        Try
+            ObjCon.Conectar()
+            ObjCon.CrearComando("zacceso_ajustes")
+            ObjCon.CrearProcedimiento()
+            ObjCon.AsignarParametro("@Tolerancia", Tolerancia)
+            If ObjCon.EjecutarConsulta() > 0 Then
+                inserto = True
+            Else
+                inserto = False
+            End If
+            ObjCon.Desconectar()
+        Catch mierror As MySqlException
+            inserto = False
+        End Try
+        Return inserto
+    End Function
 End Class

@@ -1,4 +1,6 @@
 ﻿Option Strict On
+Imports System.Drawing.Drawing2D
+
 Public Class FVentaGym
     Dim Caja As New CCaja
     Dim NumCaja As UInt16 = 1
@@ -13,6 +15,7 @@ Public Class FVentaGym
     Dim Tabla As New DataTable
     Dim TablaCli As New DataTable
     Dim TablaEmple As DataTable
+    Dim TablaProdFav As DataTable
     Dim Param As String
     Dim CIValue As String
     Dim ModoMotelValue As Boolean = True
@@ -22,6 +25,7 @@ Public Class FVentaGym
     Dim GridFila As Integer
     Dim Total As Integer
     Dim PorCaja, PorMetro, PorUnidad As Boolean
+    Dim ProdFabAgregar As Boolean = False
     WithEvents FrmCliente As New FListaClientes
 
     Public Event Facturado(ByVal sender As System.Object, ByVal e As HabEvents)
@@ -32,6 +36,7 @@ Public Class FVentaGym
         AddHandler FrmListaSocio.ClienteSeleccionado, AddressOf onClinteSeleccionado
         FrmListaSocio.ModoVista()
         CargarEmple()
+        'CargarAccesoRapido()
 
         Try
             Dim TablaEmple2 As DataTable = Empleado.CargarEmple(CIValue)
@@ -146,7 +151,7 @@ Public Class FVentaGym
             lblUnidXpack.Visible = False
             Try
                 PictureBox1.Image = Nothing
-                PictureBox1.SizeMode = PictureBoxSizeMode.CenterImage
+                PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
                 PictureBox1.Image = ByteArrayToImage(CType(Tabla.Rows(Fila).Item(12), Byte()))
             Catch
             End Try
@@ -207,8 +212,9 @@ Public Class FVentaGym
                         Case "Kilo"
                             lblInfoStock.Text = lblInfoStock.Text + "  Kg."
                     End Select
-                    If optCod.Checked Then
+                    If optCod.Checked Or ProdFabAgregar Then
                         btnAgregar_Click(Me, Nothing)
+                        ProdFabAgregar = False
                     End If
                 Case "Piso"
                     Dim UnidXCaja As Integer = CInt(Tabla.Rows(Fila).Item(10))
@@ -273,7 +279,7 @@ Public Class FVentaGym
                         idProdAux = Nothing
                     End If
                     If idProdAux = idProd Then  'Comparar el codigo encontrado con el q se quiere agregar actualmente
-                        CantAux = SoloNumeros(DataGridView1.Item(3, GridFila).Value.ToString)      ' Guardar cada cantidad
+                        CantAux = SoloNumeros(DataGridView1.Item(3, i).Value.ToString)      ' Guardar cada cantidad
                         flag = True             'activar el flag
                         Indice = i              'guardar el IndiceProd donde se encuentra el producto
                         Cant += CantAux         'sumar la cantidad anterior a la cantidad actual
@@ -1134,10 +1140,6 @@ Public Class FVentaGym
         'Me.WindowState = FormWindowState.Minimized
     End Sub
 
-    Private Sub FVenta_Activated(sender As Object, e As EventArgs) Handles Me.Activated
-        Me.WindowState = FormWindowState.Normal
-    End Sub
-
     'Private Sub Form1_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
     'Dim strEstado As String = Me.WindowState.ToString()
     'If strEstado = "Maximized" Then
@@ -1315,12 +1317,14 @@ Public Class FVentaGym
         txtNuevoPDescrip.Focus()
     End Sub
 
-    Private Sub txtEditPrecio_KeyUp(sender As Object, e As KeyEventArgs) Handles txtEditPrecio.KeyUp, txtNuevoPPrecio.KeyUp
-        If (txtEditPrecio.Text <> String.Empty) Then
+    Private Sub Txt_KeyUp(sender As Object, e As KeyEventArgs) Handles txtEditPrecio.KeyUp, txtNuevoPPrecio.KeyUp
+        'Agregar separador de miles
+        Dim Txt As TextBox = DirectCast(sender, TextBox)
+        If (Txt.Text <> String.Empty) Then
             Dim importe As Decimal
-            Decimal.TryParse(txtEditPrecio.Text, importe)
-            txtEditPrecio.Text = String.Format("{0:N0}", importe)
-            txtEditPrecio.SelectionStart = txtEditPrecio.TextLength
+            Decimal.TryParse(Txt.Text, importe)
+            Txt.Text = String.Format("{0:N0}", importe)
+            Txt.SelectionStart = Txt.TextLength
         End If
     End Sub
 
@@ -1448,7 +1452,7 @@ Public Class FVentaGym
         Dim Foto As Byte()
         Dim Iva As Int16 = 10
         If Producto.VerificarCod(idProd) = True Then
-            If Producto.InserProducto(idProd, idProv, Categoria, Descrip, PrecCompra, Precio1, Precio2, 0, PrecPack, Stock, UnidXpack, PorPack, Foto, Iva, Lado1, Lado2, MxCaja) = False Then
+            If Producto.InserProducto(idProd, idProv, Categoria, Descrip, PrecCompra, Precio1, Precio2, 0, PrecPack, Stock, UnidXpack, PorPack, Foto, Iva, Lado1, Lado2, MxCaja, 0) = False Then
                 MessageBox.Show("Hubo un error al crear el Producto")
             Else
                 'MessageBox.Show("Producto Guardado")
@@ -1465,6 +1469,83 @@ Public Class FVentaGym
             MessageBox.Show("El Código ingresado ya existe")
             txtNuevoPCod.Select(0, txtNuevoPCod.Text.Length)
             txtNuevoPCod.Focus()
+        End If
+    End Sub
+
+    Private Sub DibujarPalabra(ByVal pbx As PictureBox, ByVal StringToDraw As String)
+        'Make PictureBox1 be black.>>
+        Dim MyBrush As New SolidBrush(Color.LightBlue)
+        Dim StringFont As New Font("Arial", 11)
+
+        Dim img As New Bitmap(pbx.Width, pbx.Height)
+
+        Using g As Graphics = Graphics.FromImage(img)
+            g.SmoothingMode = SmoothingMode.HighQuality
+            Dim strarr() As String
+            strarr = StringToDraw.Split(" "c)
+
+            Dim entrelineado As Integer = 20
+            Dim parrafo As Integer = (strarr.Length - 1) * entrelineado
+            Dim top As Integer = CInt(pbx.Height / 2 - parrafo / 2 - 6)
+
+            For Each s As String In strarr
+                g.DrawString(s, StringFont, MyBrush, New PointF(10, top))
+                top += entrelineado
+            Next
+        End Using
+
+        If pbx.Image IsNot Nothing Then
+            pbx.Image.Dispose()
+        End If
+        pbx.Image = img
+    End Sub
+
+    Public Sub CargarAccesoRapido()
+        FlowLayoutPanel1.Controls.Clear()
+        TablaProdFav = Producto.GetFavoritos
+        For i As Integer = 0 To TablaProdFav.Rows.Count - 1
+            Dim Id As String = CStr(TablaProdFav.Rows(i).Item(0))
+            Dim Descrip As String = CStr(TablaProdFav.Rows(i).Item(3))
+            Dim Foto As Byte()
+
+            Dim pbx As New PictureBox
+            pbx.BackColor = Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+            pbx.Size = New Size(100, 100)
+            pbx.SizeMode = PictureBoxSizeMode.Zoom
+            pbx.Margin = New Padding(7, 7, 3, 3)
+            pbx.Padding = New Padding(0, 0, 0, 0)
+            Try
+                Foto = CType(TablaProdFav.Rows(i).Item(12), Byte())
+                pbx.Image = ByteArrayToImage(Foto)
+            Catch
+                DibujarPalabra(pbx, Descrip)
+            End Try
+
+            pbx.Name = "pbx_" + CStr(Id)
+            AddHandler pbx.Click, AddressOf pbxProd_Click
+
+            FlowLayoutPanel1.Controls.Add(pbx)
+        Next
+    End Sub
+
+    Private Sub pbxProd_Click(sender As Object, e As EventArgs)
+        Dim i As Integer = FlowLayoutPanel1.Controls.IndexOf(DirectCast(sender, Control))
+
+        Dim Cod As String = CStr(TablaProdFav.Rows(i).Item(0))
+        Tabla = Producto.BuscProdCod(Cod)
+
+        cmbDescrip.Items.Clear()
+        cmbDescrip.Items.Add(Tabla.Rows(0).Item(3))
+        cmbDescrip.Text = CStr(cmbDescrip.Items(0))
+
+        ProdFabAgregar = True
+        Dim Filas As Integer = Tabla.Rows.Count
+        If Filas > 0 Then
+            cmbDescrip.Items.Add(Tabla.Rows(0).Item(3))
+            cmbDescrip.Text = CStr(cmbDescrip.Items(0))
+        Else
+            MostrarMsj("El Código no existe")
+            txtBuscar.Select(0, txtBuscar.TextLength)
         End If
     End Sub
 

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Reporte
     Inherits System.Windows.Forms.UserControl
 
     'UserControl reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Reporte
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -41,22 +41,10 @@ Partial Class Reporte
         Me.Titulo = New System.Windows.Forms.Label()
         Me.TagId = New System.Windows.Forms.Label()
         Me.tagFecha = New System.Windows.Forms.Label()
-        Me.tagSaldo = New System.Windows.Forms.Label()
-        Me.txtEntregado = New System.Windows.Forms.TextBox()
-        Me.txtSaldo = New System.Windows.Forms.TextBox()
         Me.tagTotal = New System.Windows.Forms.Label()
-        Me.tagEntregado = New System.Windows.Forms.Label()
         Me.txtTotal = New System.Windows.Forms.TextBox()
         Me.tagCliente = New System.Windows.Forms.Label()
         Me.Detalle = New System.Windows.Forms.DataGridView()
-        Me.lblNotaInfo1 = New System.Windows.Forms.TextBox()
-        Me.lblNotaInfo2 = New System.Windows.Forms.TextBox()
-        Me.DataGridViewImageColumn1 = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.pnlEditCant = New System.Windows.Forms.Panel()
-        Me.btnEditCantCancel = New System.Windows.Forms.Button()
-        Me.txtEditCant = New System.Windows.Forms.TextBox()
-        Me.lblEditCant = New System.Windows.Forms.Label()
-        Me.ToolTip2 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Del = New System.Windows.Forms.DataGridViewImageColumn()
         Me.Cod = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Descrip = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -65,8 +53,22 @@ Partial Class Reporte
         Me.Importe = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Unid = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Desc = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.lblNotaInfo1 = New System.Windows.Forms.TextBox()
+        Me.lblNotaInfo2 = New System.Windows.Forms.TextBox()
+        Me.DataGridViewImageColumn1 = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.pnlEditCant = New System.Windows.Forms.Panel()
+        Me.btnEditCantCancel = New System.Windows.Forms.Button()
+        Me.txtEditCant = New System.Windows.Forms.TextBox()
+        Me.lblEditCant = New System.Windows.Forms.Label()
+        Me.ToolTip2 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.pnlReporte = New System.Windows.Forms.Panel()
+        Me.tagSaldo = New System.Windows.Forms.Label()
+        Me.txtEntregado = New System.Windows.Forms.TextBox()
+        Me.txtSaldo = New System.Windows.Forms.TextBox()
+        Me.tagEntregado = New System.Windows.Forms.Label()
         CType(Me.Detalle, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlEditCant.SuspendLayout()
+        Me.pnlReporte.SuspendLayout()
         Me.SuspendLayout()
         '
         'txtVto
@@ -169,40 +171,6 @@ Partial Class Reporte
         Me.tagFecha.TabIndex = 86
         Me.tagFecha.Text = "Fecha:"
         '
-        'tagSaldo
-        '
-        Me.tagSaldo.AutoSize = True
-        Me.tagSaldo.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tagSaldo.Location = New System.Drawing.Point(495, 416)
-        Me.tagSaldo.Name = "tagSaldo"
-        Me.tagSaldo.Size = New System.Drawing.Size(49, 16)
-        Me.tagSaldo.TabIndex = 95
-        Me.tagSaldo.Text = "Saldo:"
-        '
-        'txtEntregado
-        '
-        Me.txtEntregado.BackColor = System.Drawing.Color.White
-        Me.txtEntregado.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtEntregado.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtEntregado.Location = New System.Drawing.Point(545, 390)
-        Me.txtEntregado.Name = "txtEntregado"
-        Me.txtEntregado.ReadOnly = True
-        Me.txtEntregado.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtEntregado.Size = New System.Drawing.Size(102, 18)
-        Me.txtEntregado.TabIndex = 94
-        '
-        'txtSaldo
-        '
-        Me.txtSaldo.BackColor = System.Drawing.Color.White
-        Me.txtSaldo.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtSaldo.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSaldo.Location = New System.Drawing.Point(545, 415)
-        Me.txtSaldo.Name = "txtSaldo"
-        Me.txtSaldo.ReadOnly = True
-        Me.txtSaldo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtSaldo.Size = New System.Drawing.Size(102, 18)
-        Me.txtSaldo.TabIndex = 96
-        '
         'tagTotal
         '
         Me.tagTotal.AutoSize = True
@@ -212,16 +180,6 @@ Partial Class Reporte
         Me.tagTotal.Size = New System.Drawing.Size(43, 16)
         Me.tagTotal.TabIndex = 93
         Me.tagTotal.Text = "Total:"
-        '
-        'tagEntregado
-        '
-        Me.tagEntregado.AutoSize = True
-        Me.tagEntregado.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tagEntregado.Location = New System.Drawing.Point(467, 391)
-        Me.tagEntregado.Name = "tagEntregado"
-        Me.tagEntregado.Size = New System.Drawing.Size(77, 16)
-        Me.tagEntregado.TabIndex = 91
-        Me.tagEntregado.Text = "Entregado:"
         '
         'txtTotal
         '
@@ -267,81 +225,6 @@ Partial Class Reporte
         Me.Detalle.RowHeadersVisible = False
         Me.Detalle.Size = New System.Drawing.Size(659, 276)
         Me.Detalle.TabIndex = 85
-        '
-        'lblNotaInfo1
-        '
-        Me.lblNotaInfo1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.lblNotaInfo1.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNotaInfo1.Location = New System.Drawing.Point(268, 364)
-        Me.lblNotaInfo1.Multiline = True
-        Me.lblNotaInfo1.Name = "lblNotaInfo1"
-        Me.lblNotaInfo1.Size = New System.Drawing.Size(182, 32)
-        Me.lblNotaInfo1.TabIndex = 103
-        Me.lblNotaInfo1.Text = "Elimine los Productos de la Nota de Crédito que no desea devolver."
-        Me.lblNotaInfo1.Visible = False
-        '
-        'lblNotaInfo2
-        '
-        Me.lblNotaInfo2.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.lblNotaInfo2.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNotaInfo2.Location = New System.Drawing.Point(268, 397)
-        Me.lblNotaInfo2.Multiline = True
-        Me.lblNotaInfo2.Name = "lblNotaInfo2"
-        Me.lblNotaInfo2.Size = New System.Drawing.Size(182, 36)
-        Me.lblNotaInfo2.TabIndex = 104
-        Me.lblNotaInfo2.Text = "Cambie la cantidad de Productos si es necesario."
-        Me.lblNotaInfo2.Visible = False
-        '
-        'DataGridViewImageColumn1
-        '
-        Me.DataGridViewImageColumn1.HeaderText = ""
-        Me.DataGridViewImageColumn1.Image = Global.ControlStock.My.Resources.Resources.delete
-        Me.DataGridViewImageColumn1.Name = "DataGridViewImageColumn1"
-        Me.DataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewImageColumn1.Width = 20
-        '
-        'pnlEditCant
-        '
-        Me.pnlEditCant.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pnlEditCant.Controls.Add(Me.btnEditCantCancel)
-        Me.pnlEditCant.Controls.Add(Me.txtEditCant)
-        Me.pnlEditCant.Controls.Add(Me.lblEditCant)
-        Me.pnlEditCant.Location = New System.Drawing.Point(350, 188)
-        Me.pnlEditCant.Name = "pnlEditCant"
-        Me.pnlEditCant.Size = New System.Drawing.Size(204, 70)
-        Me.pnlEditCant.TabIndex = 105
-        Me.pnlEditCant.Visible = False
-        '
-        'btnEditCantCancel
-        '
-        Me.btnEditCantCancel.BackColor = System.Drawing.Color.White
-        Me.btnEditCantCancel.FlatAppearance.BorderSize = 0
-        Me.btnEditCantCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnEditCantCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnEditCantCancel.Image = Global.ControlStock.My.Resources.Resources.cancel
-        Me.btnEditCantCancel.Location = New System.Drawing.Point(181, 3)
-        Me.btnEditCantCancel.Name = "btnEditCantCancel"
-        Me.btnEditCantCancel.Size = New System.Drawing.Size(18, 18)
-        Me.btnEditCantCancel.TabIndex = 71
-        Me.btnEditCantCancel.UseVisualStyleBackColor = False
-        '
-        'txtEditCant
-        '
-        Me.txtEditCant.Location = New System.Drawing.Point(18, 34)
-        Me.txtEditCant.Name = "txtEditCant"
-        Me.txtEditCant.Size = New System.Drawing.Size(168, 20)
-        Me.txtEditCant.TabIndex = 68
-        '
-        'lblEditCant
-        '
-        Me.lblEditCant.AutoSize = True
-        Me.lblEditCant.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblEditCant.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.lblEditCant.Location = New System.Drawing.Point(15, 10)
-        Me.lblEditCant.Name = "lblEditCant"
-        Me.lblEditCant.Size = New System.Drawing.Size(123, 18)
-        Me.lblEditCant.TabIndex = 65
-        Me.lblEditCant.Text = "Editar Cantidad"
         '
         'Del
         '
@@ -419,39 +302,167 @@ Partial Class Reporte
         Me.Desc.Visible = False
         Me.Desc.Width = 50
         '
+        'lblNotaInfo1
+        '
+        Me.lblNotaInfo1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.lblNotaInfo1.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNotaInfo1.Location = New System.Drawing.Point(268, 364)
+        Me.lblNotaInfo1.Multiline = True
+        Me.lblNotaInfo1.Name = "lblNotaInfo1"
+        Me.lblNotaInfo1.Size = New System.Drawing.Size(182, 32)
+        Me.lblNotaInfo1.TabIndex = 103
+        Me.lblNotaInfo1.Text = "Elimine los Productos de la Nota de Crédito que no desea devolver."
+        Me.lblNotaInfo1.Visible = False
+        '
+        'lblNotaInfo2
+        '
+        Me.lblNotaInfo2.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.lblNotaInfo2.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNotaInfo2.Location = New System.Drawing.Point(268, 397)
+        Me.lblNotaInfo2.Multiline = True
+        Me.lblNotaInfo2.Name = "lblNotaInfo2"
+        Me.lblNotaInfo2.Size = New System.Drawing.Size(182, 36)
+        Me.lblNotaInfo2.TabIndex = 104
+        Me.lblNotaInfo2.Text = "Cambie la cantidad de Productos si es necesario."
+        Me.lblNotaInfo2.Visible = False
+        '
+        'DataGridViewImageColumn1
+        '
+        Me.DataGridViewImageColumn1.HeaderText = ""
+        Me.DataGridViewImageColumn1.Image = Global.ControlStock.My.Resources.Resources.delete
+        Me.DataGridViewImageColumn1.Name = "DataGridViewImageColumn1"
+        Me.DataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewImageColumn1.Width = 20
+        '
+        'pnlEditCant
+        '
+        Me.pnlEditCant.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pnlEditCant.Controls.Add(Me.btnEditCantCancel)
+        Me.pnlEditCant.Controls.Add(Me.txtEditCant)
+        Me.pnlEditCant.Controls.Add(Me.lblEditCant)
+        Me.pnlEditCant.Location = New System.Drawing.Point(350, 188)
+        Me.pnlEditCant.Name = "pnlEditCant"
+        Me.pnlEditCant.Size = New System.Drawing.Size(204, 70)
+        Me.pnlEditCant.TabIndex = 105
+        Me.pnlEditCant.Visible = False
+        '
+        'btnEditCantCancel
+        '
+        Me.btnEditCantCancel.BackColor = System.Drawing.Color.White
+        Me.btnEditCantCancel.FlatAppearance.BorderSize = 0
+        Me.btnEditCantCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnEditCantCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEditCantCancel.Image = Global.ControlStock.My.Resources.Resources.cancel
+        Me.btnEditCantCancel.Location = New System.Drawing.Point(181, 3)
+        Me.btnEditCantCancel.Name = "btnEditCantCancel"
+        Me.btnEditCantCancel.Size = New System.Drawing.Size(18, 18)
+        Me.btnEditCantCancel.TabIndex = 71
+        Me.btnEditCantCancel.UseVisualStyleBackColor = False
+        '
+        'txtEditCant
+        '
+        Me.txtEditCant.Location = New System.Drawing.Point(18, 34)
+        Me.txtEditCant.Name = "txtEditCant"
+        Me.txtEditCant.Size = New System.Drawing.Size(168, 20)
+        Me.txtEditCant.TabIndex = 68
+        '
+        'lblEditCant
+        '
+        Me.lblEditCant.AutoSize = True
+        Me.lblEditCant.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEditCant.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.lblEditCant.Location = New System.Drawing.Point(15, 10)
+        Me.lblEditCant.Name = "lblEditCant"
+        Me.lblEditCant.Size = New System.Drawing.Size(123, 18)
+        Me.lblEditCant.TabIndex = 65
+        Me.lblEditCant.Text = "Editar Cantidad"
+        '
+        'pnlReporte
+        '
+        Me.pnlReporte.Controls.Add(Me.pnlEditCant)
+        Me.pnlReporte.Controls.Add(Me.lblNotaInfo2)
+        Me.pnlReporte.Controls.Add(Me.lblNotaInfo1)
+        Me.pnlReporte.Controls.Add(Me.txtVto)
+        Me.pnlReporte.Controls.Add(Me.txtCliente)
+        Me.pnlReporte.Controls.Add(Me.txtProvVend)
+        Me.pnlReporte.Controls.Add(Me.txtNro)
+        Me.pnlReporte.Controls.Add(Me.txtFecha)
+        Me.pnlReporte.Controls.Add(Me.tagVto)
+        Me.pnlReporte.Controls.Add(Me.TagProvVend)
+        Me.pnlReporte.Controls.Add(Me.Titulo)
+        Me.pnlReporte.Controls.Add(Me.TagId)
+        Me.pnlReporte.Controls.Add(Me.tagFecha)
+        Me.pnlReporte.Controls.Add(Me.tagSaldo)
+        Me.pnlReporte.Controls.Add(Me.txtEntregado)
+        Me.pnlReporte.Controls.Add(Me.txtSaldo)
+        Me.pnlReporte.Controls.Add(Me.tagTotal)
+        Me.pnlReporte.Controls.Add(Me.tagEntregado)
+        Me.pnlReporte.Controls.Add(Me.txtTotal)
+        Me.pnlReporte.Controls.Add(Me.tagCliente)
+        Me.pnlReporte.Controls.Add(Me.Detalle)
+        Me.pnlReporte.Location = New System.Drawing.Point(0, 0)
+        Me.pnlReporte.Name = "pnlReporte"
+        Me.pnlReporte.Size = New System.Drawing.Size(665, 450)
+        Me.pnlReporte.TabIndex = 106
+        '
+        'tagSaldo
+        '
+        Me.tagSaldo.AutoSize = True
+        Me.tagSaldo.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tagSaldo.Location = New System.Drawing.Point(495, 416)
+        Me.tagSaldo.Name = "tagSaldo"
+        Me.tagSaldo.Size = New System.Drawing.Size(49, 16)
+        Me.tagSaldo.TabIndex = 95
+        Me.tagSaldo.Text = "Saldo:"
+        '
+        'txtEntregado
+        '
+        Me.txtEntregado.BackColor = System.Drawing.Color.White
+        Me.txtEntregado.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtEntregado.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEntregado.Location = New System.Drawing.Point(545, 390)
+        Me.txtEntregado.Name = "txtEntregado"
+        Me.txtEntregado.ReadOnly = True
+        Me.txtEntregado.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.txtEntregado.Size = New System.Drawing.Size(102, 18)
+        Me.txtEntregado.TabIndex = 94
+        '
+        'txtSaldo
+        '
+        Me.txtSaldo.BackColor = System.Drawing.Color.White
+        Me.txtSaldo.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtSaldo.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSaldo.Location = New System.Drawing.Point(545, 415)
+        Me.txtSaldo.Name = "txtSaldo"
+        Me.txtSaldo.ReadOnly = True
+        Me.txtSaldo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.txtSaldo.Size = New System.Drawing.Size(102, 18)
+        Me.txtSaldo.TabIndex = 96
+        '
+        'tagEntregado
+        '
+        Me.tagEntregado.AutoSize = True
+        Me.tagEntregado.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tagEntregado.Location = New System.Drawing.Point(467, 391)
+        Me.tagEntregado.Name = "tagEntregado"
+        Me.tagEntregado.Size = New System.Drawing.Size(77, 16)
+        Me.tagEntregado.TabIndex = 91
+        Me.tagEntregado.Text = "Entregado:"
+        '
         'Reporte
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.Controls.Add(Me.pnlEditCant)
-        Me.Controls.Add(Me.lblNotaInfo2)
-        Me.Controls.Add(Me.lblNotaInfo1)
-        Me.Controls.Add(Me.txtVto)
-        Me.Controls.Add(Me.txtCliente)
-        Me.Controls.Add(Me.txtProvVend)
-        Me.Controls.Add(Me.txtNro)
-        Me.Controls.Add(Me.txtFecha)
-        Me.Controls.Add(Me.tagVto)
-        Me.Controls.Add(Me.TagProvVend)
-        Me.Controls.Add(Me.Titulo)
-        Me.Controls.Add(Me.TagId)
-        Me.Controls.Add(Me.tagFecha)
-        Me.Controls.Add(Me.tagSaldo)
-        Me.Controls.Add(Me.txtEntregado)
-        Me.Controls.Add(Me.txtSaldo)
-        Me.Controls.Add(Me.tagTotal)
-        Me.Controls.Add(Me.tagEntregado)
-        Me.Controls.Add(Me.txtTotal)
-        Me.Controls.Add(Me.tagCliente)
-        Me.Controls.Add(Me.Detalle)
+        Me.Controls.Add(Me.pnlReporte)
         Me.Name = "Reporte"
         Me.Size = New System.Drawing.Size(666, 451)
         CType(Me.Detalle, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlEditCant.ResumeLayout(False)
         Me.pnlEditCant.PerformLayout()
+        Me.pnlReporte.ResumeLayout(False)
+        Me.pnlReporte.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents txtVto As System.Windows.Forms.Label
@@ -464,11 +475,7 @@ Partial Class Reporte
     Friend WithEvents Titulo As System.Windows.Forms.Label
     Friend WithEvents TagId As System.Windows.Forms.Label
     Friend WithEvents tagFecha As System.Windows.Forms.Label
-    Friend WithEvents tagSaldo As System.Windows.Forms.Label
-    Friend WithEvents txtEntregado As System.Windows.Forms.TextBox
-    Friend WithEvents txtSaldo As System.Windows.Forms.TextBox
     Friend WithEvents tagTotal As System.Windows.Forms.Label
-    Friend WithEvents tagEntregado As System.Windows.Forms.Label
     Friend WithEvents txtTotal As System.Windows.Forms.TextBox
     Friend WithEvents tagCliente As System.Windows.Forms.Label
     Friend WithEvents Detalle As System.Windows.Forms.DataGridView
@@ -488,4 +495,9 @@ Partial Class Reporte
     Friend WithEvents Importe As DataGridViewTextBoxColumn
     Friend WithEvents Unid As DataGridViewTextBoxColumn
     Friend WithEvents Desc As DataGridViewTextBoxColumn
+    Friend WithEvents pnlReporte As Panel
+    Friend WithEvents tagSaldo As Label
+    Friend WithEvents txtEntregado As TextBox
+    Friend WithEvents txtSaldo As TextBox
+    Friend WithEvents tagEntregado As Label
 End Class

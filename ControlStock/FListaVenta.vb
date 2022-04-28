@@ -1,31 +1,30 @@
 ﻿Option Strict On
-
+Option Explicit On
 Public Class FListaVenta
     Dim Venta As New CVenta
     Dim Empleado As New CEmpleado
+    Dim Producto As New CProducto
     Dim TablaEmple As New DataTable
     Dim TablaVenta As New DataTable
     Dim IndiceVend As Integer = 0
-    Dim Imagen As Image
-    Dim FormatoValue As Reporte.Tipo
+    Dim Imagen As Image = My.Resources.Resources.view_text
+    Dim ModoNotaCredValue As Boolean = False
+    Dim TablaDet As DataTable
+    Dim GridFila As Integer
 
-    Sub New(ByVal Formato As Reporte.Tipo)
-        InitializeComponent()
-        FormatoValue = Formato
-        Reporte1.Formato(FormatoValue)
-        Select Case FormatoValue
-            Case Is = Reporte.Tipo.Venta
-                Imagen = My.Resources.Resources.view_text
-                lblTitulo.Visible = False
-            Case Is = Reporte.Tipo.NotaCredVenta
-                btnRegistrar.Visible = True
-                btnActualizar.Visible = True
-                Imagen = My.Resources.Resources.apply1
-        End Select
+    Public Sub ModoNotaCredito()
+        ModoNotaCredValue = True
+        btnRegistrar.Visible = True
+        btnActualizar.Visible = True
+        Imagen = My.Resources.Resources.apply1
+        TagId.Text = "Nro. Nota:"
+        Titulo.Text = "Nota de Crédito"
+        lblTitulo.Visible = True
+        MostrarDel()
     End Sub
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Panel1.Visible = False
+        pnlReporte.Visible = False
         For i As Integer = 0 To 9
             cmbAno.Items.Add(Now.Year - i)
         Next
@@ -92,6 +91,7 @@ Public Class FListaVenta
                 lblBuscar.Visible = True
                 lblBuscar.Text = "Desde"
                 lblHasta.Visible = True
+                lblHasta.Text = "Hasta"
                 cmbMes.Visible = False
                 cmbAno.Visible = False
                 lblVendedor.Visible = True
@@ -166,7 +166,7 @@ Public Class FListaVenta
                 DataGridView1.Rows.Add(idVenta, Fecha, Vendedor, Cliente, Total, Imagen)
                 SumaTotal = SumaTotal + Convert.ToInt32(DataGridView1.Item(4, i).Value.ToString)
             Next
-            txtTotal.Text = Format(SumaTotal, "###,##0")
+            txtTotal.Text = String.Format("{0:N0}", (SumaTotal))
         End If
     End Sub
 
@@ -246,21 +246,21 @@ Public Class FListaVenta
         Dim fecha As String = Format(TablaVenta.Rows(Row).Item(1), "dd/MM/yyyy")
         Dim Vendedor As String = CStr(TablaVenta.Rows(Row).Item(3))
         Dim Cliente As String = CStr(TablaVenta.Rows(Row).Item(4))
-        Reporte1.Encabezado(Id, fecha, Vendedor, Cliente, Total)
-        If FormatoValue = Reporte.Tipo.Venta Then
-            Reporte1.CargarDetalleOcup(Venta.BuscViewDetOcup(Id))
+        Encabezado(Id, fecha, Vendedor, Cliente, Total)
+        If Not ModoNotaCredValue Then
+            CargarDetalleOcup(Venta.BuscViewDetOcup(Id))
         End If
-        Reporte1.CargarDetalle(Venta.BuscViewDetVenta(Id))
+        CargarDetalle(Venta.BuscViewDetVenta(Id))
     End Sub
 
     Private Sub ShowDetalle()
-        Panel1.Visible = True
+        pnlReporte.Visible = True
         DataGridView1.Visible = False
         GroupBox1.Enabled = False
     End Sub
 
     Private Sub btnSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalir.Click
-        Panel1.Visible = False
+        pnlReporte.Visible = False
         DataGridView1.Visible = True
         GroupBox1.Enabled = True
         lblTitulo.Text = "Seleccione una Venta de la Lista al cual desea aplicar la Nota de Crédito"
@@ -268,7 +268,7 @@ Public Class FListaVenta
 
     Private Sub btnRegistrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRegistrar.Click
         Dim IdNota As Integer = Venta.CargarNroNota
-        Dim IdVenta As Integer = CInt(Reporte1.txtNro.Text)
+        Dim IdVenta As Integer = CInt(txtNro.Text)
         Dim Fecha As String = Format(Now, "yyyy-MM-dd HH:mm:ss")
         Dim IdProd As String
         Dim Cant As Double
@@ -278,7 +278,7 @@ Public Class FListaVenta
                 MessageBox.Show("Hubo un problema as guardar la Nota de Crédito")
                 Exit Try
             End If
-            For Each row As DataGridViewRow In Reporte1.Detalle.Rows
+            For Each row As DataGridViewRow In Detalle.Rows
                 IdProd = Convert.ToString(row.Cells(1).Value)
                 Cant = Convert.ToDouble(row.Cells(3).Value)
                 Unid = Convert.ToInt32(row.Cells(6).Value)
@@ -326,7 +326,7 @@ Public Class FListaVenta
     End Sub
 
     Private Sub Imprimir()
-        Dim NroFac As String = Reporte1.txtNro.Text
+        Dim NroFac As String = txtNro.Text
         Dim Tabla As DataTable = Venta.BuscViewVenta("WHERE idVenta = " + NroFac)
         Dim Cancelado As String = CStr(Tabla.Rows(0).Item(6))
         Dim Fecha As DateTime = CDate(Tabla.Rows(0).Item(1))
@@ -341,21 +341,21 @@ Public Class FListaVenta
         ds.Tables.Add("GVData")
 
         Dim col As System.Data.DataColumn
-        For Each dgvCol As DataGridViewColumn In Me.Reporte1.Detalle.Columns
+        For Each dgvCol As DataGridViewColumn In Detalle.Columns
             col = New System.Data.DataColumn(dgvCol.Name)
             ds.Tables("GVData").Columns.Add(col)
         Next
 
         Dim row As System.Data.DataRow
-        Dim colcount As Integer = Me.Reporte1.Detalle.Columns.Count - 1
-        For i  As Integer = 0 To Me.Reporte1.Detalle.Rows.Count - 1
+        Dim colcount As Integer = Detalle.Columns.Count - 1
+        For i As Integer = 0 To Detalle.Rows.Count - 1
             row = ds.Tables("GVData").Rows.Add
-            For Each column As DataGridViewColumn In Me.Reporte1.Detalle.Columns
-                row.Item(column.Index) = Reporte1.Detalle.Rows.Item(CInt(i)).Cells(column.Index).Value
+            For Each column As DataGridViewColumn In Detalle.Columns
+                row.Item(column.Index) = Detalle.Rows.Item(CInt(i)).Cells(column.Index).Value
             Next
         Next
-        Dim frm As New FImprimir(NroFac, Fecha, Reporte1.txtCliente.Text, Condicion, Reporte1.txtProvVend.Text, _
-                                CInt(Reporte1.txtTotal.Text), ds.Tables("GVData"))
+        Dim frm As New FImprimir(NroFac, Fecha, txtCliente.Text, Condicion, txtVend.Text,
+                                CInt(txtTotal2.Text), ds.Tables("GVData"))
         frm.ShowDialog()
 
     End Sub
@@ -366,5 +366,181 @@ Public Class FListaVenta
 
     Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
         Me.Close()
+    End Sub
+
+    '------------------------Reporte----------------------------------------------
+    Public Sub Encabezado(ByVal NroVenta As String, ByVal Fecha As String, ByVal Vendedor As String, ByVal Cliente As String, ByVal Total As String)
+        txtNro.Text = NroVenta
+        txtFecha.Text = Fecha
+        txtVend.Text = Vendedor
+        txtCliente.Text = Cliente
+        txtTotal2.Text = Total
+        Detalle.Rows.Clear()
+    End Sub
+
+    Public Sub CargarDetalle(ByVal Tabla As DataTable)
+        TablaDet = Tabla
+        Dim Delete As Image = My.Resources.Resources.delete
+        Dim CantAnt As Double = 1
+        Dim Filas As Integer = Tabla.Rows.Count
+        If Filas > 0 Then
+            For i As Integer = 0 To (Filas - 1)
+                Dim idProd As String = CStr(Tabla.Rows(i).Item(1))
+                Dim Descrip As String = CStr(Tabla.Rows(i).Item(2))
+                Dim Cant As Double = CDbl(Tabla.Rows(i).Item(3))
+                Dim Unidades As Integer = CInt(Tabla.Rows(i).Item(4))
+                Dim Precio As Integer = CInt(Tabla.Rows(i).Item(5))
+                Dim Importe As Integer = CInt(Tabla.Rows(i).Item(6))
+                Detalle.Rows.Add(Delete, idProd, Descrip, Cant, Precio, Importe, Unidades)
+                If Cant > CantAnt Then
+                    CantAnt = Cant 'Obtener la cantidad mayor de la tabla
+                End If
+            Next
+            MostrarInfo(Filas, CantAnt)
+            CalcTotal()
+        End If
+    End Sub
+
+    Public Sub CargarDetalleOcup(ByVal Tabla As DataTable)
+        Dim Delete As Image = My.Resources.Resources.delete
+        Dim Filas As Integer = Tabla.Rows.Count
+        If Filas > 0 Then
+            For i As Integer = 0 To (Filas - 1)
+                Dim idServ As ULong = CULng(Tabla.Rows(i).Item(2))
+                Dim Descrip As String = CStr(Tabla.Rows(i).Item(3))
+                Dim Tiempo As String
+                If idServ = 3 Then
+                    Tiempo = CStr(Tabla.Rows(i).Item(4))
+                Else
+                    Dim TotalMinutes As Long = CLng(CStr(Tabla.Rows(i).Item(4)))
+                    Dim Horas As TimeSpan = TimeSpan.FromMinutes(TotalMinutes)
+                    Tiempo = Horas.ToString
+                End If
+                Dim Precio As Integer = CInt(Tabla.Rows(i).Item(5))
+                Dim Importe As Integer = CInt(Tabla.Rows(i).Item(6))
+                Detalle.Rows.Add(Delete, idServ, Descrip, Tiempo, Precio, Importe, "")
+            Next
+        End If
+    End Sub
+
+    Private Sub MostrarInfo(ByVal Filas As Integer, ByVal Cant As Double)
+        If ModoNotaCredValue Then
+            If Filas > 1 Then
+                lblNotaInfo1.Visible = True
+                MostrarDel()
+            Else
+                lblNotaInfo1.Visible = False
+                OcultarDel()
+            End If
+            If Cant > 1 Then
+                lblNotaInfo2.Visible = True
+            Else
+                lblNotaInfo2.Visible = False
+            End If
+        End If
+    End Sub
+
+    Private Sub MostrarDel()
+        Del.Visible = True
+        Descrip.Width = 223
+    End Sub
+
+    Private Sub OcultarDel()
+        Del.Visible = False
+        Descrip.Width = 245
+    End Sub
+
+    Private Sub CalcTotal()
+        Dim Total As Integer
+        Dim Filas As Integer = Detalle.Rows.Count - 1
+        For i As Integer = 0 To Filas
+            Total += Convert.ToInt32(Detalle.Item(5, i).Value.ToString)
+        Next
+        txtTotal2.Text = String.Format("{0:N0}", (Total))
+    End Sub
+
+    '---------------------------Eventos------------------------------
+
+    Private Sub Detalle_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles Detalle.CellClick
+        If ModoNotaCredValue Then
+            If e.ColumnIndex = 0 Then
+                Detalle.Rows.RemoveAt(e.RowIndex)
+                TablaDet.Rows.RemoveAt(e.RowIndex)
+                CalcTotal()
+                Dim Filas As Integer = Detalle.RowCount
+                If Filas = 1 Then
+                    OcultarDel()
+                End If
+            End If
+            If e.ColumnIndex = 3 And e.RowIndex >= 0 Then
+                pnlEditCant.Visible = True
+                txtEditCant.Text = ""
+                txtEditCant.Focus()
+                GridFila = e.RowIndex
+            End If
+        End If
+    End Sub
+
+    Private Sub txtEditCant_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtEditCant.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            Try
+                Dim CantMax As Double = CDbl(TablaDet.Rows(GridFila).Item(3))
+                Dim CantEdit As Double = CDbl(txtEditCant.Text)
+
+                If CantEdit <= 0 Then
+                    MessageBox.Show("La cantidad debe ser mayor a cero")
+                Else
+                    If CantMax >= CantEdit Then
+                        Detalle.Item(3, GridFila).Value = CantEdit
+                        pnlEditCant.Visible = False
+                        Detalle.Item(5, GridFila).Value = CDbl(Detalle.Item(3, GridFila).Value) * CInt(Detalle.Item(4, GridFila).Value)
+                        CalcTotal()
+                    Else
+                        MessageBox.Show("La cantidad no puede ser mayor al facturado" + vbCrLf + "La cantidad máxima para el producto es " + CStr(CantMax))
+                    End If
+                End If
+            Catch
+                MessageBox.Show("Ingrese una cantidad válida")
+            End Try
+        End If
+    End Sub
+
+    Private Sub txtEditCant_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtEditCant.KeyPress
+        Dim Caja As TextBox = CType(sender, TextBox)
+        Dim Letra As Char = e.KeyChar
+
+        If Letra = Convert.ToChar(",") Or Letra = Convert.ToChar(".") Then
+            Dim Cod As String = Convert.ToString(Detalle.Item(1, GridFila).Value.ToString)
+            Dim Tabla As DataTable = producto.BuscProdCod(Cod)
+            Dim Present As String = CStr(Tabla.Rows(0).Item(10))
+            If Present = "Kilo" Then
+                If Letra = Convert.ToChar(",") Then
+                    e.Handled = False
+                Else
+                    e.Handled = True
+                    Caja.Text = Caja.Text + ","
+                    Caja.Select(Caja.Text.Length, 0)
+                End If
+            Else
+                e.Handled = True
+                Caja.Focus()
+                Me.ToolTip2.Show("Los productos por unidades o paquetes no aceptan decimales", Caja, 0, -40, 4000)
+            End If
+        ElseIf Char.IsDigit(Letra) Then
+            e.Handled = False
+        ElseIf Char.IsControl(Letra) Then
+            e.Handled = False
+        Else
+            e.Handled = True
+            Caja.Focus()
+            Me.ToolTip2.Show("Ingrese un valor númerico", Caja, 0, -40, 2000)
+        End If
+        If Letra = Convert.ToChar(Keys.Return) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub btnEditCantCancel_Click(sender As Object, e As EventArgs) Handles btnEditCantCancel.Click
+        pnlEditCant.Visible = False
     End Sub
 End Class

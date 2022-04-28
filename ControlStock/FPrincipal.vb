@@ -135,6 +135,7 @@ Public Class FPrincipal
             FrmVenta.lblHab2.Visible = False
             FrmVenta.LblTituloHab.Visible = False
             FrmVenta.ModoMotel = False
+            FrmVenta.CargarAccesoRapido()
             AbrirFormEnPanel(FrmVenta)
         Else
             MessageBox.Show("Debe abrir la Caja antes de realizar una Venta")
@@ -181,8 +182,8 @@ Public Class FPrincipal
     End Sub
 
     Private Sub ConsultarVenta_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ConsultarVenta.Click
-        Dim Frm As New FListaVenta(Reporte.Tipo.Venta)
-        'AbrirFormEnPanel(Frm)
+        Dim Frm As New FListaVenta()
+        AbrirFormEnPanel(Frm)
     End Sub
 
     Private Sub ComisionesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Comisiones.Click
@@ -200,7 +201,7 @@ Public Class FPrincipal
     End Sub
 
     Private Sub ReportesToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListaCompras.Click
-        Dim frm As New FListaCompra(Reporte.Tipo.Compra)
+        Dim frm As New FListaCompra()
         AbrirFormEnPanel(frm)
     End Sub
 
@@ -209,12 +210,14 @@ Public Class FPrincipal
     End Sub
 
     Private Sub ToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NotaCredito.Click
-        'Dim frm As New FListaVenta(Reporte.Tipo.NotaCredVenta)
-        'AbrirFormEnPanel(frm)
+        Dim frm As New FListaVenta()
+        frm.ModoNotaCredito()
+        AbrirFormEnPanel(frm)
     End Sub
 
     Private Sub DevolverStock_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DevolverStock.Click
-        Dim frm As New FListaCompra(Reporte.Tipo.NotaCredCompra)
+        Dim frm As New FListaCompra()
+        frm.ModoNotaCredito()
         AbrirFormEnPanel(frm)
     End Sub
 
@@ -475,5 +478,15 @@ Public Class FPrincipal
 
     Private Sub mnuCuentas_Click(sender As Object, e As EventArgs) Handles mnuCuentas.Click
 
+    End Sub
+
+    Private Sub MnuContratosMembresia_Click(sender As Object, e As EventArgs) Handles MnuContratosMembresia.Click
+        Dim Frm As New FListaMembresiaContrato
+        AbrirFormEnPanel(Frm)
+    End Sub
+
+    Private Sub mnuAccesoAjustes_Click(sender As Object, e As EventArgs) Handles mnuAccesoAjustes.Click
+        Dim Frm As New FAjustesAcceso
+        AbrirFormEnPanel(Frm)
     End Sub
 End Class

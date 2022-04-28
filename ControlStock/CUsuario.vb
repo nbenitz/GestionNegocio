@@ -101,7 +101,7 @@ Public Class CUsuario
             End If
             ObjCon.dr.Close()
             ObjCon.Desconectar()
-        Catch
+        Catch ex As Exception
             verifico = False
         End Try
         Return verifico

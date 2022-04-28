@@ -258,7 +258,7 @@ Public Class FNuevoSocio
 
     Private Sub cmbMembresia_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbMembresia.SelectedIndexChanged
         txtDescMembresia.Text = CStr(TablaMembresia.Rows(cmbMembresia.SelectedIndex).Item(2))
-        txtPrecioMembresia.Text = CStr(TablaMembresia.Rows(cmbMembresia.SelectedIndex).Item(3))
+        txtPrecioMembresia.Text = String.Format("{0:N0}", CDec(TablaMembresia.Rows(cmbMembresia.SelectedIndex).Item(3)))
         lblPrecioMembresia.Text = txtPrecioMembresia.Text
         txtDescuento.Text = "0"
         txtPaga.Text = txtPrecioMembresia.Text
@@ -329,12 +329,18 @@ Public Class FNuevoSocio
     Private Async Sub GuardarAcceso()
         Dim estado As String = ""
         ShowLoading()
-        Dim t1 As Task
-        t1 = Task.Run(Sub() estado = FrmFingerPMgr.SaveAcceso(CIValue,
-                                                              txtNombre.Text,
-                                                              EmployeeNoValue,
-                                                              FPDataValue))
-        Await t1
+        Try
+            Dim t1 As Task
+            t1 = Task.Run(Sub() estado = FrmFingerPMgr.SaveAcceso(CIValue,
+                                                                  txtNombre.Text,
+                                                                  EmployeeNoValue,
+                                                                  FPDataValue))
+            Await t1
+        Catch ex As Exception
+            'CloseLoading()
+            'MessageBox.Show("Error")
+            Exit Sub
+        End Try
         CloseLoading()
         If estado = "OK" Then
             MessageBox.Show("Datos registrados")
@@ -492,19 +498,31 @@ Public Class FNuevoSocio
             If FPDataValue.Count > 0 Then
                 If EmployeeNoValue.Length = 0 Then
                     ShowLoading()
-                    Dim t1 As Task
-                    t1 = Task.Run(Sub() EmployeeNoValue = GuardarDatosAccesoDispositivo())
-                    Await t1
+                    Try
+                        Dim t1 As Task
+                        t1 = Task.Run(Sub() EmployeeNoValue = GuardarDatosAccesoDispositivo())
+                        Await t1
+                    Catch ex As Exception
+                        'CloseLoading()
+                        'Exit Sub
+                    End Try
                     CloseLoading()
                     If EmployeeNoValue.Length = 0 Then
+                        MessageBox.Show("Hubo un error al actualizar los datos de acceso")
                         Exit Sub
                     End If
                 Else
                     ShowLoading()
                     Dim estado As String
-                    Dim t2 As Task
-                    t2 = Task.Run(Sub() estado = EditarHuellaDispositivo())
-                    Await t2
+                    Try
+                        Dim t2 As Task
+                        t2 = Task.Run(Sub() estado = EditarHuellaDispositivo())
+                        Await t2
+                    Catch ex As Exception
+                        'CloseLoading()
+                        'MessageBox.Show("Error")
+                        'Exit Sub
+                    End Try
                     CloseLoading()
                     If estado <> "OK" Then
                         Exit Sub
@@ -553,13 +571,7 @@ Public Class FNuevoSocio
 
     Private Function GuardarDatosAccesoDispositivo() As String
         Dim estado As String
-        Dim EmployeeNo As String = ""
-
-        EmployeeNo = Person.GetNextEmployeeNo()
-        If EmployeeNo.Length = 0 Then
-            MessageBox.Show("Error al generar un nuevo código de acceso")
-            Return ""
-        End If
+        Dim EmployeeNo As String = txtCI.Text
 
         estado = Person.SetUserInfo(txtNombre.Text, EmployeeNo)
         If estado <> "OK" Then
@@ -599,9 +611,15 @@ Public Class FNuevoSocio
             Dim EmployeeNo As String = ""
             If FPDataValue.Count > 0 Then
                 ShowLoading()
-                Dim t1 As Task
-                t1 = Task.Run(Sub() EmployeeNo = GuardarDatosAccesoDispositivo())
-                Await t1
+                Try
+                    Dim t1 As Task
+                    t1 = Task.Run(Sub() EmployeeNo = GuardarDatosAccesoDispositivo())
+                    Await t1
+                Catch ex As Exception
+                    'CloseLoading()
+                    'MessageBox.Show("Error")
+                    'Exit Sub
+                End Try
                 CloseLoading()
                 If EmployeeNo.Length = 0 Then
                     Exit Sub
@@ -703,7 +721,7 @@ Public Class FNuevoSocio
             If txtPaga.Text <> "" Then
                 Paga = CInt(txtPaga.Text)
                 If Paga < PrecioMembresia Then
-                    lblPendienteMonto.Text = CStr(PrecioMembresia - Paga)
+                    lblPendienteMonto.Text = String.Format("{0:N0}", CDec(PrecioMembresia - Paga))
                     pnlPendiente.Visible = True
                 Else
                     lblPendienteMonto.Text = "0"
@@ -711,12 +729,12 @@ Public Class FNuevoSocio
                 End If
                 If Paga > PrecioMembresia Then
                     pnlVuelto.Visible = True
-                    lblVuelto.Text = CStr(Paga - PrecioMembresia)
+                    lblVuelto.Text = String.Format("{0:N0}", CDec(Paga - PrecioMembresia))
                 Else
                     pnlVuelto.Visible = False
                 End If
             Else
-                lblPendienteMonto.Text = CStr(PrecioMembresia)
+                lblPendienteMonto.Text = String.Format("{0:N0}", CDec(PrecioMembresia))
                 pnlPendiente.Visible = True
             End If
         Catch
@@ -729,7 +747,7 @@ Public Class FNuevoSocio
         If txtDescuento.Text <> "" Then
             Descuento = CInt(txtDescuento.Text)
             If Descuento < PrecioMembresia Then
-                lblPrecioDescontado.Text = CStr(PrecioMembresia - Descuento)
+                lblPrecioDescontado.Text = String.Format("{0:N0}", CDec(PrecioMembresia - Descuento))
                 If Descuento > 0 Then
                     pnlPrecioDescontado.Visible = True
                 Else
@@ -739,7 +757,7 @@ Public Class FNuevoSocio
                 txtDescuento.Text = CStr(0)
             End If
         Else
-            lblPrecioDescontado.Text = CStr(PrecioMembresia)
+            lblPrecioDescontado.Text = String.Format("{0:N0}", CDec(PrecioMembresia))
             pnlPrecioDescontado.Visible = False
         End If
         txtPaga_TextChanged(Nothing, Nothing)
@@ -858,16 +876,18 @@ Public Class FNuevoSocio
 
     Function GetLastVtoMembresia(ByVal CI As String) As Date
         Dim TablaMembresia As DataTable = oMembresia.BuscarPagoPeriodo(CIValue)
-        If TablaMembresia.Rows.Count > 0 Then
-            Dim Vto As Date = CDate(TablaMembresia.Rows(0).Item(5))
+        Dim Count As Integer = TablaMembresia.Rows.Count
+        If Count > 0 Then
+            Dim Vto As Date = CDate(TablaMembresia.Rows(Count - 1).Item(5))
             Return Vto
         End If
     End Function
 
     Function GetLasMembresia(ByVal CI As String) As Date
         Dim TablaMembresia As DataTable = oMembresia.BuscarPagoPeriodo(CIValue)
-        If TablaMembresia.Rows.Count > 0 Then
-            Dim Vto As Date = CDate(TablaMembresia.Rows(0).Item(5))
+        Dim Count As Integer = TablaMembresia.Rows.Count
+        If Count > 0 Then
+            Dim Vto As Date = CDate(TablaMembresia.Rows(Count - 1).Item(5))
             Return Vto
         End If
     End Function
@@ -878,10 +898,6 @@ Public Class FNuevoSocio
             pbxFoto.Image = Nothing
             pbxQuitarFoto.Visible = False
         End If
-    End Sub
-
-    Private Sub pbxAggHuella_Click(sender As Object, e As EventArgs)
-
     End Sub
 
     Private Sub pbxAddFP_Click(sender As Object, e As EventArgs) Handles pbxAddFP.Click
@@ -899,4 +915,14 @@ Public Class FNuevoSocio
         End If
     End Sub
 
+    Private Sub txtPaga_KeyUp(sender As Object, e As KeyEventArgs) Handles txtPaga.KeyUp, txtDescuento.KeyUp
+        'Agregar separador de miles
+        Dim Txt As TextBox = DirectCast(sender, TextBox)
+        If (Txt.Text <> String.Empty) Then
+            Dim importe As Decimal
+            Decimal.TryParse(Txt.Text, importe)
+            Txt.Text = String.Format("{0:N0}", importe)
+            Txt.SelectionStart = Txt.TextLength
+        End If
+    End Sub
 End Class

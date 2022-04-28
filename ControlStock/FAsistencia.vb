@@ -33,9 +33,6 @@ Public Class FAsistencia
             End If
             fecha1 = fecha1.AddDays(1)
         Next
-        lblAusente.Text = CStr(FechasAusente.Count)
-        lblAusente.Visible = True
-        lblTitAusente.Visible = True
         Return FechasAusente
     End Function
 
@@ -78,17 +75,17 @@ Public Class FAsistencia
                 cmbMes.SelectedIndex = Now.Month - 1
                 dgvAusencia.Visible = False
                 dgvAsistencia.Visible = True
-            Case Is = 2, 3 'Fecha
+            Case Is = 2, 3, 4 'Fecha, Ausencia, Sin Ausencia
                 dtpDesde.Visible = True
                 dtpHasta.Visible = True
                 lblBuscar.Visible = True
                 lblBuscar.Text = "Desde"
                 lblHasta.Visible = True
+                lblHasta.Text = "Hasta"
                 cmbMes.Visible = False
                 cmbAno.Visible = False
                 dtpDesde.Value = Now
-                dtpHasta.Value = Now
-
+                'dtpHasta.Value = Now
         End Select
     End Sub
 
@@ -108,7 +105,9 @@ Public Class FAsistencia
         Dim Fecha1 As String = Format(dtpDesde.Value, "yyyy-MM-dd")
         Dim Fecha2 As String = Format(DateAdd(DateInterval.Day, 1, dtpDesde.Value), "yyyy-MM-dd")
 
-        If cmbFiltrarPor.SelectedIndex = 2 Or cmbFiltrarPor.SelectedIndex = 3 Then
+        If cmbFiltrarPor.SelectedIndex = 2 Or
+            cmbFiltrarPor.SelectedIndex = 3 Or
+            cmbFiltrarPor.SelectedIndex = 4 Then
             Fecha2 = Format(DateAdd(DateInterval.Day, 1, dtpHasta.Value), "yyyy-MM-dd")
         End If
 
@@ -116,7 +115,8 @@ Public Class FAsistencia
             dgvAusencia.Visible = False
             dgvAsistencia.Visible = True
             VerPorFecha(Fecha1, Fecha2)
-        ElseIf cmbFiltrarPor.SelectedIndex = 3 Then
+        ElseIf cmbFiltrarPor.SelectedIndex = 3 Or
+            cmbFiltrarPor.SelectedIndex = 4 Then
             dgvAsistencia.Visible = False
             dgvAusencia.Visible = True
             VerAusencias(Fecha1, Fecha2)
@@ -130,9 +130,6 @@ Public Class FAsistencia
         If CIValue IsNot Nothing Then
             Condicion += " AND cedula = '" + CIValue + "'"
             GetDias(CDate(Fecha1), CDate(Fecha2), CIValue)
-        Else
-            lblTitAusente.Visible = False
-            lblAusente.Visible = False
         End If
 
         TablaAsis = Acceso.BuscarAsistencia(Condicion)
@@ -146,14 +143,16 @@ Public Class FAsistencia
 
         If CIValue IsNot Nothing Then
             Condicion += " WHERE cedula = '" + CIValue + "'"
-        Else
-            lblTitAusente.Visible = False
-            lblAusente.Visible = False
         End If
 
-        TablaCli = Socio.BuscCli(Condicion)
+        lblCantSocio.Visible = False
+        lblTitCantSocios.Visible = False
+
+        TablaCli = Socio.BuscSocio(Condicion)
         CargarTablaAusencia(TablaCli, Fecha1, Fecha2)
 
+        lblCantSocio.Visible = False
+        lblTitCantSocios.Visible = False
         'lblCantSocio.Text = CStr(Acceso.CantSocioAsistencia(Condicion)) + " Socios"
     End Sub
 
@@ -190,7 +189,13 @@ Public Class FAsistencia
                 Dim CI As String = CStr(Tabla.Rows(i).Item(0))
                 Dim Nombre As String = CStr(Tabla.Rows(i).Item(1))
                 Dim Ausencias As Integer = GetDias(CDate(Fecha1), CDate(Fecha2), CI).Count
-                dgvAusencia.Rows.Add(CI, Nombre, Ausencias, My.Resources.file_find, My.Resources.file_document)
+                If cmbFiltrarPor.SelectedIndex = 3 Then 'Listar empleados y sus ausencias
+                    dgvAusencia.Rows.Add(CI, Nombre, Ausencias, My.Resources.file_find, My.Resources.file_document)
+                ElseIf cmbFiltrarPor.SelectedIndex = 4 Then 'Listar socios sin ausencias
+                    If Ausencias = 0 Then
+                        dgvAusencia.Rows.Add(CI, Nombre, Ausencias, My.Resources.file_find, My.Resources.file_document)
+                    End If
+                End If
             Next
         End If
     End Sub
@@ -216,6 +221,43 @@ Public Class FAsistencia
             Case Is = 1     'Mes
                 cmbMes_SelectedIndexChanged(Nothing, Nothing)
         End Select
+    End Sub
+
+    Private Sub dgvAusencia_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvAusencia.CellContentClick
+        Try
+            If e.ColumnIndex = 4 Then
+                Cursor.Current = Cursors.WaitCursor
+                Dim CI As String = dgvAusencia.Item(0, e.RowIndex).Value.ToString()
+                Dim Tabla As DataTable = Socio.BuscSocio("WHERE cedula = '" + CI + "'")
+                Dim Nombre As String = CStr(Tabla.Rows(0).Item(1))
+                Dim MembresiaNom As String
+                Try
+                    MembresiaNom = CStr(Tabla.Rows(0).Item(2))
+                Catch
+                    MembresiaNom = ""
+                End Try
+                Dim Telefono As String = CStr(Tabla.Rows(0).Item(3))
+                Dim Aliass As String = CStr(Tabla.Rows(0).Item(5))
+                Dim Direccion As String = CStr(Tabla.Rows(0).Item(6))
+                Dim Vto As String = CStr(CDate(Tabla.Rows(0).Item(7)).AddMonths(1))
+                Dim AccesoCod As String
+                Try
+                    AccesoCod = CStr(Tabla.Rows(0).Item(4))
+                Catch
+                    AccesoCod = ""
+                End Try
+                Dim Foto As Byte()
+                Try
+                    Foto = CType(Tabla.Rows(0).Item(8), Byte())
+                Catch
+                End Try
+                Dim FechaNac As String = CStr(Tabla.Rows(0).Item(10))
+                Dim Frm As New FSocioFicha(CI, Nombre, Telefono, Direccion, Aliass, Foto, FechaNac, MembresiaNom, Vto, AccesoCod)
+                Frm.ShowDialog()
+            End If
+        Catch
+            MessageBox.Show("Error al Abrir la Nota de Crédito")
+        End Try
     End Sub
 
 End Class
