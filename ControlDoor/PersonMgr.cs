@@ -2,10 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace ControlDoor
 {
@@ -13,7 +10,7 @@ namespace ControlDoor
     {
         ACEntities entities = new ACEntities();
         FingerPrintMgr fingerMgr = new FingerPrintMgr();
-        Request req = new Request();
+        CRequest req = new CRequest();
         string host = ConfigurationManager.AppSettings["device"].ToString();
         string port = ConfigurationManager.AppSettings["devicePort"].ToString();
 
@@ -64,12 +61,12 @@ namespace ControlDoor
 
         public CUserInfoSearch GetAllUsers()
         {
-            var url = "http://" + host + ":" + port + "/ISAPI/AccessControl/UserInfo/Search?format=json";
-            List<CEmployeeNoList> employeeNoLists = new List<CEmployeeNoList>();
-
             //Obj de respuesta
             CUserInfoSearchResult objUserData = entities.InitUserSearchResult();
+            List<CEmployeeNoList> employeeNoLists = new List<CEmployeeNoList>();
 
+            var url = "http://" + host + ":" + port + "/ISAPI/AccessControl/UserInfo/Search?format=json";
+            
             try
             {
                 Random r = new Random();
@@ -115,6 +112,7 @@ namespace ControlDoor
 
         public int GetUserCount()
         {
+
             int count = -1;
             var url = "http://" + host + ":" + port + "/ISAPI/AccessControl/UserInfo/Count?format=json";
             try
@@ -137,6 +135,7 @@ namespace ControlDoor
         public string SetUserInfo(string name, string employeeNo)
         {
             string status = "";
+
             var url = "http://" + host + ":" + port + "/ISAPI/AccessControl/UserInfo/Record?format=json";
 
             string beginTime = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
@@ -221,5 +220,44 @@ namespace ControlDoor
         }
 
         #endregion
+
+
+        #region _Delete_
+        public string DelUser(string emmployeNo)
+        {
+            string status = "";
+
+            var url = "http://" + host + ":" + port + "/ISAPI/AccessControl/FingerPrint/Delete?format=json";
+
+            JSON_FingerPrintDelete FingerDel = new JSON_FingerPrintDelete
+            {
+                FingerPrintDelete = new CFingerPrintDelete
+                {
+                    mode = "byEmployeeNo",
+                    EmployeeNoDetail = new CEmployeeNoDetail
+                    {
+                        employeeNo = emmployeNo,
+                        enableCardReader = new List<int> { 1 },
+                        fingerPrintID = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }
+                    }
+                }
+            };
+
+            string JsonFPInfo = JsonConvert.SerializeObject(FingerDel, Formatting.Indented,
+                                                    new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.Ignore });
+            string JsonResult = req.PutRequest(url, JsonFPInfo).Result;
+            try
+            {
+                CJSON_ResponseStatus responseStatus = JsonConvert.DeserializeObject<CJSON_ResponseStatus>(JsonResult);
+                if (responseStatus.statusString == "OK") status = "OK";
+            }
+            catch (Exception e)
+            {
+                status = e.Message;
+            }
+            return status;
+        }
+        #endregion
+
     }
 }

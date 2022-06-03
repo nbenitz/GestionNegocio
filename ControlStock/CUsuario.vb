@@ -1,4 +1,5 @@
 ﻿Option Strict On
+Option Explicit On
 
 Imports MySql.Data.MySqlClient
 Public Class CUsuario
@@ -168,7 +169,9 @@ Public Class CUsuario
                                     ByVal HabAdmin As Boolean,
                                     ByVal CuentasAdmin As Boolean,
                                     ByVal DevolAutoriCli As Boolean,
-                                    ByVal DevolAutoriProv As Boolean) As Boolean
+                                    ByVal DevolAutoriProv As Boolean,
+                                    ByVal MembresiaAdmin As Boolean,
+                                    ByVal AccesoAdmin As Boolean) As Boolean
         Dim inserto As Boolean = False
         Try
             ObjCon.Conectar()
@@ -194,6 +197,8 @@ Public Class CUsuario
             ObjCon.AsignarParametro("@CuentasAdmin_", CuentasAdmin)
             ObjCon.AsignarParametro("@DevolAutoriCli_", DevolAutoriCli)
             ObjCon.AsignarParametro("@DevolAutoriProv_", DevolAutoriProv)
+            ObjCon.AsignarParametro("@MembresiaAdmin_", MembresiaAdmin)
+            ObjCon.AsignarParametro("@AccesoAdmin_", AccesoAdmin)
             If ObjCon.EjecutarConsulta() > 0 Then
                 inserto = True
             Else
@@ -226,6 +231,8 @@ Public Class CUsuario
                                     ByVal CuentasAdmin As Boolean,
                                     ByVal DevolAutoriCli As Boolean,
                                     ByVal DevolAutoriProv As Boolean,
+                                    ByVal MembresiaAdmin As Boolean,
+                                    ByVal AccesoAdmin As Boolean,
                                     ByVal IdPrivilegio As Integer) As Boolean
         Dim inserto As Boolean = False
         Try
@@ -252,6 +259,8 @@ Public Class CUsuario
             ObjCon.AsignarParametro("@CuentasAdmin_", CuentasAdmin)
             ObjCon.AsignarParametro("@DevolAutoriCli_", DevolAutoriCli)
             ObjCon.AsignarParametro("@DevolAutoriProv_", DevolAutoriProv)
+            ObjCon.AsignarParametro("@MembresiaAdmin_", MembresiaAdmin)
+            ObjCon.AsignarParametro("@AccesoAdmin_", AccesoAdmin)
             ObjCon.AsignarParametro("@idPrivilegio_", IdPrivilegio)
             If ObjCon.EjecutarConsulta() > 0 Then
                 inserto = True

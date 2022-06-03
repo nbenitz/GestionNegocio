@@ -71,15 +71,19 @@ Public Class FListaCajas
 
     Private Sub LblResumenCaja_Click(sender As Object, e As EventArgs) Handles LblResumenCaja.Click
         Try
-            Dim Frm As New FResumenCaja
-            Frm.CIEmpleado = CIValue
-            Dim row As Integer = DataGridView1.CurrentRow.Index
-            Frm.Fecha = CDate(TablaCaja.Rows(row).Item(2))
-            Frm.Hora = CType(TablaCaja.Rows(row).Item(3), TimeSpan).ToString
-            Frm.DesdeHistorial = True
-            Frm.Show()
+            If DataGridView1.Rows.Count > 0 Then
+                Dim Frm As New FResumenCaja
+                Frm.CIEmpleado = CIValue
+                Dim row As Integer = DataGridView1.CurrentRow.Index
+                Frm.Fecha = CDate(TablaCaja.Rows(row).Item(2))
+                Frm.Hora = CType(TablaCaja.Rows(row).Item(3), TimeSpan).ToString
+                Frm.DesdeHistorial = True
+                Frm.Show()
+            Else
+                MessageBox.Show("No hay cajas en la lista para visualizar el resumen")
+            End If
         Catch ex As Exception
-            MessageBox.Show("Seleccione una fecha vãlida para visualizar el resumen")
+            MessageBox.Show("Seleccione una fecha válida para visualizar el resumen")
         End Try
     End Sub
 

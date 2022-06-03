@@ -4,11 +4,16 @@
 
 
 BASE DE DATOS
-	- En la tabla Cliente:
-		- Agregar campo "Propietario" char 50, default " "
-	- En la tabla detallecompra:
-		- En el campo Obs = '','(Paquete)','(Caja)'
-	- En la Tabla Producto:
-		- Agregar Regiistro. Id = 0, Descrip = "Pruducto Eliminado"
-	- En ViewProducto
-		- Agregar condición en where:  AND p.idProducto <> "0"
+	- En Membresía:
+		- Agregar campos: tiempo_limite, tiempo_unidad, veces_dia, dias_semana, dias_mes, dias, hora_inicio, hora_fin, activo
+	- En cliente_membresía:
+		- Agregar campos: fecha_fin
+
+	- En pago_membresia:
+		- cliente_membresia_id: En Delete CASCADE
+
+	- En view_cliente_membresia
+	- En viewdetalleingreso
+
+
+La convicción crea emoción que es enemiga de la oratoria.

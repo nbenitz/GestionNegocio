@@ -7,16 +7,33 @@ Public Class CMembresia
 
     Public Function Insert(ByVal Nombre As String,
                            ByVal Descripcion As String,
-                           ByVal Costo As Integer) As Boolean
+                           ByVal Costo As Integer,
+                           ByVal TiempoLimite As Integer,
+                           ByVal TiempoUnidad As Char,
+                           ByVal VecesDia As Integer,
+                           ByVal DiasSemana As Integer,
+                           ByVal DiasMes As Integer,
+                           ByVal Dias As String,
+                           ByVal HoraInicio As String,
+                           ByVal HoraFin As String) As Boolean
         Dim inserto As Boolean = False
         Dim Id As Int32 = CargarNro()
         Try
             ObjCon.Conectar()
-            ObjCon.CrearComando("INSERT INTO Membresia VALUES(?id, ?nombre, ?descripcion, ?costo)")
+            ObjCon.CrearComando("INSERT INTO Membresia VALUES(?id, ?nombre, ?descripcion, ?costo, ?tiempo_limite, ?tiempo_unidad, " +
+                                "?veces_dia, ?dias_semana, ?dias_mes, ?dias, ?hora_inicio, ?hora_fin, 1)")
             ObjCon.AsignarParametro("?id", MySqlDbType.Int32, Id)
-            ObjCon.AsignarParametro("?nombre", MySqlDbType.String, Descripcion)
+            ObjCon.AsignarParametro("?nombre", MySqlDbType.String, Nombre)
             ObjCon.AsignarParametro("?descripcion", MySqlDbType.String, Descripcion)
             ObjCon.AsignarParametro("?costo", MySqlDbType.Int32, Costo)
+            ObjCon.AsignarParametro("?tiempo_limite", MySqlDbType.Int32, TiempoLimite)
+            ObjCon.AsignarParametro("?tiempo_unidad", MySqlDbType.VarChar, TiempoUnidad)
+            ObjCon.AsignarParametro("?veces_dia", MySqlDbType.Int32, VecesDia)
+            ObjCon.AsignarParametro("?dias_semana", MySqlDbType.Int32, DiasSemana)
+            ObjCon.AsignarParametro("?dias_mes", MySqlDbType.Int32, DiasMes)
+            ObjCon.AsignarParametro("?dias", MySqlDbType.VarChar, Dias)
+            ObjCon.AsignarParametro("?hora_inicio", MySqlDbType.String, HoraInicio)
+            ObjCon.AsignarParametro("?hora_fin", MySqlDbType.String, HoraFin)
             If ObjCon.EjecutarConsulta() > 0 Then
                 inserto = True
             Else
@@ -33,15 +50,33 @@ Public Class CMembresia
     Public Function Update(ByVal Nombre As String,
                            ByVal Descripcion As String,
                            ByVal Costo As Integer,
+                           ByVal TiempoLimite As Integer,
+                           ByVal TiempoUnidad As Char,
+                           ByVal VecesDia As Integer,
+                           ByVal DiasSemana As Integer,
+                           ByVal DiasMes As Integer,
+                           ByVal Dias As String,
+                           ByVal HoraInicio As String,
+                           ByVal HoraFin As String,
                            ByVal Id As Integer) As Boolean
         Dim inserto As Boolean = False
         Try
             ObjCon.Conectar()
-            ObjCon.CrearComando("UPDATE Membresia SET nombre = ?nombre, descripcion = ?descripcion, costo = ?costo " +
-                                "WHERE id = ?id")
+            ObjCon.CrearComando("UPDATE Membresia SET nombre = ?nombre, descripcion = ?descripcion, costo = ?costo, " +
+                                "tiempo_limite = ?tiempo_limite, tiempo_unidad = ?tiempo_unidad, " +
+                                "veces_dia = ?veces_dia, dias_semana = ?dias_semana, dias_mes = ?dias_mes, " +
+                                "dias = ?dias, hora_inicio = ?hora_inicio, hora_fin = ?hora_fin WHERE id = ?id")
             ObjCon.AsignarParametro("?nombre", MySqlDbType.String, Nombre)
             ObjCon.AsignarParametro("?descripcion", MySqlDbType.String, Descripcion)
             ObjCon.AsignarParametro("?costo", MySqlDbType.Int32, Costo)
+            ObjCon.AsignarParametro("?tiempo_limite", MySqlDbType.Int32, TiempoLimite)
+            ObjCon.AsignarParametro("?tiempo_unidad", MySqlDbType.VarChar, TiempoUnidad)
+            ObjCon.AsignarParametro("?veces_dia", MySqlDbType.Int32, VecesDia)
+            ObjCon.AsignarParametro("?dias_semana", MySqlDbType.Int32, DiasSemana)
+            ObjCon.AsignarParametro("?dias_mes", MySqlDbType.Int32, DiasMes)
+            ObjCon.AsignarParametro("?dias", MySqlDbType.VarChar, Dias)
+            ObjCon.AsignarParametro("?hora_inicio", MySqlDbType.String, HoraInicio)
+            ObjCon.AsignarParametro("?hora_fin", MySqlDbType.String, HoraFin)
             ObjCon.AsignarParametro("?id", MySqlDbType.Int32, Id)
             If ObjCon.EjecutarConsulta() > 0 Then
                 inserto = True
@@ -90,10 +125,25 @@ Public Class CMembresia
         ObjCon.Desconectar()
     End Function
 
+    Public Function BuscarViewClienteMembresia(ByVal CI As String) As DataTable
+        ObjCon.Conectar()
+        ObjCon.CrearComando("SELECT * FROM view_cliente_membresia " +
+                            "WHERE CI = '" + CI + "' ")
+        BuscarViewClienteMembresia = ObjCon.EjecutarDataTable()
+        ObjCon.Desconectar()
+    End Function
+
+    Public Function BuscViewMembresia(ByVal Fecha1 As String, ByVal Fecha2 As String) As DataTable
+        ObjCon.Conectar()
+        ObjCon.CrearComando("SELECT DATE(periodo_inicio), SUM(TotalPagado) FROM view_cliente_membresia WHERE periodo_inicio >= '" + Fecha1 + "' AND periodo_inicio <= '" + Fecha2 + "' GROUP BY periodo_inicio")
+        BuscViewMembresia = ObjCon.EjecutarDataTable()
+        ObjCon.Desconectar()
+    End Function
+
 
     Public Function Listar() As DataTable
         ObjCon.Conectar()
-        ObjCon.CrearComando("SELECT * FROM Membresia")
+        ObjCon.CrearComando("SELECT * FROM Membresia WHERE Activo = 1")
         Listar = ObjCon.EjecutarDataTable()
         ObjCon.Desconectar()
     End Function
@@ -121,17 +171,19 @@ Public Class CMembresia
     Public Function InsertClienteMembresia(ByVal ClienteCi As String,
                                            ByVal MembresiaId As Integer,
                                            ByVal FechaInicio As Date,
+                                           ByVal FechaFin As Date,
                                            ByVal Precio As Integer) As Boolean
         Dim inserto As Boolean = False
         Dim Id As Int32 = IdClienteMembresia()
         Try
             ObjCon.Conectar()
             ObjCon.CrearComando("INSERT INTO cliente_membresia VALUES(?id, ?cliente_ci, ?membresia_id, " +
-                                "?fecha_inicio, ?precio, 0)")
+                                "?fecha_inicio, ?fecha_fin, ?precio, 0)")
             ObjCon.AsignarParametro("?id", MySqlDbType.Int32, Id)
             ObjCon.AsignarParametro("?cliente_ci", MySqlDbType.String, ClienteCi)
             ObjCon.AsignarParametro("?membresia_id", MySqlDbType.Int32, MembresiaId)
             ObjCon.AsignarParametro("?fecha_inicio", MySqlDbType.Date, FechaInicio)
+            ObjCon.AsignarParametro("?fecha_fin", MySqlDbType.Date, FechaFin)
             ObjCon.AsignarParametro("?precio", MySqlDbType.Int32, Precio)
             If ObjCon.EjecutarConsulta() > 0 Then
                 inserto = True
@@ -148,15 +200,17 @@ Public Class CMembresia
 
     Public Function UpdateClienteMembresia(ByVal MembresiaId As Integer,
                                            ByVal Id As Integer,
-                                           ByVal FechaInicio As Date) As Boolean
+                                           ByVal FechaInicio As Date,
+                                           ByVal FechaFin As Date) As Boolean
         Dim inserto As Boolean = False
         Try
             ObjCon.Conectar()
             ObjCon.CrearComando("UPDATE cliente_membresia SET membresia_id = ?membresia_id, " +
-                                "fecha_inicio = ?fecha_inicio WHERE id = ?id")
+                                "fecha_inicio = ?fecha_inicio, fecha_fin = ?fecha_fin WHERE id = ?id")
             ObjCon.AsignarParametro("?membresia_id", MySqlDbType.Int32, MembresiaId)
             ObjCon.AsignarParametro("?id", MySqlDbType.Int32, Id)
             ObjCon.AsignarParametro("?fecha_inicio", MySqlDbType.Date, FechaInicio)
+            ObjCon.AsignarParametro("?fecha_fin", MySqlDbType.Date, FechaFin)
             If ObjCon.EjecutarConsulta() > 0 Then
                 inserto = True
             Else
@@ -170,12 +224,31 @@ Public Class CMembresia
     End Function
 
 
-    Public Function EliminarClienteMembresia(ByVal CI As String) As Boolean
+    Public Function EliminarClienteMembresiaByCI(ByVal CI As String) As Boolean
         Dim elimino As Boolean = False
         Try
             ObjCon.Conectar()
             ObjCon.CrearComando("DELETE FROM cliente_membresia WHERE cliente_ci = ?ci")
             ObjCon.AsignarParametro("?ci", MySqlDbType.String, CI)
+            If ObjCon.EjecutarConsulta() > 0 Then
+                elimino = True
+            Else
+                elimino = False
+            End If
+            ObjCon.Desconectar()
+        Catch
+            elimino = False
+        End Try
+        Return elimino
+    End Function
+
+
+    Public Function EliminarClienteMembresiaByID(ByVal ID As String) As Boolean
+        Dim elimino As Boolean = False
+        Try
+            ObjCon.Conectar()
+            ObjCon.CrearComando("DELETE FROM cliente_membresia WHERE id = ?id")
+            ObjCon.AsignarParametro("?id", MySqlDbType.String, ID)
             If ObjCon.EjecutarConsulta() > 0 Then
                 elimino = True
             Else
@@ -287,12 +360,6 @@ Public Class CMembresia
     End Function
 
 
-    Public Function BuscarPagoPeriodo(ByVal CI As String) As DataTable
-        ObjCon.Conectar()
-        ObjCon.CrearComando("SELECT * FROM view_cliente_membresia " +
-                            "WHERE CI = '" + CI + "' ")
-        BuscarPagoPeriodo = ObjCon.EjecutarDataTable()
-        ObjCon.Desconectar()
-    End Function
+
 
 End Class

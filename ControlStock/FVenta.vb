@@ -698,7 +698,7 @@ Public Class FVenta
                     CliPropiet = " "
                 End If
                 Dim foto As Byte()
-                If Cliente.InserCliente(CICli, CliNombre, "", CliTel, CliDir, CliPropiet, foto, Now.Date) = True Then
+                If Cliente.InserCliente(CICli, CliNombre, "", CliTel, CliDir, CliPropiet, foto, Now.Date, " ") = True Then
                     txtCliente.Text = CliNombre
                     LimpiarNewCli()
                     pnlCliente.Visible = False

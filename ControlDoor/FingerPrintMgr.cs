@@ -7,23 +7,21 @@ using System.IO;
 using System.Net;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
-using System.Linq;
 using System.Text;
-using System.Globalization;
 using System.Configuration;
 
 namespace ControlDoor
 {
     public partial class FingerPrintMgr : Form
     {
-        private int m_UserID = -1;
+        public int m_UserID = -1;
         private int m_lCapFingerPrintCfHandle = -1;
         AddDevice deviceAdd = new AddDevice();
         public delegate void SendFingerPrintData(Byte[] FPData);
         public event SendFingerPrintData SendFPData;
         public Boolean Conectado = false;
         FLoading loading;
-        Request req = new Request();
+        CRequest req = new CRequest();
         byte[] FingerData;
         string host = ConfigurationManager.AppSettings["device"].ToString();
         string port = ConfigurationManager.AppSettings["devicePort"].ToString();
@@ -43,13 +41,27 @@ namespace ControlDoor
             btnCap.Focus();
         }
 
+        public void setLoginUserID(int id)
+        {
+            m_UserID = id;
+            if (id < 0)
+            {
+                onLoginError();
+                tmrReconectar.Start();
+            }
+            else
+            {
+                onLoginSucc();
+            }
+        }
+
 
         #region --Eventos Suscriptos--
         private void onLoginSucc()
         {
             btnCap.Enabled = true;
-            m_UserID = deviceAdd.m_iUserID;
-            deviceAdd.Dispose();
+            //m_UserID = deviceAdd.m_iUserID;
+            //deviceAdd.Dispose();
             pbxConectado.Image = Properties.Resources.conectado;
             Conectado = true;
             LblMensaje.Visible = false;
@@ -64,7 +76,8 @@ namespace ControlDoor
             LblMensaje.Visible = true;
             LblMensaje.Text = "No se puede conectar con del dispositivo";
             LblReconectar.Visible = true;
-            LblReconectar.Text = "Reconectar";
+            //LblReconectar.Text = "Reconectar";
+            LblReconectar.Text = "Error de Conexión";
         }
         #endregion
 
@@ -150,8 +163,10 @@ namespace ControlDoor
         #region _Gets_
         public List<string> GetFinger(string emmployeNo)
         {
-            var url = "http://" + host + ":" + port + "/ISAPI/AccessControl/FingerPrintUpload?format=json";
             List<string> FingerDataList = new List<string>();
+
+            var url = "http://" + host + ":" + port + "/ISAPI/AccessControl/FingerPrintUpload?format=json";
+            
 
             JSON_FingerPrintCond FingerCond = new JSON_FingerPrintCond();
             FingerCond.FingerPrintCond = new CFingerPrintCond();
@@ -209,12 +224,6 @@ namespace ControlDoor
             if (-1 == m_lCapFingerPrintCfHandle)
             {
                 Marshal.FreeHGlobal(ptrStruCond);
-                //this.LblMensaje.BeginInvoke(new Action(() =>
-                //{
-                //    LblMensaje.Visible = true;
-                //    LblMensaje.Text = "Error en la Captura de la Huella Dactilar, Codigo " + CHCNetSDK2.NET_DVR_GetLastError().ToString();
-                //    tmrHideMsg.Start();
-                //}));
                 ShowMessage("Error en la Captura de la Huella Dactilar, Codigo " + CHCNetSDK2.NET_DVR_GetLastError().ToString());
             }
 
@@ -237,12 +246,6 @@ namespace ControlDoor
                         break;
                     case CHCNetSDK2.NET_SDK_GET_NEXT_STATUS_FAILED:
                         CHCNetSDK2.NET_DVR_StopRemoteConfig(m_lCapFingerPrintCfHandle);
-                        //this.LblMensaje.BeginInvoke(new Action(() =>
-                        //{
-                        //    LblMensaje.Visible = true;
-                        //    LblMensaje.Text = "Error al capturar la Huella Dactilar. Codigo " + CHCNetSDK2.NET_DVR_GetLastError().ToString();
-                        //    tmrHideMsg.Start();
-                        //}));
                         ShowMessage("Error al capturar la Huella Dactilar. Codigo " + CHCNetSDK2.NET_DVR_GetLastError().ToString());
                         flag = false;
                         break;
@@ -251,12 +254,6 @@ namespace ControlDoor
                         flag = false;
                         break;
                     default:
-                        //this.LblMensaje.BeginInvoke(new Action(() =>
-                        //{
-                        //    LblMensaje.Visible = true;
-                        //    LblMensaje.Text = "Error al capturar la Huella Dactilar. Codigo " + CHCNetSDK2.NET_DVR_GetLastError().ToString();
-                        //    tmrHideMsg.Start();
-                        //}));
                         ShowMessage("Error al capturar la Huella Dactilar. Codigo " + CHCNetSDK2.NET_DVR_GetLastError().ToString());
                         flag = false;
                         CHCNetSDK2.NET_DVR_StopRemoteConfig(m_lCapFingerPrintCfHandle);
@@ -377,7 +374,8 @@ namespace ControlDoor
 
         private async void btnCap_Click(object sender, EventArgs e)
         {
-            if (Conectado)
+            //if (Conectado)
+            if (m_UserID >= 0)
             {
                 ShowLoading();
                 btnCap.Enabled = false;
@@ -404,7 +402,7 @@ namespace ControlDoor
             PersonMgr personMgr = new PersonMgr();
 
             ShowLoading();
-            Task oTask = new Task(() => personMgr.GetUserCount());
+            Task oTask = new Task(() => personMgr.SetUserInfo("Fiorella", "12345"));
             oTask.Start();
             await oTask;
             CloseLoading();
@@ -417,6 +415,7 @@ namespace ControlDoor
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            tmrReconectar.Stop();
             this.Hide();
         }
 
@@ -432,7 +431,9 @@ namespace ControlDoor
         private void tmrReconectar_Tick(object sender, EventArgs e)
         {
             tmrReconectar.Stop();
-            Login();
+            //Login();
+
+            this.Hide();
         }
         #endregion
 
@@ -461,116 +462,13 @@ namespace ControlDoor
         {
             deviceAdd.Login();
         }
-
-        private string PostRequest22(string url, string json)
-        {
-            Uri uri = new Uri(url);
-            var request = (HttpWebRequest)WebRequest.Create(uri);
-            var credentialCache = new CredentialCache();
-
-            credentialCache.Add(
-              new Uri(uri.GetLeftPart(UriPartial.Authority)),
-              "Digest",  // authentication type 
-              new NetworkCredential("admin", "ivandavid121")
-            );
-
-            request.Method = "POST";
-            request.ContentType = "application/json";
-            //request.ContentLength = json.Length;
-            request.Credentials = credentialCache;
-
-            try
-            {
-                using (var streamWriter = new StreamWriter(request.GetRequestStream()))
-                {
-                    streamWriter.Write(json);
-                }
-
-                var httpResponse = (HttpWebResponse)request.GetResponse();
-                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-                {
-                    var result = streamReader.ReadToEnd();
-                    return result;
-                }
-                //HttpStatusCode statusCode = httpResponse.StatusCode;
-            }
-            catch (Exception e)
-            {
-                //ShowMessage("Error: " + e);
-                return "Error: " + e.Message;
-            }
-        }
-
-        private async Task<string> PostRequest(string url, string json)
-        {
-            Uri uri = new Uri(url);
-            var request = (HttpWebRequest)WebRequest.Create(uri);
-            var credentialCache = new CredentialCache();
-
-            credentialCache.Add(
-              new Uri(uri.GetLeftPart(UriPartial.Authority)),
-              "Digest",  // authentication type 
-              new NetworkCredential("admin", "ivandavid121")
-            );
-
-            request.Method = "POST";
-            request.ContentType = "application/json";
-            request.Credentials = credentialCache;
-
-            try
-            {
-                // Write the request Asynchronously 
-                using (var stream = await Task.Factory.FromAsync<Stream>(request.BeginGetRequestStream, request.EndGetRequestStream, null))
-                {
-                    byte[] byteArray = Encoding.UTF8.GetBytes(json);
-
-                    // Write the bytes to the stream
-                    await stream.WriteAsync(byteArray, 0, byteArray.Length);
-                }
-
-                using (var response = (HttpWebResponse)await request.GetResponseAsync())
-                {
-                    string data;
-
-                    // Read the response into a Stream object. 
-                    Stream responseStream = response.GetResponseStream();
-                    using (var reader = new StreamReader(responseStream))
-                    {
-                        data = reader.ReadToEnd();
-                    }
-                    responseStream.Close();
-                    if (response.StatusCode == HttpStatusCode.OK)
-                    {
-                        return data;
-                    }
-                    else
-                    {
-                        if (response.StatusCode == HttpStatusCode.Unauthorized)
-                        {
-                            return "No autorizado";
-                        }
-                        else if (response.StatusCode == HttpStatusCode.BadRequest)
-                        {
-                            return "Solicitud incorrecta";
-                        }
-                        else
-                        {
-                            return "Error de conexión";
-                        }
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                return "Error: " + e.Message;
-            }
-        }
         #endregion
 
         public string SaveNewCliente(
             cliente _cliente,
             int membresia_id,
             DateTime fechaInicio,
+            DateTime fechaFin,
             int precio,
             int descuento,
             int monto,
@@ -595,6 +493,7 @@ namespace ControlDoor
                         cliente = _cliente,
                         membresia_id = membresia_id,
                         fecha_inicio = fechaInicio,
+                        fecha_fin = fechaFin,
                         precio = precio,
                         descuento = descuento
                     };
@@ -835,6 +734,16 @@ namespace ControlDoor
                 estado = e.InnerException.InnerException.Message;
             }
             return estado;
+        }
+
+        public void Logout()
+        {
+            if (m_UserID >= 0)
+            {
+                CHCNetSDK2.NET_DVR_Logout_V30(m_UserID);
+                m_UserID = -1;
+            }
+            CHCNetSDK2.NET_DVR_Cleanup();
         }
     }
 }

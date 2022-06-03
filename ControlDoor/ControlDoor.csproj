@@ -139,9 +139,6 @@
     <Compile Include="bajaprodmotivo.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
-    <Compile Include="base_user_extend.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
     <Compile Include="cajamostrador.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
@@ -197,6 +194,12 @@
     </Compile>
     <Compile Include="empleado_asistencia.cs">
       <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FTest.designer.cs">
+      <DependentUpon>FTest.cs</DependentUpon>
     </Compile>
     <Compile Include="finger_print.cs">
       <DependentUpon>DB.tt</DependentUpon>
@@ -316,7 +319,7 @@
     <Compile Include="recibopagocuenta.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Request.cs" />
+    <Compile Include="CRequest.cs" />
     <Compile Include="serviciohabitacion.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
@@ -372,9 +375,6 @@
     <Compile Include="viewsocio.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
-    <Compile Include="viewsocio2.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
     <Compile Include="viewusuario.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
@@ -391,9 +391,6 @@
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="view_pago_membresia.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="view_pago_membresia_periodo.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="zcajam_buscar2_Result.cs">
@@ -485,6 +482,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FingerPrintMgr.resx">
       <DependentUpon>FingerPrintMgr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FTest.resx">
+      <DependentUpon>FTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FLoading.resx">
       <DependentUpon>FLoading.cs</DependentUpon>

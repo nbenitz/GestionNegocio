@@ -24,8 +24,6 @@ Partial Class FListaMembresiaContrato
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FListaMembresiaContrato))
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -33,7 +31,19 @@ Partial Class FListaMembresiaContrato
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FListaMembresiaContrato))
+        Me.dgvMembresia = New System.Windows.Forms.DataGridView()
+        Me.NroCont = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CiNro = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Memb = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Period = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cost = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Descuent = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Pagad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Saldo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Atras = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dtpHasta = New System.Windows.Forms.DateTimePicker()
         Me.lblHasta = New System.Windows.Forms.Label()
         Me.lblBuscar = New System.Windows.Forms.Label()
@@ -62,29 +72,19 @@ Partial Class FListaMembresiaContrato
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.NroCont = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CiNro = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Cliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Memb = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Period = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Cost = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Descuent = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Pagad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Saldo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Atras = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvMembresia, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlTopBar.SuspendLayout()
         CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbxDelCli, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbxBuscCli, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'DataGridView1
+        'dgvMembresia
         '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
-        Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.dgvMembresia.AllowUserToAddRows = False
+        Me.dgvMembresia.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.dgvMembresia.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgvMembresia.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer))
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -92,10 +92,10 @@ Partial Class FListaMembresiaContrato
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer))
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.DataGridView1.ColumnHeadersHeight = 41
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NroCont, Me.CiNro, Me.Cliente, Me.Memb, Me.Period, Me.Cost, Me.Descuent, Me.Pagad, Me.Saldo, Me.Atras})
+        Me.dgvMembresia.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.dgvMembresia.ColumnHeadersHeight = 41
+        Me.dgvMembresia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.dgvMembresia.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NroCont, Me.CiNro, Me.Cliente, Me.Memb, Me.Period, Me.Cost, Me.Descuent, Me.Pagad, Me.Saldo, Me.Atras})
         DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer))
         DataGridViewCellStyle9.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -103,14 +103,105 @@ Partial Class FListaMembresiaContrato
         DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer))
         DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White
         DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle9
-        Me.DataGridView1.GridColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 100)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.RowHeadersVisible = False
-        Me.DataGridView1.Size = New System.Drawing.Size(1034, 486)
-        Me.DataGridView1.TabIndex = 1
+        Me.dgvMembresia.DefaultCellStyle = DataGridViewCellStyle9
+        Me.dgvMembresia.GridColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.dgvMembresia.Location = New System.Drawing.Point(12, 100)
+        Me.dgvMembresia.MultiSelect = False
+        Me.dgvMembresia.Name = "dgvMembresia"
+        Me.dgvMembresia.ReadOnly = True
+        Me.dgvMembresia.RowHeadersVisible = False
+        Me.dgvMembresia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvMembresia.Size = New System.Drawing.Size(1034, 486)
+        Me.dgvMembresia.TabIndex = 1
+        '
+        'NroCont
+        '
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Padding = New System.Windows.Forms.Padding(0, 0, 10, 0)
+        Me.NroCont.DefaultCellStyle = DataGridViewCellStyle2
+        Me.NroCont.Frozen = True
+        Me.NroCont.HeaderText = "Nro."
+        Me.NroCont.Name = "NroCont"
+        Me.NroCont.ReadOnly = True
+        Me.NroCont.Width = 70
+        '
+        'CiNro
+        '
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "N0"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.CiNro.DefaultCellStyle = DataGridViewCellStyle3
+        Me.CiNro.Frozen = True
+        Me.CiNro.HeaderText = "CI"
+        Me.CiNro.Name = "CiNro"
+        Me.CiNro.ReadOnly = True
+        Me.CiNro.Width = 80
+        '
+        'Cliente
+        '
+        Me.Cliente.HeaderText = "Cliente"
+        Me.Cliente.Name = "Cliente"
+        Me.Cliente.ReadOnly = True
+        Me.Cliente.Width = 150
+        '
+        'Memb
+        '
+        Me.Memb.HeaderText = "Membresía"
+        Me.Memb.Name = "Memb"
+        Me.Memb.ReadOnly = True
+        Me.Memb.Width = 120
+        '
+        'Period
+        '
+        Me.Period.HeaderText = "Periodo"
+        Me.Period.Name = "Period"
+        Me.Period.ReadOnly = True
+        Me.Period.Width = 150
+        '
+        'Cost
+        '
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Cost.DefaultCellStyle = DataGridViewCellStyle4
+        Me.Cost.HeaderText = "Costo Membresía"
+        Me.Cost.Name = "Cost"
+        Me.Cost.ReadOnly = True
+        Me.Cost.Width = 90
+        '
+        'Descuent
+        '
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Descuent.DefaultCellStyle = DataGridViewCellStyle5
+        Me.Descuent.HeaderText = "Descuento Aplicado"
+        Me.Descuent.Name = "Descuent"
+        Me.Descuent.ReadOnly = True
+        Me.Descuent.Width = 90
+        '
+        'Pagad
+        '
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Pagad.DefaultCellStyle = DataGridViewCellStyle6
+        Me.Pagad.HeaderText = "Total Pagado"
+        Me.Pagad.Name = "Pagad"
+        Me.Pagad.ReadOnly = True
+        Me.Pagad.Width = 90
+        '
+        'Saldo
+        '
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Saldo.DefaultCellStyle = DataGridViewCellStyle7
+        Me.Saldo.HeaderText = "Saldo Pendiente"
+        Me.Saldo.Name = "Saldo"
+        Me.Saldo.ReadOnly = True
+        Me.Saldo.Width = 90
+        '
+        'Atras
+        '
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Atras.DefaultCellStyle = DataGridViewCellStyle8
+        Me.Atras.HeaderText = "Días Atraso"
+        Me.Atras.Name = "Atras"
+        Me.Atras.ReadOnly = True
+        Me.Atras.Width = 70
         '
         'dtpHasta
         '
@@ -335,7 +426,6 @@ Partial Class FListaMembresiaContrato
         Me.txtCI.ForeColor = System.Drawing.Color.White
         Me.txtCI.Location = New System.Drawing.Point(372, 67)
         Me.txtCI.Name = "txtCI"
-        Me.txtCI.ReadOnly = True
         Me.txtCI.Size = New System.Drawing.Size(158, 21)
         Me.txtCI.TabIndex = 99
         '
@@ -449,97 +539,6 @@ Partial Class FListaMembresiaContrato
         Me.Label7.TabIndex = 111
         Me.Label7.Text = "Socios con días de atraso"
         '
-        'NroCont
-        '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle2.Padding = New System.Windows.Forms.Padding(0, 0, 10, 0)
-        Me.NroCont.DefaultCellStyle = DataGridViewCellStyle2
-        Me.NroCont.Frozen = True
-        Me.NroCont.HeaderText = "Nro."
-        Me.NroCont.Name = "NroCont"
-        Me.NroCont.ReadOnly = True
-        Me.NroCont.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.NroCont.Width = 70
-        '
-        'CiNro
-        '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.Format = "N0"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.CiNro.DefaultCellStyle = DataGridViewCellStyle3
-        Me.CiNro.Frozen = True
-        Me.CiNro.HeaderText = "CI"
-        Me.CiNro.Name = "CiNro"
-        Me.CiNro.ReadOnly = True
-        Me.CiNro.Width = 80
-        '
-        'Cliente
-        '
-        Me.Cliente.HeaderText = "Cliente"
-        Me.Cliente.Name = "Cliente"
-        Me.Cliente.ReadOnly = True
-        Me.Cliente.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.Cliente.Width = 150
-        '
-        'Memb
-        '
-        Me.Memb.HeaderText = "Membresía"
-        Me.Memb.Name = "Memb"
-        Me.Memb.ReadOnly = True
-        Me.Memb.Width = 120
-        '
-        'Period
-        '
-        Me.Period.HeaderText = "Periodo"
-        Me.Period.Name = "Period"
-        Me.Period.ReadOnly = True
-        Me.Period.Width = 150
-        '
-        'Cost
-        '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Cost.DefaultCellStyle = DataGridViewCellStyle4
-        Me.Cost.HeaderText = "Costo Membresía"
-        Me.Cost.Name = "Cost"
-        Me.Cost.ReadOnly = True
-        Me.Cost.Width = 90
-        '
-        'Descuent
-        '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Descuent.DefaultCellStyle = DataGridViewCellStyle5
-        Me.Descuent.HeaderText = "Descuento Aplicado"
-        Me.Descuent.Name = "Descuent"
-        Me.Descuent.ReadOnly = True
-        Me.Descuent.Width = 90
-        '
-        'Pagad
-        '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Pagad.DefaultCellStyle = DataGridViewCellStyle6
-        Me.Pagad.HeaderText = "Total Pagado"
-        Me.Pagad.Name = "Pagad"
-        Me.Pagad.ReadOnly = True
-        Me.Pagad.Width = 90
-        '
-        'Saldo
-        '
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Saldo.DefaultCellStyle = DataGridViewCellStyle7
-        Me.Saldo.HeaderText = "Saldo Pendiente"
-        Me.Saldo.Name = "Saldo"
-        Me.Saldo.ReadOnly = True
-        Me.Saldo.Width = 90
-        '
-        'Atras
-        '
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Atras.DefaultCellStyle = DataGridViewCellStyle8
-        Me.Atras.HeaderText = "Días Atraso"
-        Me.Atras.Name = "Atras"
-        Me.Atras.ReadOnly = True
-        Me.Atras.Width = 70
-        '
         'FListaMembresiaContrato
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -570,14 +569,14 @@ Partial Class FListaMembresiaContrato
         Me.Controls.Add(Me.txtNroFac)
         Me.Controls.Add(Me.txtTotalCostoMembresia)
         Me.Controls.Add(Me.cmbAno)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.dgvMembresia)
         Me.Controls.Add(Me.cmbMes)
         Me.ForeColor = System.Drawing.Color.LightGray
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "FListaMembresiaContrato"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Lista de Ventas"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvMembresia, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlTopBar.ResumeLayout(False)
         Me.pnlTopBar.PerformLayout()
         CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).EndInit()
@@ -587,7 +586,7 @@ Partial Class FListaMembresiaContrato
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents dgvMembresia As System.Windows.Forms.DataGridView
     Friend WithEvents lblBuscar As System.Windows.Forms.Label
     Friend WithEvents txtNroFac As System.Windows.Forms.TextBox
     Friend WithEvents cmbFiltrarPor As System.Windows.Forms.ComboBox

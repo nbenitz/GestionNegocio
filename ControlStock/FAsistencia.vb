@@ -239,7 +239,6 @@ Public Class FAsistencia
                 Dim Telefono As String = CStr(Tabla.Rows(0).Item(3))
                 Dim Aliass As String = CStr(Tabla.Rows(0).Item(5))
                 Dim Direccion As String = CStr(Tabla.Rows(0).Item(6))
-                Dim Vto As String = CStr(CDate(Tabla.Rows(0).Item(7)).AddMonths(1))
                 Dim AccesoCod As String
                 Try
                     AccesoCod = CStr(Tabla.Rows(0).Item(4))
@@ -248,15 +247,18 @@ Public Class FAsistencia
                 End Try
                 Dim Foto As Byte()
                 Try
-                    Foto = CType(Tabla.Rows(0).Item(8), Byte())
+                    Foto = CType(Tabla.Rows(0).Item(9), Byte())
                 Catch
                 End Try
-                Dim FechaNac As String = CStr(Tabla.Rows(0).Item(10))
-                Dim Frm As New FSocioFicha(CI, Nombre, Telefono, Direccion, Aliass, Foto, FechaNac, MembresiaNom, Vto, AccesoCod)
+                Dim FechaNac As String = CStr(Tabla.Rows(0).Item(11))
+                Dim Conocio As String = CStr(Tabla.Rows(0).Item(12))
+                Dim Saldo As Integer = CInt(Tabla.Rows(0).Item(13))
+                Dim Estado As String = CStr(Tabla.Rows(0).Item(14))
+                Dim Frm As New FSocioFicha(CI, Nombre, Telefono, Direccion, Aliass, Foto, FechaNac, Conocio, AccesoCod, Saldo)
                 Frm.ShowDialog()
             End If
         Catch
-            MessageBox.Show("Error al Abrir la Nota de Crédito")
+            MessageBox.Show("Error al Abrir la Ficha del Socio")
         End Try
     End Sub
 

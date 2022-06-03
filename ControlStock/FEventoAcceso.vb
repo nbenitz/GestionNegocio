@@ -5,7 +5,7 @@ Imports System.Threading.Tasks
 
 Public Class FEventoAcceso
     Dim WithEvents EventoAcceso As New EventByDeploy
-    'Dim ControlPuerta As New ControlDoor.ControlDoor
+    Dim req As New CRequest
     Dim oCliente As New CCliente
     Dim oEmple As New CEmpleado
     Dim oAcceso As New CAcceso
@@ -15,6 +15,10 @@ Public Class FEventoAcceso
     Dim WithEvents FrmSocio As New FNuevoSocio
     Dim FrmSocioInfo As New FSocioInfo
     Dim CIValue As String
+    Dim TimeRemainToLogin As Integer = 60
+    Dim appCfg As New CAppConfig
+    Dim BaseDatoServer As String = appCfg.GetValue("server", Type.GetType("System.String")).ToString
+    Dim DeviceIP As String = appCfg.GetValue("device", Type.GetType("System.String")).ToString
 
     Delegate Sub InsertIntoTableCallBack(ByVal tiempo As DateTime,
                                          ByVal Codigo As UInteger,
@@ -30,20 +34,49 @@ Public Class FEventoAcceso
 
     Delegate Sub MostrarCodigoCallBack(ByVal Codigo As UInteger)
 
+    Delegate Sub OcultarInfoClienteCallBack()
+    Delegate Sub OnLoginErrorCallBack()
+    Delegate Sub OnLoginSuccessCallBack()
+    Delegate Sub OnCallBackSuccCallBack()
+
+    Sub New()
+
+        ' Esta llamada es exigida por el diseñador.
+        InitializeComponent()
+
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+        AddHandler EventoAcceso.MsgRecibido, AddressOf onMsgRecibido
+        AddHandler EventoAcceso.CallBackSucc, AddressOf onCallBackSucc
+        AddHandler EventoAcceso.LoginErr, AddressOf onLoginError
+        AddHandler EventoAcceso.LoginSuccess, AddressOf onLoginSuccess
+        EventoAcceso.login()
+    End Sub
+
+    Public Async Sub init()
+        Dim t1 As Task
+        t1 = Task.Run(Sub() login())
+        Await t1
+    End Sub
+
+    Public Async Function Ping() As Task(Of Boolean)
+        Dim status As Boolean = False
+        Dim t1 As Task
+        t1 = Task.Run(Sub() status = req.PingHost(DeviceIP, 8000))
+        Await t1
+        Return status
+    End Function
+
+    Sub login()
+        EventoAcceso.login()
+    End Sub
 
     Private Sub onMsgRecibido(ByVal Tiempo As DateTime, ByVal Codigo As UInteger)
-        MostrarCodigo(Codigo)
+        'MostrarCodigo(Codigo)
         Dim TablaSocio As DataTable = oCliente.BuscSocio("WHERE acceso = " + CStr(Codigo))
         If TablaSocio.Rows.Count > 0 Then
             Dim CI As String = CStr(TablaSocio.Rows(0).Item(0))
             CIValue = CI
-
-            If GetClientStatus(CI) Then
-                EventoAcceso.OpenDoor()
-                If oAcceso.InsertClienteAsistencia(CI, Tiempo, " ") = False Then
-                    MessageBox.Show("Hubo un problema al registrar el acceso.")
-                End If
-            End If
+            CheckClientStatus(CI, Tiempo)
 
             Dim Nombre As String = CStr(TablaSocio.Rows(0).Item(1))
             Dim Foto As Byte()
@@ -53,7 +86,6 @@ Public Class FEventoAcceso
             End Try
 
             FrmSocioInfo.ShowClientInfo(Nombre, Foto)
-            'SegundaPantalla()
 
             Me.InsertIntoTable(Tiempo, Codigo, Nombre)
             Me.ShowPersonInfo(Nombre, Foto)
@@ -64,16 +96,17 @@ Public Class FEventoAcceso
                 Dim CI As String = CStr(TablaEmple.Rows(0).Item(0))
                 CIValue = CI
 
-                EventoAcceso.OpenDoor()
-                If oAcceso.InsertEmpleadoAsistencia(CI, Tiempo) = False Then
-                    MessageBox.Show("Hubo un problema al registrar el acceso.")
+                If Strings.Left(BaseDatoServer, 16) = "server=127.0.0.1" Then
+                    EventoAcceso.OpenDoor()
+                    If oAcceso.InsertEmpleadoAsistencia(CI, Tiempo) = False Then
+                        MessageBox.Show("Hubo un problema al registrar el acceso.")
+                    End If
                 End If
-
                 Dim Nombre As String = CStr(TablaEmple.Rows(0).Item(1)) + " " + CStr(TablaEmple.Rows(0).Item(2))
 
                 Me.InsertIntoTable(Tiempo, Codigo, Nombre)
                 Me.ShowPersonInfo(Nombre, Nothing)
-                pnlInfoCliente.Visible = False
+                OcultarInfoCliente()
             End If
 
         End If
@@ -81,41 +114,112 @@ Public Class FEventoAcceso
     End Sub
 
     Private Sub onLoginSuccess()
-        lblConectado.ForeColor = Color.White
-        lblConectado.BackColor = Color.Red
-        lblConectado.Text = "Conectar"
-    End Sub
+        If Me.lblConectado.InvokeRequired Then
+            Dim d As New OnLoginSuccessCallBack(AddressOf onLoginSuccess)
+            Me.Invoke(d, New Object() {})
+        Else
+            MAcceso.UserID = EventoAcceso.m_UserID
+            lblConectado.Text = "Conectar"
+            lblConectado.ForeColor = Color.White
+            lblConectado.BackColor = Color.Red
 
-    Private Sub onCallBackSucc()
-        lblConectado.Text = "Conectado"
-        lblConectado.ForeColor = Color.Lime
-        lblConectado.BackColor = Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+            lblTitReconect.Visible = False
+            lblSegReconect.Visible = False
+            tmrPing.Start()
+        End If
     End Sub
 
     Private Sub onLoginError()
-        lblConectado.Text = "Error de Conexión"
-        lblConectado.ForeColor = Color.White
-        lblConectado.BackColor = Color.Red
+        If Me.lblConectado.InvokeRequired Then
+            Dim d As New OnLoginErrorCallBack(AddressOf onLoginError)
+            Me.Invoke(d, New Object() {})
+        Else
+            'MAcceso.UserID = EventoAcceso.m_UserID
+            lblConectado.Text = "Error de Conexión"
+            lblConectado.ForeColor = Color.White
+            lblConectado.BackColor = Color.Red
+
+            lblTitReconect.Visible = True
+            lblTitReconect.Text = "Reconectando en:"
+            TimeRemainToLogin = 5
+            lblSegReconect.Text = CStr(TimeRemainToLogin)
+            lblSegReconect.Visible = True
+
+            'lblVeces.Text = CStr(CInt(lblVeces.Text) + 1)
+            tmrLogin.Start()
+        End If
     End Sub
 
-    Function GetClientStatus(ByVal CI As String) As Boolean
-        Dim TablaMembresia As DataTable = oMembresia.BuscarPagoPeriodo(CI)
+    Private Sub onCallBackSucc()
+        If Me.lblConectado.InvokeRequired Then
+            Dim d As New OnCallBackSuccCallBack(AddressOf onCallBackSucc)
+            Me.Invoke(d, New Object() {})
+        Else
+            lblConectado.Text = "Conectado"
+            lblConectado.ForeColor = Color.Lime
+            lblConectado.BackColor = Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        End If
+    End Sub
+
+    Sub CheckClientStatus(ByVal CI As String, ByVal Tiempo As DateTime)
+        Dim TablaMembresia As DataTable = oMembresia.BuscarViewClienteMembresia(CI)
         Dim Count As Integer = TablaMembresia.Rows.Count
-        If Count > 0 Then
-            Dim NombreMembresia As String = CStr(TablaMembresia.Rows(Count - 1).Item(3))
-            Dim Vto As Date = CDate(TablaMembresia.Rows(Count - 1).Item(5))
-            Dim Atraso As Integer = CInt(TablaMembresia.Rows(Count - 1).Item(10))
+        If Count > 0 Then       'Si el socio tiene membresías
+
+            Dim i As Integer = Count - 1        'indice de la última membresía pagada
+            If Count > 1 Then   'Si tiene mas de una membresía
+                Dim Inicio As Date = CDate(TablaMembresia.Rows(i).Item(4))  'fecha de inicio de la última membresía
+                If Inicio > Date.Now() Then     'si aún no llega la fecha de inicio de la última membresía
+                    Dim Fin As Date = CDate(TablaMembresia.Rows(i - 1).Item(5)) 'Fecha Vencimiento de la penúltima membresía
+                    If Fin > Date.Now Then      'si aún no venció la penúltima membresía
+                        i -= 1                  'utilizar el índice de la penúltima membresía
+                    End If
+                End If
+            End If
+
+            Dim Atraso As Integer = CInt(TablaMembresia.Rows(i).Item(10))
             Dim TablaTolerancia As DataTable = oAcceso.VerAjustes
             Dim DiasTolerancia As Integer = CInt(TablaTolerancia.Rows(0).Item(1))
-            If Atraso > DiasTolerancia Then
-                GetClientStatus = False
-            Else
-                GetClientStatus = True
+
+            Dim TiempoUnidad As Char = CChar(TablaMembresia.Rows(i).Item(11))
+            Dim VecesDia As Integer = CInt(TablaMembresia.Rows(i).Item(12))
+            Dim DiasSemana As Integer = CInt(TablaMembresia.Rows(i).Item(13))
+            Dim DiasMes As Integer = CInt(TablaMembresia.Rows(i).Item(14))
+            Dim Dia As String = CStr(TablaMembresia.Rows(i).Item(15))
+
+            Dim VecesDiaFlag As Boolean = True
+            Dim DiasSemanaFlag As Boolean = True
+            Dim DiasMesFlag As Boolean = True
+            Dim DiasFlag As Boolean = False
+
+
+            If VecesDia < 99 Then
+
             End If
-            Me.ShowClientStatus(NombreMembresia, Vto, Atraso, GetSaldoPendiente(CI))
-            Return GetClientStatus
-        End If
-    End Function
+            If DiasSemana < 7 Then
+
+            End If
+            If DiasMes < 31 Then
+
+            End If
+            Dim Hoy As String = Strings.Left(Now.ToString("ddd"), 3)
+            If Dia.Contains(Strings.Left(Now.ToString("ddd"), 3)) Then
+                DiasFlag = True
+            End If
+
+            'server=127.0.0.1;user id=remote;password=1223;database=minegocio
+            If Atraso <= DiasTolerancia And Strings.Left(BaseDatoServer, 16) = "server=127.0.0.1" Then
+                    EventoAcceso.OpenDoor()
+                End If
+
+                Dim NombreMembresia As String = CStr(TablaMembresia.Rows(i).Item(3))
+                Dim Vto As Date = CDate(TablaMembresia.Rows(i).Item(5))
+                Me.ShowClientStatus(NombreMembresia, Vto, Atraso, GetSaldoPendiente(CI))
+                If oAcceso.InsertClienteAsistencia(CI, Tiempo, " ") = False Then
+                    MessageBox.Show("Hubo un problema al registrar el acceso.")
+                End If
+            End If
+    End Sub
 
     Function GetSaldoPendiente(ByVal CI As String) As Integer
         Dim TablaCuenta As DataTable = oVenta.BuscViewCuentas("WHERE CI='" + CI + "'")
@@ -136,6 +240,15 @@ Public Class FEventoAcceso
             Me.Invoke(d, New Object() {Codigo})
         Else
             lblUltimaClave.Text = CStr(Codigo)
+        End If
+    End Sub
+
+    Public Sub OcultarInfoCliente()
+        If Me.pnlInfoCliente.InvokeRequired Then
+            Dim d As New OcultarInfoClienteCallBack(AddressOf OcultarInfoCliente)
+            Me.Invoke(d, New Object() {})
+        Else
+            pnlInfoCliente.Visible = False
         End If
     End Sub
 
@@ -181,7 +294,9 @@ Public Class FEventoAcceso
                 End Try
                 pbxFoto.Image = If(Foto IsNot Nothing, ByteArrayToImage(Foto), My.Resources.userblack)
                 lblNombre.Text = CStr(Nombre)
-                GetClientStatus(CI)
+
+                ShowClientStatusByCI(CI)
+
             End If
         End If
     End Sub
@@ -244,17 +359,10 @@ Public Class FEventoAcceso
 
 
     Private Sub FEventoAcceso_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        AddHandler EventoAcceso.MsgRecibido, AddressOf onMsgRecibido
-        AddHandler EventoAcceso.CallBackSucc, AddressOf onCallBackSucc
-        AddHandler EventoAcceso.LoginErr, AddressOf onLoginError
-        AddHandler EventoAcceso.LoginSuccess, AddressOf onLoginSuccess
         SegundaPantalla()
     End Sub
 
-    Public Sub init()
-        EventoAcceso.login()
-        'EventoAcceso.deploy()
-    End Sub
+
 
     Private Sub btnOpenDoor_Click(sender As Object, e As EventArgs) Handles btnOpenDoor.Click, Button2.Click
         EventoAcceso.OpenDoor()
@@ -314,8 +422,19 @@ Public Class FEventoAcceso
         End If
     End Sub
 
+    Sub ShowClientStatusByCI(CI As String)
+        Dim TablaMembresia As DataTable = oMembresia.BuscarViewClienteMembresia(CIValue)
+        Dim Count As Integer = TablaMembresia.Rows.Count
+        If Count > 0 Then
+            Dim Atraso As Integer = CInt(TablaMembresia.Rows(Count - 1).Item(10))
+            Dim NombreMembresia As String = CStr(TablaMembresia.Rows(Count - 1).Item(3))
+            Dim Vto As Date = CDate(TablaMembresia.Rows(Count - 1).Item(5))
+            ShowClientStatus(NombreMembresia, Vto, Atraso, GetSaldoPendiente(CIValue))
+        End If
+    End Sub
+
     Private Sub onCuentasCobrar_Closed() Handles FrmCuentasCobrar.FormClosed, FrmSocio.FormClosed
-        GetClientStatus(CIValue)
+        ShowClientStatusByCI(CIValue)
     End Sub
 
     Private Sub dgvAccesos_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvAccesos.CellContentClick
@@ -328,13 +447,6 @@ Public Class FEventoAcceso
         onMsgRecibido(Date.Now, CUInt(TextBox1.Text))
     End Sub
 
-    Private Sub lblConectado_Click(sender As Object, e As EventArgs) Handles lblConectado.Click
-        lblConectado.ForeColor = Color.White
-        lblConectado.BackColor = Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        lblConectado.Text = "Conectando..."
-        EventoAcceso.login()
-    End Sub
-
     Private Sub SegundaPantalla()
         Dim myScreens() As Screen = Screen.AllScreens
         If myScreens.Length = 2 Then
@@ -345,13 +457,35 @@ Public Class FEventoAcceso
             FrmSocioInfo.Width = myScreens(1).Bounds.Width
             FrmSocioInfo.Height = myScreens(1).Bounds.Height
 
-            FrmSocioInfo.pnlInfo.Top = CInt(FrmSocioInfo.Height / 2 - FrmSocioInfo.pnlInfo.Height / 2)
+            'FrmSocioInfo.pnlInfo.Top = CInt(FrmSocioInfo.Height / 2 - FrmSocioInfo.pnlInfo.Height / 2)
             FrmSocioInfo.pnlInfo.Left = CInt(FrmSocioInfo.Width / 2 - FrmSocioInfo.pnlInfo.Width / 2)
         End If
     End Sub
 
     Private Sub lblSegundaPantalla_Click(sender As Object, e As EventArgs) Handles lblSegundaPantalla.Click
         SegundaPantalla()
+    End Sub
+
+    Private Sub tmrLogin_Tick(sender As Object, e As EventArgs) Handles tmrLogin.Tick
+        TimeRemainToLogin -= 1
+        lblSegReconect.Text = CStr(TimeRemainToLogin)
+        If TimeRemainToLogin = 0 Then
+            tmrLogin.Stop()
+            lblSegReconect.Visible = False
+            lblTitReconect.Text = "Conectando..."
+            init()
+        End If
+    End Sub
+
+    Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
+        EventoAcceso.Logout()
+    End Sub
+
+    Private Sub tmrPing_Tick(sender As Object, e As EventArgs) Handles tmrPing.Tick
+        If Not req.PingHost(DeviceIP, 8000) Then
+            onLoginError()
+            tmrPing.Stop()
+        End If
     End Sub
 
 End Class

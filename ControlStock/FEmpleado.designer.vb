@@ -165,9 +165,9 @@ Partial Class FEmpleado
         Me.Label3.Location = New System.Drawing.Point(121, 173)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(65, 20)
+        Me.Label3.Size = New System.Drawing.Size(75, 20)
         Me.Label3.TabIndex = 15
-        Me.Label3.Text = "Apellido"
+        Me.Label3.Text = "Apellido *"
         '
         'Label4
         '

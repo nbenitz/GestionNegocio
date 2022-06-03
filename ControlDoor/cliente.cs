@@ -33,6 +33,7 @@ namespace ControlDoor
         public byte[] Foto { get; set; }
         public Nullable<sbyte> Activo { get; set; }
         public Nullable<System.DateTime> Fecha_Nacimiento { get; set; }
+        public string Como_Conocio { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cliente_acceso> cliente_acceso { get; set; }

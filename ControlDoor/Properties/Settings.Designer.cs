@@ -22,5 +22,137 @@ namespace ControlDoor.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool admin {
+            get {
+                return ((bool)(this["admin"]));
+            }
+            set {
+                this["admin"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int serverSelectedIndex {
+            get {
+                return ((int)(this["serverSelectedIndex"]));
+            }
+            set {
+                this["serverSelectedIndex"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("127.0.0.1")]
+        public string serverIp {
+            get {
+                return ((string)(this["serverIp"]));
+            }
+            set {
+                this["serverIp"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.100.3")]
+        public string deviceIp {
+            get {
+                return ((string)(this["deviceIp"]));
+            }
+            set {
+                this["deviceIp"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100.0.0.1")]
+        public string serverIp1 {
+            get {
+                return ((string)(this["serverIp1"]));
+            }
+            set {
+                this["serverIp1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10.130.63.119")]
+        public string deviceIp1 {
+            get {
+                return ((string)(this["deviceIp1"]));
+            }
+            set {
+                this["deviceIp1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10.35.230.183")]
+        public string serverIp2 {
+            get {
+                return ((string)(this["serverIp2"]));
+            }
+            set {
+                this["serverIp2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10.35.230.183")]
+        public string deviceIp2 {
+            get {
+                return ((string)(this["deviceIp2"]));
+            }
+            set {
+                this["deviceIp2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string server {
+            get {
+                return ((string)(this["server"]));
+            }
+            set {
+                this["server"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string device {
+            get {
+                return ((string)(this["device"]));
+            }
+            set {
+                this["device"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string devicePort {
+            get {
+                return ((string)(this["devicePort"]));
+            }
+            set {
+                this["devicePort"] = value;
+            }
+        }
     }
 }

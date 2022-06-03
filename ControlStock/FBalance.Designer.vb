@@ -22,17 +22,14 @@ Partial Class FBalance
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FBalance))
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FBalance))
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Fecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Concepto = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Ingreso = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.dgvIngreso = New System.Windows.Forms.DataGridView()
         Me.txtTotalI = New System.Windows.Forms.TextBox()
         Me.txtTotalE = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -47,10 +44,7 @@ Partial Class FBalance
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.cmbMes = New System.Windows.Forms.ComboBox()
-        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
-        Me.FechaE = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ConceptoE = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Egreso = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgvEgreso = New System.Windows.Forms.DataGridView()
         Me.lblAnho = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.cmbAnho = New System.Windows.Forms.ComboBox()
@@ -59,64 +53,35 @@ Partial Class FBalance
         Me.pnlTopBar = New System.Windows.Forms.Panel()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.BtnCerrarForm = New System.Windows.Forms.PictureBox()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.FechaE = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ConceptoE = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Egreso = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Fecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Concepto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Ingreso = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        CType(Me.dgvIngreso, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvEgreso, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlTopBar.SuspendLayout()
         CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'DataGridView1
+        'dgvIngreso
         '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.AllowUserToResizeColumns = False
-        Me.DataGridView1.AllowUserToResizeRows = False
-        Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Fecha, Me.Concepto, Me.Ingreso})
-        Me.DataGridView1.Location = New System.Drawing.Point(7, 93)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowHeadersVisible = False
-        Me.DataGridView1.Size = New System.Drawing.Size(384, 293)
-        Me.DataGridView1.TabIndex = 0
-        '
-        'Fecha
-        '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.Format = "N0"
-        DataGridViewCellStyle1.NullValue = Nothing
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
-        Me.Fecha.DefaultCellStyle = DataGridViewCellStyle1
-        Me.Fecha.HeaderText = "Fecha"
-        Me.Fecha.Name = "Fecha"
-        Me.Fecha.ReadOnly = True
-        '
-        'Concepto
-        '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
-        Me.Concepto.DefaultCellStyle = DataGridViewCellStyle2
-        Me.Concepto.HeaderText = "Concepto"
-        Me.Concepto.Name = "Concepto"
-        Me.Concepto.ReadOnly = True
-        Me.Concepto.Width = 150
-        '
-        'Ingreso
-        '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.Format = "N0"
-        DataGridViewCellStyle3.NullValue = Nothing
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        Me.Ingreso.DefaultCellStyle = DataGridViewCellStyle3
-        Me.Ingreso.HeaderText = "Ingreso"
-        Me.Ingreso.Name = "Ingreso"
-        Me.Ingreso.ReadOnly = True
+        Me.dgvIngreso.AllowUserToAddRows = False
+        Me.dgvIngreso.AllowUserToDeleteRows = False
+        Me.dgvIngreso.AllowUserToResizeColumns = False
+        Me.dgvIngreso.AllowUserToResizeRows = False
+        Me.dgvIngreso.BackgroundColor = System.Drawing.Color.White
+        Me.dgvIngreso.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvIngreso.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Fecha, Me.Concepto, Me.Ingreso})
+        Me.dgvIngreso.Location = New System.Drawing.Point(7, 93)
+        Me.dgvIngreso.Name = "dgvIngreso"
+        Me.dgvIngreso.RowHeadersVisible = False
+        Me.dgvIngreso.Size = New System.Drawing.Size(396, 293)
+        Me.dgvIngreso.TabIndex = 0
         '
         'txtTotalI
         '
@@ -128,7 +93,7 @@ Partial Class FBalance
         '
         'txtTotalE
         '
-        Me.txtTotalE.Location = New System.Drawing.Point(647, 392)
+        Me.txtTotalE.Location = New System.Drawing.Point(659, 392)
         Me.txtTotalE.Name = "txtTotalE"
         Me.txtTotalE.Size = New System.Drawing.Size(102, 20)
         Me.txtTotalE.TabIndex = 4
@@ -149,7 +114,7 @@ Partial Class FBalance
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Arial", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(147, 8)
+        Me.Label3.Location = New System.Drawing.Point(153, 8)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(81, 22)
         Me.Label3.TabIndex = 7
@@ -170,7 +135,7 @@ Partial Class FBalance
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Arial", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(546, 393)
+        Me.Label5.Location = New System.Drawing.Point(558, 393)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(95, 16)
         Me.Label5.TabIndex = 9
@@ -179,7 +144,7 @@ Partial Class FBalance
         'txtBalance
         '
         Me.txtBalance.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBalance.Location = New System.Drawing.Point(647, 430)
+        Me.txtBalance.Location = New System.Drawing.Point(659, 430)
         Me.txtBalance.Name = "txtBalance"
         Me.txtBalance.Size = New System.Drawing.Size(102, 23)
         Me.txtBalance.TabIndex = 10
@@ -192,7 +157,7 @@ Partial Class FBalance
         Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Location = New System.Drawing.Point(7, 58)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(384, 35)
+        Me.Panel1.Size = New System.Drawing.Size(396, 35)
         Me.Panel1.TabIndex = 12
         '
         'Panel2
@@ -201,7 +166,7 @@ Partial Class FBalance
         Me.Panel2.Controls.Add(Me.lblMes)
         Me.Panel2.Controls.Add(Me.Panel3)
         Me.Panel2.Controls.Add(Me.cmbMes)
-        Me.Panel2.Controls.Add(Me.DataGridView2)
+        Me.Panel2.Controls.Add(Me.dgvEgreso)
         Me.Panel2.Controls.Add(Me.lblAnho)
         Me.Panel2.Controls.Add(Me.Label6)
         Me.Panel2.Controls.Add(Me.cmbAnho)
@@ -213,10 +178,10 @@ Partial Class FBalance
         Me.Panel2.Controls.Add(Me.Label2)
         Me.Panel2.Controls.Add(Me.txtTotalE)
         Me.Panel2.Controls.Add(Me.txtTotalI)
-        Me.Panel2.Controls.Add(Me.DataGridView1)
+        Me.Panel2.Controls.Add(Me.dgvIngreso)
         Me.Panel2.Location = New System.Drawing.Point(9, 44)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(789, 474)
+        Me.Panel2.Size = New System.Drawing.Size(813, 474)
         Me.Panel2.TabIndex = 13
         '
         'lblMes
@@ -234,9 +199,9 @@ Partial Class FBalance
         Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
         Me.Panel3.Controls.Add(Me.Label1)
         Me.Panel3.Controls.Add(Me.Label8)
-        Me.Panel3.Location = New System.Drawing.Point(397, 58)
+        Me.Panel3.Location = New System.Drawing.Point(409, 58)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(384, 35)
+        Me.Panel3.Size = New System.Drawing.Size(397, 35)
         Me.Panel3.TabIndex = 16
         '
         'Label1
@@ -255,7 +220,7 @@ Partial Class FBalance
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Arial", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.White
-        Me.Label8.Location = New System.Drawing.Point(147, 8)
+        Me.Label8.Location = New System.Drawing.Point(157, 8)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(77, 22)
         Me.Label8.TabIndex = 7
@@ -270,55 +235,20 @@ Partial Class FBalance
         Me.cmbMes.Size = New System.Drawing.Size(102, 21)
         Me.cmbMes.TabIndex = 18
         '
-        'DataGridView2
+        'dgvEgreso
         '
-        Me.DataGridView2.AllowUserToAddRows = False
-        Me.DataGridView2.AllowUserToDeleteRows = False
-        Me.DataGridView2.AllowUserToResizeColumns = False
-        Me.DataGridView2.AllowUserToResizeRows = False
-        Me.DataGridView2.BackgroundColor = System.Drawing.Color.White
-        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.FechaE, Me.ConceptoE, Me.Egreso})
-        Me.DataGridView2.Location = New System.Drawing.Point(397, 93)
-        Me.DataGridView2.Name = "DataGridView2"
-        Me.DataGridView2.RowHeadersVisible = False
-        Me.DataGridView2.Size = New System.Drawing.Size(384, 293)
-        Me.DataGridView2.TabIndex = 15
-        '
-        'FechaE
-        '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.Format = "N0"
-        DataGridViewCellStyle4.NullValue = Nothing
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
-        Me.FechaE.DefaultCellStyle = DataGridViewCellStyle4
-        Me.FechaE.HeaderText = "Fecha"
-        Me.FechaE.Name = "FechaE"
-        Me.FechaE.ReadOnly = True
-        '
-        'ConceptoE
-        '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black
-        Me.ConceptoE.DefaultCellStyle = DataGridViewCellStyle5
-        Me.ConceptoE.HeaderText = "Concepto"
-        Me.ConceptoE.Name = "ConceptoE"
-        Me.ConceptoE.ReadOnly = True
-        Me.ConceptoE.Width = 150
-        '
-        'Egreso
-        '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle6.Format = "N0"
-        DataGridViewCellStyle6.NullValue = Nothing
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
-        Me.Egreso.DefaultCellStyle = DataGridViewCellStyle6
-        Me.Egreso.HeaderText = "Egreso"
-        Me.Egreso.Name = "Egreso"
-        Me.Egreso.ReadOnly = True
+        Me.dgvEgreso.AllowUserToAddRows = False
+        Me.dgvEgreso.AllowUserToDeleteRows = False
+        Me.dgvEgreso.AllowUserToResizeColumns = False
+        Me.dgvEgreso.AllowUserToResizeRows = False
+        Me.dgvEgreso.BackgroundColor = System.Drawing.Color.White
+        Me.dgvEgreso.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvEgreso.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.FechaE, Me.ConceptoE, Me.Egreso})
+        Me.dgvEgreso.Location = New System.Drawing.Point(409, 93)
+        Me.dgvEgreso.Name = "dgvEgreso"
+        Me.dgvEgreso.RowHeadersVisible = False
+        Me.dgvEgreso.Size = New System.Drawing.Size(397, 293)
+        Me.dgvEgreso.TabIndex = 15
         '
         'lblAnho
         '
@@ -334,7 +264,7 @@ Partial Class FBalance
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Arial", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(577, 433)
+        Me.Label6.Location = New System.Drawing.Point(589, 433)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(64, 16)
         Me.Label6.TabIndex = 14
@@ -375,7 +305,7 @@ Partial Class FBalance
         Me.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top
         Me.pnlTopBar.Location = New System.Drawing.Point(0, 0)
         Me.pnlTopBar.Name = "pnlTopBar"
-        Me.pnlTopBar.Size = New System.Drawing.Size(807, 35)
+        Me.pnlTopBar.Size = New System.Drawing.Size(832, 35)
         Me.pnlTopBar.TabIndex = 14
         '
         'lblTitulo
@@ -393,7 +323,7 @@ Partial Class FBalance
         '
         Me.BtnCerrarForm.Dock = System.Windows.Forms.DockStyle.Right
         Me.BtnCerrarForm.Image = CType(resources.GetObject("BtnCerrarForm.Image"), System.Drawing.Image)
-        Me.BtnCerrarForm.Location = New System.Drawing.Point(772, 0)
+        Me.BtnCerrarForm.Location = New System.Drawing.Point(797, 0)
         Me.BtnCerrarForm.Margin = New System.Windows.Forms.Padding(2)
         Me.BtnCerrarForm.Name = "BtnCerrarForm"
         Me.BtnCerrarForm.Size = New System.Drawing.Size(35, 35)
@@ -401,33 +331,103 @@ Partial Class FBalance
         Me.BtnCerrarForm.TabIndex = 115
         Me.BtnCerrarForm.TabStop = False
         '
+        'FechaE
+        '
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.Format = "N0"
+        DataGridViewCellStyle4.NullValue = Nothing
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
+        Me.FechaE.DefaultCellStyle = DataGridViewCellStyle4
+        Me.FechaE.HeaderText = "Fecha"
+        Me.FechaE.Name = "FechaE"
+        Me.FechaE.ReadOnly = True
+        '
+        'ConceptoE
+        '
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black
+        Me.ConceptoE.DefaultCellStyle = DataGridViewCellStyle5
+        Me.ConceptoE.HeaderText = "Concepto"
+        Me.ConceptoE.Name = "ConceptoE"
+        Me.ConceptoE.ReadOnly = True
+        Me.ConceptoE.Width = 170
+        '
+        'Egreso
+        '
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle6.Format = "N0"
+        DataGridViewCellStyle6.NullValue = Nothing
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
+        Me.Egreso.DefaultCellStyle = DataGridViewCellStyle6
+        Me.Egreso.HeaderText = "Egreso"
+        Me.Egreso.Name = "Egreso"
+        Me.Egreso.ReadOnly = True
+        '
+        'Fecha
+        '
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.Format = "N0"
+        DataGridViewCellStyle1.NullValue = Nothing
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
+        Me.Fecha.DefaultCellStyle = DataGridViewCellStyle1
+        Me.Fecha.HeaderText = "Fecha"
+        Me.Fecha.Name = "Fecha"
+        Me.Fecha.ReadOnly = True
+        '
+        'Concepto
+        '
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
+        Me.Concepto.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Concepto.HeaderText = "Concepto"
+        Me.Concepto.Name = "Concepto"
+        Me.Concepto.ReadOnly = True
+        Me.Concepto.Width = 170
+        '
+        'Ingreso
+        '
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "N0"
+        DataGridViewCellStyle3.NullValue = Nothing
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
+        Me.Ingreso.DefaultCellStyle = DataGridViewCellStyle3
+        Me.Ingreso.HeaderText = "Ingreso"
+        Me.Ingreso.Name = "Ingreso"
+        Me.Ingreso.ReadOnly = True
+        '
         'FBalance
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(807, 530)
+        Me.ClientSize = New System.Drawing.Size(832, 530)
         Me.Controls.Add(Me.pnlTopBar)
         Me.Controls.Add(Me.Panel2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "FBalance"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Balance"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvIngreso, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvEgreso, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlTopBar.ResumeLayout(False)
         Me.pnlTopBar.PerformLayout()
         CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents dgvIngreso As System.Windows.Forms.DataGridView
     Friend WithEvents txtTotalI As System.Windows.Forms.TextBox
     Friend WithEvents txtTotalE As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
@@ -444,17 +444,17 @@ Partial Class FBalance
     Friend WithEvents cmbAnho As System.Windows.Forms.ComboBox
     Friend WithEvents lblMes As System.Windows.Forms.Label
     Friend WithEvents cmbMes As System.Windows.Forms.ComboBox
-    Friend WithEvents Fecha As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Concepto As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Ingreso As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents DataGridView2 As System.Windows.Forms.DataGridView
-    Friend WithEvents FechaE As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ConceptoE As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Egreso As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dgvEgreso As System.Windows.Forms.DataGridView
     Friend WithEvents pnlTopBar As Panel
     Friend WithEvents lblTitulo As Label
     Friend WithEvents BtnCerrarForm As PictureBox
+    Friend WithEvents Fecha As DataGridViewTextBoxColumn
+    Friend WithEvents Concepto As DataGridViewTextBoxColumn
+    Friend WithEvents Ingreso As DataGridViewTextBoxColumn
+    Friend WithEvents FechaE As DataGridViewTextBoxColumn
+    Friend WithEvents ConceptoE As DataGridViewTextBoxColumn
+    Friend WithEvents Egreso As DataGridViewTextBoxColumn
 End Class

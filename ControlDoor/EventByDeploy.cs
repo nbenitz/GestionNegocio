@@ -60,22 +60,22 @@ namespace ControlDoor
 
         public void login()
         {
-            //deviceAdd.ShowDialog();
+            Logout();
             deviceAdd.Login();
-            //m_UserID = deviceAdd.m_iUserID;
-            //deviceAdd.Dispose();
         }
 
         private void onLoginSucc()
         {
-            LoginSuccess();
             m_UserID = deviceAdd.m_iUserID;
             deviceAdd.Dispose();
+            LoginSuccess();
             deploy();
         }
 
         private void onLoginError()
         {
+            m_UserID = deviceAdd.m_iUserID;
+            deviceAdd.Dispose();
             LoginErr();
         }
 
@@ -285,11 +285,36 @@ namespace ControlDoor
             }
             
             if (struAcsAlarmInfo.dwMajor == 0x5)
-            {   
-                if(struAcsAlarmInfo.dwMinor == 0x26)
+            {
+                switch (struAcsAlarmInfo.dwMinor)
+                {
+                    case 0x26:  //MINOR_FINGERPRINT_COMPARE_PASS
+                        MsgRecibido(tiempo, codigo);    
+                        break;
+                    case 0x17:  //MINOR_DOOR_BUTTON_PRESS
+                        OpenDoor();
+                        break;
+                    case 0x15:  //MINOR_LOCK_OPEN
+                        //OpenDoor();
+                        break;
+                    case 0x16:  //MINOR_LOCK_CLOSE
+                        //OpenDoor();
+                        break;
+                    default:
+                        // code block
+                        break;
+                }
+
+                /*
+                if (struAcsAlarmInfo.dwMinor == 0x26)    //MINOR_FINGERPRINT_COMPARE_PASS
                 {
                     MsgRecibido(tiempo, codigo);
                 }
+
+                if (struAcsAlarmInfo.dwMinor == 0x17)   //MINOR_DOOR_BUTTON_PRESS
+                {
+                    OpenDoor();
+                }*/
             }
 
         }
@@ -384,6 +409,14 @@ namespace ControlDoor
 
         }
 
+        public void Logout()
+        {
+            if (m_UserID >= 0)
+            {
+                CHCNetSDK2.NET_DVR_Logout_V30(m_UserID);
+            }
+        }
+
         public void OpenDoor()
         {
             if (CHCNetSDK2.NET_DVR_ControlGateway(m_UserID, 1, 1))
@@ -392,7 +425,7 @@ namespace ControlDoor
             }
             else
             {
-                //MessageBox.Show("Error: " + CHCNetSDK0.NET_DVR_GetLastError());
+                MessageBox.Show("Error: " + CHCNetSDK0.NET_DVR_GetLastError());
             }
         }
 
@@ -408,5 +441,15 @@ namespace ControlDoor
             }
         }
 
+        private void tmrDeploy_Tick(object sender, EventArgs e)
+        {
+            CHCNetSDK2.NET_DVR_Cleanup();
+            if (CHCNetSDK2.NET_DVR_Init() == false)
+            {
+                MessageBox.Show("NET_DVR_Init error!");
+                return;
+            }
+            deploy();
+        }
     }
 }

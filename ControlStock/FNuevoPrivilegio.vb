@@ -51,7 +51,7 @@ Public Class FNuevoPrivilegio
                                             HabAdmin,
                                             CuentasAdmin,
                                             DevolAutoriCli,
-                                            DevolAutoriProv) Then
+                                            DevolAutoriProv, 0, 0) Then
                     MessageBox.Show("Nivel de Privilegio Agregado")
                     Me.Close()
                 Else
@@ -77,7 +77,7 @@ Public Class FNuevoPrivilegio
                                             HabAdmin,
                                             CuentasAdmin,
                                             DevolAutoriCli,
-                                            DevolAutoriProv,
+                                            DevolAutoriProv, 0, 0,
                                             IdPrivilegio) Then
                     MessageBox.Show("Nivel de Privilegio Editado")
                     Me.Close()

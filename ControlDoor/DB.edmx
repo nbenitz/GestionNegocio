@@ -57,15 +57,6 @@ advertencia 6005: Actualmente, no se admite el tipo de datos 'udouble' para la v
           <Property Name="idMotivo" Type="usmallint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Motivo" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="base_user_extend">
-          <Key>
-            <PropertyRef Name="UserCode" />
-          </Key>
-          <Property Name="UserCode" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="user_key" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="hk_face_info" Type="mediumtext" Nullable="false" />
-        </EntityType>
         <EntityType Name="cajamostrador">
           <Key>
             <PropertyRef Name="idCaja" />
@@ -98,6 +89,7 @@ advertencia 6005: Actualmente, no se admite el tipo de datos 'udouble' para la v
           <Property Name="Foto" Type="longblob" />
           <Property Name="Activo" Type="tinyint" />
           <Property Name="Fecha_Nacimiento" Type="date" />
+          <Property Name="Como_Conocio" Type="varchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="cliente_acceso">
           <Key>
@@ -124,6 +116,7 @@ advertencia 6005: Actualmente, no se admite el tipo de datos 'udouble' para la v
           <Property Name="cliente_ci" Type="char" MaxLength="15" Nullable="false" />
           <Property Name="membresia_id" Type="int" Nullable="false" />
           <Property Name="fecha_inicio" Type="date" Nullable="false" />
+          <Property Name="fecha_fin" Type="date" Nullable="false" />
           <Property Name="precio" Type="int" Nullable="false" />
           <Property Name="descuento" Type="int" Nullable="false" />
         </EntityType>
@@ -339,6 +332,10 @@ advertencia 6005: Actualmente, no se admite el tipo de datos 'udouble' para la v
           <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="descripcion" Type="varchar" MaxLength="256" Nullable="false" />
           <Property Name="costo" Type="int" Nullable="false" />
+          <Property Name="modo_pago" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="tiempo_limite" Type="int" Nullable="false" />
+          <Property Name="tiempo_unidad" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="activo" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="modelo">
           <Key>
@@ -427,6 +424,8 @@ advertencia 6005: Actualmente, no se admite el tipo de datos 'udouble' para la v
           <Property Name="CuentasAdmin" Type="bit" Nullable="false" />
           <Property Name="DevolAutoriCli" Type="bit" Nullable="false" />
           <Property Name="DevolAutoriProv" Type="bit" Nullable="false" />
+          <Property Name="MembresiaAdmin" Type="bit" Nullable="false" />
+          <Property Name="AccesoAdmin" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6005: Actualmente, no se admite el tipo de datos 'udouble' para la versión de Entity Framework de destino; se excluyó la columna 'Stock' de la tabla 'def.minegocio.producto'.
@@ -450,6 +449,7 @@ advertencia 6005: Actualmente, no se admite el tipo de datos 'udouble' para la v
           <Property Name="PorPack" Type="enum" />
           <Property Name="Foto" Type="longblob" />
           <Property Name="Iva" Type="utinyint" Nullable="false" />
+          <Property Name="favorito" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="proveedor">
           <Key>
@@ -583,27 +583,6 @@ advertencia 6002: La tabla o vista 'def.minegocio.view_pago_membresia' no tiene 
           <Property Name="CostoMembresia" Type="int" Nullable="false" />
           <Property Name="Descuento" Type="int" Nullable="false" />
           <Property Name="IdContrato" Type="int" Nullable="false" />
-        </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'def.minegocio.view_pago_membresia_periodo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="view_pago_membresia_periodo">
-          <Key>
-            <PropertyRef Name="IdContrato" />
-            <PropertyRef Name="CI" />
-            <PropertyRef Name="NombreCliente" />
-            <PropertyRef Name="membresia" />
-            <PropertyRef Name="periodo_inicio" />
-            <PropertyRef Name="CostoMembresia" />
-          </Key>
-          <Property Name="IdContrato" Type="int" Nullable="false" />
-          <Property Name="CI" Type="char" MaxLength="15" Nullable="false" />
-          <Property Name="NombreCliente" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="membresia" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="periodo_inicio" Type="date" Nullable="false" />
-          <Property Name="periodo_fin" Type="date" />
-          <Property Name="CostoMembresia" Type="int" Nullable="false" />
-          <Property Name="TotalPagado" Type="decimal" Precision="32" Scale="0" />
-          <Property Name="Saldo" Type="decimal" Precision="33" Scale="0" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6005: Actualmente, no se admite el tipo de datos 'udouble' para la versión de Entity Framework de destino; se excluyó la columna 'Cantidad' de la tabla 'def.minegocio.viewaltaprod'.
@@ -855,28 +834,6 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewsocio' no tiene definida n
             <PropertyRef Name="Telefono" />
             <PropertyRef Name="Alias" />
             <PropertyRef Name="Direccion" />
-          </Key>
-          <Property Name="cedula" Type="char" MaxLength="15" Nullable="false" />
-          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="membresia" Type="varchar" MaxLength="50" />
-          <Property Name="Telefono" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="acceso" Type="varchar" MaxLength="50" />
-          <Property Name="Alias" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Direccion" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="fecha_inicio" Type="date" />
-          <Property Name="Foto" Type="longblob" />
-          <Property Name="Activo" Type="tinyint" />
-          <Property Name="Fecha_Nacimiento" Type="date" />
-        </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'def.minegocio.viewsocio2' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="viewsocio2">
-          <Key>
-            <PropertyRef Name="cedula" />
-            <PropertyRef Name="Nombre" />
-            <PropertyRef Name="Telefono" />
-            <PropertyRef Name="Alias" />
-            <PropertyRef Name="Direccion" />
             <PropertyRef Name="Saldo" />
             <PropertyRef Name="estado" />
           </Key>
@@ -890,6 +847,8 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewsocio2' no tiene definida 
           <Property Name="fecha_inicio" Type="date" />
           <Property Name="Foto" Type="longblob" />
           <Property Name="Activo" Type="tinyint" />
+          <Property Name="Fecha_Nacimiento" Type="date" />
+          <Property Name="como_conocio" Type="varchar" MaxLength="256" />
           <Property Name="Saldo" Type="double" Nullable="false" />
           <Property Name="estado" Type="varchar" MaxLength="13" Nullable="false" />
         </EntityType>
@@ -1684,6 +1643,8 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
           <Parameter Name="CuentasAdmin_" Type="bit" Mode="In" />
           <Parameter Name="DevolAutoriCli_" Type="bit" Mode="In" />
           <Parameter Name="DevolAutoriProv_" Type="bit" Mode="In" />
+          <Parameter Name="MembresiaAdmin_" Type="bit" Mode="In" />
+          <Parameter Name="AccesoAdmin_" Type="bit" Mode="In" />
         </Function>
         <Function Name="zprivilegio_listar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="minegocio" />
         <Function Name="zprivilegio_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="minegocio">
@@ -1707,6 +1668,8 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
           <Parameter Name="CuentasAdmin_" Type="bit" Mode="In" />
           <Parameter Name="DevolAutoriCli_" Type="bit" Mode="In" />
           <Parameter Name="DevolAutoriProv_" Type="bit" Mode="In" />
+          <Parameter Name="MembresiaAdmin_" Type="bit" Mode="In" />
+          <Parameter Name="AccesoAdmin_" Type="bit" Mode="In" />
           <Parameter Name="idPrivilegio_" Type="int" Mode="In" />
         </Function>
         <Function Name="zproducto_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="minegocio">
@@ -1727,6 +1690,7 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
           <Parameter Name="lado1" Type="double" Mode="In" />
           <Parameter Name="lado2" Type="double" Mode="In" />
           <Parameter Name="mxcaja" Type="double" Mode="In" />
+          <Parameter Name="favorito" Type="int" Mode="In" />
         </Function>
         <Function Name="zproducto_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="minegocio">
           <Parameter Name="idprod" Type="char" Mode="In" />
@@ -1747,6 +1711,7 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
           <Parameter Name="lado1_" Type="double" Mode="In" />
           <Parameter Name="lado2_" Type="double" Mode="In" />
           <Parameter Name="mxcaja_" Type="double" Mode="In" />
+          <Parameter Name="favorito_" Type="int" Mode="In" />
         </Function>
         <Function Name="zrecibocobroxmes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="minegocio">
           <Parameter Name="Anho" Type="int" Mode="In" />
@@ -1810,7 +1775,6 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
           <EntitySet Name="altaprodmotivo" EntityType="Self.altaprodmotivo" Schema="minegocio" store:Type="Tables" />
           <EntitySet Name="bajaprod" EntityType="Self.bajaprod" Schema="minegocio" store:Type="Tables" />
           <EntitySet Name="bajaprodmotivo" EntityType="Self.bajaprodmotivo" Schema="minegocio" store:Type="Tables" />
-          <EntitySet Name="base_user_extend" EntityType="Self.base_user_extend" Schema="minegocio" store:Type="Tables" />
           <EntitySet Name="cajamostrador" EntityType="Self.cajamostrador" Schema="minegocio" store:Type="Tables" />
           <EntitySet Name="categoria_prod" EntityType="Self.categoria_prod" Schema="minegocio" store:Type="Tables" />
           <EntitySet Name="cliente" EntityType="Self.cliente" Schema="minegocio" store:Type="Tables" />
@@ -1895,19 +1859,6 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
 `view_pago_membresia`.`Descuento`, 
 `view_pago_membresia`.`IdContrato`
  FROM `view_pago_membresia` AS `view_pago_membresia`</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="view_pago_membresia_periodo" EntityType="Self.view_pago_membresia_periodo" store:Type="Views" store:Schema="minegocio">
-            <DefiningQuery>SELECT 
-`view_pago_membresia_periodo`.`IdContrato`, 
-`view_pago_membresia_periodo`.`CI`, 
-`view_pago_membresia_periodo`.`NombreCliente`, 
-`view_pago_membresia_periodo`.`membresia`, 
-`view_pago_membresia_periodo`.`periodo_inicio`, 
-`view_pago_membresia_periodo`.`periodo_fin`, 
-`view_pago_membresia_periodo`.`CostoMembresia`, 
-`view_pago_membresia_periodo`.`TotalPagado`, 
-`view_pago_membresia_periodo`.`Saldo`
- FROM `view_pago_membresia_periodo` AS `view_pago_membresia_periodo`</DefiningQuery>
           </EntitySet>
           <EntitySet Name="viewaltaprod" EntityType="Self.viewaltaprod" store:Type="Views" store:Schema="minegocio">
             <DefiningQuery>SELECT 
@@ -2066,24 +2017,11 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
 `viewsocio`.`fecha_inicio`, 
 `viewsocio`.`Foto`, 
 `viewsocio`.`Activo`, 
-`viewsocio`.`Fecha_Nacimiento`
+`viewsocio`.`Fecha_Nacimiento`, 
+`viewsocio`.`como_conocio`, 
+`viewsocio`.`Saldo`, 
+`viewsocio`.`estado`
  FROM `viewsocio` AS `viewsocio`</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="viewsocio2" EntityType="Self.viewsocio2" store:Type="Views" store:Schema="minegocio">
-            <DefiningQuery>SELECT 
-`viewsocio2`.`cedula`, 
-`viewsocio2`.`Nombre`, 
-`viewsocio2`.`membresia`, 
-`viewsocio2`.`Telefono`, 
-`viewsocio2`.`acceso`, 
-`viewsocio2`.`Alias`, 
-`viewsocio2`.`Direccion`, 
-`viewsocio2`.`fecha_inicio`, 
-`viewsocio2`.`Foto`, 
-`viewsocio2`.`Activo`, 
-`viewsocio2`.`Saldo`, 
-`viewsocio2`.`estado`
- FROM `viewsocio2` AS `viewsocio2`</DefiningQuery>
           </EntitySet>
           <EntitySet Name="viewusuario" EntityType="Self.viewusuario" store:Type="Views" store:Schema="minegocio">
             <DefiningQuery>SELECT 
@@ -2364,15 +2302,6 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
           <Property Name="Motivo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="bajaprod" Relationship="Self.FK_bajaprod_motivobajaprod" FromRole="bajaprodmotivo" ToRole="bajaprod" />
         </EntityType>
-        <EntityType Name="base_user_extend">
-          <Key>
-            <PropertyRef Name="UserCode" />
-          </Key>
-          <Property Name="UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="user_key" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="hk_face_info" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
         <EntityType Name="cajamostrador">
           <Key>
             <PropertyRef Name="idCaja" />
@@ -2412,6 +2341,7 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
           <NavigationProperty Name="cliente_membresia" Relationship="Self.FK_cliente_membresia_cliente" FromRole="cliente" ToRole="cliente_membresia" />
           <NavigationProperty Name="venta" Relationship="Self.FK_venta_cliente" FromRole="cliente" ToRole="venta" />
           <Property Name="Fecha_Nacimiento" Type="DateTime" />
+          <Property Name="Como_Conocio" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="cliente_acceso">
           <Key>
@@ -2446,6 +2376,7 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
           <NavigationProperty Name="cliente" Relationship="Self.FK_cliente_membresia_cliente" FromRole="cliente_membresia" ToRole="cliente" />
           <NavigationProperty Name="membresia" Relationship="Self.FK_cliente_membresia_membresia" FromRole="cliente_membresia" ToRole="membresia" />
           <NavigationProperty Name="pago_membresia" Relationship="Self.FK_pago_membresia_cliente_membresia" FromRole="cliente_membresia" ToRole="pago_membresia" />
+          <Property Name="fecha_fin" Type="DateTime" Nullable="false" />
         </EntityType>
         <EntityType Name="cliente_seguim_galeria">
           <Key>
@@ -2679,6 +2610,10 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
           <Property Name="descripcion" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="costo" Type="Int32" Nullable="false" />
           <NavigationProperty Name="cliente_membresia" Relationship="Self.FK_cliente_membresia_membresia" FromRole="membresia" ToRole="cliente_membresia" />
+          <Property Name="modo_pago" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="tiempo_limite" Type="Int32" Nullable="false" />
+          <Property Name="tiempo_unidad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="modelo">
           <Key>
@@ -2778,6 +2713,8 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
           <Property Name="DevolAutoriCli" Type="Boolean" Nullable="false" />
           <Property Name="DevolAutoriProv" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="usuario" Relationship="Self.FK_usuario_privilegio" FromRole="privilegio" ToRole="usuario" />
+          <Property Name="MembresiaAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="AccesoAdmin" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="producto">
           <Key>
@@ -2801,6 +2738,7 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
           <NavigationProperty Name="detallecompra" Relationship="Self.FK_detallecompra_producto" FromRole="producto" ToRole="detallecompra" />
           <NavigationProperty Name="detalleventa" Relationship="Self.FK_detalleventa_producto" FromRole="producto" ToRole="detalleventa" />
           <NavigationProperty Name="proveedor" Relationship="Self.FK_producto_proveedor" FromRole="producto" ToRole="proveedor" />
+          <Property Name="favorito" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="proveedor">
           <Key>
@@ -2932,25 +2870,6 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
           <Property Name="CostoMembresia" Type="Int32" Nullable="false" />
           <Property Name="Descuento" Type="Int32" Nullable="false" />
           <Property Name="IdContrato" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="view_pago_membresia_periodo">
-          <Key>
-            <PropertyRef Name="IdContrato" />
-            <PropertyRef Name="CI" />
-            <PropertyRef Name="NombreCliente" />
-            <PropertyRef Name="membresia" />
-            <PropertyRef Name="periodo_inicio" />
-            <PropertyRef Name="CostoMembresia" />
-          </Key>
-          <Property Name="IdContrato" Type="Int32" Nullable="false" />
-          <Property Name="CI" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="NombreCliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="membresia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="periodo_inicio" Type="DateTime" Nullable="false" />
-          <Property Name="periodo_fin" Type="DateTime" />
-          <Property Name="CostoMembresia" Type="Int32" Nullable="false" />
-          <Property Name="TotalPagado" Type="Decimal" />
-          <Property Name="Saldo" Type="Decimal" />
         </EntityType>
         <EntityType Name="viewaltaprod">
           <Key>
@@ -3164,26 +3083,6 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
             <PropertyRef Name="Telefono" />
             <PropertyRef Name="Alias" />
             <PropertyRef Name="Direccion" />
-          </Key>
-          <Property Name="cedula" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="membresia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="acceso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="fecha_inicio" Type="DateTime" />
-          <Property Name="Foto" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Activo" Type="SByte" />
-          <Property Name="Fecha_Nacimiento" Type="DateTime" />
-        </EntityType>
-        <EntityType Name="viewsocio2">
-          <Key>
-            <PropertyRef Name="cedula" />
-            <PropertyRef Name="Nombre" />
-            <PropertyRef Name="Telefono" />
-            <PropertyRef Name="Alias" />
-            <PropertyRef Name="Direccion" />
             <PropertyRef Name="Saldo" />
             <PropertyRef Name="estado" />
           </Key>
@@ -3197,8 +3096,10 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
           <Property Name="fecha_inicio" Type="DateTime" />
           <Property Name="Foto" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Activo" Type="SByte" />
+          <Property Name="Fecha_Nacimiento" Type="DateTime" />
           <Property Name="Saldo" Type="Double" Nullable="false" />
-          <Property Name="estado" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="como_conocio" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="viewusuario">
           <Key>
@@ -3793,7 +3694,6 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
           <EntitySet Name="altaprodmotivo" EntityType="Self.altaprodmotivo" />
           <EntitySet Name="bajaprod" EntityType="Self.bajaprod" />
           <EntitySet Name="bajaprodmotivo" EntityType="Self.bajaprodmotivo" />
-          <EntitySet Name="base_user_extend" EntityType="Self.base_user_extend" />
           <EntitySet Name="cajamostrador" EntityType="Self.cajamostrador" />
           <EntitySet Name="categoria_prod" EntityType="Self.categoria_prod" />
           <EntitySet Name="cliente" EntityType="Self.cliente" />
@@ -3837,7 +3737,6 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
           <EntitySet Name="view_asistencia" EntityType="Self.view_asistencia" />
           <EntitySet Name="view_cuentas_cobrar" EntityType="Self.view_cuentas_cobrar" />
           <EntitySet Name="view_pago_membresia" EntityType="Self.view_pago_membresia" />
-          <EntitySet Name="view_pago_membresia_periodo" EntityType="Self.view_pago_membresia_periodo" />
           <EntitySet Name="viewaltaprod" EntityType="Self.viewaltaprod" />
           <EntitySet Name="viewbajaprod" EntityType="Self.viewbajaprod" />
           <EntitySet Name="viewcajamostrador" EntityType="Self.viewcajamostrador" />
@@ -3853,7 +3752,6 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
           <EntitySet Name="viewnotacventa" EntityType="Self.viewnotacventa" />
           <EntitySet Name="viewproducto" EntityType="Self.viewproducto" />
           <EntitySet Name="viewsocio" EntityType="Self.viewsocio" />
-          <EntitySet Name="viewsocio2" EntityType="Self.viewsocio2" />
           <EntitySet Name="viewusuario" EntityType="Self.viewusuario" />
           <EntitySet Name="viewventa" EntityType="Self.viewventa" />
           <AssociationSet Name="FK_acceso_finger_print_acceso" Association="Self.FK_acceso_finger_print_acceso">
@@ -4192,6 +4090,8 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
             <Parameter Name="CuentasAdmin_" Mode="In" Type="Boolean" />
             <Parameter Name="DevolAutoriCli_" Mode="In" Type="Boolean" />
             <Parameter Name="DevolAutoriProv_" Mode="In" Type="Boolean" />
+            <Parameter Name="MembresiaAdmin_" Mode="In" Type="Boolean" />
+            <Parameter Name="AccesoAdmin_" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="zprivilegio_listar" ReturnType="Collection(minegocioModel.zprivilegio_listar_Result)" />
           <FunctionImport Name="zprivilegio_update">
@@ -4215,6 +4115,8 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
             <Parameter Name="CuentasAdmin_" Mode="In" Type="Boolean" />
             <Parameter Name="DevolAutoriCli_" Mode="In" Type="Boolean" />
             <Parameter Name="DevolAutoriProv_" Mode="In" Type="Boolean" />
+            <Parameter Name="MembresiaAdmin_" Mode="In" Type="Boolean" />
+            <Parameter Name="AccesoAdmin_" Mode="In" Type="Boolean" />
             <Parameter Name="idPrivilegio_" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="zproducto_insert">
@@ -4235,6 +4137,7 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
             <Parameter Name="lado1" Mode="In" Type="Double" />
             <Parameter Name="lado2" Mode="In" Type="Double" />
             <Parameter Name="mxcaja" Mode="In" Type="Double" />
+            <Parameter Name="favorito" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="zproducto_update">
             <Parameter Name="idprod" Mode="In" Type="String" />
@@ -4255,6 +4158,7 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
             <Parameter Name="lado1_" Mode="In" Type="Double" />
             <Parameter Name="lado2_" Mode="In" Type="Double" />
             <Parameter Name="mxcaja_" Mode="In" Type="Double" />
+            <Parameter Name="favorito_" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="zrecibocobroxmes" ReturnType="Collection(minegocioModel.zrecibocobroxmes_Result)">
           <Parameter Name="Anho" Mode="In" Type="Int32" />
@@ -4444,16 +4348,6 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="base_user_extend">
-            <EntityTypeMapping TypeName="minegocioModel.base_user_extend">
-              <MappingFragment StoreEntitySet="base_user_extend">
-                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="user_key" ColumnName="user_key" />
-                <ScalarProperty Name="hk_face_info" ColumnName="hk_face_info" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="cajamostrador">
             <EntityTypeMapping TypeName="minegocioModel.cajamostrador">
               <MappingFragment StoreEntitySet="cajamostrador">
@@ -4478,6 +4372,7 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
           <EntitySetMapping Name="cliente">
             <EntityTypeMapping TypeName="minegocioModel.cliente">
               <MappingFragment StoreEntitySet="cliente">
+                <ScalarProperty Name="Como_Conocio" ColumnName="Como_Conocio" />
                 <ScalarProperty Name="Fecha_Nacimiento" ColumnName="Fecha_Nacimiento" />
                 <ScalarProperty Name="CI" ColumnName="CI" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -4512,6 +4407,7 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
           <EntitySetMapping Name="cliente_membresia">
             <EntityTypeMapping TypeName="minegocioModel.cliente_membresia">
               <MappingFragment StoreEntitySet="cliente_membresia">
+                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="cliente_ci" ColumnName="cliente_ci" />
                 <ScalarProperty Name="membresia_id" ColumnName="membresia_id" />
@@ -4719,6 +4615,10 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
           <EntitySetMapping Name="membresia">
             <EntityTypeMapping TypeName="minegocioModel.membresia">
               <MappingFragment StoreEntitySet="membresia">
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="tiempo_unidad" ColumnName="tiempo_unidad" />
+                <ScalarProperty Name="tiempo_limite" ColumnName="tiempo_limite" />
+                <ScalarProperty Name="modo_pago" ColumnName="modo_pago" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
@@ -4798,6 +4698,8 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
           <EntitySetMapping Name="privilegio">
             <EntityTypeMapping TypeName="minegocioModel.privilegio">
               <MappingFragment StoreEntitySet="privilegio">
+                <ScalarProperty Name="AccesoAdmin" ColumnName="AccesoAdmin" />
+                <ScalarProperty Name="MembresiaAdmin" ColumnName="MembresiaAdmin" />
                 <ScalarProperty Name="idPrivilegio" ColumnName="idPrivilegio" />
                 <ScalarProperty Name="Rol" ColumnName="Rol" />
                 <ScalarProperty Name="ProdConsult" ColumnName="ProdConsult" />
@@ -4825,6 +4727,7 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
           <EntitySetMapping Name="producto">
             <EntityTypeMapping TypeName="minegocioModel.producto">
               <MappingFragment StoreEntitySet="producto">
+                <ScalarProperty Name="favorito" ColumnName="favorito" />
                 <ScalarProperty Name="idProducto" ColumnName="idProducto" />
                 <ScalarProperty Name="idProveedorFK" ColumnName="idProveedorFK" />
                 <ScalarProperty Name="idCategoriaFk" ColumnName="idCategoriaFk" />
@@ -4946,21 +4849,6 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
                 <ScalarProperty Name="CostoMembresia" ColumnName="CostoMembresia" />
                 <ScalarProperty Name="Descuento" ColumnName="Descuento" />
                 <ScalarProperty Name="IdContrato" ColumnName="IdContrato" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="view_pago_membresia_periodo">
-            <EntityTypeMapping TypeName="minegocioModel.view_pago_membresia_periodo">
-              <MappingFragment StoreEntitySet="view_pago_membresia_periodo">
-                <ScalarProperty Name="IdContrato" ColumnName="IdContrato" />
-                <ScalarProperty Name="CI" ColumnName="CI" />
-                <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
-                <ScalarProperty Name="membresia" ColumnName="membresia" />
-                <ScalarProperty Name="periodo_inicio" ColumnName="periodo_inicio" />
-                <ScalarProperty Name="periodo_fin" ColumnName="periodo_fin" />
-                <ScalarProperty Name="CostoMembresia" ColumnName="CostoMembresia" />
-                <ScalarProperty Name="TotalPagado" ColumnName="TotalPagado" />
-                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -5140,6 +5028,9 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
           <EntitySetMapping Name="viewsocio">
             <EntityTypeMapping TypeName="minegocioModel.viewsocio">
               <MappingFragment StoreEntitySet="viewsocio">
+                <ScalarProperty Name="como_conocio" ColumnName="como_conocio" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
                 <ScalarProperty Name="Fecha_Nacimiento" ColumnName="Fecha_Nacimiento" />
                 <ScalarProperty Name="cedula" ColumnName="cedula" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -5151,24 +5042,6 @@ advertencia 6002: La tabla o vista 'def.minegocio.viewventa' no tiene definida n
                 <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
                 <ScalarProperty Name="Foto" ColumnName="Foto" />
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="viewsocio2">
-            <EntityTypeMapping TypeName="minegocioModel.viewsocio2">
-              <MappingFragment StoreEntitySet="viewsocio2">
-                <ScalarProperty Name="cedula" ColumnName="cedula" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="membresia" ColumnName="membresia" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="acceso" ColumnName="acceso" />
-                <ScalarProperty Name="Alias" ColumnName="Alias" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
-                <ScalarProperty Name="Foto" ColumnName="Foto" />
-                <ScalarProperty Name="Activo" ColumnName="Activo" />
-                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

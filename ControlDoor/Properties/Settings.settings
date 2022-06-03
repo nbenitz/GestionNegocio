@@ -1,7 +1,39 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ControlDoor.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="admin" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="serverSelectedIndex" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="serverIp" Type="System.String" Scope="User">
+      <Value Profile="(Default)">127.0.0.1</Value>
+    </Setting>
+    <Setting Name="deviceIp" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.100.3</Value>
+    </Setting>
+    <Setting Name="serverIp1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">100.0.0.1</Value>
+    </Setting>
+    <Setting Name="deviceIp1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10.130.63.119</Value>
+    </Setting>
+    <Setting Name="serverIp2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10.35.230.183</Value>
+    </Setting>
+    <Setting Name="deviceIp2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10.35.230.183</Value>
+    </Setting>
+    <Setting Name="server" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="device" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="devicePort" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
 </SettingsFile>

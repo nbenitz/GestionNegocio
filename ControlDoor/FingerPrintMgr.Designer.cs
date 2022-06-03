@@ -80,7 +80,6 @@
             // 
             // btnCap
             // 
-            this.btnCap.Enabled = false;
             this.btnCap.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCap.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCap.ForeColor = System.Drawing.Color.White;
@@ -182,7 +181,7 @@
             this.LblReconectar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.LblReconectar.Location = new System.Drawing.Point(32, 412);
             this.LblReconectar.Name = "LblReconectar";
-            this.LblReconectar.Size = new System.Drawing.Size(113, 20);
+            this.LblReconectar.Size = new System.Drawing.Size(187, 20);
             this.LblReconectar.TabIndex = 89;
             this.LblReconectar.Text = "Reconectar";
             this.LblReconectar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -191,7 +190,7 @@
             // 
             // tmrReconectar
             // 
-            this.tmrReconectar.Interval = 1000;
+            this.tmrReconectar.Interval = 3000;
             this.tmrReconectar.Tick += new System.EventHandler(this.tmrReconectar_Tick);
             // 
             // pbxConectado
@@ -209,7 +208,7 @@
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::ControlDoor.Properties.Resources.close;
-            this.pictureBox1.Location = new System.Drawing.Point(679, 5);
+            this.pictureBox1.Location = new System.Drawing.Point(535, 5);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(20, 20);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -232,7 +231,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(705, 444);
+            this.ClientSize = new System.Drawing.Size(561, 444);
             this.Controls.Add(this.LblReconectar);
             this.Controls.Add(this.LblMensaje);
             this.Controls.Add(this.pbxConectado);

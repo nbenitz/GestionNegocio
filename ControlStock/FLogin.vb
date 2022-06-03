@@ -8,6 +8,7 @@ Public Class FLogin
     Dim ex, ey As Integer
 
     Private Sub BtnEntrar_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles BtnEntrar.Click
+        Cursor.Current = Cursors.WaitCursor
         Dim ObjUsuario As New CUsuario
         Dim ExisteUsuario As Boolean
         ExisteUsuario = ObjUsuario.Verificar(TxtUsername.Text, TxtPassword.Text)
@@ -30,10 +31,13 @@ Public Class FLogin
                 HabAdmin,
                 CuentasAdmin,
                 DevolAutoriCli,
-                DevolAutoriProv As Boolean
+                DevolAutoriProv,
+                MembresiaAdmin,
+                AccesoAdmin As Boolean
 
             Dim IdPrivFk As Integer = ObjUsuario.IdPrivFK(TxtUsername.Text)
             Dim CIEmple As Integer = ObjUsuario.IdEmpleFK(TxtUsername.Text)
+            MCaja.EmpleadoCI = CStr(CIEmple)
             Dim TablaPriv As New DataTable
             TablaPriv = ObjUsuario.ConsultaPrivilegio(IdPrivFk)
             ProdConsult = CBool(TablaPriv.Rows(0).Item(2))
@@ -55,6 +59,8 @@ Public Class FLogin
             CuentasAdmin = CBool(TablaPriv.Rows(0).Item(18))
             DevolAutoriCli = CBool(TablaPriv.Rows(0).Item(19))
             DevolAutoriProv = CBool(TablaPriv.Rows(0).Item(20))
+            MembresiaAdmin = CBool(TablaPriv.Rows(0).Item(21))
+            AccesoAdmin = CBool(TablaPriv.Rows(0).Item(22))
 
             Dim Frm As New FPrincipal(CStr(CIEmple))
             Frm.Privilegios(ProdConsult,
@@ -75,7 +81,9 @@ Public Class FLogin
                             HabAdmin,
                             CuentasAdmin,
                             DevolAutoriCli,
-                            DevolAutoriProv)
+                            DevolAutoriProv,
+                            MembresiaAdmin,
+                            AccesoAdmin)
             Frm.Show()
             Hide()
         Else

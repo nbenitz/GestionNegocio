@@ -23,6 +23,8 @@ Partial Class FLogin
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.cmbServidor = New System.Windows.Forms.ComboBox()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -31,8 +33,6 @@ Partial Class FLogin
         Me.BtnEntrar = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.cmbServidor = New System.Windows.Forms.ComboBox()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -54,6 +54,32 @@ Partial Class FLogin
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(459, 280)
         Me.Panel1.TabIndex = 0
+        '
+        'Label4
+        '
+        Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.White
+        Me.Label4.Location = New System.Drawing.Point(208, 144)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(67, 20)
+        Me.Label4.TabIndex = 21
+        Me.Label4.Text = "Servidor"
+        '
+        'cmbServidor
+        '
+        Me.cmbServidor.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmbServidor.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.cmbServidor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmbServidor.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbServidor.ForeColor = System.Drawing.Color.White
+        Me.cmbServidor.FormattingEnabled = True
+        Me.cmbServidor.Items.AddRange(New Object() {"Local", "Caaguazú", "Cnel. Oviedo"})
+        Me.cmbServidor.Location = New System.Drawing.Point(212, 167)
+        Me.cmbServidor.Name = "cmbServidor"
+        Me.cmbServidor.Size = New System.Drawing.Size(212, 25)
+        Me.cmbServidor.TabIndex = 20
         '
         'btnSalir
         '
@@ -154,32 +180,6 @@ Partial Class FLogin
         Me.Label3.TabIndex = 19
         Me.Label3.Text = "Inicio de Sesión"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'cmbServidor
-        '
-        Me.cmbServidor.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmbServidor.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
-        Me.cmbServidor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmbServidor.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbServidor.ForeColor = System.Drawing.Color.White
-        Me.cmbServidor.FormattingEnabled = True
-        Me.cmbServidor.Items.AddRange(New Object() {"Local", "Caaguazú", "Cnel. Oviedo"})
-        Me.cmbServidor.Location = New System.Drawing.Point(212, 167)
-        Me.cmbServidor.Name = "cmbServidor"
-        Me.cmbServidor.Size = New System.Drawing.Size(212, 25)
-        Me.cmbServidor.TabIndex = 20
-        '
-        'Label4
-        '
-        Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(208, 144)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(67, 20)
-        Me.Label4.TabIndex = 21
-        Me.Label4.Text = "Servidor"
         '
         'FLogin
         '

@@ -1,6 +1,7 @@
 ﻿Option Strict On
 Option Explicit On
 
+Imports System.ComponentModel
 Imports System.Drawing.Drawing2D
 Imports System.Threading.Tasks
 
@@ -25,6 +26,7 @@ Public Class FNuevoSocio
         Nuevo = 0
         Editar = 1
         Pagar = 2
+        EditarMembresia = 3
     End Enum
     Dim ModoForm As Integer = Modo.Nuevo
 
@@ -33,7 +35,7 @@ Public Class FNuevoSocio
 
     Private Sub FSocio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         AddHandler FrmFingerPMgr.SendFPData, AddressOf onReceiveFPData
-        FrmFingerPMgr.Login()
+        'FrmFingerPMgr.Login()
 
         CargarMembresia()
         If ModoForm = Modo.Nuevo Then
@@ -44,11 +46,33 @@ Public Class FNuevoSocio
             btnSocio_Click(sender, e)
         ElseIf ModoForm = Modo.Pagar Then
             btnCobrar.Enabled = False
+            btnSocio.Visible = False
+            btnAcceso.Visible = False
+            btnMembresiaAtras.Visible = False
+            btnMembresia.Location = New Point(0, 34)
+            btnCobrar.Location = New Point(142, 34)
+            lblTitulo.Text = "Pagar Cuota"
             btnMembresia_Click(Nothing, Nothing)
             cmbMembresia.SelectedItem = cmbMembresia.Text
         ElseIf ModoForm = Modo.Editar Then
             btnCobrar.Visible = False
+            btnMembresia.Visible = False
+            btnAcceso.Location = New Point(142, 34)
+            btnSocioSgte.Text = "Guardar"
+            btnAsignarAcceso.Text = "Guardar"
+            btnAccesoAtras.Visible = False
+            lblTitulo.Text = "Editar Socio"
             btnSocio_Click(sender, e)
+        ElseIf ModoForm = Modo.EditarMembresia Then
+            btnSocio.Visible = False
+            btnAcceso.Visible = False
+            btnCobrar.Visible = False
+            btnMembresiaAtras.Visible = False
+            btnMembresia.Location = New Point(0, 34)
+            btnAsignarMembresia.Text = "Guardar"
+            lblTitulo.Text = "Editar Membresía"
+            btnMembresia_Click(Nothing, Nothing)
+            cmbMembresia.SelectedItem = cmbMembresia.Text
         End If
     End Sub
 
@@ -109,6 +133,7 @@ Public Class FNuevoSocio
         Dim Aliass As String = txtAlias.Text
         Dim Foto As Byte()
         Dim FechaNac As Date = DtpFechaNac.Value
+        Dim Conocio As String = txtConocio.Text
         If pbxFoto.Image IsNot Nothing Then
             Foto = ImageToByteArray(pbxFoto.Image)
         End If
@@ -124,12 +149,15 @@ Public Class FNuevoSocio
                 If Aliass = "" Then
                     Aliass = " "
                 End If
+                If Conocio = "" Then
+                    Conocio = " "
+                End If
                 If ModoForm = Modo.Nuevo Then
-                    If Not oCliente.InserCliente(CI, Nombre, Aliass, Tel, Dir, " ", Foto, FechaNac) Then
+                    If Not oCliente.InserCliente(CI, Nombre, Aliass, Tel, Dir, " ", Foto, FechaNac, Conocio) Then
                         MessageBox.Show("Hubo un problema al Guardar los datos del Socio")
                     End If
                 ElseIf ModoForm = Modo.Editar Then
-                    If oCliente.Update(CI, Nombre, Aliass, Tel, Dir, " ", Foto, FechaNac, OldRUC) = True Then
+                    If oCliente.Update(CI, Nombre, Aliass, Tel, Dir, " ", Foto, FechaNac, Conocio, OldRUC) = True Then
                         MessageBox.Show("Datos del Socio Actualizados")
                         CIValue = CI
                         'Close()
@@ -188,8 +216,7 @@ Public Class FNuevoSocio
                       ByVal Aliass As String,
                       ByVal foto As Byte(),
                       ByVal FechaNac As Date,
-                      ByVal MembresiaNom As String,
-                      ByVal FechaInicio As Date,
+                      ByVal Conocio As String,
                       ByVal EmployeeNo As String)
         ModoForm = Modo.Editar
         OldRUC = CI
@@ -199,24 +226,52 @@ Public Class FNuevoSocio
         txtTelefono.Text = Tel
         txtDireccion.Text = Dir
         txtAlias.Text = Aliass
+        txtConocio.Text = Conocio
         DtpFechaNac.Value = FechaNac
         If foto IsNot Nothing Then
             pbxFoto.Image = ByteArrayToImage(foto)
             pbxQuitarFoto.Visible = True
         End If
+        EmployeeNoValue = EmployeeNo
+        CargarHuella()
+    End Sub
+
+    Public Sub EditarMembresia(ByVal CI As String,
+                               ByVal SocioNombre As String,
+                               ByVal MembresiaNom As String,
+                               ByVal FechaInicio As Date)
+        ModoForm = Modo.EditarMembresia
+        OldRUC = CI
+        txtCI.Text = CI
+        CIValue = CI
+        lblNombreSocio.Text = SocioNombre
         CargarMembresia()
         cmbMembresia.SelectedItem = MembresiaNom
         dtpFechaInicio.Value = FechaInicio
-        EmployeeNoValue = EmployeeNo
-        CargarHuella()
+    End Sub
 
-        btnSocioSgte.Text = "Guardar"
-        btnAsignarMembresia.Text = "Guardar"
-        btnAsignarAcceso.Text = "Guardar"
-        btnMembresiaAtras.Visible = False
-        btnAccesoAtras.Visible = False
-        btnCobrar.Visible = True
-        lblTitulo.Text = "Editar Socio"
+    Public Sub Pagar(ByVal CI As String,
+                     ByVal SocioNombre As String,
+                     ByVal MembresiaNom As String,
+                     ByVal Vto As Date)
+        ModoForm = Modo.Pagar
+        CIValue = CI
+        txtCI.Text = CI
+        lblNombreSocio.Text = SocioNombre
+        CargarMembresia()
+        If MembresiaNom <> "" Then
+            cmbMembresia.SelectedItem = MembresiaNom
+            optDesdeDiaVence.Checked = True
+        Else
+            optNuevaFecha.Checked = True
+            optDesdeDiaVence.Enabled = False
+        End If
+        pnlInicioMembresia.Location = New Point(182, 296)
+        pnlInicioMembresia.Visible = True
+        pnlMembresiaSocio.Visible = True
+        dtpNuevoInicio.Value = Vto
+
+        lblUltimaAsist.Text = CStr(oAcceso.UltimaAsistencia(CI))
     End Sub
 
     Private Sub CargarHuella()
@@ -230,62 +285,71 @@ Public Class FNuevoSocio
         End If
     End Sub
 
-
-    Public Sub Pagar(ByVal CI As String,
-                     ByVal SocioNombre As String,
-                     ByVal MembresiaNom As String,
-                     ByVal Vto As Date)
-        ModoForm = Modo.Pagar
-        CIValue = CI
-        txtCI.Text = CI
-        lblNombreSocio.Text = SocioNombre
-        CargarMembresia()
-        cmbMembresia.SelectedItem = MembresiaNom
-        pnlInicioMembresia.Location = New Point(182, 296)
-        pnlInicioMembresia.Visible = True
-        pnlMembresiaSocio.Visible = True
-        dtpNuevoInicio.Value = Vto
-        optDesdeDiaVence.Checked = True
-
-        btnSocio.Visible = False
-        btnAcceso.Visible = False
-        btnMembresiaAtras.Visible = False
-        btnMembresia.Location = New Point(0, 34)
-        btnCobrar.Location = New Point(142, 34)
-        lblTitulo.Text = "Pagar Cuota"
-        lblUltimaAsist.Text = CStr(oAcceso.UltimaAsistencia(CI))
-    End Sub
-
     Private Sub cmbMembresia_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbMembresia.SelectedIndexChanged
         txtDescMembresia.Text = CStr(TablaMembresia.Rows(cmbMembresia.SelectedIndex).Item(2))
         txtPrecioMembresia.Text = String.Format("{0:N0}", CDec(TablaMembresia.Rows(cmbMembresia.SelectedIndex).Item(3)))
+        SetFechaFin()
         lblPrecioMembresia.Text = txtPrecioMembresia.Text
+        lblPrecioDescontado.Text = txtPrecioMembresia.Text
         txtDescuento.Text = "0"
         txtPaga.Text = txtPrecioMembresia.Text
     End Sub
 
+    Private Sub SetFechaFin()
+        If cmbMembresia.SelectedIndex >= 0 Then
+            Dim TiempoLimite As Integer = CInt(TablaMembresia.Rows(cmbMembresia.SelectedIndex).Item(4))
+            Dim TiempoUnidad As Char = CChar(TablaMembresia.Rows(cmbMembresia.SelectedIndex).Item(5))
+            Select Case TiempoUnidad
+                Case "M"c
+                    dtpFechaFin.Value = DateAdd(DateInterval.Month, TiempoLimite, dtpFechaInicio.Value)
+                Case "S"c
+                    dtpFechaFin.Value = DateAdd(DateInterval.Day, TiempoLimite * 7, dtpFechaInicio.Value)
+                Case "D"c
+                    dtpFechaFin.Value = DateAdd(DateInterval.Day, TiempoLimite, dtpFechaInicio.Value)
+            End Select
+            If ModoForm = Modo.Pagar Then
+                dtpNuevaFechaFin.Value = dtpFechaFin.Value
+            End If
+        End If
+    End Sub
+
+    Private Sub SetNuevaFechaFin()
+        If cmbMembresia.SelectedIndex >= 0 Then
+            Dim TiempoLimite As Integer = CInt(TablaMembresia.Rows(cmbMembresia.SelectedIndex).Item(4))
+            Dim TiempoUnidad As Char = CChar(TablaMembresia.Rows(cmbMembresia.SelectedIndex).Item(5))
+            Select Case TiempoUnidad
+                Case "M"c
+                    dtpNuevaFechaFin.Value = DateAdd(DateInterval.Month, TiempoLimite, dtpNuevoInicio.Value)
+                Case "S"c
+                    dtpNuevaFechaFin.Value = DateAdd(DateInterval.Day, TiempoLimite * 7, dtpNuevoInicio.Value)
+                Case "D"c
+                    dtpNuevaFechaFin.Value = DateAdd(DateInterval.Day, TiempoLimite, dtpNuevoInicio.Value)
+            End Select
+        End If
+    End Sub
 
     Private Sub GuardarMembresia()
         If cmbMembresia.SelectedIndex >= 0 Then
             Dim idMembresia As Integer = CInt(TablaMembresia.Rows(cmbMembresia.SelectedIndex).Item(0))
             Dim CI As String = txtCI.Text
             Dim FechaInicio As Date = dtpFechaInicio.Value
+            Dim FechaFin As Date = dtpFechaFin.Value
             Dim Precio As Integer = CInt(lblPrecioDescontado.Text)
             If ModoForm = Modo.Nuevo Or ModoForm = Modo.Pagar Then
-                If Not oMembresia.InsertClienteMembresia(CI, idMembresia, FechaInicio, Precio) Then
+                If Not oMembresia.InsertClienteMembresia(CI, idMembresia, FechaInicio, FechaFin, Precio) Then
                     MessageBox.Show("Hubo un problema al asignar la Membresía")
                 End If
-            ElseIf ModoForm = Modo.Editar Then
+            ElseIf ModoForm = Modo.EditarMembresia Then
                 Try
                     Dim idClienteMembresia As Integer = oMembresia.IdClienteMembresia(CIValue)
                     If idClienteMembresia >= 0 Then     'Buscamos si el socio ya cuenta con una membresía 
-                        If oMembresia.UpdateClienteMembresia(idMembresia, idClienteMembresia, FechaInicio) = True Then
+                        If oMembresia.UpdateClienteMembresia(idMembresia, idClienteMembresia, FechaInicio, FechaFin) = True Then
                             MessageBox.Show("Membresía actualizada")
                         Else
                             MessageBox.Show("Hubo un problema al actualizar la Membresía")
                         End If
                     Else                                'Si no, asignamos una nueva membresía
-                        If oMembresia.InsertClienteMembresia(CIValue, idMembresia, FechaInicio, Precio) = True Then
+                        If oMembresia.InsertClienteMembresia(CIValue, idMembresia, FechaInicio, FechaFin, Precio) = True Then
                             MessageBox.Show("Membresía Asignada")
                         Else
                             MessageBox.Show("Hubo un problema al asignar la Membresía")
@@ -479,13 +543,18 @@ Public Class FNuevoSocio
                 cmbMembresia.Focus()
                 ToolTip2.Show("Seleccione la Membresía", cmbMembresia, 0, -40, 3000)
             End If
-        ElseIf ModoForm = Modo.Editar Then
+        ElseIf ModoForm = Modo.EditarMembresia Then
             cmbMembresia.SelectedItem = cmbMembresia.Text
             GuardarMembresia()
         ElseIf ModoForm = Modo.Pagar Then
-            btnCobrar_Click(sender, e)
-            btnMembresia.Enabled = False
-            btnCobrar.Enabled = True
+            If cmbMembresia.SelectedIndex >= 0 Then
+                btnCobrar_Click(sender, e)
+                btnMembresia.Enabled = False
+                btnCobrar.Enabled = True
+            Else
+                cmbMembresia.Focus()
+                ToolTip2.Show("Seleccione la Membresía", cmbMembresia, 0, -40, 3000)
+            End If
         End If
     End Sub
 
@@ -544,6 +613,7 @@ Public Class FNuevoSocio
         Dim Tel As String = txtTelefono.Text
         Dim Dir As String = txtDireccion.Text
         Dim Aliass As String = txtAlias.Text
+        Dim Conocio As String = txtConocio.Text
         Dim Foto As Byte()
         If Tel = "" Then
             Tel = " "
@@ -553,6 +623,9 @@ Public Class FNuevoSocio
         End If
         If Aliass = "" Then
             Aliass = " "
+        End If
+        If Conocio = "" Then
+            Conocio = " "
         End If
         Cliente.CI = txtCI.Text
         Cliente.Nombre = txtNombre.Text
@@ -566,6 +639,7 @@ Public Class FNuevoSocio
         Cliente.Propietario = " "
         Cliente.Activo = 1
         Cliente.Fecha_Nacimiento = DtpFechaNac.Value.Date
+        Cliente.Como_Conocio = Conocio
         Return Cliente
     End Function
 
@@ -632,6 +706,7 @@ Public Class FNuevoSocio
             End If
             Dim idMembresia As Integer = CInt(TablaMembresia.Rows(cmbMembresia.SelectedIndex).Item(0))
             Dim FechaInicio As Date = dtpFechaInicio.Value
+            Dim FechaFin As Date = dtpFechaFin.Value
             Dim Precio As Integer = CInt(lblPrecioDescontado.Text)
             Dim Descuento As Integer = CInt(txtDescuento.Text)
             Dim Monto As Integer = CInt(txtPaga.Text)
@@ -644,6 +719,7 @@ Public Class FNuevoSocio
             t2 = Task.Run(Sub() estado = FrmFingerPMgr.SaveNewCliente(GetSocio(),
                                                                       idMembresia,
                                                                       FechaInicio,
+                                                                      FechaFin,
                                                                       Precio,
                                                                       Descuento,
                                                                       Monto,
@@ -669,6 +745,7 @@ Public Class FNuevoSocio
                 txtPaga.Text = "0"
             End If
             dtpFechaInicio.Value = dtpNuevoInicio.Value
+            dtpFechaFin.Value = dtpNuevaFechaFin.Value
             GuardarMembresia()
             Pagar()
             Close()
@@ -769,7 +846,7 @@ Public Class FNuevoSocio
         With OpenFileDialog1
             .CheckFileExists = True
             .ShowReadOnly = False
-            .Filter = "All Files|*.*|Bitmap Files (*)|*.bmp;*.gif;*.jpg"
+            .Filter = "All Files|*.*|Bitmap Files (*)|*.bmp;*.gif;*.jpg;*.jpeg"
             .FilterIndex = 2
             If .ShowDialog = DialogResult.OK Then
                 ' Load the specified file into a PictureBox control.
@@ -875,7 +952,7 @@ Public Class FNuevoSocio
     End Sub
 
     Function GetLastVtoMembresia(ByVal CI As String) As Date
-        Dim TablaMembresia As DataTable = oMembresia.BuscarPagoPeriodo(CIValue)
+        Dim TablaMembresia As DataTable = oMembresia.BuscarViewClienteMembresia(CIValue)
         Dim Count As Integer = TablaMembresia.Rows.Count
         If Count > 0 Then
             Dim Vto As Date = CDate(TablaMembresia.Rows(Count - 1).Item(5))
@@ -884,7 +961,7 @@ Public Class FNuevoSocio
     End Function
 
     Function GetLasMembresia(ByVal CI As String) As Date
-        Dim TablaMembresia As DataTable = oMembresia.BuscarPagoPeriodo(CIValue)
+        Dim TablaMembresia As DataTable = oMembresia.BuscarViewClienteMembresia(CIValue)
         Dim Count As Integer = TablaMembresia.Rows.Count
         If Count > 0 Then
             Dim Vto As Date = CDate(TablaMembresia.Rows(Count - 1).Item(5))
@@ -901,6 +978,7 @@ Public Class FNuevoSocio
     End Sub
 
     Private Sub pbxAddFP_Click(sender As Object, e As EventArgs) Handles pbxAddFP.Click
+        FrmFingerPMgr.setLoginUserID(MAcceso.UserID)
         FrmFingerPMgr.ShowDialog()
     End Sub
 
@@ -924,5 +1002,20 @@ Public Class FNuevoSocio
             Txt.Text = String.Format("{0:N0}", importe)
             Txt.SelectionStart = Txt.TextLength
         End If
+    End Sub
+
+    Private Sub FNuevoSocio_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        'FrmFingerPMgr.Logout()
+    End Sub
+
+    Private Sub dtpFechaInicio_ValueChanged(sender As Object, e As EventArgs) Handles dtpFechaInicio.ValueChanged
+        If ModoForm = Modo.Editar Then
+            cmbMembresia.SelectedItem = cmbMembresia.Text
+        End If
+        SetFechaFin()
+    End Sub
+
+    Private Sub dtpNuevoInicio_ValueChanged(sender As Object, e As EventArgs) Handles dtpNuevoInicio.ValueChanged
+        SetNuevaFechaFin()
     End Sub
 End Class

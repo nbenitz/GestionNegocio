@@ -63,6 +63,138 @@ Namespace My
                 Return CType(Me("MySqlConnString_"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property admin() As Boolean
+            Get
+                Return CType(Me("admin"),Boolean)
+            End Get
+            Set
+                Me("admin") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property serverSelectedIndex() As Integer
+            Get
+                Return CType(Me("serverSelectedIndex"),Integer)
+            End Get
+            Set
+                Me("serverSelectedIndex") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("127.0.0.1")>  _
+        Public Property serverIp() As String
+            Get
+                Return CType(Me("serverIp"),String)
+            End Get
+            Set
+                Me("serverIp") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("192.168.100.3")>  _
+        Public Property deviceIp() As String
+            Get
+                Return CType(Me("deviceIp"),String)
+            End Get
+            Set
+                Me("deviceIp") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("100.0.0.1")>  _
+        Public Property serverIp1() As String
+            Get
+                Return CType(Me("serverIp1"),String)
+            End Get
+            Set
+                Me("serverIp1") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("10.35.230.183")>  _
+        Public Property deviceIp1() As String
+            Get
+                Return CType(Me("deviceIp1"),String)
+            End Get
+            Set
+                Me("deviceIp1") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("127.0.0.1")>  _
+        Public Property serverIp2() As String
+            Get
+                Return CType(Me("serverIp2"),String)
+            End Get
+            Set
+                Me("serverIp2") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("10.35.230.183")>  _
+        Public Property deviceIp2() As String
+            Get
+                Return CType(Me("deviceIp2"),String)
+            End Get
+            Set
+                Me("deviceIp2") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;password=1223;database=minegocio")>  _
+        Public Property server() As String
+            Get
+                Return CType(Me("server"),String)
+            End Get
+            Set
+                Me("server") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("127.0.0.1")>  _
+        Public Property device() As String
+            Get
+                Return CType(Me("device"),String)
+            End Get
+            Set
+                Me("device") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("192.168.100.3")>  _
+        Public Property devicePort() As String
+            Get
+                Return CType(Me("devicePort"),String)
+            End Get
+            Set
+                Me("devicePort") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

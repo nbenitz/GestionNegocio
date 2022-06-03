@@ -23,17 +23,10 @@ Partial Class FPrincipal
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FPrincipal))
         Me.TmrFecha = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.mnuArchivo = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuProd = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ConsultaProd = New System.Windows.Forms.ToolStripMenuItem()
-        Me.NuevoProd = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ListaBajaDeProductosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ListaAltaDeProductosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuCategoria = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuCaja = New System.Windows.Forms.ToolStripMenuItem()
         Me.AbrirCajaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CerrarCajaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -55,15 +48,22 @@ Partial Class FPrincipal
         Me.ProductosPedidos = New System.Windows.Forms.ToolStripMenuItem()
         Me.DevolverStock = New System.Windows.Forms.ToolStripMenuItem()
         Me.PagosRealizadosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ClientesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuClientes = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuConsultarClentes = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuNuevoCliente = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuMembresias = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuNuevoMembresia = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AsistenciaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuDarDeBajaAInactivos = New System.Windows.Forms.ToolStripMenuItem()
         Me.SociosConDeudaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AsistenciaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuContratosMembresia = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuMembresia = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuListaMembresia = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuNuevaMembresia = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ContratosDeMembresíaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuProd = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ConsultaProd = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NuevoProd = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ListaBajaDeProductosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ListaAltaDeProductosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuCategoria = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuProveed = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListaProv = New System.Windows.Forms.ToolStripMenuItem()
         Me.NuevoProv = New System.Windows.Forms.ToolStripMenuItem()
@@ -85,7 +85,11 @@ Partial Class FPrincipal
         Me.ConsultarUsu = New System.Windows.Forms.ToolStripMenuItem()
         Me.AgregarNuevoNivelDePrivilegiosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConsultarNivelDePrivilegiosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AyudaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuAcceso = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuAccesoAjustes = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuAsistenciaSocio = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuAsistenciaEmpleado = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuAyuda = New System.Windows.Forms.ToolStripMenuItem()
         Me.AcercaDeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.pnlBarSide = New System.Windows.Forms.Panel()
         Me.pnlCerradura = New System.Windows.Forms.Panel()
@@ -101,13 +105,15 @@ Partial Class FPrincipal
         Me.lblProd = New System.Windows.Forms.Label()
         Me.pbxProd = New System.Windows.Forms.PictureBox()
         Me.pnlPrincipal = New System.Windows.Forms.Panel()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.pnlRight = New System.Windows.Forms.Panel()
         Me.pnlEvento = New System.Windows.Forms.Panel()
         Me.pnlTop = New System.Windows.Forms.Panel()
         Me.pbxRetraer = New System.Windows.Forms.PictureBox()
         Me.BtnCerrarForm = New System.Windows.Forms.PictureBox()
-        Me.AccesoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuAccesoAjustes = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BtnMinimizar = New System.Windows.Forms.PictureBox()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.lblHora = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.pnlBarSide.SuspendLayout()
         Me.pnlCerradura.SuspendLayout()
@@ -118,24 +124,29 @@ Partial Class FPrincipal
         CType(Me.pbxCompras, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlProd.SuspendLayout()
         CType(Me.pbxProd, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlPrincipal.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlRight.SuspendLayout()
         Me.pnlTop.SuspendLayout()
         CType(Me.pbxRetraer, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BtnMinimizar, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'TmrFecha
         '
+        Me.TmrFecha.Enabled = True
         Me.TmrFecha.Interval = 1000
         '
         'MenuStrip1
         '
         Me.MenuStrip1.AutoSize = False
         Me.MenuStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuArchivo, Me.mnuProd, Me.mnuCaja, Me.mnuVentas, Me.mnuCompras, Me.ClientesToolStripMenuItem, Me.mnuProveed, Me.mnuEmpleados, Me.mnuCuentas, Me.mnuFinanzas, Me.mnuUsuarios, Me.AyudaToolStripMenuItem, Me.AccesoToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuArchivo, Me.mnuCaja, Me.mnuVentas, Me.mnuCompras, Me.mnuClientes, Me.mnuMembresia, Me.mnuProd, Me.mnuProveed, Me.mnuEmpleados, Me.mnuCuentas, Me.mnuFinanzas, Me.mnuUsuarios, Me.mnuAcceso, Me.mnuAyuda})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(928, 35)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1152, 35)
         Me.MenuStrip1.TabIndex = 28
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -154,55 +165,6 @@ Partial Class FPrincipal
         Me.SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
         Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(96, 22)
         Me.SalirToolStripMenuItem.Text = "Salir"
-        '
-        'mnuProd
-        '
-        Me.mnuProd.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConsultaProd, Me.NuevoProd, Me.ListaBajaDeProductosToolStripMenuItem, Me.ListaAltaDeProductosToolStripMenuItem, Me.mnuCategoria})
-        Me.mnuProd.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.mnuProd.ImageTransparentColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.mnuProd.Name = "mnuProd"
-        Me.mnuProd.Size = New System.Drawing.Size(73, 31)
-        Me.mnuProd.Text = "Productos"
-        '
-        'ConsultaProd
-        '
-        Me.ConsultaProd.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.ConsultaProd.ForeColor = System.Drawing.Color.White
-        Me.ConsultaProd.Name = "ConsultaProd"
-        Me.ConsultaProd.Size = New System.Drawing.Size(182, 22)
-        Me.ConsultaProd.Text = "Consultar Productos"
-        '
-        'NuevoProd
-        '
-        Me.NuevoProd.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.NuevoProd.ForeColor = System.Drawing.Color.White
-        Me.NuevoProd.Name = "NuevoProd"
-        Me.NuevoProd.Size = New System.Drawing.Size(182, 22)
-        Me.NuevoProd.Text = "Nuevo Producto"
-        '
-        'ListaBajaDeProductosToolStripMenuItem
-        '
-        Me.ListaBajaDeProductosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.ListaBajaDeProductosToolStripMenuItem.ForeColor = System.Drawing.Color.White
-        Me.ListaBajaDeProductosToolStripMenuItem.Name = "ListaBajaDeProductosToolStripMenuItem"
-        Me.ListaBajaDeProductosToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
-        Me.ListaBajaDeProductosToolStripMenuItem.Text = "Baja de Productos"
-        '
-        'ListaAltaDeProductosToolStripMenuItem
-        '
-        Me.ListaAltaDeProductosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.ListaAltaDeProductosToolStripMenuItem.ForeColor = System.Drawing.Color.White
-        Me.ListaAltaDeProductosToolStripMenuItem.Name = "ListaAltaDeProductosToolStripMenuItem"
-        Me.ListaAltaDeProductosToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
-        Me.ListaAltaDeProductosToolStripMenuItem.Text = "Alta de Productos"
-        '
-        'mnuCategoria
-        '
-        Me.mnuCategoria.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.mnuCategoria.ForeColor = System.Drawing.Color.White
-        Me.mnuCategoria.Name = "mnuCategoria"
-        Me.mnuCategoria.Size = New System.Drawing.Size(182, 22)
-        Me.mnuCategoria.Text = "Categorías"
         '
         'mnuCaja
         '
@@ -373,52 +335,44 @@ Partial Class FPrincipal
         Me.PagosRealizadosToolStripMenuItem.Size = New System.Drawing.Size(241, 22)
         Me.PagosRealizadosToolStripMenuItem.Text = "Pagos Realizados a Proveedores"
         '
-        'ClientesToolStripMenuItem
+        'mnuClientes
         '
-        Me.ClientesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuConsultarClentes, Me.mnuNuevoCliente, Me.mnuMembresias, Me.mnuNuevoMembresia, Me.mnuDarDeBajaAInactivos, Me.SociosConDeudaToolStripMenuItem, Me.AsistenciaToolStripMenuItem, Me.MnuContratosMembresia})
-        Me.ClientesToolStripMenuItem.ForeColor = System.Drawing.Color.White
-        Me.ClientesToolStripMenuItem.Name = "ClientesToolStripMenuItem"
-        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(53, 31)
-        Me.ClientesToolStripMenuItem.Text = "Socios"
+        Me.mnuClientes.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuConsultarClentes, Me.mnuNuevoCliente, Me.AsistenciaToolStripMenuItem, Me.mnuDarDeBajaAInactivos, Me.SociosConDeudaToolStripMenuItem})
+        Me.mnuClientes.ForeColor = System.Drawing.Color.White
+        Me.mnuClientes.Name = "mnuClientes"
+        Me.mnuClientes.Size = New System.Drawing.Size(53, 31)
+        Me.mnuClientes.Text = "Socios"
         '
         'mnuConsultarClentes
         '
         Me.mnuConsultarClentes.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.mnuConsultarClentes.ForeColor = System.Drawing.Color.White
         Me.mnuConsultarClentes.Name = "mnuConsultarClentes"
-        Me.mnuConsultarClentes.Size = New System.Drawing.Size(247, 22)
-        Me.mnuConsultarClentes.Text = "Listado de Socios"
+        Me.mnuConsultarClentes.Size = New System.Drawing.Size(192, 22)
+        Me.mnuConsultarClentes.Text = "Lista de Socios"
         '
         'mnuNuevoCliente
         '
         Me.mnuNuevoCliente.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.mnuNuevoCliente.ForeColor = System.Drawing.Color.White
         Me.mnuNuevoCliente.Name = "mnuNuevoCliente"
-        Me.mnuNuevoCliente.Size = New System.Drawing.Size(247, 22)
+        Me.mnuNuevoCliente.Size = New System.Drawing.Size(192, 22)
         Me.mnuNuevoCliente.Text = "Nuevo Socio"
         '
-        'mnuMembresias
+        'AsistenciaToolStripMenuItem
         '
-        Me.mnuMembresias.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.mnuMembresias.ForeColor = System.Drawing.Color.White
-        Me.mnuMembresias.Name = "mnuMembresias"
-        Me.mnuMembresias.Size = New System.Drawing.Size(247, 22)
-        Me.mnuMembresias.Text = "Membresías"
-        '
-        'mnuNuevoMembresia
-        '
-        Me.mnuNuevoMembresia.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.mnuNuevoMembresia.ForeColor = System.Drawing.Color.White
-        Me.mnuNuevoMembresia.Name = "mnuNuevoMembresia"
-        Me.mnuNuevoMembresia.Size = New System.Drawing.Size(247, 22)
-        Me.mnuNuevoMembresia.Text = "Nueva Membresía"
+        Me.AsistenciaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.AsistenciaToolStripMenuItem.ForeColor = System.Drawing.Color.White
+        Me.AsistenciaToolStripMenuItem.Name = "AsistenciaToolStripMenuItem"
+        Me.AsistenciaToolStripMenuItem.Size = New System.Drawing.Size(192, 22)
+        Me.AsistenciaToolStripMenuItem.Text = "Asistencia"
         '
         'mnuDarDeBajaAInactivos
         '
         Me.mnuDarDeBajaAInactivos.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.mnuDarDeBajaAInactivos.ForeColor = System.Drawing.Color.White
         Me.mnuDarDeBajaAInactivos.Name = "mnuDarDeBajaAInactivos"
-        Me.mnuDarDeBajaAInactivos.Size = New System.Drawing.Size(247, 22)
+        Me.mnuDarDeBajaAInactivos.Size = New System.Drawing.Size(192, 22)
         Me.mnuDarDeBajaAInactivos.Text = "Dar de Baja a Inactivos"
         '
         'SociosConDeudaToolStripMenuItem
@@ -426,24 +380,89 @@ Partial Class FPrincipal
         Me.SociosConDeudaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.SociosConDeudaToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.SociosConDeudaToolStripMenuItem.Name = "SociosConDeudaToolStripMenuItem"
-        Me.SociosConDeudaToolStripMenuItem.Size = New System.Drawing.Size(247, 22)
+        Me.SociosConDeudaToolStripMenuItem.Size = New System.Drawing.Size(192, 22)
         Me.SociosConDeudaToolStripMenuItem.Text = "Socios con Deuda"
         '
-        'AsistenciaToolStripMenuItem
+        'mnuMembresia
         '
-        Me.AsistenciaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.AsistenciaToolStripMenuItem.ForeColor = System.Drawing.Color.White
-        Me.AsistenciaToolStripMenuItem.Name = "AsistenciaToolStripMenuItem"
-        Me.AsistenciaToolStripMenuItem.Size = New System.Drawing.Size(247, 22)
-        Me.AsistenciaToolStripMenuItem.Text = "Asistencia"
+        Me.mnuMembresia.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuListaMembresia, Me.mnuNuevaMembresia, Me.ContratosDeMembresíaToolStripMenuItem})
+        Me.mnuMembresia.ForeColor = System.Drawing.Color.White
+        Me.mnuMembresia.Name = "mnuMembresia"
+        Me.mnuMembresia.Size = New System.Drawing.Size(83, 31)
+        Me.mnuMembresia.Text = "Membresías"
         '
-        'MnuContratosMembresia
+        'mnuListaMembresia
         '
-        Me.MnuContratosMembresia.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.MnuContratosMembresia.ForeColor = System.Drawing.Color.White
-        Me.MnuContratosMembresia.Name = "MnuContratosMembresia"
-        Me.MnuContratosMembresia.Size = New System.Drawing.Size(247, 22)
-        Me.MnuContratosMembresia.Text = "Lista de Contratos de Membresía"
+        Me.mnuListaMembresia.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.mnuListaMembresia.ForeColor = System.Drawing.Color.White
+        Me.mnuListaMembresia.Name = "mnuListaMembresia"
+        Me.mnuListaMembresia.Size = New System.Drawing.Size(204, 22)
+        Me.mnuListaMembresia.Text = "Lista de Membresías"
+        '
+        'mnuNuevaMembresia
+        '
+        Me.mnuNuevaMembresia.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.mnuNuevaMembresia.ForeColor = System.Drawing.Color.White
+        Me.mnuNuevaMembresia.Name = "mnuNuevaMembresia"
+        Me.mnuNuevaMembresia.Size = New System.Drawing.Size(204, 22)
+        Me.mnuNuevaMembresia.Text = "Nueva Membresía"
+        '
+        'ContratosDeMembresíaToolStripMenuItem
+        '
+        Me.ContratosDeMembresíaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.ContratosDeMembresíaToolStripMenuItem.ForeColor = System.Drawing.Color.White
+        Me.ContratosDeMembresíaToolStripMenuItem.Name = "ContratosDeMembresíaToolStripMenuItem"
+        Me.ContratosDeMembresíaToolStripMenuItem.Size = New System.Drawing.Size(204, 22)
+        Me.ContratosDeMembresíaToolStripMenuItem.Text = "Contratos de Membresía"
+        '
+        'mnuProd
+        '
+        Me.mnuProd.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConsultaProd, Me.NuevoProd, Me.ListaBajaDeProductosToolStripMenuItem, Me.ListaAltaDeProductosToolStripMenuItem, Me.mnuCategoria})
+        Me.mnuProd.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.mnuProd.ImageTransparentColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.mnuProd.Name = "mnuProd"
+        Me.mnuProd.Size = New System.Drawing.Size(73, 31)
+        Me.mnuProd.Text = "Productos"
+        '
+        'ConsultaProd
+        '
+        Me.ConsultaProd.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.ConsultaProd.ForeColor = System.Drawing.Color.White
+        Me.ConsultaProd.Name = "ConsultaProd"
+        Me.ConsultaProd.Size = New System.Drawing.Size(182, 22)
+        Me.ConsultaProd.Text = "Consultar Productos"
+        '
+        'NuevoProd
+        '
+        Me.NuevoProd.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.NuevoProd.ForeColor = System.Drawing.Color.White
+        Me.NuevoProd.Name = "NuevoProd"
+        Me.NuevoProd.Size = New System.Drawing.Size(182, 22)
+        Me.NuevoProd.Text = "Nuevo Producto"
+        '
+        'ListaBajaDeProductosToolStripMenuItem
+        '
+        Me.ListaBajaDeProductosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.ListaBajaDeProductosToolStripMenuItem.ForeColor = System.Drawing.Color.White
+        Me.ListaBajaDeProductosToolStripMenuItem.Name = "ListaBajaDeProductosToolStripMenuItem"
+        Me.ListaBajaDeProductosToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
+        Me.ListaBajaDeProductosToolStripMenuItem.Text = "Baja de Productos"
+        '
+        'ListaAltaDeProductosToolStripMenuItem
+        '
+        Me.ListaAltaDeProductosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.ListaAltaDeProductosToolStripMenuItem.ForeColor = System.Drawing.Color.White
+        Me.ListaAltaDeProductosToolStripMenuItem.Name = "ListaAltaDeProductosToolStripMenuItem"
+        Me.ListaAltaDeProductosToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
+        Me.ListaAltaDeProductosToolStripMenuItem.Text = "Alta de Productos"
+        '
+        'mnuCategoria
+        '
+        Me.mnuCategoria.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.mnuCategoria.ForeColor = System.Drawing.Color.White
+        Me.mnuCategoria.Name = "mnuCategoria"
+        Me.mnuCategoria.Size = New System.Drawing.Size(182, 22)
+        Me.mnuCategoria.Text = "Categorías"
         '
         'mnuProveed
         '
@@ -548,7 +567,7 @@ Partial Class FPrincipal
         Me.GastosGeneralesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.GastosGeneralesToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.GastosGeneralesToolStripMenuItem.Name = "GastosGeneralesToolStripMenuItem"
-        Me.GastosGeneralesToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
+        Me.GastosGeneralesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.GastosGeneralesToolStripMenuItem.Text = "Gastos Generales"
         '
         'ListaDeGastosToolStripMenuItem
@@ -556,7 +575,7 @@ Partial Class FPrincipal
         Me.ListaDeGastosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.ListaDeGastosToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.ListaDeGastosToolStripMenuItem.Name = "ListaDeGastosToolStripMenuItem"
-        Me.ListaDeGastosToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
+        Me.ListaDeGastosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ListaDeGastosToolStripMenuItem.Text = "Consultar Gastos"
         '
         'BalanceToolStripMenuItem
@@ -564,7 +583,7 @@ Partial Class FPrincipal
         Me.BalanceToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.BalanceToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.BalanceToolStripMenuItem.Name = "BalanceToolStripMenuItem"
-        Me.BalanceToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
+        Me.BalanceToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.BalanceToolStripMenuItem.Text = "Balance"
         '
         'mnuUsuarios
@@ -615,13 +634,45 @@ Partial Class FPrincipal
         Me.ConsultarNivelDePrivilegiosToolStripMenuItem.Size = New System.Drawing.Size(257, 22)
         Me.ConsultarNivelDePrivilegiosToolStripMenuItem.Text = "Consultar Nivel de Privilegios"
         '
-        'AyudaToolStripMenuItem
+        'mnuAcceso
         '
-        Me.AyudaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AcercaDeToolStripMenuItem})
-        Me.AyudaToolStripMenuItem.ForeColor = System.Drawing.Color.White
-        Me.AyudaToolStripMenuItem.Name = "AyudaToolStripMenuItem"
-        Me.AyudaToolStripMenuItem.Size = New System.Drawing.Size(53, 31)
-        Me.AyudaToolStripMenuItem.Text = "Ayuda"
+        Me.mnuAcceso.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuAccesoAjustes, Me.mnuAsistenciaSocio, Me.mnuAsistenciaEmpleado})
+        Me.mnuAcceso.ForeColor = System.Drawing.Color.White
+        Me.mnuAcceso.Name = "mnuAcceso"
+        Me.mnuAcceso.Size = New System.Drawing.Size(57, 31)
+        Me.mnuAcceso.Text = "Acceso"
+        '
+        'mnuAccesoAjustes
+        '
+        Me.mnuAccesoAjustes.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.mnuAccesoAjustes.ForeColor = System.Drawing.Color.White
+        Me.mnuAccesoAjustes.Name = "mnuAccesoAjustes"
+        Me.mnuAccesoAjustes.Size = New System.Drawing.Size(204, 22)
+        Me.mnuAccesoAjustes.Text = "Ajustes"
+        '
+        'mnuAsistenciaSocio
+        '
+        Me.mnuAsistenciaSocio.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.mnuAsistenciaSocio.ForeColor = System.Drawing.Color.White
+        Me.mnuAsistenciaSocio.Name = "mnuAsistenciaSocio"
+        Me.mnuAsistenciaSocio.Size = New System.Drawing.Size(204, 22)
+        Me.mnuAsistenciaSocio.Text = "Asistencia de Socios"
+        '
+        'mnuAsistenciaEmpleado
+        '
+        Me.mnuAsistenciaEmpleado.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.mnuAsistenciaEmpleado.ForeColor = System.Drawing.Color.White
+        Me.mnuAsistenciaEmpleado.Name = "mnuAsistenciaEmpleado"
+        Me.mnuAsistenciaEmpleado.Size = New System.Drawing.Size(204, 22)
+        Me.mnuAsistenciaEmpleado.Text = "Asistencia de Empleados"
+        '
+        'mnuAyuda
+        '
+        Me.mnuAyuda.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AcercaDeToolStripMenuItem})
+        Me.mnuAyuda.ForeColor = System.Drawing.Color.White
+        Me.mnuAyuda.Name = "mnuAyuda"
+        Me.mnuAyuda.Size = New System.Drawing.Size(53, 31)
+        Me.mnuAyuda.Text = "Ayuda"
         '
         'AcercaDeToolStripMenuItem
         '
@@ -648,7 +699,7 @@ Partial Class FPrincipal
         '
         Me.pnlCerradura.Controls.Add(Me.lblCerradura)
         Me.pnlCerradura.Controls.Add(Me.pbxCerradura)
-        Me.pnlCerradura.Location = New System.Drawing.Point(0, 162)
+        Me.pnlCerradura.Location = New System.Drawing.Point(0, 42)
         Me.pnlCerradura.Name = "pnlCerradura"
         Me.pnlCerradura.Size = New System.Drawing.Size(161, 41)
         Me.pnlCerradura.TabIndex = 113
@@ -680,7 +731,7 @@ Partial Class FPrincipal
         '
         Me.pnlVenta.Controls.Add(Me.lblVenta)
         Me.pnlVenta.Controls.Add(Me.pbxVenta)
-        Me.pnlVenta.Location = New System.Drawing.Point(-1, 39)
+        Me.pnlVenta.Location = New System.Drawing.Point(0, 83)
         Me.pnlVenta.Name = "pnlVenta"
         Me.pnlVenta.Size = New System.Drawing.Size(161, 41)
         Me.pnlVenta.TabIndex = 112
@@ -712,7 +763,7 @@ Partial Class FPrincipal
         '
         Me.pnlCompra.Controls.Add(Me.lblCompra)
         Me.pnlCompra.Controls.Add(Me.pbxCompras)
-        Me.pnlCompra.Location = New System.Drawing.Point(0, 121)
+        Me.pnlCompra.Location = New System.Drawing.Point(0, 165)
         Me.pnlCompra.Name = "pnlCompra"
         Me.pnlCompra.Size = New System.Drawing.Size(161, 41)
         Me.pnlCompra.TabIndex = 87
@@ -744,7 +795,7 @@ Partial Class FPrincipal
         '
         Me.pnlProd.Controls.Add(Me.lblProd)
         Me.pnlProd.Controls.Add(Me.pbxProd)
-        Me.pnlProd.Location = New System.Drawing.Point(0, 80)
+        Me.pnlProd.Location = New System.Drawing.Point(0, 124)
         Me.pnlProd.Name = "pnlProd"
         Me.pnlProd.Size = New System.Drawing.Size(161, 41)
         Me.pnlProd.TabIndex = 85
@@ -775,11 +826,24 @@ Partial Class FPrincipal
         'pnlPrincipal
         '
         Me.pnlPrincipal.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.pnlPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.pnlPrincipal.Controls.Add(Me.PictureBox1)
         Me.pnlPrincipal.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlPrincipal.Location = New System.Drawing.Point(160, 35)
         Me.pnlPrincipal.Name = "pnlPrincipal"
-        Me.pnlPrincipal.Size = New System.Drawing.Size(733, 555)
+        Me.pnlPrincipal.Size = New System.Drawing.Size(957, 555)
         Me.pnlPrincipal.TabIndex = 84
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PictureBox1.Image = Global.ControlStock.My.Resources.Resources.logo_fitness_girsl_club_OFICCIAL
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(957, 555)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 0
+        Me.PictureBox1.TabStop = False
         '
         'pnlRight
         '
@@ -787,7 +851,7 @@ Partial Class FPrincipal
         Me.pnlRight.Controls.Add(Me.pnlEvento)
         Me.pnlRight.Controls.Add(Me.pnlTop)
         Me.pnlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.pnlRight.Location = New System.Drawing.Point(893, 35)
+        Me.pnlRight.Location = New System.Drawing.Point(1117, 35)
         Me.pnlRight.Name = "pnlRight"
         Me.pnlRight.Size = New System.Drawing.Size(35, 555)
         Me.pnlRight.TabIndex = 86
@@ -811,6 +875,7 @@ Partial Class FPrincipal
         '
         'pbxRetraer
         '
+        Me.pbxRetraer.Cursor = System.Windows.Forms.Cursors.Hand
         Me.pbxRetraer.Image = Global.ControlStock.My.Resources.Resources.right_arrow
         Me.pbxRetraer.Location = New System.Drawing.Point(7, 3)
         Me.pbxRetraer.Name = "pbxRetraer"
@@ -822,8 +887,9 @@ Partial Class FPrincipal
         'BtnCerrarForm
         '
         Me.BtnCerrarForm.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BtnCerrarForm.Image = CType(resources.GetObject("BtnCerrarForm.Image"), System.Drawing.Image)
-        Me.BtnCerrarForm.Location = New System.Drawing.Point(893, 0)
+        Me.BtnCerrarForm.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnCerrarForm.Image = Global.ControlStock.My.Resources.Resources.close_16x
+        Me.BtnCerrarForm.Location = New System.Drawing.Point(1117, 0)
         Me.BtnCerrarForm.Margin = New System.Windows.Forms.Padding(2)
         Me.BtnCerrarForm.Name = "BtnCerrarForm"
         Me.BtnCerrarForm.Size = New System.Drawing.Size(35, 35)
@@ -831,21 +897,40 @@ Partial Class FPrincipal
         Me.BtnCerrarForm.TabIndex = 115
         Me.BtnCerrarForm.TabStop = False
         '
-        'AccesoToolStripMenuItem
+        'BtnMinimizar
         '
-        Me.AccesoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuAccesoAjustes})
-        Me.AccesoToolStripMenuItem.ForeColor = System.Drawing.Color.White
-        Me.AccesoToolStripMenuItem.Name = "AccesoToolStripMenuItem"
-        Me.AccesoToolStripMenuItem.Size = New System.Drawing.Size(57, 31)
-        Me.AccesoToolStripMenuItem.Text = "Acceso"
+        Me.BtnMinimizar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BtnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnMinimizar.Image = Global.ControlStock.My.Resources.Resources.minimize_sign_16x
+        Me.BtnMinimizar.Location = New System.Drawing.Point(1082, 0)
+        Me.BtnMinimizar.Margin = New System.Windows.Forms.Padding(2)
+        Me.BtnMinimizar.Name = "BtnMinimizar"
+        Me.BtnMinimizar.Size = New System.Drawing.Size(35, 35)
+        Me.BtnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.BtnMinimizar.TabIndex = 117
+        Me.BtnMinimizar.TabStop = False
         '
-        'mnuAccesoAjustes
+        'Panel1
         '
-        Me.mnuAccesoAjustes.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.mnuAccesoAjustes.ForeColor = System.Drawing.Color.White
-        Me.mnuAccesoAjustes.Name = "mnuAccesoAjustes"
-        Me.mnuAccesoAjustes.Size = New System.Drawing.Size(180, 22)
-        Me.mnuAccesoAjustes.Text = "Ajustes"
+        Me.Panel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.Controls.Add(Me.lblHora)
+        Me.Panel1.Location = New System.Drawing.Point(943, 1)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(134, 34)
+        Me.Panel1.TabIndex = 119
+        '
+        'lblHora
+        '
+        Me.lblHora.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblHora.AutoSize = True
+        Me.lblHora.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblHora.ForeColor = System.Drawing.Color.White
+        Me.lblHora.Location = New System.Drawing.Point(5, 8)
+        Me.lblHora.Name = "lblHora"
+        Me.lblHora.Size = New System.Drawing.Size(126, 17)
+        Me.lblHora.TabIndex = 0
+        Me.lblHora.Text = "01/01/2022  -  00:00"
+        Me.lblHora.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'FPrincipal
         '
@@ -853,7 +938,9 @@ Partial Class FPrincipal
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(928, 590)
+        Me.ClientSize = New System.Drawing.Size(1152, 590)
+        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.BtnMinimizar)
         Me.Controls.Add(Me.pnlPrincipal)
         Me.Controls.Add(Me.BtnCerrarForm)
         Me.Controls.Add(Me.pnlBarSide)
@@ -883,10 +970,15 @@ Partial Class FPrincipal
         Me.pnlProd.ResumeLayout(False)
         Me.pnlProd.PerformLayout()
         CType(Me.pbxProd, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlPrincipal.ResumeLayout(False)
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlRight.ResumeLayout(False)
         Me.pnlTop.ResumeLayout(False)
         CType(Me.pbxRetraer, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BtnCerrarForm, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BtnMinimizar, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -944,9 +1036,9 @@ Partial Class FPrincipal
     Friend WithEvents ConsultarNivelDePrivilegiosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AgregarNuevoNivelDePrivilegiosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ListaDeGastosToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents AyudaToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents mnuAyuda As ToolStripMenuItem
     Friend WithEvents AcercaDeToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ClientesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents mnuClientes As ToolStripMenuItem
     Friend WithEvents mnuNuevoCliente As ToolStripMenuItem
     Friend WithEvents mnuConsultarClentes As ToolStripMenuItem
     Friend WithEvents mnuCaja As ToolStripMenuItem
@@ -958,8 +1050,6 @@ Partial Class FPrincipal
     Friend WithEvents pnlCerradura As Panel
     Friend WithEvents lblCerradura As Label
     Friend WithEvents pbxCerradura As PictureBox
-    Friend WithEvents mnuMembresias As ToolStripMenuItem
-    Friend WithEvents mnuNuevoMembresia As ToolStripMenuItem
     Friend WithEvents mnuDarDeBajaAInactivos As ToolStripMenuItem
     Friend WithEvents RegistrarGastoCompraToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CobrarToolStripMenuItem As ToolStripMenuItem
@@ -971,7 +1061,16 @@ Partial Class FPrincipal
     Friend WithEvents pnlEvento As Panel
     Friend WithEvents pbxRetraer As PictureBox
     Friend WithEvents AsistenciaToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents MnuContratosMembresia As ToolStripMenuItem
-    Friend WithEvents AccesoToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents mnuAcceso As ToolStripMenuItem
     Friend WithEvents mnuAccesoAjustes As ToolStripMenuItem
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents BtnMinimizar As PictureBox
+    Friend WithEvents mnuMembresia As ToolStripMenuItem
+    Friend WithEvents mnuListaMembresia As ToolStripMenuItem
+    Friend WithEvents mnuNuevaMembresia As ToolStripMenuItem
+    Friend WithEvents ContratosDeMembresíaToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents mnuAsistenciaSocio As ToolStripMenuItem
+    Friend WithEvents mnuAsistenciaEmpleado As ToolStripMenuItem
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents lblHora As Label
 End Class

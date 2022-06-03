@@ -23,25 +23,31 @@ Partial Class FListaSocio
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle31 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle32 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle33 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FListaSocio))
         Me.lblAux = New System.Windows.Forms.Label()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.txtBuscar = New System.Windows.Forms.ToolStripTextBox()
         Me.DataGridViewImageColumn1 = New System.Windows.Forms.DataGridViewImageColumn()
         Me.dgvCliente = New System.Windows.Forms.DataGridView()
+        Me.ColSelect = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.ColFoto = New System.Windows.Forms.DataGridViewImageColumn()
         Me.CI = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Memb = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Tel = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColPendiente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColEstado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Acc = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewImageColumn2 = New System.Windows.Forms.DataGridViewImageColumn()
         Me.btnActualizar = New System.Windows.Forms.ToolStripButton()
@@ -51,6 +57,8 @@ Partial Class FListaSocio
         Me.Separador = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.lblSocios = New System.Windows.Forms.ToolStripLabel()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
         Me.PnlEliminar = New System.Windows.Forms.Panel()
         Me.LblEliminar = New System.Windows.Forms.Label()
         Me.PbxEliminar = New System.Windows.Forms.PictureBox()
@@ -101,15 +109,14 @@ Partial Class FListaSocio
         Me.txtBuscar.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.txtBuscar.ForeColor = System.Drawing.Color.White
         Me.txtBuscar.Name = "txtBuscar"
-        Me.txtBuscar.Size = New System.Drawing.Size(100, 23)
-        Me.txtBuscar.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.txtBuscar.Size = New System.Drawing.Size(150, 23)
         '
         'DataGridViewImageColumn1
         '
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle10.NullValue = Nothing
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.White
-        Me.DataGridViewImageColumn1.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle23.NullValue = Nothing
+        DataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.White
+        Me.DataGridViewImageColumn1.DefaultCellStyle = DataGridViewCellStyle23
         Me.DataGridViewImageColumn1.HeaderText = ""
         Me.DataGridViewImageColumn1.Image = Global.ControlStock.My.Resources.Resources.file_edit
         Me.DataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch
@@ -122,65 +129,85 @@ Partial Class FListaSocio
         'dgvCliente
         '
         Me.dgvCliente.AllowUserToAddRows = False
-        Me.dgvCliente.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer))
+        Me.dgvCliente.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
         Me.dgvCliente.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvCliente.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvCliente.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
-        Me.dgvCliente.ColumnHeadersHeight = 30
+        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        DataGridViewCellStyle24.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle24.ForeColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        DataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvCliente.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle24
+        Me.dgvCliente.ColumnHeadersHeight = 25
         Me.dgvCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgvCliente.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CI, Me.Nombre, Me.Memb, Me.Tel, Me.Acc})
-        Me.dgvCliente.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.dgvCliente.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColSelect, Me.ColFoto, Me.CI, Me.Nombre, Me.Memb, Me.Tel, Me.ColPendiente, Me.ColEstado, Me.Acc})
+        Me.dgvCliente.GridColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
         Me.dgvCliente.Location = New System.Drawing.Point(7, 43)
         Me.dgvCliente.MultiSelect = False
         Me.dgvCliente.Name = "dgvCliente"
         Me.dgvCliente.ReadOnly = True
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle16.Font = New System.Drawing.Font("Arial Narrow", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.ButtonShadow
-        DataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvCliente.RowHeadersDefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle31.Font = New System.Drawing.Font("Arial Narrow", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.ButtonShadow
+        DataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvCliente.RowHeadersDefaultCellStyle = DataGridViewCellStyle31
         Me.dgvCliente.RowHeadersVisible = False
-        DataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
-        DataGridViewCellStyle17.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.Red
-        DataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.White
-        Me.dgvCliente.RowsDefaultCellStyle = DataGridViewCellStyle17
-        Me.dgvCliente.RowTemplate.Height = 28
+        DataGridViewCellStyle32.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        DataGridViewCellStyle32.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle32.SelectionBackColor = System.Drawing.Color.Red
+        DataGridViewCellStyle32.SelectionForeColor = System.Drawing.Color.White
+        Me.dgvCliente.RowsDefaultCellStyle = DataGridViewCellStyle32
+        Me.dgvCliente.RowTemplate.Height = 56
         Me.dgvCliente.RowTemplate.ReadOnly = True
         Me.dgvCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvCliente.Size = New System.Drawing.Size(774, 329)
+        Me.dgvCliente.Size = New System.Drawing.Size(934, 511)
         Me.dgvCliente.TabIndex = 5
+        '
+        'ColSelect
+        '
+        Me.ColSelect.Frozen = True
+        Me.ColSelect.HeaderText = ""
+        Me.ColSelect.Name = "ColSelect"
+        Me.ColSelect.ReadOnly = True
+        Me.ColSelect.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ColSelect.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.ColSelect.Width = 25
+        '
+        'ColFoto
+        '
+        Me.ColFoto.Frozen = True
+        Me.ColFoto.HeaderText = "Foto"
+        Me.ColFoto.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom
+        Me.ColFoto.Name = "ColFoto"
+        Me.ColFoto.ReadOnly = True
+        Me.ColFoto.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ColFoto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.ColFoto.Width = 56
         '
         'CI
         '
-        DataGridViewCellStyle12.Format = "N0"
-        DataGridViewCellStyle12.NullValue = Nothing
-        Me.CI.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle25.Format = "N0"
+        DataGridViewCellStyle25.NullValue = Nothing
+        Me.CI.DefaultCellStyle = DataGridViewCellStyle25
         Me.CI.Frozen = True
         Me.CI.HeaderText = "CI"
         Me.CI.Name = "CI"
         Me.CI.ReadOnly = True
-        Me.CI.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         '
         'Nombre
         '
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.Nombre.DefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.Nombre.DefaultCellStyle = DataGridViewCellStyle26
         Me.Nombre.Frozen = True
         Me.Nombre.HeaderText = "Nombre"
         Me.Nombre.Name = "Nombre"
         Me.Nombre.ReadOnly = True
-        Me.Nombre.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         Me.Nombre.Width = 220
         '
         'Memb
@@ -193,30 +220,50 @@ Partial Class FListaSocio
         '
         'Tel
         '
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle14.NullValue = Nothing
-        Me.Tel.DefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle27.NullValue = Nothing
+        Me.Tel.DefaultCellStyle = DataGridViewCellStyle27
         Me.Tel.HeaderText = "Teléfono"
         Me.Tel.Name = "Tel"
         Me.Tel.ReadOnly = True
         Me.Tel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         '
+        'ColPendiente
+        '
+        DataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle28.Format = "N0"
+        DataGridViewCellStyle28.NullValue = Nothing
+        Me.ColPendiente.DefaultCellStyle = DataGridViewCellStyle28
+        Me.ColPendiente.HeaderText = "Saldo Pend."
+        Me.ColPendiente.Name = "ColPendiente"
+        Me.ColPendiente.ReadOnly = True
+        Me.ColPendiente.Width = 90
+        '
+        'ColEstado
+        '
+        DataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.ColEstado.DefaultCellStyle = DataGridViewCellStyle29
+        Me.ColEstado.HeaderText = "Estado"
+        Me.ColEstado.Name = "ColEstado"
+        Me.ColEstado.ReadOnly = True
+        '
         'Acc
         '
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle15.NullValue = Nothing
-        Me.Acc.DefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle30.NullValue = Nothing
+        Me.Acc.DefaultCellStyle = DataGridViewCellStyle30
         Me.Acc.HeaderText = "ID Acceso"
         Me.Acc.Name = "Acc"
         Me.Acc.ReadOnly = True
         Me.Acc.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Acc.Visible = False
         '
         'DataGridViewImageColumn2
         '
-        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle18.NullValue = Nothing
-        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.White
-        Me.DataGridViewImageColumn2.DefaultCellStyle = DataGridViewCellStyle18
+        DataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle33.NullValue = Nothing
+        DataGridViewCellStyle33.SelectionBackColor = System.Drawing.Color.White
+        Me.DataGridViewImageColumn2.DefaultCellStyle = DataGridViewCellStyle33
         Me.DataGridViewImageColumn2.HeaderText = ""
         Me.DataGridViewImageColumn2.Image = Global.ControlStock.My.Resources.Resources.file_del
         Me.DataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch
@@ -236,9 +283,9 @@ Partial Class FListaSocio
         '
         Me.cmbVerPor.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
         Me.cmbVerPor.ForeColor = System.Drawing.Color.White
-        Me.cmbVerPor.Items.AddRange(New Object() {"Todos", "Nombre", "CI"})
+        Me.cmbVerPor.Items.AddRange(New Object() {"Todos", "Socios con Cuota al día", "Socios con Cuota Vencida", "Socios con Deuda", "Socios Activos", "Socios Inactivos"})
         Me.cmbVerPor.Name = "cmbVerPor"
-        Me.cmbVerPor.Size = New System.Drawing.Size(100, 35)
+        Me.cmbVerPor.Size = New System.Drawing.Size(150, 35)
         '
         'BtnNuevo
         '
@@ -254,8 +301,8 @@ Partial Class FListaSocio
         '
         Me.ToolStripLabel1.ForeColor = System.Drawing.Color.White
         Me.ToolStripLabel1.Name = "ToolStripLabel1"
-        Me.ToolStripLabel1.Size = New System.Drawing.Size(66, 32)
-        Me.ToolStripLabel1.Text = "Buscar por:"
+        Me.ToolStripLabel1.Size = New System.Drawing.Size(45, 32)
+        Me.ToolStripLabel1.Text = "Buscar:"
         '
         'Separador
         '
@@ -267,10 +314,10 @@ Partial Class FListaSocio
         Me.ToolStrip1.AutoSize = False
         Me.ToolStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.ToolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lblSocios, Me.BtnNuevo, Me.btnActualizar, Me.Separador, Me.ToolStripLabel1, Me.cmbVerPor, Me.txtBuscar})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lblSocios, Me.BtnNuevo, Me.btnActualizar, Me.Separador, Me.ToolStripLabel1, Me.txtBuscar, Me.ToolStripSeparator1, Me.ToolStripLabel2, Me.cmbVerPor})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(787, 35)
+        Me.ToolStrip1.Size = New System.Drawing.Size(949, 35)
         Me.ToolStrip1.Stretch = True
         Me.ToolStrip1.TabIndex = 6
         Me.ToolStrip1.Text = "ToolStrip1"
@@ -285,13 +332,25 @@ Partial Class FListaSocio
         Me.lblSocios.Size = New System.Drawing.Size(60, 32)
         Me.lblSocios.Text = "Socios"
         '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 35)
+        '
+        'ToolStripLabel2
+        '
+        Me.ToolStripLabel2.ForeColor = System.Drawing.Color.White
+        Me.ToolStripLabel2.Name = "ToolStripLabel2"
+        Me.ToolStripLabel2.Size = New System.Drawing.Size(26, 32)
+        Me.ToolStripLabel2.Text = "Ver:"
+        '
         'PnlEliminar
         '
         Me.PnlEliminar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.PnlEliminar.Controls.Add(Me.LblEliminar)
         Me.PnlEliminar.Controls.Add(Me.PbxEliminar)
         Me.PnlEliminar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PnlEliminar.Location = New System.Drawing.Point(676, 378)
+        Me.PnlEliminar.Location = New System.Drawing.Point(832, 560)
         Me.PnlEliminar.Name = "PnlEliminar"
         Me.PnlEliminar.Size = New System.Drawing.Size(105, 37)
         Me.PnlEliminar.TabIndex = 93
@@ -327,7 +386,7 @@ Partial Class FListaSocio
         Me.pnlEditar.Controls.Add(Me.lblEditar)
         Me.pnlEditar.Controls.Add(Me.pbxEditar)
         Me.pnlEditar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.pnlEditar.Location = New System.Drawing.Point(580, 378)
+        Me.pnlEditar.Location = New System.Drawing.Point(736, 560)
         Me.pnlEditar.Name = "pnlEditar"
         Me.pnlEditar.Size = New System.Drawing.Size(93, 37)
         Me.pnlEditar.TabIndex = 92
@@ -362,7 +421,7 @@ Partial Class FListaSocio
         Me.BtnCerrarForm.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BtnCerrarForm.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.BtnCerrarForm.Image = CType(resources.GetObject("BtnCerrarForm.Image"), System.Drawing.Image)
-        Me.BtnCerrarForm.Location = New System.Drawing.Point(752, -1)
+        Me.BtnCerrarForm.Location = New System.Drawing.Point(914, -1)
         Me.BtnCerrarForm.Margin = New System.Windows.Forms.Padding(2)
         Me.BtnCerrarForm.Name = "BtnCerrarForm"
         Me.BtnCerrarForm.Size = New System.Drawing.Size(35, 35)
@@ -376,7 +435,7 @@ Partial Class FListaSocio
         Me.pnlSeleccionar.Controls.Add(Me.lblSeleccionar)
         Me.pnlSeleccionar.Controls.Add(Me.pbxSeleccionar)
         Me.pnlSeleccionar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.pnlSeleccionar.Location = New System.Drawing.Point(7, 378)
+        Me.pnlSeleccionar.Location = New System.Drawing.Point(7, 560)
         Me.pnlSeleccionar.Name = "pnlSeleccionar"
         Me.pnlSeleccionar.Size = New System.Drawing.Size(131, 37)
         Me.pnlSeleccionar.TabIndex = 118
@@ -413,7 +472,7 @@ Partial Class FListaSocio
         Me.pnlFicha.Controls.Add(Me.lblFicha)
         Me.pnlFicha.Controls.Add(Me.pbxFicha)
         Me.pnlFicha.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.pnlFicha.Location = New System.Drawing.Point(460, 378)
+        Me.pnlFicha.Location = New System.Drawing.Point(616, 560)
         Me.pnlFicha.Name = "pnlFicha"
         Me.pnlFicha.Size = New System.Drawing.Size(117, 37)
         Me.pnlFicha.TabIndex = 119
@@ -448,7 +507,7 @@ Partial Class FListaSocio
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(787, 420)
+        Me.ClientSize = New System.Drawing.Size(949, 602)
         Me.Controls.Add(Me.lblAux)
         Me.Controls.Add(Me.pnlFicha)
         Me.Controls.Add(Me.pnlSeleccionar)
@@ -500,11 +559,6 @@ Partial Class FListaSocio
     Friend WithEvents pbxEditar As PictureBox
     Friend WithEvents Membresia As DataGridViewTextBoxColumn
     Friend WithEvents Acceso As DataGridViewTextBoxColumn
-    Friend WithEvents CI As DataGridViewTextBoxColumn
-    Friend WithEvents Nombre As DataGridViewTextBoxColumn
-    Friend WithEvents Memb As DataGridViewTextBoxColumn
-    Friend WithEvents Tel As DataGridViewTextBoxColumn
-    Friend WithEvents Acc As DataGridViewTextBoxColumn
     Friend WithEvents BtnCerrarForm As PictureBox
     Friend WithEvents ToolStrip1 As ToolStrip
     Friend WithEvents lblSocios As ToolStripLabel
@@ -514,4 +568,15 @@ Partial Class FListaSocio
     Friend WithEvents pnlFicha As Panel
     Friend WithEvents lblFicha As Label
     Friend WithEvents pbxFicha As PictureBox
+    Friend WithEvents ColSelect As DataGridViewCheckBoxColumn
+    Friend WithEvents ColFoto As DataGridViewImageColumn
+    Friend WithEvents CI As DataGridViewTextBoxColumn
+    Friend WithEvents Nombre As DataGridViewTextBoxColumn
+    Friend WithEvents Memb As DataGridViewTextBoxColumn
+    Friend WithEvents Tel As DataGridViewTextBoxColumn
+    Friend WithEvents ColPendiente As DataGridViewTextBoxColumn
+    Friend WithEvents ColEstado As DataGridViewTextBoxColumn
+    Friend WithEvents Acc As DataGridViewTextBoxColumn
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents ToolStripLabel2 As ToolStripLabel
 End Class

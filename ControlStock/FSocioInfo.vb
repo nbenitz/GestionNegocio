@@ -2,8 +2,20 @@
 Option Explicit On
 
 Public Class FSocioInfo
+    Delegate Sub MostrarSocioInfoCallBack()
     Private Sub FSocioInfo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+    End Sub
+
+    Public Sub MostrarSocioInfo()
+        If Me.pnlInfo.InvokeRequired Then
+            Dim d As New MostrarSocioInfoCallBack(AddressOf MostrarSocioInfo)
+            Me.Invoke(d, New Object() {})
+        Else
+            pbxLogo.Height = 356
+            pnlInfo.Visible = True
+            tmrOcultar.Start()
+        End If
     End Sub
 
     Public Sub ShowClientInfo(ByVal Aliass As String,
@@ -11,7 +23,7 @@ Public Class FSocioInfo
 
         lblNombre.Text = Aliass
         pbxFoto.Image = If(foto IsNot Nothing, ByteArrayToImage(foto), My.Resources.userblack)
-        pnlSocioInfo.Visible = True
+        MostrarSocioInfo()
     End Sub
 
     Public Sub ShowClientStatus(ByVal Membresia As String,
@@ -31,15 +43,21 @@ Public Class FSocioInfo
         Else
             lblEstado.Text = "Al día"
             lblEstado.ForeColor = Color.Lime
-            lblEstado.BackColor = Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+            lblEstado.BackColor = Color.Black
         End If
 
         If Atraso > 0 Then
-            lblAtraso.Visible = True
-            lblTituloAtraso.Visible = True
+            lblTituloAtraso.Text = "Días atraso"
+            lblAtraso.Text = CStr(Atraso)
+            lblAtraso.ForeColor = Color.Yellow
+            'lblAtraso.Visible = True
+            'lblTituloAtraso.Visible = True
         Else
-            lblAtraso.Visible = False
-            lblTituloAtraso.Visible = False
+            'lblAtraso.Visible = False
+            'lblTituloAtraso.Visible = False
+            lblTituloAtraso.Text = "Días restantes"
+            lblAtraso.Text = CStr(Atraso * -1)
+            lblAtraso.ForeColor = Color.White
         End If
 
         If SaldoPendiente > 0 Then
@@ -56,6 +74,12 @@ Public Class FSocioInfo
             lblSaldo.Visible = False
             lblTituloPendiente.Visible = False
         End If
+    End Sub
+
+    Private Sub tmrOcultar_Tick(sender As Object, e As EventArgs) Handles tmrOcultar.Tick
+        pnlInfo.Visible = False
+        pbxLogo.Height = Me.Height
+        tmrOcultar.Stop()
     End Sub
 
 End Class

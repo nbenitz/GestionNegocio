@@ -189,6 +189,13 @@ Public Class CVenta
         ObjCon.Desconectar()
     End Function
 
+    Public Function BuscViewIngreso(ByVal Fecha1 As String, ByVal Fecha2 As String) As DataTable
+        ObjCon.Conectar()
+        ObjCon.CrearComando("SELECT * FROM view_ingreso_mes WHERE Fecha >= '" + Fecha1 + "' AND Fecha < '" + Fecha2 + "'")
+        BuscViewIngreso = ObjCon.EjecutarDataTable()
+        ObjCon.Desconectar()
+    End Function
+
     Public Function BuscIngreso(ByVal Rutina As String, ByVal Anho As String) As DataTable
         ObjCon.Conectar()
         ObjCon.CrearComando("CALL " + Rutina + "('" + Anho + "')")

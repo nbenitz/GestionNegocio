@@ -4,9 +4,10 @@ Public Class FListaMembresiaContrato
     Dim ContratoMembresia As New CMembresia
     Dim Empleado As New CEmpleado
     Dim Socio As New CCliente
+    Dim oAcceso As New CAcceso
     Dim FrmListaSocio As New FListaSocio
     Dim TablaContratos As New DataTable
-    Dim CIValue As String = Nothing
+    Dim SocioParam As String = Nothing
 
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -19,8 +20,9 @@ Public Class FListaMembresiaContrato
     End Sub
 
     Private Sub onClinteSeleccionado(ByVal CI As String, ByVal Nombre As String)
-        CIValue = CI
+        SocioParam = CI
         txtCI.Text = Nombre
+        BuscarPorSocio()
     End Sub
 
     Private Sub Form1_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
@@ -110,7 +112,7 @@ Public Class FListaMembresiaContrato
         Dim TotalTotalPagado As Integer = 0
         Dim TotalSaldoPendiente As Integer = 0
         Dim CantAtraso As Integer = 0
-        DataGridView1.Rows.Clear()
+        dgvMembresia.Rows.Clear()
         If Filas > 0 Then
             For i As Integer = 0 To (Filas - 1)
                 Dim idContrato As Integer = CInt(Tabla.Rows(i).Item(0))
@@ -125,14 +127,20 @@ Public Class FListaMembresiaContrato
                 Dim TotalPagado As Integer = CInt(Tabla.Rows(i).Item(8))
                 Dim SaldoPendiente As Integer = CInt(Tabla.Rows(i).Item(9))
                 Dim Atraso As Integer = CInt(Tabla.Rows(i).Item(10))
+
+                Dim TablaTolerancia As DataTable = oAcceso.VerAjustes
+                Dim DiasTolerancia As Integer = CInt(TablaTolerancia.Rows(0).Item(1))
                 If Atraso < 1 Then
                     Atraso = 0
                 Else
                     CantAtraso += 1
                 End If
+                Dim AtrasoLabel As String = CStr(Atraso)
+                If Atraso > DiasTolerancia Then
+                    AtrasoLabel = "Vencido"
+                End If
 
-                Dim Imagen As Image = My.Resources.Resources.view_text
-                DataGridView1.Rows.Add(idContrato,
+                dgvMembresia.Rows.Add(idContrato,
                                        CI,
                                        NombreCliente,
                                        NombreMembresia,
@@ -141,18 +149,72 @@ Public Class FListaMembresiaContrato
                                        String.Format("{0:N0}", Descuento),
                                        String.Format("{0:N0}", TotalPagado),
                                        String.Format("{0:N0}", SaldoPendiente),
-                                       Atraso)
+                                       AtrasoLabel)
                 TotalCostoMembresia += CostoMembresia
                 TotalDescuento += Descuento
                 TotalTotalPagado += TotalPagado
                 TotalSaldoPendiente += SaldoPendiente
+
+                If AtrasoLabel = "Vencido" Then
+                    dgvMembresia.Rows.Item(i).DefaultCellStyle.BackColor = Color.FromArgb(192, 0, 0)
+                    dgvMembresia.Rows.Item(i).DefaultCellStyle.SelectionBackColor = Color.FromArgb(192, 0, 0)
+                    dgvMembresia.Rows.Item(i).DefaultCellStyle.ForeColor = Color.LightGray
+                    dgvMembresia.Rows.Item(i).DefaultCellStyle.SelectionForeColor = Color.White
+                ElseIf Atraso = 0 Then
+                    dgvMembresia.Rows.Item(i).DefaultCellStyle.BackColor = Color.DarkGreen
+                    dgvMembresia.Rows.Item(i).DefaultCellStyle.SelectionBackColor = Color.DarkGreen
+                    dgvMembresia.Rows.Item(i).DefaultCellStyle.ForeColor = Color.LightGray
+                    dgvMembresia.Rows.Item(i).DefaultCellStyle.SelectionForeColor = Color.White
+                Else
+                    dgvMembresia.Rows.Item(i).DefaultCellStyle.BackColor = Color.FromArgb(255, 128, 0)
+                    dgvMembresia.Rows.Item(i).DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 128, 0)
+                    dgvMembresia.Rows.Item(i).DefaultCellStyle.ForeColor = Color.LightGray
+                    dgvMembresia.Rows.Item(i).DefaultCellStyle.SelectionForeColor = Color.White
+                End If
+
             Next
+
             txtTotalCostoMembresia.Text = String.Format("{0:N0}", TotalCostoMembresia)
             txtTotalDescuento.Text = String.Format("{0:N0}", TotalDescuento)
             txtTotalPagado.Text = String.Format("{0:N0}", TotalTotalPagado)
             txtTotalSaldo.Text = String.Format("{0:N0}", TotalSaldoPendiente)
             txtCantAtraso.Text = CStr(CantAtraso) + " socios"
-            txtCantAtraso.Text = CStr(CantAtraso) + " socios"
+        End If
+    End Sub
+
+    Private Sub dgvMembresia_CellMouseDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles dgvMembresia.CellMouseDoubleClick
+        If e.RowIndex >= 0 AndAlso e.ColumnIndex >= 0 Then
+            Dim selectedRow As DataGridViewRow = dgvMembresia.Rows(e.RowIndex)
+            Dim CI As String = selectedRow.Cells(1).Value.ToString
+            Dim TablaCli As DataTable = Socio.BuscSocio("WHERE Cedula = '" + CI + "'")
+
+            Dim Nombre As String = CStr(TablaCli.Rows(0).Item(1))
+            Dim MembresiaNom As String
+            Try
+                MembresiaNom = CStr(TablaCli.Rows(0).Item(2))
+            Catch
+                MembresiaNom = ""
+            End Try
+            Dim Telefono As String = CStr(TablaCli.Rows(0).Item(3))
+            Dim Aliass As String = CStr(TablaCli.Rows(0).Item(5))
+            Dim Direccion As String = CStr(TablaCli.Rows(0).Item(6))
+            Dim AccesoCod As String
+            Try
+                AccesoCod = CStr(TablaCli.Rows(0).Item(4))
+            Catch
+                AccesoCod = ""
+            End Try
+            Dim Foto As Byte()
+            Try
+                Foto = CType(TablaCli.Rows(0).Item(9), Byte())
+            Catch
+            End Try
+            Dim FechaNac As String = CStr(TablaCli.Rows(0).Item(11))
+            Dim Conocio As String = CStr(TablaCli.Rows(0).Item(12))
+            Dim Saldo As Integer = CInt(TablaCli.Rows(0).Item(13))
+            Dim Estado As String = CStr(TablaCli.Rows(0).Item(14))
+            Dim Frm As New FSocioFicha(CI, Nombre, Telefono, Direccion, Aliass, Foto, FechaNac, Conocio, AccesoCod, Saldo)
+            Frm.ShowDialog()
         End If
     End Sub
 
@@ -182,8 +244,8 @@ Public Class FListaMembresiaContrato
                 Condicion = "WHERE periodo_inicio >= '" + Fecha1 + "' and periodo_inicio <= '" + Fecha2 + "'"
         End Select
 
-        If CIValue IsNot Nothing Then
-            Condicion += " AND CI = '" + CIValue + "'"
+        If SocioParam IsNot Nothing Then
+            Condicion += " AND (CI LIKE '%" + SocioParam + "%' OR NombreCliente LIKE '%" + SocioParam + "%')"
         End If
 
         TablaContratos = ContratoMembresia.BuscViewMembresia(Condicion)
@@ -194,14 +256,14 @@ Public Class FListaMembresiaContrato
 
     Private Sub VerTodos()
         Dim Condicion As String = ""
-        If CIValue IsNot Nothing Then
-            Condicion = "WHERE CI = '" + CIValue + "'"
+        If SocioParam IsNot Nothing Then
+            Condicion += " WHERE CI LIKE '%" + SocioParam + "%' OR NombreCliente LIKE '%" + SocioParam + "%'"
         End If
         TablaContratos = ContratoMembresia.BuscViewMembresia(Condicion)
         CargarTabla(TablaContratos)
     End Sub
 
-    Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+    Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvMembresia.CellContentClick
         Try
             If e.ColumnIndex = 5 Then
                 Cursor.Current = Cursors.WaitCursor
@@ -247,26 +309,45 @@ Public Class FListaMembresiaContrato
     End Sub
 
     Private Sub pbxDelCli_Click(sender As Object, e As EventArgs) Handles pbxDelCli.Click
-        CIValue = Nothing
+        SocioParam = Nothing
         txtCI.Text = ""
     End Sub
 
     Public Sub ModoVista(ByVal CI As String, ByVal Nombre As String)
-        CIValue = CI
+        SocioParam = CI
         pbxBuscCli.Visible = False
         pbxDelCli.Visible = False
         txtCI.Text = Nombre
     End Sub
 
     Private Sub txtCI_TextChanged(sender As Object, e As EventArgs) Handles txtCI.TextChanged
-        Select Case cmbFiltrarPor.SelectedIndex
-            Case Is = 0, 2 'Dia, Fecha
-                dtpDesdeHasta_ValueChanged(Nothing, Nothing)
-            Case Is = 1     'Mes
-                cmbMes_SelectedIndexChanged(Nothing, Nothing)
-            Case Is = 4     'Todos
-                VerTodos()
-        End Select
+        'Select Case cmbFiltrarPor.SelectedIndex
+        'Case Is = 0, 2 'Dia, Fecha
+        'dtpDesdeHasta_ValueChanged(Nothing, Nothing)
+        'Case Is = 1     'Mes
+        'cmbMes_SelectedIndexChanged(Nothing, Nothing)
+        'Case Is = 4     'Todos
+        'VerTodos()
+        'End Select
     End Sub
 
+    Private Sub txtCI_KeyDown(sender As Object, e As KeyEventArgs) Handles txtCI.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            BuscarPorSocio()
+        End If
+    End Sub
+
+    Private Sub BuscarPorSocio()
+        SocioParam = txtCI.Text
+        If SocioParam <> "" Then
+            Select Case cmbFiltrarPor.SelectedIndex
+                Case Is = 0, 2 'Dia, Fecha
+                    dtpDesdeHasta_ValueChanged(Nothing, Nothing)
+                Case Is = 1     'Mes
+                    cmbMes_SelectedIndexChanged(Nothing, Nothing)
+                Case Is = 4     'Todos
+                    VerTodos()
+            End Select
+        End If
+    End Sub
 End Class

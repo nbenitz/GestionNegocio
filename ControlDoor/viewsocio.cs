@@ -25,5 +25,8 @@ namespace ControlDoor
         public byte[] Foto { get; set; }
         public Nullable<sbyte> Activo { get; set; }
         public Nullable<System.DateTime> Fecha_Nacimiento { get; set; }
+        public double Saldo { get; set; }
+        public string estado { get; set; }
+        public string como_conocio { get; set; }
     }
 }

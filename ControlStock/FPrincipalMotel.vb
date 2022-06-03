@@ -358,7 +358,7 @@ Public Class FPrincipalMotel
     End Sub
 
     Private Sub AgregarNuevoNivelDePrivilegiosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AgregarNuevoNivelDePrivilegiosToolStripMenuItem.Click
-        AbrirVentana(FNuevoPrivilegio)
+        AbrirVentana(FNuevoPrivilegioGym)
     End Sub
 
     Private Sub ConsultarNivelDePrivilegiosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsultarNivelDePrivilegiosToolStripMenuItem.Click

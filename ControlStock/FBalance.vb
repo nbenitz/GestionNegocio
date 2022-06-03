@@ -1,61 +1,69 @@
 ﻿Option Strict On
 Public Class FBalance
-    Dim Venta As New CVenta
-    Dim Compra As New CCompra
+    Dim oVenta As New CVenta
+    Dim oMembresia As New CMembresia
+    Dim oCompra As New CCompra
 
     Private Sub F_Deactivate(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Deactivate
         'Me.WindowState = FormWindowState.Minimized
     End Sub
 
     Private Sub CargarIngreso(ByVal Fecha1 As String, ByVal Fecha2 As String)
-        DataGridView1.Rows.Clear()
+        dgvIngreso.Rows.Clear()
         txtTotalI.Text = "0"
-        Dim Tabla As DataTable
-        Tabla = Venta.BuscViewVenta(Fecha1, Fecha2)
-        CargarTablaI(Tabla, "Ventas al Contado")
-        Tabla = Venta.BuscRecibo2(Fecha1, Fecha2)
-        CargarTablaI(Tabla, "Abono de Clientes")
-        Tabla = Venta.BuscNota(Fecha1, Fecha2)
-        CargarTablaI(Tabla, "Devoluciones")
+        'Dim Tabla As DataTable
+        'Tabla = oVenta.BuscViewVenta(Fecha1, Fecha2)
+        'CargarTablaI(Tabla, "Ventas al Contado")
+        'Tabla = oVenta.BuscRecibo2(Fecha1, Fecha2)
+        'CargarTablaI(Tabla, "Abono de Clientes sobre ventas")
+        'Tabla = oVenta.BuscNota(Fecha1, Fecha2)
+        'CargarTablaI(Tabla, "Devoluciones")
+        'Tabla = oMembresia.BuscViewMembresia(Fecha1, Fecha2)
+        'CargarTablaI(Tabla, "Membresía")
+
+        Dim Tabla As DataTable = oVenta.BuscViewIngreso(Fecha1, Fecha2)
+        CargarTablaI(Tabla)
     End Sub
 
     Private Sub CargarIngreso(ByVal Año As String)
-        DataGridView1.Rows.Clear()
+        dgvIngreso.Rows.Clear()
         txtTotalI.Text = "0"
         Dim Tabla As DataTable
-        Tabla = Venta.BuscIngreso("zventasxmes", Año)
+        Tabla = oVenta.BuscIngreso("zventasxmes", Año)
         CargarTablaI2(Tabla, "Ventas al Contado")
-        Tabla = Venta.BuscIngreso("zrecibocobroxmes", Año)
+        Tabla = oVenta.BuscIngreso("zrecibocobroxmes", Año)
         CargarTablaI2(Tabla, "Abono de Clientes")
-        Tabla = Venta.BuscIngreso("znotavxmes", Año)
+        Tabla = oVenta.BuscIngreso("znotavxmes", Año)
         CargarTablaI2(Tabla, "Devoluciones")
+        Tabla = oVenta.BuscIngreso("zmembresiasxmes", Año)
+        CargarTablaI2(Tabla, "Pagos de Membresía")
     End Sub
 
     Private Sub CargarEgreso(ByVal Fecha1 As String, ByVal Fecha2 As String)
-        DataGridView2.Rows.Clear()
+        dgvEgreso.Rows.Clear()
         txtTotalE.Text = "0"
         Dim Tabla As DataTable
-        Tabla = Compra.BuscViewCompra(Fecha1, Fecha2)
+        Tabla = oCompra.BuscViewCompra(Fecha1, Fecha2)
         CargarTablaE(Tabla, "Compras al Contado")
-        Tabla = Compra.BuscRecibo2(Fecha1, Fecha2)
+        Tabla = oCompra.BuscRecibo2(Fecha1, Fecha2)
         CargarTablaE(Tabla, "Abono a Proveedores")
-        Tabla = Compra.BuscNota(Fecha1, Fecha2)
+        Tabla = oCompra.BuscNota(Fecha1, Fecha2)
         CargarTablaE(Tabla, "Devoluciones")
-        Tabla = Compra.BuscGasto(Fecha1, Fecha2)
+        Tabla = oCompra.BuscGasto(Fecha1, Fecha2)
         CargarTablaE(Tabla, "Gastos Generales")
     End Sub
 
     Private Sub CargarEgreso(ByVal Año As String)
-        DataGridView2.Rows.Clear()
+        dgvEgreso.Rows.Clear()
         txtTotalE.Text = "0"
         Dim Tabla As DataTable
-        Tabla = Compra.BuscEgreso("zcomprasxmes", Año)
+        Tabla = oCompra.BuscEgreso("zcomprasxmes", Año)
         CargarTablaE2(Tabla, "Compras al Contado")
-        Tabla = Compra.BuscEgreso("zrecibopagoxmes", Año)
+        Tabla = oCompra.BuscEgreso("zrecibopagoxmes", Año)
         CargarTablaE2(Tabla, "Abono a Proveedores")
-        Tabla = Compra.BuscEgreso("znotacxmes", Año)
+        Tabla = oCompra.BuscEgreso("znotacxmes", Año)
         CargarTablaE2(Tabla, "Devoluciones")
-        Tabla = Compra.BuscEgreso("zgastoxmes", Año)
+        Tabla = oCompra.BuscEgreso("zgastoxmes", Año)
         CargarTablaE2(Tabla, "Gastos Generales")
     End Sub
 
@@ -69,7 +77,25 @@ Public Class FBalance
                 If Concepto = "Devoluciones" Then
                     Ingreso = -Ingreso
                 End If
-                DataGridView1.Rows.Add(Fecha, Concepto, Ingreso)
+                dgvIngreso.Rows.Add(Fecha, Concepto, Ingreso)
+                SumaTotal = SumaTotal + Ingreso
+            Next
+        End If
+        txtTotalI.Text = Format(SumaTotal, "###,##0")
+    End Sub
+
+    Private Sub CargarTablaI(ByVal Tabla As DataTable)
+        Dim Filas As Integer = Tabla.Rows.Count
+        Dim SumaTotal As Integer = CInt(txtTotalI.Text)
+        If Filas > 0 Then
+            For i As Integer = 0 To (Filas - 1)
+                Dim Fecha As String = Format(CDate(Tabla.Rows(i).Item(0)), "dd MMM yyyy")
+                Dim Ingreso As Integer = CInt(Tabla.Rows(i).Item(1))
+                Dim Concepto As String = CStr(Tabla.Rows(i).Item(2))
+                If Concepto = "Devoluciones" Then
+                    Ingreso = -Ingreso
+                End If
+                dgvIngreso.Rows.Add(Fecha, Concepto, Ingreso)
                 SumaTotal = SumaTotal + Ingreso
             Next
         End If
@@ -86,7 +112,7 @@ Public Class FBalance
                 If Concepto = "Devoluciones" Then
                     Egreso = -Egreso
                 End If
-                DataGridView2.Rows.Add(Fecha, Concepto, Egreso)
+                dgvEgreso.Rows.Add(Fecha, Concepto, Egreso)
                 SumaTotal = SumaTotal + Egreso
             Next
         End If
@@ -103,7 +129,7 @@ Public Class FBalance
                 If Concepto = "Devoluciones" Then
                     Ingreso = -Ingreso
                 End If
-                DataGridView1.Rows.Add(Fecha, Concepto, Ingreso)
+                dgvIngreso.Rows.Add(Fecha, Concepto, Ingreso)
                 SumaTotal = SumaTotal + Ingreso
             Next
         End If
@@ -120,7 +146,7 @@ Public Class FBalance
                 If Concepto = "Devoluciones" Then
                     Egreso = -Egreso
                 End If
-                DataGridView2.Rows.Add(Fecha, Concepto, Egreso)
+                dgvEgreso.Rows.Add(Fecha, Concepto, Egreso)
                 SumaTotal = SumaTotal + Egreso
             Next
         End If
@@ -144,7 +170,7 @@ Public Class FBalance
     Private Sub ListarAño()
         lblMes.Visible = False
         cmbMes.Visible = False
-        cmbAnho.Text = CStr(Now.Year)
+        cmbAnho.Text = ""
     End Sub
 
     Private Sub FBalance_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load

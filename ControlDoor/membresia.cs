@@ -24,6 +24,10 @@ namespace ControlDoor
         public string nombre { get; set; }
         public string descripcion { get; set; }
         public int costo { get; set; }
+        public string modo_pago { get; set; }
+        public int tiempo_limite { get; set; }
+        public string tiempo_unidad { get; set; }
+        public int activo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cliente_membresia> cliente_membresia { get; set; }

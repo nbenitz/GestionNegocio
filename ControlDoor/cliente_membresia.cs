@@ -26,6 +26,7 @@ namespace ControlDoor
         public System.DateTime fecha_inicio { get; set; }
         public int precio { get; set; }
         public int descuento { get; set; }
+        public System.DateTime fecha_fin { get; set; }
     
         public virtual cliente cliente { get; set; }
         public virtual membresia membresia { get; set; }

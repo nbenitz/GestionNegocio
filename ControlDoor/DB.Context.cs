@@ -33,7 +33,6 @@ namespace ControlDoor
         public virtual DbSet<altaprodmotivo> altaprodmotivo { get; set; }
         public virtual DbSet<bajaprod> bajaprod { get; set; }
         public virtual DbSet<bajaprodmotivo> bajaprodmotivo { get; set; }
-        public virtual DbSet<base_user_extend> base_user_extend { get; set; }
         public virtual DbSet<cajamostrador> cajamostrador { get; set; }
         public virtual DbSet<categoria_prod> categoria_prod { get; set; }
         public virtual DbSet<cliente> cliente { get; set; }
@@ -77,7 +76,6 @@ namespace ControlDoor
         public virtual DbSet<view_asistencia> view_asistencia { get; set; }
         public virtual DbSet<view_cuentas_cobrar> view_cuentas_cobrar { get; set; }
         public virtual DbSet<view_pago_membresia> view_pago_membresia { get; set; }
-        public virtual DbSet<view_pago_membresia_periodo> view_pago_membresia_periodo { get; set; }
         public virtual DbSet<viewaltaprod> viewaltaprod { get; set; }
         public virtual DbSet<viewbajaprod> viewbajaprod { get; set; }
         public virtual DbSet<viewcajamostrador> viewcajamostrador { get; set; }
@@ -93,7 +91,6 @@ namespace ControlDoor
         public virtual DbSet<viewnotacventa> viewnotacventa { get; set; }
         public virtual DbSet<viewproducto> viewproducto { get; set; }
         public virtual DbSet<viewsocio> viewsocio { get; set; }
-        public virtual DbSet<viewsocio2> viewsocio2 { get; set; }
         public virtual DbSet<viewusuario> viewusuario { get; set; }
         public virtual DbSet<viewventa> viewventa { get; set; }
         public virtual DbSet<view_finger_print> view_finger_print { get; set; }
@@ -514,7 +511,7 @@ namespace ControlDoor
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("zprivilegio_delete", idPrivParameter);
         }
     
-        public virtual int zprivilegio_insert(string rol_, Nullable<bool> prodConsult_, Nullable<bool> prodReg_, Nullable<bool> prodActualiz_, Nullable<bool> prodEliminar_, Nullable<bool> ventasConsult_, Nullable<bool> ventasReg_, Nullable<bool> comprasConsult_, Nullable<bool> comprasReg_, Nullable<bool> provConsult_, Nullable<bool> provReg_, Nullable<bool> provActualiz_, Nullable<bool> provEliminar_, Nullable<bool> empleAdmin_, Nullable<bool> usuAdmin_, Nullable<bool> finanzasAdmin_, Nullable<bool> habAdmin_, Nullable<bool> cuentasAdmin_, Nullable<bool> devolAutoriCli_, Nullable<bool> devolAutoriProv_)
+        public virtual int zprivilegio_insert(string rol_, Nullable<bool> prodConsult_, Nullable<bool> prodReg_, Nullable<bool> prodActualiz_, Nullable<bool> prodEliminar_, Nullable<bool> ventasConsult_, Nullable<bool> ventasReg_, Nullable<bool> comprasConsult_, Nullable<bool> comprasReg_, Nullable<bool> provConsult_, Nullable<bool> provReg_, Nullable<bool> provActualiz_, Nullable<bool> provEliminar_, Nullable<bool> empleAdmin_, Nullable<bool> usuAdmin_, Nullable<bool> finanzasAdmin_, Nullable<bool> habAdmin_, Nullable<bool> cuentasAdmin_, Nullable<bool> devolAutoriCli_, Nullable<bool> devolAutoriProv_, Nullable<bool> membresiaAdmin_, Nullable<bool> accesoAdmin_)
         {
             var rol_Parameter = rol_ != null ?
                 new ObjectParameter("Rol_", rol_) :
@@ -596,7 +593,15 @@ namespace ControlDoor
                 new ObjectParameter("DevolAutoriProv_", devolAutoriProv_) :
                 new ObjectParameter("DevolAutoriProv_", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("zprivilegio_insert", rol_Parameter, prodConsult_Parameter, prodReg_Parameter, prodActualiz_Parameter, prodEliminar_Parameter, ventasConsult_Parameter, ventasReg_Parameter, comprasConsult_Parameter, comprasReg_Parameter, provConsult_Parameter, provReg_Parameter, provActualiz_Parameter, provEliminar_Parameter, empleAdmin_Parameter, usuAdmin_Parameter, finanzasAdmin_Parameter, habAdmin_Parameter, cuentasAdmin_Parameter, devolAutoriCli_Parameter, devolAutoriProv_Parameter);
+            var membresiaAdmin_Parameter = membresiaAdmin_.HasValue ?
+                new ObjectParameter("MembresiaAdmin_", membresiaAdmin_) :
+                new ObjectParameter("MembresiaAdmin_", typeof(bool));
+    
+            var accesoAdmin_Parameter = accesoAdmin_.HasValue ?
+                new ObjectParameter("AccesoAdmin_", accesoAdmin_) :
+                new ObjectParameter("AccesoAdmin_", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("zprivilegio_insert", rol_Parameter, prodConsult_Parameter, prodReg_Parameter, prodActualiz_Parameter, prodEliminar_Parameter, ventasConsult_Parameter, ventasReg_Parameter, comprasConsult_Parameter, comprasReg_Parameter, provConsult_Parameter, provReg_Parameter, provActualiz_Parameter, provEliminar_Parameter, empleAdmin_Parameter, usuAdmin_Parameter, finanzasAdmin_Parameter, habAdmin_Parameter, cuentasAdmin_Parameter, devolAutoriCli_Parameter, devolAutoriProv_Parameter, membresiaAdmin_Parameter, accesoAdmin_Parameter);
         }
     
         public virtual ObjectResult<zprivilegio_listar_Result> zprivilegio_listar()
@@ -604,7 +609,7 @@ namespace ControlDoor
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<zprivilegio_listar_Result>("zprivilegio_listar");
         }
     
-        public virtual int zprivilegio_update(string rol_, Nullable<bool> prodConsult_, Nullable<bool> prodReg_, Nullable<bool> prodActualiz_, Nullable<bool> prodEliminar_, Nullable<bool> ventasConsult_, Nullable<bool> ventasReg_, Nullable<bool> comprasConsult_, Nullable<bool> comprasReg_, Nullable<bool> provConsult_, Nullable<bool> provReg_, Nullable<bool> provActualiz_, Nullable<bool> provEliminar_, Nullable<bool> empleAdmin_, Nullable<bool> usuAdmin_, Nullable<bool> finanzasAdmin_, Nullable<bool> habAdmin_, Nullable<bool> cuentasAdmin_, Nullable<bool> devolAutoriCli_, Nullable<bool> devolAutoriProv_, Nullable<int> idPrivilegio_)
+        public virtual int zprivilegio_update(string rol_, Nullable<bool> prodConsult_, Nullable<bool> prodReg_, Nullable<bool> prodActualiz_, Nullable<bool> prodEliminar_, Nullable<bool> ventasConsult_, Nullable<bool> ventasReg_, Nullable<bool> comprasConsult_, Nullable<bool> comprasReg_, Nullable<bool> provConsult_, Nullable<bool> provReg_, Nullable<bool> provActualiz_, Nullable<bool> provEliminar_, Nullable<bool> empleAdmin_, Nullable<bool> usuAdmin_, Nullable<bool> finanzasAdmin_, Nullable<bool> habAdmin_, Nullable<bool> cuentasAdmin_, Nullable<bool> devolAutoriCli_, Nullable<bool> devolAutoriProv_, Nullable<bool> membresiaAdmin_, Nullable<bool> accesoAdmin_, Nullable<int> idPrivilegio_)
         {
             var rol_Parameter = rol_ != null ?
                 new ObjectParameter("Rol_", rol_) :
@@ -686,14 +691,22 @@ namespace ControlDoor
                 new ObjectParameter("DevolAutoriProv_", devolAutoriProv_) :
                 new ObjectParameter("DevolAutoriProv_", typeof(bool));
     
+            var membresiaAdmin_Parameter = membresiaAdmin_.HasValue ?
+                new ObjectParameter("MembresiaAdmin_", membresiaAdmin_) :
+                new ObjectParameter("MembresiaAdmin_", typeof(bool));
+    
+            var accesoAdmin_Parameter = accesoAdmin_.HasValue ?
+                new ObjectParameter("AccesoAdmin_", accesoAdmin_) :
+                new ObjectParameter("AccesoAdmin_", typeof(bool));
+    
             var idPrivilegio_Parameter = idPrivilegio_.HasValue ?
                 new ObjectParameter("idPrivilegio_", idPrivilegio_) :
                 new ObjectParameter("idPrivilegio_", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("zprivilegio_update", rol_Parameter, prodConsult_Parameter, prodReg_Parameter, prodActualiz_Parameter, prodEliminar_Parameter, ventasConsult_Parameter, ventasReg_Parameter, comprasConsult_Parameter, comprasReg_Parameter, provConsult_Parameter, provReg_Parameter, provActualiz_Parameter, provEliminar_Parameter, empleAdmin_Parameter, usuAdmin_Parameter, finanzasAdmin_Parameter, habAdmin_Parameter, cuentasAdmin_Parameter, devolAutoriCli_Parameter, devolAutoriProv_Parameter, idPrivilegio_Parameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("zprivilegio_update", rol_Parameter, prodConsult_Parameter, prodReg_Parameter, prodActualiz_Parameter, prodEliminar_Parameter, ventasConsult_Parameter, ventasReg_Parameter, comprasConsult_Parameter, comprasReg_Parameter, provConsult_Parameter, provReg_Parameter, provActualiz_Parameter, provEliminar_Parameter, empleAdmin_Parameter, usuAdmin_Parameter, finanzasAdmin_Parameter, habAdmin_Parameter, cuentasAdmin_Parameter, devolAutoriCli_Parameter, devolAutoriProv_Parameter, membresiaAdmin_Parameter, accesoAdmin_Parameter, idPrivilegio_Parameter);
         }
     
-        public virtual int zproducto_insert(string idprod, string idprov, Nullable<int> idcateg, string descrip, Nullable<int> costo, Nullable<int> precio1, Nullable<int> precio2, Nullable<int> precio3, Nullable<int> preciopack, Nullable<double> stock, Nullable<double> unidxpack, string porpack, byte[] foto, Nullable<sbyte> iva, Nullable<double> lado1, Nullable<double> lado2, Nullable<double> mxcaja)
+        public virtual int zproducto_insert(string idprod, string idprov, Nullable<int> idcateg, string descrip, Nullable<int> costo, Nullable<int> precio1, Nullable<int> precio2, Nullable<int> precio3, Nullable<int> preciopack, Nullable<double> stock, Nullable<double> unidxpack, string porpack, byte[] foto, Nullable<sbyte> iva, Nullable<double> lado1, Nullable<double> lado2, Nullable<double> mxcaja, Nullable<int> favorito)
         {
             var idprodParameter = idprod != null ?
                 new ObjectParameter("idprod", idprod) :
@@ -763,10 +776,14 @@ namespace ControlDoor
                 new ObjectParameter("mxcaja", mxcaja) :
                 new ObjectParameter("mxcaja", typeof(double));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("zproducto_insert", idprodParameter, idprovParameter, idcategParameter, descripParameter, costoParameter, precio1Parameter, precio2Parameter, precio3Parameter, preciopackParameter, stockParameter, unidxpackParameter, porpackParameter, fotoParameter, ivaParameter, lado1Parameter, lado2Parameter, mxcajaParameter);
+            var favoritoParameter = favorito.HasValue ?
+                new ObjectParameter("favorito", favorito) :
+                new ObjectParameter("favorito", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("zproducto_insert", idprodParameter, idprovParameter, idcategParameter, descripParameter, costoParameter, precio1Parameter, precio2Parameter, precio3Parameter, preciopackParameter, stockParameter, unidxpackParameter, porpackParameter, fotoParameter, ivaParameter, lado1Parameter, lado2Parameter, mxcajaParameter, favoritoParameter);
         }
     
-        public virtual int zproducto_update(string idprod, string idprov, Nullable<int> idcateg, string descrip, Nullable<int> cost, Nullable<int> prec1, Nullable<int> prec2, Nullable<int> prec3, Nullable<int> precPack, Nullable<double> cantunit, Nullable<double> unidxpak, string porpak, byte[] foti, string oldidProd, Nullable<sbyte> iva_, Nullable<double> lado1_, Nullable<double> lado2_, Nullable<double> mxcaja_)
+        public virtual int zproducto_update(string idprod, string idprov, Nullable<int> idcateg, string descrip, Nullable<int> cost, Nullable<int> prec1, Nullable<int> prec2, Nullable<int> prec3, Nullable<int> precPack, Nullable<double> cantunit, Nullable<double> unidxpak, string porpak, byte[] foti, string oldidProd, Nullable<sbyte> iva_, Nullable<double> lado1_, Nullable<double> lado2_, Nullable<double> mxcaja_, Nullable<int> favorito_)
         {
             var idprodParameter = idprod != null ?
                 new ObjectParameter("idprod", idprod) :
@@ -840,7 +857,11 @@ namespace ControlDoor
                 new ObjectParameter("mxcaja_", mxcaja_) :
                 new ObjectParameter("mxcaja_", typeof(double));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("zproducto_update", idprodParameter, idprovParameter, idcategParameter, descripParameter, costParameter, prec1Parameter, prec2Parameter, prec3Parameter, precPackParameter, cantunitParameter, unidxpakParameter, porpakParameter, fotiParameter, oldidProdParameter, iva_Parameter, lado1_Parameter, lado2_Parameter, mxcaja_Parameter);
+            var favorito_Parameter = favorito_.HasValue ?
+                new ObjectParameter("favorito_", favorito_) :
+                new ObjectParameter("favorito_", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("zproducto_update", idprodParameter, idprovParameter, idcategParameter, descripParameter, costParameter, prec1Parameter, prec2Parameter, prec3Parameter, precPackParameter, cantunitParameter, unidxpakParameter, porpakParameter, fotiParameter, oldidProdParameter, iva_Parameter, lado1_Parameter, lado2_Parameter, mxcaja_Parameter, favorito_Parameter);
         }
     
         public virtual ObjectResult<zrecibocobroxmes_Result> zrecibocobroxmes(Nullable<int> anho)

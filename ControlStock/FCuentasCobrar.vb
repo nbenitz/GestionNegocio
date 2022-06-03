@@ -84,7 +84,7 @@ Public Class FCuentasCobrar
                 DataGridView1.Rows.Add(idVenta, Fecha, Cliente, Concepto, Vto, Total, Entregado, Saldo)
                 SumaTotal += Saldo
             Next
-            txtSumaTotal.Text = CStr(SumaTotal)
+            txtSumaTotal.Text = String.Format("{0:N0}", SumaTotal)
         End If
     End Sub
 
@@ -122,13 +122,19 @@ Public Class FCuentasCobrar
 
     Private Sub CargarRecibo(ByVal TablaAux As DataTable, ByVal Row As Integer)
         Dim id As String = CStr(TablaAux.Rows(Row).Item(0))
-        Dim Total As String = CStr(TablaAux.Rows(Row).Item(6))
-        Dim Entregado As String = CStr(TablaAux.Rows(Row).Item(7))
+        Dim Total As Integer = CInt(TablaAux.Rows(Row).Item(6))
+        Dim Entregado As Integer = CInt(TablaAux.Rows(Row).Item(7))
         Dim Fecha As String = Format(TablaAux.Rows(Row).Item(1), "dd/MM/yyyy")
         Dim Vto As String = Format(TablaAux.Rows(Row).Item(5), "dd/MM/yyyy")
         Dim Cliente As String = CStr(TablaAux.Rows(Row).Item(3))
-        Dim Saldo As String = CStr(CInt(Total) - CInt(Entregado))
-        Encabezado(id, Fecha, Cliente, Vto, Total, Entregado, Saldo)
+        Dim Saldo As Integer = CInt(Total - Entregado)
+        Encabezado(id,
+                   Fecha,
+                   Cliente,
+                   Vto,
+                   Total,
+                   Entregado,
+                   Saldo)
 
         Dim Concepto As String = CStr(TablaAux.Rows(Row).Item(4))
         If Concepto = "Venta de Productos" Then
@@ -143,8 +149,8 @@ Public Class FCuentasCobrar
             Detalle.Rows.Add(id,
                              "Cuota Membresía ",
                              Fecha + " - " + Vto,
-                             Total,
-                             Total)
+                             String.Format("{0:N0}", Total),
+                             String.Format("{0:N0}", Total))
         End If
     End Sub
 
@@ -209,8 +215,8 @@ Public Class FCuentasCobrar
                         Exit Sub
                     End If
                 End If
-                txtEntregado.Text = CStr(Entregado + Entrega)
-                txtSaldo.Text = CStr(CInt(txtTotal.Text) - CInt(txtEntregado.Text))
+                txtEntregado.Text = String.Format("{0:N0}", Entregado + Entrega)
+                txtSaldo.Text = String.Format("{0:N0}", CInt(txtTotal.Text) - CInt(txtEntregado.Text))
                 MessageBox.Show(Me, "Entrega Realizada")
                 If Not ModoPagar Then
                     TablaVenta = Venta.BuscViewCuentas("")
@@ -245,7 +251,7 @@ Public Class FCuentasCobrar
                 Exit Sub
             End If
         End If
-        txtEntregado.Text = txtTotal.Text
+        txtEntregado.Text = String.Format("{0:N0}", CInt(txtTotal.Text))
         txtSaldo.Text = "0"
         MessageBox.Show(Me, "Cuenta Cancelada")
         If Not ModoPagar Then
@@ -268,16 +274,16 @@ Public Class FCuentasCobrar
                           ByVal Fecha As String,
                           ByVal Cliente As String,
                           ByVal Vto As String,
-                          ByVal Total As String,
-                          ByVal Entregado As String,
-                          ByVal Saldo As String)
+                          ByVal Total As Integer,
+                          ByVal Entregado As Integer,
+                          ByVal Saldo As Integer)
         txtNro.Text = NroCuentaCobrar
         txtFecha.Text = Fecha
         txtCliente.Text = Cliente
         txtVto.Text = Vto
-        txtTotal.Text = Total
-        txtEntregado.Text = Entregado
-        txtSaldo.Text = Saldo
+        txtTotal.Text = String.Format("{0:N0}", Total)
+        txtEntregado.Text = String.Format("{0:N0}", Entregado)
+        txtSaldo.Text = String.Format("{0:N0}", Saldo)
         Detalle.Rows.Clear()
     End Sub
 
@@ -292,7 +298,11 @@ Public Class FCuentasCobrar
                 Dim Cant As Double = CDbl(Tabla.Rows(i).Item(3))
                 Dim Precio As Integer = CInt(Tabla.Rows(i).Item(5))
                 Dim Importe As Integer = CInt(Tabla.Rows(i).Item(6))
-                Detalle.Rows.Add(idProd, Descrip, Cant, Precio, Importe)
+                Detalle.Rows.Add(idProd,
+                                 Descrip,
+                                 Cant,
+                                 String.Format("{0:N0}", Precio),
+                                 String.Format("{0:N0}", Importe))
                 'If Cant > CantAnt Then
                 'CantAnt = Cant 'Obtener la cantidad mayor de la tabla
                 'End If

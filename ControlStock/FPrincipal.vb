@@ -1,6 +1,7 @@
 ﻿Option Strict On
 Option Explicit On
 
+Imports System.Drawing.Imaging
 Imports System.Runtime.InteropServices
 
 Public Class FPrincipal
@@ -45,7 +46,9 @@ Public Class FPrincipal
                            ByVal HabAdmin As Boolean,
                            ByVal CuentasAdmin As Boolean,
                            ByVal DevolAutoriCli As Boolean,
-                           ByVal DevolAutoriProv As Boolean)
+                           ByVal DevolAutoriProv As Boolean,
+                           ByVal MembresiaAdmin As Boolean,
+                           ByVal AccesoAdmin As Boolean)
 
         ProdEditValue = ProdEdit
         ProvEditValue = ProvEdit
@@ -81,10 +84,18 @@ Public Class FPrincipal
         RecibosDeDinero.Visible = CuentasAdmin
         PagosRealizadosToolStripMenuItem.Visible = CuentasAdmin
         mnuCategoria.Visible = ProdEdit
+        mnuMembresia.Visible = MembresiaAdmin
+        mnuAcceso.Visible = AccesoAdmin
     End Sub
 
     Private Sub FrmPrincipal_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         LoadEventoAcceso()
+
+        'pbxLogo.Location = New Point(CInt((pnlPrincipal.Width - pbxLogo.Width) / 2),
+        'CInt((pnlPrincipal.Height - pbxLogo.Height) / 2))
+
+        'pbxLogo.Image.Dispose()
+        'pbxLogo.Image = ChangeOpacity(My.Resources.Logo, 0.3)
 
         Dim ctl As Control
         Dim ctlMDI As MdiClient
@@ -116,7 +127,7 @@ Public Class FPrincipal
         pnlEvento.Tag = FrmEventoAcceso
         FrmEventoAcceso.Show()
         'frm.BringToFront()
-        FrmEventoAcceso.init()
+        'FrmEventoAcceso.init()
     End Sub
 
     Private Sub BtnBusqueda_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles ConsultaProd.Click, lblProd.Click, pbxProd.Click, pnlProd.Click
@@ -273,7 +284,7 @@ Public Class FPrincipal
     Private Sub HistorialDeCajaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HistorialDeCajaToolStripMenuItem.Click
         Dim Frm As New FListaCajas
         Frm.CIEmpleado = CI
-        'AbrirFormEnPanel( Frm)
+        AbrirFormEnPanel(Frm)
     End Sub
 
     Private Sub AbrirFormEnPanel(ByVal FrmNuevo As Form)
@@ -320,10 +331,6 @@ Public Class FPrincipal
         End
     End Sub
 
-    Private Sub BtnMinimizar_Click(ByVal sender As System.Object, ByVal e As EventArgs)
-        WindowState = FormWindowState.Minimized
-    End Sub
-
     Private Sub Panel_MouseLeave(ByVal sender As Object, ByVal e As System.EventArgs) Handles pnlProd.MouseLeave, pnlCompra.MouseLeave, pnlCerradura.MouseLeave
         Dim Pnl As Panel = CType(sender, Panel)
         Pnl.BackColor = ColorOscuro
@@ -357,7 +364,7 @@ Public Class FPrincipal
 
 
     Private Sub TmrFecha_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TmrFecha.Tick
-        'lblDateTime.Text = Format(Now, "dd/MM/yyyy  -  HH:mm:ss")
+        lblHora.Text = Format(Now, "dd/MM/yyyy  -  HH:mm")
     End Sub
 
     Private Sub RecibosDeDinero_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RecibosDeDinero.Click
@@ -377,8 +384,15 @@ Public Class FPrincipal
     End Sub
 
     Private Sub NuevoClienteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles mnuNuevoCliente.Click
-        Dim Frm As New FNuevoSocio
-        AbrirFormEnPanel(Frm)
+        If Caja.CajaAbierta(NumCaja) Then
+            Dim Frm As New FNuevoSocio
+            AbrirFormEnPanel(Frm)
+        Else
+            MessageBox.Show("Debe abrir la Caja para poder cobrar una membresía a un socio")
+            Dim Frm As New FCajaMostrador
+            Frm.CIEmpleado = CI
+            Frm.ShowDialog()
+        End If
     End Sub
 
     Private Sub BalanceToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BalanceToolStripMenuItem.Click
@@ -388,7 +402,7 @@ Public Class FPrincipal
     Private Sub NuevoUsuarioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NuevoUsu.Click
         Dim frm As New FListaEmple
         frm.ModoNuevoUsu = True
-        'AbrirFormEnPanel( frm)
+        AbrirFormEnPanel(frm)
     End Sub
 
     Private Sub ListaDeUsuariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsultarUsu.Click
@@ -396,7 +410,7 @@ Public Class FPrincipal
     End Sub
 
     Private Sub AgregarNuevoNivelDePrivilegiosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AgregarNuevoNivelDePrivilegiosToolStripMenuItem.Click
-        AbrirFormEnPanel(FNuevoPrivilegio)
+        AbrirFormEnPanel(FNuevoPrivilegioGym)
     End Sub
 
     Private Sub ConsultarNivelDePrivilegiosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsultarNivelDePrivilegiosToolStripMenuItem.Click
@@ -431,14 +445,6 @@ Public Class FPrincipal
 
     Private Sub CategoríasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles mnuCategoria.Click
         AbrirFormEnPanel(FListaCategoriaProd)
-    End Sub
-
-    Private Sub MembresíasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles mnuMembresias.Click
-        AbrirFormEnPanel(FListaMembresia)
-    End Sub
-
-    Private Sub NuevaMembresíaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles mnuNuevoMembresia.Click
-        AbrirFormEnPanel(FNuevoMembresia)
     End Sub
 
     Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
@@ -476,17 +482,49 @@ Public Class FPrincipal
         AbrirFormEnPanel(Frm)
     End Sub
 
-    Private Sub mnuCuentas_Click(sender As Object, e As EventArgs) Handles mnuCuentas.Click
-
-    End Sub
-
-    Private Sub MnuContratosMembresia_Click(sender As Object, e As EventArgs) Handles MnuContratosMembresia.Click
-        Dim Frm As New FListaMembresiaContrato
-        AbrirFormEnPanel(Frm)
-    End Sub
-
     Private Sub mnuAccesoAjustes_Click(sender As Object, e As EventArgs) Handles mnuAccesoAjustes.Click
         Dim Frm As New FAjustesAcceso
         AbrirFormEnPanel(Frm)
     End Sub
+
+    Public Shared Function ChangeOpacity(ByVal img As Image, ByVal opacityvalue As Single) As Bitmap
+        Dim bmp As New Bitmap(img.Width, img.Height)
+        Dim graphics__1 As Graphics = Graphics.FromImage(bmp)
+        Dim colormatrix As New ColorMatrix
+        colormatrix.Matrix33 = opacityvalue
+        Dim imgAttribute As New ImageAttributes
+        imgAttribute.SetColorMatrix(colormatrix, ColorMatrixFlag.[Default], ColorAdjustType.Bitmap)
+        graphics__1.DrawImage(img, New Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, img.Width, img.Height,
+         GraphicsUnit.Pixel, imgAttribute)
+        graphics__1.Dispose()
+        Return bmp
+    End Function
+
+    Private Sub BtnMinimizar_Click(sender As Object, e As EventArgs) Handles BtnMinimizar.Click
+        WindowState = FormWindowState.Minimized
+    End Sub
+
+    Private Sub ListaDeMembresíasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles mnuListaMembresia.Click
+        AbrirFormEnPanel(FListaMembresia)
+    End Sub
+
+    Private Sub NuevaMembresíaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles mnuNuevaMembresia.Click
+        AbrirFormEnPanel(FNuevoMembresia)
+    End Sub
+
+    Private Sub ContratosDeMembresíaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContratosDeMembresíaToolStripMenuItem.Click
+        Dim Frm As New FListaMembresiaContrato
+        AbrirFormEnPanel(Frm)
+    End Sub
+
+    Private Sub SociosConDeudaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SociosConDeudaToolStripMenuItem.Click
+        Dim Frm As New FCuentasCobrar
+        AbrirFormEnPanel(Frm)
+    End Sub
+
+    Private Sub AsistenciaDeSociosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles mnuAsistenciaSocio.Click
+        Dim Frm As New FAsistencia
+        AbrirFormEnPanel(Frm)
+    End Sub
+
 End Class

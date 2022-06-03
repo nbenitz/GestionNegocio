@@ -21,7 +21,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <PublishUrl>E:\Escritorio\Power Girl Club\</PublishUrl>
+    <PublishUrl>E:\Escritorio\Power Girl Club_\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -32,7 +32,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>65</ApplicationRevision>
+    <ApplicationRevision>67</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -92,7 +92,7 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\shop_cart.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\logo fitness girsl club.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
@@ -169,6 +169,7 @@
     <Reference Include="System.Drawing">
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Services">
       <Private>True</Private>
     </Reference>
@@ -455,6 +456,12 @@
     <Compile Include="FNuevoMotivo.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FNuevoPrivilegio.designer.vb">
+      <DependentUpon>FNuevoPrivilegio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FNuevoPrivilegio.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FNuevoProducto.Designer.vb">
       <DependentUpon>FNuevoProducto.vb</DependentUpon>
     </Compile>
@@ -527,10 +534,10 @@
     <Compile Include="FBajaProducto.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FNuevoPrivilegio.Designer.vb">
-      <DependentUpon>FNuevoPrivilegio.vb</DependentUpon>
+    <Compile Include="FNuevoPrivilegioGym.Designer.vb">
+      <DependentUpon>FNuevoPrivilegioGym.vb</DependentUpon>
     </Compile>
-    <Compile Include="FNuevoPrivilegio.vb">
+    <Compile Include="FNuevoPrivilegioGym.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FReporteFactura.Designer.vb">
@@ -600,6 +607,8 @@
     <Compile Include="Habitacion.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="MAcceso.vb" />
+    <Compile Include="MCaja.vb" />
     <Compile Include="MImagen.vb" />
     <Compile Include="FImprimir.Designer.vb">
       <DependentUpon>FImprimir.vb</DependentUpon>
@@ -752,6 +761,9 @@
     <EmbeddedResource Include="FNuevoMotivo.resx">
       <DependentUpon>FNuevoMotivo.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FNuevoPrivilegio.resx">
+      <DependentUpon>FNuevoPrivilegio.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FNuevoProducto.resx">
       <DependentUpon>FNuevoProducto.vb</DependentUpon>
     </EmbeddedResource>
@@ -792,8 +804,8 @@
     <EmbeddedResource Include="FBajaProducto.resx">
       <DependentUpon>FBajaProducto.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FNuevoPrivilegio.resx">
-      <DependentUpon>FNuevoPrivilegio.vb</DependentUpon>
+    <EmbeddedResource Include="FNuevoPrivilegioGym.resx">
+      <DependentUpon>FNuevoPrivilegioGym.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FReporteFactura.resx">
       <DependentUpon>FReporteFactura.vb</DependentUpon>
@@ -1085,6 +1097,13 @@
     <None Include="Resources\minus.png" />
     <None Include="Resources\remove.png" />
     <None Include="Resources\setting.png" />
+    <None Include="Resources\Logo.jpeg" />
+    <None Include="Resources\logo fitness girsl club OFICCIAL.png" />
+    <None Include="Resources\logo fitness girsl club.png" />
+    <None Include="Resources\logo fitness girsl club.ico" />
+    <None Include="Resources\close %281%29.png" />
+    <None Include="Resources\close_16x.png" />
+    <None Include="Resources\minimize-sign_16x.png" />
     <Content Include="SqlServerTypes\Loader.cs" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">

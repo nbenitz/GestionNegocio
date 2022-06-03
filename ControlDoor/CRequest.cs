@@ -5,10 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.IO;
+using System.Net.Sockets;
+using System.Windows.Forms;
 
 namespace ControlDoor
 {
-    class Request
+    public class CRequest
     {
         public async Task<string> PostRequest(string url, string json)
         {
@@ -169,6 +171,19 @@ namespace ControlDoor
             catch (Exception e)
             {
                 return "Error: " + e;
+            }
+        }
+
+        public bool PingHost(string hostUri, int portNumber)
+        {
+            try
+            {
+                using (var client = new TcpClient(hostUri, portNumber))
+                    return true;
+            }
+            catch 
+            {
+                return false;
             }
         }
     }

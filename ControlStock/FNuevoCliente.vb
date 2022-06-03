@@ -24,14 +24,14 @@ Public Class FNuevoCliente
                     Propiet = " "
                 End If
                 If EditMode = False Then
-                    If Cliente.InserCliente(RUC, Nombre, " ", Tel, Dir, Propiet, foto, Now) = True Then
+                    If Cliente.InserCliente(RUC, Nombre, " ", Tel, Dir, Propiet, foto, Now, " ") = True Then
                         MessageBox.Show("Cliente Guardado")
                         Limpiar()
                     Else
                         MessageBox.Show("Hubo un problema al Guardar el Cliente")
                     End If
                 Else
-                    If Cliente.Update(RUC, Nombre, " ", Tel, Dir, Propiet, foto, Now, OldRUC) = True Then
+                    If Cliente.Update(RUC, Nombre, " ", Tel, Dir, Propiet, foto, Now, " ", OldRUC) = True Then
                         MessageBox.Show("Cliente Guardado")
                         Close()
                     Else

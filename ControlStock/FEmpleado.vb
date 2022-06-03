@@ -1,6 +1,7 @@
 ﻿Option Strict On
 Option Explicit On
 
+Imports System.ComponentModel
 Imports System.Drawing.Drawing2D
 Imports System.Threading.Tasks
 
@@ -22,6 +23,7 @@ Public Class FEmpleado
         Editar = 1
         Pagar = 2
     End Enum
+
     Dim ModoForm As Integer = Modo.Nuevo
 
     Dim ColorOscuro As Color = Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
@@ -29,7 +31,7 @@ Public Class FEmpleado
 
     Private Sub FSocio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         AddHandler FrmFingerPMgr.SendFPData, AddressOf onReceiveFPData
-        FrmFingerPMgr.Login()
+        'FrmFingerPMgr.Login()
 
         If ModoForm = Modo.Nuevo Then
             btnAcceso.Enabled = False
@@ -238,6 +240,7 @@ Public Class FEmpleado
     End Sub
 
     Private Async Sub btnAsignarAcceso_Click(sender As Object, e As EventArgs) Handles btnAsignarAcceso.Click
+        Cursor.Current = Cursors.WaitCursor
         If ModoForm = Modo.Nuevo Then
             Dim estado As String
             Dim EmployeeNo As String = CIValue.ToString()
@@ -253,6 +256,10 @@ Public Class FEmpleado
                     'Exit Sub
                 End Try
                 CloseLoading()
+                'EmployeeNo = GuardarDatosAccesoDispositivo(EmployeeNo)
+                If EmployeeNoValue.Length = 0 Then
+                    Exit Sub
+                End If
             End If
 
             ShowLoading()
@@ -260,16 +267,15 @@ Public Class FEmpleado
                 Dim t2 As Task
                 t2 = Task.Run(Sub() estado = FrmFingerPMgr.SaveNewEmple(GetSocio(),
                                                                         EmployeeNo,
-                                                                        FPDataValue
-                                                                        ))
+                                                                        FPDataValue))
                 Await t2
             Catch ex As Exception
-                CloseLoading()
-                MessageBox.Show("Error")
+                'CloseLoading()
+                'MessageBox.Show("Error")
                 'Exit Sub
             End Try
             CloseLoading()
-
+            'estado = FrmFingerPMgr.SaveNewEmple(GetSocio(), EmployeeNo, FPDataValue)
             If estado = "OK" Then
                 MessageBox.Show("Datos registrados")
                 Close()
@@ -286,11 +292,12 @@ Public Class FEmpleado
                         t1 = Task.Run(Sub() EmployeeNoValue = GuardarDatosAccesoDispositivo(EmployeeNo))
                         Await t1
                     Catch ex As Exception
-                        CloseLoading()
-                        MessageBox.Show("Error")
+                        'CloseLoading()
+                        'MessageBox.Show("Error")
                         'Exit Sub
                     End Try
                     CloseLoading()
+                    'EmployeeNoValue = GuardarDatosAccesoDispositivo(EmployeeNo)
                     If EmployeeNoValue.Length = 0 Then
                         Exit Sub
                     End If
@@ -302,11 +309,12 @@ Public Class FEmpleado
                         t2 = Task.Run(Sub() estado = EditarHuellaDispositivo())
                         Await t2
                     Catch ex As Exception
-                        CloseLoading()
-                        MessageBox.Show("Error")
+                        'CloseLoading()
+                        'MessageBox.Show("Error")
                         'Exit Sub
                     End Try
                     CloseLoading()
+                    'estado = EditarHuellaDispositivo()
                     If estado <> "OK" Then
                         Exit Sub
                     End If
@@ -387,6 +395,7 @@ Public Class FEmpleado
     End Sub
 
     Private Sub pbxAddFP_Click(sender As Object, e As EventArgs) Handles pbxAddFP.Click
+        FrmFingerPMgr.setLoginUserID(MAcceso.UserID)
         FrmFingerPMgr.ShowDialog()
     End Sub
 
@@ -401,4 +410,23 @@ Public Class FEmpleado
         End If
     End Sub
 
+    Private Sub FEmpleado_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        'FrmFingerPMgr.Logout()
+    End Sub
+
+    Private Sub txtCI_KeyPress(sender As Object, e As KeyPressEventArgs) 'Handles txtCI.KeyPress
+        Dim Caja As TextBox = CType(sender, TextBox)
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        Else
+            e.Handled = True
+            Caja.Focus()
+            ToolTip2.Show("Ingrese un valor númerico", Caja, 0, -40, 2000)
+        End If
+        If e.KeyChar = Convert.ToChar(Keys.Return) Then
+            e.Handled = True
+        End If
+    End Sub
 End Class

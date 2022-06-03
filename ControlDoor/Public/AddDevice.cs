@@ -71,7 +71,7 @@ namespace ControlDoor
             struLoginInfo.sPassword = textBoxPassword.Text;
             ushort.TryParse(textBoxPort.Text, out struLoginInfo.wPort);
 
-            int lUserID = -1;
+            int lUserID;
             lUserID = CHCNetSDK.NET_DVR_Login_V40(ref struLoginInfo, ref struDeviceInfoV40);
             if (lUserID >= 0)
             {
@@ -84,10 +84,10 @@ namespace ControlDoor
                 uint nErr = CHCNetSDK.NET_DVR_GetLastError();
                 if (nErr == CHCNetSDK.NET_DVR_PASSWORD_ERROR)
                 {
-                    MessageBox.Show("user name or password error!");
+                    MessageBox.Show("Nombre de Usuario o Contraseña incorrecta!");
                     if (1 == struDeviceInfoV40.bySupportLock)
                     {
-                        string strTemp1 = string.Format("Left {0} try opportunity", struDeviceInfoV40.byRetryLoginTime);
+                        string strTemp1 = string.Format("Quedan {0} intentos", struDeviceInfoV40.byRetryLoginTime);
                         MessageBox.Show(strTemp1);
                     }
                 }
@@ -95,13 +95,13 @@ namespace ControlDoor
                 {
                     if (1 == struDeviceInfoV40.bySupportLock)
                     {
-                        string strTemp1 = string.Format("user is locked, the remaining lock time is {0}", struDeviceInfoV40.dwSurplusLockTime);
+                        string strTemp1 = string.Format("Usuario bloqueado, el tiempo restante de bloqueo es {0}", struDeviceInfoV40.dwSurplusLockTime);
                         MessageBox.Show(strTemp1);
                     }
                 }
                 else
                 {
-                    //MessageBox.Show("net error or dvr is busy!");
+                    //MessageBox.Show("Error de red o Lector ocupado!");
                     loginError();
                 }
             }

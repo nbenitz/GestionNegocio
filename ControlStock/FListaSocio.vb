@@ -5,27 +5,16 @@ Public Class FListaSocio
     Dim Cliente As New CCliente
     Dim oMembresia As New CMembresia
     Dim oAcceso As New CAcceso
+    Dim Caja As New CCaja
+    Dim NumCaja As UInt16 = 1
     Dim TablaCli As DataTable
     Dim ModoVistaValue As Boolean = False
     Public Event ClienteSeleccionado(ByVal CI As String, ByVal Nombre As String)
+    Dim TablaSelIndex As Integer = -1
 
     Private Sub FListaSocio_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        If Not ModoVistaValue Then
-            cmbVerPor.SelectedIndex = 0
-        Else
-            cmbVerPor.SelectedIndex = 2
-        End If
-    End Sub
-
-    Private Sub F_Deactivate(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Deactivate
-        'Me.WindowState = FormWindowState.Minimized
-    End Sub
-
-    Private Sub Form1_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
-        Dim strEstado As String = Me.WindowState.ToString()
-        If strEstado = "Maximized" Then
-            Me.WindowState = FormWindowState.Normal
-        End If
+        cmbVerPor.SelectedIndex = 0
+        txtBuscar.Focus()
     End Sub
 
     Private Sub MostrarCaja(ByVal Titulo As String)
@@ -39,6 +28,12 @@ Public Class FListaSocio
         dgvCliente.Rows.Clear()
         If Filas > 0 Then
             For i As Integer = 0 To (Filas - 1)
+                Dim Foto As Image
+                Try
+                    Foto = ByteArrayToImage(CType(Tabla.Rows(i).Item(9), Byte()))
+                Catch
+                    Foto = My.Resources.userblack
+                End Try
                 Dim RUC As String = CStr(Tabla.Rows(i).Item(0))
                 Dim Nombre As String = CStr(Tabla.Rows(i).Item(1))
                 Dim MembresiaNom As String = ""
@@ -47,14 +42,31 @@ Public Class FListaSocio
                 Catch
                 End Try
                 Dim Tel As String = CStr(Tabla.Rows(i).Item(3))
+                Dim Saldo As Integer = CInt(Tabla.Rows(i).Item(13))
+                Dim Estado As String = CStr(Tabla.Rows(i).Item(14))
                 Dim AccesoCod As String = ""
                 Try
                     AccesoCod = CStr(Tabla.Rows(i).Item(4))
                 Catch
                 End Try
 
-                dgvCliente.Rows.Add(RUC, Nombre, MembresiaNom, Tel, AccesoCod)
+                dgvCliente.Rows.Add(False, Foto, RUC, Nombre, MembresiaNom, Tel, Saldo, Estado)
+
+                If Estado = "Cuota Vencida" Then
+                    dgvCliente.Rows.Item(i).DefaultCellStyle.BackColor = Color.FromArgb(192, 0, 0)
+                    dgvCliente.Rows.Item(i).DefaultCellStyle.SelectionBackColor = Color.FromArgb(192, 0, 0)
+                    dgvCliente.Rows.Item(i).DefaultCellStyle.ForeColor = Color.LightGray
+                    dgvCliente.Rows.Item(i).DefaultCellStyle.SelectionForeColor = Color.White
+                Else
+                    dgvCliente.Rows.Item(i).DefaultCellStyle.BackColor = Color.DarkGreen
+                    dgvCliente.Rows.Item(i).DefaultCellStyle.SelectionBackColor = Color.DarkGreen
+                    dgvCliente.Rows.Item(i).DefaultCellStyle.ForeColor = Color.LightGray
+                    dgvCliente.Rows.Item(i).DefaultCellStyle.SelectionForeColor = Color.White
+                End If
+
             Next
+            dgvCliente.Item(0, 0).Value = True
+            TablaSelIndex = 0
         End If
     End Sub
 
@@ -62,31 +74,21 @@ Public Class FListaSocio
         Dim Indice As Integer = cmbVerPor.SelectedIndex
         Select Case Indice
             Case Is = 0 'Todos
-                txtBuscar.Visible = False
                 VerTodos()
-            Case Is = 1 'Nombre
-                MostrarCaja("Ingrese el Nombre")
-            Case Is = 2 'RUC
-                MostrarCaja("Ingrese el CI")
+            Case Else
+                VerConFiltro()
         End Select
+        txtBuscar.Text = ""
     End Sub
 
     Private Sub txtBuscar_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs) Handles txtBuscar.KeyDown
         If e.KeyCode = Keys.Enter Then
             Dim Param As String = txtBuscar.Text
             If Param <> "" Then
-                Select Case cmbVerPor.SelectedIndex
-                    Case Is = 1 'Nombre
-                        TablaCli = Cliente.BuscSocio("WHERE Nombre like '%" + Param + "%'")
-                    Case Is = 2 'RUC
-                        Try
-                            TablaCli = Cliente.BuscSocio("WHERE Cedula like '%" + Param + "%'")
-                        Catch ex As Exception
-                            MessageBox.Show("No hay coincidencias")
-                        End Try
-                End Select
+                TablaCli = Cliente.BuscSocio("WHERE Nombre like '%" + Param + "%' OR Cedula like '%" + Param + "%' OR Alias like '%" + Param + "%'")
                 CargarTabla(TablaCli)
             End If
+            cmbVerPor.Text = ""
         End If
     End Sub
 
@@ -97,11 +99,17 @@ Public Class FListaSocio
     End Sub
 
     Private Sub btnNuevo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnNuevo.Click
-        Dim Frm As New FNuevoSocio
-        Frm.MaximizeBox = False
-        Frm.MinimizeBox = False
-        Frm.ShowDialog()
-        Actualizar()
+        If Caja.CajaAbierta(NumCaja) Then
+            Cursor.Current = Cursors.WaitCursor
+            Dim Frm As New FNuevoSocio
+            Frm.ShowDialog()
+            Actualizar()
+        Else
+            MessageBox.Show("Debe abrir la Caja para poder cobrar una membresía a un socio")
+            Dim Frm As New FCajaMostrador
+            Frm.CIEmpleado = MCaja.EmpleadoCI
+            Frm.ShowDialog()
+        End If
     End Sub
 
     Private Sub btnActualizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizar.Click
@@ -113,27 +121,53 @@ Public Class FListaSocio
         CargarTabla(TablaCli)
     End Sub
 
+    Private Sub VerConFiltro()
+        Dim Condicion As String = ""
+        Select Case cmbVerPor.SelectedIndex
+            Case Is = 1 'Al día
+                Condicion = "WHERE estado = 'Cuota al día'"
+            Case Is = 2 'Con Cuota Vencida
+                Condicion = "WHERE estado = 'Cuota Vencida'"
+            Case Is = 3 'Con Deuda
+                Condicion = "WHERE Saldo > 0"
+            Case Is = 4 'Activos
+
+            Case Is = 5 'Inactivos
+
+        End Select
+
+        TablaCli = Cliente.BuscSocio(Condicion)
+        CargarTabla(TablaCli)
+
+        'lblCantSocio.Text = CStr(acceso.CantSocioAsistencia(Condicion)) + " Socios"
+    End Sub
+
+    Private Sub VerDeudores()
+        TablaCli = Cliente.BuscSocio(" WHERE Saldo > 0")
+        CargarTabla(TablaCli)
+    End Sub
+
     Private Sub Actualizar()
+        Dim Param As String = txtBuscar.Text
+        If Param <> "" Then
+            Dim Tecla As KeyEventArgs = New KeyEventArgs(Keys.Enter)
+            txtBuscar_KeyDown(Me, Tecla)
+            Exit Sub
+        End If
+
         If cmbVerPor.SelectedIndex = 0 Then
             VerTodos()
         Else
-            Dim Tecla As KeyEventArgs = New KeyEventArgs(Keys.Enter)
-            txtBuscar_KeyDown(Me, Tecla)
+            VerConFiltro()
         End If
     End Sub
 
     Private Sub pbxEditar_Click(sender As Object, e As EventArgs) Handles pbxEditar.Click, pnlEditar.Click, lblEditar.Click
         Cursor.Current = Cursors.WaitCursor
-        Try
+        If TablaSelIndex >= 0 Then
             Dim row As Integer = dgvCliente.CurrentRow.Index
             Dim CI As String = CStr(TablaCli.Rows(row).Item(0))
             Dim Nombre As String = CStr(TablaCli.Rows(row).Item(1))
-            Dim MembresiaNom As String
-            Try
-                MembresiaNom = CStr(TablaCli.Rows(row).Item(2))
-            Catch
-                MembresiaNom = ""
-            End Try
             Dim Telefono As String = CStr(TablaCli.Rows(row).Item(3))
             Dim AccesoCod As String
             Try
@@ -143,24 +177,24 @@ Public Class FListaSocio
             End Try
             Dim Aliass As String = CStr(TablaCli.Rows(row).Item(5))
             Dim Direccion As String = CStr(TablaCli.Rows(row).Item(6))
-            Dim FechaInicio As Date = CDate(TablaCli.Rows(row).Item(7))
             Dim Foto As Byte()
             Try
-                Foto = CType(TablaCli.Rows(row).Item(8), Byte())
+                Foto = CType(TablaCli.Rows(row).Item(9), Byte())
             Catch
             End Try
-            Dim FechaNac As Date = CDate(TablaCli.Rows(row).Item(10))
+            Dim FechaNac As Date = CDate(TablaCli.Rows(row).Item(11))
+            Dim Conocio As String = CStr(TablaCli.Rows(row).Item(12))
             Dim Frm As New FNuevoSocio
-            Frm.Editar(CI, Nombre, Telefono, Direccion, Aliass, Foto, FechaNac, MembresiaNom, FechaInicio, AccesoCod)
+            Frm.Editar(CI, Nombre, Telefono, Direccion, Aliass, Foto, FechaNac, Conocio, AccesoCod)
             Frm.ShowDialog()
             Actualizar()
-        Catch ex As Exception
-            MessageBox.Show("Debe Seleccionar un Socio de la Lista" + ex.Message)
-        End Try
+        Else
+            MessageBox.Show("Debe Seleccionar un Socio de la Lista")
+        End If
     End Sub
 
     Private Sub LblEliminar_Click(sender As Object, e As EventArgs) Handles LblEliminar.Click, PbxEliminar.Click, PnlEliminar.Click
-        Try
+        If TablaSelIndex >= 0 Then
             Dim Result As Integer = MsgBox("Desea eliminar al Socio seleccionado?", MsgBoxStyle.YesNo, "Eliminar Socio")
             If Result = 6 Then
                 Dim row As Integer = dgvCliente.CurrentRow.Index
@@ -173,7 +207,7 @@ Public Class FListaSocio
                 End If
 
                 If oMembresia.IdClienteMembresia(RUC) >= 0 Then
-                    If oMembresia.EliminarClienteMembresia(RUC) = False Then
+                    If oMembresia.EliminarClienteMembresiaByCI(RUC) = False Then
                         MessageBox.Show("Hubo un problema al eliminar la membresía del Socio")
                         Exit Sub
                     End If
@@ -187,14 +221,14 @@ Public Class FListaSocio
                 End If
 
             End If
-        Catch ex As Exception
+        Else
             MessageBox.Show("Debe Seleccionar un Socio de la Lista")
-        End Try
+        End If
     End Sub
 
     Private Sub VerFicha_Click(sender As Object, e As EventArgs) Handles pbxFicha.Click, pnlFicha.Click, lblFicha.Click
         Cursor.Current = Cursors.WaitCursor
-        Try
+        If TablaSelIndex >= 0 Then
             Dim row As Integer = dgvCliente.CurrentRow.Index
             Dim CI As String = CStr(TablaCli.Rows(row).Item(0))
             Dim Nombre As String = CStr(TablaCli.Rows(row).Item(1))
@@ -207,7 +241,6 @@ Public Class FListaSocio
             Dim Telefono As String = CStr(TablaCli.Rows(row).Item(3))
             Dim Aliass As String = CStr(TablaCli.Rows(row).Item(5))
             Dim Direccion As String = CStr(TablaCli.Rows(row).Item(6))
-            Dim Vto As String = CStr(CDate(TablaCli.Rows(row).Item(7)).AddMonths(1))
             Dim AccesoCod As String
             Try
                 AccesoCod = CStr(TablaCli.Rows(row).Item(4))
@@ -216,15 +249,18 @@ Public Class FListaSocio
             End Try
             Dim Foto As Byte()
             Try
-                Foto = CType(TablaCli.Rows(row).Item(8), Byte())
+                Foto = CType(TablaCli.Rows(row).Item(9), Byte())
             Catch
             End Try
-            Dim FechaNac As String = CStr(TablaCli.Rows(row).Item(10))
-            Dim Frm As New FSocioFicha(CI, Nombre, Telefono, Direccion, Aliass, Foto, FechaNac, MembresiaNom, Vto, AccesoCod)
+            Dim FechaNac As String = CStr(TablaCli.Rows(row).Item(11))
+            Dim Conocio As String = CStr(TablaCli.Rows(row).Item(12))
+            Dim Saldo As Integer = CInt(TablaCli.Rows(row).Item(13))
+            Dim Estado As String = CStr(TablaCli.Rows(row).Item(14))
+            Dim Frm As New FSocioFicha(CI, Nombre, Telefono, Direccion, Aliass, Foto, FechaNac, Conocio, AccesoCod, Saldo)
             Frm.ShowDialog()
-        Catch ex As Exception
+        Else
             MessageBox.Show("Debe Seleccionar un Socio de la Lista")
-        End Try
+        End If
     End Sub
 
     Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
@@ -242,18 +278,34 @@ Public Class FListaSocio
     End Sub
 
     Private Sub Seleccionar_Click(sender As Object, e As EventArgs) Handles lblSeleccionar.Click, pnlSeleccionar.Click, pbxSeleccionar.Click
-        Try
+        If TablaSelIndex >= 0 Then
             Dim row As Integer = dgvCliente.CurrentRow.Index
             Dim CI As String = CStr(TablaCli.Rows(row).Item(0))
             Dim Nombre As String = CStr(TablaCli.Rows(row).Item(1))
             RaiseEvent ClienteSeleccionado(CI, Nombre)
             Close()
-        Catch ex As Exception
+        Else
             MessageBox.Show("Debe Seleccionar un Socio de la Lista")
-        End Try
+        End If
     End Sub
 
-    Private Sub dgvCliente_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCliente.CellContentClick
+    Private Sub dgvCliente_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCliente.CellClick
+        Dim i As Integer = dgvCliente.CurrentRow.Index
+        If TablaSelIndex >= 0 Then
+            dgvCliente.Item(0, TablaSelIndex).Value = False
+        End If
+        dgvCliente.Item(0, i).Value = True
+        TablaSelIndex = i
+    End Sub
+
+    Private Sub txtBuscar_KeyUp(sender As Object, e As KeyEventArgs) Handles txtBuscar.KeyUp
+        Dim Param As String = txtBuscar.Text
+        If Param = "" Then
+            cmbVerPor.SelectedIndex = 0
+        End If
+    End Sub
+
+    Private Sub cmbVerPor_Click(sender As Object, e As EventArgs) Handles cmbVerPor.Click
 
     End Sub
 End Class

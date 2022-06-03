@@ -58,7 +58,9 @@ Public Class FListaPrivilegios
             Dim CuentasAdmin As Boolean = CBool(TablaPriv.Rows(row).Item(18))
             Dim DevolAutoriCli As Boolean = CBool(TablaPriv.Rows(row).Item(19))
             Dim DevolAutoriProv As Boolean = CBool(TablaPriv.Rows(row).Item(20))
-            Dim Frm As New FNuevoPrivilegio
+            Dim MembresiaAdmin As Boolean = CBool(TablaPriv.Rows(row).Item(21))
+            Dim AccesoAdmin As Boolean = CBool(TablaPriv.Rows(row).Item(22))
+            Dim Frm As New FNuevoPrivilegioGym
             Frm.Editar(Rol,
                        ProdConsult,
                        ProdReg,
@@ -79,8 +81,10 @@ Public Class FListaPrivilegios
                        CuentasAdmin,
                        DevolAutoriCli,
                        DevolAutoriProv,
+                       MembresiaAdmin,
+                       AccesoAdmin,
                        IdPriv)
-            frm.MaximizeBox = False
+            Frm.MaximizeBox = False
             frm.MinimizeBox = False
             frm.ShowDialog()
             CargarTabla()

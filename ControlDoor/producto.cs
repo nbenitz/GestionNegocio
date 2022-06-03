@@ -35,6 +35,7 @@ namespace ControlDoor
         public string PorPack { get; set; }
         public byte[] Foto { get; set; }
         public byte Iva { get; set; }
+        public int favorito { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<altaprod> altaprod { get; set; }

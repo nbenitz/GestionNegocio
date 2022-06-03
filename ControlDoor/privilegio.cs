@@ -41,6 +41,8 @@ namespace ControlDoor
         public bool CuentasAdmin { get; set; }
         public bool DevolAutoriCli { get; set; }
         public bool DevolAutoriProv { get; set; }
+        public bool MembresiaAdmin { get; set; }
+        public bool AccesoAdmin { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<usuario> usuario { get; set; }

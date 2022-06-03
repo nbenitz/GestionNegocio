@@ -45,19 +45,26 @@ Partial Class FNuevoSocio
         Me.Label9 = New System.Windows.Forms.Label()
         Me.cmbMembresia = New System.Windows.Forms.ComboBox()
         Me.pnlMembresia = New System.Windows.Forms.Panel()
+        Me.pnlInicioMembresia = New System.Windows.Forms.Panel()
+        Me.dtpNuevaFechaFin = New System.Windows.Forms.DateTimePicker()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.optNuevaFecha = New System.Windows.Forms.RadioButton()
+        Me.optDesdeDiaVence = New System.Windows.Forms.RadioButton()
+        Me.dtpNuevoInicio = New System.Windows.Forms.DateTimePicker()
+        Me.dtpFechaFin = New System.Windows.Forms.DateTimePicker()
+        Me.Label23 = New System.Windows.Forms.Label()
         Me.pnlMembresiaSocio = New System.Windows.Forms.Panel()
         Me.lblTituloNombreSocio = New System.Windows.Forms.Label()
         Me.lblUltimaAsist = New System.Windows.Forms.Label()
         Me.lblTituloUltAsist = New System.Windows.Forms.Label()
         Me.lblNombreSocio = New System.Windows.Forms.Label()
-        Me.pnlInicioMembresia = New System.Windows.Forms.Panel()
-        Me.optNuevaFecha = New System.Windows.Forms.RadioButton()
-        Me.optDesdeDiaVence = New System.Windows.Forms.RadioButton()
-        Me.dtpNuevoInicio = New System.Windows.Forms.DateTimePicker()
         Me.dtpFechaInicio = New System.Windows.Forms.DateTimePicker()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.btnMembresiaAtras = New System.Windows.Forms.Button()
         Me.pnlSocio = New System.Windows.Forms.Panel()
+        Me.txtConocio = New System.Windows.Forms.TextBox()
+        Me.Label22 = New System.Windows.Forms.Label()
         Me.DtpFechaNac = New System.Windows.Forms.DateTimePicker()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.pbxQuitarFoto = New System.Windows.Forms.PictureBox()
@@ -106,8 +113,8 @@ Partial Class FNuevoSocio
         Me.btnCobrar = New System.Windows.Forms.Button()
         Me.BtnCerrarForm = New System.Windows.Forms.PictureBox()
         Me.pnlMembresia.SuspendLayout()
-        Me.pnlMembresiaSocio.SuspendLayout()
         Me.pnlInicioMembresia.SuspendLayout()
+        Me.pnlMembresiaSocio.SuspendLayout()
         Me.pnlSocio.SuspendLayout()
         CType(Me.pbxQuitarFoto, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbxFoto, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -142,7 +149,7 @@ Partial Class FNuevoSocio
         Me.txtCI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtCI.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCI.ForeColor = System.Drawing.Color.White
-        Me.txtCI.Location = New System.Drawing.Point(153, 100)
+        Me.txtCI.Location = New System.Drawing.Point(153, 70)
         Me.txtCI.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCI.MaxLength = 15
         Me.txtCI.Name = "txtCI"
@@ -155,7 +162,7 @@ Partial Class FNuevoSocio
         Me.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNombre.ForeColor = System.Drawing.Color.White
-        Me.txtNombre.Location = New System.Drawing.Point(153, 133)
+        Me.txtNombre.Location = New System.Drawing.Point(153, 103)
         Me.txtNombre.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNombre.MaxLength = 50
         Me.txtNombre.Name = "txtNombre"
@@ -168,7 +175,7 @@ Partial Class FNuevoSocio
         Me.txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtDireccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDireccion.ForeColor = System.Drawing.Color.White
-        Me.txtDireccion.Location = New System.Drawing.Point(153, 235)
+        Me.txtDireccion.Location = New System.Drawing.Point(153, 205)
         Me.txtDireccion.Margin = New System.Windows.Forms.Padding(4)
         Me.txtDireccion.MaxLength = 100
         Me.txtDireccion.Name = "txtDireccion"
@@ -180,7 +187,7 @@ Partial Class FNuevoSocio
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(54, 237)
+        Me.Label5.Location = New System.Drawing.Point(54, 207)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(75, 20)
@@ -194,7 +201,7 @@ Partial Class FNuevoSocio
         Me.txtTelefono.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtTelefono.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTelefono.ForeColor = System.Drawing.Color.White
-        Me.txtTelefono.Location = New System.Drawing.Point(153, 201)
+        Me.txtTelefono.Location = New System.Drawing.Point(153, 171)
         Me.txtTelefono.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTelefono.MaxLength = 15
         Me.txtTelefono.Name = "txtTelefono"
@@ -207,7 +214,7 @@ Partial Class FNuevoSocio
         Me.txtAlias.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtAlias.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtAlias.ForeColor = System.Drawing.Color.White
-        Me.txtAlias.Location = New System.Drawing.Point(153, 168)
+        Me.txtAlias.Location = New System.Drawing.Point(153, 138)
         Me.txtAlias.Margin = New System.Windows.Forms.Padding(4)
         Me.txtAlias.MaxLength = 50
         Me.txtAlias.Name = "txtAlias"
@@ -219,7 +226,7 @@ Partial Class FNuevoSocio
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(54, 170)
+        Me.Label3.Location = New System.Drawing.Point(54, 140)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(43, 20)
@@ -231,7 +238,7 @@ Partial Class FNuevoSocio
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(54, 203)
+        Me.Label4.Location = New System.Drawing.Point(54, 173)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(71, 20)
@@ -243,7 +250,7 @@ Partial Class FNuevoSocio
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(54, 135)
+        Me.Label2.Location = New System.Drawing.Point(54, 105)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(75, 20)
@@ -255,7 +262,7 @@ Partial Class FNuevoSocio
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(54, 102)
+        Me.Label1.Location = New System.Drawing.Point(54, 72)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(35, 20)
@@ -357,8 +364,10 @@ Partial Class FNuevoSocio
         'pnlMembresia
         '
         Me.pnlMembresia.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
-        Me.pnlMembresia.Controls.Add(Me.pnlMembresiaSocio)
         Me.pnlMembresia.Controls.Add(Me.pnlInicioMembresia)
+        Me.pnlMembresia.Controls.Add(Me.dtpFechaFin)
+        Me.pnlMembresia.Controls.Add(Me.Label23)
+        Me.pnlMembresia.Controls.Add(Me.pnlMembresiaSocio)
         Me.pnlMembresia.Controls.Add(Me.dtpFechaInicio)
         Me.pnlMembresia.Controls.Add(Me.Label11)
         Me.pnlMembresia.Controls.Add(Me.btnMembresiaAtras)
@@ -375,6 +384,119 @@ Partial Class FNuevoSocio
         Me.pnlMembresia.Size = New System.Drawing.Size(800, 600)
         Me.pnlMembresia.TabIndex = 103
         Me.pnlMembresia.Visible = False
+        '
+        'pnlInicioMembresia
+        '
+        Me.pnlInicioMembresia.Controls.Add(Me.dtpNuevaFechaFin)
+        Me.pnlInicioMembresia.Controls.Add(Me.Label25)
+        Me.pnlInicioMembresia.Controls.Add(Me.Label24)
+        Me.pnlInicioMembresia.Controls.Add(Me.optNuevaFecha)
+        Me.pnlInicioMembresia.Controls.Add(Me.optDesdeDiaVence)
+        Me.pnlInicioMembresia.Controls.Add(Me.dtpNuevoInicio)
+        Me.pnlInicioMembresia.Location = New System.Drawing.Point(185, 325)
+        Me.pnlInicioMembresia.Name = "pnlInicioMembresia"
+        Me.pnlInicioMembresia.Size = New System.Drawing.Size(448, 66)
+        Me.pnlInicioMembresia.TabIndex = 108
+        Me.pnlInicioMembresia.Visible = False
+        '
+        'dtpNuevaFechaFin
+        '
+        Me.dtpNuevaFechaFin.CalendarForeColor = System.Drawing.Color.White
+        Me.dtpNuevaFechaFin.CalendarMonthBackground = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.dtpNuevaFechaFin.CalendarTitleBackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.dtpNuevaFechaFin.CalendarTitleForeColor = System.Drawing.Color.White
+        Me.dtpNuevaFechaFin.CalendarTrailingForeColor = System.Drawing.Color.White
+        Me.dtpNuevaFechaFin.Enabled = False
+        Me.dtpNuevaFechaFin.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtpNuevaFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpNuevaFechaFin.Location = New System.Drawing.Point(306, 31)
+        Me.dtpNuevaFechaFin.Name = "dtpNuevaFechaFin"
+        Me.dtpNuevaFechaFin.Size = New System.Drawing.Size(139, 24)
+        Me.dtpNuevaFechaFin.TabIndex = 117
+        '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label25.ForeColor = System.Drawing.Color.White
+        Me.Label25.Location = New System.Drawing.Point(205, 36)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(73, 18)
+        Me.Label25.TabIndex = 116
+        Me.Label25.Text = "Fecha Fin"
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label24.ForeColor = System.Drawing.Color.White
+        Me.Label24.Location = New System.Drawing.Point(205, 8)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(87, 18)
+        Me.Label24.TabIndex = 110
+        Me.Label24.Text = "Fecha Inicio"
+        '
+        'optNuevaFecha
+        '
+        Me.optNuevaFecha.AutoSize = True
+        Me.optNuevaFecha.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.optNuevaFecha.Location = New System.Drawing.Point(15, 36)
+        Me.optNuevaFecha.Name = "optNuevaFecha"
+        Me.optNuevaFecha.Size = New System.Drawing.Size(143, 20)
+        Me.optNuevaFecha.TabIndex = 109
+        Me.optNuevaFecha.Text = "Desde nueva fecha"
+        Me.optNuevaFecha.UseVisualStyleBackColor = True
+        '
+        'optDesdeDiaVence
+        '
+        Me.optDesdeDiaVence.AutoSize = True
+        Me.optDesdeDiaVence.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.optDesdeDiaVence.Location = New System.Drawing.Point(15, 8)
+        Me.optDesdeDiaVence.Name = "optDesdeDiaVence"
+        Me.optDesdeDiaVence.Size = New System.Drawing.Size(155, 20)
+        Me.optDesdeDiaVence.TabIndex = 108
+        Me.optDesdeDiaVence.Text = "Desde día que vence"
+        Me.optDesdeDiaVence.UseVisualStyleBackColor = True
+        '
+        'dtpNuevoInicio
+        '
+        Me.dtpNuevoInicio.CalendarForeColor = System.Drawing.Color.White
+        Me.dtpNuevoInicio.CalendarMonthBackground = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.dtpNuevoInicio.CalendarTitleBackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.dtpNuevoInicio.CalendarTitleForeColor = System.Drawing.Color.White
+        Me.dtpNuevoInicio.CalendarTrailingForeColor = System.Drawing.Color.White
+        Me.dtpNuevoInicio.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtpNuevoInicio.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpNuevoInicio.Location = New System.Drawing.Point(306, 4)
+        Me.dtpNuevoInicio.Name = "dtpNuevoInicio"
+        Me.dtpNuevoInicio.Size = New System.Drawing.Size(139, 24)
+        Me.dtpNuevoInicio.TabIndex = 107
+        '
+        'dtpFechaFin
+        '
+        Me.dtpFechaFin.CalendarForeColor = System.Drawing.Color.White
+        Me.dtpFechaFin.CalendarMonthBackground = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.dtpFechaFin.CalendarTitleBackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.dtpFechaFin.CalendarTitleForeColor = System.Drawing.Color.White
+        Me.dtpFechaFin.CalendarTrailingForeColor = System.Drawing.Color.White
+        Me.dtpFechaFin.Enabled = False
+        Me.dtpFechaFin.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpFechaFin.Location = New System.Drawing.Point(491, 299)
+        Me.dtpFechaFin.Name = "dtpFechaFin"
+        Me.dtpFechaFin.Size = New System.Drawing.Size(139, 24)
+        Me.dtpFechaFin.TabIndex = 115
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label23.ForeColor = System.Drawing.Color.White
+        Me.Label23.Location = New System.Drawing.Point(390, 304)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(73, 18)
+        Me.Label23.TabIndex = 114
+        Me.Label23.Text = "Fecha Fin"
         '
         'pnlMembresiaSocio
         '
@@ -428,53 +550,6 @@ Partial Class FNuevoSocio
         Me.lblNombreSocio.TabIndex = 111
         Me.lblNombreSocio.Text = "Nombre del Socio"
         '
-        'pnlInicioMembresia
-        '
-        Me.pnlInicioMembresia.Controls.Add(Me.optNuevaFecha)
-        Me.pnlInicioMembresia.Controls.Add(Me.optDesdeDiaVence)
-        Me.pnlInicioMembresia.Controls.Add(Me.dtpNuevoInicio)
-        Me.pnlInicioMembresia.Location = New System.Drawing.Point(185, 325)
-        Me.pnlInicioMembresia.Name = "pnlInicioMembresia"
-        Me.pnlInicioMembresia.Size = New System.Drawing.Size(448, 66)
-        Me.pnlInicioMembresia.TabIndex = 108
-        Me.pnlInicioMembresia.Visible = False
-        '
-        'optNuevaFecha
-        '
-        Me.optNuevaFecha.AutoSize = True
-        Me.optNuevaFecha.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.optNuevaFecha.Location = New System.Drawing.Point(15, 34)
-        Me.optNuevaFecha.Name = "optNuevaFecha"
-        Me.optNuevaFecha.Size = New System.Drawing.Size(143, 20)
-        Me.optNuevaFecha.TabIndex = 109
-        Me.optNuevaFecha.Text = "Desde nueva fecha"
-        Me.optNuevaFecha.UseVisualStyleBackColor = True
-        '
-        'optDesdeDiaVence
-        '
-        Me.optDesdeDiaVence.AutoSize = True
-        Me.optDesdeDiaVence.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.optDesdeDiaVence.Location = New System.Drawing.Point(15, 8)
-        Me.optDesdeDiaVence.Name = "optDesdeDiaVence"
-        Me.optDesdeDiaVence.Size = New System.Drawing.Size(155, 20)
-        Me.optDesdeDiaVence.TabIndex = 108
-        Me.optDesdeDiaVence.Text = "Desde día que vence"
-        Me.optDesdeDiaVence.UseVisualStyleBackColor = True
-        '
-        'dtpNuevoInicio
-        '
-        Me.dtpNuevoInicio.CalendarForeColor = System.Drawing.Color.White
-        Me.dtpNuevoInicio.CalendarMonthBackground = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
-        Me.dtpNuevoInicio.CalendarTitleBackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
-        Me.dtpNuevoInicio.CalendarTitleForeColor = System.Drawing.Color.White
-        Me.dtpNuevoInicio.CalendarTrailingForeColor = System.Drawing.Color.White
-        Me.dtpNuevoInicio.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtpNuevoInicio.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpNuevoInicio.Location = New System.Drawing.Point(208, 4)
-        Me.dtpNuevoInicio.Name = "dtpNuevoInicio"
-        Me.dtpNuevoInicio.Size = New System.Drawing.Size(237, 24)
-        Me.dtpNuevoInicio.TabIndex = 107
-        '
         'dtpFechaInicio
         '
         Me.dtpFechaInicio.CalendarForeColor = System.Drawing.Color.White
@@ -483,9 +558,10 @@ Partial Class FNuevoSocio
         Me.dtpFechaInicio.CalendarTitleForeColor = System.Drawing.Color.White
         Me.dtpFechaInicio.CalendarTrailingForeColor = System.Drawing.Color.White
         Me.dtpFechaInicio.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtpFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.dtpFechaInicio.Location = New System.Drawing.Point(200, 299)
         Me.dtpFechaInicio.Name = "dtpFechaInicio"
-        Me.dtpFechaInicio.Size = New System.Drawing.Size(430, 24)
+        Me.dtpFechaInicio.Size = New System.Drawing.Size(139, 24)
         Me.dtpFechaInicio.TabIndex = 106
         '
         'Label11
@@ -508,12 +584,14 @@ Partial Class FNuevoSocio
         Me.btnMembresiaAtras.Name = "btnMembresiaAtras"
         Me.btnMembresiaAtras.Size = New System.Drawing.Size(108, 33)
         Me.btnMembresiaAtras.TabIndex = 104
-        Me.btnMembresiaAtras.Text = "Antrás"
+        Me.btnMembresiaAtras.Text = "Atrás"
         Me.btnMembresiaAtras.UseVisualStyleBackColor = False
         '
         'pnlSocio
         '
         Me.pnlSocio.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.pnlSocio.Controls.Add(Me.txtConocio)
+        Me.pnlSocio.Controls.Add(Me.Label22)
         Me.pnlSocio.Controls.Add(Me.DtpFechaNac)
         Me.pnlSocio.Controls.Add(Me.Label21)
         Me.pnlSocio.Controls.Add(Me.pbxQuitarFoto)
@@ -535,6 +613,31 @@ Partial Class FNuevoSocio
         Me.pnlSocio.TabIndex = 104
         Me.pnlSocio.Visible = False
         '
+        'txtConocio
+        '
+        Me.txtConocio.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.txtConocio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtConocio.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtConocio.ForeColor = System.Drawing.Color.White
+        Me.txtConocio.Location = New System.Drawing.Point(153, 279)
+        Me.txtConocio.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtConocio.MaxLength = 100
+        Me.txtConocio.Multiline = True
+        Me.txtConocio.Name = "txtConocio"
+        Me.txtConocio.Size = New System.Drawing.Size(389, 111)
+        Me.txtConocio.TabIndex = 118
+        '
+        'Label22
+        '
+        Me.Label22.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label22.ForeColor = System.Drawing.Color.White
+        Me.Label22.Location = New System.Drawing.Point(54, 279)
+        Me.Label22.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(96, 44)
+        Me.Label22.TabIndex = 119
+        Me.Label22.Text = "¿Cómo nos conoció?"
+        '
         'DtpFechaNac
         '
         Me.DtpFechaNac.CalendarForeColor = System.Drawing.Color.White
@@ -543,7 +646,7 @@ Partial Class FNuevoSocio
         Me.DtpFechaNac.CalendarTitleForeColor = System.Drawing.Color.White
         Me.DtpFechaNac.CalendarTrailingForeColor = System.Drawing.Color.White
         Me.DtpFechaNac.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DtpFechaNac.Location = New System.Drawing.Point(153, 273)
+        Me.DtpFechaNac.Location = New System.Drawing.Point(153, 243)
         Me.DtpFechaNac.Name = "DtpFechaNac"
         Me.DtpFechaNac.Size = New System.Drawing.Size(389, 24)
         Me.DtpFechaNac.TabIndex = 117
@@ -553,7 +656,7 @@ Partial Class FNuevoSocio
         Me.Label21.AutoSize = True
         Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label21.ForeColor = System.Drawing.Color.White
-        Me.Label21.Location = New System.Drawing.Point(54, 275)
+        Me.Label21.Location = New System.Drawing.Point(54, 245)
         Me.Label21.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(90, 20)
@@ -563,7 +666,7 @@ Partial Class FNuevoSocio
         'pbxQuitarFoto
         '
         Me.pbxQuitarFoto.Image = CType(resources.GetObject("pbxQuitarFoto.Image"), System.Drawing.Image)
-        Me.pbxQuitarFoto.Location = New System.Drawing.Point(708, 101)
+        Me.pbxQuitarFoto.Location = New System.Drawing.Point(708, 71)
         Me.pbxQuitarFoto.Margin = New System.Windows.Forms.Padding(2)
         Me.pbxQuitarFoto.Name = "pbxQuitarFoto"
         Me.pbxQuitarFoto.Size = New System.Drawing.Size(25, 25)
@@ -577,7 +680,7 @@ Partial Class FNuevoSocio
         Me.pbxFoto.BackgroundImage = Global.ControlStock.My.Resources.Resources.userblack
         Me.pbxFoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.pbxFoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pbxFoto.Location = New System.Drawing.Point(562, 100)
+        Me.pbxFoto.Location = New System.Drawing.Point(562, 70)
         Me.pbxFoto.Name = "pbxFoto"
         Me.pbxFoto.Size = New System.Drawing.Size(172, 161)
         Me.pbxFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -1096,10 +1199,10 @@ Partial Class FNuevoSocio
         Me.Controls.Add(Me.btnMembresia)
         Me.Controls.Add(Me.lblTitulo)
         Me.Controls.Add(Me.btnSocio)
-        Me.Controls.Add(Me.pnlAcceso)
-        Me.Controls.Add(Me.pnlSocio)
         Me.Controls.Add(Me.pnlMembresia)
         Me.Controls.Add(Me.pnlCobrar)
+        Me.Controls.Add(Me.pnlAcceso)
+        Me.Controls.Add(Me.pnlSocio)
         Me.ForeColor = System.Drawing.Color.White
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "FNuevoSocio"
@@ -1107,10 +1210,10 @@ Partial Class FNuevoSocio
         Me.Text = "Socio"
         Me.pnlMembresia.ResumeLayout(False)
         Me.pnlMembresia.PerformLayout()
-        Me.pnlMembresiaSocio.ResumeLayout(False)
-        Me.pnlMembresiaSocio.PerformLayout()
         Me.pnlInicioMembresia.ResumeLayout(False)
         Me.pnlInicioMembresia.PerformLayout()
+        Me.pnlMembresiaSocio.ResumeLayout(False)
+        Me.pnlMembresiaSocio.PerformLayout()
         Me.pnlSocio.ResumeLayout(False)
         Me.pnlSocio.PerformLayout()
         CType(Me.pbxQuitarFoto, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1217,4 +1320,11 @@ Partial Class FNuevoSocio
     Friend WithEvents Label21 As Label
     Friend WithEvents lblEmpleado As Label
     Friend WithEvents lblCobrador As Label
+    Friend WithEvents txtConocio As TextBox
+    Friend WithEvents Label22 As Label
+    Friend WithEvents dtpFechaFin As DateTimePicker
+    Friend WithEvents Label23 As Label
+    Friend WithEvents dtpNuevaFechaFin As DateTimePicker
+    Friend WithEvents Label25 As Label
+    Friend WithEvents Label24 As Label
 End Class

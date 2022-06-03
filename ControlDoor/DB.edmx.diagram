@@ -4,20 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6bb5d129d71e459783727a18e32e1096" Name="Diagram1" ZoomLevel="108">
+      <Diagram DiagramId="6bb5d129d71e459783727a18e32e1096" Name="Diagram1" ZoomLevel="100">
         <EntityTypeShape EntityType="minegocioModel.acceso" Width="1.5" PointX="4.875" PointY="17.25" IsExpanded="false" />
         <EntityTypeShape EntityType="minegocioModel.acceso_finger_print" Width="1.5" PointX="4.875" PointY="20.875" IsExpanded="false" />
         <EntityTypeShape EntityType="minegocioModel.altaprod" Width="1.5" PointX="7.375" PointY="2" IsExpanded="false" />
         <EntityTypeShape EntityType="minegocioModel.altaprodmotivo" Width="1.5" PointX="7.375" PointY="0.875" IsExpanded="false" />
         <EntityTypeShape EntityType="minegocioModel.bajaprod" Width="1.5" PointX="10.25" PointY="2.125" IsExpanded="false" />
         <EntityTypeShape EntityType="minegocioModel.bajaprodmotivo" Width="1.5" PointX="10.125" PointY="0.875" IsExpanded="false" />
-        <EntityTypeShape EntityType="minegocioModel.base_user_extend" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="false" />
         <EntityTypeShape EntityType="minegocioModel.cajamostrador" Width="1.5" PointX="2.25" PointY="12.125" IsExpanded="false" />
         <EntityTypeShape EntityType="minegocioModel.categoria_prod" Width="1.5" PointX="11.375" PointY="3.875" IsExpanded="false" />
         <EntityTypeShape EntityType="minegocioModel.cliente" Width="2.125" PointX="2.125" PointY="16.625" IsExpanded="false" />
         <EntityTypeShape EntityType="minegocioModel.cliente_acceso" Width="1.5" PointX="3.625" PointY="18.125" IsExpanded="false" />
         <EntityTypeShape EntityType="minegocioModel.cliente_asistencia" Width="1.5" PointX="3.375" PointY="19.125" IsExpanded="false" />
-        <EntityTypeShape EntityType="minegocioModel.cliente_membresia" Width="1.5" PointX="2.375" PointY="22.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.cliente_membresia" Width="1.5" PointX="2.375" PointY="22.125" IsExpanded="true" />
         <EntityTypeShape EntityType="minegocioModel.cliente_seguim_galeria" Width="1.5" PointX="0.5" PointY="19.25" IsExpanded="false" />
         <EntityTypeShape EntityType="minegocioModel.cliente_seguimiento" Width="1.5" PointX="0.5" PointY="18" IsExpanded="false" />
         <EntityTypeShape EntityType="minegocioModel.comisionpagada" Width="1.5" PointX="2.25" PointY="14" IsExpanded="false" />
@@ -53,9 +52,8 @@
         <EntityTypeShape EntityType="minegocioModel.usuario" Width="1.5" PointX="5.25" PointY="11" IsExpanded="false" />
         <EntityTypeShape EntityType="minegocioModel.venta" Width="1.5" PointX="8" PointY="12.125" IsExpanded="false" />
         <EntityTypeShape EntityType="minegocioModel.view_asistencia" Width="1.5" PointX="13.875" PointY="10.625" IsExpanded="false" />
-        <EntityTypeShape EntityType="minegocioModel.view_cuentas_cobrar" Width="1.5" PointX="13.75" PointY="4.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.view_cuentas_cobrar" Width="1.5" PointX="13.875" PointY="4.875" IsExpanded="false" />
         <EntityTypeShape EntityType="minegocioModel.view_pago_membresia" Width="1.5" PointX="13.875" PointY="7.125" IsExpanded="false" />
-        <EntityTypeShape EntityType="minegocioModel.view_pago_membresia_periodo" Width="1.5" PointX="15.75" PointY="4.875" IsExpanded="false" />
         <EntityTypeShape EntityType="minegocioModel.viewaltaprod" Width="1.5" PointX="15.75" PointY="6" IsExpanded="false" />
         <EntityTypeShape EntityType="minegocioModel.viewbajaprod" Width="1.5" PointX="15.75" PointY="7.125" IsExpanded="false" />
         <EntityTypeShape EntityType="minegocioModel.viewcajamostrador" Width="1.5" PointX="15.875" PointY="8.375" IsExpanded="false" />
@@ -71,8 +69,7 @@
         <EntityTypeShape EntityType="minegocioModel.viewnotacventa" Width="1.5" PointX="13.875" PointY="6" IsExpanded="false" />
         <EntityTypeShape EntityType="minegocioModel.viewproducto" Width="1.5" PointX="19.75" PointY="7.125" IsExpanded="false" />
         <EntityTypeShape EntityType="minegocioModel.viewsocio" Width="1.5" PointX="19.75" PointY="8.375" IsExpanded="false" />
-        <EntityTypeShape EntityType="minegocioModel.viewsocio2" Width="1.5" PointX="17.75" PointY="20.875" IsExpanded="false" />
-        <EntityTypeShape EntityType="minegocioModel.viewusuario" Width="1.5" PointX="19.75" PointY="9.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="minegocioModel.viewusuario" Width="1.5" PointX="21.5" PointY="9.5" IsExpanded="false" />
         <EntityTypeShape EntityType="minegocioModel.viewventa" Width="1.5" PointX="19.75" PointY="5.875" IsExpanded="false" />
         <AssociationConnector Association="minegocioModel.FK_acceso_finger_print_acceso" ManuallyRouted="false" />
         <AssociationConnector Association="minegocioModel.FK_cliente_acceso_acceso" ManuallyRouted="false" />

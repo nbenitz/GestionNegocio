@@ -10,5 +10,38 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">server=localhost;user id=root;password=1223;database=minegocio</Value>
     </Setting>
+    <Setting Name="admin" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="serverSelectedIndex" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="serverIp" Type="System.String" Scope="User">
+      <Value Profile="(Default)">127.0.0.1</Value>
+    </Setting>
+    <Setting Name="deviceIp" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.100.3</Value>
+    </Setting>
+    <Setting Name="serverIp1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">100.0.0.1</Value>
+    </Setting>
+    <Setting Name="deviceIp1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10.35.230.183</Value>
+    </Setting>
+    <Setting Name="serverIp2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">127.0.0.1</Value>
+    </Setting>
+    <Setting Name="deviceIp2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10.35.230.183</Value>
+    </Setting>
+    <Setting Name="server" Type="System.String" Scope="User">
+      <Value Profile="(Default)">server=localhost;user id=root;password=1223;database=minegocio</Value>
+    </Setting>
+    <Setting Name="device" Type="System.String" Scope="User">
+      <Value Profile="(Default)">127.0.0.1</Value>
+    </Setting>
+    <Setting Name="devicePort" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.100.3</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -12,12 +12,13 @@ Public Class CCliente
                                  ByVal Direccion As String,
                                  ByVal Propietario As String,
                                  ByVal Foto As Byte(),
-                                 ByVal FechaNac As Date) As Boolean
+                                 ByVal FechaNac As Date,
+                                 ByVal Conocio As String) As Boolean
         Dim inserto As Boolean = False
         Try
             ObjCon.Conectar()
             ObjCon.CrearComando("INSERT INTO Cliente VALUES(?ci, ?nombre, ?alias, ?telefono, ?direccion, " +
-                                "?propietario, ?foto, 1, ?fecha_nacimiento)")
+                                "?propietario, ?foto, 1, ?fecha_nacimiento, ?conocio)")
             ObjCon.AsignarParametro("?ci", MySqlDbType.String, CI)
             ObjCon.AsignarParametro("?nombre", MySqlDbType.String, Nombre)
             ObjCon.AsignarParametro("?alias", MySqlDbType.String, Aliass)
@@ -26,6 +27,7 @@ Public Class CCliente
             ObjCon.AsignarParametro("?propietario", MySqlDbType.String, Propietario)
             ObjCon.AsignarParametro("?foto", MySqlDbType.LongBlob, Foto)
             ObjCon.AsignarParametro("?fecha_nacimiento", MySqlDbType.Date, FechaNac)
+            ObjCon.AsignarParametro("?conocio", MySqlDbType.String, Conocio)
             If ObjCon.EjecutarConsulta() > 0 Then
                 inserto = True
             Else
@@ -78,12 +80,14 @@ Public Class CCliente
                            ByVal Propietario As String,
                            ByVal Foto As Byte(),
                            ByVal FechaNac As Date,
+                           ByVal Conocio As String,
                            ByVal RUC As String) As Boolean
         Dim inserto As Boolean = False
         Try
             ObjCon.Conectar()
             ObjCon.CrearComando("UPDATE Cliente SET CI = ?newci, nombre = ?nombre, alias = ?alias, telefono = ?telefono, " +
-                                " direccion = ?direccion, propietario = ?propietario, foto = ?foto, fecha_nacimiento = ?fecha_nacimiento WHERE CI = ?ci")
+                                " direccion = ?direccion, propietario = ?propietario, foto = ?foto, " +
+                                " fecha_nacimiento = ?fecha_nacimiento, como_conocio = ?conocio WHERE CI = ?ci")
             ObjCon.AsignarParametro("?newci", MySqlDbType.String, NewCI)
             ObjCon.AsignarParametro("?nombre", MySqlDbType.String, Nombre)
             ObjCon.AsignarParametro("?alias", MySqlDbType.String, Aliass)
@@ -92,6 +96,7 @@ Public Class CCliente
             ObjCon.AsignarParametro("?propietario", MySqlDbType.String, Propietario)
             ObjCon.AsignarParametro("?foto", MySqlDbType.LongBlob, Foto)
             ObjCon.AsignarParametro("?fecha_nacimiento", MySqlDbType.Date, FechaNac)
+            ObjCon.AsignarParametro("?conocio", MySqlDbType.String, Conocio)
             ObjCon.AsignarParametro("?ci", MySqlDbType.String, RUC)
             If ObjCon.EjecutarConsulta() > 0 Then
                 inserto = True
