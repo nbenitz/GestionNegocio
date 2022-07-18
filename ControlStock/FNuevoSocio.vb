@@ -582,10 +582,10 @@ Public Class FNuevoSocio
                     End If
                 Else
                     ShowLoading()
-                    Dim estado As String
+                    Dim EmployeeNoValueAux As String
                     Try
                         Dim t2 As Task
-                        t2 = Task.Run(Sub() estado = EditarHuellaDispositivo())
+                        t2 = Task.Run(Sub() EmployeeNoValueAux = GuardarDatosAccesoDispositivo())
                         Await t2
                     Catch ex As Exception
                         'CloseLoading()
@@ -593,7 +593,7 @@ Public Class FNuevoSocio
                         'Exit Sub
                     End Try
                     CloseLoading()
-                    If estado <> "OK" Then
+                    If EmployeeNoValueAux.Length = 0 Then
                         Exit Sub
                     End If
                     If Not oAcceso.DelFingers(EmployeeNoValue) Then
@@ -647,9 +647,21 @@ Public Class FNuevoSocio
         Dim estado As String
         Dim EmployeeNo As String = txtCI.Text
 
+        estado = Person.DelUser(EmployeeNo)
+        If estado <> "OK" Then
+            MessageBox.Show("Error al registrar los datos de Acceso: " + estado)
+            Return ""
+        End If
+
         estado = Person.SetUserInfo(txtNombre.Text, EmployeeNo)
         If estado <> "OK" Then
             MessageBox.Show("Error al registrar los datos de Acceso: " + estado)
+            Return ""
+        End If
+
+        estado = FrmFingerPMgr.DelFingerData(EmployeeNo)
+        If estado <> "OK" Then
+            MessageBox.Show("Error al Registrar la Huella Dactilar: " + estado)
             Return ""
         End If
 
@@ -846,11 +858,12 @@ Public Class FNuevoSocio
         With OpenFileDialog1
             .CheckFileExists = True
             .ShowReadOnly = False
-            .Filter = "All Files|*.*|Bitmap Files (*)|*.bmp;*.gif;*.jpg;*.jpeg"
-            .FilterIndex = 2
+            '.Filter = "All Files|*.*|Bitmap Files (*)|*.bmp;*.gif;*.jpg;*.jpeg"
+            .Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.tif"
+            '.FilterIndex = 2
             If .ShowDialog = DialogResult.OK Then
                 ' Load the specified file into a PictureBox control.
-                If Not (pbxFoto.Image Is Nothing) Then
+                If pbxFoto.Image IsNot Nothing Then
                     pbxFoto.Image.Dispose()
                     pbxFoto.Image = Nothing
                 End If
@@ -873,7 +886,7 @@ Public Class FNuevoSocio
             Dim finalImg As New Bitmap(img, imgSize.Width, imgSize.Height)
 
             'create a new Graphics object from the image
-            Dim gfx As Graphics = Graphics.FromImage(img)
+            Dim gfx As Graphics = Graphics.FromImage(finalImg)
 
             'clean up the image (take care of any image loss from resizing)
             gfx.InterpolationMode = InterpolationMode.HighQualityBicubic
@@ -886,7 +899,7 @@ Public Class FNuevoSocio
 
             'set the new image
             'pb.Image = finalImg
-            pb.Image = CorrectExifOrientation(img)
+            pb.Image = CorrectExifOrientation(finalImg)
         Catch e As System.Exception
             MessageBox.Show(e.Message)
         End Try

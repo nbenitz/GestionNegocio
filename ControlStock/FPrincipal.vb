@@ -26,6 +26,9 @@ Public Class FPrincipal
         InitializeComponent()
         'LblUsuario.Text = "Bienvenido: " & user
         CI = CIValue
+        Dim Emple As New CEmpleado
+        Dim TablaEmple As DataTable = Emple.CargarEmple(CIValue)
+        lblEmpleado.Text = CStr(TablaEmple.Rows(0).Item(1)) + " " + CStr(TablaEmple.Rows(0).Item(2))
     End Sub
 
     Public Sub Privilegios(ByVal ProdConsult As Boolean,
@@ -364,7 +367,7 @@ Public Class FPrincipal
 
 
     Private Sub TmrFecha_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TmrFecha.Tick
-        lblHora.Text = Format(Now, "dd/MM/yyyy  -  HH:mm")
+        lblHora.Text = Format(Now, "dd/MM/yyyy - HH:mm")
     End Sub
 
     Private Sub RecibosDeDinero_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RecibosDeDinero.Click

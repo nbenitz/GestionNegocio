@@ -15,16 +15,16 @@ Public Class FCajaMostrador
             LblMonto.Text = "Monto Final"
             TxtMontoInicial.ReadOnly = True
             TxtMontoInicial.Text = CStr(Caja.MontoCierre(NumCaja))
-            LblFecha.Text = Caja.FechaApertura(NumCaja)
+            LblFecha.Text = Format(CDate(Caja.FechaApertura(NumCaja)), "yyyy-MM-dd HH:mm:ss")
             LblFecha.Visible = True
             LblFecheApertura.Visible = True
         End If
     End Sub
 
     Private Sub CargarEmple()
-        'TablaEmple = Empleado.ListarEmple()
         Dim TablaEmple As DataTable = Empleado.CargarEmple(CIValue)
-        TxtEmpleado.Text = CStr(TablaEmple.Rows(0).Item(1)) + " " + CStr(TablaEmple.Rows(0).Item(2))
+        Dim Nombre As String = CStr(TablaEmple.Rows(0).Item(1)) + " " + CStr(TablaEmple.Rows(0).Item(2))
+        TxtEmpleado.Text = If(Nombre.Length <= 20, Nombre, Nombre.Substring(0, 15) + "...")
     End Sub
 
     Public Property CIEmpleado() As String

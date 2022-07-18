@@ -166,13 +166,13 @@ Public Class FEventoAcceso
         Dim Count As Integer = TablaMembresia.Rows.Count
         If Count > 0 Then       'Si el socio tiene membresías
 
-            Dim i As Integer = Count - 1        'indice de la última membresía pagada
+            Dim i As Integer = 0                'indice de la última membresía pagada
             If Count > 1 Then   'Si tiene mas de una membresía
                 Dim Inicio As Date = CDate(TablaMembresia.Rows(i).Item(4))  'fecha de inicio de la última membresía
                 If Inicio > Date.Now() Then     'si aún no llega la fecha de inicio de la última membresía
-                    Dim Fin As Date = CDate(TablaMembresia.Rows(i - 1).Item(5)) 'Fecha Vencimiento de la penúltima membresía
+                    Dim Fin As Date = CDate(TablaMembresia.Rows(i + 1).Item(5)) 'Fecha Vencimiento de la penúltima membresía
                     If Fin > Date.Now Then      'si aún no venció la penúltima membresía
-                        i -= 1                  'utilizar el índice de la penúltima membresía
+                        i += 1                  'utilizar el índice de la penúltima membresía
                     End If
                 End If
             End If
@@ -181,44 +181,50 @@ Public Class FEventoAcceso
             Dim TablaTolerancia As DataTable = oAcceso.VerAjustes
             Dim DiasTolerancia As Integer = CInt(TablaTolerancia.Rows(0).Item(1))
 
-            Dim TiempoUnidad As Char = CChar(TablaMembresia.Rows(i).Item(11))
-            Dim VecesDia As Integer = CInt(TablaMembresia.Rows(i).Item(12))
-            Dim DiasSemana As Integer = CInt(TablaMembresia.Rows(i).Item(13))
-            Dim DiasMes As Integer = CInt(TablaMembresia.Rows(i).Item(14))
-            Dim Dia As String = CStr(TablaMembresia.Rows(i).Item(15))
+            'Dim TiempoUnidad As Char = CChar(TablaMembresia.Rows(i).Item(11))
+            'Dim VecesDia As Integer = CInt(TablaMembresia.Rows(i).Item(12))
+            'Dim DiasSemana As Integer = CInt(TablaMembresia.Rows(i).Item(13))
+            'Dim DiasMes As Integer = CInt(TablaMembresia.Rows(i).Item(14))
+            'Dim Dia As String = CStr(TablaMembresia.Rows(i).Item(15))
 
-            Dim VecesDiaFlag As Boolean = True
-            Dim DiasSemanaFlag As Boolean = True
-            Dim DiasMesFlag As Boolean = True
-            Dim DiasFlag As Boolean = False
+            'Dim VecesDiaFlag As Boolean = True
+            'Dim DiasSemanaFlag As Boolean = True
+            'Dim DiasMesFlag As Boolean = True
+            'Dim DiasFlag As Boolean = False
+
+            Dim SocioOk As Boolean = True
 
 
-            If VecesDia < 99 Then
+            'If VecesDia < 99 Then
 
-            End If
-            If DiasSemana < 7 Then
+            'End If
+            'If DiasSemana < 7 Then
 
-            End If
-            If DiasMes < 31 Then
+            'End If
+            'If DiasMes < 31 Then
 
-            End If
-            Dim Hoy As String = Strings.Left(Now.ToString("ddd"), 3)
-            If Dia.Contains(Strings.Left(Now.ToString("ddd"), 3)) Then
-                DiasFlag = True
+            'End If
+            'If Dia.Contains(Strings.Left(Now.ToString("ddd"), 3)) = False Then
+            'SocioOk = False
+            'End If
+            If Atraso > DiasTolerancia Then
+                SocioOk = False
             End If
 
             'server=127.0.0.1;user id=remote;password=1223;database=minegocio
-            If Atraso <= DiasTolerancia And Strings.Left(BaseDatoServer, 16) = "server=127.0.0.1" Then
-                    EventoAcceso.OpenDoor()
-                End If
+            'If Atraso <= DiasTolerancia And Strings.Left(BaseDatoServer, 16) = "server=127.0.0.1" Then
 
-                Dim NombreMembresia As String = CStr(TablaMembresia.Rows(i).Item(3))
-                Dim Vto As Date = CDate(TablaMembresia.Rows(i).Item(5))
-                Me.ShowClientStatus(NombreMembresia, Vto, Atraso, GetSaldoPendiente(CI))
-                If oAcceso.InsertClienteAsistencia(CI, Tiempo, " ") = False Then
-                    MessageBox.Show("Hubo un problema al registrar el acceso.")
-                End If
+            If SocioOk Then
+                EventoAcceso.OpenDoor()
             End If
+
+            Dim NombreMembresia As String = CStr(TablaMembresia.Rows(i).Item(3))
+            Dim Vto As Date = CDate(TablaMembresia.Rows(i).Item(5))
+            Me.ShowClientStatus(NombreMembresia, Vto, Atraso, GetSaldoPendiente(CI))
+            If oAcceso.InsertClienteAsistencia(CI, Tiempo, " ") = False Then
+                MessageBox.Show("Hubo un problema al registrar el acceso.")
+            End If
+        End If
     End Sub
 
     Function GetSaldoPendiente(ByVal CI As String) As Integer

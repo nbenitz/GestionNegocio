@@ -50,8 +50,8 @@ Module MImagen
                 Img.RotateFlip(RotateFlip)
                 Img.RemovePropertyItem(orientationId)
             End If
-            Return Img
         End If
+        Return Img
     End Function
 
 End Module

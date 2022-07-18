@@ -98,7 +98,7 @@ Partial Class FCajaMostrador
         '
         Me.btnAceptar.BackColor = System.Drawing.Color.Red
         Me.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnAceptar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAceptar.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAceptar.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.btnAceptar.Location = New System.Drawing.Point(118, 140)
         Me.btnAceptar.Name = "btnAceptar"
@@ -111,7 +111,7 @@ Partial Class FCajaMostrador
         '
         Me.btnCancelar.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCancelar.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancelar.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.btnCancelar.Location = New System.Drawing.Point(213, 140)
         Me.btnCancelar.Name = "btnCancelar"

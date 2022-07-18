@@ -295,5 +295,15 @@ namespace ControlDoor
         public string employeeNo { get; set; } //opt
     }
 
+    public class JSON_UserInfoDelCond
+    {
+        public CUserInfoDelCond UserInfoDelCond { get; set; } //req
+    }
+
+    public class CUserInfoDelCond
+    {
+        public List<CEmployeeNoList> EmployeeNoList { get; set; } //opt //opt
+    }
+
     #endregion
 }

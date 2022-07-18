@@ -291,6 +291,9 @@ namespace ControlDoor
                     case 0x26:  //MINOR_FINGERPRINT_COMPARE_PASS
                         MsgRecibido(tiempo, codigo);    
                         break;
+                    case 0xB5:  //ACCESO POR CONTRASEÑA
+                        MsgRecibido(tiempo, codigo);
+                        break;
                     case 0x17:  //MINOR_DOOR_BUTTON_PRESS
                         OpenDoor();
                         break;

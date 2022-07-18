@@ -114,6 +114,8 @@ Partial Class FPrincipal
         Me.BtnMinimizar = New System.Windows.Forms.PictureBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblHora = New System.Windows.Forms.Label()
+        Me.lblEmpleado = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.pnlBarSide.SuspendLayout()
         Me.pnlCerradura.SuspendLayout()
@@ -567,7 +569,7 @@ Partial Class FPrincipal
         Me.GastosGeneralesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.GastosGeneralesToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.GastosGeneralesToolStripMenuItem.Name = "GastosGeneralesToolStripMenuItem"
-        Me.GastosGeneralesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.GastosGeneralesToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
         Me.GastosGeneralesToolStripMenuItem.Text = "Gastos Generales"
         '
         'ListaDeGastosToolStripMenuItem
@@ -575,7 +577,7 @@ Partial Class FPrincipal
         Me.ListaDeGastosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.ListaDeGastosToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.ListaDeGastosToolStripMenuItem.Name = "ListaDeGastosToolStripMenuItem"
-        Me.ListaDeGastosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ListaDeGastosToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
         Me.ListaDeGastosToolStripMenuItem.Text = "Consultar Gastos"
         '
         'BalanceToolStripMenuItem
@@ -583,7 +585,7 @@ Partial Class FPrincipal
         Me.BalanceToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.BalanceToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.BalanceToolStripMenuItem.Name = "BalanceToolStripMenuItem"
-        Me.BalanceToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.BalanceToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
         Me.BalanceToolStripMenuItem.Text = "Balance"
         '
         'mnuUsuarios
@@ -679,7 +681,7 @@ Partial Class FPrincipal
         Me.AcercaDeToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.AcercaDeToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.AcercaDeToolStripMenuItem.Name = "AcercaDeToolStripMenuItem"
-        Me.AcercaDeToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.AcercaDeToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
         Me.AcercaDeToolStripMenuItem.Text = "Acerca de"
         '
         'pnlBarSide
@@ -877,9 +879,9 @@ Partial Class FPrincipal
         '
         Me.pbxRetraer.Cursor = System.Windows.Forms.Cursors.Hand
         Me.pbxRetraer.Image = Global.ControlStock.My.Resources.Resources.right_arrow
-        Me.pbxRetraer.Location = New System.Drawing.Point(7, 3)
+        Me.pbxRetraer.Location = New System.Drawing.Point(10, 5)
         Me.pbxRetraer.Name = "pbxRetraer"
-        Me.pbxRetraer.Size = New System.Drawing.Size(20, 20)
+        Me.pbxRetraer.Size = New System.Drawing.Size(15, 15)
         Me.pbxRetraer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.pbxRetraer.TabIndex = 0
         Me.pbxRetraer.TabStop = False
@@ -913,24 +915,51 @@ Partial Class FPrincipal
         'Panel1
         '
         Me.Panel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.Controls.Add(Me.Label2)
+        Me.Panel1.Controls.Add(Me.lblEmpleado)
         Me.Panel1.Controls.Add(Me.lblHora)
-        Me.Panel1.Location = New System.Drawing.Point(943, 1)
+        Me.Panel1.Location = New System.Drawing.Point(816, 1)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(134, 34)
+        Me.Panel1.Size = New System.Drawing.Size(261, 34)
         Me.Panel1.TabIndex = 119
         '
         'lblHora
         '
         Me.lblHora.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblHora.AutoSize = True
-        Me.lblHora.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblHora.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblHora.ForeColor = System.Drawing.Color.White
-        Me.lblHora.Location = New System.Drawing.Point(5, 8)
+        Me.lblHora.Location = New System.Drawing.Point(155, 9)
         Me.lblHora.Name = "lblHora"
-        Me.lblHora.Size = New System.Drawing.Size(126, 17)
+        Me.lblHora.Size = New System.Drawing.Size(103, 15)
         Me.lblHora.TabIndex = 0
-        Me.lblHora.Text = "01/01/2022  -  00:00"
+        Me.lblHora.Text = "01/01/2022 - 00:00"
         Me.lblHora.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblEmpleado
+        '
+        Me.lblEmpleado.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblEmpleado.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEmpleado.ForeColor = System.Drawing.Color.White
+        Me.lblEmpleado.Location = New System.Drawing.Point(14, 9)
+        Me.lblEmpleado.Name = "lblEmpleado"
+        Me.lblEmpleado.Size = New System.Drawing.Size(125, 15)
+        Me.lblEmpleado.TabIndex = 1
+        Me.lblEmpleado.Text = "Nombre Empleado"
+        Me.lblEmpleado.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label2
+        '
+        Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.White
+        Me.Label2.Location = New System.Drawing.Point(143, 9)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(10, 15)
+        Me.Label2.TabIndex = 2
+        Me.Label2.Text = "|"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'FPrincipal
         '
@@ -1073,4 +1102,6 @@ Partial Class FPrincipal
     Friend WithEvents mnuAsistenciaEmpleado As ToolStripMenuItem
     Friend WithEvents Panel1 As Panel
     Friend WithEvents lblHora As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents lblEmpleado As Label
 End Class

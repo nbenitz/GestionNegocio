@@ -13,6 +13,7 @@ BASE DE DATOS
 		- cliente_membresia_id: En Delete CASCADE
 
 	- En view_cliente_membresia
+	- En viewsocio
 	- En viewdetalleingreso
 
 

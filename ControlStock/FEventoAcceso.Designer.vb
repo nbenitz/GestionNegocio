@@ -383,26 +383,26 @@ Partial Class FEventoAcceso
         '
         'Button1
         '
+        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(298, 447)
+        Me.Button1.Location = New System.Drawing.Point(121, 565)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 10
         Me.Button1.Text = "Probar"
         Me.Button1.UseVisualStyleBackColor = True
-        Me.Button1.Visible = False
         '
         'TextBox1
         '
+        Me.TextBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TextBox1.ForeColor = System.Drawing.Color.Black
-        Me.TextBox1.Location = New System.Drawing.Point(192, 449)
+        Me.TextBox1.Location = New System.Drawing.Point(15, 567)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(100, 20)
         Me.TextBox1.TabIndex = 11
-        Me.TextBox1.Text = "1"
-        Me.TextBox1.Visible = False
+        Me.TextBox1.Text = "5510423"
         '
         'lblSegundaPantalla
         '
@@ -461,7 +461,7 @@ Partial Class FEventoAcceso
         Me.lblVeces.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblVeces.AutoSize = True
         Me.lblVeces.ForeColor = System.Drawing.Color.White
-        Me.lblVeces.Location = New System.Drawing.Point(199, 577)
+        Me.lblVeces.Location = New System.Drawing.Point(101, 516)
         Me.lblVeces.Name = "lblVeces"
         Me.lblVeces.Size = New System.Drawing.Size(13, 13)
         Me.lblVeces.TabIndex = 18
@@ -473,7 +473,7 @@ Partial Class FEventoAcceso
         Me.btnLogout.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnLogout.ForeColor = System.Drawing.Color.White
-        Me.btnLogout.Location = New System.Drawing.Point(15, 561)
+        Me.btnLogout.Location = New System.Drawing.Point(15, 511)
         Me.btnLogout.Name = "btnLogout"
         Me.btnLogout.Size = New System.Drawing.Size(75, 23)
         Me.btnLogout.TabIndex = 19

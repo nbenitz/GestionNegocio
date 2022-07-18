@@ -248,7 +248,7 @@ Public Class FEmpleado
                 ShowLoading()
                 Try
                     Dim t1 As Task
-                    t1 = Task.Run(Sub() EmployeeNo = GuardarDatosAccesoDispositivo(EmployeeNo))
+                    t1 = Task.Run(Sub() EmployeeNoValue = GuardarDatosAccesoDispositivo(EmployeeNo))
                     Await t1
                 Catch ex As Exception
                     'CloseLoading()
@@ -303,10 +303,10 @@ Public Class FEmpleado
                     End If
                 Else
                     ShowLoading()
-                    Dim estado As String
+                    Dim EmployeeNoValueAux As String
                     Try
                         Dim t2 As Task
-                        t2 = Task.Run(Sub() estado = EditarHuellaDispositivo())
+                        t2 = Task.Run(Sub() EmployeeNoValueAux = GuardarDatosAccesoDispositivo(EmployeeNoValue))
                         Await t2
                     Catch ex As Exception
                         'CloseLoading()
@@ -315,7 +315,7 @@ Public Class FEmpleado
                     End Try
                     CloseLoading()
                     'estado = EditarHuellaDispositivo()
-                    If estado <> "OK" Then
+                    If EmployeeNoValueAux.Length = 0 Then
                         Exit Sub
                     End If
                     If Not oAcceso.DelFingers(EmployeeNoValue) Then
@@ -359,9 +359,21 @@ Public Class FEmpleado
     Private Function GuardarDatosAccesoDispositivo(EmployeeNo As String) As String
         Dim estado As String
 
+        estado = Person.DelUser(EmployeeNo)
+        If estado <> "OK" Then
+            MessageBox.Show("Error al registrar los datos de Acceso: " + estado)
+            Return ""
+        End If
+
         estado = Person.SetUserInfo(txtNombre.Text, EmployeeNo)
         If estado <> "OK" Then
             MessageBox.Show("Error al registrar los datos de Acceso: " + estado)
+            Return ""
+        End If
+
+        estado = FrmFingerPMgr.DelFingerData(EmployeeNo)
+        If estado <> "OK" Then
+            MessageBox.Show("Error al Registrar la Huella Dactilar: " + estado)
             Return ""
         End If
 

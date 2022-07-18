@@ -11,9 +11,18 @@ Public Class FListaSocio
     Dim ModoVistaValue As Boolean = False
     Public Event ClienteSeleccionado(ByVal CI As String, ByVal Nombre As String)
     Dim TablaSelIndex As Integer = -1
+    Dim Filtrar As Integer = 0
+    Public Enum FiltarPor As Integer
+        Todos = 0
+        AlDia = 1
+        CuotaVencida = 2
+        ConDeuda = 3
+        Activos = 4
+        Inactivos = 5
+    End Enum
 
     Private Sub FListaSocio_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        cmbVerPor.SelectedIndex = 0
+        Filtrar = 0
         txtBuscar.Focus()
     End Sub
 
@@ -53,8 +62,8 @@ Public Class FListaSocio
                 dgvCliente.Rows.Add(False, Foto, RUC, Nombre, MembresiaNom, Tel, Saldo, Estado)
 
                 If Estado = "Cuota Vencida" Then
-                    dgvCliente.Rows.Item(i).DefaultCellStyle.BackColor = Color.FromArgb(192, 0, 0)
-                    dgvCliente.Rows.Item(i).DefaultCellStyle.SelectionBackColor = Color.FromArgb(192, 0, 0)
+                    dgvCliente.Rows.Item(i).DefaultCellStyle.BackColor = Color.FromArgb(255, 128, 0)
+                    dgvCliente.Rows.Item(i).DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 128, 0)
                     dgvCliente.Rows.Item(i).DefaultCellStyle.ForeColor = Color.LightGray
                     dgvCliente.Rows.Item(i).DefaultCellStyle.SelectionForeColor = Color.White
                 Else
@@ -70,25 +79,18 @@ Public Class FListaSocio
         End If
     End Sub
 
-    Private Sub cmbVerPor_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmbVerPor.SelectedIndexChanged
-        Dim Indice As Integer = cmbVerPor.SelectedIndex
-        Select Case Indice
-            Case Is = 0 'Todos
-                VerTodos()
-            Case Else
-                VerConFiltro()
-        End Select
-        txtBuscar.Text = ""
-    End Sub
-
     Private Sub txtBuscar_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs) Handles txtBuscar.KeyDown
         If e.KeyCode = Keys.Enter Then
             Dim Param As String = txtBuscar.Text
             If Param <> "" Then
                 TablaCli = Cliente.BuscSocio("WHERE Nombre like '%" + Param + "%' OR Cedula like '%" + Param + "%' OR Alias like '%" + Param + "%'")
                 CargarTabla(TablaCli)
+                chkTodos.Checked = False
+                chkAlDia.Checked = False
+                chkCuotaVencida.Checked = False
+                chkConDeuda.Checked = False
+                chkInactivos.Checked = False
             End If
-            cmbVerPor.Text = ""
         End If
     End Sub
 
@@ -123,7 +125,7 @@ Public Class FListaSocio
 
     Private Sub VerConFiltro()
         Dim Condicion As String = ""
-        Select Case cmbVerPor.SelectedIndex
+        Select Case Filtrar
             Case Is = 1 'Al día
                 Condicion = "WHERE estado = 'Cuota al día'"
             Case Is = 2 'Con Cuota Vencida
@@ -155,7 +157,7 @@ Public Class FListaSocio
             Exit Sub
         End If
 
-        If cmbVerPor.SelectedIndex = 0 Then
+        If Filtrar = 0 Then
             VerTodos()
         Else
             VerConFiltro()
@@ -301,11 +303,83 @@ Public Class FListaSocio
     Private Sub txtBuscar_KeyUp(sender As Object, e As KeyEventArgs) Handles txtBuscar.KeyUp
         Dim Param As String = txtBuscar.Text
         If Param = "" Then
-            cmbVerPor.SelectedIndex = 0
+            Filtrar = 0
         End If
     End Sub
 
-    Private Sub cmbVerPor_Click(sender As Object, e As EventArgs) Handles cmbVerPor.Click
-
+    Private Sub AplicarFlitro()
+        Select Case Filtrar
+            Case Is = 0 'Todos
+                VerTodos()
+            Case Else
+                VerConFiltro()
+        End Select
+        txtBuscar.Text = ""
     End Sub
+
+    Private Sub chkTodos_CheckedChanged(sender As Object, e As EventArgs) Handles chkTodos.CheckedChanged
+        Cursor.Current = Cursors.WaitCursor
+        If chkTodos.Checked Then
+            Filtrar = FiltarPor.Todos
+            'chkTodos.Checked = False
+            chkAlDia.Checked = False
+            chkCuotaVencida.Checked = False
+            chkConDeuda.Checked = False
+            chkInactivos.Checked = False
+            AplicarFlitro()
+        End If
+    End Sub
+
+    Private Sub chkAlDia_CheckedChanged(sender As Object, e As EventArgs) Handles chkAlDia.CheckedChanged
+        Cursor.Current = Cursors.WaitCursor
+        If chkAlDia.Checked Then
+            Filtrar = FiltarPor.AlDia
+            chkTodos.Checked = False
+            'chkAlDia.Checked = False
+            chkCuotaVencida.Checked = False
+            chkConDeuda.Checked = False
+            chkInactivos.Checked = False
+            AplicarFlitro()
+        End If
+    End Sub
+
+    Private Sub chkCuotaVencida_CheckedChanged(sender As Object, e As EventArgs) Handles chkCuotaVencida.CheckedChanged
+        Cursor.Current = Cursors.WaitCursor
+        If chkCuotaVencida.Checked Then
+            Filtrar = FiltarPor.CuotaVencida
+            chkTodos.Checked = False
+            chkAlDia.Checked = False
+            'chkCuotaVencida.Checked = False
+            chkConDeuda.Checked = False
+            chkInactivos.Checked = False
+            AplicarFlitro()
+        End If
+    End Sub
+
+    Private Sub chkInactivos_CheckedChanged(sender As Object, e As EventArgs) Handles chkInactivos.CheckedChanged
+        Cursor.Current = Cursors.WaitCursor
+        If chkInactivos.Checked Then
+            Filtrar = FiltarPor.Inactivos
+            chkTodos.Checked = False
+            chkAlDia.Checked = False
+            chkCuotaVencida.Checked = False
+            chkConDeuda.Checked = False
+            'chkInactivos.Checked = False
+            AplicarFlitro()
+        End If
+    End Sub
+
+    Private Sub chkConDeuda_CheckedChanged(sender As Object, e As EventArgs) Handles chkConDeuda.CheckedChanged
+        Cursor.Current = Cursors.WaitCursor
+        If chkConDeuda.Checked Then
+            Filtrar = FiltarPor.ConDeuda
+            chkTodos.Checked = False
+            chkAlDia.Checked = False
+            chkCuotaVencida.Checked = False
+            'chkConDeuda.Checked = False
+            chkInactivos.Checked = False
+            AplicarFlitro()
+        End If
+    End Sub
+
 End Class

@@ -482,8 +482,8 @@ Partial Class FEmpleado
         Me.Controls.Add(Me.btnAcceso)
         Me.Controls.Add(Me.lblTitulo)
         Me.Controls.Add(Me.btnSocio)
-        Me.Controls.Add(Me.pnlSocio)
         Me.Controls.Add(Me.pnlAcceso)
+        Me.Controls.Add(Me.pnlSocio)
         Me.ForeColor = System.Drawing.Color.White
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "FEmpleado"

@@ -21,7 +21,8 @@ Public Class FSocioInfo
     Public Sub ShowClientInfo(ByVal Aliass As String,
                               ByVal foto As Byte())
 
-        lblNombre.Text = Aliass
+        'lblNombre.Text = Aliass
+        lblNombre.Text = If(Aliass.Length <= 20, Aliass, Aliass.Substring(0, 22) + "...")
         pbxFoto.Image = If(foto IsNot Nothing, ByteArrayToImage(foto), My.Resources.userblack)
         MostrarSocioInfo()
     End Sub
@@ -31,7 +32,8 @@ Public Class FSocioInfo
                                 ByVal Atraso As Integer,
                                 ByVal SaldoPendiente As Integer)
 
-        lblMembresia.Text = Membresia
+        'lblMembresia.Text = Membresia
+        lblMembresia.Text = If(Membresia.Length <= 20, Membresia, Membresia.Substring(0, 22) + "...")
         lblVencimiento.Text = CStr(Vencimiento)
         lblAtraso.Text = CStr(Atraso)
         lblSaldo.Text = CStr(SaldoPendiente)

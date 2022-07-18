@@ -134,6 +134,7 @@ namespace ControlDoor
         #region _Sets_
         public string SetUserInfo(string name, string employeeNo)
         {
+
             string status = "";
 
             var url = "http://" + host + ":" + port + "/ISAPI/AccessControl/UserInfo/Record?format=json";
@@ -227,25 +228,18 @@ namespace ControlDoor
         {
             string status = "";
 
-            var url = "http://" + host + ":" + port + "/ISAPI/AccessControl/FingerPrint/Delete?format=json";
+            var url = "http://" + host + ":" + port + "/ISAPI/AccessControl/UserInfo/Delete?format=json";
 
-            JSON_FingerPrintDelete FingerDel = new JSON_FingerPrintDelete
-            {
-                FingerPrintDelete = new CFingerPrintDelete
-                {
-                    mode = "byEmployeeNo",
-                    EmployeeNoDetail = new CEmployeeNoDetail
-                    {
-                        employeeNo = emmployeNo,
-                        enableCardReader = new List<int> { 1 },
-                        fingerPrintID = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }
-                    }
-                }
-            };
+            JSON_UserInfoDelCond UserDel = new JSON_UserInfoDelCond();
+            UserDel.UserInfoDelCond = new CUserInfoDelCond();
+            UserDel.UserInfoDelCond.EmployeeNoList = new List<CEmployeeNoList>();
+            CEmployeeNoList employeeNoList = new CEmployeeNoList();
+            employeeNoList.employeeNo = emmployeNo;
+            UserDel.UserInfoDelCond.EmployeeNoList.Add(employeeNoList);
 
-            string JsonFPInfo = JsonConvert.SerializeObject(FingerDel, Formatting.Indented,
+            string JsonUserInfo = JsonConvert.SerializeObject(UserDel, Formatting.Indented,
                                                     new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.Ignore });
-            string JsonResult = req.PutRequest(url, JsonFPInfo).Result;
+            string JsonResult = req.PutRequest(url, JsonUserInfo).Result;
             try
             {
                 CJSON_ResponseStatus responseStatus = JsonConvert.DeserializeObject<CJSON_ResponseStatus>(JsonResult);

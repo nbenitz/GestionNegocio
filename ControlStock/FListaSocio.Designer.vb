@@ -23,17 +23,17 @@ Partial Class FListaSocio
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle31 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle32 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle33 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FListaSocio))
         Me.lblAux = New System.Windows.Forms.Label()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
@@ -51,14 +51,12 @@ Partial Class FListaSocio
         Me.Acc = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewImageColumn2 = New System.Windows.Forms.DataGridViewImageColumn()
         Me.btnActualizar = New System.Windows.Forms.ToolStripButton()
-        Me.cmbVerPor = New System.Windows.Forms.ToolStripComboBox()
         Me.BtnNuevo = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
         Me.Separador = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.lblSocios = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
         Me.PnlEliminar = New System.Windows.Forms.Panel()
         Me.LblEliminar = New System.Windows.Forms.Label()
         Me.PbxEliminar = New System.Windows.Forms.PictureBox()
@@ -72,6 +70,11 @@ Partial Class FListaSocio
         Me.pnlFicha = New System.Windows.Forms.Panel()
         Me.lblFicha = New System.Windows.Forms.Label()
         Me.pbxFicha = New System.Windows.Forms.PictureBox()
+        Me.chkAlDia = New System.Windows.Forms.CheckBox()
+        Me.chkCuotaVencida = New System.Windows.Forms.CheckBox()
+        Me.chkConDeuda = New System.Windows.Forms.CheckBox()
+        Me.chkInactivos = New System.Windows.Forms.CheckBox()
+        Me.chkTodos = New System.Windows.Forms.CheckBox()
         CType(Me.dgvCliente, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
         Me.PnlEliminar.SuspendLayout()
@@ -113,10 +116,10 @@ Partial Class FListaSocio
         '
         'DataGridViewImageColumn1
         '
-        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle23.NullValue = Nothing
-        DataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.White
-        Me.DataGridViewImageColumn1.DefaultCellStyle = DataGridViewCellStyle23
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle12.NullValue = Nothing
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.White
+        Me.DataGridViewImageColumn1.DefaultCellStyle = DataGridViewCellStyle12
         Me.DataGridViewImageColumn1.HeaderText = ""
         Me.DataGridViewImageColumn1.Image = Global.ControlStock.My.Resources.Resources.file_edit
         Me.DataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch
@@ -132,14 +135,14 @@ Partial Class FListaSocio
         Me.dgvCliente.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
         Me.dgvCliente.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvCliente.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
-        DataGridViewCellStyle24.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle24.ForeColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
-        DataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvCliente.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle24
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle13.ForeColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvCliente.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle13
         Me.dgvCliente.ColumnHeadersHeight = 25
         Me.dgvCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgvCliente.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColSelect, Me.ColFoto, Me.CI, Me.Nombre, Me.Memb, Me.Tel, Me.ColPendiente, Me.ColEstado, Me.Acc})
@@ -148,20 +151,20 @@ Partial Class FListaSocio
         Me.dgvCliente.MultiSelect = False
         Me.dgvCliente.Name = "dgvCliente"
         Me.dgvCliente.ReadOnly = True
-        DataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle31.Font = New System.Drawing.Font("Arial Narrow", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.ButtonShadow
-        DataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvCliente.RowHeadersDefaultCellStyle = DataGridViewCellStyle31
+        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle20.Font = New System.Drawing.Font("Arial Narrow", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.ButtonShadow
+        DataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvCliente.RowHeadersDefaultCellStyle = DataGridViewCellStyle20
         Me.dgvCliente.RowHeadersVisible = False
-        DataGridViewCellStyle32.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
-        DataGridViewCellStyle32.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle32.SelectionBackColor = System.Drawing.Color.Red
-        DataGridViewCellStyle32.SelectionForeColor = System.Drawing.Color.White
-        Me.dgvCliente.RowsDefaultCellStyle = DataGridViewCellStyle32
+        DataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        DataGridViewCellStyle21.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.Red
+        DataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.White
+        Me.dgvCliente.RowsDefaultCellStyle = DataGridViewCellStyle21
         Me.dgvCliente.RowTemplate.Height = 56
         Me.dgvCliente.RowTemplate.ReadOnly = True
         Me.dgvCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
@@ -191,10 +194,10 @@ Partial Class FListaSocio
         '
         'CI
         '
-        DataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle25.Format = "N0"
-        DataGridViewCellStyle25.NullValue = Nothing
-        Me.CI.DefaultCellStyle = DataGridViewCellStyle25
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle14.Format = "N0"
+        DataGridViewCellStyle14.NullValue = Nothing
+        Me.CI.DefaultCellStyle = DataGridViewCellStyle14
         Me.CI.Frozen = True
         Me.CI.HeaderText = "CI"
         Me.CI.Name = "CI"
@@ -202,8 +205,8 @@ Partial Class FListaSocio
         '
         'Nombre
         '
-        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.Nombre.DefaultCellStyle = DataGridViewCellStyle26
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.Nombre.DefaultCellStyle = DataGridViewCellStyle15
         Me.Nombre.Frozen = True
         Me.Nombre.HeaderText = "Nombre"
         Me.Nombre.Name = "Nombre"
@@ -220,9 +223,9 @@ Partial Class FListaSocio
         '
         'Tel
         '
-        DataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle27.NullValue = Nothing
-        Me.Tel.DefaultCellStyle = DataGridViewCellStyle27
+        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle16.NullValue = Nothing
+        Me.Tel.DefaultCellStyle = DataGridViewCellStyle16
         Me.Tel.HeaderText = "Teléfono"
         Me.Tel.Name = "Tel"
         Me.Tel.ReadOnly = True
@@ -230,10 +233,10 @@ Partial Class FListaSocio
         '
         'ColPendiente
         '
-        DataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle28.Format = "N0"
-        DataGridViewCellStyle28.NullValue = Nothing
-        Me.ColPendiente.DefaultCellStyle = DataGridViewCellStyle28
+        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle17.Format = "N0"
+        DataGridViewCellStyle17.NullValue = Nothing
+        Me.ColPendiente.DefaultCellStyle = DataGridViewCellStyle17
         Me.ColPendiente.HeaderText = "Saldo Pend."
         Me.ColPendiente.Name = "ColPendiente"
         Me.ColPendiente.ReadOnly = True
@@ -241,17 +244,17 @@ Partial Class FListaSocio
         '
         'ColEstado
         '
-        DataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.ColEstado.DefaultCellStyle = DataGridViewCellStyle29
+        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.ColEstado.DefaultCellStyle = DataGridViewCellStyle18
         Me.ColEstado.HeaderText = "Estado"
         Me.ColEstado.Name = "ColEstado"
         Me.ColEstado.ReadOnly = True
         '
         'Acc
         '
-        DataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle30.NullValue = Nothing
-        Me.Acc.DefaultCellStyle = DataGridViewCellStyle30
+        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle19.NullValue = Nothing
+        Me.Acc.DefaultCellStyle = DataGridViewCellStyle19
         Me.Acc.HeaderText = "ID Acceso"
         Me.Acc.Name = "Acc"
         Me.Acc.ReadOnly = True
@@ -260,10 +263,10 @@ Partial Class FListaSocio
         '
         'DataGridViewImageColumn2
         '
-        DataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle33.NullValue = Nothing
-        DataGridViewCellStyle33.SelectionBackColor = System.Drawing.Color.White
-        Me.DataGridViewImageColumn2.DefaultCellStyle = DataGridViewCellStyle33
+        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle22.NullValue = Nothing
+        DataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.White
+        Me.DataGridViewImageColumn2.DefaultCellStyle = DataGridViewCellStyle22
         Me.DataGridViewImageColumn2.HeaderText = ""
         Me.DataGridViewImageColumn2.Image = Global.ControlStock.My.Resources.Resources.file_del
         Me.DataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch
@@ -278,14 +281,6 @@ Partial Class FListaSocio
         Me.btnActualizar.Name = "btnActualizar"
         Me.btnActualizar.Size = New System.Drawing.Size(23, 32)
         Me.btnActualizar.Text = "Actualizar"
-        '
-        'cmbVerPor
-        '
-        Me.cmbVerPor.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
-        Me.cmbVerPor.ForeColor = System.Drawing.Color.White
-        Me.cmbVerPor.Items.AddRange(New Object() {"Todos", "Socios con Cuota al día", "Socios con Cuota Vencida", "Socios con Deuda", "Socios Activos", "Socios Inactivos"})
-        Me.cmbVerPor.Name = "cmbVerPor"
-        Me.cmbVerPor.Size = New System.Drawing.Size(150, 35)
         '
         'BtnNuevo
         '
@@ -314,7 +309,7 @@ Partial Class FListaSocio
         Me.ToolStrip1.AutoSize = False
         Me.ToolStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.ToolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lblSocios, Me.BtnNuevo, Me.btnActualizar, Me.Separador, Me.ToolStripLabel1, Me.txtBuscar, Me.ToolStripSeparator1, Me.ToolStripLabel2, Me.cmbVerPor})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lblSocios, Me.BtnNuevo, Me.btnActualizar, Me.Separador, Me.ToolStripLabel1, Me.txtBuscar, Me.ToolStripSeparator1})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(949, 35)
@@ -336,13 +331,6 @@ Partial Class FListaSocio
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
         Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 35)
-        '
-        'ToolStripLabel2
-        '
-        Me.ToolStripLabel2.ForeColor = System.Drawing.Color.White
-        Me.ToolStripLabel2.Name = "ToolStripLabel2"
-        Me.ToolStripLabel2.Size = New System.Drawing.Size(26, 32)
-        Me.ToolStripLabel2.Text = "Ver:"
         '
         'PnlEliminar
         '
@@ -502,12 +490,78 @@ Partial Class FListaSocio
         Me.pbxFicha.TabIndex = 84
         Me.pbxFicha.TabStop = False
         '
+        'chkAlDia
+        '
+        Me.chkAlDia.BackColor = System.Drawing.Color.Green
+        Me.chkAlDia.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkAlDia.ForeColor = System.Drawing.Color.White
+        Me.chkAlDia.Location = New System.Drawing.Point(411, 6)
+        Me.chkAlDia.Name = "chkAlDia"
+        Me.chkAlDia.Size = New System.Drawing.Size(57, 23)
+        Me.chkAlDia.TabIndex = 120
+        Me.chkAlDia.Text = "Al día"
+        Me.chkAlDia.UseVisualStyleBackColor = False
+        '
+        'chkCuotaVencida
+        '
+        Me.chkCuotaVencida.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.chkCuotaVencida.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkCuotaVencida.ForeColor = System.Drawing.Color.White
+        Me.chkCuotaVencida.Location = New System.Drawing.Point(474, 6)
+        Me.chkCuotaVencida.Name = "chkCuotaVencida"
+        Me.chkCuotaVencida.Size = New System.Drawing.Size(102, 23)
+        Me.chkCuotaVencida.TabIndex = 121
+        Me.chkCuotaVencida.Text = "Cuota Vencida"
+        Me.chkCuotaVencida.UseVisualStyleBackColor = False
+        '
+        'chkConDeuda
+        '
+        Me.chkConDeuda.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.chkConDeuda.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkConDeuda.ForeColor = System.Drawing.Color.White
+        Me.chkConDeuda.Location = New System.Drawing.Point(582, 6)
+        Me.chkConDeuda.Name = "chkConDeuda"
+        Me.chkConDeuda.Size = New System.Drawing.Size(85, 23)
+        Me.chkConDeuda.TabIndex = 122
+        Me.chkConDeuda.Text = "Con Deuda"
+        Me.chkConDeuda.UseVisualStyleBackColor = False
+        '
+        'chkInactivos
+        '
+        Me.chkInactivos.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.chkInactivos.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkInactivos.ForeColor = System.Drawing.Color.White
+        Me.chkInactivos.Location = New System.Drawing.Point(673, 6)
+        Me.chkInactivos.Name = "chkInactivos"
+        Me.chkInactivos.Size = New System.Drawing.Size(73, 23)
+        Me.chkInactivos.TabIndex = 124
+        Me.chkInactivos.Text = "Inactivos"
+        Me.chkInactivos.UseVisualStyleBackColor = False
+        Me.chkInactivos.Visible = False
+        '
+        'chkTodos
+        '
+        Me.chkTodos.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.chkTodos.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkTodos.ForeColor = System.Drawing.Color.White
+        Me.chkTodos.Location = New System.Drawing.Point(348, 6)
+        Me.chkTodos.Name = "chkTodos"
+        Me.chkTodos.Size = New System.Drawing.Size(57, 23)
+        Me.chkTodos.TabIndex = 125
+        Me.chkTodos.Text = "Todos"
+        Me.chkTodos.UseVisualStyleBackColor = False
+        '
         'FListaSocio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(949, 602)
+        Me.Controls.Add(Me.chkTodos)
+        Me.Controls.Add(Me.chkInactivos)
+        Me.Controls.Add(Me.chkConDeuda)
+        Me.Controls.Add(Me.chkCuotaVencida)
+        Me.Controls.Add(Me.chkAlDia)
         Me.Controls.Add(Me.lblAux)
         Me.Controls.Add(Me.pnlFicha)
         Me.Controls.Add(Me.pnlSeleccionar)
@@ -547,7 +601,6 @@ Partial Class FListaSocio
     Friend WithEvents dgvCliente As System.Windows.Forms.DataGridView
     Friend WithEvents DataGridViewImageColumn2 As System.Windows.Forms.DataGridViewImageColumn
     Friend WithEvents btnActualizar As System.Windows.Forms.ToolStripButton
-    Friend WithEvents cmbVerPor As System.Windows.Forms.ToolStripComboBox
     Friend WithEvents BtnNuevo As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripLabel1 As System.Windows.Forms.ToolStripLabel
     Friend WithEvents Separador As System.Windows.Forms.ToolStripSeparator
@@ -578,5 +631,9 @@ Partial Class FListaSocio
     Friend WithEvents ColEstado As DataGridViewTextBoxColumn
     Friend WithEvents Acc As DataGridViewTextBoxColumn
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
-    Friend WithEvents ToolStripLabel2 As ToolStripLabel
+    Friend WithEvents chkAlDia As CheckBox
+    Friend WithEvents chkCuotaVencida As CheckBox
+    Friend WithEvents chkConDeuda As CheckBox
+    Friend WithEvents chkInactivos As CheckBox
+    Friend WithEvents chkTodos As CheckBox
 End Class

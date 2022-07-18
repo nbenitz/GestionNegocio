@@ -1199,10 +1199,10 @@ Partial Class FNuevoSocio
         Me.Controls.Add(Me.btnMembresia)
         Me.Controls.Add(Me.lblTitulo)
         Me.Controls.Add(Me.btnSocio)
-        Me.Controls.Add(Me.pnlMembresia)
-        Me.Controls.Add(Me.pnlCobrar)
         Me.Controls.Add(Me.pnlAcceso)
         Me.Controls.Add(Me.pnlSocio)
+        Me.Controls.Add(Me.pnlMembresia)
+        Me.Controls.Add(Me.pnlCobrar)
         Me.ForeColor = System.Drawing.Color.White
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "FNuevoSocio"

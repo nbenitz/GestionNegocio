@@ -204,63 +204,70 @@ namespace ControlDoor
         #region _Sets_
         private void CapFingerPrint()
         {
-            if (m_lCapFingerPrintCfHandle != -1)
+            try
             {
-                CHCNetSDK2.NET_DVR_StopRemoteConfig(m_lCapFingerPrintCfHandle);
-                m_lCapFingerPrintCfHandle = -1;
-            }
-
-            CHCNetSDK2.NET_DVR_CAPTURE_FINGERPRINT_COND struCond = new CHCNetSDK2.NET_DVR_CAPTURE_FINGERPRINT_COND();
-            struCond.init();
-            struCond.dwSize = Marshal.SizeOf(struCond);
-            int dwInBufferSize = struCond.dwSize;
-            struCond.byFingerPrintPicType = 1; //指纹图片类型是什么暂定1
-            struCond.byFingerNo = 1;
-            IntPtr ptrStruCond = Marshal.AllocHGlobal(struCond.dwSize);
-            Marshal.StructureToPtr(struCond, ptrStruCond, false);
-
-            m_lCapFingerPrintCfHandle = CHCNetSDK2.NET_DVR_StartRemoteConfig(m_UserID, CHCNetSDK2.NET_DVR_CAPTURE_FINGERPRINT_INFO, ptrStruCond, dwInBufferSize, null, IntPtr.Zero);
-            pbxFingerPrint.Image = Properties.Resources.fingerprint_scan;
-            if (-1 == m_lCapFingerPrintCfHandle)
-            {
-                Marshal.FreeHGlobal(ptrStruCond);
-                ShowMessage("Error en la Captura de la Huella Dactilar, Codigo " + CHCNetSDK2.NET_DVR_GetLastError().ToString());
-            }
-
-            bool flag = true;
-            int dwStatus = 0;
-
-            CHCNetSDK2.NET_DVR_CAPTURE_FINGERPRINT_CFG struCFG = new CHCNetSDK2.NET_DVR_CAPTURE_FINGERPRINT_CFG();
-            struCFG.init();
-            struCFG.dwSize = Marshal.SizeOf(struCFG);
-            int dwOutBuffSize = struCFG.dwSize;
-            while (flag)
-            {
-                dwStatus = CHCNetSDK2.NET_DVR_GetNextRemoteConfig(m_lCapFingerPrintCfHandle, ref struCFG, dwOutBuffSize);
-                switch (dwStatus)
+                if (m_lCapFingerPrintCfHandle != -1)
                 {
-                    case CHCNetSDK2.NET_SDK_GET_NEXT_STATUS_SUCCESS://成功读取到数据，处理完本次数据后需调用next
-                        ProcessCapFingerData(ref struCFG, ref flag);
-                        break;
-                    case CHCNetSDK2.NET_SDK_GET_NEXT_STATUS_NEED_WAIT:
-                        break;
-                    case CHCNetSDK2.NET_SDK_GET_NEXT_STATUS_FAILED:
-                        CHCNetSDK2.NET_DVR_StopRemoteConfig(m_lCapFingerPrintCfHandle);
-                        ShowMessage("Error al capturar la Huella Dactilar. Codigo " + CHCNetSDK2.NET_DVR_GetLastError().ToString());
-                        flag = false;
-                        break;
-                    case CHCNetSDK2.NET_SDK_GET_NEXT_STATUS_FINISH:
-                        CHCNetSDK2.NET_DVR_StopRemoteConfig(m_lCapFingerPrintCfHandle);
-                        flag = false;
-                        break;
-                    default:
-                        ShowMessage("Error al capturar la Huella Dactilar. Codigo " + CHCNetSDK2.NET_DVR_GetLastError().ToString());
-                        flag = false;
-                        CHCNetSDK2.NET_DVR_StopRemoteConfig(m_lCapFingerPrintCfHandle);
-                        break;
+                    CHCNetSDK2.NET_DVR_StopRemoteConfig(m_lCapFingerPrintCfHandle);
+                    m_lCapFingerPrintCfHandle = -1;
                 }
+
+                CHCNetSDK2.NET_DVR_CAPTURE_FINGERPRINT_COND struCond = new CHCNetSDK2.NET_DVR_CAPTURE_FINGERPRINT_COND();
+                struCond.init();
+                struCond.dwSize = Marshal.SizeOf(struCond);
+                int dwInBufferSize = struCond.dwSize;
+                struCond.byFingerPrintPicType = 1; //指纹图片类型是什么暂定1
+                struCond.byFingerNo = 1;
+                IntPtr ptrStruCond = Marshal.AllocHGlobal(struCond.dwSize);
+                Marshal.StructureToPtr(struCond, ptrStruCond, false);
+
+                m_lCapFingerPrintCfHandle = CHCNetSDK2.NET_DVR_StartRemoteConfig(m_UserID, CHCNetSDK2.NET_DVR_CAPTURE_FINGERPRINT_INFO, ptrStruCond, dwInBufferSize, null, IntPtr.Zero);
+                pbxFingerPrint.Image = Properties.Resources.fingerprint_scan;
+                if (-1 == m_lCapFingerPrintCfHandle)
+                {
+                    Marshal.FreeHGlobal(ptrStruCond);
+                    ShowMessage("Error en la Captura de la Huella Dactilar, Codigo " + CHCNetSDK2.NET_DVR_GetLastError().ToString());
+                }
+
+                bool flag = true;
+                int dwStatus = 0;
+
+                CHCNetSDK2.NET_DVR_CAPTURE_FINGERPRINT_CFG struCFG = new CHCNetSDK2.NET_DVR_CAPTURE_FINGERPRINT_CFG();
+                struCFG.init();
+                struCFG.dwSize = Marshal.SizeOf(struCFG);
+                int dwOutBuffSize = struCFG.dwSize;
+                while (flag)
+                {
+                    dwStatus = CHCNetSDK2.NET_DVR_GetNextRemoteConfig(m_lCapFingerPrintCfHandle, ref struCFG, dwOutBuffSize);
+                    switch (dwStatus)
+                    {
+                        case CHCNetSDK2.NET_SDK_GET_NEXT_STATUS_SUCCESS://成功读取到数据，处理完本次数据后需调用next
+                            ProcessCapFingerData(ref struCFG, ref flag);
+                            break;
+                        case CHCNetSDK2.NET_SDK_GET_NEXT_STATUS_NEED_WAIT:
+                            break;
+                        case CHCNetSDK2.NET_SDK_GET_NEXT_STATUS_FAILED:
+                            CHCNetSDK2.NET_DVR_StopRemoteConfig(m_lCapFingerPrintCfHandle);
+                            ShowMessage("Error al capturar la Huella Dactilar. Codigo " + CHCNetSDK2.NET_DVR_GetLastError().ToString());
+                            flag = false;
+                            break;
+                        case CHCNetSDK2.NET_SDK_GET_NEXT_STATUS_FINISH:
+                            CHCNetSDK2.NET_DVR_StopRemoteConfig(m_lCapFingerPrintCfHandle);
+                            flag = false;
+                            break;
+                        default:
+                            ShowMessage("Error al capturar la Huella Dactilar. Codigo " + CHCNetSDK2.NET_DVR_GetLastError().ToString());
+                            flag = false;
+                            CHCNetSDK2.NET_DVR_StopRemoteConfig(m_lCapFingerPrintCfHandle);
+                            break;
+                    }
+                }
+                Marshal.FreeHGlobal(ptrStruCond);
             }
-            Marshal.FreeHGlobal(ptrStruCond);
+            catch
+            {
+                ShowMessage("Error al capturar la Huella Dactilar. Intente Nuevamente");
+            }
         }
 
         public string SetFingerData(string emmployeNo, List<byte[]> FPDataList)
