@@ -15,6 +15,27 @@ BASE DE DATOS
 	- En view_cliente_membresia
 	- En viewsocio
 	- En viewdetalleingreso
+	- En zcajam_calc_montofin
+
+	- #Crear tabla cajamostrador_retiro
+	- #Crear tabla cajamostrador_retiro_motivo
+	- cajamostrador, agregar campos, MontoFinalDeclarado, MontoRetiro	
+	- viewcajamostrador
+	- Crear tabla cajamostrador_gasto
+	- zcajam_gasto
+	- viewcajamostrador_gasto
+	- en tabla gasto: importe sin signo
+	- viewcajam_detallemovimiento
+	- zcajam_buscar
+	- zcajam_get_montorestante
+	- zcajam_get_lastmontorestante
+	- zcajam_cerrar
+	- zcajam_calc_montofin
+	- zcajam_ins_gasto
+	- zingreso_busc_detalle
+	- zingreso_busc_resum
+	- zingreso_busc_totales
+	
 
 
 La convicción crea emoción que es enemiga de la oratoria.

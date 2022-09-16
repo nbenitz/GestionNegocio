@@ -66,7 +66,7 @@ Partial Class FGasto
         Me.cmbGastos.Location = New System.Drawing.Point(107, 83)
         Me.cmbGastos.Name = "cmbGastos"
         Me.cmbGastos.Size = New System.Drawing.Size(190, 24)
-        Me.cmbGastos.TabIndex = 1
+        Me.cmbGastos.TabIndex = 0
         '
         'txtImporte
         '
@@ -77,7 +77,7 @@ Partial Class FGasto
         Me.txtImporte.Location = New System.Drawing.Point(107, 118)
         Me.txtImporte.Name = "txtImporte"
         Me.txtImporte.Size = New System.Drawing.Size(190, 22)
-        Me.txtImporte.TabIndex = 0
+        Me.txtImporte.TabIndex = 1
         '
         'Label1
         '
@@ -157,7 +157,7 @@ Partial Class FGasto
         Me.btnAceptar.Location = New System.Drawing.Point(107, 152)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(89, 23)
-        Me.btnAceptar.TabIndex = 89
+        Me.btnAceptar.TabIndex = 2
         Me.btnAceptar.Text = "Aceptar"
         Me.btnAceptar.UseVisualStyleBackColor = False
         '
@@ -170,7 +170,7 @@ Partial Class FGasto
         Me.btnCancelar.Location = New System.Drawing.Point(208, 152)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(89, 23)
-        Me.btnCancelar.TabIndex = 90
+        Me.btnCancelar.TabIndex = 3
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = False
         '
@@ -216,7 +216,7 @@ Partial Class FGasto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(359, 189)
         Me.Controls.Add(Me.pnlTopBar)
         Me.Controls.Add(Me.pbxEditGasto)

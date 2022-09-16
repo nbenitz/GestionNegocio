@@ -392,6 +392,7 @@ Partial Class FEventoAcceso
         Me.Button1.TabIndex = 10
         Me.Button1.Text = "Probar"
         Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Visible = False
         '
         'TextBox1
         '
@@ -402,7 +403,8 @@ Partial Class FEventoAcceso
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(100, 20)
         Me.TextBox1.TabIndex = 11
-        Me.TextBox1.Text = "5510423"
+        Me.TextBox1.Text = "4777537"
+        Me.TextBox1.Visible = False
         '
         'lblSegundaPantalla
         '

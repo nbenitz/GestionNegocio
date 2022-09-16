@@ -105,6 +105,8 @@ Partial Class FPrincipal
         Me.lblProd = New System.Windows.Forms.Label()
         Me.pbxProd = New System.Windows.Forms.PictureBox()
         Me.pnlPrincipal = New System.Windows.Forms.Panel()
+        Me.lblCaja = New System.Windows.Forms.Label()
+        Me.lblEmpleado2 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.pnlRight = New System.Windows.Forms.Panel()
         Me.pnlEvento = New System.Windows.Forms.Panel()
@@ -113,9 +115,9 @@ Partial Class FPrincipal
         Me.BtnCerrarForm = New System.Windows.Forms.PictureBox()
         Me.BtnMinimizar = New System.Windows.Forms.PictureBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.lblHora = New System.Windows.Forms.Label()
-        Me.lblEmpleado = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.lblEmpleado = New System.Windows.Forms.Label()
+        Me.lblHora = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.pnlBarSide.SuspendLayout()
         Me.pnlCerradura.SuspendLayout()
@@ -181,7 +183,7 @@ Partial Class FPrincipal
         Me.AbrirCajaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.AbrirCajaToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.AbrirCajaToolStripMenuItem.Name = "AbrirCajaToolStripMenuItem"
-        Me.AbrirCajaToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
+        Me.AbrirCajaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.AbrirCajaToolStripMenuItem.Text = "Abrir Caja"
         '
         'CerrarCajaToolStripMenuItem
@@ -189,7 +191,7 @@ Partial Class FPrincipal
         Me.CerrarCajaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.CerrarCajaToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.CerrarCajaToolStripMenuItem.Name = "CerrarCajaToolStripMenuItem"
-        Me.CerrarCajaToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
+        Me.CerrarCajaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.CerrarCajaToolStripMenuItem.Text = "Cerrar Caja"
         '
         'HistorialDeCajaToolStripMenuItem
@@ -197,7 +199,7 @@ Partial Class FPrincipal
         Me.HistorialDeCajaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.HistorialDeCajaToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.HistorialDeCajaToolStripMenuItem.Name = "HistorialDeCajaToolStripMenuItem"
-        Me.HistorialDeCajaToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
+        Me.HistorialDeCajaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.HistorialDeCajaToolStripMenuItem.Text = "Historial de Caja"
         '
         'DetalleDeCajaToolStripMenuItem
@@ -205,20 +207,25 @@ Partial Class FPrincipal
         Me.DetalleDeCajaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.DetalleDeCajaToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.DetalleDeCajaToolStripMenuItem.Name = "DetalleDeCajaToolStripMenuItem"
-        Me.DetalleDeCajaToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
+        Me.DetalleDeCajaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.DetalleDeCajaToolStripMenuItem.Text = "Resumen de Caja"
         '
         'RegistrarGastoCompraToolStripMenuItem
         '
+        Me.RegistrarGastoCompraToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.RegistrarGastoCompraToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.RegistrarGastoCompraToolStripMenuItem.Name = "RegistrarGastoCompraToolStripMenuItem"
-        Me.RegistrarGastoCompraToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
-        Me.RegistrarGastoCompraToolStripMenuItem.Text = "Registrar Gasto/Compra"
+        Me.RegistrarGastoCompraToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.RegistrarGastoCompraToolStripMenuItem.Text = "Registrar Gasto"
         '
         'CobrarToolStripMenuItem
         '
+        Me.CobrarToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.CobrarToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.CobrarToolStripMenuItem.Name = "CobrarToolStripMenuItem"
-        Me.CobrarToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
-        Me.CobrarToolStripMenuItem.Text = "Cobrar"
+        Me.CobrarToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.CobrarToolStripMenuItem.Text = "Caja Actual"
+        Me.CobrarToolStripMenuItem.Visible = False
         '
         'mnuVentas
         '
@@ -829,12 +836,38 @@ Partial Class FPrincipal
         '
         Me.pnlPrincipal.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
         Me.pnlPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.pnlPrincipal.Controls.Add(Me.lblCaja)
+        Me.pnlPrincipal.Controls.Add(Me.lblEmpleado2)
         Me.pnlPrincipal.Controls.Add(Me.PictureBox1)
         Me.pnlPrincipal.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlPrincipal.Location = New System.Drawing.Point(160, 35)
         Me.pnlPrincipal.Name = "pnlPrincipal"
         Me.pnlPrincipal.Size = New System.Drawing.Size(957, 555)
         Me.pnlPrincipal.TabIndex = 84
+        '
+        'lblCaja
+        '
+        Me.lblCaja.AutoSize = True
+        Me.lblCaja.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCaja.ForeColor = System.Drawing.Color.White
+        Me.lblCaja.Location = New System.Drawing.Point(6, 29)
+        Me.lblCaja.Name = "lblCaja"
+        Me.lblCaja.Size = New System.Drawing.Size(154, 15)
+        Me.lblCaja.TabIndex = 88
+        Me.lblCaja.Text = "Caja abierta el dd/mm/aaaa"
+        Me.lblCaja.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'lblEmpleado2
+        '
+        Me.lblEmpleado2.AutoSize = True
+        Me.lblEmpleado2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEmpleado2.ForeColor = System.Drawing.Color.White
+        Me.lblEmpleado2.Location = New System.Drawing.Point(6, 11)
+        Me.lblEmpleado2.Name = "lblEmpleado2"
+        Me.lblEmpleado2.Size = New System.Drawing.Size(107, 15)
+        Me.lblEmpleado2.TabIndex = 87
+        Me.lblEmpleado2.Text = "Nombre Empleado"
+        Me.lblEmpleado2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'PictureBox1
         '
@@ -923,18 +956,18 @@ Partial Class FPrincipal
         Me.Panel1.Size = New System.Drawing.Size(261, 34)
         Me.Panel1.TabIndex = 119
         '
-        'lblHora
+        'Label2
         '
-        Me.lblHora.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lblHora.AutoSize = True
-        Me.lblHora.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblHora.ForeColor = System.Drawing.Color.White
-        Me.lblHora.Location = New System.Drawing.Point(155, 9)
-        Me.lblHora.Name = "lblHora"
-        Me.lblHora.Size = New System.Drawing.Size(103, 15)
-        Me.lblHora.TabIndex = 0
-        Me.lblHora.Text = "01/01/2022 - 00:00"
-        Me.lblHora.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.White
+        Me.Label2.Location = New System.Drawing.Point(143, 9)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(10, 15)
+        Me.Label2.TabIndex = 2
+        Me.Label2.Text = "|"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lblEmpleado
         '
@@ -948,18 +981,18 @@ Partial Class FPrincipal
         Me.lblEmpleado.Text = "Nombre Empleado"
         Me.lblEmpleado.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'Label2
+        'lblHora
         '
-        Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(143, 9)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(10, 15)
-        Me.Label2.TabIndex = 2
-        Me.Label2.Text = "|"
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblHora.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblHora.AutoSize = True
+        Me.lblHora.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblHora.ForeColor = System.Drawing.Color.White
+        Me.lblHora.Location = New System.Drawing.Point(155, 9)
+        Me.lblHora.Name = "lblHora"
+        Me.lblHora.Size = New System.Drawing.Size(103, 15)
+        Me.lblHora.TabIndex = 0
+        Me.lblHora.Text = "01/01/2022 - 00:00"
+        Me.lblHora.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'FPrincipal
         '
@@ -1000,6 +1033,7 @@ Partial Class FPrincipal
         Me.pnlProd.PerformLayout()
         CType(Me.pbxProd, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlPrincipal.ResumeLayout(False)
+        Me.pnlPrincipal.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlRight.ResumeLayout(False)
         Me.pnlTop.ResumeLayout(False)
@@ -1104,4 +1138,6 @@ Partial Class FPrincipal
     Friend WithEvents lblHora As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents lblEmpleado As Label
+    Friend WithEvents lblCaja As Label
+    Friend WithEvents lblEmpleado2 As Label
 End Class

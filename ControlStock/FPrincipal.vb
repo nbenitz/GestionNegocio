@@ -2,10 +2,10 @@
 Option Explicit On
 
 Imports System.Drawing.Imaging
-Imports System.Runtime.InteropServices
 
 Public Class FPrincipal
     Dim FrmEventoAcceso As New FEventoAcceso
+    Dim FrmCajaMostrador As New FCajaMostrador
     Dim Caja As New CCaja
     Dim NumCaja As UInt16 = 1
     Dim CI As String
@@ -17,8 +17,8 @@ Public Class FPrincipal
     Dim ProdNuevoValue As Boolean
     Dim ProvNuevoValue As Boolean
 
-    Dim ColorOscuro As Color = Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-    Dim ColorNormal As Color = Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+    Dim ColorOscuro As Color = Color.FromArgb(30, 30, 30)
+    Dim ColorNormal As Color = Color.FromArgb(50, 50, 50)
 
     Dim Retraido As Boolean = False
 
@@ -29,7 +29,23 @@ Public Class FPrincipal
         Dim Emple As New CEmpleado
         Dim TablaEmple As DataTable = Emple.CargarEmple(CIValue)
         lblEmpleado.Text = CStr(TablaEmple.Rows(0).Item(1)) + " " + CStr(TablaEmple.Rows(0).Item(2))
+        lblEmpleado2.Text = CStr(TablaEmple.Rows(0).Item(1)) + " " + CStr(TablaEmple.Rows(0).Item(2))
+        UpdateInfoCaja()
     End Sub
+
+    Private Sub onCajaOpenClosed()
+        UpdateInfoCaja()
+    End Sub
+
+    Private Sub UpdateInfoCaja()
+        If Caja.CajaAbierta(NumCaja) Then
+            lblCaja.Text = "Caja abierta el "
+            lblCaja.Text = lblCaja.Text + CDate(Caja.FechaApertura(NumCaja)).ToString("dd MMM yyy HH:mm")
+        Else
+            lblCaja.Text = "Caja Cerrada"
+        End If
+    End Sub
+
 
     Public Sub Privilegios(ByVal ProdConsult As Boolean,
                            ByVal ProdReg As Boolean,
@@ -93,7 +109,7 @@ Public Class FPrincipal
 
     Private Sub FrmPrincipal_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         LoadEventoAcceso()
-
+        AddHandler FrmCajaMostrador.CajaOpenClosed, AddressOf onCajaOpenClosed
         'pbxLogo.Location = New Point(CInt((pnlPrincipal.Width - pbxLogo.Width) / 2),
         'CInt((pnlPrincipal.Height - pbxLogo.Height) / 2))
 
@@ -153,9 +169,9 @@ Public Class FPrincipal
             AbrirFormEnPanel(FrmVenta)
         Else
             MessageBox.Show("Debe abrir la Caja antes de realizar una Venta")
-            Dim Frm As New FCajaMostrador
-            Frm.CIEmpleado = CI
-            Frm.ShowDialog()
+            FrmCajaMostrador.CIEmpleado = CI
+            FrmCajaMostrador.Modo = FrmCajaMostrador.Tipo.Abrir
+            AbrirFormEnPanel(FrmCajaMostrador)
         End If
     End Sub
 
@@ -265,9 +281,9 @@ Public Class FPrincipal
 
     Private Sub AbrirCajaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AbrirCajaToolStripMenuItem.Click
         If Caja.CajaAbierta(NumCaja) = False Then
-            Dim Frm As New FCajaMostrador
-            Frm.CIEmpleado = CI
-            'AbrirFormEnPanel( Frm)
+            FrmCajaMostrador.CIEmpleado = CI
+            FrmCajaMostrador.Modo = FrmCajaMostrador.Tipo.Abrir
+            AbrirFormEnPanel(FrmCajaMostrador)
         Else
             MessageBox.Show("La caja ya está abierta")
         End If
@@ -275,10 +291,9 @@ Public Class FPrincipal
 
     Private Sub CerrarCajaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CerrarCajaToolStripMenuItem.Click
         If Caja.CajaAbierta(NumCaja) Then
-            Dim Frm As New FCajaMostrador
-            Frm.CIEmpleado = CI
-            Frm.ModoAbrir = False
-            AbrirFormEnPanel(Frm)
+            FrmCajaMostrador.CIEmpleado = CI
+            FrmCajaMostrador.Modo = FrmCajaMostrador.Tipo.Cerrar
+            AbrirFormEnPanel(FrmCajaMostrador)
         Else
             MessageBox.Show("La caja ya está cerrada")
         End If
@@ -386,15 +401,16 @@ Public Class FPrincipal
         AbrirFormEnPanel(FListaSocio)
     End Sub
 
-    Private Sub NuevoClienteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles mnuNuevoCliente.Click
+    Private Sub NuevoCliente_Click(sender As Object, e As EventArgs) Handles mnuNuevoCliente.Click
         If Caja.CajaAbierta(NumCaja) Then
             Dim Frm As New FNuevoSocio
             AbrirFormEnPanel(Frm)
         Else
             MessageBox.Show("Debe abrir la Caja para poder cobrar una membresía a un socio")
-            Dim Frm As New FCajaMostrador
-            Frm.CIEmpleado = CI
-            Frm.ShowDialog()
+            FrmCajaMostrador.CIEmpleado = CI
+            FrmCajaMostrador.Modo = FrmCajaMostrador.Tipo.Abrir
+            AbrirFormEnPanel(FrmCajaMostrador)
+
         End If
     End Sub
 
@@ -430,6 +446,7 @@ Public Class FPrincipal
 
     Private Sub DetalleDeCajaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DetalleDeCajaToolStripMenuItem.Click
         If Caja.CajaAbierta(NumCaja) Then
+            Cursor.Current = Cursors.WaitCursor
             Dim Frm As New FResumenCaja
             Frm.CIEmpleado = CI
             AbrirFormEnPanel(Frm)
@@ -528,6 +545,16 @@ Public Class FPrincipal
     Private Sub AsistenciaDeSociosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles mnuAsistenciaSocio.Click
         Dim Frm As New FAsistencia
         AbrirFormEnPanel(Frm)
+    End Sub
+
+    Private Sub RegistrarGastoCompraToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RegistrarGastoCompraToolStripMenuItem.Click
+        If Caja.CajaAbierta(NumCaja) Then
+            FrmCajaMostrador.CIEmpleado = CI
+            FrmCajaMostrador.Modo = FrmCajaMostrador.Tipo.Gasto
+            AbrirFormEnPanel(FrmCajaMostrador)
+        Else
+            MessageBox.Show("La caja está cerrada. Debe abrir la caja para registrar un gasto")
+        End If
     End Sub
 
 End Class

@@ -81,7 +81,7 @@ Public Class FEventoAcceso
             Dim Nombre As String = CStr(TablaSocio.Rows(0).Item(1))
             Dim Foto As Byte()
             Try
-                Foto = CType(TablaSocio.Rows(0).Item(8), Byte())
+                Foto = CType(TablaSocio.Rows(0).Item(9), Byte())
             Catch
             End Try
 
@@ -276,7 +276,7 @@ Public Class FEventoAcceso
             Dim d As New ShowClientInfoCallBack(AddressOf ShowPersonInfo)
             Me.Invoke(d, New Object() {Nombre, Foto})
         Else
-            lblNombre.Text = If(Nombre.Length <= 20, Nombre, Nombre.Substring(0, 20) + "...")
+            lblNombre.Text = If(Nombre.Length <= 23, Nombre, Nombre.Substring(0, 23) + "...")
             pbxFoto.Image = If(Foto IsNot Nothing, ByteArrayToImage(Foto), My.Resources.userblack)
             pnlSocioInfo.Visible = True
             pnlInfoCliente.Visible = True
@@ -320,7 +320,7 @@ Public Class FEventoAcceso
                                           Vencimiento,
                                           Atraso,
                                           SaldoPendiente)
-            lblMembresia.Text = Membresia
+            lblMembresia.Text = If(Membresia.Length <= 23, Membresia, Membresia.Substring(0, 23) + "...")
             lblVencimiento.Text = CStr(Vencimiento)
             lblAtraso.Text = CStr(Atraso)
             lblSaldo.Text = CStr(SaldoPendiente)

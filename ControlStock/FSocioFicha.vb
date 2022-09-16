@@ -5,9 +5,12 @@ Public Class FSocioFicha
     Dim oMembresia As New CMembresia
     Dim Venta As New CVenta
     Dim WithEvents FrmCuentasCobrar As New FCuentasCobrar
+    Dim FrmCajaMostrador As New FCajaMostrador
+    Dim Caja As New CCaja
     Dim TablaContratos As DataTable
     Dim CuotaVencida As Boolean = False
     Dim TablaSelIndex As Integer = -1
+    Dim NumCaja As Integer = 1
 
     Sub New(ByVal CI As String,
             ByVal Nombre As String,
@@ -163,17 +166,24 @@ Public Class FSocioFicha
     End Sub
 
     Private Sub btnCobrar_Click(sender As Object, e As EventArgs) Handles btnCobrar.Click
-        Dim MembresiaNom As String = ""
-        Dim Vto As Date = Now
-        If dgvMembresias.Rows.Count > 0 Then
-            MembresiaNom = CStr(dgvMembresias.Item(1, 0).Value)
-            Vto = CDate(dgvMembresias.Item(3, 0).Value)
+        If Caja.CajaAbierta(NumCaja) Then
+            Dim MembresiaNom As String = ""
+            Dim Vto As Date = Now
+            If dgvMembresias.Rows.Count > 0 Then
+                MembresiaNom = CStr(dgvMembresias.Item(1, 0).Value)
+                Vto = CDate(dgvMembresias.Item(3, 0).Value)
+            End If
+            Dim FrmSocio As New FNuevoSocio
+            FrmSocio.Pagar(lblCI.Text, lblNombre.Text, MembresiaNom, Vto)
+            FrmSocio.ShowDialog()
+            CargarMembresias()
+            SetSaldo(GetSaldoPendiente())
+        Else
+            MessageBox.Show("Debe abrir la Caja para poder cobrar una membresía a un socio")
+            'FrmCajaMostrador.CIEmpleado = EmpleadoCI
+            'FrmCajaMostrador.Modo = FrmCajaMostrador.Tipo.Abrir
+            'FrmCajaMostrador.ShowDialog()
         End If
-        Dim FrmSocio As New FNuevoSocio
-        FrmSocio.Pagar(lblCI.Text, lblNombre.Text, MembresiaNom, Vto)
-        FrmSocio.ShowDialog()
-        CargarMembresias()
-        SetSaldo(GetSaldoPendiente())
     End Sub
 
     Private Sub dgvMembresias_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvMembresias.CellClick

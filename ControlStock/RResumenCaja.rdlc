@@ -707,7 +707,7 @@
                                 <TextRun>
                                   <Value>=Fields!Monto.Value</Value>
                                   <Style>
-                                    <Format>'Gs' #,0</Format>
+                                    <Format>'Gs' #,0;'Gs' -#,0</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -742,6 +742,7 @@
                             <rd:FormatSymbolCulture>es-PY</rd:FormatSymbolCulture>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -946,7 +947,6 @@
                             <rd:FormatSymbolCulture>es-PY</rd:FormatSymbolCulture>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>

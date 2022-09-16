@@ -10,7 +10,7 @@ Public Class FListaMembresiaContrato
     Dim SocioParam As String = Nothing
 
 
-    Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub Form1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
         AddHandler FrmListaSocio.ClienteSeleccionado, AddressOf onClinteSeleccionado
         FrmListaSocio.ModoVista()
         For i As Integer = 0 To 9
@@ -25,14 +25,14 @@ Public Class FListaMembresiaContrato
         BuscarPorSocio()
     End Sub
 
-    Private Sub Form1_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
+    Private Sub Form1_Resize(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Resize
         Dim strEstado As String = Me.WindowState.ToString()
         If strEstado = "Maximized" Then
             Me.WindowState = FormWindowState.Normal
         End If
     End Sub
 
-    Private Sub cmbFiltrarPor_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbFiltrarPor.SelectedIndexChanged
+    Private Sub cmbFiltrarPor_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbFiltrarPor.SelectedIndexChanged
         Cursor.Current = Cursors.WaitCursor
         Dim Indice As Integer = cmbFiltrarPor.SelectedIndex
         Select Case Indice

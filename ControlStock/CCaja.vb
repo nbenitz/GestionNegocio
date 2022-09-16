@@ -50,13 +50,15 @@ Public Class CCaja
         Return Inserto
     End Function
 
-    Public Function Cerrar(ByVal NumCaja As UInt16) As Boolean
+    Public Function Cerrar(ByVal NumCaja As UInt16, MontoDeclarado As Integer, MontoRetiro As Integer) As Boolean
         Dim Inserto As Boolean = False
         Try
             ObjCon.Conectar()
             ObjCon.CrearComando("zcajam_cerrar")
             ObjCon.CrearProcedimiento()
             ObjCon.AsignarParametro("@NumCaja", NumCaja)
+            ObjCon.AsignarParametro("@MontoDeclarado", MontoDeclarado)
+            ObjCon.AsignarParametro("@MontoRetiro_", MontoRetiro)
             If ObjCon.EjecutarConsulta() > 0 Then
                 Inserto = True
             Else
@@ -68,6 +70,29 @@ Public Class CCaja
         End Try
         Return Inserto
     End Function
+
+
+    Public Function Gasto(ByVal NumCaja As Integer, ByVal IdGasto As Integer) As Boolean
+        Dim Inserto As Boolean = False
+        Try
+            ObjCon.Conectar()
+            ObjCon.CrearComando("zcajam_ins_gasto")
+            ObjCon.CrearProcedimiento()
+            ObjCon.AsignarParametro("@NumCaja", NumCaja)
+            ObjCon.AsignarParametro("@gasto_id", IdGasto)
+            If ObjCon.EjecutarConsulta() > 0 Then
+                Inserto = True
+            Else
+                Inserto = False
+            End If
+            ObjCon.Desconectar()
+        Catch mierror As MySqlException
+            Inserto = False
+        End Try
+        Return Inserto
+    End Function
+
+
 
     Public Function MontoCierre(ByVal NumCaja As UInt16) As Integer
         Try
@@ -129,7 +154,17 @@ Public Class CCaja
         End Try
     End Function
 
-    Public Function BuscarView(ByVal Fecha As String) As DataTable
+    Public Function BuscarView(ByVal Fecha As String, ByVal Hora As String) As DataTable
+        ObjCon.Conectar()
+        ObjCon.CrearComando("zcajam_buscar2")
+        ObjCon.CrearProcedimiento()
+        ObjCon.AsignarParametro("@Fecha", Fecha)
+        ObjCon.AsignarParametro("@Hora", Hora)
+        BuscarView = ObjCon.EjecutarDataTable()
+        ObjCon.Desconectar()
+    End Function
+
+    Public Function BuscarView(ByVal Fecha As Date) As DataTable
         ObjCon.Conectar()
         ObjCon.CrearComando("zcajam_buscar")
         ObjCon.CrearProcedimiento()
@@ -138,13 +173,46 @@ Public Class CCaja
         ObjCon.Desconectar()
     End Function
 
-    Public Function BuscarView(ByVal Fecha As String, ByVal Hora As String) As DataTable
+    Public Function MontoRestante(ByVal IdCajaAnterior As Integer, ByVal NroCaja As Integer) As Integer?
         ObjCon.Conectar()
-        ObjCon.CrearComando("zcajam_buscar2")
+        ObjCon.CrearComando("zcajam_get_montorestante")
         ObjCon.CrearProcedimiento()
-        ObjCon.AsignarParametro("@Fecha", Fecha)
-        ObjCon.AsignarParametro("@Hora", Hora)
-        BuscarView = ObjCon.EjecutarDataTable()
+        ObjCon.AsignarParametro("@IdCaja_", IdCajaAnterior)
+        ObjCon.AsignarParametro("@NroCaja_", NroCaja)
+        ObjCon.AsignarParametroSalida("@MontoFinal_", MySqlDbType.Int32)
+        ObjCon.EjecutarConsulta()
+        Try
+            If Not IsDBNull(ObjCon.ParametroSalida("@MontoFinal_")) Then
+                MontoRestante = CInt(ObjCon.ParametroSalida("@MontoFinal_"))
+            Else
+                Return Nothing
+            End If
+
+        Catch ex As Exception
+            MontoRestante = -1
+        End Try
+        ObjCon.Desconectar()
+    End Function
+
+    Public Function LastMontoFinal(ByVal NroCaja As Integer) As Integer
+        ObjCon.Conectar()
+        ObjCon.CrearComando("zcajam_get_lastmontorestante")
+        ObjCon.CrearProcedimiento()
+        ObjCon.AsignarParametro("@NroCaja_", NroCaja)
+        ObjCon.AsignarParametroSalida("@MontoRestante", MySqlDbType.Int32)
+        ObjCon.EjecutarConsulta()
+        Try
+            LastMontoFinal = CInt(ObjCon.ParametroSalida("@MontoRestante"))
+        Catch ex As Exception
+            LastMontoFinal = 0
+        End Try
+        ObjCon.Desconectar()
+    End Function
+
+    Public Function BuscarViewCaja(ByVal Condicion As String) As DataTable
+        ObjCon.Conectar()
+        ObjCon.CrearComando("SELECT * FROM viewcajamostrador " + Condicion)
+        BuscarViewCaja = ObjCon.EjecutarDataTable()
         ObjCon.Desconectar()
     End Function
 

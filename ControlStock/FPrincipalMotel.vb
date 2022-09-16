@@ -192,6 +192,7 @@ Public Class FPrincipalMotel
         If Caja.CajaAbierta(NumCaja) = False Then
             Dim Frm As New FCajaMostrador
             Frm.CIEmpleado = CI
+            Frm.Modo = Frm.Tipo.Abrir
             AbrirVentana(Frm)
         Else
             MessageBox.Show("La caja ya está abierta")
@@ -202,7 +203,7 @@ Public Class FPrincipalMotel
         If Caja.CajaAbierta(NumCaja) Then
             Dim Frm As New FCajaMostrador
             Frm.CIEmpleado = CI
-            Frm.ModoAbrir = False
+            Frm.Modo = Frm.Tipo.Cerrar
             AbrirVentana(Frm)
         Else
             MessageBox.Show("La caja ya está cerrada")

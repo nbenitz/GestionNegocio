@@ -1,25 +1,25 @@
-﻿
+﻿Option Explicit On
+Option Strict On
+
 Public Class FGasto
     Dim TablaGasto As New DataTable
     Dim Compra As New CCompra
+    Dim Caja As New CCaja
     Dim Importe As UInt32
-
-    Private Sub Form1_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
-        Dim strEstado As String = Me.WindowState.ToString()
-        If strEstado = "Maximized" Then
-            Me.WindowState = FormWindowState.Normal
-        End If
-    End Sub
+    Public Property PagarDesdeCaja() As Boolean = False
+    Public Property NumCaja As UInt16 = 1
 
     Private Sub CargarMotivos()
         TablaGasto = Compra.ListarGasto
         cmbGastos.Items.Clear()
         Dim Filas As Integer = TablaGasto.Rows.Count
         If Filas > 0 Then
-            For i  As Integer = 0 To (Filas - 1)
+            For i As Integer = 0 To (Filas - 1)
                 cmbGastos.Items.Add(TablaGasto.Rows(i).Item(1))
             Next
         End If
+        cmbGastos.Text = ""
+        cmbGastos.Focus()
     End Sub
 
     Private Sub btnCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancelar.Click
@@ -35,7 +35,11 @@ Public Class FGasto
             If txtImporte.Text <> "" Then
                 If cmbGastos.SelectedIndex >= 0 Then
                     idGasto = CUInt(TablaGasto.Rows(cmbGastos.SelectedIndex).Item(0))
-                    If Compra.InsertGasto(Compra.CargarNroGasto, idGasto, Fecha, Importe) = True Then
+                    Dim id As Integer = Compra.CargarNroGasto
+                    If Compra.InsertGasto(id, idGasto, Fecha, Importe) = True Then
+                        If PagarDesdeCaja Then
+                            Caja.Gasto(NumCaja, id)
+                        End If
                         MessageBox.Show("Se ha registrado la operación")
                         Me.Close()
                     Else
@@ -54,10 +58,6 @@ Public Class FGasto
             txtImporte.Select(0, txtImporte.Text.Length)
             ToolTip2.Show("Ingrese una cantidad válida", txtImporte, 0, -40, 3000)
         End Try
-    End Sub
-
-    Private Sub cmbMotivos_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmbGastos.Click, cmbGastos.GotFocus
-        cmbGastos.DroppedDown = True
     End Sub
 
     Private Sub pbxNewMotivo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbxNewGasto.Click
@@ -91,16 +91,24 @@ Public Class FGasto
         End If
     End Sub
 
-    Private Sub F_Deactivate(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Deactivate
-        'Me.WindowState = FormWindowState.Minimized
-    End Sub
-
     Private Sub FGasto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        txtCod.Text = CStr(Compra.CargarNroListaGasto)
+        txtCod.Text = CStr(Compra.CargarNroGasto)
         CargarMotivos()
     End Sub
 
     Private Sub BtnCerrarForm_Click(sender As Object, e As EventArgs) Handles BtnCerrarForm.Click
         Me.Close()
     End Sub
+
+    Private Sub txtImporte_KeyUp(sender As Object, e As KeyEventArgs) Handles txtImporte.KeyUp
+        'Agregar separador de miles
+        Dim Txt As TextBox = DirectCast(sender, TextBox)
+        If (Txt.Text <> String.Empty) Then
+            Dim importe As Decimal
+            Decimal.TryParse(Txt.Text, importe)
+            Txt.Text = String.Format("{0:N0}", importe)
+            Txt.SelectionStart = Txt.TextLength
+        End If
+    End Sub
+
 End Class

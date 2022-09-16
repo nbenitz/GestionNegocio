@@ -1,4 +1,5 @@
 ﻿Option Strict On
+Option Explicit On
 
 Public Class FResumenCaja
     Dim Caja As New CCaja
@@ -6,8 +7,7 @@ Public Class FResumenCaja
     Dim NumCaja As UInt16 = 1
     Dim CIValue As String
     Dim DesdeHistorialValue As Boolean = False
-    Dim FechaValue As String = ""
-    Dim HoraValue As String = ""
+    Dim FechaValue As Date = Now
 
     Public Encabezado As New List(Of CEncabezadoCaja)()
     Public Detalle As New List(Of CDetalleCaja)()
@@ -25,13 +25,13 @@ Public Class FResumenCaja
         Dim EncabezadoAux As New CEncabezadoCaja()
         Dim FechaFin As Date = Now
         If DesdeHistorialValue Then
-            Dim TablaCaja As DataTable = Caja.BuscarView(FechaValue, HoraValue)
+            Dim TablaCaja As DataTable = Caja.BuscarView(FechaValue)
             EncabezadoAux.Empleado = CStr(TablaCaja.Rows(0).Item(0))
-            EncabezadoAux.FechaApertura = CDate(CStr(TablaCaja.Rows(0).Item(2)) + " " + CType(TablaCaja.Rows(0).Item(3), TimeSpan).ToString)
-            EncabezadoAux.MontoInicial = CInt(TablaCaja.Rows(0).Item(4))
+            EncabezadoAux.FechaApertura = CDate(TablaCaja.Rows(0).Item(2))
+            EncabezadoAux.MontoInicial = CInt(TablaCaja.Rows(0).Item(3))
             Try
-                EncabezadoAux.FechaCierre = CStr(TablaCaja.Rows(0).Item(5)) + " " + CType(TablaCaja.Rows(0).Item(6), TimeSpan).ToString
-                EncabezadoAux.MontoFinal = CInt(TablaCaja.Rows(0).Item(7))
+                EncabezadoAux.FechaCierre = CStr(TablaCaja.Rows(0).Item(4))
+                EncabezadoAux.MontoFinal = CInt(TablaCaja.Rows(0).Item(5))
                 FechaFin = CDate(EncabezadoAux.FechaCierre)
             Catch
                 EncabezadoAux.FechaCierre = "Abierto"
@@ -137,13 +137,8 @@ Public Class FResumenCaja
 
     Public WriteOnly Property Fecha() As Date
         Set(ByVal value As Date)
-            FechaValue = Format(value, "yyyy-MM-dd")
-        End Set
-    End Property
-
-    Public WriteOnly Property Hora() As String
-        Set(ByVal value As String)
-            HoraValue = value
+            'FechaValue = Format(value, "yyyy-MM-dd")
+            FechaValue = value
         End Set
     End Property
 

@@ -1104,6 +1104,7 @@
     <None Include="Resources\close %281%29.png" />
     <None Include="Resources\close_16x.png" />
     <None Include="Resources\minimize-sign_16x.png" />
+    <None Include="Resources\boton-de-informacion.png" />
     <Content Include="SqlServerTypes\Loader.cs" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">

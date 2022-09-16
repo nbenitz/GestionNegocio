@@ -30,8 +30,8 @@ Partial Class FNuevoGasto
         Me.BtnGuardar = New System.Windows.Forms.PictureBox()
         Me.BtnCancel = New System.Windows.Forms.PictureBox()
         Me.pnlTopBar = New System.Windows.Forms.Panel()
-        Me.BtnCerrarForm = New System.Windows.Forms.PictureBox()
         Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.BtnCerrarForm = New System.Windows.Forms.PictureBox()
         CType(Me.BtnGuardar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BtnCancel, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlTopBar.SuspendLayout()
@@ -105,6 +105,17 @@ Partial Class FNuevoGasto
         Me.pnlTopBar.Size = New System.Drawing.Size(368, 35)
         Me.pnlTopBar.TabIndex = 90
         '
+        'lblTitulo
+        '
+        Me.lblTitulo.AutoSize = True
+        Me.lblTitulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitulo.ForeColor = System.Drawing.Color.White
+        Me.lblTitulo.Location = New System.Drawing.Point(14, 9)
+        Me.lblTitulo.Name = "lblTitulo"
+        Me.lblTitulo.Size = New System.Drawing.Size(98, 16)
+        Me.lblTitulo.TabIndex = 118
+        Me.lblTitulo.Text = "Nuevo Gasto"
+        '
         'BtnCerrarForm
         '
         Me.BtnCerrarForm.Dock = System.Windows.Forms.DockStyle.Right
@@ -117,22 +128,11 @@ Partial Class FNuevoGasto
         Me.BtnCerrarForm.TabIndex = 115
         Me.BtnCerrarForm.TabStop = False
         '
-        'lblTitulo
-        '
-        Me.lblTitulo.AutoSize = True
-        Me.lblTitulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTitulo.ForeColor = System.Drawing.Color.White
-        Me.lblTitulo.Location = New System.Drawing.Point(14, 9)
-        Me.lblTitulo.Name = "lblTitulo"
-        Me.lblTitulo.Size = New System.Drawing.Size(98, 16)
-        Me.lblTitulo.TabIndex = 118
-        Me.lblTitulo.Text = "Nuevo Gasto"
-        '
         'FNuevoGasto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(45, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(368, 134)
         Me.Controls.Add(Me.pnlTopBar)
         Me.Controls.Add(Me.BtnGuardar)

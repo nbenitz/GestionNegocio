@@ -34,6 +34,7 @@ Public Class FListaSocio
 
     Private Sub CargarTabla(ByVal Tabla As DataTable)
         Dim Filas As Integer = Tabla.Rows.Count
+
         dgvCliente.Rows.Clear()
         If Filas > 0 Then
             For i As Integer = 0 To (Filas - 1)
@@ -108,9 +109,9 @@ Public Class FListaSocio
             Actualizar()
         Else
             MessageBox.Show("Debe abrir la Caja para poder cobrar una membresía a un socio")
-            Dim Frm As New FCajaMostrador
-            Frm.CIEmpleado = MCaja.EmpleadoCI
-            Frm.ShowDialog()
+            'Dim Frm As New FCajaMostrador
+            'Frm.CIEmpleado = MCaja.EmpleadoCI
+            'Frm.ShowDialog()
         End If
     End Sub
 
