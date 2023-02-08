@@ -303,6 +303,9 @@ namespace ControlDoor
                     case 0x16:  //MINOR_LOCK_CLOSE
                         //OpenDoor();
                         break;
+                    case 0x1A:  //Sensor de Puerta
+                        LookDoor();
+                        break;
                     default:
                         // code block
                         break;
@@ -429,6 +432,18 @@ namespace ControlDoor
             else
             {
                 MessageBox.Show("Error: " + CHCNetSDK0.NET_DVR_GetLastError());
+            }
+        }
+
+        public void LookDoor()
+        {
+            if (CHCNetSDK0.NET_DVR_ControlGateway(m_UserID, 1, 0))
+            {
+                //MessageBox.Show("Paso bloqueado");
+            }
+            else
+            {
+                MessageBox.Show("Error:" + CHCNetSDK0.NET_DVR_GetLastError());
             }
         }
 

@@ -75,6 +75,8 @@ Partial Class FListaSocio
         Me.chkConDeuda = New System.Windows.Forms.CheckBox()
         Me.chkInactivos = New System.Windows.Forms.CheckBox()
         Me.chkTodos = New System.Windows.Forms.CheckBox()
+        Me.lblSociosCount = New System.Windows.Forms.Label()
+        Me.lblSociosCountTitle = New System.Windows.Forms.Label()
         CType(Me.dgvCliente, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
         Me.PnlEliminar.SuspendLayout()
@@ -153,7 +155,7 @@ Partial Class FListaSocio
         Me.dgvCliente.ReadOnly = True
         DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Arial Narrow", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
         DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.ButtonShadow
         DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
@@ -551,12 +553,37 @@ Partial Class FListaSocio
         Me.chkTodos.Text = "Todos"
         Me.chkTodos.UseVisualStyleBackColor = False
         '
+        'lblSociosCount
+        '
+        Me.lblSociosCount.AutoSize = True
+        Me.lblSociosCount.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSociosCount.ForeColor = System.Drawing.Color.LightGray
+        Me.lblSociosCount.Location = New System.Drawing.Point(296, 569)
+        Me.lblSociosCount.Name = "lblSociosCount"
+        Me.lblSociosCount.Size = New System.Drawing.Size(17, 20)
+        Me.lblSociosCount.TabIndex = 128
+        Me.lblSociosCount.Text = "0"
+        '
+        'lblSociosCountTitle
+        '
+        Me.lblSociosCountTitle.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.lblSociosCountTitle.AutoSize = True
+        Me.lblSociosCountTitle.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSociosCountTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.lblSociosCountTitle.Location = New System.Drawing.Point(203, 569)
+        Me.lblSociosCountTitle.Name = "lblSociosCountTitle"
+        Me.lblSociosCountTitle.Size = New System.Drawing.Size(93, 20)
+        Me.lblSociosCountTitle.TabIndex = 127
+        Me.lblSociosCountTitle.Text = "Cant. Socios"
+        '
         'FListaSocio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(949, 602)
+        Me.Controls.Add(Me.lblSociosCount)
+        Me.Controls.Add(Me.lblSociosCountTitle)
         Me.Controls.Add(Me.chkTodos)
         Me.Controls.Add(Me.chkInactivos)
         Me.Controls.Add(Me.chkConDeuda)
@@ -636,4 +663,6 @@ Partial Class FListaSocio
     Friend WithEvents chkConDeuda As CheckBox
     Friend WithEvents chkInactivos As CheckBox
     Friend WithEvents chkTodos As CheckBox
+    Friend WithEvents lblSociosCount As Label
+    Friend WithEvents lblSociosCountTitle As Label
 End Class

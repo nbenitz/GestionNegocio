@@ -63,6 +63,7 @@ Partial Class FEventoAcceso
         Me.lblVeces = New System.Windows.Forms.Label()
         Me.btnLogout = New System.Windows.Forms.Button()
         Me.tmrPing = New System.Windows.Forms.Timer(Me.components)
+        Me.Button3 = New System.Windows.Forms.Button()
         CType(Me.dgvAccesos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlListaIngreso.SuspendLayout()
         Me.pnlSocioInfo.SuspendLayout()
@@ -392,7 +393,6 @@ Partial Class FEventoAcceso
         Me.Button1.TabIndex = 10
         Me.Button1.Text = "Probar"
         Me.Button1.UseVisualStyleBackColor = True
-        Me.Button1.Visible = False
         '
         'TextBox1
         '
@@ -403,8 +403,7 @@ Partial Class FEventoAcceso
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(100, 20)
         Me.TextBox1.TabIndex = 11
-        Me.TextBox1.Text = "4777537"
-        Me.TextBox1.Visible = False
+        Me.TextBox1.Text = "6514266"
         '
         'lblSegundaPantalla
         '
@@ -487,12 +486,26 @@ Partial Class FEventoAcceso
         '
         Me.tmrPing.Interval = 10000
         '
+        'Button3
+        '
+        Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button3.BackColor = System.Drawing.Color.Red
+        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Button3.ForeColor = System.Drawing.Color.White
+        Me.Button3.Location = New System.Drawing.Point(238, 526)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(136, 29)
+        Me.Button3.TabIndex = 20
+        Me.Button3.Text = "Bloquear Paso"
+        Me.Button3.UseVisualStyleBackColor = False
+        '
         'FEventoAcceso
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(382, 624)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.btnLogout)
         Me.Controls.Add(Me.lblVeces)
         Me.Controls.Add(Me.lblTitReconect)
@@ -554,4 +567,5 @@ Partial Class FEventoAcceso
     Friend WithEvents lblVeces As Label
     Friend WithEvents btnLogout As Button
     Friend WithEvents tmrPing As Timer
+    Friend WithEvents Button3 As Button
 End Class

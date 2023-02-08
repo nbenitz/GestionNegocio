@@ -97,7 +97,8 @@ Public Class FEventoAcceso
                 CIValue = CI
 
                 If Strings.Left(BaseDatoServer, 16) = "server=127.0.0.1" Then
-                    EventoAcceso.OpenDoor()
+                    'EventoAcceso.OpenDoor()
+                    EventoAcceso.StayOpenDoor()
                     If oAcceso.InsertEmpleadoAsistencia(CI, Tiempo) = False Then
                         MessageBox.Show("Hubo un problema al registrar el acceso.")
                     End If
@@ -215,7 +216,8 @@ Public Class FEventoAcceso
             'If Atraso <= DiasTolerancia And Strings.Left(BaseDatoServer, 16) = "server=127.0.0.1" Then
 
             If SocioOk Then
-                EventoAcceso.OpenDoor()
+                'EventoAcceso.OpenDoor()
+                EventoAcceso.StayOpenDoor()
             End If
 
             Dim NombreMembresia As String = CStr(TablaMembresia.Rows(i).Item(3))
@@ -371,7 +373,8 @@ Public Class FEventoAcceso
 
 
     Private Sub btnOpenDoor_Click(sender As Object, e As EventArgs) Handles btnOpenDoor.Click, Button2.Click
-        EventoAcceso.OpenDoor()
+        'EventoAcceso.OpenDoor()
+        EventoAcceso.StayOpenDoor()
     End Sub
 
     Private Sub btnStayOpen_Click(sender As Object, e As EventArgs)
@@ -494,4 +497,7 @@ Public Class FEventoAcceso
         End If
     End Sub
 
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        EventoAcceso.LookDoor()
+    End Sub
 End Class

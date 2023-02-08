@@ -161,10 +161,10 @@ Public Class FLogin
         End Select
 
         appCfg.SetValue("server",
-                        "server=" + serverIp + ";user id=remote;password=1223;database=minegocio")
+                        "server=" + serverIp + ";user id=remote;password=Z.Checoslovaquia#;database=minegocio")
 
         appCfg.SetConnStrValue("minegocioEntities",
-                               "metadata=res://*/DB.csdl|res://*/DB.ssdl|res://*/DB.msl;provider=MySql.Data.MySqlClient;provider connection string=" & Chr(34) & "server=" + serverIp + ";user id=remote;password=1223;persistsecurityinfo=True;database=minegocio" & Chr(34))
+                               "metadata=res://*/DB.csdl|res://*/DB.ssdl|res://*/DB.msl;provider=MySql.Data.MySqlClient;provider connection string=" & Chr(34) & "server=" + serverIp + ";user id=remote;password=Z.Checoslovaquia#;persistsecurityinfo=True;database=minegocio" & Chr(34))
 
         appCfg.SetValue("device", deviceIp)
         appCfg.SetValue("devicePort", devicePort)

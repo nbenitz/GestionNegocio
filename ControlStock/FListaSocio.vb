@@ -77,7 +77,11 @@ Public Class FListaSocio
             Next
             dgvCliente.Item(0, 0).Value = True
             TablaSelIndex = 0
+            lblSociosCount.Text = CStr(Tabla.Rows.Count)
+        Else
+            lblSociosCount.Text = "0"
         End If
+
     End Sub
 
     Private Sub txtBuscar_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs) Handles txtBuscar.KeyDown
@@ -278,6 +282,8 @@ Public Class FListaSocio
         Memb.Visible = False
         Tel.Visible = False
         Acc.Visible = False
+        lblSociosCountTitle.Visible = False
+        lblSociosCount.Visible = False
     End Sub
 
     Private Sub Seleccionar_Click(sender As Object, e As EventArgs) Handles lblSeleccionar.Click, pnlSeleccionar.Click, pbxSeleccionar.Click
